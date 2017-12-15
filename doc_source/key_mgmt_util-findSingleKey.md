@@ -1,6 +1,6 @@
 # findSingleKey<a name="key_mgmt_util-findSingleKey"></a>
 
-The `findSingleKey` command in the key\_mgmt\_util tool verifies that a key exists on all HSMs in the cluster\.
+The findSingleKey command in the key\_mgmt\_util tool verifies that a key exists on all HSMs in the cluster\.
 
 Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
 
@@ -12,11 +12,9 @@ findSingleKey -h
 findSingleKey -k <key-handle>
 ```
 
-## Examples<a name="findSingleKey-examples"></a>
+## Example<a name="findSingleKey-examples"></a>
 
-These examples show how to use `findSingleKey` to verify a key\.
-
-**Example : Verify a key**  
+**Example**  
 This command verifies that key `252136` exists on all three HSMs in the cluster\.  
 
 ```

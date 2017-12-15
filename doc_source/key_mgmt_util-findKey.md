@@ -1,8 +1,8 @@
 # findKey<a name="key_mgmt_util-findKey"></a>
 
-The `findKey` command in key\_mgmt\_util lets you search for keys by the values of the key attributes\. When a key matches all of the criteria that you set, `findKey` returns the key handle\. With no parameters, `findKey` returns the key handles of all of the keys you can use in the HSM\. To find the attribute values of a particular key, use getAttribute\. 
+Use the findKey command in key\_mgmt\_util to search for keys by the values of the key attributes\. When a key matches all the criteria that you set, findKey returns the key handle\. With no parameters, findKey returns the key handles of all the keys that you can use in the HSM\. To find the attribute values of a particular key, use getAttribute\.
 
-Like all key\_mgmt\_util commands, `findKey` is user\-specific\. It returns only the keys that the current user can use in cryptographic operations\. This includes keys that current user owns and keys that have been shared with the current user\. 
+Like all key\_mgmt\_util commands, findKey is user specific\. It returns only the keys that the current user can use in cryptographic operations\. This includes keys that current user owns and keys that have been shared with the current user\. 
 
 Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
 
@@ -23,7 +23,7 @@ findKey [-c <key class>]
 
 ## Examples<a name="findKey-examples"></a>
 
-These examples show how to use `findKey` to find and identify keys in your HSMs\.
+These examples show how to use findKey to find and identify keys in your HSMs\.
 
 **Example : Find All Keys**  
 This command finds all keys for the current user in the HSM\. The output includes the key handles of all keys in the HSM\.  
@@ -52,14 +52,14 @@ Command: findKey -t 31 -sess 0 -u 3
 ```
 
 **Example : Find Keys by Class and Label**  
-This command finds all public keys for the current user with the '2018\-sept' label\.  
+This command finds all public keys for the current user with the `2018-sept` label\.  
 
 ```
 Command: findKey -c 2 -l 2018-sept
 ```
 
 **Example : Find RSA Keys by Modulus**  
-This command finds RSA keys \(type 0\) for the current user that were created by using the modulus in the `m4.txt` file  
+This command finds RSA keys \(type 0\) for the current user that were created by using the modulus in the `m4.txt` file\.  
 
 ```
 Command: findKey -t 0 -m m4.txt
@@ -72,7 +72,7 @@ Displays help for the command\.
 Required: Yes
 
 **\-t**  
-Finds keys of the specified type\. Enter the constant that represents the key class\. For example, to find 3DES keys, enter `-t 21`\.  
+Finds keys of the specified type\. Enter the constant that represents the key class\. For example, to find 3DES keys, type `-t 21`\.  
 Valid values:   
 
 + 0: [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
@@ -91,41 +91,41 @@ Valid values:
 Required: No
 
 **\-c**  
-Finds keys in the specified class\. Enter the constant that represents the key class\. For example, to find public keys, enter `-c 2`\.  
+Finds keys in the specified class\. Enter the constant that represents the key class\. For example, to find public keys, type `-c 2`\.  
 Valid values for each key type:  
 
-+ 2: Public\. This class contains the public keys of public\-private key pairs\.
++ 2: Public\. This class contains the public keys of public–private key pairs\.
 
-+ 3: Private\. This class contains the private keys of public\-private key pairs\.
++ 3: Private\. This class contains the private keys of public–private key pairs\.
 
 + 4: Secret\. This class contains all symmetric keys\.
 Required: No
 
 **\-l**  
-Finds keys with the specified label\. Enter the exact label\. You cannot use wildcard characters or regular expressions in the `--label` value\.  
+Finds keys with the specified label\. Type the exact label\. You cannot use wildcard characters or regular expressions in the `--label` value\.  
 Required: No
 
 **\-id**  
-Finds the key with the specified ID\. Enter the exact ID string\. You cannot use wildcard characters or regular expressions in the `-id` value\.  
+Finds the key with the specified ID\. Type the exact ID string\. You cannot use wildcard characters or regular expressions in the `-id` value\.  
 Required: No
 
 **\-sess**  
-Finds keys by session status\. To find keys that are valid only in the current session, enter `1`\. To find persistent keys, enter `0`\.  
+Finds keys by session status\. To find keys that are valid only in the current session, type `1`\. To find persistent keys, type `0`\.  
 Required: No
 
 **\-u**  
-Finds keys that the current user and the specified users can use in cryptographic operations\. Enter a comma\-separated list of HSM user IDs, such as `-u 3` or `-u 4,7`\. To find the IDs of users on an HSM, use listUsers\.  
-When you enter one user ID, `findKey` returns all of the keys for that user\. When you enter multiple user IDs, `findKey` returns the keys that all of the specified users can use\.  
-Because `FindKey` only returns keys that the current user can use, the `-u` results are always identical to or a subset of the current user's keys\.   
+Finds keys that the current user and the specified users can use in cryptographic operations\. Type a comma\-separated list of HSM user IDs, such as `-u 3` or `-u 4,7`\. To find the IDs of users on an HSM, use listUsers\.  
+When you specify one user ID, findKey returns all the keys for that user\. When you specify multiple user IDs, findKey returns the keys that all the specified users can use\.  
+Because findKey only returns keys that the current user can use, the `-u` results are always identical to or a subset of the current user's keys\.   
 Required: No
 
 **\-m**  
-Finds keys that were created by using the RSA modulus in the specified file\. Enter the path to file that stores the modulus\.  
+Finds keys that were created by using the RSA modulus in the specified file\. Type the path to file that stores the modulus\.  
 Required: No
 
 **\-kcv**  
 Finds keys with the specified key check value\.  
-The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key, and then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use getAttribute\.  
+The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key\. You can then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use getAttribute\.  
 AWS CloudHSM uses the following standard method to generate a key check value:  
 
 + **Symmetric keys**: First 8 bytes of the result of encrypting 16 zero\-filled bytes with the key\.
@@ -155,6 +155,8 @@ Total number of keys present 10
 
 + findSingleKey
 
-  getKeyInfo
++ getKeyInfo
 
-  getAttribute
++ getAttribute
+
++ Key Attribute Reference

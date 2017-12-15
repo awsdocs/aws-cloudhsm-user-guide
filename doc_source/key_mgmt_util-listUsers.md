@@ -1,8 +1,8 @@
 # listUsers<a name="key_mgmt_util-listUsers"></a>
 
-The `listUsers` command in the key\_mgmt\_util gets the users in the HSM, along with their user type and other attributes\.
+The listUsers command in the key\_mgmt\_util gets the users in the HSM, along with their user type and other attributes\.
 
-The user commands in `key_mgmt_util`, `listUsers` and `getKeyInfo`, are read\-only commands that crypto users \(CUs\) have permission to run\. The remaining user management commands are part of `cloudhsm_mgmt_util`, which is typically run by a CO with user management permissions\.
+The user commands in key\_mgmt\_util, listUsers and getKeyInfo, are read\-only commands that crypto users \(CUs\) have permission to run\. The remaining user management commands are part of cloudhsm\_mgmt\_util, which is typically run by a CO with user management permissions\.
 
 Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
 
@@ -14,9 +14,9 @@ listUsers
 listUsers -h
 ```
 
-## Examples<a name="listUsers-examples"></a>
+## Example<a name="listUsers-examples"></a>
 
-This command lists the users of HSMs in the cluster and their attributes\. You can use the User ID attribute to identify users in other commands, such as findKey, getAttribute, and getKeyInfo\.
+This command lists the users of HSMs in the cluster and their attributes\. You can use the `User ID` attribute to identify users in other commands, such as findKey, getAttribute, and getKeyInfo\.
 
 ```
 Command:  listUsers
@@ -35,11 +35,11 @@ Command:  listUsers
 
 The output includes the following user attributes:
 
-+ **User ID**: Use the user ID to identify the user in `key_mgmt_util` and cloudhsm\_mgmt\_util commands\.
++ **User ID**: Use the user ID to identify the user in key\_mgmt\_util and cloudhsm\_mgmt\_util commands\.
 
-+ User type: Determines the operations the user can perform on the HSM\.
++ User type: Determines the operations that the user can perform on the HSM\.
 
-+ **MofnPubKey**: Indicates whether the user has registered a key pair that they can use to sign approval tokens\. 
++ **MofnPubKey**: Indicates whether the user has registered a key pair for signing approval tokens\. 
 
 + **LoginFailureCnt**: 
 

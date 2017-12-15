@@ -1,121 +1,50 @@
-# Web Server SSL/TLS Offload: Configure the Web Server<a name="ssl-offload-configure-web-server"></a>
+# Web Server SSL/TLS Offload Step 3: Configure the Web Server<a name="ssl-offload-configure-web-server"></a>
 
 To finish setting up your web server for SSL/TLS offload with AWS CloudHSM, complete the following steps:
 
-1. Configure your web server software \(Apache or Nginx\) to use the AWS CloudHSM software library for OpenSSL to enable HTTPS\.
+1. Update your web server configuration to use the AWS CloudHSM software library for OpenSSL to enable HTTPS\.
 
-1. Add your web server to a security group that allows inbound HTTP and HTTPS traffic\.
+1. Add your web server to a security group that allows inbound HTTPS connections\.
 
-1. Verify that an HTTPS connection from your web browser gets the certificate whose private key is stored in your AWS CloudHSM cluster\.
-
-For more information, see the following topics\.
-
-
-+ [Update the Web Server Configuration](#ssl-offload-update-web-server-configuration)
-+ [Add the Web Server to a Security Group](#ssl-offload-add-security-group)
-+ [Verify SSL/TLS Offload](#ssl-offload-verify-https-connection)
+1. Verify that an HTTPS connection from a client gets the certificate whose private key is stored on the HSMs in your AWS CloudHSM cluster\.
 
 ## Update the Web Server Configuration<a name="ssl-offload-update-web-server-configuration"></a>
 
 To update your web server configuration, complete the steps in one of the following procedures\. Choose the procedure that corresponds to your web server software\.
 
-**Update the web server configuration for Apache HTTP Server**
++ Update the configuration for Nginx
 
-1. Connect to the client instance that you created previously\. This is the same instance where you installed Apache HTTP Server\.
-
-1. Use the following command to make a backup copy of the default certificate\.
-
-   ```
-   $ sudo cp /etc/pki/tls/certs/localhost.crt /etc/pki/tls/certs/localhost.crt.backup
-   ```
-
-1. Use the following command to make a backup copy of the default private key\.
-
-   ```
-   $ sudo cp /etc/pki/tls/private/localhost.key /etc/pki/tls/private/localhost.key.backup
-   ```
-
-1. Use the following command to copy your web server certificate to the required location\. Replace *web\_server\.crt* with the name of your web server certificate\.
-
-   ```
-   $ sudo cp web_server.crt /etc/pki/tls/certs/localhost.crt
-   ```
-
-1. Use the following command to copy your private key in fake PEM format to the required location\. Replace *web\_server\_fake\_PEM\.key* with the name of the file that contains your private key in fake PEM format\. You created this file previously\.
-
-   ```
-   $ sudo cp web_server_fake_PEM.key /etc/pki/tls/private/localhost.key
-   ```
-
-1. Use the following command to change the ownership of these files so that the user named apache can read them\.
-
-   ```
-   $ sudo chown apache /etc/pki/tls/certs/localhost.crt /etc/pki/tls/private/localhost.key
-   ```
-
-1. Use the following command to make a backup copy of the file named `/etc/httpd/conf.d/ssl.conf`\.
-
-   ```
-   $ sudo cp /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.backup
-   ```
-
-1. Use a text editor to edit the file named `/etc/httpd/conf.d/ssl.conf`\. Replace the line that starts with `SSLCryptoDevice` so that it looks like the following:
-
-   ```
-   SSLCryptoDevice cloudhsm
-   ```
-
-   Then save the file\. This requires Linux root permissions\.
-
-1. Use the following command to make a backup copy of the file named `/etc/sysconfig/httpd`\.
-
-   ```
-   $ sudo cp /etc/sysconfig/httpd /etc/sysconfig/httpd.backup
-   ```
-
-1. Use a text editor to edit the file named `/etc/sysconfig/httpd`\. Add the following line, specifying the user name and password of the crypto user \(CU\) that you created previously\. Replace *<CU user name>* with the user name of the CU, and replace *<password>* with the CU's password\.
-
-   ```
-   export n3fips_password=<CU user name>:<password>
-   ```
-
-   Then save the file\. This requires Linux root permissions\.
-
-1. Use the following command to start the Apache HTTP Server\.
-
-   ```
-   $ sudo service httpd start
-   ```
++ Update the configuration for Apache HTTP Server
 
 **Update the web server configuration for Nginx**
 
 1. Connect to the client instance that you created previously\. This is the same instance where you installed Nginx\.
 
-1. Use the following command to create the required directories for the web server certificate and private key\.
+1. Run the following command to create the required directories for the web server certificate and the fake PEM private key\.
 
    ```
    $ sudo mkdir -p /etc/pki/nginx/private
    ```
 
-1. Use the following command to copy your web server certificate to the required location\. Replace *web\_server\.crt* with the name of your web server certificate\.
+1. Run the following command to copy your web server certificate to the required location\. Replace *<web\_server\.crt>* with the name of your web server certificate\.
 
    ```
-   $ sudo cp web_server.crt /etc/pki/nginx/server.crt
+   $ sudo cp <web_server.crt> /etc/pki/nginx/server.crt
    ```
 
-1. Use the following command to copy your private key in fake PEM format to the required location\. Replace *web\_server\_fake\_PEM\.key* with the name of the file that contains your private key in fake PEM format\. You created this file previously\.
+1. Run the following command to copy your fake PEM private key to the required location\. Replace *<web\_server\_fake\_PEM\.key>* with the name of the file that contains your fake PEM private key\. You created this file previously\.
 
    ```
-   $ sudo cp web_server_fake_PEM.key /etc/pki/nginx/private/server.key
+   $ sudo cp <web_server_fake_PEM.key> /etc/pki/nginx/private/server.key
    ```
 
-1. Use the following command to change the ownership of these files so that the user named nginx can read them\.
+1. Run the following command to change the ownership of these files so that the user named *nginx* can read them\.
 
    ```
    $ sudo chown nginx /etc/pki/nginx/server.crt /etc/pki/nginx/private/server.key
    ```
 
-1. Use the following command to make a backup copy of the file named `/etc/nginx/nginx.conf`\.
+1. Run the following command to make a backup copy of the file named `/etc/nginx/nginx.conf`\.
 
    ```
    $ sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
@@ -131,7 +60,7 @@ To update your web server configuration, complete the steps in one of the follow
 
    ```
    # Settings for a TLS enabled server.
-   #
+   
        server {
            listen       443 ssl http2 default_server;
            listen       [::]:443 ssl http2 default_server;
@@ -165,15 +94,15 @@ To update your web server configuration, complete the steps in one of the follow
        }
    ```
 
-   Then save the file\. This requires Linux root permissions\.
+   Save the file\. This requires Linux root permissions\.
 
-1. Use the following command to make a backup copy of the file named `/etc/sysconfig/nginx`\.
+1. Run the following command to make a backup copy of the file named `/etc/sysconfig/nginx`\.
 
    ```
    $ sudo cp /etc/sysconfig/nginx /etc/sysconfig/nginx.backup
    ```
 
-1. Use a text editor to edit the file named `/etc/sysconfig/nginx`\. Add the following line, specifying the user name and password of the crypto user \(CU\) that you created previously\. Replace *<CU user name>* with the user name of the CU, and replace *<password>* with the CU's password\.
+1. Use a text editor to edit the file named `/etc/sysconfig/nginx`\. Add the following line, specifying the user name and password of the crypto user \(CU\) that you created previously\. Replace *<CU user name>* with the CU's user name, and replace *<password>* with the CU's password\.
 
    ```
    export n3fips_password=<CU user name>:<password>
@@ -181,33 +110,109 @@ To update your web server configuration, complete the steps in one of the follow
 
    Then save the file\. This requires Linux root permissions\.
 
-1. Use the following command to start the Nginx web server\.
+1. Run the following command to start the Nginx web server\.
 
    ```
    $ sudo service nginx start
    ```
 
+1. Run the following command to configure your server to start the Nginx application when the server starts\.
+
+   ```
+   $ sudo chkconfig nginx on
+   ```
+
+**Update the web server configuration for Apache HTTP Server**
+
+1. Connect to the client instance that you created previously\. This is the same instance where you installed Apache HTTP Server\.
+
+1. Run the following command to make a backup copy of the default certificate\.
+
+   ```
+   $ sudo cp /etc/pki/tls/certs/localhost.crt /etc/pki/tls/certs/localhost.crt.backup
+   ```
+
+1. Run the following command to make a backup copy of the default private key\.
+
+   ```
+   $ sudo cp /etc/pki/tls/private/localhost.key /etc/pki/tls/private/localhost.key.backup
+   ```
+
+1. Run the following command to copy your web server certificate to the required location\. Replace *<web\_server\.crt>* with the name of your web server certificate\.
+
+   ```
+   $ sudo cp <web_server.crt> /etc/pki/tls/certs/localhost.crt
+   ```
+
+1. Run the following command to copy your fake PEM private key to the required location\. Replace *<web\_server\_fake\_PEM\.key>* with the name of the file that contains your fake PEM private key\. You created this file previously\.
+
+   ```
+   $ sudo cp <web_server_fake_PEM.key> /etc/pki/tls/private/localhost.key
+   ```
+
+1. Run the following command to change the ownership of these files so that the user named *apache* can read them\.
+
+   ```
+   $ sudo chown apache /etc/pki/tls/certs/localhost.crt /etc/pki/tls/private/localhost.key
+   ```
+
+1. Run the following command to make a backup copy of the file named `/etc/httpd/conf.d/ssl.conf`\.
+
+   ```
+   $ sudo cp /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.backup
+   ```
+
+1. Use a text editor to edit the file named `/etc/httpd/conf.d/ssl.conf`\. Replace the line that starts with `SSLCryptoDevice` so that it looks like the following:
+
+   ```
+   SSLCryptoDevice cloudhsm
+   ```
+
+   Then save the file\. This requires Linux root permissions\.
+
+1. Run the following command to make a backup copy of the file named `/etc/sysconfig/httpd`\.
+
+   ```
+   $ sudo cp /etc/sysconfig/httpd /etc/sysconfig/httpd.backup
+   ```
+
+1. Use a text editor to edit the file named `/etc/sysconfig/httpd`\. Add the following line, specifying the user name and password of the crypto user \(CU\) that you created previously\. Replace *<CU user name>* with the CU's user name, and replace *<password>* with the CU's password\.
+
+   ```
+   export n3fips_password=<CU user name>:<password>
+   ```
+
+   Then save the file\. This requires Linux root permissions\.
+
+1. Run the following command to start the Apache HTTP Server\.
+
+   ```
+   $ sudo service httpd start
+   ```
+
+1. Run the following command to configure your server to start the Apache HTTP Server application when the server starts\.
+
+   ```
+   $ sudo chkconfig httpd on
+   ```
+
 ## Add the Web Server to a Security Group<a name="ssl-offload-add-security-group"></a>
 
-To connect to your web server from a client \(web browser\), assign your client instance to a security group that allows inbound HTTP and HTTPS traffic\. That is, it must allow inbound TCP traffic on ports 80 and 443\.
+To connect to your web server from a client \(such as a web browser\), create a security group that allows inbound HTTPS connections\. Specifically, it should allow inbound TCP connections on port 443\. Then assign this security group to your web server\.
 
-**To assign your client instance to a security group for HTTP and HTTPS**
+**To create a security group for HTTPS and assign it to your web server**
 
-1. Open the security groups section of the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/v2/home\#SecurityGroups](https://console.aws.amazon.com/ec2/v2/home#SecurityGroups)\.
+1. Open the **Security Groups** section of the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/v2/home\#SecurityGroups](https://console.aws.amazon.com/ec2/v2/home#SecurityGroups)\.
 
 1. Choose **Create Security Group**\.
 
 1. For **Create Security Group**, do the following:
 
-   1. For **Security group name**, type a name for the security group that you are creating\. For example, **Inbound HTTP & HTTPS**\.
+   1. For **Security group name**, type a name for the security group that you are creating\. For example, **Inbound HTTPS**\.
 
-   1. \(Optional\) For **Description**, type a description for the security group that you are creating\. For example, **Allow inbound traffic on ports 80 and 443**\.
+   1. \(Optional\) For **Description**, type a description of the security group that you are creating\. For example, **Allow inbound traffic on port 443**\.
 
-   1. For **VPC**, choose the VPC that contains your client instance\.
-
-   1. Choose **Add Rule**\.
-
-   1. For **Type**, choose **HTTP**\.
+   1. For **VPC**, choose the VPC that contains your web server instance\.
 
    1. Choose **Add Rule**\.
 
@@ -217,17 +222,19 @@ To connect to your web server from a client \(web browser\), assign your client 
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Select the box next to your client instance\. Then choose **Actions**, **Networking**, **Change Security Groups**\.
+1. Select the check box next to your web server instance\. Then choose **Actions**, **Networking**, **Change Security Groups**\.
 
-1. Select the box next to the security group that you created previously\. Then choose **Assign Security Groups**\.
+1. Select the check box next to the security group that you created for HTTPS\. Then choose **Assign Security Groups**\.
 
-## Verify SSL/TLS Offload<a name="ssl-offload-verify-https-connection"></a>
+## Verify That HTTPS Uses the Private Key in Your AWS CloudHSM Cluster<a name="ssl-offload-verify-https-connection"></a>
 
 After you add the web server to a security group, you can verify that SSL/TLS offload with AWS CloudHSM is working\. You can do this with a web browser such as [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/) or [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html), or with a tool such as [OpenSSL s\_client](https://www.openssl.org/docs/manmaster/man1/s_client.html)\.
 
 **To verify SSL/TLS offload with a web browser**
 
-1. Use a web browser such as [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/) or [Google Chrome](https://www.google.com/chrome/browser/desktop/index.html) to connect to your web server\. Ensure that the URL in the address bar begins with https://\.
+1. Use a web browser such as Mozilla Firefox or Google Chrome to connect to your web server using the web server's public DNS name or IP address\. Ensure that the URL in the address bar begins with https://\. For example, **https://ec2\-52\-14\-212\-67\.us\-east\-2\.compute\.amazonaws\.com/**\.
+**Note**  
+You can use a DNS service such as Amazon Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your web server\. For more information, see [Routing Traffic to an Amazon EC2 Instance](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html) in the *Amazon Route 53 Developer Guide* or the documentation for your DNS service\.
 
 1. Use your web browser to view the web server certificate\. For more information, see the following:
 
@@ -237,14 +244,16 @@ After you add the web server to a security group, you can verify that SSL/TLS of
 
    Other web browsers might have similar features that you can use to view the web server certificate\.
 
-1. Ensure that the certificate is the one that you configured the web server to use, whose private key is stored in your AWS CloudHSM cluster\.
+1. Ensure that the certificate is the one that you configured the web server to use, whose private key is stored in the HSMs in your AWS CloudHSM cluster\.
 
-**To verify SSL/TLS offload with OpenSSL**
+**To verify SSL/TLS offload with OpenSSL s\_client**
 
-1. Use the following OpenSSL command to connect to your web server using HTTPS\. Replace *<server name>* with the host name or IP address of your web server\.
+1. Run the following OpenSSL command to connect to your web server using HTTPS\. Replace *<server name>* with the public DNS name or IP address of your web server\.
 
    ```
    $ openssl s_client -connect <server name>:443
    ```
 
-1. Ensure that the certificate is the one that you configured the web server to use, whose private key is stored in your AWS CloudHSM cluster\.
+1. Ensure that the certificate is the one that you configured the web server to use, whose private key is stored in the HSMs in your AWS CloudHSM cluster\.
+
+You now have a website that is secured with HTTPS, with the web server's private key stored in the HSMs in your AWS CloudHSM cluster\. However, you have only one web server\. To set up a second web server and a load balancer for higher availability, go to [Step 4: Add a Load Balancer](ssl-offload-add-load-balancing.md)\.

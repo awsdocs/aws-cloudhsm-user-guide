@@ -1,68 +1,72 @@
-# genRSAKeyPair<a name="key_mgmt_util-genRSAKeyPair"></a>
+# genECCKeyPair<a name="key_mgmt_util-genECCKeyPair"></a>
 
-The genRSAKeyPair command in the key\_mgmt\_util tool generates an [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) asymmetric key pair\. You specify the key type, modulus length, and a public exponent\. The command generates a modulus of the specified length and creates the key pair\. You can assign an ID, share the key with other HSM users, create nonextractable keys and keys that expire when the session ends\. When the command succeeds, it returns a key handle that the HSM assigns to the key\. You can use the key handle to identify the key to other commands\.
+The `genECCKeyPair` command in the key\_mgmt\_util tool generates an [Elliptic Curve Cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) \(ECC\) key pair in your HSMs\. You must specify the elliptic curve type and a label for the keys\. You can also share the private key with other CU users, create non\-extractable keys, quorum\-controlled keys, and keys that expire when the session ends\. When the command succeeds, it returns the key handles that the HSM assigns to the public and private ECC keys\. You can use the key handles to identify the keys to other commands\.
 
 Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
 
 **Tip**  
 To find the attributes of a key that you have created, such as the type, length, label, and ID, use getAttribute\. To find the keys for a particular user, use getKeyInfo\. To find keys based on their attribute values, use findKey\. 
 
-## Syntax<a name="genRSAKeyPair-syntax"></a>
+## Syntax<a name="genECCKeyPair-syntax"></a>
 
 ```
-genRSAKeyPair -h
+genECCKeyPair -h
 
-genRSAKeyPair -m <modulus length>
-              -e <public exponent> 
+genECCKeyPair -i <EC curve id> 
               -l <label> 
-              [-id <key ID>] 
-              [-min_srv <minimum number of servers>] 
+              [-id <key ID>]
+              [-min_srv <minimum number of servers>]
               [-m_value <0..8>]
-              [-nex] 
-              [-sess] 
+              [-nex]
+              [-sess]
               [-timeout <number of seconds> ]
-              [-u <user-ids>] 
+              [-u <user-ids>]
               [-attest]
 ```
 
-## Examples<a name="genRSAKeyPair-examples"></a>
+## Examples<a name="genECCKeyPair-examples"></a>
 
-These examples show how to use genRSAKeyPair to create asymmetric key pairs in your HSMs\.
+These examples show how to use genECCKeyPair to create ECC key pairs in your HSMs\.
 
-**Example : Create and Examine an RSA Key Pair**  
-This command creates an RSA key pair with a 2048\-bit modulus and an exponent of 65541\. The output shows that the public key handle is `262159` and the private key handle is `262160`\.  
-
-```
-Command: genRSAKeyPair -m 2048 -e 65541 -l rsa_test 
-
-Cfm3GenerateKeyPair returned: 0x00 : HSM Return: SUCCESS
-Cfm3GenerateKeyPair: public key handle: 262159 private key handle: 262160
-Cluster Error Status
-Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
-Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
-```
-The next command uses getAttribute to get the attributes of the public key that we just created\. It writes the output to the `attr_262159` file\. It is followed by a cat command that gets the content of the attribute file\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
-The resulting hexadecimal values confirm that it is a public key \(`OBJ_ATTR_CLASS 0x02`\) with a type of RSA \(`OBJ_ATTR_KEY_TYPE 0x00`\)\. You can use this public key to encrypt \(`OBJ_ATTR_ENCRYPT 0x01`\), but not to decrypt \(`OBJ_ATTR_DECRYPT 0x00`\) or wrap \(`OBJ_ATTR_WRAP 0x00`\)\. The results also include the key length \(512, `0x200`\), the modulus, the modulus length \(2048, `0x800`\), and the public exponent \(65541, `0x10005`\)\.   
+**Example : Create and Examine an ECC Key Pair**  
+This command creates an ECC key pair using an NID\_sect571r1 elliptic curve and an `ecc12` label\. The output shows that the key handle of the private key is `262177` and the key handle of the public key is `262179`\. The label applies to both the public and private keys\.  
 
 ```
-Command:  getAttribute -o 262159 -a 512 -out attr_262159
+Command: genECCKeyPair -i 12 -l ecc12
 
-got all attributes of size 731 attr cnt 20
-Attributes dumped into attr_262159 file
+        Cfm3GenerateKeyPair returned: 0x00 : HSM Return: SUCCESS
 
- Cfm3GetAttribute returned: 0x00 : HSM Return: SUCCESS
+        Cfm3GenerateKeyPair:    public key handle: 262179    private key handle: 262177
 
-$  cat attr_262159
+        Cluster Error Status
+        Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
+```
+After generating the key, you might want to examine its attributes\. The next command uses getAttribute to write all of the attributes \(represented by the constant `512`\) of the new ECC private key to the `attr_262177` file\.  
+
+```
+Command: getAttribute -o 262177 -a 512 -out attr_262177
+got all attributes of size 529 attr cnt 19
+Attributes dumped into attr_262177
+
+        Cfm3GetAttribute returned: 0x00 : HSM Return: SUCCESS
+```
+This command gets the content of the `attr_262177` attribute file\. The output shows that the key is an elliptic curve private key that can be used for signing, but not for encrypting, decrypting, wrapping, unwrapping, or verifying\. The key is persistent and exportable\.  
+
+```
+$  cat attr_262177
+
 OBJ_ATTR_CLASS
-0x02
+0x03
 OBJ_ATTR_KEY_TYPE
-0x00
+0x03
 OBJ_ATTR_TOKEN
 0x01
 OBJ_ATTR_PRIVATE
-0x00
-OBJ_ATTR_ENCRYPT
 0x01
+OBJ_ATTR_ENCRYPT
+0x00
 OBJ_ATTR_DECRYPT
 0x00
 OBJ_ATTR_WRAP
@@ -70,64 +74,80 @@ OBJ_ATTR_WRAP
 OBJ_ATTR_UNWRAP
 0x00
 OBJ_ATTR_SIGN
-0x00
-OBJ_ATTR_VERIFY
 0x01
+OBJ_ATTR_VERIFY
+0x00
 OBJ_ATTR_LOCAL
 0x01
 OBJ_ATTR_SENSITIVE
-0x00
+0x01
 OBJ_ATTR_EXTRACTABLE
 0x01
 OBJ_ATTR_LABEL
-rsa_test
+ecc2
 OBJ_ATTR_ID
 
 OBJ_ATTR_VALUE_LEN
-0x00000200
+0x0000008a
 OBJ_ATTR_KCV
-0x0a4364
+0xbbb32a
 OBJ_ATTR_MODULUS
-9162b8d5d01d7b5b1179686d15e74d1dd38eaa5b6e64673195aaf951df8828deeca002c215d4209a
-c0bf90a9587ddca7f6351d5d4df0f6201b65daccd9955e4f49a819c0d39cb6717623bfa33436facc
-835c15961a58a63ca25bf0d2d4888d77418c571c190f8cc5a82483050658c00df4658dff248202bc
-95e886b1b5c7a981f09b0eb4f606641efe09bf3881f63c90d4a4415219ba796df449862b9d9c2a78
-d1c24fff56cf9b25f2b7dee44e200dd9550bd097a7044b22ca004033236bc708a0bad4a111533ed4
-6d049e5ec0b449b4a3877e566b0ce9d0a60fd1c15352b131ccc234f1719bed3918df579a66e7fff2
-9dc80dc5dbbf6e3d7d092d67c6abca7d
+044a0f9d01d10f7437d9fa20995f0cc742552e5ba16d3d7e9a65a33e20ad3e569e68eb62477a9960a87911e6121d112b698e469a0329a665eba74ee5ac55eae9f5
 OBJ_ATTR_MODULUS_BITS
-0x00000800
-OBJ_ATTR_PUBLIC_EXPONENT
-0x010005
+0x0000019f
 ```
 
-**Example : Generate a Shared RSA Key Pair**  
-This command generates an RSA key pair and shares the private key with user 4, another CU on the HSM\. The command uses the `m_value` parameter to require at least two approvals before the private key in the pair can be used in a cryptographic operation\. When you use the `m_value` parameter, you must also use `-u` in the command and the `m_value` cannot exceed the total number of users \(number of values in `-u` \+ owner\)\.  
+**Example Using an Invalid EEC Curve**  
+This command attempts to create an ECC key pair by using an NID\_X9\_62\_prime192v1 curve\. Because this elliptic curve is not valid for FIPS\-mode HSMs, the command fails\. The message reports that a server in the cluster is unavailable, but this does not typically indicate a problem with the HSMs in the cluster\.  
 
 ```
- Command:  genRSAKeyPair -m 2048 -e 195193 -l rsa_mofn -id rsa_mv2 -u 4 -m_value 2
+Command:  genECCKeyPair -i 1 -l ecc1
 
-        Cfm3GenerateKeyPair returned: 0x00 : HSM Return: SUCCESS
-
-        Cfm3GenerateKeyPair:    public key handle: 27    private key handle: 28
+        Cfm3GenerateKeyPair returned: 0xb3 : HSM Error: This operation violates the current configured/FIPS policies
 
         Cluster Error Status
-        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
-        Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 0 and err state 0x30000085 : HSM CLUSTER ERROR: Server in cluster is unavailable
 ```
 
-## Parameters<a name="genRSAKeyPair-params"></a>
+## Parameters<a name="genECCKeyPair-params"></a>
 
 **\-h**  
 Displays help for the command\.   
 Required: Yes
 
-**\-m**  
-Specifies the length of the modulus in bits\. The minimum value is 2048\.   
-Required: Yes
+**\-i **  
+Specifies the identifier for the elliptic curve\. Enter an identifier \(1 \- 15\)\.   
+Valid values:   
 
-**\-e**  
-Specifies the public exponent\. The value must be an odd number greater than or equal to 65537\.  
++ **1**: NID\_X9\_62\_prime192v1
+
++ **2**: NID\_X9\_62\_prime256v1
+
++ **3**: NID\_sect163k1
+
++ **4**: NID\_sect163r2
+
++ **5**: NID\_sect233k1
+
++ **6**: NID\_sect233r1
+
++ **7**: NID\_sect283k1
+
++ **8**: NID\_sect283r1
+
++ **9**: NID\_sect409k1
+
++ **10**: NID\_sect409r1
+
++ **11**:NID\_sect571k1
+
++ **12**: NID\_sect571r1
+
++ **13**: NID\_secp224r1
+
++ **14**:NID\_secp384r1
+
++ **15**: NID\_secp521r1
 Required: Yes
 
 **\-l**  
@@ -183,12 +203,10 @@ Runs an integrity check that verifies that the firmware on which the cluster run
 Default: No attestation check\.  
 Required: No
 
-## Related Topics<a name="genRSAKeyPair-seealso"></a>
+## Related Topics<a name="genECCKeyPair-seealso"></a>
 
 + genSymKey
 
-+ createKeyPair
++ genRSAKeyPair
 
 + genDSAKeyPair
-
-+ genECCKeyPair

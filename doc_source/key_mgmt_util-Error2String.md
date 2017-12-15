@@ -1,6 +1,6 @@
 # Error2String<a name="key_mgmt_util-Error2String"></a>
 
-The `Error2String` helper command in key\_mgmt\_util returns the error that corresponds to a key\_mgmt\_util hexadecimal error code\. You can use this command when troubleshooting your commands and scripts\.
+The Error2String helper command in key\_mgmt\_util returns the error that corresponds to a key\_mgmt\_util hexadecimal error code\. You can use this command when troubleshooting your commands and scripts\.
 
 Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
 
@@ -14,7 +14,9 @@ Error2String -r <response-code>
 
 ## Examples<a name="Error2String-examples"></a>
 
-**Example : Get an error description**  
+These examples show how to use Error2String to get the error string for a key\_mgmt\_util error code\. 
+
+**Example : Get an Error Description**  
 This command gets the error description for the `0xdb` error code\. The description explains that an attempt to log in to key\_mgmt\_util failed because the user has the wrong user type\. Only crypto users \(CU\) can log in to key\_mgmt\_util\.  
 
 ```
@@ -23,9 +25,9 @@ This command gets the error description for the `0xdb` error code\. The descript
         Error Code db maps to HSM Error: Invalid User Type.
 ```
 
-**Example : Find the error code**  
+**Example : Find the Error Code**  
 This example shows where to find the error code in a key\_mgmt\_util error\. The error code, `0xc6`, appears after the string: `Cfm3command-name returned: `\.  
-In this example, even though getKeyInfo indicates that the current user \(user 4\) can use the key in cryptographic operations, when the user tries to use deleteKey to delete the key, they get error code is `0xc6`\.   
+In this example, getKeyInfo indicates that the current user \(user 4\) can use the key in cryptographic operations\. Nevertheless, when the user tries to use deleteKey to delete the key, the command returns error code `0xc6`\.   
 
 ```
         Command:  deleteKey -k 262162
@@ -44,7 +46,7 @@ In this example, even though getKeyInfo indicates that the current user \(user 4
 
                 4
 ```
-If the `0xc6` error is reported to you, you can use an `Error2String` command like this one to look up the error\. In this case, the `deleteKey` command failed with an access denied error because the key shared with the current user, but owned by a different user\. Only key owners have permission to delete a key\.  
+If the `0xc6` error is reported to you, you can use an Error2String command like this one to look up the error\. In this case, the `deleteKey` command failed with an access denied error because the key is shared with the current user but owned by a different user\. Only key owners have permission to delete a key\.  
 
 ```
         Command:  Error2String -r 0xa8

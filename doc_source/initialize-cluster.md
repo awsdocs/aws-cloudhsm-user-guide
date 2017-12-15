@@ -2,6 +2,9 @@
 
 Complete the steps in the following topics to initialize your AWS CloudHSM cluster\.
 
+**Note**  
+Before you initialize the cluster, review the process by which you can verify the identity and authenticity of the HSMs\. The process is optional, but it works only until a cluster is initialized\. After the cluster is initialized, you cannot use this process to get the certificates or verify the HSMs\.
+
 
 + [Get the Cluster's Certificate Signing Request \(CSR\)](#get-csr)
 + [Sign the CSR](#sign-csr)
@@ -24,7 +27,7 @@ Before you can initialize the cluster, you get \(and then later sign\) a certifi
 
 **To get the CSR \(AWS CLI\)**
 
-+ At a command prompt, issue the [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, extracting the CSR and saving it to a file\. Replace *<cluster ID>* with the ID of the cluster that you created previously\.
++ At a command prompt, run the following [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, which extracts the CSR and saves it to a file\. Replace *<cluster ID>* with the ID of the cluster that you created previously\.
 
   ```
   $ aws cloudhsmv2 describe-clusters --filters clusterIds=<cluster ID> \
@@ -44,7 +47,8 @@ To sign the cluster's CSR, you typically use a private certificate authority \(C
 If you don't have a CA, you can use the following OpenSSL commands to create a self\-signed certificate and use it as your issuing certificate\.
 
 **Important**  
-The following example is a proof\-of\-concept demonstration only\. For production systems, use a more secure method \(such as a CA\) to sign the CSR\.
+The following example is a proof\-of\-concept demonstration only\. For production systems, use a more secure method \(such as a CA\) to sign the CSR\.  
+The certificate that you use is not designed to be rotated\. It demonstrates that you extended trust to this cluster by signing the cluster certificate\. We recommend that you create and use a certificate that is valid for ten years\. 
 
 **To sign the cluster's CSR \(OpenSSL\)**
 
@@ -60,10 +64,10 @@ The following example is a proof\-of\-concept demonstration only\. For productio
    Verifying - Enter pass phrase for customerCA.key:
    ```
 
-1. Use the following command to create a self\-signed issuing certificate with the private key that you created in the previous step\. Read the on\-screen instructions and follow the prompts to provide identifying information for the issuing certificate\.
+1. Use the following command to create a self\-signed issuing certificate with the private key that you created in the previous step\. The certificate is valid for 10 years \(3652 days\)\. Read the on\-screen instructions and follow the prompts to provide identifying information for the issuing certificate\.
 
    ```
-   $ openssl req -new -x509 -days 365 -key customerCA.key -out customerCA.crt
+   $ openssl req -new -x509 -days 3652 -key customerCA.key -out customerCA.crt
    Enter pass phrase for customerCA.key:
    You are about to be asked to enter information that will be incorporated
    into your certificate request.
@@ -83,10 +87,10 @@ The following example is a proof\-of\-concept demonstration only\. For productio
 
    When completed, this command creates a file named `customerCA.crt`\. Use this file as your issuing certificate \(trust anchor\) when you initialize the cluster\.
 
-1. Sign the cluster's CSR with your issuer\. Replace *<cluster ID>* with the ID of the cluster that you created previously\.
+1. Sign the cluster's CSR with your issuer\. Replace *<cluster ID>* with the ID of the cluster that you created previously\. This signature is also valid for 10 years\.
 
    ```
-   $ openssl x509 -req -days 365 -in <cluster ID>_ClusterCsr.csr \
+   $ openssl x509 -req -days 3652 -in <cluster ID>_ClusterCsr.csr \
                                  -CA customerCA.crt \
                                  -CAkey customerCA.key \
                                  -CAcreateserial \

@@ -68,7 +68,7 @@ These permissions include full access to the AWS CloudHSM API and also some addi
             "ec2:CreateTags",
             "ec2:DescribeVpcs",
             "ec2:DescribeSubnets",
-            "ec2:CreateServiceLinkedRole"
+            "iam:CreateServiceLinkedRole"
         ],
         "Resource": "*"
     }

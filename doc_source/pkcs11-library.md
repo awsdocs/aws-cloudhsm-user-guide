@@ -28,17 +28,17 @@ The AWS CloudHSM software library for PKCS \#11 supports the following PKCS \#11
 
 **Generate, Create, Import Keys**
 
-+ `CKM_RSA_X9_31_KEY_PAIR_GEN`
-**Note**  
-This mechanism is functionally identical to the `CKM_RSA_PKCS_KEY_PAIR_GEN` mechanism, but offers stronger guarantees for `p` and `q` generation\. If you need the `CKM_RSA_PKCS_KEY_PAIR_GEN` mechanism, you can use `CKM_RSA_X9_31_KEY_PAIR_GEN` instead\.
-
-+ `CKM_EC_KEY_PAIR_GEN`
-
 + `CKM_AES_KEY_GEN`
 
 + `CKM_DES3_KEY_GEN`
 
++ `CKM_EC_KEY_PAIR_GEN`
+
 + `CKM_GENERIC_SECRET_KEY_GEN`
+
++ `CKM_RSA_X9_31_KEY_PAIR_GEN`
+**Note**  
+This mechanism is functionally identical to the `CKM_RSA_PKCS_KEY_PAIR_GEN` mechanism, but offers stronger guarantees for `p` and `q` generation\. If you need the `CKM_RSA_PKCS_KEY_PAIR_GEN` mechanism, use `CKM_RSA_X9_31_KEY_PAIR_GEN`\.
 
 **Sign/Verify**
 
@@ -76,7 +76,17 @@ This mechanism is functionally identical to the `CKM_RSA_PKCS_KEY_PAIR_GEN` mech
 
 + `CKM_SHA512_HMAC`
 
++ `CKM_ECDSA`
+
 + `CKM_ECDSA_SHA1`
+
++ `CKM_ECDSA_SHA224`
+
++ `CKM_ECDSA_SHA256`
+
++ `CKM_ECDSA_SHA384`
+
++ `CKM_ECDSA_SHA512`
 
 **Digest**
 
@@ -92,19 +102,21 @@ This mechanism is functionally identical to the `CKM_RSA_PKCS_KEY_PAIR_GEN` mech
 
 **Encrypt/Decrypt**
 
-+ `CKM_DES3_CBC`
-
-+ `CKM_DES3_CBC_PAD`
-
 + `CKM_AES_CBC`
 
 + `CKM_AES_CBC_PAD`
 
 + `CKM_AES_GCM`
+**Note**  
+When performing AES\-GCM encryption, the HSM ignores the initialization vector \(IV\) in the request and uses an IV that it generates\. The HSM writes the generated IV to the memory reference pointed to by the `pAAD` element of the `CK_GCM_PARAMS` parameters structure that you supply\.
 
-+ `CKM_RSA_PKCS`
++ `CKM_DES3_CBC`
+
++ `CKM_DES3_CBC_PAD`
 
 + `CKM_RSA_OAEP_PAD`
+
++ `CKM_RSA_PKCS`
 
 **Key Derive**
 
@@ -118,85 +130,49 @@ This mechanism is functionally identical to the `CKM_RSA_PKCS_KEY_PAIR_GEN` mech
 
 The AWS CloudHSM software library for PKCS \#11 supports the following PKCS \#11 APIs\.
 
-+ `C_Initialize`
-
-+ `C_Finalize`
-
-+ `C_GetFunctionList`
-
-+ `C_OpenSession`
-
-+ `C_GetSessionInfo`
-
-+ `C_Login`
-
-+ `C_Logout`
-
-+ `C_GetInfo`
-
-+ `C_GetTokenInfo`
-
-+ `C_GenerateKey`
-
-+ `C_GenerateKeyPair`
-
-+ `C_GetAttributeValue`
-
-+ `C_EncryptInit`
-
-+ `C_Encrypt`
-
-+ `C_EncryptUpdate`
-
-+ `C_EncryptFinal`
-
-+ `C_DecryptInit`
++ `C_CreateObject`
 
 + `C_Decrypt`
 
++ `C_DecryptFinal`
+
++ `C_DecryptInit`
+
 + `C_DecryptUpdate`
 
-+ `C_DecryptFinal`
++ `C_DestroyObject`
 
 + `C_DigestInit`
 
 + `C_Digest`
 
-+ `C_SignInit`
++ `C_Encrypt`
 
-+ `C_Sign`
++ `C_EncryptFinal`
 
-+ `C_SignUpdate`
++ `C_EncryptInit`
 
-+ `C_SignFinal`
++ `C_EncryptUpdate`
 
-+ `C_SignRecoverInit`
++ `C_FindObjects`
 
-+ `C_SignRecover`
++ `C_FindObjectsFinal`
 
-+ `C_VerifyInit`
++ `C_FindObjectsInit`
 
-+ `C_Verify`
++ `C_Finalize`
 
-+ `C_VerifyUpdate`
++ `C_GenerateKey`
 
-+ `C_VerifyFinal`
-
-+ `C_VerifyRecoverInit`
-
-+ `C_VerifyRecover`
++ `C_GenerateKeyPair`
 
 + `C_GenerateRandom`
 
-+ `C_WrapKey`
++ `C_GetAttributeValue`
 
-+ `C_UnWrapKey`
++ `C_GetFunctionList`
 
-+ `C_DestroyObject`
-
-+ `C_GetSlotList`
-
-+ `C_GetSlotInfo`
++ `C_GetInfo`
 
 + `C_GetMechanismInfo`
 
@@ -204,10 +180,46 @@ The AWS CloudHSM software library for PKCS \#11 supports the following PKCS \#11
 
 + `C_GetOperationState`
 
-+ `C_CreateObject`
++ `C_GetSessionInfo`
 
-+ `C_FindObjectsInit`
++ `C_GetSlotInfo`
 
-+ `C_FindObjects`
++ `C_GetSlotList`
 
-+ `C_FindObjectsFinal`
++ `C_GetTokenInfo`
+
++ `C_Initialize`
+
++ `C_Login`
+
++ `C_Logout`
+
++ `C_OpenSession`
+
++ `C_Sign`
+
++ `C_SignFinal`
+
++ `C_SignInit`
+
++ `C_SignRecover`
+
++ `C_SignRecoverInit`
+
++ `C_SignUpdate`
+
++ `C_UnWrapKey`
+
++ `C_Verify`
+
++ `C_VerifyFinal`
+
++ `C_VerifyInit`
+
++ `C_VerifyRecover`
+
++ `C_VerifyRecoverInit`
+
++ `C_VerifyUpdate`
+
++ `C_WrapKey`

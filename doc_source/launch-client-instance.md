@@ -46,7 +46,7 @@ Complete the following steps to launch a client instance\.
 
    1. Select the check box next to the security group named **cloudhsm\-*<cluster ID>*\-sg**\. AWS CloudHSM created this security group on your behalf when you created the cluster\. You must choose this security group to allow the client instance to connect to the HSMs in the cluster\.
 
-   1. Select the check box next to a security group that allows inbound SSH traffic from your network\. That is, the security group must allow inbound TCP traffic on port 22\. Otherwise, you cannot connect to your client instance\. If you don't have a security group like this, you must create one and then assign it to your client instance later\. For more information about creating a security group, see [Create a Security Group](http://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/getting-started-ipv4.html#getting-started-create-security-group) in the *Amazon VPC Getting Started Guide*\.
+   1. Select the check box next to a security group that allows inbound SSH traffic from your network\. That is, the security group must allow inbound TCP traffic on port 22\. Otherwise, you cannot connect to your client instance with SSH\. If you don't have a security group like this, you must create one and then assign it to your client instance later\. For more information about creating a security group, see [Create a Security Group](http://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/getting-started-ipv4.html#getting-started-create-security-group) in the *Amazon VPC Getting Started Guide*\.
 
    Then choose **Review and Launch**\.
 

@@ -16,24 +16,29 @@ Command: <command-name> -h
 
 For information about the cloudhsm\_mgmt\_util command line tool, which includes commands to manage the HSM and users in your cluster, see [Getting Started with cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md)\.
 
+For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
+
 The following topics describe commands in key\_mgmt\_util\.
 
 
-+ [aesWrapUnwrap](key_mgmt_util-aesWrapUnwrap.md)
-+ [deleteKey](key_mgmt_util-deleteKey.md)
-+ [Error2String](key_mgmt_util-Error2String.md)
-+ [exSymKey](key_mgmt_util-exSymKey.md)
-+ [findKey](key_mgmt_util-findKey.md)
-+ [findSingleKey](key_mgmt_util-findSingleKey.md)
-+ [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)
-+ [genPBEKey](key_mgmt_util-genPBEKey.md)
-+ [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
-+ [genSymKey](key_mgmt_util-genSymKey.md)
-+ [getAttribute](key_mgmt_util-getAttribute.md)
-+ [getKeyInfo](key_mgmt_util-getKeyInfo.md)
-+ [listAttributes](key_mgmt_util-listAttributes.md)
-+ [listUsers](key_mgmt_util-listUsers.md)
-+ [setAttribute](key_mgmt_util-setAttribute.md)
-+ [unWrapKey](key_mgmt_util-unwrapKey.md)
-+ [wrapKey](key_mgmt_util-wrapKey.md)
-+ [Key Attribute Reference](key-attribute-table.md)
+| Command | Description | 
+| --- | --- | 
+|  aesWrapUnwrap | Encrypts and decrypts the contents of a key in a file on disk\. | 
+| deleteKey | Deletes a key from the HSMs\. | 
+| Error2String | Gets the error that corresponds to a key\_mgmt\_util hexadecimal error code\. | 
+| exSymKey | Exports a plaintext copy of a symmetric key from the HSMs to a file on disk\. | 
+| findKey | Search for keys by key attribute value\. | 
+| findSingleKey |  Verifies that a key exists on all HSMs in the cluster\. | 
+| genDSAKeyPair |  Generates a [Digital Signing Algorithm](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm) \(DSA\) key pair in your HSMs\. | 
+| genECCKeyPair |  Generates an [Elliptic Curve Cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) \(ECC\) key pair in your HSMs\. | 
+| genPBEKey | \(This command is not supported on the FIPS\-validated HSMs\.\) | 
+| genRSAKeyPair |  Generates an [RSA](https://en.wikipedia.org/wiki/RSA_%28cryptosystem%29) asymmetric key pair in your HSMs\. | 
+| genSymKey |  Generates a symmetric key in your HSMs | 
+| getAttribute |  Gets the attribute values for an AWS CloudHSM key and writes them to a file\. | 
+| getKeyInfo |  Gets the HSM user IDs of users who can use the key\.  If the key is quorum controlled, it gets the number of users in the quorum\. | 
+| imSymKey |  Imports a plaintext copy of a symmetric key from a file into the HSM\.  | 
+| listAttributes |  Lists the attributes of an AWS CloudHSM key and the constants that represent them\. | 
+| listUsers |  Gets the users in the HSMs, their user type and ID, and other attributes\.  | 
+| setAttribute | Converts a session key to a persistent key\. | 
+| unWrapKey |  Imports a wrapped \(encrypted\) key from a file into the HSMs\. | 
+| wrapKey |  Exports an encrypted copy of a key from the HSM to a file on disk  | 

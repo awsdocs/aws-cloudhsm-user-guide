@@ -1,6 +1,8 @@
 # setAttribute<a name="key_mgmt_util-setAttribute"></a>
 
-The `setAttribute` command in key\_mgmt\_util converts a key that is valid only in the current session to a persistent key that exists until you delete it\. It does this by changing the value of the token attribute of the key \(`OBJ_ATTR_TOKEN`\) from false \(0\) to true \(1\)\.
+The setAttribute command in key\_mgmt\_util converts a key that is valid only in the current session to a persistent key that exists until you delete it\. It does this by changing the value of the token attribute of the key \(`OBJ_ATTR_TOKEN`\) from false \(`0`\) to true \(`1`\)\. 
+
+Crypto users \(CUs\) can use the `setAttribute` command in cloudhsm\_mgmt\_util to change the label, wrap, unwrap, encrypt, and decrypt attributes\.
 
 Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
 
@@ -13,11 +15,11 @@ setAttribute -o <object handle>
              -a 1
 ```
 
-## Examples<a name="setAttribute-examples"></a>
+## Example<a name="setAttribute-examples"></a>
 
 This example shows how to convert a session key to a persistent key\. 
 
-The first command uses the `-sess` parameter of genSymKey to creates a 192\-bit AES key that is valid only in the current session\. The output shows that the key handle of the new session key is `262154`\.
+The first command uses the `-sess` parameter of genSymKey to create a 192\-bit AES key that is valid only in the current session\. The output shows that the key handle of the new session key is `262154`\.
 
 ```
 Command: genSymKey -t 31 -s 24 -l tmpAES -sess
@@ -47,9 +49,9 @@ Total number of keys present 1
         Cfm3FindKey returned: 0x00 : HSM Return: SUCCESS
 ```
 
-This command uses `setAttribute` to convert key `262154` from a session key to a persistent key\. To do so, it changes the value of the token attribute \(`OBJ_ATTR_TOKEN`\) of the key from `0 (FALSE)` to `1 (TRUE)`\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
+This command uses setAttribute to convert key `262154` from a session key to a persistent key\. To do so, it changes the value of the token attribute \(`OBJ_ATTR_TOKEN`\) of the key from `0` \(false\) to `1` \(true\)\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
 
-The command uses the `-o` parameter to specify the key handle \(`262154`\) and the `-a` parameter to specify the constant that represents the token attribute \(`1`\)\. When you run the command, it prompts you for a value for the token attribute\. The only valid value is `1` \(TRUE\); the value for a persistent key\.
+The command uses the `-o` parameter to specify the key handle \(`262154`\) and the `-a` parameter to specify the constant that represents the token attribute \(`1`\)\. When you run the command, it prompts you for a value for the token attribute\. The only valid value is `1` \(true\); the value for a persistent key\.
 
 ```
 Command: setAttribute -o 262154 -a 1
@@ -63,7 +65,7 @@ Command: setAttribute -o 262154 -a 1
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
 
-To confirm that key `262154` is now persistent, these command uses `findKey` to search for session keys \(`-sess 1`\) and persistent keys \(`-sess 0`\)\. This time, the command does not find any session keys, but it returns `262154` in the list of persistent keys\.
+To confirm that key `262154` is now persistent, this command uses findKey to search for session keys \(`-sess 1`\) and persistent keys \(`-sess 0`\)\. This time, the command does not find any session keys, but it returns `262154` in the list of persistent keys\.
 
 ```
 Command: findKey -sess 1
@@ -111,4 +113,6 @@ Required: Yes
 
 + getAttribute
 
-  listAttributes
++ listAttributes
+
++ Key Attribute Reference

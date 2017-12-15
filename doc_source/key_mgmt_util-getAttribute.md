@@ -1,6 +1,6 @@
 # getAttribute<a name="key_mgmt_util-getAttribute"></a>
 
-The `getAttribute` command in key\_mgmt\_util gets the attribute values for an AWS CloudHSM key and writes them to a file\. In each command, you can get one attribute or all attributes for one key\. If the attribute you specify does not exist for the key type, such as the modulus of an AES key, `getAttribute` returns an error\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
+The getAttribute command in key\_mgmt\_util writes the attribute values for an AWS CloudHSM key to a file\. You can get one attribute or all attributes for one key\. If the attribute you specify does not exist for the key type, such as the modulus of an AES key, getAttribute returns an error\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
 
 Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
 
@@ -16,7 +16,7 @@ getAttribute -o <key handle>
 
 ## Examples<a name="getAttribute-examples"></a>
 
-These examples show how to use `getAttribute` to get the attributes of keys in your HSMs\.
+These examples show how to use getAttribute to get the attributes of keys in your HSMs\.
 
 **Example : Get the Key Type**  
 This example gets the type of the key, such an AES, 3DES, or generic key, or an RSA or elliptic curve key pair\.  
@@ -50,13 +50,13 @@ The following are all of the possible attribute values for getAttributes.
       OBJ_ATTR_EXTRACTABLE            = 354
       OBJ_ATTR_KCV                    = 371
 ```
-The second command runs `getAttribute`\. It requests the key type \(attribute `256`\) for key handle `524296` and writes it to the `attribute.txt` file\.   
+The second command runs getAttribute\. It requests the key type \(attribute `256`\) for key handle `524296` and writes it to the `attribute.txt` file\.   
 
 ```
 Command: getAttribute -o 524296 -a 256 -out attribute.txt
 Attributes dumped into attribute.txt file
 ```
-The final command gets the content of the key file\. The output reveals that the key type is `0x15` or `21`, which is a Triple DES \(3DES\) key\. For definitions of the class and type values, see the Key Attribute Table\.  
+The final command gets the content of the key file\. The output reveals that the key type is `0x15` or `21`, which is a Triple DES \(3DES\) key\. For definitions of the class and type values, see the Key Attribute Reference\.  
 
 ```
 $  cat attribute.txt
@@ -127,19 +127,21 @@ Specifies the key handle of the target key\. You can specify only one key in eac
 Required: Yes
 
 **\-a**  
-Identifies the attribute\. Enter a constant that represents an attribute, or `512`, which represents all attributes\. For example, to get the key type, enter `256`, which is the constant for the OBJ\_ATTR\_KEY\_TYPE attribute\.  
+Identifies the attribute\. Enter a constant that represents an attribute, or `512`, which represents all attributes\. For example, to get the key type, type `256`, which is the constant for the `OBJ_ATTR_KEY_TYPE` attribute\.  
 To list the attributes and their constants, use listAttributes\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 Required: Yes
 
 **\-out**  
-Writes the output to the specified file\. Enter a file path\. You cannot write the output to stdout\.   
-If the specified file exists, `getAttribute` overwrites the file without warning\.  
+Writes the output to the specified file\. Type a file path\. You cannot write the output to `stdout`\.   
+If the specified file exists, getAttribute overwrites the file without warning\.  
 Required: Yes
 
 ## Related Topics<a name="getAttribute-seealso"></a>
 
 + listAttributes
 
-  setAttribute
++ setAttribute
 
-  findKey
++ findKey
+
++ Key Attribute Reference

@@ -1,21 +1,23 @@
 # Key Attribute Reference<a name="key-attribute-table"></a>
 
-The key\_mgmt\_util commands use constants to represent the attributes of keys in an HSM\. This topic will help you to identify the attributes, find the constants that represent them in commands, and understand their values\. 
+The key\_mgmt\_util commands use constants to represent the attributes of keys in an HSM\. This topic can help you to identify the attributes, find the constants that represent them in commands, and understand their values\. 
 
-You set the attributes of a key when you create it\. The only attribute value that you can change is the token attribute \(`OBJ_ATTR_TOKEN`\), which indicates whether a key is persistent or exists only in the session\. To get a list of attributes and their constants, use listAttributes\. To get the attribute values for a key, use getAttribute\.
+You set the attributes of a key when you create it\. To change the token attribute, which indicates whether a key is persistent or exists only in the session, use the setAttribute command in key\_mgmt\_util\. To change the label, wrap, unwrap, encrypt, or decrypt attributes, use the `setAttribute` command in cloudhsm\_mgmt\_util\.
+
+To get a list of attributes and their constants, use listAttributes\. To get the attribute values for a key, use getAttribute\.
 
 The following table lists the key attributes, their constants, and their valid values\.
 
 
 | Attribute | Constant | Values | 
 | --- | --- | --- | 
-|  OBJ\_ATTR\_CLASS  |  0  | **2**: Public key in a public\-private key pair\.3: Private key in a public\-private key pair\.**4**: Secret \(symmetric\) key\. | 
-|  OBJ\_ATTR\_TOKEN  |  1  |  **0**: False\. Session key **1**: True\. Persistent key  | 
-|  OBJ\_ATTR\_PRIVATE  |  2  |  **0**: False\.  **1**: True\. Private key in a public\-private key pair\.  | 
+|  OBJ\_ATTR\_CLASS  |  0  | **2**: Public key in a public–private key pair\.3: Private key in a public–private key pair\.**4**: Secret \(symmetric\) key\. | 
+|  OBJ\_ATTR\_TOKEN  |  1  |  **0**: False\. Session key\. **1**: True\. Persistent key\.  | 
+|  OBJ\_ATTR\_PRIVATE  |  2  |  **0**: False\.  **1**: True\. Private key in a public–private key pair\.  | 
 |  OBJ\_ATTR\_LABEL  |  3  | User\-defined string\. It does not have to be unique in the cluster\. | 
-|  OBJ\_ATTR\_KEY\_TYPE  | 256 |  **0**: RSA**1**: DSA**3**: EC **16**: Generic secret **18**: RC4 **21**: Triple DES \(3DES\) **31**: AES | 
+|  OBJ\_ATTR\_KEY\_TYPE  | 256 |  **0**: RSA\.**1**: DSA\.**3**: EC\. **16**: Generic secret\. **18**: RC4\. **21**: Triple DES \(3DES\)\. **31**: AES\. | 
 |  OBJ\_ATTR\_ID  | 258 |  User\-defined string\. Must be unique in the cluster\. The default is an empty string\. | 
-|  OBJ\_ATTR\_SENSITIVE  |  259  |  **0**: False\. Public key in a public\-private key pair\. **1**: True\.   | 
+|  OBJ\_ATTR\_SENSITIVE  |  259  |  **0**: False\. Public key in a public–private key pair\. **1**: True\.   | 
 |  OBJ\_ATTR\_ENCRYPT  |  260  |  **0**: False\.  **1**: True\. The key can be used to encrypt data\.   | 
 |  OBJ\_ATTR\_DECRYPT  |  261  |  **0**: False\.  **1**: True\. The key can be used to decrypt data\.  | 
 |  OBJ\_ATTR\_WRAP  |  262  |  **0**: False\.  **1**: True\. The key can be used to encrypt keys\.  | 
@@ -34,7 +36,7 @@ The following table lists the key attributes, their constants, and their valid v
 ## Additional Details<a name="key-attribute-table-details"></a>
 
 **Key check value \(kcv\)**  
-The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key, and then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use getAttribute\.  
+The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key\. You can then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use getAttribute\.  
 AWS CloudHSM uses the following standard method to generate a key check value:  
 
 + **Symmetric keys**: First 8 bytes of the result of encrypting 16 zero\-filled bytes with the key\.

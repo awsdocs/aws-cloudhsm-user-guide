@@ -24,7 +24,7 @@ Each backup contains encrypted copies of the following data:
 
 AWS CloudHSM stores the backups in a service\-controlled Amazon Simple Storage Service \(Amazon S3\) bucket in the same AWS Region as your cluster\.
 
-![\[AWS CloudHSM cluster backups encrypted in a service-controlled Amazon S3 bucket\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/cluster-backup.png)
+![\[AWS CloudHSM cluster backups encrypted in a service-controlled Amazon S3 bucket.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/cluster-backup.png)
 
 ## Security of Backups<a name="backup-security"></a>
 
@@ -37,6 +37,10 @@ To encrypt the EBK, the HSM uses another encryption key known as the persistent 
 + A manufacturer key backup key \(MKBK\), permanently embedded in the HSM hardware by the hardware manufacturer\.
 
 + An AWS key backup key \(AKBK\), securely installed in the HSM when it's initially configured by AWS CloudHSM\.
+
+The encryption processes are summarized in the following figure\. The backup encryption key represents the persistent backup key \(PBK\) and the ephemeral backup key \(EBK\)\. 
+
+![\[A summary of the encryption keys that are used to encrypt AWS CloudHSM backups.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/backup-security.png)
 
 AWS CloudHSM can restore backups onto only AWS\-owned HSMs made by the same manufacturer\. Because each backup contains all users, keys, and configuration from the original HSM, the restored HSM contains the same protections and access controls as the original\. The restored data overwrites all other data that might have been on the HSM prior to restoration\.
 
