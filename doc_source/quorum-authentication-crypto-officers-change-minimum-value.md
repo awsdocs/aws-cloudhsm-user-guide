@@ -1,6 +1,6 @@
 # Change the Quorum Minimum Value for Crypto Officers<a name="quorum-authentication-crypto-officers-change-minimum-value"></a>
 
-After you set the quorum minimum value so that crypto officers \(COs\) can use quorum authentication, you might want to change the quorum minimum value\. The HSM allows you to change the quorum minimum value only when the number of approvers is the same or higher than the current quorum minimum value\. For example, if the quorum minimum value is two, at least two COs must approve to change the quorum minimum value\.
+After you [set the quorum minimum value](quorum-authentication-crypto-officers-first-time-setup.md#quorum-crypto-officers-set-quorum-minimum-value) so that [crypto officers \(COs\)](hsm-users.md#crypto-officer) can use quorum authentication, you might want to change the quorum minimum value\. The HSM allows you to change the quorum minimum value only when the number of approvers is the same or higher than the current quorum minimum value\. For example, if the quorum minimum value is two, at least two COs must approve to change the quorum minimum value\.
 
 To get quorum approval to change the quorum minimum value, you need a *quorum token* for the setMValue command \(service 4\)\. To get a quorum token for the setMValue command \(service 4\), the quorum minimum value for service 4 must be higher than one\. This means that before you can change the quorum minimum value for COs \(service 3\), you might need to change the quorum minimum value for service 4\.
 
@@ -22,7 +22,7 @@ The following table lists the HSM service identifiers along with their names, de
 
 1. Use the enable\_e2e command to establish end\-to\-end encrypted communication\.
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util.md#cloudhsm_mgmt_util-log-in)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in)\.
 
 1. Use the getMValue command to get the quorum minimum value for service 3\. For more information, see the following example\.
 
@@ -30,11 +30,11 @@ The following table lists the HSM service identifiers along with their names, de
 
 1. If the quorum minimum value for service 4 is lower than the value for service 3, use the setMValue command to change the value for service 4\. Change the value for service 4 to one that is the same or higher than the value for service 3\. For more information, see the following example\.
 
-1. Get a *quorum token*, taking care to specify service 4 as the service for which you can use the token\.
+1. [Get a *quorum token*](quorum-authentication-crypto-officers.md#quorum-crypto-officers-get-token), taking care to specify service 4 as the service for which you can use the token\.
 
-1. Get approvals \(signatures\) from other COs\.
+1. [Get approvals \(signatures\) from other COs](quorum-authentication-crypto-officers.md#quorum-crypto-officers-get-approval-signatures)\.
 
-1. Approve the token on the HSM\.
+1. [Approve the token on the HSM](quorum-authentication-crypto-officers.md#quorum-crypto-officers-approve-token)\.
 
 1. Use the setMValue command to change quorum minimum value for service 3 \(user management operations performed by COs\)\.
 

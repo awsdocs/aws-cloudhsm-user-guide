@@ -13,13 +13,13 @@ Each HSM user has a *type* that determines which operations the user is allowed 
 
 ## Precrypto Officer \(PRECO\)<a name="preco"></a>
 
-The precrypto officer \(PRECO\) is a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. To activate a cluster, you log in to the HSM and change the PRECO user's password\. When you change the password, the PRECO user becomes a crypto officer \(PCO\)\. The PRECO user can only change its own password and perform read\-only operations on the HSM\.
+The precrypto officer \(PRECO\) is a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. To [activate a cluster](activate-cluster.md), you log in to the HSM and change the PRECO user's password\. When you change the password, the PRECO user becomes a crypto officer \(PCO\)\. The PRECO user can only change its own password and perform read\-only operations on the HSM\.
 
 ## Crypto Officer \(CO, PCO\)<a name="crypto-officer"></a>
 
 A crypto officer \(CO\) can perform user management operations\. For example, a CO can create and delete users and change user passwords\. For more information, see the [HSM User Permissions Table](#user-permissions-table)\.
 
-When you activate a new cluster, the first user on an HSM changes from a Precrypto Officer \(PRECO\) to a primary Crypto Officer \(PCO\)\. The PCO is the first CO created on the HSM\. However, the PCO has the same permissions on the HSM as any other CO\. 
+When you [activate a new cluster](activate-cluster.md), the first user on an HSM changes from a [Precrypto Officer](#preco) \(PRECO\) to a primary Crypto Officer \(PCO\)\. The PCO is the first CO created on the HSM\. However, the PCO has the same permissions on the HSM as any other CO\. 
 
 ## Crypto User \(CU\)<a name="crypto-user"></a>
 
@@ -58,7 +58,7 @@ The following table lists HSM operations and whether each type of HSM user can p
 
 ¹Basic cluster information includes the number of HSMs in the cluster and each HSM's IP address, model, serial number, device ID, firmware ID, etc\.
 
-²When an HSM is zeroized, all keys, certificates, and other data on the HSM is destroyed\. You can use your cluster's security group to prevent an unauthenticated user from zeroizing your HSM\. For more information, see [Create a Cluster](create-cluster-and-hsm.md#create-cluster)\.
+²When an HSM is zeroized, all keys, certificates, and other data on the HSM is destroyed\. You can use your cluster's security group to prevent an unauthenticated user from zeroizing your HSM\. For more information, see [Create a Cluster](create-cluster.md)\.
 
 ³The user can get a set of digests \(hashes\) that correspond to the keys on the HSM\. An application can compare these sets of digests to understand the synchronization status of HSMs in a cluster\.
 

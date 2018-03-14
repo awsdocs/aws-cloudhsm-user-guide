@@ -1,6 +1,6 @@
 # Using Quorum Authentication for Crypto Officers<a name="quorum-authentication-crypto-officers"></a>
 
-A crypto officer \(CO\) on the HSM can configure quorum authentication for the following operations on the HSM:
+A [crypto officer \(CO\)](hsm-users.md#crypto-officer) on the HSM can configure quorum authentication for the following operations on the HSM:
 
 + Creating HSM users
 
@@ -29,13 +29,13 @@ Retry/Ignore/Abort?(R/I/A):A
 
 To perform an HSM user management operation, a CO must complete the following tasks:
 
-1. Get a *quorum token*\.
+1. [Get a *quorum token*](#quorum-crypto-officers-get-token)\.
 
-1. Get approvals \(signatures\) from other COs\.
+1. [Get approvals \(signatures\) from other COs](#quorum-crypto-officers-get-approval-signatures)\.
 
-1. Approve the token on the HSM\.
+1. [Approve the token on the HSM](#quorum-crypto-officers-approve-token)\.
 
-1. Perform the HSM user management operation\.
+1. [Perform the HSM user management operation](#quorum-crypto-officers-use-token)\.
 
 If you have not yet configured the HSM for quorum authentication for COs, do that now\. For more information, see [First Time Setup for Crypto Officers](quorum-authentication-crypto-officers-first-time-setup.md)\.
 
@@ -53,7 +53,7 @@ First the CO must use the cloudhsm\_mgmt\_util command line tool to request a *q
 
 1. Use the enable\_e2e command to establish end\-to\-end encrypted communication\.
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util.md#cloudhsm_mgmt_util-log-in)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in)\.
 
 1. Use the getToken command to get a quorum token\. For more information, see the following example or use the help getToken command\.
 
@@ -126,7 +126,7 @@ After a CO gets the minimum number of approvals \(signatures\) from other COs, h
 
 1. Use the enable\_e2e command to establish end\-to\-end encrypted communication\.
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util.md#cloudhsm_mgmt_util-log-in)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in)\.
 
 1. Use the approveToken command to approve the signed token, passing the token approval file\. For more information, see the following example\.
 
@@ -212,7 +212,7 @@ listTokens success
 
 After a CO has a token with the required number of approvals, as shown in the previous section, the CO can perform one of the following HSM user management operations:
 
-+ Create an HSM user with the createUser command
++ Create an HSM user with the [createUser](cloudhsm_mgmt_util-createUser.md) command
 
 + Delete an HSM user with the deleteUser command
 

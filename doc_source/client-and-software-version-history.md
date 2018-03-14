@@ -10,9 +10,33 @@ The following topics contain the version history for the AWS CloudHSM client and
 
 ## AWS CloudHSM Client<a name="client-version-history"></a>
 
-### Current Version: 1\.0\.11<a name="client-current-version"></a>
+This section describes the updates to each version of the AWS CloudHSM client software\.
 
-You can download the current version of the AWS CloudHSM client from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-latest.x86_64.rpm)\. For more information, see [Install and Configure the Client](install-and-configure-client.md)\.
+### Current Version: 1\.0\.14<a name="client-current-version"></a>
+
+You can download the current version of the AWS CloudHSM client from the following locations\. For more information, see [Install the CloudHSM Client](install-and-configure-client.md)\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-latest.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client_latest_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client_latest_amd64.deb)
+
+Significant changes in this version include the following:
+
++ Improved failover behavior\.
+
++ Displays version metadata\.
+
++ Fixed various bugs\.
+
+### Previous Versions<a name="client-previous-versions"></a>
+
+**Version 1\.0\.11**
+
+You can download version 1\.0\.11 from the following locations\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-1.0-11.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-1.0-11.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client_1.0-11_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client_1.0-11_amd64.deb)
 
 Significant changes in this version include the following:
 
@@ -22,11 +46,7 @@ Significant changes in this version include the following:
 
 + Improved handling of lost server connections\.
 
-### Previous Versions<a name="client-previous-versions"></a>
-
 **Version 1\.0\.10**
-
-You can download version 1\.0\.10 from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-1.0-10.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-1.0-10.x86_64.rpm)\.
 
 Significant changes in this version include the following:
 
@@ -37,8 +57,6 @@ Significant changes in this version include the following:
 + Fixed various bugs\.
 
 **Version 1\.0\.8**
-
-You can download version 1\.0\.8 from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-1.0-8.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-1.0-8.x86_64.rpm)\.
 
 Significant changes in this version include the following:
 
@@ -62,19 +80,39 @@ This is the initial release\.
 
 ## PKCS \#11 Library<a name="pkcs11-version-history"></a>
 
-### Current Version: 1\.0\.11<a name="pkcs11-current-version"></a>
+### Current Version: 1\.0\.14<a name="pkcs11-current-version"></a>
 
-You can download the current version of the AWS CloudHSM software library for PKCS \#11 from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-latest.x86_64.rpm)\. For more information, see [Installing the PKCS \#11 Library](pkcs11-library-install.md)\.
+You can download the current version of the AWS CloudHSM software library for PKCS \#11 from one of the following locations\. For more information, see [Installing the PKCS \#11 Library](pkcs11-library-install.md)\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-latest.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11_latest_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11_latest_amd64.deb)
+
+Significant changes in this version include the following:
+
++ Implemented PKCS7Padding for C\_DecryptUpdate and C\_EncryptUpdate\.
+
++ CKA\_ID no longer required for RSA private key generation\.
+
++ Improved multi\-threading performance\.
+
++ Fixed various bugs\.
+
+### Previous Versions<a name="pkcs11-previous-versions"></a>
+
+**Version 1\.0\.11**
+
+You can download version 1\.0\.11 from the following locations\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-1.0-11.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-1.0-11.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11_1.0-11_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11_1.0-11_amd64.deb)
 
 Significant changes in this version include the following:
 
 + Added support for the CKM\_RSA\_PKCS\_PSS sign/verify mechanism\.
 
-### Previous Versions<a name="pkcs11-previous-versions"></a>
-
 **Version 1\.0\.10**
-
-You can download version 1\.0\.10 from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-1.0-10.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-1.0-10.x86_64.rpm)\.
 
 Updated the version number for consistency\.
 
@@ -102,17 +140,31 @@ This is the initial release\.
 
 ### Current Version: 1\.0\.11<a name="openssl-current-version"></a>
 
-You can download the current version of the AWS CloudHSM software library for OpenSSL from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-latest.x86_64.rpm)\. For more information, see [Installing the OpenSSL Library](openssl-library-install.md)\.
+You can download the current version of the AWS CloudHSM software library for OpenSSL from any of the following locations\. For more information, see [Installing the OpenSSL Library](openssl-library-install.md)\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-latest.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn_latest_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn_latest_amd64.deb)
 
 Significant changes in this version include the following:
 
-+ Updated the version number for consistency\.
++ Added support for CSRs for ECC keys\.
+
++ Improved stability and failure handling\.
 
 ### Previous Versions<a name="openssl-previous-versions"></a>
 
-**Version 1\.0\.10**
+**Version 1\.0\.11**
 
-You can download version 1\.0\.10 from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-1.0-10.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-1.0-10.x86_64.rpm)\.
+You can download version 1\.0\.11 from the following locations\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-1.0-11.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn-1.0-11.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn_1.0-11_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-dyn_1.0-11_amd64.deb)
+
+Updated the version number for consistency\.
+
+**Version 1\.0\.10**
 
 Updated the version number for consistency\.
 
@@ -132,9 +184,25 @@ This is the initial release\.
 
 ## Java Library<a name="java-version-history"></a>
 
-### Current Version: 1\.0\.11<a name="java-current-version"></a>
+### Current Version: 1\.0\.14<a name="java-current-version"></a>
 
-You can download the current version of the AWS CloudHSM software library for Java from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-latest.x86_64.rpm)\. For more information, see [Installing the Java Library](java-library-install.md)\.
+You can download the current version of the AWS CloudHSM software library for Java from any of the following locations\. For more information, see [Installing the Java Library](java-library-install.md)\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-latest.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-latest.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce_latest_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce_latest_amd64.deb)
+
+Updated the version number for consistency\.
+
+### Previous Versions<a name="java-previous-versions"></a>
+
+**Version 1\.0\.11**
+
+You can download version 1\.0\.11 from the following locations\.
+
++ Amazon Linux \(and compatible distributions\): [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-1.0-11.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-1.0-11.x86_64.rpm)
+
++ Ubuntu: [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce_1.0-11_amd64.deb](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce_1.0-11_amd64.deb)
 
 Significant changes in this version include the following:
 
@@ -144,11 +212,7 @@ Significant changes in this version include the following:
 
 + Various bug fixes\.
 
-### Previous Versions<a name="java-previous-versions"></a>
-
 **Version 1\.0\.10**
-
-You can download version 1\.0\.10 from [https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-1.0-10.x86_64.rpm](https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-1.0-10.x86_64.rpm)\.
 
 Significant changes in this version include the following:
 

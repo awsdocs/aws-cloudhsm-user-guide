@@ -1,14 +1,14 @@
 # Getting Started with AWS CloudHSM: Activate the Cluster<a name="activate-cluster"></a>
 
-When you activate an AWS CloudHSM cluster, the cluster's state changes from initialized to active\. You can then manage the HSM's users and use the HSM\.
+When you activate an AWS CloudHSM cluster, the cluster's state changes from initialized to active\. You can then [manage the HSM's users](manage-hsm-users.md) and [use the HSM](use-hsm.md)\.
 
-To activate the cluster, you log in to the HSM with the credentials of the HSM's precrypto officer \(PRECO\) user\. Then you change the user's default password, which makes the user a crypto officer \(CO\)\.
+To activate the cluster, you log in to the HSM with the credentials of the HSM's [precrypto officer \(PRECO\) user](hsm-users.md)\. Then you change the user's default password, which makes the user a crypto officer \(CO\)\.
 
 **To activate a cluster**
 
-1. If you haven't already done so, connect to the client instance that you created previously\. You can do this [using SSH \(Linux or macOS\)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) or [from Windows using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)\.
+1. If you haven't already done so, connect to the client instance that you [created previously](launch-client-instance.md)\. You can do this [using SSH \(Linux or macOS\)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) or [from Windows using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)\.
 
-1. Use the following command to start the AWS CloudHSM cloudhsm\_mgmt\_util command line tool\.
+1. Use the following command to start the AWS CloudHSM [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) command line tool\.
 
    ```
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
@@ -33,7 +33,7 @@ To activate the cluster, you log in to the HSM with the credentials of the HSM's
             2              AU              app_user                                 NO               0               NO
    ```
 
-1. Use the loginHSM command to log in to the HSM as the precrypto officer \(PRECO\) user\.
+1. Use the loginHSM command to log in to the HSM as the [precrypto officer \(PRECO\)](hsm-users.md#preco) user\.
 
    ```
    aws-cloudhsm>loginHSM PRECO admin password
@@ -57,7 +57,7 @@ To activate the cluster, you log in to the HSM with the credentials of the HSM's
 
    We recommend that you write down the new password on a password worksheet\. Do not lose the worksheet\. We recommend that you print a copy of the password worksheet, use it to record your critical HSM passwords, and then store it in a secure place\. We also recommended that you store a copy of this worksheet in secure off\-site storage\.
 
-1. \(Optional\) Use the listUsers command to verify that the user's type changed to \(primary\) crypto officer \(PCO\)\.
+1. \(Optional\) Use the listUsers command to verify that the user's type changed to \(primary\) [crypto officer \(PCO\)](hsm-users.md#crypto-officer)\.
 
    ```
    aws-cloudhsm>listUsers

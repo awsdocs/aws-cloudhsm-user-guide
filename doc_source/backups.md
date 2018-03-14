@@ -16,7 +16,7 @@ You can also create a new cluster from an existing backup of a different cluster
 
 Each backup contains encrypted copies of the following data:
 
-+ All users \(COs, CUs, and AUs\) on the HSM\.
++ All [users \(COs, CUs, and AUs\)](hsm-users.md) on the HSM\.
 
 + All key material and certificates on the HSM\.
 
@@ -54,8 +54,8 @@ AWS CloudHSM stores cluster backups in an Amazon S3 bucket in an AWS account tha
 
 AWS CloudHSM makes a cluster backup at least once per 24 hours\. In addition to recurring daily backups, AWS CloudHSM makes a backup when you perform any of the following actions:
 
-+ Initialize the cluster\.
++ [Initialize the cluster](initialize-cluster.md)\.
 
-+ Add an HSM to an initialized cluster\.
++ [Add an HSM to an initialized cluster](add-remove-hsm.md#add-hsm)\.
 
-+ Remove an HSM from a cluster\.
++ [Remove an HSM from a cluster](add-remove-hsm.md#remove-hsm)\.

@@ -1,16 +1,16 @@
 # imSymKey<a name="key_mgmt_util-imSymKey"></a>
 
-The `imSymKey` command in the key\_mgmt\_util tool imports a plaintext copy of a symmetric key from a file into the HSM\. You can use it to import keys that you generate by any method outside of the HSM and keys that were exported from an HSM, such as the keys that the exSymKey, command writes to a file\. 
+The `imSymKey` command in the key\_mgmt\_util tool imports a plaintext copy of a symmetric key from a file into the HSM\. You can use it to import keys that you generate by any method outside of the HSM and keys that were exported from an HSM, such as the keys that the [exSymKey](key_mgmt_util-exSymKey.md), command writes to a file\. 
 
-During the import process, `imSymKey` uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) and then *unwrap* \(decrypt\) the key to be imported\. However, `imSymKey` works only on files that contain plaintext keys\. To export and import encrypted keys, use the wrapKey and unWrapKey commands\.
+During the import process, `imSymKey` uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) and then *unwrap* \(decrypt\) the key to be imported\. However, `imSymKey` works only on files that contain plaintext keys\. To export and import encrypted keys, use the [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) commands\.
 
 Also, the `imSymKey` command exports only symmetric keys\. To import public keys, use `importPubKey`\. To import private keys, use `importPrivateKey` or `wrapKey`\.
 
-Imported keys work very much like keys generated in the HSM\. However, the value of the OBJ\_ATTR\_LOCAL attribute is zero, which indicates that it was not generated locally\. The `imSymKey` command does not have a parameter that shares the key with other users, but you can use the `shareKey` command in cloudhsm\_mgmt\_util to share the key after it is imported\. 
+Imported keys work very much like keys generated in the HSM\. However, the value of the [OBJ\_ATTR\_LOCAL attribute](key-attribute-table.md) is zero, which indicates that it was not generated locally\. The `imSymKey` command does not have a parameter that shares the key with other users, but you can use the `shareKey` command in [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) to share the key after it is imported\. 
 
 After you import a key, be sure to mark or delete the key file\. This command does not prevent you from importing the same key material multiple times\. The result, multiple keys with distinct key handles and the same key material, make it difficult to track use of the key material and prevent it from exceeding its cryptographic limits\. 
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="imSymKey-syntax"></a>
 
@@ -44,7 +44,7 @@ The second command uses `imSymKey` to import the AES key from the `aes256.key` f
 The output shows that the key in the file was wrapped and unwrapped, then imported into the HSM, where it was assigned the key handle 262180\.  
 
 ```
- Command:  imSymKey -f aes256.key -w 20 -t 31 -l imported
+Command:  imSymKey -f aes256.key -w 20 -t 31 -l imported
 
         Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
 
@@ -59,7 +59,7 @@ The output shows that the key in the file was wrapped and unwrapped, then import
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
         Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-The next command uses getAttribute to get the OBJ\_ATTR\_LOCAL attribute \(attribute 355\) of the newly imported key and writes it to the `attr_262180` file\.  
+The next command uses [getAttribute](key_mgmt_util-getAttribute.md) to get the OBJ\_ATTR\_LOCAL attribute \([attribute 355](key-attribute-table.md)\) of the newly imported key and writes it to the `attr_262180` file\.  
 
 ```
 Command:  getAttribute -o 262180 -a 355 -out attributes/attr_262180
@@ -76,14 +76,14 @@ OBJ_ATTR_LOCAL
 ```
 
 **Example : Move a Symmetric Key Between Clusters**  
-This example shows how to use `exSymKey` and `imSymKey` to move a plaintext AES key between clusters\. You might use a process like this one to create an AES wrapping that exists on the HSMs both clusters\. Once the shared wrapping key is in place, you can use wrapKey and unWrapKey to move encrypted keys between the clusters\.  
+This example shows how to use `exSymKey` and `imSymKey` to move a plaintext AES key between clusters\. You might use a process like this one to create an AES wrapping that exists on the HSMs both clusters\. Once the shared wrapping key is in place, you can use [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) to move encrypted keys between the clusters\.  
 The CU user who performs this operation must have permission to log in to the HSMs on both clusters\.  
 The first command uses `exSymKey` to export key 14, a 32\-bit AES key, from the cluster 1 into the `aes.key` file\. It uses key 6, an AES key on the HSMs in cluster 1, as the wrapping key\.   
 
 ```
-        Command: exSymKey -k 14 -w 6 -out aes.key
+Command: exSymKey -k 14 -w 6 -out aes.key
 
-       Cfm3WrapKey returned: 0x00 : HSM Return: SUCCESS
+        Cfm3WrapKey returned: 0x00 : HSM Return: SUCCESS
 
         Cfm3UnWrapHostKey returned: 0x00 : HSM Return: SUCCESS
 
@@ -91,11 +91,11 @@ The first command uses `exSymKey` to export key 14, a 32\-bit AES key, from the 
 Wrapped Symmetric Key written to file "aes.key"
 ```
 The user then logs into key\_mgmt\_util in cluster 2 and runs an `imSymKey` command to import the key in the `aes.key` file into the HSMs in cluster 2\. This command uses key 252152, an AES key on the HSMs in cluster 2, as the wrapping key\.   
-Because the wrapping keys that `exSymKey` and `imSymKey` use wrap and immediately unwrap the target keys, the wrapping keys on the different clusters are not required to be the same\.   
+Because the wrapping keys that `exSymKey` and `imSymKey` use wrap and immediately unwrap the target keys, the wrapping keys on the different clusters need not be the same\.   
 The output shows that the key was successfully imported into cluster 2 and assigned a key handle of 21\.   
 
 ```
- Command:  imSymKey -f aes.key -w 262152 -t 31 -l xcluster
+Command:  imSymKey -f aes.key -w 262152 -t 31 -l xcluster
 
         Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
 
@@ -110,7 +110,29 @@ The output shows that the key was successfully imported into cluster 2 and assig
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
         Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-When the process is complete, key 14 in cluster 1 has the same key material as key 21 in cluster 2\. This lets you use the `wrapKey` command with wrapping key 14 to export an encrypted key from cluster 1, and then use `unWrapKey` with wrapping key 21 to import the encrypted key into cluster 2 without ever exposing the plaintext key\.
+To prove that key 14 of cluster 1 and key 21 in cluster 2 have the same key material, get the key check value \(KCV\) of each key\. If the KCV values are the same, the key material is the same\.  
+The following command uses [getAttribute](key_mgmt_util-getAttribute.md) in cluster 1 to write the value of the KCV attribute \(attribute 371\) of key 14 to the `attr_14_kcv` file\. Then, it uses a cat command to get the content of the `attr_14_kcv` file\.  
+
+```
+Command:  getAttribute -o 14 -a 371 -out attr_14_kcv
+Attributes dumped into attr_14_kcv file
+
+$  cat attr_14_kcv
+OBJ_ATTR_KCV
+0xc33cbd
+```
+This similar command uses [getAttribute](key_mgmt_util-getAttribute.md) in cluster 2 to write the value of the KCV attribute \(attribute 371\) of key 21 to the `attr_21_kcv` file\. Then, it uses a cat command to get the content of the `attr_21_kcv` file\.  
+
+```
+Command:  getAttribute -o 21 -a 371 -out attr_21_kcv
+Attributes dumped into attr_21_kcv file
+
+$  cat attr_21_kcv
+OBJ_ATTR_KCV
+0xc33cbd
+```
+The output shows that the KCV values of the two keys are the same, which proves that the key material is the same\.  
+Because the same key material exists in the HSMs of both clusters, you can now share encrypted keys between the clusters without ever exposing the plaintext key\. For example, you can use the `wrapKey` command with wrapping key 14 to export an encrypted key from cluster 1, and then use `unWrapKey` with wrapping key 21 to import the encrypted key into cluster 2\.
 
 **Example : Import a Session Key**  
 This command uses the `-sess` parameters of `imSymKey` to import a 192\-bit Triple DES key that is valid only in the current session\.   
@@ -118,7 +140,7 @@ The command uses the `-f` parameter to specify he file that contains the key to 
 The output shows that the key was successfully wrapped and unwrapped, imported into the HSM, and assigned the key handle 37\. Also, the attestation check passed, which indicates that the firmware has not been tampered\.  
 
 ```
- Command:  imSymKey -f 3des192.key -w 6 -t 21 -l temp -id test01 -sess -attest
+Command:  imSymKey -f 3des192.key -w 6 -t 21 -l temp -id test01 -sess -attest
 
         Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
 
@@ -133,7 +155,7 @@ The output shows that the key was successfully wrapped and unwrapped, imported i
         Cluster Error Status
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-Next, you can use the getAttribute or findKey commands to verify the attributes of the newly imported key\. The following command uses `findKey` to verify that key 37 has the type, label, and ID specified by the command, and that it is a session key\. A shown on line 5 of the output, `findKey` reports that the only key that matches all of the attributes is key 37\.   
+Next, you can use the [getAttribute](key_mgmt_util-getAttribute.md) or [findKey](key_mgmt_util-findKey.md) commands to verify the attributes of the newly imported key\. The following command uses `findKey` to verify that key 37 has the type, label, and ID specified by the command, and that it is a session key\. A shown on line 5 of the output, `findKey` reports that the only key that matches all of the attributes is key 37\.   
 
 ```
 Command:  findKey -t 21 -l temp -id test01 -sess 1
@@ -166,9 +188,9 @@ The file must contain a plaintext copy of an AES or Triple DES key of the specif
 Required: Yes
 
 **\-w**  
-Specifies the key handle of the wrapping key\. This parameter is required\. To find key handles, use the findKey command\.  
+Specifies the key handle of the wrapping key\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
 A *wrapping key* is a key in the HSM that is used to encrypt \("wrap"\) and then decrypt \("unwrap\) the key during the import process\. Only AES keys can be used as wrapping keys\.  
-You can use any AES key \(of any size\) as a wrapping key\. Because the wrapping key wraps, and then immediately unwraps, the target key, you can use as session\-only AES key as a wrapping key\. To determine whether a key can be used as a wrapping key, use getAttribute to get the value of the `OBJ_ATTR_WRAP` attribute \(262\)\. To create a wrapping key, use genSymKey to create an AES key \(type 31\)\.  
+You can use any AES key \(of any size\) as a wrapping key\. Because the wrapping key wraps, and then immediately unwraps, the target key, you can use as session\-only AES key as a wrapping key\. To determine whether a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute \(262\)\. To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to create an AES key \(type 31\)\.  
 If you use the `-wk` parameter to specify an external wrapping key, the `-w` wrapping key is used to unwrap, but not to wrap, the key that is being imported\.  
 Key 4 is an unsupported internal key\. We recommend that you use an AES key that you create and manage as the wrapping key\.
 Required: Yes
@@ -195,7 +217,7 @@ Required: No
 **\-sess**  
 Creates a key that exists only in the current session\. The key cannot be recovered after the session ends\.  
 Use this parameter when you need a key only briefly, such as a wrapping key that encrypts, and then quickly decrypts, another key\. Do not use a session key to encrypt data that you might need to decrypt after the session ends\.  
-To change a session key to a persistent \(token\) key, use setAttribute\.  
+To change a session key to a persistent \(token\) key, use [setAttribute](key_mgmt_util-setAttribute.md)\.  
 Default: The key is persistent\.   
 Required: No
 
@@ -224,13 +246,13 @@ Required: No
 
 ## Related Topics<a name="imSymKey-seealso"></a>
 
-+ genSymKey
++ [genSymKey](key_mgmt_util-genSymKey.md)
 
-+ exSymKey
++ [exSymKey](key_mgmt_util-exSymKey.md)
 
-+ wrapKey
++ [wrapKey](key_mgmt_util-wrapKey.md)
 
-+ unWrapKey
++ [unWrapKey](key_mgmt_util-unwrapKey.md)
 
 + exportPrivateKey
 

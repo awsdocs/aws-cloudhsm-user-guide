@@ -1,10 +1,10 @@
 # findKey<a name="key_mgmt_util-findKey"></a>
 
-Use the findKey command in key\_mgmt\_util to search for keys by the values of the key attributes\. When a key matches all the criteria that you set, findKey returns the key handle\. With no parameters, findKey returns the key handles of all the keys that you can use in the HSM\. To find the attribute values of a particular key, use getAttribute\.
+Use the findKey command in key\_mgmt\_util to search for keys by the values of the key attributes\. When a key matches all the criteria that you set, findKey returns the key handle\. With no parameters, findKey returns the key handles of all the keys that you can use in the HSM\. To find the attribute values of a particular key, use [getAttribute](key_mgmt_util-getAttribute.md)\.
 
 Like all key\_mgmt\_util commands, findKey is user specific\. It returns only the keys that the current user can use in cryptographic operations\. This includes keys that current user owns and keys that have been shared with the current user\. 
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="findKey-syntax"></a>
 
@@ -26,8 +26,8 @@ findKey [-c <key class>]
 These examples show how to use findKey to find and identify keys in your HSMs\.
 
 **Example : Find All Keys**  
-This command finds all keys for the current user in the HSM\. The output includes the key handles of all keys in the HSM\.  
-To get the attributes of a key with a particular key handle, use getAttribute\.  
+This command finds all keys for the current user in the HSM\. The output includes keys that the user owns and shares, and all public keys in the HSMs\.  
+To get the attributes of a key with a particular key handle, use [getAttribute](key_mgmt_util-getAttribute.md)\. To determine whether the current user owns or shares a particular key, use [getKeyInfo](key_mgmt_util-getKeyInfo.md) or [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util\.  
 
 ```
 Command: findKey
@@ -114,9 +114,9 @@ Finds keys by session status\. To find keys that are valid only in the current s
 Required: No
 
 **\-u**  
-Finds keys that the current user and the specified users can use in cryptographic operations\. Type a comma\-separated list of HSM user IDs, such as `-u 3` or `-u 4,7`\. To find the IDs of users on an HSM, use listUsers\.  
-When you specify one user ID, findKey returns all the keys for that user\. When you specify multiple user IDs, findKey returns the keys that all the specified users can use\.  
-Because findKey only returns keys that the current user can use, the `-u` results are always identical to or a subset of the current user's keys\.   
+Finds keys the specified users and the current user share\. Type a comma\-separated list of HSM user IDs, such as `-u 3` or `-u 4,7`\. To find the IDs of users on an HSM, use [listUsers](key_mgmt_util-listUsers.md)\.  
+When you specify one user ID, findKey returns the keys for that user\. When you specify multiple user IDs, findKey returns the keys that all the specified users can use\.  
+Because findKey only returns keys that the current user can use, the `-u` results are always identical to or a subset of the current user's keys\. To get all keys that are owned by or shared with any user, crypto officers \(COs\) can use [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util\.  
 Required: No
 
 **\-m**  
@@ -125,7 +125,7 @@ Required: No
 
 **\-kcv**  
 Finds keys with the specified key check value\.  
-The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key\. You can then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use getAttribute\.  
+The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key\. You can then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use [getAttribute](key_mgmt_util-getAttribute.md)\.  
 AWS CloudHSM uses the following standard method to generate a key check value:  
 
 + **Symmetric keys**: First 8 bytes of the result of encrypting 16 zero\-filled bytes with the key\.
@@ -153,10 +153,12 @@ Total number of keys present 10
 
 ## Related Topics<a name="findKey-seealso"></a>
 
-+ findSingleKey
++ [findSingleKey](key_mgmt_util-findSingleKey.md)
 
-+ getKeyInfo
++ [getKeyInfo](key_mgmt_util-getKeyInfo.md)
 
-+ getAttribute
++ [getAttribute](key_mgmt_util-getAttribute.md)
 
-+ Key Attribute Reference
++ [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util
+
++ [Key Attribute Reference](key-attribute-table.md)

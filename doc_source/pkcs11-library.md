@@ -108,7 +108,7 @@ This mechanism is functionally identical to the `CKM_RSA_PKCS_KEY_PAIR_GEN` mech
 
 + `CKM_AES_GCM`
 **Note**  
-When performing AES\-GCM encryption, the HSM ignores the initialization vector \(IV\) in the request and uses an IV that it generates\. The HSM writes the generated IV to the memory reference pointed to by the `pAAD` element of the `CK_GCM_PARAMS` parameters structure that you supply\.
+When performing AES\-GCM encryption, the HSM ignores the initialization vector \(IV\) in the request and uses an IV that it generates\. The HSM writes the generated IV to the memory reference pointed to by the `pIV` element of the `CK_GCM_PARAMS` parameters structure that you supply\.
 
 + `CKM_DES3_CBC`
 

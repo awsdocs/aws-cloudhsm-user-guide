@@ -4,7 +4,7 @@ Some versions of Oracle's database software offer a feature called Transparent D
 
 ![\[Store the Oracle TDE master encryption key in AWS CloudHSM.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/tde-master-key-in-hsm.png)
 
-In this solution, you use Oracle Database installed on an Amazon EC2 instance\. Oracle Database integrates with the AWS CloudHSM software library for PKCS \#11 to store the TDE master key in the HSMs in your cluster\.
+In this solution, you use Oracle Database installed on an Amazon EC2 instance\. Oracle Database integrates with the [AWS CloudHSM software library for PKCS \#11](pkcs11-library.md) to store the TDE master key in the HSMs in your cluster\.
 
 **Important**  
 You cannot use an Oracle instance in Amazon Relational Database Service \(Amazon RDS\) to integrate with AWS CloudHSM\. You must install Oracle Database on an Amazon EC2 instance\.  
@@ -14,6 +14,6 @@ Complete the following steps to accomplish Oracle TDE integration with AWS Cloud
 
 **To configure Oracle TDE integration with AWS CloudHSM**
 
-1. Follow the steps in [Set Up the Prerequisites](oracle-tde-prerequisites.md) to prepare your environment\.
+1. Follow the steps in [Set Up Prerequisites](oracle-tde-prerequisites.md) to prepare your environment\.
 
-1. Follow the steps in [Configure the Database and Generate the Master Encryption Key](oracle-tde-configure-database-and-generate-master-key.md) to configure Oracle Database to integrate with your AWS CloudHSM cluster\.
+1. Follow the steps in [Configure the Database](oracle-tde-configure-database-and-generate-master-key.md) to configure Oracle Database to integrate with your AWS CloudHSM cluster\.

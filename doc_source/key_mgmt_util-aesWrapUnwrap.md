@@ -4,7 +4,7 @@ The aesWrapUnwrap command encrypts or decrypts the contents of a file on disk\. 
 
 aesWrapUnwrap uses [AES Key Wrap](https://tools.ietf.org/html/rfc3394)\. It uses an AES key on the HSM as the wrapping or unwrapping key\. Then it writes the result to another file on disk\. 
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="aesWrapUnwrap-syntax"></a>
 
@@ -23,7 +23,7 @@ aesWrapUnwrap -m <wrap-unwrap mode>
 These examples show how to use aesWrapUnwrap to encrypt and decrypt an encryption key in a file\. 
 
 **Example : Wrap an Encryption Key**  
-This command uses aesWrapUnwrap to wrap a Triple DES symmetric key that was exported from the HSM in plaintext into the `3DES.key` file\. You can use a similar command to wrap any key saved in a file\.   
+This command uses aesWrapUnwrap to wrap a Triple DES symmetric key that was [exported from the HSM in plaintext](key_mgmt_util-exSymKey.md) into the `3DES.key` file\. You can use a similar command to wrap any key saved in a file\.   
 The command uses the `-m` parameter with a value of `1` to indicate wrap mode\. It uses the `-w` parameter to specify an AES key in the HSM \(key handle `6`\) as the wrapping key\. It writes the resulting wrapped key to the `3DES.key.wrapped` file\.  
 The output shows that the command was successful and that the operation used the default IV, which is preferred\.  
 
@@ -45,7 +45,7 @@ result written to file 3DES.key.wrapped
 ```
 
 **Example : Unwrap an Encryption Key**  
-This example shows how to use aesWrapUnwrap to unwrap \(decrypt\) a wrapped \(encrypted\) key in a file\. You might want to do an operation like this one before importing a key to the HSM\. For example, if you try to use the imSymKey command to import an encrypted key, it returns an error because the encrypted key doesn't have the format that is required for a plaintext key of that type\.  
+This example shows how to use aesWrapUnwrap to unwrap \(decrypt\) a wrapped \(encrypted\) key in a file\. You might want to do an operation like this one before importing a key to the HSM\. For example, if you try to use the [imSymKey](key_mgmt_util-imSymKey.md) command to import an encrypted key, it returns an error because the encrypted key doesn't have the format that is required for a plaintext key of that type\.  
 The command unwraps the key in the `3DES.key.wrapped` file and writes the plaintext to the `3DES.key.unwrapped` file\. The command uses the `-m` parameter with a value of `0` to indicate unwrap mode\. It uses the `-w` parameter to specify an AES key in the HSM \(key handle `6`\) as the wrapping key\. It writes the resulting wrapped key to the `3DES.key.unwrapped` file\.   
 
 ```
@@ -78,8 +78,8 @@ Specifies the file to wrap\. Enter a file that contains less than 4 KB \(4096 by
 Required: Yes
 
 **\-w**  
-Specifies the wrapping key\. Type the key handle of an AES key on the HSM\. This parameter is required\. To find key handles, use the findKey command\.  
-To create a wrapping key, use genSymKey to create an AES key \(type 31\)\. To verify that a key can be used as a wrapping key, use getAttribute to get the value of the `OBJ_ATTR_WRAP` attribute, which is represented by constant `262`\.  
+Specifies the wrapping key\. Type the key handle of an AES key on the HSM\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
+To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to create an AES key \(type 31\)\. To verify that a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute, which is represented by constant `262`\.  
 Key handle 4 represents an unsupported internal key\. We recommend that you use an AES key that you create and manage as the wrapping key\.
 Required: Yes
 
@@ -96,10 +96,10 @@ Required: No
 
 ## Related Topics<a name="aesWrapUnwrap-seealso"></a>
 
-+ exSymKey
++ [exSymKey](key_mgmt_util-exSymKey.md)
 
-+ imSymKey
++ [imSymKey](key_mgmt_util-imSymKey.md)
 
-+ unWrapKey
++ [unWrapKey](key_mgmt_util-unwrapKey.md)
 
-+ wrapKey
++ [wrapKey](key_mgmt_util-wrapKey.md)

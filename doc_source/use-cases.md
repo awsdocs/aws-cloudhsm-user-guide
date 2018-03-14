@@ -11,7 +11,7 @@ A hardware security module \(HSM\) in AWS CloudHSM can help you accomplish a var
 
 Web servers and their clients \(web browsers\) can use Secure Sockets Layer \(SSL\) or Transport Layer Security \(TLS\)\. These protocols confirm the identity of the web server and establish a secure connection to send and receive webpages or other data over the internet\. This is commonly known as HTTPS\. The web server uses a public–private key pair and a public key certificate to establish an HTTPS session with each client\. This process involves a lot of computation for the web server, but you can offload some of this computation to the HSMs in your AWS CloudHSM cluster\. This is sometimes known as SSL acceleration\. This offloading reduces the computational burden on your web server and provides extra security by storing the server's private key in the HSMs\.
 
-For information about setting up SSL/TLS offload with AWS CloudHSM, see [Improve Web Server Security with SSL/TLS Offload](ssl-offload.md)\.
+For information about setting up SSL/TLS offload with AWS CloudHSM, see [SSL/TLS Offload](ssl-offload.md)\.
 
 ## Protect the Private Keys for an Issuing Certificate Authority \(CA\)<a name="certificate-authority"></a>
 

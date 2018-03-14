@@ -2,10 +2,10 @@
 
 The genSymKey command in the key\_mgmt\_util tool generates a symmetric key in your HSMs\. You can specify the key type and size, assign an ID and label, and share the key with other HSM users\. You can also create nonextractable keys and keys that expire when the session ends\. When the command succeeds, it returns a key handle that the HSM assigns to the key\. You can use the key handle to identify the key to other commands\.
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 **Tip**  
-To find the attributes of a key that you have created, such as the type, length, label, and ID, use getAttribute\. To find the keys for a particular user, use getKeyInfo\. To find keys based on their attribute values, use findKey\. 
+To find the attributes of a key that you have created, such as the type, length, label, and ID, use [getAttribute](key_mgmt_util-getAttribute.md)\. To find the keys for a particular user, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. To find keys based on their attribute values, use [findKey](key_mgmt_util-findKey.md)\. 
 
 ## Syntax<a name="genSymKey-syntax"></a>
 
@@ -93,7 +93,7 @@ Command: genSymKey -t 21 -s 24 -l 3DES_shared -id IT-02 -u 4,5
         Cluster Error Status
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-To verify that the new 3DES key is owned by the current user and shared with users 4 and 5, use getKeyInfo\. The command uses the handle that was assigned to the new key \(`Key Handle: 7`\)\.  
+To verify that the new 3DES key is owned by the current user and shared with users 4 and 5, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. The command uses the handle that was assigned to the new key \(`Key Handle: 7`\)\.  
 The output confirms that the key is owned by user 3 and shared with users 4 and 5\.  
 
 ```
@@ -107,7 +107,7 @@ Command:  getKeyInfo -k 7
 
                  4, 5
 ```
-To confirm the other properties of the key, use getAttribute\. The first command uses `getAttribute` to get all attributes \(`-a 512`\) of key handle 7 \(`-o 7`\)\. It writes them to the `attr_7` file\. The second command uses `cat` to get the contents of the `attr_7` file\.   
+To confirm the other properties of the key, use [getAttribute](key_mgmt_util-getAttribute.md)\. The first command uses `getAttribute` to get all attributes \(`-a 512`\) of key handle 7 \(`-o 7`\)\. It writes them to the `attr_7` file\. The second command uses `cat` to get the contents of the `attr_7` file\.   
 This command confirms that key 7 is a 192\-bit \(`OBJ_ATTR_VALUE_LEN 0x00000018` or 24\-byte\) 3DES \(`OBJ_ATTR_KEY_TYPE 0x15`\) symmetric key \(`OBJ_ATTR_CLASS 0x04`\) with a label of `3DES_shared` \(`OBJ_ATTR_LABEL 3DES_shared`\) and an ID of `IT_02` \(`OBJ_ATTR_ID IT-02`\)\. The key is persistent \(`OBJ_ATTR_TOKEN 0x01`\) and extractable \(`OBJ_ATTR_EXTRACTABLE 0x01`\) and can be used for encryption, decryption, and wrapping\.   
 For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 
@@ -214,20 +214,20 @@ Required: No
 **\-m\_value**  
 Specifies the number of users who must approve any cryptographic operation that uses the key\. Type a value from `0` to `8`\.  
 This parameter establishes a quorum authentication requirement for the key\. The default value, `0`, disables the quorum authentication feature for the key\. When quorum authentication is enabled, the specified number of users must sign a token to approve cryptographic operations that use the key, and operations that share or unshare the key\.  
-To find the `m_value` of a key, use getKeyInfo\.  
+To find the `m_value` of a key, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\.  
 This parameter is valid only when the `-u` parameter in the command shares the key with enough users to satisfy the `m_value` requirement\.  
 Default: 0  
 Required: No
 
 **\-nex**  
-Makes the key nonextractable\. The key that is generated cannot be exported from the HSM\.  
+Makes the key nonextractable\. The key that is generated cannot be [exported from the HSM](manage-keys.md#export-keys)\.  
 Default: The key is extractable\.  
 Required: No
 
 **\-sess**  
 Creates a key that exists only in the current session\. The key cannot be recovered after the session ends\.  
 Use this parameter when you need a key only briefly, such as a wrapping key that encrypts, and then quickly decrypts, another key\. Do not use a session key to encrypt data that you might need to decrypt after the session ends\.  
-To change a session key to a persistent \(token\) key, use setAttribute\.  
+To change a session key to a persistent \(token\) key, use [setAttribute](key_mgmt_util-setAttribute.md)\.  
 Default: The key is persistent\.   
 Required: No
 
@@ -239,16 +239,16 @@ Required: No
 
 **\-u**  
 Shares the key with the specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use this key in cryptographic operations\.  
-Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use listUsers\. To share and unshare existing keys, use shareKey\.   
+Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use shareKey\.   
 Default: Only the current user can use the key\.   
 Required: No
 
 ## Related Topics<a name="genSymKey-seealso"></a>
 
-+ exSymKey
++ [exSymKey](key_mgmt_util-exSymKey.md)
 
-+ genRSAKeyPair
++ [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
 
-+ genDSAKeyPair
++ [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)
 
-+ genECCKeyPair
++ [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)

@@ -1,16 +1,16 @@
 # exSymKey<a name="key_mgmt_util-exSymKey"></a>
 
-The exSymKey command in the key\_mgmt\_util tool exports a plaintext copy of a symmetric key from the HSM and saves it in a file on disk\. To export an encrypted \(wrapped\) copy of a key, use wrapKey\. To import a plaintext key, like the ones that `exSymKey` exports, use imSymKey\.
+The exSymKey command in the key\_mgmt\_util tool exports a plaintext copy of a symmetric key from the HSM and saves it in a file on disk\. To export an encrypted \(wrapped\) copy of a key, use [wrapKey](key_mgmt_util-wrapKey.md)\. To import a plaintext key, like the ones that `exSymKey` exports, use [imSymKey](key_mgmt_util-imSymKey.md)\.
 
 During the export process, exSymKey uses an AES key that you specify \(the *wrapping key*\) to *wrap* \(encrypt\) and then *unwrap* \(decrypt\) the key to be exported\. However, the result of the export operation is a plaintext \(*unwrapped*\) key on disk\.
 
 Only the owner of a key, that is, the CU user who created the key, can export it\. Users who share the key can use it in cryptographic operations, but they cannot export it\.
 
-The exSymKey operation copies the key material to a file that you specify, but it does not remove the key from the HSM, change its key attributes, or prevent you from using the key in cryptographic operations\. You can export the same key multiple times\.
+The exSymKey operation copies the key material to a file that you specify, but it does not remove the key from the HSM, change its [key attributes](key-attribute-table.md), or prevent you from using the key in cryptographic operations\. You can export the same key multiple times\.
 
 exSymKey exports only symmetric keys\. To export public keys, use exPubKey\. To export private keys, use exportPrivateKey\.
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="exSymKey-syntax"></a>
 
@@ -47,7 +47,7 @@ Wrapped Symmetric Key written to file "3DES.key"
 **Example : Exporting with Session\-Only Wrapping Key**  
 This example shows how to use a key that exists only in the session as the wrapping key\. Because the key to be exported is wrapped, immediately unwrapped, and delivered as plaintext, there is no need to retain the wrapping key\.  
 This series of commands exports an AES key with key handle `8` from the HSM\. It uses an AES session key created especially for the purpose\.  
-The first command uses genSymKey to create a 256\-bit AES key\. It uses the `-sess` parameter to create a key that exists only in the current session\.  
+The first command uses [genSymKey](key_mgmt_util-genSymKey.md) to create a 256\-bit AES key\. It uses the `-sess` parameter to create a key that exists only in the current session\.  
 The output shows that the HSM creates key `262168`\.  
 
 ```
@@ -60,8 +60,8 @@ The output shows that the HSM creates key `262168`\.
         Cluster Error Status
         Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-Next, the example verifies that key `8`, the key to be exported, is a symmetric key that is extractable\. It also verifies that the wrapping key, key `262168`, is an AES key that exists only in the session\. You can use the findKey command, but this example exports the attributes of both keys to files and then uses `grep` to find the relevant attribute values in the file\.  
-These commands use `getAttribute` with an `-a` value of `512` \(all\) to get all attributes for keys `8` and `262168`\. For information about the key attributes, see the [[ERROR] BAD/MISSING LINK TEXT](key-attribute-table.md)\.  
+Next, the example verifies that key `8`, the key to be exported, is a symmetric key that is extractable\. It also verifies that the wrapping key, key `262168`, is an AES key that exists only in the session\. You can use the [findKey](key_mgmt_util-findKey.md) command, but this example exports the attributes of both keys to files and then uses `grep` to find the relevant attribute values in the file\.  
+These commands use `getAttribute` with an `-a` value of `512` \(all\) to get all attributes for keys `8` and `262168`\. For information about the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 
 ```
 getAttribute -o 8 -a 512 -out attributes/attr_8
@@ -156,14 +156,14 @@ Displays help for the command\.
 Required: Yes
 
 **\-k**  
-Specifies the key handle of the key to export\. This parameter is required\. Enter the key handle of a symmetric key that you own\. This parameter is required\. To find key handles, use the findKey command\.  
-To verify that a key can be exported, use the getAttribute command to get the value of the `OBJ_ATTR_EXTRACTABLE` attribute, which is represented by constant `354`\. Also, you can export only keys that you own\. To find the owner of a key, use the getKeyInfo command\.  
+Specifies the key handle of the key to export\. This parameter is required\. Enter the key handle of a symmetric key that you own\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
+To verify that a key can be exported, use the [getAttribute](key_mgmt_util-getAttribute.md) command to get the value of the `OBJ_ATTR_EXTRACTABLE` attribute, which is represented by constant `354`\. Also, you can export only keys that you own\. To find the owner of a key, use the [getKeyInfo](key_mgmt_util-getKeyInfo.md) command\.  
 Required: Yes
 
 **\-w**  
-Specifies the key handle of the wrapping key\. This parameter is required\. To find key handles, use the findKey command\.  
+Specifies the key handle of the wrapping key\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
 A *wrapping key* is a key in the HSM that is used to encrypt \(wrap\) and then decrypt \(unwrap\) the key to be exported\. Only AES keys can be used as wrapping keys\.  
-You can use any AES key \(of any size\) as a wrapping key\. Because the wrapping key wraps, and then immediately unwraps, the target key, you can use as session\-only AES key as a wrapping key\. To determine whether a key can be used as a wrapping key, use getAttribute to get the value of the `OBJ_ATTR_WRAP` attribute, which is represented by the constant `262`\. To create a wrapping key, use genSymKey to create an AES key \(type 31\)\.  
+You can use any AES key \(of any size\) as a wrapping key\. Because the wrapping key wraps, and then immediately unwraps, the target key, you can use as session\-only AES key as a wrapping key\. To determine whether a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute, which is represented by the constant `262`\. To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to create an AES key \(type 31\)\.  
 If you use the `-wk` parameter to specify an external unwrapping key, the `-w` wrapping key is used to wrap, but not to unwrap, the key during export\.  
 Key 4 represents an unsupported internal key\. We recommend that you use an AES key that you create and manage as the wrapping key\.
 Required: Yes
@@ -185,8 +185,8 @@ Default: Use the wrapping key on the HSM to unwrap\.
 
 ## Related Topics<a name="exSymKey-seealso"></a>
 
-+ genSymKey
++ [genSymKey](key_mgmt_util-genSymKey.md)
 
-+ imSymKey
++ [imSymKey](key_mgmt_util-imSymKey.md)
 
-+ wrapKey
++ [wrapKey](key_mgmt_util-wrapKey.md)

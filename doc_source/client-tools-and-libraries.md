@@ -9,7 +9,7 @@ To manage and use the HSMs in your cluster, you use the AWS CloudHSM client soft
 
 ## AWS CloudHSM Client<a name="client"></a>
 
-The AWS CloudHSM client is a daemon that you install and run on your application hosts\. The client establishes and maintains a secure, end\-to\-end encrypted connection with the HSMs in your AWS CloudHSM cluster\. The client provides the fundamental connection between your application hosts and your HSMs\. Most of the other AWS CloudHSM client software components rely on the client to communicate with your HSMs\. To get started with the AWS CloudHSM client, see [Install and Configure the Client](install-and-configure-client.md)\.
+The AWS CloudHSM client is a daemon that you install and run on your application hosts\. The client establishes and maintains a secure, end\-to\-end encrypted connection with the HSMs in your AWS CloudHSM cluster\. The client provides the fundamental connection between your application hosts and your HSMs\. Most of the other AWS CloudHSM client software components rely on the client to communicate with your HSMs\. To get started with the AWS CloudHSM client, see [Install the CloudHSM Client](install-and-configure-client.md)\.
 
 ### AWS CloudHSM Client End\-to\-End Encryption<a name="client-end-to-end-encryption"></a>
 
@@ -21,8 +21,7 @@ The following process explains how the client establishes end\-to\-end encrypted
 ![\[A TLS connection between the client and the server.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/end-to-end-encryption-part-1.png)
 
 1. Next, the client establishes an encrypted connection with the HSM hardware\. The HSM has the cluster certificate that you signed with your own certificate authority \(CA\), and the client has the CA's root certificate\. Before the client–HSM encrypted connection is established, the client verifies the HSM's cluster certificate against its root certificate\. The connection is established only when the client successfully verifies that the HSM is trusted\. The client–HSM encrypted connection goes through the client–server connection established previously\.  
-![\[A secure, end-to-end encrypted connection between the client and the
-                HSM.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/end-to-end-encryption-part-2.png)
+![\[A secure, end-to-end encrypted connection between the client and the HSM.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/end-to-end-encryption-part-2.png)
 
 ## AWS CloudHSM Command Line Tools<a name="command-line-tools-intro"></a>
 

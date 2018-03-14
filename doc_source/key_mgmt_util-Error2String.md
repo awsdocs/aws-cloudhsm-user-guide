@@ -2,7 +2,7 @@
 
 The Error2String helper command in key\_mgmt\_util returns the error that corresponds to a key\_mgmt\_util hexadecimal error code\. You can use this command when troubleshooting your commands and scripts\.
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="Error2String-syntax"></a>
 
@@ -27,7 +27,7 @@ This command gets the error description for the `0xdb` error code\. The descript
 
 **Example : Find the Error Code**  
 This example shows where to find the error code in a key\_mgmt\_util error\. The error code, `0xc6`, appears after the string: `Cfm3command-name returned: `\.  
-In this example, getKeyInfo indicates that the current user \(user 4\) can use the key in cryptographic operations\. Nevertheless, when the user tries to use deleteKey to delete the key, the command returns error code `0xc6`\.   
+In this example, [getKeyInfo](key_mgmt_util-getKeyInfo.md) indicates that the current user \(user 4\) can use the key in cryptographic operations\. Nevertheless, when the user tries to use [deleteKey](key_mgmt_util-deleteKey.md) to delete the key, the command returns error code `0xc6`\.   
 
 ```
         Command:  deleteKey -k 262162

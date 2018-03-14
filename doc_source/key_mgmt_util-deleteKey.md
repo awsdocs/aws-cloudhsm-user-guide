@@ -4,7 +4,7 @@ The deleteKey command in key\_mgmt\_util deletes a key from the HSM\. You can on
 
 Only the key owner can delete a key\. Users who share the key can use it in cryptographic operations, but not delete it\. 
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="deleteKey-syntax"></a>
 
@@ -58,9 +58,9 @@ Displays command line help for the command\.
 Required: Yes
 
 **\-k**  
-Specifies the key handle of the key to delete\. To find the key handles of keys in the HSM, use findKey\.  
+Specifies the key handle of the key to delete\. To find the key handles of keys in the HSM, use [findKey](key_mgmt_util-findKey.md)\.  
 Required: Yes
 
 ## Related Topics<a name="deleteKey-seealso"></a>
 
-+ findKey
++ [findKey](key_mgmt_util-findKey.md)

@@ -1,10 +1,24 @@
 # Install and Use the AWS CloudHSM Software Library for Java<a name="java-library-install"></a>
 
-Before you can use the AWS CloudHSM software library for Java, you need the AWS CloudHSM client\. The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster, and the Java library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install and Configure the Client](install-and-configure-client.md)\. After you install and configure the client, use the following command to start it\.
+Before you can use the AWS CloudHSM software library for Java, you need the AWS CloudHSM client\. 
+
+The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster, and the Java library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the CloudHSM Client](install-and-configure-client.md)\. After you install and configure the client, use the following command to start it\.
+
+------
+#### [ Amazon Linux ]
 
 ```
 $ sudo start cloudhsm-client
 ```
+
+------
+#### [ Ubuntu ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
 
 
 + [Installing the Java Library](#install-java-library)
@@ -14,21 +28,33 @@ $ sudo start cloudhsm-client
 
 ## Installing the Java Library<a name="install-java-library"></a>
 
-Complete the following steps to install the AWS CloudHSM software library for Java\.
+Complete the following steps to install or update the AWS CloudHSM software library for Java\.
 
-**To install \(or update\) the Java library**
+Use the following commands to download and install the Java library\.
 
-1. Use the following command to download the Java library\.
+------
+#### [ Amazon Linux ]
 
-   ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-latest.x86_64.rpm
-   ```
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-latest.x86_64.rpm
+```
 
-1. Use the following command to install the Java library\.
+```
+$ sudo yum install -y ./cloudhsm-client-jce-latest.x86_64.rpm
+```
 
-   ```
-   $ sudo yum install -y ./cloudhsm-client-jce-latest.x86_64.rpm
-   ```
+------
+#### [ Ubuntu ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce_latest_amd64.deb
+```
+
+```
+$ sudo dpkg -i cloudhsm-client-jce_latest_amd64.deb
+```
+
+------
 
 After you complete the preceding steps, you can find the following Java library files:
 
@@ -54,9 +80,21 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
 
 1. \(Optional\) If you don't already have Java installed in your environment, use the following command to install it\.
 
+------
+#### [ Amazon Linux ]
+
    ```
    $ sudo yum install -y java-1.8.0-openjdk
    ```
+
+------
+#### [ Ubuntu ]
+
+   ```
+   $ sudo apt-get install openjdk-8-jre
+   ```
+
+------
 
 1. Use the following commands to set the necessary environment variables\. Replace *<HSM user name>* and *<password>* with the credentials of a crypto user \(CU\)\.
 

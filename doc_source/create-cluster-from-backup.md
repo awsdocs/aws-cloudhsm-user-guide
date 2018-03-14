@@ -61,4 +61,4 @@ You can restore a cluster from a backup from the [AWS CloudHSM console](https://
 
 + Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html) request\. Specify the HSM instance type, the subnet IDs of the subnets where you plan to create HSMs, and the backup ID of the backup that you are restoring\.
 
-To create an HSM that contains the same users, key material, certificates, configuration, and policies that were in the backup that you restored, add an HSM to the cluster\.
+To create an HSM that contains the same users, key material, certificates, configuration, and policies that were in the backup that you restored, [add an HSM](add-remove-hsm.md#add-hsm) to the cluster\.

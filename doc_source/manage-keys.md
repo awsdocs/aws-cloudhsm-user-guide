@@ -1,8 +1,8 @@
 # Managing Keys in AWS CloudHSM<a name="manage-keys"></a>
 
-To manage keys on the HSMs in your AWS CloudHSM cluster, use the key\_mgmt\_util command line tool\. Before you can manage keys, you must start the AWS CloudHSM client, start key\_mgmt\_util, and log in to the HSMs\.
+To manage keys on the HSMs in your AWS CloudHSM cluster, use the [key\_mgmt\_util](key_mgmt_util.md) command line tool\. Before you can manage keys, you must start the AWS CloudHSM client, start key\_mgmt\_util, and log in to the HSMs\.
 
-To manage keys, log in to the HSM with the user name and password of a crypto user \(CU\)\. Only CUs can create keys\. Keys are inherently owned and managed by the CU who created them\.
+To manage keys, [log in to the HSM](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) with the user name and password of a crypto user \(CU\)\. Only CUs can create keys\. Keys are inherently owned and managed by the CU who created them\.
 
 
 + [Generate Keys](#generate-keys)
@@ -17,7 +17,7 @@ To generate keys on the HSM, use the command that corresponds to the type of key
 
 ### Generate Symmetric Keys<a name="generate-symmetric-keys"></a>
 
-Use the genSymKey command to generate AES, triple DES, and other types of symmetric keys\. To see all available options, use the genSymKey \-h command\.
+Use the [genSymKey](key_mgmt_util-genSymKey.md) command to generate AES, triple DES, and other types of symmetric keys\. To see all available options, use the genSymKey \-h command\.
 
 The following example creates a 256\-bit AES key\.
 
@@ -35,7 +35,7 @@ Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
 
 ### Generate RSA Key Pairs<a name="generate-rsa-key-pairs"></a>
 
-To generate an RSA key pair, use the genRSAKeyPair command\. To see all available options, use the genRSAKeyPair \-h command\.
+To generate an RSA key pair, use the [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md) command\. To see all available options, use the genRSAKeyPair \-h command\.
 
 The following example generates an RSA 2048\-bit key pair\.
 
@@ -53,7 +53,7 @@ Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
 
 ### Generate ECC \(Elliptic Curve Cryptography\) Key Pairs<a name="generate-ecc-key-pairs"></a>
 
-To generate an ECC key pair, use the genECCKeyPair command\. To see all available options, including a list of the supported elliptic curves, use the genECCKeyPair \-h command\.
+To generate an ECC key pair, use the [genECCKeyPair](key_mgmt_util-genECCKeyPair.md) command\. To see all available options, including a list of the supported elliptic curves, use the genECCKeyPair \-h command\.
 
 The following example generates an ECC key pair using the P\-384 elliptic curve defined in [NIST FIPS publication 186\-4](http://dx.doi.org/10.6028/NIST.FIPS.186-4)\.
 
@@ -77,11 +77,11 @@ To import secret keys—that is, symmetric keys and asymmetric private keys—in
 
 Complete the following steps to import a secret key\. Before you import a secret key, save it to a file\. Save symmetric keys as raw bytes, and asymmetric private keys in PEM format\.
 
-This example shows how to import a plaintext secret key from a file into the HSM\. To import an encrypted key from a file into the HSM, use the unWrapKey command\.
+This example shows how to import a plaintext secret key from a file into the HSM\. To import an encrypted key from a file into the HSM, use the [unWrapKey](key_mgmt_util-unwrapKey.md) command\.
 
 **To import a secret key**
 
-1. Use the genSymKey command to create a wrapping key\. The following command creates a 128\-bit AES wrapping key that is valid only for the current session\. You can use a session key or a persistent key as a wrapping key\.
+1. Use the [genSymKey](key_mgmt_util-genSymKey.md) command to create a wrapping key\. The following command creates a 128\-bit AES wrapping key that is valid only for the current session\. You can use a session key or a persistent key as a wrapping key\.
 
    ```
    Command: genSymKey -t 31 -s 16 -sess -l import-wrapping-key
@@ -158,7 +158,7 @@ To export secret keys—that is, symmetric keys and asymmetric private keys—fr
 Only the key owner can export a key\. Users with whom the key is shared can use the key in cryptographic operations, but they cannot export it\. When running this example, be sure to export a key that you created\. 
 
 **Important**  
-The exSymKey command writes a plaintext \(unencrypted\) copy of the secret key to a file\. The export process requires a wrapping key, but the key in the file is ***not*** a wrapped key\. To export a wrapped \(encrypted\) copy of a key, use the wrapKey command\.
+The [exSymKey](key_mgmt_util-exSymKey.md) command writes a plaintext \(unencrypted\) copy of the secret key to a file\. The export process requires a wrapping key, but the key in the file is ***not*** a wrapped key\. To export a wrapped \(encrypted\) copy of a key, use the [wrapKey](key_mgmt_util-wrapKey.md) command\.
 
 ### Export Secret Keys<a name="export-secret-keys"></a>
 
@@ -166,7 +166,7 @@ Complete the following steps to export a secret key\.
 
 **To export a secret key**
 
-1. Use the genSymKey command to create a wrapping key\. The following command creates a 128\-bit AES wrapping key that is valid only for the current session\.
+1. Use the [genSymKey](key_mgmt_util-genSymKey.md) command to create a wrapping key\. The following command creates a 128\-bit AES wrapping key that is valid only for the current session\.
 
    ```
    Command: genSymKey -t 31 -s 16 -sess -l export-wrapping-key
@@ -180,7 +180,7 @@ Complete the following steps to export a secret key\.
 
 1. Use one of the following commands, depending on the type of secret key that you are exporting\.
 
-   + To export a symmetric key, use the exSymKey command\. The following command exports an AES key to a file named `aes256.key.exp`\. To see all available options, use the exSymKey \-h command\.
+   + To export a symmetric key, use the [exSymKey](key_mgmt_util-exSymKey.md) command\. The following command exports an AES key to a file named `aes256.key.exp`\. To see all available options, use the exSymKey \-h command\.
 
      ```
      Command: exSymKey -k 524295 -out aes256.key.exp -w 524304
@@ -192,7 +192,7 @@ Complete the following steps to export a secret key\.
      Wrapped Symmetric Key written to file "aes256.key.exp"
      ```
 **Note**  
-The command's output says that a "Wrapped Symmetric Key" is written to the output file\. However, the output file contains a plaintext \(not wrapped\) key\. To export a wrapped \(encrypted\) key to a file, use the wrapKey command\.
+The command's output says that a "Wrapped Symmetric Key" is written to the output file\. However, the output file contains a plaintext \(not wrapped\) key\. To export a wrapped \(encrypted\) key to a file, use the [wrapKey](key_mgmt_util-wrapKey.md) command\.
 
    + To export a private key, use the exportPrivateKey command\. The following command exports a private key to a file named `rsa2048.key.exp`\. To see all available options, use the exportPrivateKey \-h command\.
 
@@ -220,7 +220,7 @@ Cfm3ExportPubKey returned: 0x00 : HSM Return: SUCCESS
 
 ## Delete Keys<a name="delete-keys"></a>
 
-Use the deleteKey command to delete a key, as in the following example\. Only the key owner can delete a key\.
+Use the [deleteKey](key_mgmt_util-deleteKey.md) command to delete a key, as in the following example\. Only the key owner can delete a key\.
 
 ```
 Command: deleteKey -k 524300
@@ -236,7 +236,7 @@ Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
 
 In AWS CloudHSM, the CU who creates the key owns it\. The owner manages the key, can export and delete it, and can use the key in cryptographic operations\. The owner can also share the key with other CU users\. Users with whom the key is shared can use the key in cryptographic operations, but they cannot export or delete the key, or share it with other users\.
 
-You can share keys with other CU users when you create the key, such as by using the `-u` parameter of the genSymKey or genRSAKeyPair commands\. To share existing keys with a different HSM user, use the cloudhsm\_mgmt\_util command line tool\. This is different from most of the tasks documented in this section, which use the key\_mgmt\_util command line tool\.
+You can share keys with other CU users when you create the key, such as by using the `-u` parameter of the [genSymKey](key_mgmt_util-genSymKey.md) or [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md) commands\. To share existing keys with a different HSM user, use the [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) command line tool\. This is different from most of the tasks documented in this section, which use the [key\_mgmt\_util](key_mgmt_util.md) command line tool\.
 
 Before you can share a key, you must start cloudhsm\_mgmt\_util, enable end\-to\-end encryption, and log in to the HSMs\. To share a key, log in to the HSM as the crypto user \(CU\) that owns the key\. Only key owners can share a key\.
 

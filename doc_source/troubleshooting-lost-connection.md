@@ -1,6 +1,6 @@
 # Lost Connection to the Cluster<a name="troubleshooting-lost-connection"></a>
 
-When you configured the AWS CloudHSM client, you provided the IP address of the first HSM in your cluster\. This IP address is saved in the configuration file for the AWS CloudHSM client\. When the client starts, it tries to connect to this IP address\. If it can't—for example, because the HSM failed or you deleted it—you might see errors like the following:
+When you [configured the AWS CloudHSM client](install-and-configure-client.md#edit-client-configuration), you provided the IP address of the first HSM in your cluster\. This IP address is saved in the configuration file for the AWS CloudHSM client\. When the client starts, it tries to connect to this IP address\. If it can't—for example, because the HSM failed or you deleted it—you might see errors like the following:
 
 ```
 LIQUIDSECURITY: Daemon socket connection error
@@ -24,9 +24,21 @@ To resolve these errors, update the configuration file with the IP address of an
 
 1. Use the following command to stop the client\.
 
+------
+#### [ Amazon Linux ]
+
    ```
    $ sudo stop cloudhsm-client
    ```
+
+------
+#### [ Ubuntu ]
+
+   ```
+   $ sudo service cloudhsm-client stop
+   ```
+
+------
 
 1. Use the following command to update the client's configuration file, providing the IP address that you found in a previous step\.
 
@@ -36,6 +48,18 @@ To resolve these errors, update the configuration file with the IP address of an
 
 1. Use the following command to start the client\.
 
+------
+#### [ Amazon Linux ]
+
    ```
    $ sudo start cloudhsm-client
    ```
+
+------
+#### [ Ubuntu ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------

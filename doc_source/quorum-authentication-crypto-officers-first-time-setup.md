@@ -1,6 +1,6 @@
 # Using Quorum Authentication for Crypto Officers: First Time Setup<a name="quorum-authentication-crypto-officers-first-time-setup"></a>
 
-The following topics describe the steps that you must complete to configure your HSM so that crypto officers \(COs\) can use quorum authentication\. You need to do these steps only once when you first configure quorum authentication for COs\. After you complete these steps, see [Using Quorum Authentication for Crypto Officers](quorum-authentication-crypto-officers.md)\.
+The following topics describe the steps that you must complete to configure your HSM so that [crypto officers \(COs\)](hsm-users.md#crypto-officer) can use quorum authentication\. You need to do these steps only once when you first configure quorum authentication for COs\. After you complete these steps, see [Using Quorum Authentication for Crypto Officers](quorum-authentication-crypto-officers.md)\.
 
 
 + [Prerequisites](#quorum-crypto-officers-prerequisites)
@@ -9,7 +9,7 @@ The following topics describe the steps that you must complete to configure your
 
 ## Prerequisites<a name="quorum-crypto-officers-prerequisites"></a>
 
-To understand this example, you should be familiar with the cloudhsm\_mgmt\_util command line tool\. In this example, the AWS CloudHSM cluster has two HSMs, each with the same COs, as shown in the following output from the listUsers command\. For more information about creating users, see [Managing HSM Users](manage-hsm-users.md)\.
+To understand this example, you should be familiar with the [cloudhsm\_mgmt\_util command line tool](cloudhsm_mgmt_util.md)\. In this example, the AWS CloudHSM cluster has two HSMs, each with the same COs, as shown in the following output from the listUsers command\. For more information about creating users, see [Managing HSM Users](manage-hsm-users.md)\.
 
 ```
 aws-cloudhsm>listUsers
@@ -70,7 +70,7 @@ After creating a key, the CO must register the public part of the key \(the publ
 
 1. Use the enable\_e2e command to establish end\-to\-end encrypted communication\.
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util.md#cloudhsm_mgmt_util-log-in)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in)\.
 
 1. Use the registerMofnPubKey command to register the public key\. For more information, see the following example or use the help registerMofnPubKey command\.
 
@@ -141,12 +141,12 @@ To use quorum authentication for COs, a CO must log in to the HSM and then set t
 
 1. Use the enable\_e2e command to establish end\-to\-end encrypted communication\.
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util.md#cloudhsm_mgmt_util-log-in)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in)\.
 
 1. Use the setMValue command to set the quorum minimum value\. For more information, see the following example or use the help setMValue command\.
 
 **Example – Set the quorum minimum value on the HSM**  
-This example uses a quorum minimum value of two\. You can choose any value from two to twenty, up to the total number of COs on the HSM\. In this example, the HSM has six COs \(the PCO user is the same as a CO\), so the maximum possible value is six\.  
+This example uses a quorum minimum value of two\. You can choose any value from two to twenty, up to the total number of COs on the HSM\. In this example, the HSM has six COs \(the [PCO user](hsm-users.md#crypto-officer) is the same as a CO\), so the maximum possible value is six\.  
 To use the following example command, replace the final number \(*2*\) with the preferred quorum minimum value\.  
 
 ```

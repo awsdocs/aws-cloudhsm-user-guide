@@ -4,9 +4,9 @@ The HSMs in your AWS CloudHSM cluster support quorum authentication, which is al
 
 Quorum authentication can control the following operations:
 
-+ HSM user management by crypto officers \(COs\) – Creating and deleting HSM users, and changing a different HSM user's password\. For more information, see [Using Quorum Authentication for Crypto Officers](quorum-authentication-crypto-officers.md)\.
++ HSM user management by [crypto officers \(COs\)](hsm-users.md#crypto-officer) – Creating and deleting HSM users, and changing a different HSM user's password\. For more information, see [Using Quorum Authentication for Crypto Officers](quorum-authentication-crypto-officers.md)\.
 
-+ Cryptographic operations by crypto users \(CUs\) – For example:
++ Cryptographic operations by [crypto users \(CUs\)](hsm-users.md#crypto-user) – For example:
 
   + Using asymmetric private keys on the HSM to cryptographically sign messages\.
 

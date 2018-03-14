@@ -3,7 +3,7 @@
 AWS CloudHSM provides two software libraries for PKCS \#11\. One uses Redis to create a local cache for efficiency, which can increase performance\. However, consider the following before you choose the library with Redis:
 
 **Considerations**  
-Redis caches all operations performed with the PKCS \#11 library running on the same host, but it's not aware of operations that are performed outside the library\. You can use another interface to modify keys on the HSMs in your cluster—for example, the command line tools or software library for Java\. But if you do, the Redis cache can fall out of sync with the HSMs\. You can rebuild the cache to bring it back into sync, but it doesn't happen automatically\.
+Redis caches all operations performed with the PKCS \#11 library running on the same host, but it's not aware of operations that are performed outside the library\. You can use another interface to modify keys on the HSMs in your cluster—for example, the [command line tools](command-line-tools.md) or [software library for Java](java-library.md)\. But if you do, the Redis cache can fall out of sync with the HSMs\. You can rebuild the cache to bring it back into sync, but it doesn't happen automatically\.
 The PKCS \#11 library expects that it's the only Redis consumer on the host, and it modifies some of the Redis configuration accordingly\. Don't use the PKCS \#11 library with Redis when you have other applications that use Redis on the same host\.
 
 
@@ -13,29 +13,55 @@ The PKCS \#11 library expects that it's the only Redis consumer on the host, and
 
 ## Prerequisites<a name="pkcs11-library-prerequisites"></a>
 
-Before you can use the AWS CloudHSM software library for PKCS \#11, you need the AWS CloudHSM client\. The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster, and the PKCS \#11 library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install and Configure the Client](install-and-configure-client.md)\. After you install and configure the client, use the following command to start it\.
+Before you can use the AWS CloudHSM software library for PKCS \#11, you need the AWS CloudHSM client\. 
+
+The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster, and the PKCS \#11 library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the CloudHSM Client](install-and-configure-client.md)\. After you install and configure the client, use the following command to start it\.
+
+------
+#### [ Amazon Linux ]
 
 ```
 $ sudo start cloudhsm-client
 ```
 
+------
+#### [ Ubuntu ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+
 ## Install the PKCS \#11 Library<a name="install-pkcs11-library"></a>
 
-Complete the following steps to install the AWS CloudHSM software library for PKCS \#11\.
+Complete the following steps to install or update the AWS CloudHSM software library for PKCS \#11\.
 
-**To install \(or update\) the PKCS \#11 library**
+Use the following commands to download and install the PKCS \#11 library\.
 
-1. Use the following command to download the PKCS \#11 library\.
+------
+#### [ Amazon Linux ]
 
-   ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-latest.x86_64.rpm
-   ```
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11-latest.x86_64.rpm
+```
 
-1. Use the following command to install the PKCS \#11 library\.
+```
+$ sudo yum install -y ./cloudhsm-client-pkcs11-latest.x86_64.rpm
+```
 
-   ```
-   $ sudo yum install -y ./cloudhsm-client-pkcs11-latest.x86_64.rpm
-   ```
+------
+#### [ Ubuntu ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-pkcs11_latest_amd64.deb
+```
+
+```
+$ sudo dpkg -i cloudhsm-client-pkcs11_latest_amd64.deb
+```
+
+------
 
 After you complete the preceding steps, you can find the PKCS \#11 libraries in `/opt/cloudhsm/lib`\.
 
@@ -94,7 +120,7 @@ The PKCS \#11 interface defines a PIN \(personal identification number\) for use
 <HSM_user_name>:<password>
 ```
 
-For example, the following is the PKCS \#11 PIN for an HSM crypto user \(CU\) with user name `CryptoUser` and password `CUPassword123!`\.
+For example, the following is the PKCS \#11 PIN for an HSM [crypto user \(CU\)](hsm-users.md) with user name `CryptoUser` and password `CUPassword123!`\.
 
 ```
 CryptoUser:CUPassword123!

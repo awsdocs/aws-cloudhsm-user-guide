@@ -1,10 +1,12 @@
 # listUsers<a name="key_mgmt_util-listUsers"></a>
 
-The listUsers command in the key\_mgmt\_util gets the users in the HSM, along with their user type and other attributes\.
+The listUsers command in the key\_mgmt\_util gets the users in the HSMs, along with their user type and other attributes\.
 
-The user commands in key\_mgmt\_util, listUsers and getKeyInfo, are read\-only commands that crypto users \(CUs\) have permission to run\. The remaining user management commands are part of cloudhsm\_mgmt\_util, which is typically run by a CO with user management permissions\.
+In key\_mgmt\_util, listUsers returns output that represents all HSMs in the cluster, even if they are not consistent\. To get information about the users in each HSM, use the [listUsers](#key_mgmt_util-listUsers) command in cloudhsm\_mgmt\_util\.
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+The user commands in key\_mgmt\_util, listUsers and getKeyInfo, are read\-only commands that crypto users \(CUs\) have permission to run\. The remaining user management commands are part of cloudhsm\_mgmt\_util\. They are run by crypto officers \(CO\) who have user management permissions\.
+
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="listUsers-syntax"></a>
 
@@ -16,7 +18,7 @@ listUsers -h
 
 ## Example<a name="listUsers-examples"></a>
 
-This command lists the users of HSMs in the cluster and their attributes\. You can use the `User ID` attribute to identify users in other commands, such as findKey, getAttribute, and getKeyInfo\.
+This command lists the users of HSMs in the cluster and their attributes\. You can use the `User ID` attribute to identify users in other commands, such as [findKey](key_mgmt_util-findKey.md), [getAttribute](key_mgmt_util-getAttribute.md), and [getKeyInfo](key_mgmt_util-getKeyInfo.md)\.
 
 ```
 Command:  listUsers
@@ -35,11 +37,13 @@ Command:  listUsers
 
 The output includes the following user attributes:
 
-+ **User ID**: Use the user ID to identify the user in key\_mgmt\_util and cloudhsm\_mgmt\_util commands\.
++ **User ID**: Identifies the user in key\_mgmt\_util and [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) commands\.
 
-+ User type: Determines the operations that the user can perform on the HSM\.
++ [User type](hsm-users.md): Determines the operations that the user can perform on the HSM\.
 
-+ **MofnPubKey**: Indicates whether the user has registered a key pair for signing approval tokens\. 
++ **User Name**: Displays the user\-defined friendly name for the user\.
+
++ **MofnPubKey**: Indicates whether the user has registered a key pair for signing [quorum authentication tokens](quorum-authentication.md)\.
 
 + **LoginFailureCnt**: 
 
@@ -53,8 +57,10 @@ Required: Yes
 
 ## Related Topics<a name="listUsers-seealso"></a>
 
-+ findKey
++ [listUsers](#key_mgmt_util-listUsers) in cloudhsm\_mgmt\_util
 
-+ getAttribute
++ [findKey](key_mgmt_util-findKey.md)
 
-+ getKeyInfo
++ [getAttribute](key_mgmt_util-getAttribute.md)
+
++ [getKeyInfo](key_mgmt_util-getKeyInfo.md)

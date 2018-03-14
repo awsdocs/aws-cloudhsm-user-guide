@@ -1,8 +1,14 @@
 # getAttribute<a name="key_mgmt_util-getAttribute"></a>
 
-The getAttribute command in key\_mgmt\_util writes the attribute values for an AWS CloudHSM key to a file\. You can get one attribute or all attributes for one key\. If the attribute you specify does not exist for the key type, such as the modulus of an AES key, getAttribute returns an error\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
+The getAttribute command in key\_mgmt\_util writes one or all of the attribute values for an AWS CloudHSM key to a file\. If the attribute you specify does not exist for the key type, such as the modulus of an AES key, getAttribute returns an error\. 
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+*Key attributes* are properties of a key\. They include characteristics, like the key type, class, label, and ID, and values that represent actions that you can perform with the key, like encrypt, decrypt, wrap, sign, and verify\. 
+
+You can use getAttribute only on keys that you own and key that are shared with you\. You can run this command or the [getAttribute](cloudhsm_mgmt_util-getAttribute.md) command in cloudhsm\_mgmt\_util, which gets one attribute value of a key from all HSMs in a cluster, and writes it to stdout or to a file\. 
+
+To get a list of attributes and the constants that represent them, use the [listAttributes](key_mgmt_util-listAttributes.md) command\. To change the attribute values of existing keys, use [setAttribute](key_mgmt_util-setAttribute.md) in key\_mgmt\_util and [setAttribute](cloudhsm_mgmt_util-setAttribute.md) in cloudhsm\_mgmt\_util\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
+
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="getAttribute-syntax"></a>
 
@@ -20,7 +26,7 @@ These examples show how to use getAttribute to get the attributes of keys in you
 
 **Example : Get the Key Type**  
 This example gets the type of the key, such an AES, 3DES, or generic key, or an RSA or elliptic curve key pair\.  
-The first command runs listAttributes, which gets the key attributes and the constants that represent them\. The output shows that the constant for key type is `256`\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
+The first command runs [listAttributes](key_mgmt_util-listAttributes.md), which gets the key attributes and the constants that represent them\. The output shows that the constant for key type is `256`\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 
 ```
 Command: listAttributes
@@ -56,7 +62,7 @@ The second command runs getAttribute\. It requests the key type \(attribute `256
 Command: getAttribute -o 524296 -a 256 -out attribute.txt
 Attributes dumped into attribute.txt file
 ```
-The final command gets the content of the key file\. The output reveals that the key type is `0x15` or `21`, which is a Triple DES \(3DES\) key\. For definitions of the class and type values, see the Key Attribute Reference\.  
+The final command gets the content of the key file\. The output reveals that the key type is `0x15` or `21`, which is a Triple DES \(3DES\) key\. For definitions of the class and type values, see the [Key Attribute Reference](key-attribute-table.md)\.  
 
 ```
 $  cat attribute.txt
@@ -123,12 +129,13 @@ Displays help for the command\.
 Required: Yes
 
 **\-o**  
-Specifies the key handle of the target key\. You can specify only one key in each command\. To get the key handle of a key, use findKey\.  
+Specifies the key handle of the target key\. You can specify only one key in each command\. To get the key handle of a key, use [findKey](key_mgmt_util-findKey.md)\.  
+Also, you must own the specified key or it must be shared with you\. To find the users of a key, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\.  
 Required: Yes
 
 **\-a**  
 Identifies the attribute\. Enter a constant that represents an attribute, or `512`, which represents all attributes\. For example, to get the key type, type `256`, which is the constant for the `OBJ_ATTR_KEY_TYPE` attribute\.  
-To list the attributes and their constants, use listAttributes\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
+To list the attributes and their constants, use [listAttributes](key_mgmt_util-listAttributes.md)\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 Required: Yes
 
 **\-out**  
@@ -138,10 +145,12 @@ Required: Yes
 
 ## Related Topics<a name="getAttribute-seealso"></a>
 
-+ listAttributes
++ [getAttribute](cloudhsm_mgmt_util-getAttribute.md) in cloudhsm\_mgmt\_util
 
-+ setAttribute
++ [listAttributes](key_mgmt_util-listAttributes.md)
 
-+ findKey
++ [setAttribute](key_mgmt_util-setAttribute.md)
 
-+ Key Attribute Reference
++ [findKey](key_mgmt_util-findKey.md)
+
++ [Key Attribute Reference](key-attribute-table.md)

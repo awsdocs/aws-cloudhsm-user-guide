@@ -2,7 +2,7 @@
 
 The findSingleKey command in the key\_mgmt\_util tool verifies that a key exists on all HSMs in the cluster\.
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="findSingleKey-syntax"></a>
 
@@ -35,13 +35,13 @@ Required: Yes
 
 **\-k**  
 Specifies the key handle of one key in the HSM\. This parameter is required\.   
-To find key handles, use the findKey command\.  
+To find key handles, use the [findKey](key_mgmt_util-listUsers.md) command\.  
 Required: Yes
 
 ## Related Topics<a name="findSingleKey-seealso"></a>
 
-+ findKey
++ [findKey](key_mgmt_util-listUsers.md)
 
-+ getKeyInfo
++ [getKeyInfo](key_mgmt_util-listUsers.md)
 
-+ getAttribute
++ [getAttribute](key_mgmt_util-findKey.md)

@@ -2,10 +2,10 @@
 
 The genDSAKeyPair command in the key\_mgmt\_util tool generates a [Digital Signing Algorithm](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm) \(DSA\) key pair in your HSMs\. You must specify the modulus length; the command generates the modulus value\. You can also assign an ID, share the key with other HSM users, create nonextractable keys, and create keys that expire when the session ends\. When the command succeeds, it returns the *key handles* that the HSM assigns to the public and private keys\. You can use the key handles to identify the keys to other commands\.
 
-Before you run any key\_mgmt\_util command, you must start key\_mgmt\_util and login to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 **Tip**  
-To find the attributes of a key that you have created, such as the type, length, label, and ID, use getAttribute\. To find the keys for a particular user, use getKeyInfo\. To find keys based on their attribute values, use findKey\. 
+To find the attributes of a key that you have created, such as the type, length, label, and ID, use [getAttribute](key_mgmt_util-getAttribute.md)\. To find the keys for a particular user, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. To find keys based on their attribute values, use [findKey](key_mgmt_util-findKey.md)\. 
 
 ## Syntax<a name="genDSAKeyPair-syntax"></a>
 
@@ -55,7 +55,7 @@ Command: genDSAKeyPair -m 2048 -l DSA-temp -id DSA_temp_pair -sess
         Cluster Error Status
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-To confirm that the key pair exists only in the session, use the `-sess` parameter of findKey with a value of `1` \(true\)\.  
+To confirm that the key pair exists only in the session, use the `-sess` parameter of [findKey](key_mgmt_util-findKey.md) with a value of `1` \(true\)\.  
 
 ```
   Command: findKey -sess 1
@@ -102,7 +102,7 @@ The output shows that the command generates a public key with key handle `12` an
         Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-This command uses getKeyInfo on the private key \(key handle `17`\)\. The output confirms that the key is owned by the current user \(user 3\) and that it is shared with users 4 and 6 \(and no others\)\. The output also shows that quorum authentication is enabled and the quorum size is two\.  
+This command uses [getKeyInfo](key_mgmt_util-getKeyInfo.md) on the private key \(key handle `17`\)\. The output confirms that the key is owned by the current user \(user 3\) and that it is shared with users 4 and 6 \(and no others\)\. The output also shows that quorum authentication is enabled and the quorum size is two\.  
 
 ```
         Command:  getKeyInfo -k 17
@@ -147,20 +147,20 @@ Required: No
 **\-m\_value**  
 Specifies the number of users who must approve any cryptographic operation that uses the private key in the pair\. Type a value from `0` to `8`\.  
 This parameter establishes a quorum authentication requirement for the private key\. The default value, `0`, disables the quorum authentication feature for the key\. When quorum authentication is enabled, the specified number of users must sign a token to approve cryptographic operations that use the private key, and operations that share or unshare the private key\.  
-To find the `m_value` of a key, use getKeyInfo\.  
+To find the `m_value` of a key, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\.  
 This parameter is valid only when the `-u` parameter in the command shares the key pair with enough users to satisfy the `m_value` requirement\.  
 Default: 0  
 Required: No
 
 **\-nex**  
-Makes the private key nonextractable\. The private key that is generated cannot be exported from the HSM\. Public keys are always extractable\.  
+Makes the private key nonextractable\. The private key that is generated cannot be [exported from the HSM](manage-keys.md#export-keys)\. Public keys are always extractable\.  
 Default: Both the public and private keys in the key pair are extractable\.  
 Required: No
 
 **\-sess**  
 Creates a key that exists only in the current session\. The key cannot be recovered after the session ends\.  
 Use this parameter when you need a key only briefly, such as a wrapping key that encrypts, and then quickly decrypts, another key\. Do not use a session key to encrypt data that you might need to decrypt after the session ends\.  
-To change a session key to a persistent \(token\) key, use setAttribute\.  
+To change a session key to a persistent \(token\) key, use [setAttribute](key_mgmt_util-setAttribute.md)\.  
 Default: The key is persistent\.   
 Required: No
 
@@ -172,7 +172,7 @@ Required: No
 
 **\-u**  
 Shares the private key in the pair with the specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use the private key in cryptographic operations\. Public keys can be used by any user without sharing\.  
-Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use listUsers\. To share and unshare existing keys, use shareKey\.   
+Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use shareKey\.   
 Default: Only the current user can use the private key\.   
 Required: No
 
@@ -183,8 +183,8 @@ Required: No
 
 ## Related Topics<a name="genDSAKeyPair-seealso"></a>
 
-+ genRSAKeyPair
++ [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
 
-+ genSymKey
++ [genSymKey](key_mgmt_util-genSymKey.md)
 
-+ genECCKeyPair
++ [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)
