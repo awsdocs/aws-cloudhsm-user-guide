@@ -52,15 +52,6 @@ public class AsymmetricEncryptDecryptExample {
         
         //Get the public key.
         CaviumRSAPublicKey pubKey = (CaviumRSAPublicKey) (RSAPublicKey) kp.getPublic();
-        System.out.println("Use the private key to encrypt; use the public key to decrypt");
-        
-        // Encrypt the plaintext with the private key.
-        byte[] cipherText = obj.asymmetricKeyEncryption(obj.transformation, privKey, obj.plainText);
-        System.out.println("CipherText = " + Base64.toBase64String(cipherText));
-        
-        // Decrypt the ciphertext with the public key.
-        String plainText = obj.asymmetricKeyDecryption(obj.transformation, pubKey, cipherText);
-        System.out.println("PlainText = " + plainText);
         System.out.println("Encrypt with public key; decrypt with private key");
         
         // Encrypt with the public key.
