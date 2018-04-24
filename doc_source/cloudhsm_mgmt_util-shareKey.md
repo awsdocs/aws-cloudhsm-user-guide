@@ -11,7 +11,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="shareKey-userType"></a>
 
 The following types of users can run this command\.
-
 + Crypto users \(CU\)
 
 ## Syntax<a name="shareKey-syntax"></a>
@@ -130,5 +129,4 @@ To share the key with the specified user, type `1`\. To unshare the key, that is
 Required: Yes
 
 ## Related Topics<a name="shareKey-seealso"></a>
-
 + [getKeyInfo](cloudhsm_mgmt_util-getKeyInfo.md)

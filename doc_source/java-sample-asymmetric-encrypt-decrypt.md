@@ -7,7 +7,7 @@
 
 This sample shows how to encrypt and decrypt a string using a 2048\-bit RSA key pair\. The sample first encrypts a message by using the public key and then decrypts it by using the private key\. It then encrypts using the private key and decrypts using the public key\. 
 
-To generate the key pair, this sample calls the `generateRSAKeyPair()` method in the [Create an RSA Key Pair](java-sample-rsa-key.md) sample\. It uses the `loginWithExplicitCredentials()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM, but you can substitute the login method that you prefer\. Also, this sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
+To generate the key pair, this sample calls the `generateRSAKeyPair()` method in the [Create an RSA Key Pair](java-sample-rsa-key.md) sample\. It uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM, but you can substitute the login method that you prefer\. Also, this sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
 
 ```
 package com.amazonaws.cloudhsm.examples;
@@ -39,7 +39,7 @@ public class AsymmetricEncryptDecryptExample {
     
     public static void main(String[] args) {
         // Log into the HSM.
-        LoginLogoutExample.loginWithExplicitCredentials();
+        LoginLogoutExample.loginWithEnvVars();
         
         // Generate a 2048-bit RSA key pair and save it in the HSM.
         KeyPair kp = new AsymmetricKeyGeneration().generateRSAKeyPair(2048, true);

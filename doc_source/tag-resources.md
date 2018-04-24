@@ -8,7 +8,7 @@ For more information about using tags for cost allocation, see [Using Cost Alloc
 
 You can use the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/) or one of the [AWS SDKs or command line tools](https://aws.amazon.com/tools/) to add, update, list, and remove tags\.
 
-
+**Topics**
 + [Adding or Updating Tags](#add-update-tags)
 + [Listing Tags](#list-tags)
 + [Removing Tags](#remove-tags)
@@ -57,7 +57,6 @@ If you update the tag key for an existing tag, the console deletes the existing 
 1. To update tags, use the same command but specify an existing tag key\. When you specify a new tag value for an existing tag, the tag is overwritten with the new value\.
 
 **To add or update tags \(AWS CloudHSM API\)**
-
 + Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_TagResource.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_TagResource.html) request\. Specify the tags and the ID of the cluster that you are tagging\.
 
 ## Listing Tags<a name="list-tags"></a>
@@ -73,7 +72,6 @@ You can list tags for a cluster from the [AWS CloudHSM console](https://console.
 1. Choose **Tags**\.
 
 **To list tags \(AWS CLI\)**
-
 + At a command prompt, issue the [http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/list-tags.html](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/list-tags.html) command, specifying the ID of the cluster whose tags you are listing\. If you don't know the cluster ID, issue the [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command\.
 
   ```
@@ -89,7 +87,6 @@ You can list tags for a cluster from the [AWS CloudHSM console](https://console.
   ```
 
 **To list tags \(AWS CloudHSM API\)**
-
 + Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_ListTags.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_ListTags.html) request, specifying the ID of the cluster whose tags you are listing\.
 
 ## Removing Tags<a name="remove-tags"></a>
@@ -108,7 +105,6 @@ You can remove tags from a cluster by using the [AWS CloudHSM console](https://c
 ![\[The action for deleting a tag in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/console-remove-tag.png)
 
 **To remove tags \(AWS CLI\)**
-
 + At a command prompt, issue the [http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/untag-resource.html](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/untag-resource.html) command, specifying the tag keys of the tags that you are removing and the ID of the cluster whose tags you are removing\. When you use the AWS CLI to remove tags, specify only the tag keys, not the tag values\.
 
   ```
@@ -117,5 +113,4 @@ You can remove tags from a cluster by using the [AWS CloudHSM console](https://c
   ```
 
 **To remove tags \(AWS CloudHSM API\)**
-
 + Send an [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_UntagResource.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_UntagResource.html) request in the AWS CloudHSM API, specifying the ID of the cluster and the tags that you are removing\.

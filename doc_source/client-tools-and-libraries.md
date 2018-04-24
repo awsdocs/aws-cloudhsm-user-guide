@@ -2,7 +2,7 @@
 
 To manage and use the HSMs in your cluster, you use the AWS CloudHSM client software\. The client software includes several components, as described in the following topics\.
 
-
+**Topics**
 + [AWS CloudHSM Client](#client)
 + [AWS CloudHSM Command Line Tools](#command-line-tools-intro)
 + [AWS CloudHSM Software Libraries](#software-libraries)

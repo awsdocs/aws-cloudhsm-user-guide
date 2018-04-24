@@ -20,7 +20,7 @@ $ sudo service cloudhsm-client start
 
 ------
 
-
+**Topics**
 + [Installing the Java Library](#install-java-library)
 + [Testing the Java Library](#test-java-library)
 + [Providing Credentials to the Java Library](#java-library-credentials)
@@ -57,19 +57,12 @@ $ sudo dpkg -i cloudhsm-client-jce_latest_amd64.deb
 ------
 
 After you complete the preceding steps, you can find the following Java library files:
-
 + `/opt/cloudhsm/java/cloudhsm-1.0.jar`
-
 + `/opt/cloudhsm/java/cloudhsm-test-1.0.jar`
-
 + `/opt/cloudhsm/java/hamcrest-all-1.3.jar`
-
 + `/opt/cloudhsm/java/junit.jar`
-
 + `/opt/cloudhsm/java/log4j-api-2.8.jar`
-
 + `/opt/cloudhsm/java/log4j-core-2.8.jar`
-
 + `/opt/cloudhsm/lib/libcaviumjca.so`
 
 ## Testing the Java Library<a name="test-java-library"></a>
@@ -123,33 +116,19 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
    ```
 
    To run a different test, replace `TestRSA` in the preceding command with one of the following values:
-
    + `TestAESKeyGen`
-
    + `TestAes`
-
    + `TestBlockCipherBuffer`
-
    + `TestKeyStore`
-
    + `TestLoginManager`
-
    + `TestMac`
-
    + `TestMessageDigest`
-
    + `TestMessageUtil`
-
    + `TestPadding`
-
    + `TestProvider`
-
    + `TestRSA`
-
    + `TestRSAKeyGen`
-
    + `TestSUNJce`
-
    + `TestUtils`
 
 ## Providing Credentials to the Java Library<a name="java-library-credentials"></a>
@@ -157,15 +136,6 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
 Your Java application must be authenticated by the HSMs in your cluster before it can use them\. Each application can use one session, which is established by providing credentials in one of the following ways\. In the following examples, replace *<HSM user name>* and *<password>* with the credentials of a crypto user \(CU\)\.
 
 The first of the following examples shows how to use the `LoginManager` class to manage sessions in your code\. Instead, you can let the library implicitly manage sessions when your application starts, as shown in the remaining examples\. However in these latter cases it might be difficult to understand error conditions when the provided credentials are invalid or the HSMs are having problems\. When you use the `LoginManager` class, you have more control over how your application deals with failures\.
-
-+ Use the `LoginManager` class to provide credentials directly in your application\. For example:
-
-  ```
-  LoginManager lm = LoginManager.getInstance();
-  lm.loadNative();
-  lm.login("PARTITION_1", "<HSM user name>", "<password>");
-  ```
-
 + Provide a file named `HsmCredentials.properties` in your application's `CLASSPATH`\. The file's contents should look like the following:
 
   ```
@@ -173,7 +143,6 @@ The first of the following examples shows how to use the `LoginManager` class to
   HSM_USER = <HSM user name>
   HSM_PASSWORD = <password>
   ```
-
 + Provide Java system properties when running your application\. The following examples show two different ways that you can do this:
 
   ```
@@ -185,7 +154,6 @@ The first of the following examples shows how to use the `LoginManager` class to
   System.setProperty("HSM_USER","<HSM user name>");
   System.setProperty("HSM_PASSWORD","<password>");
   ```
-
 + Set system environment variables\. For example:
 
   ```

@@ -38,7 +38,5 @@ The following table lists the key attributes, their constants, and their valid v
 **Key check value \(kcv\)**  
 The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key\. You can then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use [getAttribute](key_mgmt_util-getAttribute.md)\.  
 AWS CloudHSM uses the following standard method to generate a key check value:  
-
 + **Symmetric keys**: First 8 bytes of the result of encrypting 16 zero\-filled bytes with the key\.
-
 + **Asymmetric key pairs**: First 8 bytes of the modulus hash\.

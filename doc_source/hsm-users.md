@@ -4,7 +4,7 @@ Most operations that you perform on the HSM require the credentials of an *HSM u
 
 Each HSM user has a *type* that determines which operations the user is allowed to perform on the HSM\. The following topics explain the types of HSM users\.
 
-
+**Topics**
 + [Precrypto Officer \(PRECO\)](#preco)
 + [Crypto Officer \(CO, PCO\)](#crypto-officer)
 + [Crypto User \(CU\)](#crypto-user)
@@ -24,9 +24,7 @@ When you [activate a new cluster](activate-cluster.md), the first user on an HSM
 ## Crypto User \(CU\)<a name="crypto-user"></a>
 
 A crypto user \(CU\) can perform the following key management and cryptographic operations\.
-
 + **Key management** – Create, delete, share, import, and export cryptographic keys\.
-
 + **Cryptographic operations** – Use cryptographic keys for encryption, decryption, signing, verifying, and more\.
 
 For more information, see the [HSM User Permissions Table](#user-permissions-table)\.

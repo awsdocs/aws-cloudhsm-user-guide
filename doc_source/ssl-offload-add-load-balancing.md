@@ -2,7 +2,7 @@
 
 After you set up SSL/TLS offload with one web server, you can create more web servers and an Elastic Load Balancing load balancer that routes HTTPS traffic to the web servers\. A load balancer can reduce the load on your individual web servers by balancing traffic across two or more servers\. It can also increase the availability of your website because the load balancer monitors the health of your web servers and only routes traffic to healthy servers\. If a web server fails, the load balancer automatically stops routing traffic to it\. To add a load balancer for your web servers, see the following topics\. 
 
-
+**Topics**
 + [Create a Subnet for a Second Web Server](#ssl-offload-load-balancer-create-new-subnet)
 + [Create the Second Web Server](#ssl-offload-load-balancer-create-web-server)
 + [Create the Load Balancer](#ssl-offload-load-balancer-create-load-balancer)
@@ -113,7 +113,6 @@ Complete the following steps to create a second web server with the same configu
 1. Review your instance details, and then choose **Launch**\.
 
 1. Choose whether to launch your instance with an existing key pair, create a new key pair, or launch your instance without a key pair\. 
-
    + To use an existing key pair, do the following:
 
      1. Choose **Choose an existing key pair**\.
@@ -121,7 +120,6 @@ Complete the following steps to create a second web server with the same configu
      1. For **Select a key pair**, choose the key pair to use\.
 
      1. Select the check box next to **I acknowledge that I have access to the selected private key file \(*<private key file name>*\.pem\), and that without this file, I won't be able to log into my instance\.**
-
    + To create a new key pair, do the following:
 
      1. Choose **Create a new key pair**\.
@@ -131,7 +129,6 @@ Complete the following steps to create a second web server with the same configu
      1. Choose **Download Key Pair** and save the private key file in a secure and accessible location\. 
 **Warning**  
 You cannot download the private key file again after this point\. If you do not download the private key file now, you will be unable to access the client instance\. 
-
    + To launch your instance without a key pair, do the following:
 
      1. Choose **Proceed without a key pair**\.
@@ -193,9 +190,7 @@ After you complete the preceding steps, the Amazon EC2 console shows your Elasti
 You can use a DNS service such as Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your load balancer\. For more information, see [Routing Traffic to an ELB Load Balancer](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html) in the *Amazon Route 53 Developer Guide* or the documentation for your DNS service\. 
 
 1. Use your web browser to view the web server certificate\. For more information, see the following: 
-
    + For Mozilla Firefox, see [ View a Certificate ](https://support.mozilla.org/en-US/kb/secure-website-certificate#w_view-a-certificate) on the Mozilla Support website\.
-
    + For Google Chrome, see [ Understand Security Issues ](https://developers.google.com/web/tools/chrome-devtools/security) on the Google Developers website\.
 
    Other web browsers might have similar features that you can use to view the web server certificate\.

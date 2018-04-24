@@ -74,30 +74,20 @@ Required: Yes
 **\-t**  
 Finds keys of the specified type\. Enter the constant that represents the key class\. For example, to find 3DES keys, type `-t 21`\.  
 Valid values:   
-
 + 0: [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
-
 + 1: [DSA](https://en.wikipedia.org/wiki/Digital_Signature_Algorithm)
-
 + 3: [EC](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography)
-
 + 16: [GENERIC\_SECRET](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226962)
-
 + 18: [RC4](https://en.wikipedia.org/wiki/RC4)
-
 + 21: [Triple DES \(3DES\)](https://en.wikipedia.org/wiki/Triple_DES)
-
 + 31: [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 Required: No
 
 **\-c**  
 Finds keys in the specified class\. Enter the constant that represents the key class\. For example, to find public keys, type `-c 2`\.  
 Valid values for each key type:  
-
 + 2: Public\. This class contains the public keys of public–private key pairs\.
-
 + 3: Private\. This class contains the private keys of public–private key pairs\.
-
 + 4: Secret\. This class contains all symmetric keys\.
 Required: No
 
@@ -127,9 +117,7 @@ Required: No
 Finds keys with the specified key check value\.  
 The *key check value* \(KCV\) is an 8\-byte hash or checksum of a key\. The HSM calculates a KCV when it generates the key\. You can also calculate a KCV outside of the HSM, such as after you export a key\. You can then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use [getAttribute](key_mgmt_util-getAttribute.md)\.  
 AWS CloudHSM uses the following standard method to generate a key check value:  
-
 + **Symmetric keys**: First 8 bytes of the result of encrypting 16 zero\-filled bytes with the key\.
-
 + **Asymmetric key pairs**: First 8 bytes of the modulus hash\.
 Required: No
 
@@ -152,13 +140,8 @@ Total number of keys present 10
 ```
 
 ## Related Topics<a name="findKey-seealso"></a>
-
 + [findSingleKey](key_mgmt_util-findSingleKey.md)
-
 + [getKeyInfo](key_mgmt_util-getKeyInfo.md)
-
 + [getAttribute](key_mgmt_util-getAttribute.md)
-
 + [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util
-
 + [Key Attribute Reference](key-attribute-table.md)

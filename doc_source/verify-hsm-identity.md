@@ -5,7 +5,7 @@ To initialize your cluster, you sign a certificate signing request \(CSR\) gener
 **Note**  
 This process is optional\. However, it works only until a cluster is initialized\. After the cluster is initialized, you cannot use this process to get the certificates or verify the HSMs\.
 
-
+**Topics**
 + [Overview](#verify-hsm-overview)
 + [Get Certificates from the HSM](#get-certificates)
 + [Get the Root Certificates](#get-root-certificates)
@@ -61,7 +61,6 @@ To verify the identity and authenticity of your HSM, start by getting a CSR and 
    Choose each link to download and save the CSR and certificates\. To simplify the subsequent steps, save all of the files to the same directory and use the default file names\. 
 
 **To get the CSR and HSM certificates \([AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/)\)**
-
 + At a command prompt, run the [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command four times, extracting the CSR and different certificates each time and saving them to files\.
 
   1. Issue the following command to extract the cluster CSR\. Replace *<cluster ID>* with the ID of the cluster that you created previously\.
@@ -101,7 +100,6 @@ To verify the identity and authenticity of your HSM, start by getting a CSR and 
      ```
 
 **To get the CSR and HSM certificates \(AWS CloudHSM API\)**
-
 + Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) request, then extract and save the CSR and certificates from the response\.
 
 ## Get the Root Certificates<a name="get-root-certificates"></a>

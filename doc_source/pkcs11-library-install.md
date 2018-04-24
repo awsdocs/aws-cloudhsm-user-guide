@@ -6,7 +6,7 @@ AWS CloudHSM provides two software libraries for PKCS \#11\. One uses Redis to c
 Redis caches all operations performed with the PKCS \#11 library running on the same host, but it's not aware of operations that are performed outside the library\. You can use another interface to modify keys on the HSMs in your cluster—for example, the [command line tools](command-line-tools.md) or [software library for Java](java-library.md)\. But if you do, the Redis cache can fall out of sync with the HSMs\. You can rebuild the cache to bring it back into sync, but it doesn't happen automatically\.
 The PKCS \#11 library expects that it's the only Redis consumer on the host, and it modifies some of the Redis configuration accordingly\. Don't use the PKCS \#11 library with Redis when you have other applications that use Redis on the same host\.
 
-
+**Topics**
 + [Prerequisites](#pkcs11-library-prerequisites)
 + [Install the PKCS \#11 Library](#install-pkcs11-library)
 + [Specify a PIN for PKCS \#11](#specify-pin-pkcs11)

@@ -144,13 +144,8 @@ If the specified file exists, getAttribute overwrites the file without warning\.
 Required: Yes
 
 ## Related Topics<a name="getAttribute-seealso"></a>
-
 + [getAttribute](cloudhsm_mgmt_util-getAttribute.md) in cloudhsm\_mgmt\_util
-
 + [listAttributes](key_mgmt_util-listAttributes.md)
-
 + [setAttribute](key_mgmt_util-setAttribute.md)
-
 + [findKey](key_mgmt_util-findKey.md)
-
 + [Key Attribute Reference](key-attribute-table.md)

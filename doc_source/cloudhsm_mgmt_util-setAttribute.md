@@ -9,7 +9,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="setAttribute-userType"></a>
 
 The following types of users can run this command\.
-
 + Crypto users \(CU\)
 
 ## Syntax<a name="chmu-setAttribute-syntax"></a>
@@ -128,24 +127,15 @@ Required: Yes
 **<attribute id>**  
 Specifies the constant that represents the attribute that you want to change\. You can specify only one attribute in each command\. To get the attributes and their integer values, use [listAttributes](key_mgmt_util-listAttributes.md)\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 Valid values:  
-
 + **3**: `OBJ_ATTR_LABEL`\.
-
 + **260**: `OBJ_ATTR_ENCRYPT`\.
-
 + **261**: `OBJ_ATTR_DECRYPT`\.
-
 + **262**: `OBJ_ATTR_WRAP`\.
-
 + **263**: `OBJ_ATTR_UNWRAP`\.
 Required: Yes
 
 ## Related Topics<a name="chmu-setAttribute-seealso"></a>
-
 + [setAttribute](key_mgmt_util-setAttribute.md) in key\_mgmt\_util
-
 + [getAttribute](cloudhsm_mgmt_util-getAttribute.md)
-
 + [listAttributes](cloudhsm_mgmt_util-listAttributes.md)
-
 + [Key Attribute Reference](key-attribute-table.md)

@@ -2,11 +2,15 @@
 
 The `imSymKey` command in the key\_mgmt\_util tool imports a plaintext copy of a symmetric key from a file into the HSM\. You can use it to import keys that you generate by any method outside of the HSM and keys that were exported from an HSM, such as the keys that the [exSymKey](key_mgmt_util-exSymKey.md), command writes to a file\. 
 
-During the import process, `imSymKey` uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) and then *unwrap* \(decrypt\) the key to be imported\. However, `imSymKey` works only on files that contain plaintext keys\. To export and import encrypted keys, use the [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) commands\.
+During the import process, `imSymKey` uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) and then *unwrap* \(decrypt\) the key to be imported\. However, `imSymKey` works only on files that contain plaintext keys\. To export and import encrypted keys, use the [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) commands\. 
 
-Also, the `imSymKey` command exports only symmetric keys\. To import public keys, use `importPubKey`\. To import private keys, use `importPrivateKey` or `wrapKey`\.
+Also, the `imSymKey` command exports only symmetric keys\. To import public keys, use `importPubKey`\. To import private keys, use `importPrivateKey` or `wrapKey`\. 
 
-Imported keys work very much like keys generated in the HSM\. However, the value of the [OBJ\_ATTR\_LOCAL attribute](key-attribute-table.md) is zero, which indicates that it was not generated locally\. The `imSymKey` command does not have a parameter that shares the key with other users, but you can use the `shareKey` command in [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) to share the key after it is imported\. 
+Imported keys work very much like keys generated in the HSM\. However, the value of the [OBJ\_ATTR\_LOCAL attribute](key-attribute-table.md) is zero, which indicates that it was not generated locally\. You can use the following command to share a symmetric key as you import it\. You can use the `shareKey` command in [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) to share the key after it is imported\. 
+
+```
+imSymKey -l aesShared -t 31 -f kms.key -w 3296 -u 5
+```
 
 After you import a key, be sure to mark or delete the key file\. This command does not prevent you from importing the same key material multiple times\. The result, multiple keys with distinct key handles and the same key material, make it difficult to track use of the key material and prevent it from exceeding its cryptographic limits\. 
 
@@ -27,6 +31,7 @@ imSymKey -f <key-file>
          [-attest]
          [-min_srv <minimum-number-of-servers>]
          [-timeout <number-of-seconds> ]
+         [-u <user-ids>]
 ```
 
 ## Examples<a name="imSymKey-examples"></a>
@@ -174,44 +179,36 @@ Total number of keys present 1
 
 ## Parameters<a name="imSymKey-params"></a>
 
-**\-h**  
-Displays help for the command\.   
-Required: Yes
+**\-attest**  
+Runs an integrity check that verifies that the firmware on which the cluster runs has not been tampered with\.  
+Default: No attestation check\.  
+Required: No
 
 **\-f**  
 Specifies the file that contains that key to import\.  
 The file must contain a plaintext copy of an AES or Triple DES key of the specified length\. RC4 and DES keys are not valid on FIPS\-mode HSMs\.  
-
 + **AES**: 16, 24 or 32 bytes
-
 + **Triple DES \(3DES\)**: 24 bytes
 Required: Yes
 
-**\-w**  
-Specifies the key handle of the wrapping key\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
-A *wrapping key* is a key in the HSM that is used to encrypt \("wrap"\) and then decrypt \("unwrap\) the key during the import process\. Only AES keys can be used as wrapping keys\.  
-You can use any AES key \(of any size\) as a wrapping key\. Because the wrapping key wraps, and then immediately unwraps, the target key, you can use as session\-only AES key as a wrapping key\. To determine whether a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute \(262\)\. To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to create an AES key \(type 31\)\.  
-If you use the `-wk` parameter to specify an external wrapping key, the `-w` wrapping key is used to unwrap, but not to wrap, the key that is being imported\.  
-Key 4 is an unsupported internal key\. We recommend that you use an AES key that you create and manage as the wrapping key\.
+**\-h**  
+Displays help for the command\.   
 Required: Yes
 
-**\-t**  
-Specifies the type of the symmetric key\. Enter the constant that represents the key type\. For example, to create an AES key, enter `-t 31`\.  
-Valid values:   
-
-+ 21: [Triple DES \(3DES\)](https://en.wikipedia.org/wiki/Triple_DES)\.
-
-+ 31: [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-Required: Yes
+**\-id**  
+Specifies a user\-defined identifier for the key\. Type a string that is unique in the cluster\. The default is an empty string\.   
+Default: No ID value\.  
+Required: No
 
 **\-l**  
 Specifies a user\-defined label for the key\. Type a string\.  
 You can use any phrase that helps you to identify the key\. Because the label does not have to be unique, you can use it to group and categorize keys\.   
 Required: Yes
 
-**\-id**  
-Specifies a user\-defined identifier for the key\. Type a string that is unique in the cluster\. The default is an empty string\.   
-Default: No ID value\.  
+**\-min\_srv**  
+Specifies the minimum number of HSMs on which the key is synchronized before the value of the `-timeout` parameter expires\. If the key is not synchronized to the specified number of servers in the time allotted, it is not created\.  
+AWS CloudHSM automatically synchronizes every key to every HSM in the cluster\. To speed up your process, set the value of `min_srv` to less than the number of HSMs in the cluster and set a low timeout value\. Note, however, that some requests might not generate a key\.  
+Default: 1  
 Required: No
 
 **\-sess**  
@@ -221,39 +218,42 @@ To change a session key to a persistent \(token\) key, use [setAttribute](key_mg
 Default: The key is persistent\.   
 Required: No
 
-**\-wk**  
-Use the AES key in the specified file to wrap the key that is being imported\. Enter the path and name of a file that contains a plaintext AES key\.   
-When you include this parameter\. `imSymKey` uses the key in the `-wk` file to wrap the key being imported and it uses the key in the HSM that is specified by the `-w` parameter to unwrap it\. The `-w` and `-wk` parameter values must resolve to the same plaintext key\.  
-Default: Use the wrapping key on the HSM to unwrap\.  
-Required: No
-
-**\-attest**  
-Runs an integrity check that verifies that the firmware on which the cluster runs has not been tampered with\.  
-Default: No attestation check\.  
-Required: No
-
-**\-min\_srv**  
-Specifies the minimum number of HSMs on which the key is synchronized before the value of the `-timeout` parameter expires\. If the key is not synchronized to the specified number of servers in the time allotted, it is not created\.  
-AWS CloudHSM automatically synchronizes every key to every HSM in the cluster\. To speed up your process, set the value of `min_srv` to less than the number of HSMs in the cluster and set a low timeout value\. Note, however, that some requests might not generate a key\.  
-Default: 1  
-Required: No
-
 **\-timeout**  
 Specifies how long \(in seconds\) the command waits for a key to be synchronized to the number of HSMs specified by the `min_srv` parameter\.   
 This parameter is valid only when the `min_srv` parameter is also used in the command\.  
 Default: No timeout\. The command waits indefinitely and returns only when the key is synchronized to the minimum number of servers\.  
 Required: No
 
+**\-t**  
+Specifies the type of the symmetric key\. Enter the constant that represents the key type\. For example, to create an AES key, enter `-t 31`\.  
+Valid values:   
++ 21: [Triple DES \(3DES\)](https://en.wikipedia.org/wiki/Triple_DES)\.
++ 31: [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+Required: Yes
+
+**\-u**  
+Shares the key you are importing with specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use this key in cryptographic operations\.   
+Type one ID or a comma\-separated list of HSM user IDs, such as \-u 5,6\. Do not include the HSM user ID of the current user\. To find the an ID, you can use the [listUsers](http://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-listUsers.html) command in the cloudhsm\_mgmt\_util command line tool or the [listUsers](http://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-listUsers.html) command in the key\_mgmt\_util command line tool\.   
+Required: No
+
+**\-w**  
+Specifies the key handle of the wrapping key\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
+A *wrapping key* is a key in the HSM that is used to encrypt \("wrap"\) and then decrypt \("unwrap\) the key during the import process\. Only AES keys can be used as wrapping keys\.  
+You can use any AES key \(of any size\) as a wrapping key\. Because the wrapping key wraps, and then immediately unwraps, the target key, you can use as session\-only AES key as a wrapping key\. To determine whether a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute \(262\)\. To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to create an AES key \(type 31\)\.  
+If you use the `-wk` parameter to specify an external wrapping key, the `-w` wrapping key is used to unwrap, but not to wrap, the key that is being imported\.  
+Key 4 is an unsupported internal key\. We recommend that you use an AES key that you create and manage as the wrapping key\.
+Required: Yes
+
+**\-wk**  
+Use the AES key in the specified file to wrap the key that is being imported\. Enter the path and name of a file that contains a plaintext AES key\.   
+When you include this parameter\. `imSymKey` uses the key in the `-wk` file to wrap the key being imported and it uses the key in the HSM that is specified by the `-w` parameter to unwrap it\. The `-w` and `-wk` parameter values must resolve to the same plaintext key\.  
+Default: Use the wrapping key on the HSM to unwrap\.  
+Required: No
+
 ## Related Topics<a name="imSymKey-seealso"></a>
-
 + [genSymKey](key_mgmt_util-genSymKey.md)
-
 + [exSymKey](key_mgmt_util-exSymKey.md)
-
 + [wrapKey](key_mgmt_util-wrapKey.md)
-
 + [unWrapKey](key_mgmt_util-unwrapKey.md)
-
 + exportPrivateKey
-
 + exportPubKey

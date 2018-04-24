@@ -2,7 +2,7 @@
 
 AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](install-and-configure-client.md#install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md)tool includes commands to manage keys\. To get started with the cloudhsm\_mgmt\_util command line tool, see the following topics\. 
 
-
+**Topics**
 + [Prepare to run cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-setup)
 + [Basic Usage of cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-basics)
 
@@ -12,7 +12,7 @@ Complete the following steps before you use cloudhsm\_mgmt\_util\. You need to d
 
 In these steps, you will update the HSM list in the configuration files that the AWS CloudHSM client and command line tools use\. Keeping these files updated helps AWS CloudHSM to synchronize data and maintain consistency across all HSMs in the cluster\. 
 
-
+**Topics**
 + [Step 1: Stop the AWS CloudHSM Client](#cloudhsm_mgmt_util-stop-cloudhsm-client)
 + [Step 2: Update the AWS CloudHSM Configuration Files](#cloudhsm_mgmt_util-config-a)
 + [Step 3: Start the AWS CloudHSM Client](#cloudhsm_mgmt_util-start-cloudhsm-client)
@@ -61,7 +61,7 @@ See the following topics for the basic usage of the cloudhsm\_mgmt\_util tool\.
 **Note**  
 The cloudhsm\_mgmt\_util tool doesn't support auto\-completing commands with the **Tab** key\. Don't use the **Tab** key with cloudhsm\_mgmt\_util, because that can make the tool unresponsive\.
 
-
+**Topics**
 + [Start cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-start)
 + [Enable End\-to\-End Encryption](#cloudhsm_mgmt_util-enable_e2e)
 + [Log in to the HSMs](#cloudhsm_mgmt_util-log-in)

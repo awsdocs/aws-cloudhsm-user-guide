@@ -8,7 +8,7 @@
 This example shows how to generate an RSA asymmetric key pair and save the keys in an HSM\. By default, the keys that the HSM generates are not saved\. To save a key, call the `makeKeyPersistant` method below\. You can save the key object and use the key handle in other operations\. 
 
 **Note**  
-This example uses the `loginWithExplicitCredentials()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. You can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
+This example uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. You can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
 
 ```
 package com.amazonaws.cloudhsm.examples.key.asymmetric;
@@ -33,7 +33,7 @@ import com.cavium.key.parameter.CaviumRSAKeyGenParameterSpec;
 public class RSAAsymmetricKeyGeneration {
 
   public static void main(String[] z) {
-    LoginLogoutExample.loginWithExplicitCredentials();
+    LoginLogoutExample.loginWithEnvVars();
     new RSAAsymmetricKeyGeneration().generateRSAKeyPair(2048, new BigInteger("65537"), true);
     new RSAAsymmetricKeyGeneration().generateRSAKeyPair(2048, new BigInteger("65537"), "publicKeyLabel-1" , "privateKeyLabel-1" , false, true);
     LoginLogoutExample.logout();

@@ -1,11 +1,8 @@
 # Using Quorum Authentication for Crypto Officers<a name="quorum-authentication-crypto-officers"></a>
 
 A [crypto officer \(CO\)](hsm-users.md#crypto-officer) on the HSM can configure quorum authentication for the following operations on the HSM:
-
 + Creating HSM users
-
 + Deleting HSM users
-
 + Changing another HSM user's password
 
 After the HSM is configured for quorum authentication, COs cannot perform HSM user management operations on their own\. The following example shows the output when a CO attempts to create a new user on the HSM\. The command fails with a `RET_MXN_AUTH_FAILED` error, which indicates that quorum authentication failed\.
@@ -59,9 +56,7 @@ First the CO must use the cloudhsm\_mgmt\_util command line tool to request a *q
 
 **Example – Get a quorum token**  
 This example gets a quorum token for the CO with user name officer1 and saves the token to a file named `officer1.token`\. To use the example command, replace these values with your own:  
-
 + *officer1* – The name of the CO who is getting the token\. This must be the same CO who is logged in to the HSM and is running this command\.
-
 + *officer1\.token* – The name of the file to use for storing the quorum token\.
 In the following command, `3` identifies the *service* for which you can use the token that you are getting\. In this case, the token is for HSM user management operations \(service 3\)\. For more information, see [Set the Quorum Minimum Value on the HSM](quorum-authentication-crypto-officers-first-time-setup.md#quorum-crypto-officers-set-quorum-minimum-value)\.  
 
@@ -92,11 +87,8 @@ There are many different ways to sign the token\. The following example shows ho
 **Example – Get signatures from approving COs**  
 In this example, the CO that has the token \(officer1\) needs at least two approvals\. The following example commands show how two COs can use OpenSSL to cryptographically sign the token\.  
 In the first command, officer1 signs his or her own token\. To use the following example commands, replace these values with your own:  
-
 + *officer1\.key* and *officer2\.key* – The name of the file that contains the CO's signing key\.
-
 + *officer1\.token\.sig1* and *officer1\.token\.sig2* – The name of the file to use for storing the signature\. Make sure to save each signature in a different file\.
-
 + *officer1\.token* – The name of the file that contains the token that the CO is signing\.
 
 ```
@@ -211,11 +203,8 @@ listTokens success
 ## Use the Token for User Management Operations<a name="quorum-crypto-officers-use-token"></a>
 
 After a CO has a token with the required number of approvals, as shown in the previous section, the CO can perform one of the following HSM user management operations:
-
 + Create an HSM user with the [createUser](cloudhsm_mgmt_util-createUser.md) command
-
 + Delete an HSM user with the deleteUser command
-
 + Change a different HSM user's password with the changePswd command
 
 For more information about using these commands, see [Managing HSM Users](manage-hsm-users.md)\.

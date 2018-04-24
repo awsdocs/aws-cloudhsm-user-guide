@@ -11,7 +11,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="changePswd-userType"></a>
 
 The following types of users can run this command\.
-
 + All users\.
 
 ## Syntax<a name="changePswd-syntax"></a>
@@ -107,18 +106,14 @@ Required: Yes
 Specifies a new password for the user\. Enter a string of 7 to 32 characters\. This value is case sensitive\. The password appears in plaintext when you type it\.   
 Required: Yes
 
-**1FA | 2FA**  
+**1FA \| 2FA**  
 Enables or disables dual\-factor authentication for the new user\. Enter `1FA` or `2FA`\.   
 This parameter is valid only when the cluster has been configured for dual\-factor authentication\.  
 Required: No  
 Default: `1FA`\. Dual factor authentication is not enabled\.
 
 ## Related Topics<a name="changePswd-seealso"></a>
-
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
-
 + [createUser](cloudhsm_mgmt_util-createUser.md)
-
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
-
 + syncUser

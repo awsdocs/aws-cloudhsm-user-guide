@@ -62,5 +62,4 @@ Specifies the key handle of the key to delete\. To find the key handles of keys 
 Required: Yes
 
 ## Related Topics<a name="deleteKey-seealso"></a>
-
 + [findKey](key_mgmt_util-findKey.md)

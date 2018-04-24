@@ -8,7 +8,7 @@
 This example shows how to generate a 168\-bit Triple DES \(3DES\) symmetric key and save it in an HSM\. By default, the keys that the HSM generates are not saved\. To save a key, call the `makeKeyPersistant` method below\. You can save the key object and use the key handle in other operations\. 
 
 **Note**  
-This example uses the `loginWithExplicitCredentials()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. You can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
+This example uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. You can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
 
 ```
 import java.security.Key;
@@ -28,7 +28,7 @@ public class DES3SymmetricKeyGeneration {
 
   // The key size can be either 168 or 192 bits.
   public static void main(String[] z) {
-    LoginLogoutExample.loginWithExplicitCredentials();
+    LoginLogoutExample.loginWithEnvVars();
     new DES3SymmetricKeyGeneration().generate3DesKey(168, true);
     new DES3SymmetricKeyGeneration().generate3DesKey(168, "DESKey-1", false, true);
     LoginLogoutExample.logout();

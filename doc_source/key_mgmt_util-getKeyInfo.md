@@ -120,11 +120,7 @@ To find key handles, use the [findKey](key_mgmt_util-listUsers.md) command\.
 Required: Yes
 
 ## Related Topics<a name="getKeyInfo-seealso"></a>
-
 + [getKeyInfo](cloudhsm_mgmt_util-getKeyInfo.md) in cloudhsm\_mgmt\_util
-
 + [listUsers](key_mgmt_util-listUsers.md)
-
 + [findKey](key_mgmt_util-findKey.md)
-
 + [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util

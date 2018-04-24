@@ -13,9 +13,7 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="findAllKeys-userType"></a>
 
 The following types of users can run this command\.
-
 + Crypto officers \(CO, PCO\)
-
 + Appliance users \(AU\)
 
 ## Syntax<a name="findAllKeys-syntax"></a>
@@ -126,15 +124,9 @@ Required: No
 Default: Stdout
 
 ## Related Topics<a name="findAllKeys-seealso"></a>
-
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)
-
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
-
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
-
 + syncUser
-
 + [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util
-
 + [getKeyInfo](key_mgmt_util-getKeyInfo.md) in key\_mgmt\_util

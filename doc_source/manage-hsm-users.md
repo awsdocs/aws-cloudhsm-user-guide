@@ -4,7 +4,7 @@ To manage users on the HSMs in your AWS CloudHSM cluster, use the AWS CloudHSM c
 
 To manage HSM users, log in to the HSM with the user name and password of a [cryptographic officer](hsm-users.md#crypto-officer) \(CO\)\. Only COs can manage other users\. The HSM contains a default CO named admin\. You set this user's password when you [activated the cluster](activate-cluster.md)\.
 
-
+**Topics**
 + [Create Users](#create-user)
 + [List Users](#list-users)
 + [Change a User's Password](#change-user-password)

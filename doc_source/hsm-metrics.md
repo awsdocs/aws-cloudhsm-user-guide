@@ -2,6 +2,6 @@
 
 You can use Amazon CloudWatch and AWS CloudTrail to retrieve metrics and logs for your AWS CloudHSM instances\. For more information, see the following topics: 
 
-
+**Topics**
 + [Getting CloudWatch Metrics](hsm-metrics-cw.md)
 + [Getting API Logs with AWS CloudTrail](hsm-metrics-ct.md)

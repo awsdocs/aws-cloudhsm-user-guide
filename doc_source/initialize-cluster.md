@@ -5,7 +5,7 @@ Complete the steps in the following topics to initialize your AWS CloudHSM clust
 **Note**  
 Before you initialize the cluster, review the process by which you can [verify the identity and authenticity of the HSMs](verify-hsm-identity.md)\. This process is optional and works only until a cluster is initialized\. After the cluster is initialized, you cannot use this process to get your certificates or verify the HSMs\. 
 
-
+**Topics**
 + [Get the Cluster CSR](#get-csr)
 + [Sign the CSR](#sign-csr)
 + [Initialize the Cluster](#initialize)
@@ -26,7 +26,6 @@ Before you can initialize the cluster, you must and sign a certificate signing r
    Choose **Cluster CSR** to download and save the CSR\.
 
 **Retrieve the CSR \([AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/)\)**
-
 + At a command prompt, run the following [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, which extracts the CSR and saves it to a file\. Replace *<cluster ID>* with the ID of the cluster that you [created previously](create-cluster.md)\. 
 
   ```
@@ -37,73 +36,74 @@ Before you can initialize the cluster, you must and sign a certificate signing r
   ```
 
 **Retrieve the CSR \(AWS CloudHSM API\)**
-
 + Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) request, and then extract and save the CSR from the response\.
 
 ## Sign the CSR<a name="sign-csr"></a>
 
-Currently, you must create a self\-signed signing certificate and use it to sign the CSR for your cluster\. One way to do this is by using a Linux shell and OpenSSL\. You do not need the AWS CLI for this step, and the shell does not need to be associated with your AWS account\. To sign the CSR, you must do the following:
-
+Currently, you must create a self\-signed signing certificate and use it to sign the CSR for your cluster\. You do not need the AWS CLI for this step, and the shell does not need to be associated with your AWS account\. To sign the CSR, you must do the following:
 + Retrieve the CSR \(see [Get the Cluster CSR](#get-csr)\)\.
-
 + Create a private key\.
-
 + Use the private key to create a signing certificate\.
++ Sign your cluster CSR\.
 
-+ Use the signing certificate to sign your cluster CSR\.
+### Create a private key<a name="sign-csr-create-key"></a>
 
-**To sign the CSR \(OpenSSL\)**
+Use the following command to create a private key\. For a production cluster, the key should be created in a secure manner using a trusted source of randomness\. We recommend that you use a secured off\-site and off\-line HSM or the equivalent\. Store the key safely\. Being able to demonstrate that you own the key enables you to demonstrate that you own the cluster and the data it contains\. 
 
-1. Use the following command to create a private key\. We recommend that you save this key in a safe place\. Any client that tries to communicate with an HSM requires this key\. 
+During development and test, you can use any convenient tool \(such as OpenSSL\) to create and sign the cluster certificate\. The following example shows you how to create a key\. After you have used the key to create a self\-signed certificate \(see below\), you should store it in a safe manner\. To sign into your AWS CloudHSM instance, the certificate needs to be present but the private key does not\. You use the key only for specific purposes such as restoring from a backup\. 
 
-   ```
-   $ openssl genrsa -aes256 -out customerCA.key 2048
-   Generating RSA private key, 2048 bit long modulus
-   ........+++
-   ............+++
-   e is 65537 (0x10001)
-   Enter pass phrase for customerCA.key:
-   Verifying - Enter pass phrase for customerCA.key:
-   ```
+```
+$ openssl genrsa -aes256 -out customerCA.key 2048
+Generating RSA private key, 2048 bit long modulus
+........+++
+............+++
+e is 65537 (0x10001)
+Enter pass phrase for customerCA.key:
+Verifying - Enter pass phrase for customerCA.key:
+```
 
-1. Use the following command and the private key that you created in the previous step to create a signing certificate\. The certificate is valid for 10 years \(3652 days\)\. Read the on\-screen instructions and follow the prompts\. 
+### Use the private key to create a self–signed certificate<a name="sign-csr-create-cert"></a>
 
-   ```
-   $ openssl req -new -x509 -days 3652 -key customerCA.key -out customerCA.crt
-   Enter pass phrase for customerCA.key:
-   You are about to be asked to enter information that will be incorporated
-   into your certificate request.
-   What you are about to enter is what is called a Distinguished Name or a DN.
-   There are quite a few fields but you can leave some blank
-   For some fields there will be a default value,
-   If you enter '.', the field will be left blank.
-   -----
-   Country Name (2 letter code) [AU]:
-   State or Province Name (full name) [Some-State]:
-   Locality Name (eg, city) []:
-   Organization Name (eg, company) [Internet Widgits Pty Ltd]:
-   Organizational Unit Name (eg, section) []:
-   Common Name (e.g. server FQDN or YOUR name) []:
-   Email Address []:
-   ```
+The trusted hardware that you use to create the private key for your production cluster should also provide a software tool to generate a self\-signed certificate using that key\. The following example uses OpenSSL and the private key that you created in the previous step to create a signing certificate\. The certificate is valid for 10 years \(3652 days\)\. Read the on\-screen instructions and follow the prompts\. 
 
-   This command creates a file named `customerCA.crt`\. Use this file to initialize the cluster\.
+```
+$ openssl req -new -x509 -days 3652 -key customerCA.key -out customerCA.crt
+Enter pass phrase for customerCA.key:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:
+Email Address []:
+```
 
-1. Sign the cluster's CSR with the signing certificate that you created in the previous step\. Replace *<cluster ID>* with the ID of the cluster that you created previously\. 
+This command creates a certificate file named `customerCA.crt`\. Put this certificate on every host from which you will connect to your AWS CloudHSM cluster\. If you give the file a different name or store it in a path other than the root of your host, you should edit your client configuration file accordingly\. Use the certificate and the private key you just created, to sign the cluster certificate signing request \(CSR\) in the next step\. 
 
-   ```
-   $ openssl x509 -req -days 3652 -in <cluster ID>_ClusterCsr.csr \
-                                 -CA customerCA.crt \
-                                 -CAkey customerCA.key \
-                                 -CAcreateserial \
-                                 -out <cluster ID>_CustomerHsmCertificate.crt
-   Signature ok
-   subject=/C=US/ST=CA/O=Cavium/OU=N3FIPS/L=SanJose/CN=HSM:<HSM identifer>:PARTN:<partition number>, for FIPS mode
-   Getting CA Private Key
-   Enter pass phrase for customerCA.key:
-   ```
+### Sign the Cluster CSR<a name="sign-csr-sign-cluster-csr"></a>
 
-   This command creates a file named `<cluster ID>_CustomerHsmCertificate.crt`\. Use this file as the signed certificate when you initialize the cluster\. 
+The trusted hardware you use to create your private key for your production cluster should also provide a tool to sign the CSR using that key\. The following example uses OpenSSL to sign the cluster's CSR\. The example uses your your private key and the self\-signed certificate you created in the previous step\. 
+
+```
+$ openssl x509 -req -days 3652 -in <cluster ID>_ClusterCsr.csr \
+                              -CA customerCA.crt \
+                              -CAkey customerCA.key \
+                              -CAcreateserial \
+                              -out <cluster ID>_CustomerHsmCertificate.crt
+Signature ok
+subject=/C=US/ST=CA/O=Cavium/OU=N3FIPS/L=SanJose/CN=HSM:<HSM identifer>:PARTN:<partition number>, for FIPS mode
+Getting CA Private Key
+Enter pass phrase for customerCA.key:
+```
+
+This command creates a file named `<cluster ID>_CustomerHsmCertificate.crt`\. Use this file as the signed certificate when you initialize the cluster\. 
 
 ## Initialize the Cluster<a name="initialize"></a>
 
@@ -128,13 +128,9 @@ Use your signed HSM certificate and your signing certificate to initialize your 
    1. Choose **Upload and initialize**\.
 
 **To initialize a cluster \([AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/)\)**
-
 + At a command prompt, run the [initialize\-cluster](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/initialize-cluster.html) command\. Provide the following: 
-
   + The ID of the cluster that you created previously\.
-
   + The HSM certificate that you signed previously\. If you completed the steps in the previous section, it's saved in a file named `<cluster ID>_CustomerHsmCertificate.crt`\. 
-
   + Your signing certificate\. If you completed the steps in the previous section, the signing certificate is saved in a file named `customerCA.crt`\.
 
   ```
@@ -148,13 +144,9 @@ Use your signed HSM certificate and your signing certificate to initialize your 
   ```
 
 **To initialize a cluster \(AWS CloudHSM API\)**
-
 + Send an [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_InitializeCluster.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_InitializeCluster.html) request with the following:
-
   + The ID of the cluster that you created previously\.
-
   + The HSM certificate that you signed previously\.
-
   + Your signing certificate\.
 
 After you initialize the cluster, proceed to [Launch a Client](launch-client-instance.md)\.

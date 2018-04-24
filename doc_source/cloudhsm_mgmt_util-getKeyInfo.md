@@ -13,7 +13,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="chmu-getKeyInfo-userType"></a>
 
 The following types of users can run this command\.
-
 + Crypto users \(CU\)
 
 ## Syntax<a name="chmu-getKeyInfo-syntax"></a>
@@ -174,13 +173,8 @@ Required: No
 Default: stdout
 
 ## Related Topics<a name="chmu-getKeyInfo-seealso"></a>
-
 + [getKeyInfo](key_mgmt_util-getKeyInfo.md) in key\_mgmt\_util
-
 + [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util
-
 + [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util
-
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
-
 + [shareKey](cloudhsm_mgmt_util-shareKey.md)

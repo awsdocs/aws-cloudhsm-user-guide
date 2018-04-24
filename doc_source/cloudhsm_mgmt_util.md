@@ -6,6 +6,6 @@ cloudhsm\_mgmt\_util also includes commands that allow Crypto Users \(CUs\) to s
 
 For a quick start, see [Getting Started with cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md)\. For detailed information about the cloudhsm\_mgmt\_util commands and examples of using the commands, see [cloudhsm\_mgmt\_util Command Reference](cloudhsm_mgmt_util-reference.md)\. 
 
-
+**Topics**
 + [Getting Started with cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md)
 + [cloudhsm\_mgmt\_util Command Reference](cloudhsm_mgmt_util-reference.md)

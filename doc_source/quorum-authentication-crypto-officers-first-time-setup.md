@@ -2,7 +2,7 @@
 
 The following topics describe the steps that you must complete to configure your HSM so that [crypto officers \(COs\)](hsm-users.md#crypto-officer) can use quorum authentication\. You need to do these steps only once when you first configure quorum authentication for COs\. After you complete these steps, see [Using Quorum Authentication for Crypto Officers](quorum-authentication-crypto-officers.md)\.
 
-
+**Topics**
 + [Prerequisites](#quorum-crypto-officers-prerequisites)
 + [Create and Register a Key for Signing](#quorum-crypto-officers-create-and-register-key)
 + [Set the Quorum Minimum Value on the HSM](#quorum-crypto-officers-set-quorum-minimum-value)
@@ -76,11 +76,8 @@ After creating a key, the CO must register the public part of the key \(the publ
 
 **Example – Register a public key with the HSM**  
 The following example shows how to use the registerMofnPubKey command in the cloudhsm\_mgmt\_util command line tool to register a CO's public key with the HSM\. To use this command, the CO must be logged in to the HSM\. Replace these values with your own:  
-
 + *key\_match\_string* – An arbitrary string that is used to match the public and private keys\. You can use any string for this value\. The cloudhsm\_mgmt\_util command line tool encrypts this string with the private key, and then sends the encrypted blob and the plaintext string to the HSM\. The HSM uses the public key to decrypt the encrypted blob, and then compares the decrypted string to the plaintext string\. If the strings match, the HSM registers the public key; otherwise it doesn't\.
-
 + *officer1* – The user name of the CO who is registering the public key\. This must be the same CO who is logged in to the HSM and is running this command\.
-
 + *officer1\.key* – The name of the file that contains the CO's key\. This file must contain the complete key \(not just the public part\) because the cloudhsm\_mgmt\_util command line tool uses the private key to encrypt the *key match string*\.
 When prompted, type the pass phrase that protects the CO's key\.  
 

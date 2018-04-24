@@ -6,6 +6,6 @@ For a quick start, see [Getting Started with key\_mgmt\_util](key_mgmt_util-gett
 
 To use key\_mgmt\_util, connect to your client instance and then [install and configure the AWS CloudHSM client software](install-and-configure-client.md)\.
 
-
+**Topics**
 + [Getting Started with key\_mgmt\_util](key_mgmt_util-getting-started.md)
 + [key\_mgmt\_util Command Reference](key_mgmt_util-reference.md)

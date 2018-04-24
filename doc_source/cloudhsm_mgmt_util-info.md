@@ -9,7 +9,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="info-userType"></a>
 
 The following types of users can run this command\.
-
 + All users\. You do not have to be logged in to run this command\.
 
 ## Syntax<a name="info-syntax"></a>
@@ -43,7 +42,5 @@ Specifies the server ID of the HSM\. The HSMs are assigned ordinal numbers that 
 Required: Yes
 
 ## Related Topics<a name="info-seealso"></a>
-
 + [getHSMInfo](cloudhsm_mgmt_util-getHSMInfo.md)
-
 + loginHSM

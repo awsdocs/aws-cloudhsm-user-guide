@@ -9,7 +9,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="getHSMInfo-userType"></a>
 
 The following types of users can run this command\.
-
 + All users\. You do not have to be logged in to run this command\.
 
 ## Syntax<a name="getHSMInfo-syntax"></a>
@@ -64,7 +63,5 @@ Getting HSM Info on 3 nodes
 ```
 
 ## Related Topics<a name="getHSMInfo-seealso"></a>
-
 + [info](cloudhsm_mgmt_util-info.md)
-
 + loginHSM

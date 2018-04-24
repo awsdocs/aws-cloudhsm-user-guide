@@ -11,7 +11,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="createUser-userType"></a>
 
 The following types of users can run this command\.
-
 + Crypto officers \(CO, PCO\)
 
 ## Syntax<a name="createUser-syntax"></a>
@@ -119,11 +118,8 @@ createUser <user-type> <user-name> <password> [ 1FA | 2FA ]
 Specifies the type of user\. This parameter is required\.   
 For detailed information about the user types on an HSM, see [HSM Users](hsm-users.md)\.  
 Valid values:  
-
 + **CO**: Crypto officers can manage users, but they cannot manage keys\. 
-
 + **CU**: Crypto users can create an manage keys and use keys in cryptographic operations\.
-
 + **AU**: Appliance users can clone and synchronize operations\. One AU is created for you on each HSM that you install\.
 PCO, PRECO, and preCO are also valid values, but they are rarely used\. A PCO is functionally identical to a CO user\. A PRECO user is a temporary type that is created automatically on each HSM\. The PRECO is converted to a PCO when you assign a password during [HSM activation](activate-cluster.md)\.  
 Required: Yes
@@ -138,18 +134,14 @@ Specifies a password for the user\. Enter a string of 7 to 32 characters\. This 
 To change a user password, use changePswd\. Any HSM user can change their own password, but CO users can change the password of any user \(of any type\) on the HSMs\.  
 Required: Yes
 
-**1FA | 2FA**  
+**1FA \| 2FA**  
 Enables or disables dual\-factor authentication for the new user\. Enter `1FA` or `2FA`\.  
 This parameter is valid only when the cluster has been configured for dual\-factor authentication\.  
 Required: No  
 Default: 1FA: Dual factor authentication is not enabled\.
 
 ## Related Topics<a name="createUser-seealso"></a>
-
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
-
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
-
 + syncUser
-
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)

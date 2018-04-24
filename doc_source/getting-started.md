@@ -20,13 +20,13 @@ The following topics contain information that will help you create, initialize, 
 
 1. Follow the steps in [Activate the Cluster](activate-cluster.md)\.
 
-
+**Topics**
 + [Create IAM Administrative Groups](create-iam-user.md)
-+ [Launch a Client](launch-client-instance.md)
 + [Create a Virtual Private Cloud \(VPC\)](create-vpc.md)
 + [Create a Private Subnet](create-subnets.md)
 + [Create a Cluster](create-cluster.md)
 + [Create an HSM](create-hsm.md)
++ [Launch a Client](launch-client-instance.md)
 + [Verify the Identity and Authenticity of Your Cluster's HSM \(Optional\)](verify-hsm-identity.md)
 + [Initialize the Cluster](initialize-cluster.md)
 + [Install and Configure the AWS CloudHSM Client](install-and-configure-client.md)

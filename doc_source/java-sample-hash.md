@@ -7,7 +7,7 @@
 
 This sample shows how to generate a hash of a message using an HSM and the SHA\-512 hash algorithm\.
 
-This example uses the `loginWithExplicitCredentials()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM, but you can substitute the login method that you prefer\. Also, the sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
+This example uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM, but you can substitute the login method that you prefer\. Also, the sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
 
 ```
 package com.amazonaws.cloudhsm.examples;
@@ -21,7 +21,7 @@ public class HashExample {
     String plainText = "This is a sample plaintext message.";
     String hashAlgorithm = "SHA-512";
     public static void main(String[] args) {
-        LoginLogoutExample.loginWithExplicitCredentials();
+        LoginLogoutExample.loginWithEnvVars();
         HashExample obj = new HashExample();
         // Generate the hash.
         byte[] hash = obj.getHash(obj.plainText, obj.hashAlgorithm);

@@ -2,7 +2,7 @@
 
 To finish setting up your web server for SSL/TLS offload with AWS CloudHSM, see the following topics:
 
-
+**Topics**
 + [Update the Web Server Configuration](#ssl-offload-update-web-server-configuration)
 + [Add the Web Server to a Security Group](#ssl-offload-add-security-group)
 + [Verify That HTTPS Uses the Private Key in Your AWS CloudHSM Cluster](#ssl-offload-verify-https-connection)
@@ -10,9 +10,7 @@ To finish setting up your web server for SSL/TLS offload with AWS CloudHSM, see 
 ## Update the Web Server Configuration<a name="ssl-offload-update-web-server-configuration"></a>
 
 To update your web server configuration, complete the steps in one of the following procedures\. Choose the procedure that corresponds to your web server software\. 
-
 + [Update the configuration for Nginx](#update-web-server-config-nginx)
-
 + [Update the configuration for Apache HTTP Server](#update-web-server-config-apache)<a name="update-web-server-config-nginx"></a>
 
 **Update the web server configuration for Nginx**
@@ -238,9 +236,7 @@ After you add the web server to a security group, you can verify that SSL/TLS of
 You can use a DNS service such as Route 53 to route your website's domain name to your web server\. For more information, see [Routing Traffic to an Amazon EC2 Instance](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html) in the *Amazon Route 53 Developer Guide* or in the documentation for your DNS service\.
 
 1. Use your web browser to view the web server certificate\. For more information, see the following:
-
    + For Mozilla Firefox, see [ View a Certificate ](https://support.mozilla.org/en-US/kb/secure-website-certificate#w_view-a-certificate) on the Mozilla Support website\. 
-
    + For Google Chrome, see [ Understand Security Issues ](https://developers.google.com/web/tools/chrome-devtools/security) on the Google Developers website\. 
 
    Other web browsers might have similar features that you can use to view the web server certificate\.

@@ -184,11 +184,7 @@ Default: No attestation check\.
 Required: No
 
 ## Related Topics<a name="genRSAKeyPair-seealso"></a>
-
 + [genSymKey](key_mgmt_util-genSymKey.md)
-
 + createKeyPair
-
 + [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)
-
 + [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)

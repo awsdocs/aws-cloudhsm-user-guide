@@ -6,7 +6,7 @@ This topic explains how to resolve the most common problems so you can create a 
 
 The following sections offer suggestions to troubleshoot cluster creation failures that are related to the service\-linked role\. If you try them but are still unable to create a cluster, contact [AWS Support](https://aws.amazon.com/contact-us/)\. For more information about the AWSServiceRoleForCloudHSM service\-linked role, see [Understanding Service–Linked Roles](create-iam-user.md#service-linked-roles)\. 
 
-
+**Topics**
 + [Add the Missing Permission](#missing-permission)
 + [Create the Service\-Linked Role Manually](#api-call-failure)
 + [Use a Nonfederated User](#non-federated-user)

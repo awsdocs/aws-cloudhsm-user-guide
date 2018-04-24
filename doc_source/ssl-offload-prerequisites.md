@@ -1,17 +1,11 @@
 # Web Server SSL/TLS Offload Step 1: Set Up the Prerequisites<a name="ssl-offload-prerequisites"></a>
 
 To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
-
 + An active AWS CloudHSM cluster with at least one HSM\.
-
 + An Amazon EC2 instance running a Linux operating system with the following software installed:
-
   + The AWS CloudHSM client and command line tools\.
-
   + The Nginx or Apache web server application\.
-
   + The AWS CloudHSM software library for OpenSSL\.
-
 + A cryptographic user \(CU\) to own and manage the private key on the HSM\.
 
 **To set up the prerequisites for SSL/TLS offload AWS CloudHSM**
@@ -21,13 +15,11 @@ To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
 1. Connect to your client instance and do the following:
 
    1. Choose whether to install the Nginx or Apache web server application\. Then complete one of the following steps:
-
       + To install Nginx, run the following command\.
 
         ```
         sudo yum install -y nginx
         ```
-
       + To install Apache, run the following command\.
 
         ```

@@ -12,7 +12,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="deleteUser-userType"></a>
 
 The following types of users can run this command\.
-
 + Crypto officers \(CO, PCO\)
 
 ## Syntax<a name="deleteUser-syntax"></a>
@@ -112,11 +111,7 @@ You cannot change the name of a user after it is created\. In cloudhsm\_mgmt\_ut
 Required: Yes
 
 ## Related Topics<a name="deleteUser-seealso"></a>
-
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
-
 + [createUser](cloudhsm_mgmt_util-createUser.md)
-
 + syncUser
-
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)

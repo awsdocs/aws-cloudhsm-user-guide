@@ -7,7 +7,7 @@
 
 This sample shows how to generate a hash\-based message authentication code \(HMAC\) in the HSM and use it to hash a message\. Unlike a typical hash, an HMAC uses a hash function and a cryptographic key\. 
 
-To generate a symmetric key, this sample calls the `generateAESKey()` method in the [Create an AES Key](java-sample-aes-key.md) sample\. It uses the `loginWithExplicitCredentials()` method in the [Log In To an HSM](java-sample-login.md) example to log in to the HSM, but you can substitute the login method that you prefer\. Also, this sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
+To generate a symmetric key, this sample calls the `generateAESKey()` method in the [Create an AES Key](java-sample-aes-key.md) sample\. It uses the `loginWithEnvVars()` method in the [Log In To an HSM](java-sample-login.md) example to log in to the HSM, but you can substitute the login method that you prefer\. Also, this sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
 
 ```
 package com.amazonaws.cloudhsm.examples;
@@ -28,7 +28,7 @@ public class HMACExample {
     String macAlgorithm= "HmacSHA512";
 
     public static void main(String[] args) {
-        LoginLogoutExample.loginWithExplicitCredentials();
+        LoginLogoutExample.loginWithEnvVars();
         
         // Generate a 256-bit AES key for the HMAC.
         Key aesKey = new SymmetricKeyGeneration().generateAESKey(256, true);

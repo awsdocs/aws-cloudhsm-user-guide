@@ -6,7 +6,7 @@ To integrate Oracle TDE with your AWS CloudHSM cluster, see the following topics
 
 1. [Generate the Oracle TDE Master Encryption Key](#oracle-tde-generate-master-key) on the HSMs in your cluster\.
 
-
+**Topics**
 + [Update the Oracle Database Configuration](#oracle-tde-configure-database)
 + [Generate the Oracle TDE Master Encryption Key](#oracle-tde-generate-master-key)
 
@@ -35,13 +35,11 @@ To update the Oracle Database configuration to use an HSM in your cluster as the
    ```
 
 1. Use one of the following commands to copy the AWS CloudHSM software library for PKCS \#11 file to the directory that you created in the previous step\. 
-
    + If you installed the PKCS \#11 library without Redis, run the following command\.
 
      ```
      sudo cp /opt/cloudhsm/lib/libcloudhsm_pkcs11_standard.so /opt/oracle/extapi/64/hsm/
      ```
-
    + If you installed the PKCS \#11 library with Redis, run the following command\.
 
      ```
@@ -69,13 +67,11 @@ To generate the Oracle TDE master key on the HSMs in your cluster, complete the 
 1. Run the SQL statement that creates the master encryption key, as shown in the following examples\. Use the statement that corresponds to your version of Oracle Database\. Replace *<CU user name>* with the user name of the cryptographic user \(CU\)\. Replace *<password>* with the CU password\. 
 **Important**  
 Run the following command only once\. Each time the command is run, it creates a new master encryption key\. 
-
    + For Oracle Database version 11, run the following SQL statement\.
 
      ```
      SQL> alter system set encryption key identified by "<CU user name>:<password>";
      ```
-
    + For Oracle Database version 12, run the following SQL statement\.
 
      ```
@@ -91,7 +87,6 @@ Run the following command only once\. Each time the command is run, it creates a
    ```
 
    If the wallet is not open, use one of the following commands to open it\. Replace *<CU user name>* with the name of the cryptographic user \(CU\)\. Replace *<password>* with the CU password\. 
-
    + For Oracle 11, run the following command to open the wallet\.
 
      ```
@@ -103,7 +98,6 @@ Run the following command only once\. Each time the command is run, it creates a
      ```
      SQL> alter system set encryption wallet close identified by "<CU user name>:<password>";
      ```
-
    + For Oracle 12, run the following command to open the wallet\.
 
      ```

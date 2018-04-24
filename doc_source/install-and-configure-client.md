@@ -2,7 +2,7 @@
 
 To interact with the HSM in your AWS CloudHSM cluster, you need the AWS CloudHSM client software\. We recommend that you install it on [the client instance that you created previously](launch-client-instance.md)\. 
 
-
+**Topics**
 + [Install the AWS CloudHSM Client and Command Line Tools](#install-client)
 + [Edit the Client Configuration](#edit-client-configuration)
 
@@ -52,9 +52,9 @@ Before you can use the AWS CloudHSM client to connect to your cluster, you must 
 
    ```
    sudo /opt/cloudhsm/bin/configure -a <IP address>
-   
-   Inserting '<IP address>' into '/opt/cloudhsm/etc/cloudhsm_client.cfg'
-   Inserting '<IP address>' into '/opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg'
+   	
+   Updating server config in /opt/cloudhsm/etc/cloudhsm_client.cfg
+   Updating server config in /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
 After you install and configure the AWS CloudHSM client, proceed to [Activate the Cluster](activate-cluster.md)\. 

@@ -167,26 +167,18 @@ Required: Yes
 **\-t**  
 Specifies the type of the symmetric key\. Enter the constant that represents the key type\. For example, to create an AES key, type `-t 31`\.  
 Valid values:   
-
 + 16: [GENERIC\_SECRET](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226962)\. A *generic secret key* is a byte array that does not conform to any particular standard, such as the requirements for an AES key\. 
-
 + 18: [RC4](https://en.wikipedia.org/wiki/RC4)\. RC4 keys are not valid on FIPS\-mode HSMs
-
 + 21: [Triple DES \(3DES\)](https://en.wikipedia.org/wiki/Triple_DES)\.
-
 + 31: [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 Required: Yes
 
 **\-s**  
 Specifies the key size in bytes\. For example, to create a 192\-bit key, type `24`\.   
 Valid values for each key type:  
-
 + AES: 16 \(128 bits\), 24 \(192 bits\), 32 \(256 bits\)
-
 + 3DES: 24 \(192 bits\)
-
 + RC4: <256 \(2048 bits\)
-
 + Generic Secret: <3584 \(28672 bits\)
 Required: Yes
 
@@ -244,11 +236,7 @@ Default: Only the current user can use the key\.
 Required: No
 
 ## Related Topics<a name="genSymKey-seealso"></a>
-
 + [exSymKey](key_mgmt_util-exSymKey.md)
-
 + [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
-
 + [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)
-
 + [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)

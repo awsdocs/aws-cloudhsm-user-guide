@@ -4,7 +4,7 @@ To manage keys on the HSMs in your AWS CloudHSM cluster, use the [key\_mgmt\_uti
 
 To manage keys, [log in to the HSM](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) with the user name and password of a crypto user \(CU\)\. Only CUs can create keys\. Keys are inherently owned and managed by the CU who created them\.
 
-
+**Topics**
 + [Generate Keys](#generate-keys)
 + [Import Keys](#import-keys)
 + [Export Keys](#export-keys)
@@ -94,7 +94,6 @@ This example shows how to import a plaintext secret key from a file into the HSM
    ```
 
 1. Use one of the following commands, depending on the type of secret key that you are importing\.
-
    + To import a symmetric key, use the imSymKey command\. The following command imports an AES key from a file named `aes256.key` using the wrapping key created in the previous step\. To see all available options, use the imSymKey \-h command\.
 
      ```
@@ -112,7 +111,6 @@ This example shows how to import a plaintext secret key from a file into the HSM
      Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
      Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
      ```
-
    + To import an asymmetric private key, use the importPrivateKey command\. The following command imports a private key from a file named `rsa2048.key` using the wrapping key created in the previous step\. To see all available options, use the importPrivateKey \-h command\.
 
      ```
@@ -179,7 +177,6 @@ Complete the following steps to export a secret key\.
    ```
 
 1. Use one of the following commands, depending on the type of secret key that you are exporting\.
-
    + To export a symmetric key, use the [exSymKey](key_mgmt_util-exSymKey.md) command\. The following command exports an AES key to a file named `aes256.key.exp`\. To see all available options, use the exSymKey \-h command\.
 
      ```
@@ -193,7 +190,6 @@ Complete the following steps to export a secret key\.
      ```
 **Note**  
 The command's output says that a "Wrapped Symmetric Key" is written to the output file\. However, the output file contains a plaintext \(not wrapped\) key\. To export a wrapped \(encrypted\) key to a file, use the [wrapKey](key_mgmt_util-wrapKey.md) command\.
-
    + To export a private key, use the exportPrivateKey command\. The following command exports a private key to a file named `rsa2048.key.exp`\. To see all available options, use the exportPrivateKey \-h command\.
 
      ```

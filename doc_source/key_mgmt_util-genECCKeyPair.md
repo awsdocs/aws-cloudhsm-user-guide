@@ -118,35 +118,20 @@ Required: Yes
 **\-i **  
 Specifies the identifier for the elliptic curve\. Enter an identifier \(1 \- 15\)\.   
 Valid values:   
-
 + **1**: NID\_X9\_62\_prime192v1
-
 + **2**: NID\_X9\_62\_prime256v1
-
 + **3**: NID\_sect163k1
-
 + **4**: NID\_sect163r2
-
 + **5**: NID\_sect233k1
-
 + **6**: NID\_sect233r1
-
 + **7**: NID\_sect283k1
-
 + **8**: NID\_sect283r1
-
 + **9**: NID\_sect409k1
-
 + **10**: NID\_sect409r1
-
 + **11**:NID\_sect571k1
-
 + **12**: NID\_sect571r1
-
 + **13**: NID\_secp224r1
-
 + **14**:NID\_secp384r1
-
 + **15**: NID\_secp521r1
 Required: Yes
 
@@ -204,9 +189,6 @@ Default: No attestation check\.
 Required: No
 
 ## Related Topics<a name="genECCKeyPair-seealso"></a>
-
 + [genSymKey](key_mgmt_util-genSymKey.md)
-
 + [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
-
 + [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)

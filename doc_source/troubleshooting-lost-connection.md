@@ -15,9 +15,7 @@ To resolve these errors, update the configuration file with the IP address of an
 **To update the configuration file for the AWS CloudHSM client**
 
 1. Use one of the following ways to find the IP address of an active HSM in your cluster\.
-
    + View the **HSMs** tab on the cluster details page in the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/home)\.
-
    + Use the AWS Command Line Interface \(AWS CLI\) to issue the [http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command\.
 
    You need this IP address in a subsequent step\.

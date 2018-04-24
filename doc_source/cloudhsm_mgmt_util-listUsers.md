@@ -9,7 +9,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="listUsers-userType"></a>
 
 The following types of users can run this command\.
-
 + All users\. You do not need to be logged in to run this command\.
 
 ## Syntax<a name="chmu-listUsers-syntax"></a>
@@ -50,27 +49,16 @@ Number of users found:5
 ```
 
 The output includes the following user attributes:
-
 + **User ID**: Identifies the user in key\_mgmt\_util and [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) commands\.
-
 + [User type](hsm-users.md): Determines the operations that the user can perform on the HSM\.
-
 + **User Name**: Displays the user\-defined friendly name for the user\.
-
 + **MofnPubKey**: Indicates whether the user has registered a key pair for signing [quorum authentication tokens](quorum-authentication.md)\.
-
 + **LoginFailureCnt**: 
-
 + **2FA**: Indicates that the user has enabled multi\-factor authentication\. 
 
 ## Related Topics<a name="chmu-listUsers-seealso"></a>
-
 + [listUsers](key_mgmt_util-listUsers.md) in key\_mgmt\_util
-
 + [createUser](cloudhsm_mgmt_util-createUser.md)
-
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
-
 + syncUser
-
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)

@@ -9,7 +9,6 @@ Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key
 ## User Type<a name="listAttributes-userType"></a>
 
 The following types of users can run this command\.
-
 + All users\. You do not have to be logged in to run this command\.
 
 ## Syntax<a name="chmu-listAttributes-syntax"></a>
@@ -58,9 +57,6 @@ Displays help for the command\.
 Required: Yes
 
 ## Related Topics<a name="chmu-listAttributes-seealso"></a>
-
 + [getAttribute](cloudhsm_mgmt_util-getAttribute.md)
-
 + [setAttribute](cloudhsm_mgmt_util-setAttribute.md)
-
 + [Key Attribute Reference](key-attribute-table.md)

@@ -15,7 +15,6 @@ If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-g
 ## User Type<a name="chmu-getAttribute-userType"></a>
 
 The following types of users can run this command\.
-
 + Crypto users \(CU\)
 
 ## Syntax<a name="chmu-getAttribute-syntax"></a>
@@ -104,13 +103,8 @@ Required: No
 Default: Stdout
 
 ## Related Topics<a name="chmu-getAttribute-seealso"></a>
-
 + [getAttribute](key_mgmt_util-getAttribute.md) in key\_mgmt\_util
-
 + [listAttributes](cloudhsm_mgmt_util-listAttributes.md)
-
 + [setAttribute](cloudhsm_mgmt_util-setAttribute.md) in cloudhsm\_mgmt\_util
-
 + [setAttribute](key_mgmt_util-setAttribute.md) in key\_mgmt\_util
-
 + [Key Attribute Reference](key-attribute-table.md)

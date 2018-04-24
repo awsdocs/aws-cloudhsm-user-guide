@@ -31,7 +31,6 @@ You can create a cluster from the [AWS CloudHSM console](https://console.aws.ama
 1. Review your cluster configuration, then choose **Create cluster**\.
 
 **To create a cluster \([AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/)\)**
-
 + At a command prompt, run the [create\-cluster](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/create-cluster.html) command\. Specify the HSM instance type and the subnet IDs of the subnets where you plan to create HSMs\. Use the subnet IDs of the private subnets that you created\. Specify only one subnet per Availability Zone\. 
 
   ```
@@ -58,7 +57,6 @@ You can create a cluster from the [AWS CloudHSM console](https://console.aws.ama
   ```
 
 **To create a cluster \(AWS CloudHSM API\)**
-
 + Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html) request\. Specify the HSM instance type and the subnet IDs of the subnets where you plan to create HSMs\. Use the subnet IDs of the private subnets that you created\. Specify only one subnet per Availability Zone\.
 
 If your attempts to create a cluster fail, it might be related to problems with the AWS CloudHSM service\-linked roles\. For help to resolve the failure, see [Resolving Cluster Creation Failures](troubleshooting-create-cluster.md)\.

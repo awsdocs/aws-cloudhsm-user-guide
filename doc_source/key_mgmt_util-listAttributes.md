@@ -44,11 +44,7 @@ Following are the possible attribute values for getAttributes:
 ```
 
 ## Related Topics<a name="listAttributes-seealso"></a>
-
 + [listAttributes](cloudhsm_mgmt_util-listAttributes.md) in cloudhsm\_mgmt\_util
-
 + [getAttribute](key_mgmt_util-getAttribute.md)
-
 + [setAttribute](key_mgmt_util-setAttribute.md)
-
 + [Key Attribute Reference](key-attribute-table.md)

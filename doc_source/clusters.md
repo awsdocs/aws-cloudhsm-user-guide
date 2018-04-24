@@ -10,7 +10,7 @@ To create a cluster, see [Getting Started](getting-started.md)\.
 
 For more information about clusters, see the following topics\.
 
-
+**Topics**
 + [Cluster Architecture](#cluster-architecture)
 + [Cluster Synchronization](#cluster-synchronization)
 + [Cluster High Availability and Load Balancing](#cluster-high-availability-load-balancing)

@@ -2,7 +2,7 @@
 
 AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](install-and-configure-client.md#install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md)tool includes commands to manage keys\. To get started with the key\_mgmt\_util command line tool, see the following topics\. 
 
-
+**Topics**
 + [Set Up key\_mgmt\_util](#key_mgmt_util-setup)
 + [Basic Usage of key\_mgmt\_util](#key_mgmt_util-basics)
 
@@ -51,7 +51,7 @@ If the command fails, such as returning a `Daemon socket connection error` messa
 
 See the following topics for the basic usage of the key\_mgmt\_util tool\.
 
-
+**Topics**
 + [Log In to the HSMs](#key_mgmt_util-log-in)
 + [Log Out from the HSMs](#key_mgmt_util-log-out)
 + [Stop key\_mgmt\_util](#key_mgmt_util-stop)

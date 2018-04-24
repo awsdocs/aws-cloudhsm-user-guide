@@ -8,7 +8,7 @@
 The example shows how to use the AES algorithm with the Galois Counter Mode \(GCM\) to encrypt and decrypt a message\. The example uses an initialization vector \(IV\), additional authenticated data \(AAD\), and no padding\. The `encrypt()` method returns an object that includes the ciphertext, the IV, the length of the ciphertext, and the length of the IV\. 
 
 **Note**  
-This example uses the `loginWithExplicitCredentials()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. This sample uses the AESSymmetricKeyGeneration discussed in the [Create an AES Key](java-sample-aes-key.md)\. The sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
+This example uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. This sample uses the AESSymmetricKeyGeneration discussed in the [Create an AES Key](java-sample-aes-key.md)\. The sample assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
 
 ```
 package com.amazonaws.cloudhsm.examples.crypto.symmetric;
@@ -44,7 +44,7 @@ public class AESGCMEncryptDecryptExample {
     AESGCMEncryptDecryptExample obj = new AESGCMEncryptDecryptExample();
     
     // Log in to HSM with cryptographic user permissions.
-    LoginLogoutExample.loginWithExplicitCredentials();
+    LoginLogoutExample.loginWithEnvVars();
 
     // Generate a new AES Key to use for encryption.
     Key key =new AESSymmetricKeyGeneration().generateAESKey(256, true);

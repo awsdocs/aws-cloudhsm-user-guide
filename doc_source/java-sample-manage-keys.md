@@ -6,19 +6,15 @@
 |  \*\* Example code only \- Not for production use \*\* This page includes example code that has not been fully tested\. It is designed for test environments\. Do not run this code in production\.  | 
 
 This sample shows how to manage keys in an HSM\. It demonstrates the following operations:
-
 + **Get** a reference to a key in the HSM\.
-
 + **Export** a key from the HSM\. This operation returns the key so that you can import it into a different HSM and use it in other operations\. It does not delete the key from the HSM\.
-
 + **Delete** a key from the HSM\.
-
 + **Import** a key into the HSM\. This example returns a key handle that you can use to identify the key in other operations\.
 
 **Note**  
 To use a key in an encryption operation, specify the key handle\. You do not need to get or export the key\.
 
-This sample uses the `loginWithExplicitCredentials()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM, but you can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
+This sample uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM, but you can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
 
 You can also use the **key\_mgmt\_util** command line tool to [manage keys in AWS CloudHSM](manage-keys.md)\. 
 
@@ -58,7 +54,7 @@ import com.cavium.key.parameter.CaviumKeyGenAlgorithmParameterSpec;
 public class KeyManagement {
 
     public static void main(String[] args) {
-        LoginLogoutExample.loginWithExplicitCredentials();
+        LoginLogoutExample.loginWithEnvVars();
         
         // Get a reference to a key in the HSM.
         // Replace the placeholder with an actual key handle value.
