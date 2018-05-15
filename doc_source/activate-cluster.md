@@ -1,18 +1,37 @@
-# Getting Started with AWS CloudHSM: Activate the Cluster<a name="activate-cluster"></a>
+# Activate the Cluster<a name="activate-cluster"></a>
 
 When you activate an AWS CloudHSM cluster, the cluster's state changes from initialized to active\. You can then [manage the HSM's users](manage-hsm-users.md) and [use the HSM](use-hsm.md)\. 
 
-To activate the cluster, you log in to the HSM with the credentials of the HSM's [precrypto officer \(PRECO\) user](hsm-users.md)\. Then you change the user's default password, which makes the user a crypto officer \(CO\)\. 
+To activate the cluster, log in to the HSM with the credentials of the [precrypto officer \(PRECO\)](hsm-users.md)\. This a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. When you change the password, the PRECO user becomes a crypto officer \(CO\)\. 
 
 **To activate a cluster**
 
-1. If you haven't already done so, connect to the client instance that you [created previously](launch-client-instance.md)\. You can do this [using SSH \(Linux or macOS\)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) or [from Windows using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)\.
+1. Connect to the client instance that you launched in previously\. For more information, see [Launch an Amazon EC2 Client Instance](launch-client-instance.md)\. You can launch a Linux instance or a Windows Server\. 
 
-1. Use the following command to start the AWS CloudHSM [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) command line tool\.
+1. Use the following command to start the `cloudhsm_mgmt_util` command line utility\.
+
+------
+#### [ Amazon Linux ]
 
    ```
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
+
+------
+#### [ Ubuntu ]
+
+   ```
+   $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
+   ```
+
+------
+#### [ Windows ]
+
+   ```
+   c:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe c:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   ```
+
+------
 
 1. Use the enable\_e2e command to enable end\-to\-end encryption\.
 
@@ -34,7 +53,7 @@ To activate the cluster, you log in to the HSM with the credentials of the HSM's
             2              AU              app_user                                 NO               0               NO
    ```
 
-1. Use the loginHSM command to log in to the HSM as the [precrypto officer \(PRECO\)](hsm-users.md#preco) user\. 
+1. Use the loginHSM command to log in to the HSM as the PRECO user\. This is a temporary user that exists on the first HSM in your cluster\. 
 
    ```
    aws-cloudhsm>loginHSM PRECO admin password
@@ -42,7 +61,7 @@ To activate the cluster, you log in to the HSM with the credentials of the HSM's
    loginHSM success on server 0(server1)
    ```
 
-1. Use the changePswd command to change the precrypto officer \(PRECO\) user's password\. 
+1. Use the changePswd command to change the password for the PRECO user\. When you change the password, the PRECO user becomes a crypto officer \(CO\)\. 
 
    ```
    aws-cloudhsm>changePswd PRECO admin <NewPassword>
@@ -58,7 +77,7 @@ To activate the cluster, you log in to the HSM with the credentials of the HSM's
    Changing password for admin(PRECO) on 1 nodes
    ```
 
-   We recommend that you write down the new password on a password worksheet\. Do not lose the worksheet\. We recommend that you print a copy of the password worksheet, use it to record your critical HSM passwords, and then store it in a secure place\. We also recommended that you store a copy of this worksheet in secure off\-site storage\.
+   We recommend that you write down the new password on a password worksheet\. Do not lose the worksheet\. We recommend that you print a copy of the password worksheet, use it to record your critical HSM passwords, and then store it in a secure place\. We also recommended that you store a copy of this worksheet in secure off\-site storage\. 
 
 1. \(Optional\) Use the listUsers command to verify that the user's type changed to [crypto officer \(CO\)](hsm-users.md#crypto-officer)\. 
 

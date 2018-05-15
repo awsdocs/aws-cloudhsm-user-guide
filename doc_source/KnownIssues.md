@@ -4,13 +4,13 @@ The following issues are currently known for AWS CloudHSM\.
 
 **Topics**
 + [Known Issues for all HSM instances](#ki-all)
-+ [Known Issues for the PKCS\#11 SDK](#ki-pkcs11-sdk)
++ [Known Issues for the PKCS \#11 SDK](#ki-pkcs11-sdk)
 + [Known Issues for the JCE SDK](#ki-jce-sdk)
 + [Known Issues for the OpenSSL SDK](#ki-openssl-sdk)
 
 ## Known Issues for all HSM instances<a name="ki-all"></a>
 
-The following issues impact all AWS CloudHSM users regardless of whether they use the key\_mgmt\_util command line tool, the PKCS\#11 SDK, the JCE SDK, or the OpenSSL SDK\. 
+The following issues impact all AWS CloudHSM users regardless of whether they use the key\_mgmt\_util command line tool, the PKCS \#11 SDK, the JCE SDK, or the OpenSSL SDK\. 
 
 **Issue: **AES key wrapping uses PKCS\#5 padding instead of providing a standards\-compliant implementation of key wrap with zero padding\. Additionally, key wrap with no padding is not supported\.
 + **Impact: **There is no impact if you wrap and unwrap within AWS CloudHSM\. Keys wrapped with AWS CloudHSM cannot be unwrapped within other HSMs or software which expect compliance to the no padding specification\. This is because you may see up to 8 bytes of padding data suffixed to your key data following a standards\-compliant unwrap\. Externally wrapped keys cannot be properly unwrapped into a AWS CloudHSM instance\. 
@@ -18,7 +18,7 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Resolution Status: **We are fixing the client and SDKs to provide SP800\-38F compliant AES key wrapping\. Updates will be announced to the AWS CloudHSM forum and to the version history page\. The update will include mechanisms to assist you in re\-wrapping any existing wrapped keys in a standards\-compliant way\. 
 
 **Issue: **Imported keys cannot be specified as non\-exportable\.
-+ **Impact: **When importing a key through PKCS\#11 or JCE, you are not able to specify that it be made non\-exportable\. In the PKCS\#11 context, the CKA\_NON\_EXPORTABLE flag is ignored\. Additionally, AWS CloudHSM does not support changing the exportable attribute for an existing key\. Because you can neither set a key as non\-exportable during import nor change its exportable attribute after the fact, users today are unable to set imported keys as non\-exportable\. 
++ **Impact: **When importing a key through PKCS \#11 or JCE, you are not able to specify that it be made non\-exportable\. In the PKCS \#11 context, the CKA\_NON\_EXPORTABLE flag is ignored\. Additionally, AWS CloudHSM does not support changing the exportable attribute for an existing key\. Because you can neither set a key as non\-exportable during import nor change its exportable attribute after the fact, users today are unable to set imported keys as non\-exportable\. 
 + **Workaround: **You can partially enforce similar behavior by creating a special Cryptographic User \(CU\) for this key, and using the 'share' functionality to allow other users/applications to use the key\. The limitations placed on shared keys prevent other users from exporting the key\. The cryptographic user \(CU\) who imports the key owns the key\. Only this CU can export the key\. You can share the imported key with other CU accounts\. These CU accounts can use the key, but cannot export it, delete it, or share it with other CUs\. 
 + **Resolution Status: **We are implementing fixes to correctly set an imported key to non\- exportable when so specified\. No action will be required on your part to benefit from the fix\.
 
@@ -31,22 +31,22 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Workaround: **If your data buffer is larger than 16KB, hash your data within your application and use AWS CloudHSM only for signing\. 
 + **Resolution Status: **We are fixing the client and the SDKs to explicitly fail if the data buffer is larger than the 16KB\. Updates will be announced to the AWS CloudHSM forum and to the version history page\.
 
-## Known Issues for the PKCS\#11 SDK<a name="ki-pkcs11-sdk"></a>
+## Known Issues for the PKCS \#11 SDK<a name="ki-pkcs11-sdk"></a>
 
-**Issue: **PKCS\#11\-compliant error messages are not directly available from the HSM instance\.
-+ **Impact: **The PKCS\#11 library makes two round trips to the HSM per call – first to verify whether the requested operation is permitted, and second to execute the operation if it is permitted\. This results in slower performance\. 
-+ **Workaround: **We have an alternative implementation of the PKCS\#11 library which relies on a local REDIS cache so that correctness of the requested operation can be checked locally\. There are pros and cons to using this workaround\. 
-+ **Resolution status: **We are implementing fixes to directly provide PKCS\#11\-compliant error messages, removing the need for the REDIS workaround\. The updated PKCS\#11 library will be announced to the version history page\. 
+**Issue: **PKCS \#11\-compliant error messages are not directly available from the HSM instance\.
++ **Impact: **The PKCS \#11 library makes two round trips to the HSM per call – first to verify whether the requested operation is permitted, and second to execute the operation if it is permitted\. This results in slower performance\. 
++ **Workaround: **We have an alternative implementation of the PKCS \#11 library which relies on a local REDIS cache so that correctness of the requested operation can be checked locally\. There are pros and cons to using this workaround\. 
++ **Resolution status: **We are implementing fixes to directly provide PKCS \#11\-compliant error messages, removing the need for the REDIS workaround\. The updated PKCS \#11 library will be announced to the version history page\. 
 
 **Issue: **The CKA\_DERIVE attribute is not supported and is not handled\.
 + **Impact: **Specifying the CKA\_DERIVE attribute for a key, whether the attribute is set to true or false, will cause the key operation to fail with an invalid template error\. 
 + **Workaround: **Do not specify the CKA\_DERIVE attribute in your code\.
-+ **Resolution status: **We are implementing fixes to accept CKA\_DERIVE if it is set to FALSE\. CKA\_DERIVE set to true will not be supported until we begin to add key derivation function support to AWS CloudHSM\. The updated PKCS\#11 library will be announced to the version history page\.
++ **Resolution status: **We are implementing fixes to accept CKA\_DERIVE if it is set to FALSE\. CKA\_DERIVE set to true will not be supported until we begin to add key derivation function support to AWS CloudHSM\. The updated PKCS \#11 library will be announced to the version history page\.
 
 **Issue:** The CKA\_SENSITIVE attribute is not supported and is not handled\.
 + **Impact: **Specifying the CKA\_SENSITIVE attribute for a key, whether the attribute is set to true or false, will cause the key operation to fail with an invalid template error\. 
 + **Workaround: **Do not specify the CKA\_SENSITIVE attribute in your code\.
-+ **Resolution status: **We are implementing fixes to accept and properly honor the CKA\_SENSITIVE attribute\. The updated PKCS\#11 library will be announced to the version history page\. 
++ **Resolution status: **We are implementing fixes to accept and properly honor the CKA\_SENSITIVE attribute\. The updated PKCS \#11 library will be announced to the version history page\. 
 
 **Issue: **Multi\-part hashing and signing are not supported\.
 + **Impact: **`C_DigestUpdate` and `C_DigestFinal` are not implemented\. `C_SignFinal` is also not implemented and will fail with CKR\_ARGUMENTS\_BAD for a non\-NULL buffer\. 
@@ -56,7 +56,7 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 **Issue: **`C_GenerateKeyPair` does not handle `CKA_MODULUS_BITS` or `CKA_PUBLIC_EXPONENT` in the private template in a manner that is compliant with standards\.
 + **Impact: **`C_GenerateKeyPair` should return `CKA_TEMPLATE_INCONSISTENT` when the private template contains `CKA_MODULUS_BITS` or `CKA_PUBLIC_EXPONENT`\. It instead generates a private key for which all usage fields are set to `FALSE`\. The key cannot be used\. 
 + **Workaround: **We recommend that your application check the usage field values in addition to the error code\.
-+ **Resolution status: **We are implementing fixes to return the proper error message when an incorrect private key template is used\. The updated PKCS\#11 library will be announced in the version history page\. 
++ **Resolution status: **We are implementing fixes to return the proper error message when an incorrect private key template is used\. The updated PKCS \#11 library will be announced in the version history page\. 
 
 **Issue: **You cannot hash more than 16KB of data\. For larger buffers, only the first 16KB will be hashed and returned\. The excess data will be silently ignored\.
 + **Impact: **C\_DIGEST will return an incorrect result if the data size exceeds 16KB\. 
@@ -93,10 +93,10 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Resolution status: **We are adding support to the SDK to configure offload options through a configuration file\. The update will be announced on the version history page once available\.
 
 **Issue:** RSA encryption and decryption with OAEP padding using a key on the HSM is not supported\.
-+ **Impact: **Any call to RSA encryption and decryption with OAEP padding fails with a divide by zero error\. This occurs because the OpenSSL library calls the operation locally using the fake PEM file instead of offloading the operation to the HSM\. 
++ **Impact: **Any call to RSA encryption and decryption with OAEP padding fails with a divide by zero error\. This occurs because the OpenSSL dynamic engine calls the operation locally using the fake PEM file instead of offloading the operation to the HSM\. 
 + **Workaround: ** You can perform this procedure by using either the [AWS CloudHSM Software Library for PKCS \#11](pkcs11-library.md) or the [AWS CloudHSM Software Library for Java](java-library.md)\. 
 + **Resolution status: **We are adding support to the SDK to correctly offload this operation\. The update will be announced on the version history page once available\. 
 
-**Issue: **Only private key generation of RSA and ECC keys is offloaded to the HSM\. For any other key type, the OpenSSL AWS CloudHSM engine is not used for call processing\. Instead, the local OpenSSL library is used instead\. This generates a key locally in software\.
-+ **Impact: **Because the failover is silent, there is no indication that you have not eceived a key that was securely generated on the HSM\. You will see an output trace that contains the string `"...........++++++"` if the key is locally generated by OpenSSL in software\. This trace is absent when the operation is offloaded to the HSM\. Because the key is not generated or stored on the HSM, it will be unavailable for future use\.
-+ **Workaround: **Only use the OpenSSL engine for key types it supports\. For all other key types, use PKCS\#11 or JCE in applications or use `key_mgmt_util` in the AWS CLI\. 
+**Issue: **Only private key generation of RSA and ECC keys is offloaded to the HSM\. For any other key type, the OpenSSL AWS CloudHSM engine is not used for call processing\. The local OpenSSL engine is used instead\. This generates a key locally in software\.
++ **Impact: **Because the failover is silent, there is no indication that you have not received a key that was securely generated on the HSM\. You will see an output trace that contains the string `"...........++++++"` if the key is locally generated by OpenSSL in software\. This trace is absent when the operation is offloaded to the HSM\. Because the key is not generated or stored on the HSM, it will be unavailable for future use\.
++ **Workaround: **Only use the OpenSSL engine for key types it supports\. For all other key types, use PKCS \#11 or JCE in applications or use `key_mgmt_util` in the AWS CLI\. 

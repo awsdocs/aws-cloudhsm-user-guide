@@ -179,7 +179,7 @@ Complete the following steps to create an Elastic Load Balancing load balancer t
 
 1. When the load balancer has been successfully created, choose **Close**\.
 
-After you complete the preceding steps, the Amazon EC2 console shows your Elastic Load Balancing load balancer\. When your load balancer's state is active, you can verify that the load balancer is working\. That is, you can verify that it's sending HTTPS traffic to your web servers with SSL/TLS offload with AWS CloudHSM\. You can do this with a web browser or or with a tool such as [OpenSSL s\_client](https://www.openssl.org/docs/manmaster/man1/s_client.html)\. 
+After you complete the preceding steps, the Amazon EC2 console shows your Elastic Load Balancing load balancer\. When your load balancer's state is active, you can verify that the load balancer is working\. That is, you can verify that it's sending HTTPS traffic to your web servers with SSL/TLS offload with AWS CloudHSM\. You can do this with a web browser or a tool such as [OpenSSL s\_client](https://www.openssl.org/docs/manmaster/man1/s_client.html)\. 
 
 **To verify that your load balancer is working with a web browser**
 

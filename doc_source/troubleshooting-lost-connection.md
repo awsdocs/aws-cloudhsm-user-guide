@@ -1,6 +1,6 @@
 # Lost Connection to the Cluster<a name="troubleshooting-lost-connection"></a>
 
-When you [configured the AWS CloudHSM client](install-and-configure-client.md#edit-client-configuration), you provided the IP address of the first HSM in your cluster\. This IP address is saved in the configuration file for the AWS CloudHSM client\. When the client starts, it tries to connect to this IP address\. If it can't—for example, because the HSM failed or you deleted it—you might see errors like the following:
+When you [configured the AWS CloudHSM client](install-and-configure-client-linux.md#edit-client-configuration), you provided the IP address of the first HSM in your cluster\. This IP address is saved in the configuration file for the AWS CloudHSM client\. When the client starts, it tries to connect to this IP address\. If it can't—for example, because the HSM failed or you deleted it—you might see errors like the following:
 
 ```
 LIQUIDSECURITY: Daemon socket connection error
@@ -30,11 +30,51 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
-#### [ Ubuntu ]
+#### [ Amazon Linux 2 ]
 
    ```
    $ sudo service cloudhsm-client stop
    ```
+
+------
+#### [ CentOS 6 ]
+
+   ```
+   $ sudo stop cloudhsm-client
+   ```
+
+------
+#### [ CentOS 7 ]
+
+   ```
+   $ sudo service cloudhsm-client stop
+   ```
+
+------
+#### [ RHEL 6 ]
+
+   ```
+   $ sudo stop cloudhsm-client
+   ```
+
+------
+#### [ RHEL 7 ]
+
+   ```
+   $ sudo service cloudhsm-client stop
+   ```
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+   ```
+   $ sudo service cloudhsm-client stop
+   ```
+
+------
+#### [ Windows ]
+
+   You can use <ctrl><c> to stop the client\.
 
 ------
 
@@ -54,10 +94,52 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
-#### [ Ubuntu ]
+#### [ Amazon Linux 2 ]
 
    ```
    $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ CentOS 6 ]
+
+   ```
+   $ sudo start cloudhsm-client
+   ```
+
+------
+#### [ CentOS 7 ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ RHEL 6 ]
+
+   ```
+   $ sudo start cloudhsm-client
+   ```
+
+------
+#### [ RHEL 7 ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ Windows ]
+
+   ```
+   c:\Program Files\Amazon\CloudHSM>cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
    ```
 
 ------

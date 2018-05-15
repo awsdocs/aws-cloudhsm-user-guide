@@ -6,7 +6,7 @@ To enable HTTPS, your web server application \(Nginx or Apache\) needs a private
    
 + If you already have a private key and corresponding certificate, you can [import the private key into an HSM](#ssl-offload-import-private-key)\. 
 
-Regardless of which method you choose, you then export a *fake PEM private key* from the HSM and save it to a file\. This file doesn't contain the actual private key\. It contains a reference to the private key that is stored on the HSM\. Your web server uses the fake PEM private key file and the AWS CloudHSM software library for OpenSSL to offload SSL/TLS processing to an HSM\. 
+Regardless of which method you choose, you then export a *fake PEM private key* from the HSM and save it to a file\. This file doesn't contain the actual private key\. It contains a reference to the private key that is stored on the HSM\. Your web server uses the fake PEM private key file and the AWS CloudHSM dynamic engine for OpenSSL to offload SSL/TLS processing to an HSM\. 
 
 ## Generate a Private Key and Certificate<a name="ssl-offload-generate-private-key-and-certificate"></a>
 
@@ -22,7 +22,7 @@ If you don't have a private key and a corresponding SSL/TLS certificate to use f
    export n3fips_password=<CU user name>:<password>
    ```
 
-1. Run the following command to use the AWS CloudHSM software library for OpenSSL to generate a private key on an HSM\. This command also exports the fake PEM private key and saves it in a file\. Replace *<web\_server\_fake\_PEM\.key>* with the file name you want to use for the exported fake PEM private key\. 
+1. Run the following command to use the AWS CloudHSM dynamic engine for OpenSSL to generate a private key on an HSM\. This command also exports the fake PEM private key and saves it in a file\. Replace *<web\_server\_fake\_PEM\.key>* with the file name you want to use for the exported fake PEM private key\. 
 
    ```
    openssl genrsa -engine cloudhsm -out <web_server_fake_PEM.key> 2048
@@ -30,7 +30,7 @@ If you don't have a private key and a corresponding SSL/TLS certificate to use f
 
 **To create a CSR**
 
-Run the following command to use the AWS CloudHSM software library for OpenSSL to create a certificate signing request \(CSR\)\. Replace *<web\_server\_fake\_PEM\.key>* with the name of the file that contains your fake PEM private key\. Replace *<web\_server\.csr>* with the name of the file that contains your CSR\. 
+Run the following command to use the AWS CloudHSM dynamic engine for OpenSSL to create a certificate signing request \(CSR\)\. Replace *<web\_server\_fake\_PEM\.key>* with the name of the file that contains your fake PEM private key\. Replace *<web\_server\.csr>* with the name of the file that contains your CSR\. 
 
 The `req` command is interactive\. Respond to each field\. The field information is copied into your SSL/TLS certificate\. 
 
@@ -40,14 +40,14 @@ openssl req -engine cloudhsm -new -key <web_server_fake_PEM.key> -out <web_serve
 
 In a production environment, you typically use a certificate authority \(CA\) to create a certificate from a CSR\. A CA is not necessary for a test environment\. If you do use a CA, send the CSR file \(*<web\_server\.csr>*\) to it and use the CA create a signed SSL/TLS certificate\. Your web server uses the signed certificate for HTTPS\. 
 
-As an alternative to using a CA, you can use the AWS CloudHSM software library for OpenSSL to create a self\-signed certificate\. Self\-signed certificates are not trusted by browsers and should not be used in production environments\. They can be used in test environments\. 
+As an alternative to using a CA, you can use the AWS CloudHSM dynamic engine for OpenSSL to create a self\-signed certificate\. Self\-signed certificates are not trusted by browsers and should not be used in production environments\. They can be used in test environments\. 
 
 **To create a self\-signed certificate**
 
 **Important**  
 Self\-signed certificates should be used in a test environment only\. For a production environment, use a more secure method such as a certificate authority to create a certificate\. 
 
-Run the following command to use the AWS CloudHSM software library for OpenSSL to sign your CSR with your private key on your HSM\. This creates a self\-signed certificate\. Replace the following values in the command with your own\. 
+Run the following command to use the AWS CloudHSM dynamic engine for OpenSSL to sign your CSR with your private key on your HSM\. This creates a self\-signed certificate\. Replace the following values in the command with your own\. 
 + *<web\_server\.csr>* – Name of the file that contains the CSR\.
 + *<web\_server\_fake\_PEM\.key>* – Name of the file that contains the fake PEM private key\.
 + *<web\_server\.crt>* – Name of the file that will contain your web server\.
@@ -74,7 +74,42 @@ If you already have a private key and a corresponding SSL/TLS certificate that y
    ```
 
 ------
-#### [ Ubuntu ]
+#### [ Amazon Linux 2 ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ CentOS 6 ]
+
+   ```
+   $ sudo start cloudhsm-client
+   ```
+
+------
+#### [ CentOS 7 ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ RHEL 6 ]
+
+   ```
+   $ sudo start cloudhsm-client
+   ```
+
+------
+#### [ RHEL 7 ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ Ubuntu 16\.04 LTS ]
 
    ```
    $ sudo service cloudhsm-client start

@@ -1,12 +1,12 @@
 # Getting Started with key\_mgmt\_util<a name="key_mgmt_util-getting-started"></a>
 
-AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](install-and-configure-client.md#install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md)tool includes commands to manage keys\. To get started with the key\_mgmt\_util command line tool, see the following topics\. 
+AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](install-and-configure-client-linux.md#install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md)tool includes commands to manage keys\. To get started with the key\_mgmt\_util command line tool, see the following topics\. 
 
 **Topics**
 + [Set Up key\_mgmt\_util](#key_mgmt_util-setup)
 + [Basic Usage of key\_mgmt\_util](#key_mgmt_util-basics)
 
-If you encounter an error message or unexpected outcome for any command, see the [Troubleshooting AWS CloudHSM](troubleshooting.md) topics for help\. For details about the key\_mgmt\_util commands, see [key\_mgmt\_util Command Reference](key_mgmt_util-reference.md) 
+If you encounter an error message or unexpected outcome for a command, see the [Troubleshooting AWS CloudHSM](troubleshooting.md) topics for help\. For details about the key\_mgmt\_util commands, see [key\_mgmt\_util Command Reference](key_mgmt_util-reference.md)\. 
 
 ## Set Up key\_mgmt\_util<a name="key_mgmt_util-setup"></a>
 
@@ -27,10 +27,52 @@ $ sudo start cloudhsm-client
 ```
 
 ------
-#### [ Ubuntu ]
+#### [ Amazon Linux 2 ]
 
 ```
 $ sudo service cloudhsm-client start
+```
+
+------
+#### [ CentOS 6 ]
+
+```
+$ sudo start cloudhsm-client
+```
+
+------
+#### [ CentOS 7 ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ RHEL 6 ]
+
+```
+$ sudo start cloudhsm-client
+```
+
+------
+#### [ RHEL 7 ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ Windows ]
+
+```
+c:\Program Files\Amazon\CloudHSM>cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
 ```
 
 ------
@@ -39,9 +81,63 @@ $ sudo service cloudhsm-client start
 
 After you start the AWS CloudHSM client, use the following command to start key\_mgmt\_util\.
 
+------
+#### [ Amazon Linux ]
+
 ```
 $ /opt/cloudhsm/bin/key_mgmt_util
 ```
+
+------
+#### [ Amazon Linux 2 ]
+
+```
+$ /opt/cloudhsm/bin/key_mgmt_util
+```
+
+------
+#### [ RHEL 6 ]
+
+```
+$ /opt/cloudhsm/bin/key_mgmt_util
+```
+
+------
+#### [ RHEL 7 ]
+
+```
+$ /opt/cloudhsm/bin/key_mgmt_util
+```
+
+------
+#### [ CentOS 6 ]
+
+```
+$ /opt/cloudhsm/bin/key_mgmt_util
+```
+
+------
+#### [ CentOS 7 ]
+
+```
+$ /opt/cloudhsm/bin/key_mgmt_util
+```
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+```
+$ /opt/cloudhsm/bin/key_mgmt_util
+```
+
+------
+#### [ Windows ]
+
+```
+c:\Program Files\Amazon\CloudHSM>key_mgmt_util.exe
+```
+
+------
 
 The prompt changes to Command: when key\_mgmt\_util is running\.
 

@@ -148,5 +148,3 @@ Use your signed HSM certificate and your signing certificate to initialize your 
   + The ID of the cluster that you created previously\.
   + The HSM certificate that you signed previously\.
   + Your signing certificate\.
-
-After you initialize the cluster, proceed to [Launch a Client](launch-client-instance.md)\.

@@ -6,20 +6,18 @@ Each HSM user has a *type* that determines which operations the user is allowed 
 
 **Topics**
 + [Precrypto Officer \(PRECO\)](#preco)
-+ [Crypto Officer \(CO, PCO\)](#crypto-officer)
++ [Crypto Officer \(CO\)](#crypto-officer)
 + [Crypto User \(CU\)](#crypto-user)
 + [Appliance User \(AU\)](#appliance-user)
 + [HSM User Permissions Table](#user-permissions-table)
 
 ## Precrypto Officer \(PRECO\)<a name="preco"></a>
 
-The precrypto officer \(PRECO\) is a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. To [activate a cluster](activate-cluster.md), you log in to the HSM and change the PRECO user's password\. When you change the password, the PRECO user becomes a crypto officer \(PCO\)\. The PRECO user can only change its own password and perform read\-only operations on the HSM\.
+The precrypto officer \(PRECO\) is a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. To [activate a cluster](activate-cluster.md), you log in to the HSM and change the PRECO user's password\. When you change the password, the PRECO user becomes a crypto officer \(CO\)\. The PRECO user can only change its own password and perform read\-only operations on the HSM\.
 
-## Crypto Officer \(CO, PCO\)<a name="crypto-officer"></a>
+## Crypto Officer \(CO\)<a name="crypto-officer"></a>
 
-A crypto officer \(CO\) can perform user management operations\. For example, a CO can create and delete users and change user passwords\. For more information, see the [HSM User Permissions Table](#user-permissions-table)\.
-
-When you [activate a new cluster](activate-cluster.md), the first user on an HSM changes from a [Precrypto Officer](#preco) \(PRECO\) to a primary Crypto Officer \(PCO\)\. The PCO is the first CO created on the HSM\. However, the PCO has the same permissions on the HSM as any other CO\. 
+A crypto officer \(CO\) can perform user management operations\. For example, a CO can create and delete users and change user passwords\. For more information, see the [HSM User Permissions Table](#user-permissions-table)\. When you [activate a new cluster](activate-cluster.md), the user changes from a [Precrypto Officer](#preco) \(PRECO\) to a Crypto Officer \(CO\)\. 
 
 ## Crypto User \(CU\)<a name="crypto-user"></a>
 

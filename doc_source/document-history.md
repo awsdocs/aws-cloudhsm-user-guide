@@ -1,24 +1,17 @@
 # Document History<a name="document-history"></a>
 
-The following list contains the dates and descriptions of significant changes to the documentation for AWS CloudHSM\.
+The following table describes the documentation release history of AWS CloudHSM\.
 
-**November 9, 2017 – New and updated documentation for several features and tools**  
-+ Added documentation about using quorum authentication \(M of N access control\) for crypto officers \(COs\)\. For more information, see [Enforcing Quorum Authentication \(M of N Access Control\)](quorum-authentication.md)\.
-+ Added detailed documentation about using the key\_mgmt\_util command line tool\. For more information, see [key\_mgmt\_util Command Reference](key_mgmt_util-reference.md)\.
-+ Updated the documentation for the latest versions of the AWS CloudHSM client and software libraries\. For more information, see [Client and Software Version History](client-and-software-version-history.md)\.
+**Latest documentation update**: May 10, 2018
 
-**October 25, 2017 – Added documentation for new third\-party integration and new client and software releases**  
-+ Published new documentation for integrating third\-party applications\. For more information, see [Oracle Database Encryption](oracle-tde.md)\.
-+ Published new documentation that corresponds with the latest versions of the AWS CloudHSM client and software libraries\. For more information, see [Client and Software Version History](client-and-software-version-history.md)\.
 
-**October 12, 2017 – Added documentation for third\-party integrations**  
-Published new documentation for integrating third\-party applications\. For more information, see [Integrating Third\-Party Applications](third-party-applications.md) and [SSL/TLS Offload](ssl-offload.md)\.
-
-**September 20, 2017 – New client and software releases**  
-Published new documentation that corresponds with the latest versions of the AWS CloudHSM client and software libraries\. For more information, see [Client and Software Version History](client-and-software-version-history.md)\.
-
-**August 29, 2017 – Added Java example code**  
-Published several [code samples in Java](java-library-sample.md) that demonstrate how to use the [AWS CloudHSM software library for Java](java-library.md)\.
-
-**August 14, 2017 – New guide**  
-Published this guide, the *AWS CloudHSM User Guide*, to coincide with the release of the new AWS CloudHSM product\.
+| Change | Description | Release Date | 
+| --- | --- | --- | 
+| New content |  Added AWS CloudHSM client and library support for Amazon Linux 2, Red Hat Enterprise Linux \(RHEL\) 6, Red Hat Enterprise Linux \(RHEL\) 7, CentOS 6, CentOS 7, and Ubuntu 16\.04 LTS\. For more information, see [Install and Configure the AWS CloudHSM Client \(Linux\)](install-and-configure-client-linux.md)\.   | May 10, 2018 | 
+| New content |  Added a Windows AWS CloudHSM client\. For more information, see the following topics: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/document-history.html)  | April 30, 2018 | 
+| New content |  Added quorum authentication \(M of N access control\) for crypto officers \(COs\)\. For more information, see [Enforcing Quorum Authentication \(M of N Access Control\)](quorum-authentication.md)\.   | November 9, 2017 | 
+| Update |  Added documentation about using the key\_mgmt\_util command line tool\. For more information, see [key\_mgmt\_util Command Reference](key_mgmt_util-reference.md)\.   | November 9, 2017 | 
+| New content |  Added Oracle Transparent Data Encryption\. For more information, see [Oracle Database Encryption](oracle-tde.md)\.   | October 25, 2017 | 
+| New content |  Added SSL Offload\. For more information, see [SSL/TLS Offload](ssl-offload.md)\.   | October 12, 2017 | 
+| New content |  Added [code samples](java-library-sample.md) that demonstrate how to use the [AWS CloudHSM software library for Java](java-library.md)\.   | August 29, 2017 | 
+| New guide |  This release introduces AWS CloudHSM  | August 14, 2017 | 

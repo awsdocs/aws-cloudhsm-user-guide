@@ -2,7 +2,9 @@
 
 Before you can use the AWS CloudHSM software library for Java, you need the AWS CloudHSM client\. 
 
-The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster, and the Java library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the CloudHSM Client](install-and-configure-client.md)\. After you install and configure the client, use the following command to start it\.
+The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster, and the Java library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the Client \(Linux\)](install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
+
+The AWS CloudHSM software library for Java is supported only on Linux and compatible operating systems\. 
 
 ------
 #### [ Amazon Linux ]
@@ -12,7 +14,42 @@ $ sudo start cloudhsm-client
 ```
 
 ------
-#### [ Ubuntu ]
+#### [ Amazon Linux 2 ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ CentOS 6 ]
+
+```
+$ sudo start cloudhsm-client
+```
+
+------
+#### [ CentOS 7 ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ RHEL 6 ]
+
+```
+$ sudo start cloudhsm-client
+```
+
+------
+#### [ RHEL 7 ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ Ubuntu 16\.04 LTS ]
 
 ```
 $ sudo service cloudhsm-client start
@@ -30,24 +67,79 @@ $ sudo service cloudhsm-client start
 
 Complete the following steps to install or update the AWS CloudHSM software library for Java\.
 
-Use the following commands to download and install the Java library\.
+Use the following commands to download and install the Java library\. This library is supported only on Linux and compatible operating systems\. 
 
 ------
 #### [ Amazon Linux ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce-latest.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/AmazonLinux/cloudhsm-client-jce-latest.amzn1.x86_64.rpm
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.x86_64.rpm
+$ sudo yum install -y ./cloudhsm-client-jce-latest.amzn1.x86_64.rpm
 ```
 
 ------
-#### [ Ubuntu ]
+#### [ Amazon Linux 2 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/cloudhsm-client-jce_latest_amd64.deb
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/AmazonLinux2/cloudhsm-client-jce-latest.amzn2.x86_64.rpm
+```
+
+```
+$ sudo yum install -y ./cloudhsm-client-jce-latest.amzn2.x86_64.rpm
+```
+
+------
+#### [ CentOS 6 ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm
+```
+
+```
+$ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
+```
+
+------
+#### [ CentOS 7 ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm
+```
+
+```
+$ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
+```
+
+------
+#### [ RHEL 6 ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm
+```
+
+```
+$ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
+```
+
+------
+#### [ RHEL 7 ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm
+```
+
+```
+$ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
+```
+
+------
+#### [ Ubuntu 16\.04 ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_latest_amd64.deb
 ```
 
 ```
@@ -71,10 +163,10 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
 
 **To test the Java library with your cluster**
 
-1. \(Optional\) If you don't already have Java installed in your environment, use the following command to install it\.
+1. \(Optional\) If you don't already have Java installed in your environment, use the following command to install it\. 
 
 ------
-#### [ Amazon Linux ]
+#### [ Linux \(and compatible libraries\) ]
 
    ```
    $ sudo yum install -y java-1.8.0-openjdk

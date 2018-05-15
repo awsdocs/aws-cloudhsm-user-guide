@@ -14,9 +14,9 @@ The following topics contain information that will help you create, initialize, 
 
 1. Follow the steps in [Initialize the Cluster](initialize-cluster.md)\.
 
-1. \(First time only\) Follow the steps in [Launch a Client](launch-client-instance.md)\.
+1. \(First time only\) Follow the steps in [Launch an EC2 Client](launch-client-instance.md)\.
 
-1. \(First time only\) Follow the steps in [Install the CloudHSM Client](install-and-configure-client.md)\.
+1. \(First time only\) Follow the steps in [Install the Client \(Linux\)](install-and-configure-client-linux.md) if you are using Linux or [Install the Client \(Windows\)](install-and-configure-client-win.md) if you are using Windows\. 
 
 1. Follow the steps in [Activate the Cluster](activate-cluster.md)\.
 
@@ -25,9 +25,11 @@ The following topics contain information that will help you create, initialize, 
 + [Create a Virtual Private Cloud \(VPC\)](create-vpc.md)
 + [Create a Private Subnet](create-subnets.md)
 + [Create a Cluster](create-cluster.md)
++ [Launch an Amazon EC2 Client Instance](launch-client-instance.md)
 + [Create an HSM](create-hsm.md)
-+ [Launch a Client](launch-client-instance.md)
 + [Verify the Identity and Authenticity of Your Cluster's HSM \(Optional\)](verify-hsm-identity.md)
 + [Initialize the Cluster](initialize-cluster.md)
-+ [Install and Configure the AWS CloudHSM Client](install-and-configure-client.md)
-+ [Getting Started with AWS CloudHSM: Activate the Cluster](activate-cluster.md)
++ [Install and Configure the AWS CloudHSM Client \(Linux\)](install-and-configure-client-linux.md)
++ [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)
++ [Activate the Cluster](activate-cluster.md)
++ [Reconfigure SSL with a New Certificate and Private Key \(Optional\)](getting-started-ssl.md)

@@ -9,7 +9,7 @@ To manage and use the HSMs in your cluster, you use the AWS CloudHSM client soft
 
 ## AWS CloudHSM Client<a name="client"></a>
 
-The AWS CloudHSM client is a daemon that you install and run on your application hosts\. The client establishes and maintains a secure, end\-to\-end encrypted connection with the HSMs in your AWS CloudHSM cluster\. The client provides the fundamental connection between your application hosts and your HSMs\. Most of the other AWS CloudHSM client software components rely on the client to communicate with your HSMs\. To get started with the AWS CloudHSM client, see [Install the CloudHSM Client](install-and-configure-client.md)\.
+The AWS CloudHSM client is a daemon that you install and run on your application hosts\. The client establishes and maintains a secure, end\-to\-end encrypted connection with the HSMs in your AWS CloudHSM cluster\. The client provides the fundamental connection between your application hosts and your HSMs\. Most of the other AWS CloudHSM client software components rely on the client to communicate with your HSMs\. To get started with the AWS CloudHSM client if you are using Linux, see [Install the Client \(Linux\)](install-and-configure-client-linux.md)\. If you are using Windows, see [Install the Client \(Windows\)](install-and-configure-client-win.md)\. 
 
 ### AWS CloudHSM Client End\-to\-End Encryption<a name="client-end-to-end-encryption"></a>
 
