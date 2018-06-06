@@ -1,6 +1,6 @@
 # Create a Virtual Private Cloud \(VPC\)<a name="create-vpc"></a>
 
-If you don't already have an Amazon Virtual Private Cloud \(VPC\), create one now\.
+If you don't already have a virtual private cloud \(VPC\), create one now\.
 
 **To create a VPC**
 

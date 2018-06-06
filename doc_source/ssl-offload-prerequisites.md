@@ -4,9 +4,9 @@ To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
 + An active AWS CloudHSM cluster with at least one HSM\.
 + An Amazon EC2 instance running a Linux operating system with the following software installed:
   + The AWS CloudHSM client and command line tools\.
-  + The Nginx or Apache web server application\.
+  + The NGINX or Apache web server application\.
   + The AWS CloudHSM dynamic engine for OpenSSL\.
-+ A cryptographic user \(CU\) to own and manage the private key on the HSM\.
++ A [crypto user](hsm-users.md#crypto-user) \(CU\) to own and manage the private key on the HSM\.
 
 **To set up the prerequisites for SSL/TLS offload AWS CloudHSM**
 
@@ -14,8 +14,8 @@ To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
 
 1. Connect to your client instance and do the following:
 
-   1. Choose whether to install the Nginx or Apache web server application\. Then complete one of the following steps:
-      + To install Nginx, run the following command\.
+   1. Choose whether to install the NGINX or Apache web server application\. Then complete one of the following steps:
+      + To install NGINX, run the following command\.
 
         ```
         sudo yum install -y nginx
@@ -30,7 +30,7 @@ To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
 
 1. \(Optional\) Add more HSMs to your cluster\. For more information, see [Adding an HSM](add-remove-hsm.md#add-hsm)\.
 
-1. To create a cryptographic user \(CU\) on your HSM, do the following:
+1. To create a [crypto user](hsm-users.md#crypto-user) \(CU\) on your HSM, do the following:
 
    1. [Start the AWS CloudHSM client](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start-cloudhsm-client)\.
 

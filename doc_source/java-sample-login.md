@@ -3,17 +3,14 @@
 
 |  | 
 | --- |
-|  \*\* Example code only \- Not for production use \*\* This page includes example code that has not been fully tested\. It is designed for test environments\. Do not run this code in production\.  | 
+|   \*\* Example code only \- Not for production use \*\* This page includes example code that has not been fully tested\. It is designed for test environments\. Do not run this code in production\.  | 
 
-This example demonstrates multiple ways for your Java application to log in to the HSMs in your cluster\. These methods use the `LoginManager` class to manage sessions in the code\. Each provides credentials in a different way\. 
+This example demonstrates multiple ways for your Java application to log in to the HSMs in your cluster\. These methods use the `LoginManager` class to manage sessions in the code\. Each provides credentials in a different way\. For more details about providing credentials to the Java library, see [Providing Credentials to the Java Library](java-library-install.md#java-library-credentials)\.
+
+The remaining samples in the [Code Samples for the AWS CloudHSM Software Library for Java](java-lib-samples.md) section use the `loginWithEnvVariables()` method to log in to an HSM\. This method fails unless you set the HSM environment variables in advance\. You can change them to use the method that you prefer\.
 
 **Note**  
-The remaining samples in the [Code Samples for the AWS CloudHSM Software Library for Java](java-lib-samples.md) section use the `loginWithEnvVariables()` method to log in to an HSM\. You can change them to use the method that you prefer\. 
-
-**Note**  
-To run this example, replace *<hsm\-user\-name>* and *<password>* with a valid AWS CloudHSM user name and password\. Also, the `loginWithEnvVariables()` method fails unless you set the HSM environment variables in advance\. 
-
-For more details about providing credentials to the Java library, see [Providing Credentials to the Java Library](java-library-install.md#java-library-credentials)\.
+To run this example, replace *<hsm\-user\-name>* and *<password>* with a valid AWS CloudHSM user name and password\. 
 
 ```
 package com.amazonaws.cloudhsm.examples;

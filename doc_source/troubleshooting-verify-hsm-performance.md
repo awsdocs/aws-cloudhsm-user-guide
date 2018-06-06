@@ -1,8 +1,8 @@
 # Verify the Performance of the HSM<a name="troubleshooting-verify-hsm-performance"></a>
 
-To verify the performance of the HSMs in your AWS CloudHSM cluster, you can use the `pkpspeed` \(Linux\) or `pkpspeed_blocking` \(Windows\) tool that is included with the AWS CloudHSM client software\. For more information about installing the client on a Linux EC2 instance, see [Install and Configure the AWS CloudHSM Client \(Linux\)](install-and-configure-client-linux.md)\. For more information about installing the client on a Windows instance, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. 
+To verify the performance of the HSMs in your AWS CloudHSM cluster, you can use the pkpspeed \(Linux\) or pkpspeed\_blocking \(Windows\) tool that is included with the AWS CloudHSM client software\. For more information about installing the client on a Linux EC2 instance, see [Install and Configure the AWS CloudHSM Client \(Linux\)](install-and-configure-client-linux.md)\. For more information about installing the client on a Windows instance, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. 
 
-After you install and configure the AWS CloudHSM client, issue the following command to start it\.
+After you install and configure the AWS CloudHSM client, run the following command to start it\.
 
 ------
 #### [ Amazon Linux ]
@@ -57,20 +57,20 @@ $ sudo service cloudhsm-client start
 #### [ Windows ]
 
 ```
-c:\Program Files\Amazon\CloudHSM>cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
+C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
 ```
 
 ------
 
 If you have already installed the client software, you might need to download and install the latest version to get pkpspeed\. You can find the pkpspeed tool at `/opt/cloudhsm/bin/pkpspeed` in Linux or `C:\Program Files\Amazon\CloudHSM\` in Windows\. 
 
-To use pkpspeed, issue the pkpspeed command or pkpspeed\_blocking\.exe, specifying the user name and password of a crypto user \(CU\) on the HSM\. Then set the options to use, considering the following recommendations\. 
+To use pkpspeed, run the pkpspeed command or pkpspeed\_blocking\.exe, specifying the user name and password of a crypto user \(CU\) on the HSM\. Then set the options to use while considering the following recommendations\. 
 
 **Recommendations**  
 To test the performance of RSA sign and verify operations, choose the `RSA_CRT` cipher in Linux or option B in Windows\. Don't choose `RSA` \(option A in Windows\)\. The ciphers are equivalent, but `RSA_CRT` is optimized for performance\. 
 Start with a small number of threads\. For testing AES performance, one thread is typically enough to show maximum performance\. For testing RSA performance\(`RSA_CRT`\), three or four threads is typically enough\. 
 
-The following examples show the options that you can choose with pkpspeed \(Linux\) or pkpspeed\_blocking\.exe \(Windows\) to test the HSM's performance for RSA and AES operations\. 
+The following examples show the options that you can choose with pkpspeed \(Linux\) or pkpspeed\_blocking \(Windows\) to test the HSM's performance for RSA and AES operations\. 
 
 **Example – Using pkpspeed to test RSA performance**  
 You can run this example on Windows, Linux, and compatible operating systems\.  

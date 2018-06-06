@@ -114,6 +114,7 @@ The AWS CloudHSM client software for Windows Server includes the required CNG an
 + Added support for Linux platforms\.
 
 **Java Library**
++ **If you downloaded this package prior to May 23, 5PM PDT, you will need to recompile your application for it to work with this version of the JCE, as the `loadNative()` method had temporarily changed from non\-static to static\. Alternatively, you can download the package again, and install the JCE\. We have now restored the `loadNative()` method to static\.**
 + Eliminated the breaking change in version 1\.0\.18\. The `LoginManager.getInstance()` public method accepts `username` and `password` arguments\.
 + Added support for Linux platforms\.
 

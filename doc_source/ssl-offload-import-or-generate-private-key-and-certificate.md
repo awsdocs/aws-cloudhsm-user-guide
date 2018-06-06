@@ -1,6 +1,6 @@
 # Web Server SSL/TLS Offload Step 2: Import or Generate a Private Key and SSL/TLS Certificate<a name="ssl-offload-import-or-generate-private-key-and-certificate"></a>
 
-To enable HTTPS, your web server application \(Nginx or Apache\) needs a private key and a corresponding SSL/TLS certificate\. To use web server SSL/TLS offload with AWS CloudHSM, you must store the private key in an HSM in your AWS CloudHSM cluster\. You can accomplish this in one of the following ways: 
+To enable HTTPS, your web server application \(NGINX or Apache\) needs a private key and a corresponding SSL/TLS certificate\. To use web server SSL/TLS offload with AWS CloudHSM, you must store the private key in an HSM in your AWS CloudHSM cluster\. You can accomplish this in one of the following ways: 
 + If you don't yet have a private key and a corresponding certificate, you can [generate a private key in an HSM](#ssl-offload-generate-private-key-and-certificate)\. You can then use the private key to create a certificate signing request \(CSR\)\. Use the CSR to create the SSL/TLS certificate\. 
 
    
@@ -42,10 +42,10 @@ In a production environment, you typically use a certificate authority \(CA\) to
 
 As an alternative to using a CA, you can use the AWS CloudHSM dynamic engine for OpenSSL to create a self\-signed certificate\. Self\-signed certificates are not trusted by browsers and should not be used in production environments\. They can be used in test environments\. 
 
-**To create a self\-signed certificate**
-
 **Important**  
 Self\-signed certificates should be used in a test environment only\. For a production environment, use a more secure method such as a certificate authority to create a certificate\. 
+
+**To create a self\-signed certificate**
 
 Run the following command to use the AWS CloudHSM dynamic engine for OpenSSL to sign your CSR with your private key on your HSM\. This creates a self\-signed certificate\. Replace the following values in the command with your own\. 
 + *<web\_server\.csr>* – Name of the file that contains the CSR\.
@@ -60,7 +60,9 @@ After you complete these steps, you can [configure your web server](ssl-offload-
 
 ## Import an Existing Private Key<a name="ssl-offload-import-private-key"></a>
 
-If you already have a private key and a corresponding SSL/TLS certificate that you use for HTTPS on your web server, you can import that key into an HSM by doing the following\. 
+You might already have a private key and a corresponding SSL/TLS certificate that you use for HTTPS on your web server\. If so, you can import that key into an HSM by doing the following: 
+
+**To import an existing private key into an HSM**
 
 1. Connect to your Amazon EC2 client instance\. If necessary, copy your existing private key and certificate to the instance\. 
 

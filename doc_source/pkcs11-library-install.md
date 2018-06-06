@@ -1,6 +1,6 @@
 # Installing the AWS CloudHSM Software Library for PKCS \#11<a name="pkcs11-library-install"></a>
 
-The AWS CloudHSM software libraries for PKCS \#11 enable you to build PKCS \#11–compatible applications that use the HSMs in your AWS CloudHSM cluster\. You can use the standard AWS CloudHSM PKCS \#11 library or the AWS CloudHSM PKCS \#11 library that uses a [Redis cache](#install-pkcs11-redis)\. Both of the AWS CloudHSM libraries for PKCS \#11 are supported only on Linux operating systems\.
+With the AWS CloudHSM software libraries for PKCS \#11, you can to build PKCS \#11–compatible applications that use the HSMs in your AWS CloudHSM cluster\. You can use the standard AWS CloudHSM PKCS \#11 library or the AWS CloudHSM PKCS \#11 library that uses a [Redis cache](#install-pkcs11-redis)\. Both of the AWS CloudHSM libraries for PKCS \#11 are supported only on Linux operating systems\.
 
 **Topics**
 + [Prerequisites](#pkcs11-library-prerequisites)
@@ -153,7 +153,7 @@ When the installation succeeds, the PKCS \#11 libraries are `/opt/cloudhsm/lib`\
 
 AWS CloudHSM provides an optional software library for PKCS \#11 that uses a [Redis cache](https://redis.io/)\. The cache stores key handles and attributes locally so you can access them without calling into your HSMs\. 
 
-When you build the cache, you specify the crypto user \(CU\) that your [PKCS \#11 application uses to authenticate](pkcs11-pin.md)\. The cache is pre\-loaded with the keys that the CU owns and shares, and it is automatically updated when your application uses functions in the PKCS \#11 library to make changes in the HSMs, such as creating keys or deleting keys, or changing keys attributes\. The cache is not aware of any other keys on the HSM\.
+When you build the cache, you specify the crypto user \(CU\) that your [PKCS \#11 application uses to authenticate](pkcs11-pin.md)\. The cache is preloaded with the keys that the CU owns and shares\. It is automatically updated when your application uses functions in the PKCS \#11 library to make changes in the HSMs, such as creating or deleting keys or changing keys attributes\. The cache is not aware of any other keys on the HSM\.
 
 Caching can improve the performance of your PKCS \#11 application, but it might not be the right choice for all applications\. Consider the following:
 + Redis caches all PKCS \#11 library operations that run on the host, but it's not aware of operations that are performed outside the library\. For example, if you use the [command line tools](command-line-tools.md) or the [software library for Java](java-library.md) to manage keys in your HSMs, those operations do not update the cache\. You can rebuild the cache to update it to the new state of the HSMs, but the cache is not synchronized with the HSMs automatically\.
@@ -306,13 +306,11 @@ This command eliminates the TTY requirement in the `sudoers` file\. The `sudoers
 
 ### Step 4: Install, Configure, and Build the Redis Cache<a name="redis-build-keystore"></a>
 
-Use the following procedure to install and configure the Redis package for the AWS CloudHSM library for PKCS \#11, and build the cache\. 
+Use the following procedure to install and configure the Redis package for the AWS CloudHSM library for PKCS \#11 and build the cache\. 
 
 **Required for Redis on:** All supported operating systems\.
 
 1. Use the `setup_redis` script to install Redis and configure it to work with the AWS CloudHSM PKCS \#11 library for Redis\.
-
-   **Required on:** All supported operating systems
 
    ```
    $ sudo /opt/cloudhsm/bin/setup_redis
@@ -324,9 +322,9 @@ Use the following procedure to install and configure the Redis package for the A
    $ sudo service redis start
    ```
 
-1. Use the `build_keystore` command to build the Redis cache\. Enter the name and password of the [crypto user \(CU\)](hsm-users.md#crypto-user) that your [PKCS \#11 application uses for authentication](pkcs11-pin.md)\.
+1. Use the `build_keystore` command to build the Redis cache\. Type the name and password of the [crypto user \(CU\)](hsm-users.md#crypto-user) that your [PKCS \#11 application uses for authentication](pkcs11-pin.md)\.
 
-   The cache is pre\-loaded with the keys that the specified CU owns and shares\. It is updated automatically when your application makes changes in the HSMs on behalf of the CU, such as creating or deleting keys, or changing key attributes\. The cache is not aware of any other keys on the HSMs\.
+   The cache is preloaded with the keys that the specified CU owns and shares\. It is updated automatically when your application makes changes in the HSMs on behalf of the CU, such as creating or deleting keys, or changing key attributes\. The cache is not aware of any other keys on the HSMs\.
 
    ```
    $ /opt/cloudhsm/bin/build_keystore -s <CU user name> -p < CU password>

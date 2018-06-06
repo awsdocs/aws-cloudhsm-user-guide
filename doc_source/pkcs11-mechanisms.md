@@ -56,6 +56,8 @@ When performing AES\-GCM encryption, the HSM ignores the initialization vector \
 
 **Key Derive**
 + `CKM_ECDH1_DERIVE`
+**Note**  
+This mechanism is implemented to support SSL/TLS Offload cases and is executed only partially within the HSM\. Before using this mechanism, see *Issue: ECDH key derivation is executed only partially within the HSM* in [Known Issues for the PKCS \#11 SDK](KnownIssues.md#ki-pkcs11-sdk)\.
 
 **Key Wrap**
 + `CKM_AES_KEY_WRAP`

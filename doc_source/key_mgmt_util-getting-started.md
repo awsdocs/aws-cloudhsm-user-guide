@@ -72,7 +72,7 @@ $ sudo service cloudhsm-client start
 #### [ Windows ]
 
 ```
-c:\Program Files\Amazon\CloudHSM>cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
+C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
 ```
 
 ------

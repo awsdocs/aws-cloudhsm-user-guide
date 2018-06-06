@@ -105,7 +105,7 @@ public class KeyManagement {
     }
     
     // Delete an existing persisted key.
-    public static void deteleKey(long handle) {
+    public static void deleteKey(long handle) {
         CaviumKey ck = getKey(handle);
         try {
             Util.deleteKey(ck);

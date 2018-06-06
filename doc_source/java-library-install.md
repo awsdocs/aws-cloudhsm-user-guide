@@ -228,7 +228,7 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
 Your Java application must be authenticated by the HSMs in your cluster before it can use them\. Each application can use one session, which is established by providing credentials in one of the following ways\. In the following examples, replace *<HSM user name>* and *<password>* with the credentials of a crypto user \(CU\)\.
 
 The first of the following examples shows how to use the `LoginManager` class to manage sessions in your code\. Instead, you can let the library implicitly manage sessions when your application starts, as shown in the remaining examples\. However in these latter cases it might be difficult to understand error conditions when the provided credentials are invalid or the HSMs are having problems\. When you use the `LoginManager` class, you have more control over how your application deals with failures\.
-+ Provide a file named `HsmCredentials.properties` in your application's `CLASSPATH`\. The file's contents should look like the following:
++ Add a file named `HsmCredentials.properties` to your application's `CLASSPATH`\. The file's contents should look like the following:
 
   ```
   HSM_PARTITION = PARTITION_1
@@ -265,7 +265,7 @@ The first of the following examples shows how to use the `LoginManager` class to
 The following key management basics can help you get started with the AWS CloudHSM software library for Java\.
 
 **To import a key implicitly**  
-To implicitly import a key, pass the key to any API that accepts one\. If the key is the correct type for the specified operation, the HSMs automatically import and use the provided key\.
+Pass the key to any API operation that accepts one\. If the key is the correct type for the specified operation, the HSMs automatically import and use the provided key\.
 
 **To import a key explicitly**  
 Use the utility class named `ImportKey` to import a key and set its attributes\.

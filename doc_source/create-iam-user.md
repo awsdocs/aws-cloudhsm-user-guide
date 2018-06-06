@@ -97,7 +97,7 @@ We recommend that you create an IAM administrators group for AWS CloudHSM that c
 
 1. Choose **Create policy**\.
 
-**Create a AWS CloudHSM Administrator Group**
+**Create an AWS CloudHSM Administrator Group**
 
 1. Sign in to the IAM console using the credentials of an AWS administrator\.
 
@@ -164,14 +164,14 @@ The trust policy for the AWSServiceRoleForCloudHSM role allows AWS CloudHSM to a
 
 AWS CloudHSM creates the AWSServiceRoleForCloudHSM role when you create a cluster if you include the `iam:CreateServiceLinkedRole` action in the permissions that you defined when you created the AWS CloudHSM administrators group\. See [Restrict User Permissions to What's Necessary for AWS CloudHSM](#permissions-for-cloudhsm)\. 
 
-If you already have one or more clusters and just want to add the AWSServiceRoleForCloudHSM role, you can use the console, the [create\-cluster](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/create-cluster.html) command, or the [CreateCluster](AWS CloudHSM API ReferenceAPI_CreateCluster.html) API to create a cluster and then use the console, the [delete\-cluster](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/delete-cluster.html) command, or the [DeleteCluster](AWS CloudHSM API ReferenceAPI_DeleteCluster.html) API to delete it\. Creating the new cluster creates the service–linked role and applies it to all clusters in your account\. Alternatively, you can create the role manually\. See the following section for more information\. 
+If you already have one or more clusters and just want to add the AWSServiceRoleForCloudHSM role, you can use the console, the [create\-cluster](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/create-cluster.html) command, or the [CreateCluster](AWS CloudHSM API ReferenceAPI_CreateCluster.html) API to create a cluster\. Then use the console, the [delete\-cluster](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/delete-cluster.html) command, or the [DeleteCluster](AWS CloudHSM API ReferenceAPI_DeleteCluster.html) API to delete it\. Creating the new cluster creates the service–linked role and applies it to all clusters in your account\. Alternatively, you can create the role manually\. See the following section for more information\. 
 
 **Note**  
 You do not need to perform all of the steps outlined in [Getting Started with AWS CloudHSM](getting-started.md) to create a cluster if you are only creating it to add the AWSServiceRoleForCloudHSM role\.
 
 ### Creating a Service\-Linked Role \(Manual\)<a name="create-slr-manual"></a>
 
-You can use the IAM console, CLI, or API to create the AWSServiceRoleForCloudHSM service\-linked role\. For more information, see [Creating a Service\-Linked Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role) in the *IAM User Guide*\. 
+You can use the IAM console, AWS CLI, or API to create the AWSServiceRoleForCloudHSM service\-linked role\. For more information, see [Creating a Service\-Linked Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role) in the *IAM User Guide*\. 
 
 ### Editing the Service\-Linked Role<a name="edit-slr"></a>
 
@@ -179,4 +179,4 @@ AWS CloudHSM does not allow you to edit the AWSServiceRoleForCloudHSM service–
 
 ### Deleting the Service\-Linked Role<a name="delete-slr"></a>
 
-You cannot delete a service–linked role as long as a cluster to which it has been applied still exists\. To delete the role, you must first delete each HSM in your cluster and then delete the cluster\. Every cluster in your account must be deleted\. You can then use the IAM console, CLI, or API to delete the role\. For more information about deleting a cluster, see [Deleting an AWS CloudHSM Cluster](delete-cluster.md)\. For more information, about deleting a role, see [Deleting a Service\-Linked Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#delete-service-linked-role) in the *IAM User Guide*\. 
+You cannot delete a service–linked role as long as a cluster to which it has been applied still exists\. To delete the role, you must first delete each HSM in your cluster and then delete the cluster\. Every cluster in your account must be deleted\. You can then use the IAM console, AWS CLI, or API to delete the role\. For more information about deleting a cluster, see [Deleting an AWS CloudHSM Cluster](delete-cluster.md)\. For more information, about deleting a role, see [Deleting a Service\-Linked Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#delete-service-linked-role) in the *IAM User Guide*\. 

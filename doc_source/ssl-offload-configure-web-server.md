@@ -10,10 +10,10 @@ To finish setting up your web server for SSL/TLS offload with AWS CloudHSM, see 
 ## Update the Web Server Configuration<a name="ssl-offload-update-web-server-configuration"></a>
 
 To update your web server configuration, complete the steps in one of the following procedures\. Choose the procedure that corresponds to your web server software\. 
-+ [Update the configuration for Nginx](#update-web-server-config-nginx)
++ [Update the configuration for NGINX](#update-web-server-config-nginx)
 + [Update the configuration for Apache HTTP Server](#update-web-server-config-apache)<a name="update-web-server-config-nginx"></a>
 
-**Update the web server configuration for Nginx**
+**Update the web server configuration for NGINX**
 
 1. Connect to your client instance\.
 
@@ -107,13 +107,13 @@ To update your web server configuration, complete the steps in one of the follow
 
    Save the file\. This requires Linux root permissions\.
 
-1. Run the following command to start the Nginx web server\.
+1. Run the following command to start the NGINX web server\.
 
    ```
    sudo service nginx start
    ```
 
-1. Run the following command if you want to configure your server to start Nginx when the server starts\. 
+1. Run the following command if you want to configure your server to start NGINX when the server starts\. 
 
    ```
    $ sudo chkconfig nginx on

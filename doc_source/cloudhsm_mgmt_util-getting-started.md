@@ -72,13 +72,13 @@ $ sudo service cloudhsm-client stop
 ------
 #### [ Windows ]
 
-You can use <ctrl><c> to stop the client\.
+You can use **Ctrl**\+**C** to stop the client\.
 
 ------
 
 ### Step 2: Update the AWS CloudHSM Configuration Files<a name="cloudhsm_mgmt_util-config-a"></a>
 
-This step uses the `-a` parameter of the [Configure tool](configure-tool.md) to add the ENI IP address of one of the HSMs in the cluster to the configuration file\. 
+This step uses the `-a` parameter of the [Configure tool](configure-tool.md) to add the elastic network interface \(ENI\) IP address of one of the HSMs in the cluster to the configuration file\. 
 
 ------
 #### [ Amazon Linux ]
@@ -138,11 +138,11 @@ c:\Program Files\Amazon\CloudHSM>configure.exe -a <HSM ENI IP>
 
 ------
 
-To get the ENI IP address of an HSM in your cluster, you can use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) command, the [describe\-clusters](http://docs.aws.amazon.com/cloudhsm/latest/userguide/cli-guide.htmldescribe-clusters.html) command, or the [Get\-HSM2Cluster](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. Enter only one ENI IP address\. It does not matter which ENI IP address you select\. 
+To get the ENI IP address of an HSM in your cluster, you can use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) command, the [describe\-clusters](http://docs.aws.amazon.com/cloudhsm/latest/userguide/cli-guide.htmldescribe-clusters.html) command, or the [Get\-HSM2Cluster](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. Type only one ENI IP address\. It does not matter which ENI IP address you use\. 
 
 ### Step 3: Start the AWS CloudHSM Client<a name="cloudhsm_mgmt_util-start-cloudhsm-client"></a>
 
-Next, start or restart the AWS CloudHSM client\. When the AWS CloudHSM client starts, it uses the ENI IP address in its configuration file to query the cluster\. Then, it adds the ENI IP addresses of all HSMs in the cluster to the cluster information file\. 
+Next, start or restart the AWS CloudHSM client\. When the AWS CloudHSM client starts, it uses the ENI IP address in its configuration file to query the cluster\. Then it adds the ENI IP addresses of all HSMs in the cluster to the cluster information file\. 
 
 ------
 #### [ Amazon Linux ]
@@ -197,7 +197,7 @@ $ sudo service cloudhsm-client start
 #### [ Windows ]
 
 ```
-c:\Program Files\Amazon\CloudHSM>cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
+C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
 ```
 
 ------
@@ -264,14 +264,14 @@ c:\Program Files\Amazon\CloudHSM>configure.exe -m
 
 ------
 
-When this step completes, you are ready to start cloudhsm\_mgmt\_util\. If you add or delete HSMs at any time, be sure to repeat this procedure before using cloudhsm\_mgmt\_util\. 
+When this step is complete, you are ready to start cloudhsm\_mgmt\_util\. If you add or delete HSMs at any time, be sure to repeat this procedure before using cloudhsm\_mgmt\_util\. 
 
 ## Basic Usage of cloudhsm\_mgmt\_util<a name="cloudhsm_mgmt_util-basics"></a>
 
 See the following topics for the basic usage of the cloudhsm\_mgmt\_util tool\.
 
 **Note**  
-The cloudhsm\_mgmt\_util tool doesn't support auto\-completing commands with the **Tab** key\. Don't use the **Tab** key with cloudhsm\_mgmt\_util, because that can make the tool unresponsive\. 
+The cloudhsm\_mgmt\_util tool doesn't support autocompleting commands with the **Tab** key\. Don't use the **Tab** key with cloudhsm\_mgmt\_util, because that can make the tool unresponsive\. 
 
 **Topics**
 + [Start cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-start)
@@ -337,7 +337,7 @@ $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
 #### [ Windows ]
 
 ```
-c:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe c:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
 ```
 
 ------
@@ -375,7 +375,7 @@ E2E enabled on server 2(10.0.1.12)
 
 Use the loginHSM command to log in to the HSMs\. Any user of any type can use this command to log in to the HSMs\. 
 
-The command in following example logs in *admin*, which is the default [crypto officer \(CO\)](hsm-users.md)\. You set this user's password when you [activated the cluster](activate-cluster.md)\. The output shows that the command logged the *admin* user in to all of the HSMs in the cluster\. 
+The command in the following example logs in *admin*, which is the default [crypto officer \(CO\)](hsm-users.md)\. You set this user's password when you [activated the cluster](activate-cluster.md)\. The output shows that the command logged in the *admin* user to all of the HSMs in the cluster\. 
 
 **Warning**  
 When you log in to cloudhsm\_mgmt\_util, verify that the ENI IP addresses in the success messages *exactly match* the ENI IP addresses of all HSMs in the cluster\. If they do not, stop and run all steps in the [Prepare to run cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-setup) procedure\.   

@@ -21,7 +21,7 @@ Before you can create another web server, you need to create a new subnet in the
 
    1. For **Name tag**, type a name for your subnet\.
 
-   1. For **VPC**, choose the CloudHSM VPC that contains your existing web server and AWS CloudHSM cluster\. 
+   1. For **VPC**, choose the AWS CloudHSM VPC that contains your existing web server and AWS CloudHSM cluster\. 
 
    1. For **Availability Zone**, choose an Availability Zone that is different from the one that contains your existing web server\. 
 
@@ -187,7 +187,7 @@ After you complete the preceding steps, the Amazon EC2 console shows your Elasti
 
 1. Use a web browser such as Mozilla Firefox or Google Chrome to connect to your load balancer using the load balancer's DNS name\. Ensure that the URL in the address bar begins with https://\. 
 **Note**  
-You can use a DNS service such as Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your load balancer\. For more information, see [Routing Traffic to an ELB Load Balancer](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html) in the *Amazon Route 53 Developer Guide* or the documentation for your DNS service\. 
+You can use a DNS service such as Amazon Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your load balancer\. For more information, see [Routing Traffic to an ELB Load Balancer](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html) in the *Amazon Route 53 Developer Guide* or the documentation for your DNS service\. 
 
 1. Use your web browser to view the web server certificate\. For more information, see the following: 
    + For Mozilla Firefox, see [ View a Certificate ](https://support.mozilla.org/en-US/kb/secure-website-certificate#w_view-a-certificate) on the Mozilla Support website\.

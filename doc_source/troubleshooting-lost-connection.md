@@ -74,7 +74,7 @@ To resolve these errors, update the configuration file with the IP address of an
 ------
 #### [ Windows ]
 
-   You can use <ctrl><c> to stop the client\.
+   You can use **Ctrl**\+**C** to stop the client\.
 
 ------
 
@@ -139,7 +139,7 @@ To resolve these errors, update the configuration file with the IP address of an
 #### [ Windows ]
 
    ```
-   c:\Program Files\Amazon\CloudHSM>cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
+   C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
    ```
 
 ------

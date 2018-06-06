@@ -1,6 +1,6 @@
-# Supported PKCS \#11 APIs<a name="pkcs11-apis"></a>
+# Supported PKCS \#11 API operations<a name="pkcs11-apis"></a>
 
-The AWS CloudHSM software library for PKCS \#11 supports the following PKCS \#11 APIs\.
+The AWS CloudHSM software library for PKCS \#11 supports the following PKCS \#11 API operations\.
 + `C_CreateObject`
 + `C_Decrypt`
 + `C_DecryptFinal`

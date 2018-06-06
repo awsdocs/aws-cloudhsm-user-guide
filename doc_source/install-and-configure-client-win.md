@@ -10,31 +10,29 @@ To interact with an HSM in your AWS CloudHSM cluster, you need the AWS CloudHSM 
 
 1. Go to your download location and run the **AWSCloudHSMClient\.msi** installer\. Follow the installer instructions\. 
 **Important**  
-You must run the installer with administrative privileges\. Open a command window as an administrator, navigate to the `C:\Program Files\Amazon\CloudHSM` directory, and run `AWSCloudHSMClient.exe`\. 
-**Note**  
-You can uninstall the client by running the installer again and following the directions\.
+You must run the installer with administrative privileges\.
 
-1. Choose **Close** after the installer dialog has finished\.
-**Note**  
-The installer automatically registers the KSP and CNG providers\.
+   The installer automatically registers the Cryptography API: Next Generation \(CNG\) key storage providers \(KSPs\) for AWS CloudHSM\. To uninstall the AWS CloudHSM client software for Windows, run the installer again and following the instructions\.
 
-   The installer copies the executable files into the `C:\Program Files\Amazon\CloudHSM` folder:
-   + cloudhsm\_client
-   + cloudhsm\_mgmt\_util
-   + cng\_config
-   + configure
-   + key\_mgmt\_util
-   + ksp\_config
-   + pkpspeed\_blocking\.exe
+1. Choose **Close** after the installer has finished\.
 
-   Certificates and keys are installed in the `C:\ProgramData\Amazon\CloudHSM` folder:
-   + client\.crt
-   + client\.key
+   The installer copies the following executable files into the `C:\Program Files\Amazon\CloudHSM` folder:
+   + `cloudhsm_client.exe`
+   + `cloudhsm_mgmt_util.exe`
+   + `cng_config.exe`
+   + `configure.exe`
+   + `key_mgmt_util.exe`
+   + `ksp_config.exe`
+   + `pkpspeed_blocking.exe`
 
-   Configuration files are copied into the `C:\ProgramData\Amazon\CloudHSM\data` folder:
-   + application\.cfg
-   + cloudhsm\_client\.cfg
-   + cloudhsm\_mgmt\_util\.cfg
+   The installer copies the following certificate and key files into the `C:\ProgramData\Amazon\CloudHSM` folder:
+   + `client.crt`
+   + `client.key`
+
+   The installer copies the following configuration files into the `C:\ProgramData\Amazon\CloudHSM\data` folder:
+   + `application.cfg`
+   + `cloudhsm_client.cfg`
+   + `cloudhsm_mgmt_util.cfg`
 
 1. Copy your self\-signed issuing certificate—[the one that you used to sign the cluster certificate](initialize-cluster.md#sign-csr)—to the `C:\ProgramData\Amazon\CloudHSM` folder\. 
 

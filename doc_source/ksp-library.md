@@ -6,7 +6,7 @@ Cryptography API: Next Generation \(CNG\) is a cryptographic API specific to the
 + **Data Protection API \(CNG DPAPI\)** \- enables you to easily encrypt and decrypt data\.
 + **Key Storage and Retrieval** \- enables you to securely store and isolate the private key of an asymmetric key pair\.
 
-Key Storage Providers \(KSPs\) enable key storage and retrieval\. For example, if you add the Microsoft Active Directory Certificate Services \(AD CS\) role to your Windows server and you choose to create a new private key for your certificate authority \(CA\), you can choose the KSP that will manage key storage\. The Windows CloudHSM client includes KSPs created by Cavium specifically for AWS CloudHSM\. When you configure the AD CS role, you can choose a Cavium KSP\. For more information, see [Add and Configure AD CS](win-ca-setup.md)\. The Windows CloudHSM client also installs a Cavium CNG provider\. 
+Key storage providers \(KSPs\) enable key storage and retrieval\. For example, if you add the Microsoft Active Directory Certificate Services \(AD CS\) role to your Windows server and you choose to create a new private key for your certificate authority \(CA\), you can choose the KSP that will manage key storage\. The Windows CloudHSM client includes KSPs created by Cavium specifically for AWS CloudHSM\. When you configure the AD CS role, you can choose a Cavium KSP\. For more information, see [Create Windows Server CA](win-ca-setup.md)\. The Windows CloudHSM client also installs a Cavium CNG provider\. 
 
 **Topics**
 + [Install the KSP and CNG Providers for Windows](ksp-library-install.md)

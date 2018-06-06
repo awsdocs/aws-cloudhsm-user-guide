@@ -1,6 +1,8 @@
 # Reconfigure SSL with a New Certificate and Private Key \(Optional\)<a name="getting-started-ssl"></a>
 
-The AWS CloudHSM uses an SSL certificate to establish a connection to an HSM\. A default key and SSL certificate are included when you install the client\. You can, however, create and use your own\. Note that you will need the self–signed certificate \(*`customerCA.crt`*\) that you created when you [initialized](initialize-cluster.md#sign-csr-create-cert) your cluster\. 
+AWS CloudHSM uses an SSL certificate to establish a connection to an HSM\. A default key and SSL certificate are included when you install the client\. You can, however, create and use your own\. Note that you will need the self–signed certificate \(*`customerCA.crt`*\) that you created when you [initialized](initialize-cluster.md#sign-csr-create-cert) your cluster\. 
+
+**To reconfigure SSL with a new certificate and private key**
 
 1. Create a private key using the following OpenSSL command:
 
@@ -14,7 +16,7 @@ The AWS CloudHSM uses an SSL certificate to establish a connection to an HSM\. A
    Verifying - Enter pass phrase for customerCA.key:
    ```
 
-1. Use the following OpenSSL command to create a certificate signing request \(CSR\)\. You'll be asked a series of questions for your certificate\. 
+1. Use the following OpenSSL command to create a certificate signing request \(CSR\)\. You will be asked a series of questions for your certificate\. 
 
    ```
    req -new -sha256 -key ssl-client.key -out ssl-client.csr
@@ -53,7 +55,7 @@ The AWS CloudHSM uses an SSL certificate to establish a connection to an HSM\. A
    Getting CA Private Key
    ```
 
-1. Copy your key and certificate to appropriate directory\. On Linux, use the following commands\. The `configure --ssl` option became available with version 1\.0\.14 of the AWS CloudHSM client\. 
+1. Copy your key and certificate to the appropriate directory\. In Linux, use the following commands\. The `configure --ssl` option became available with version 1\.0\.14 of the AWS CloudHSM client\. 
 
    ```
    sudo cp ssl-client.crt /opt/cloudhsm/etc/

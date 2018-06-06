@@ -161,7 +161,7 @@ To verify the certificate chain, use OpenSSL 1\.0\. Due to a change in OpenSSL c
 
 Use OpenSSL to extract and compare the public keys in the HSM certificate and the cluster CSR, to ensure that they are the same\.
 
-To compare the public keys, use your Linux shell\. You need OpenSSL, which is available in most Linux shells, but you do not need the AWS CLI for this step, and the shell does not need to be associated with your AWS account\.
+To compare the public keys, use your Linux shell\. You need OpenSSL, which is available in most Linux shells, but you do not need the AWS CLI for this step The shell does not need to be associated with your AWS account\.
 
 **To extract and compare the public keys**
 

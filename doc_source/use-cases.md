@@ -15,7 +15,7 @@ For information about setting up SSL/TLS offload with AWS CloudHSM, see [SSL/TLS
 
 ## Protect the Private Keys for an Issuing Certificate Authority \(CA\)<a name="certificate-authority"></a>
 
-In a public key infrastructure \(PKI\), a certificate authority \(CA\) is a trusted entity that issues digital certificates\. These digital certificates bind a public key to an identity \(a person or organization\) by means of public key cryptography and digital signatures\. To operate a CA, you must maintain trust by protecting the private keys that sign the certificates issued by your CA\. You can store these private keys in an HSM and use the HSM to perform the cryptographic signing operations\.
+In a public key infrastructure \(PKI\), a certificate authority \(CA\) is a trusted entity that issues digital certificates\. These digital certificates bind a public key to an identity \(a person or organization\) by means of public key cryptography and digital signatures\. To operate a CA, you must maintain trust by protecting the private key that signs the certificates issued by your CA\. You can store the private key in the HSM in your AWS CloudHSM cluster, and use the HSM to perform the cryptographic signing operations\.
 
 ## Enable Transparent Data Encryption \(TDE\) for Oracle Databases<a name="transparent-data-encryption"></a>
 
