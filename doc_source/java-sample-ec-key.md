@@ -5,7 +5,7 @@
 | --- |
 |  \*\* Example code only \- Not for production use \*\* This page includes example code that has not been fully tested\. It is designed for test environments\. Do not run this code in production\.  | 
 
-This example shows how to generate Elliptical Curve \(EC\) asymmetric key pair and save the keys in an HSM\. By default, the keys that the HSM generates are not saved\. To save a key, call the `makeKeyPersistant` method below\. You can save the key object and use the key handle in other operations\. 
+This example shows how to generate Elliptical Curve \(EC\) asymmetric key pair and save the keys in an HSM\. By default, the keys that the HSM generates are not saved\. To save a key, call the `makeKeyPersistent` method below\. You can save the key object and use the key handle in other operations\. 
 
 **Note**  
 This example uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. You can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
@@ -79,7 +79,7 @@ public class ECAsymmetricKeyGeneration {
         // By default, keys are not persistent. Make them Persistent here.
         if(isPersistent) {
           System.out.println("Setting Private Key as Persistent:");
-          makeKeyPersistant(cavEcPrivateKey);
+          makeKeyPersistent(cavEcPrivateKey);
           System.out.println("Added EC Private Key to HSM");
         }
         System.out.println("Is Private Key Persistent = " + cavEcPrivateKey.isPersistent());
@@ -103,7 +103,7 @@ public class ECAsymmetricKeyGeneration {
         // By default, keys are not persistent. Make them Persistent here.
         if(isPersistent) {
           System.out.println("Setting Public Key as Persistent:");
-          makeKeyPersistant(cavEcPublicKey);
+          makeKeyPersistent(cavEcPublicKey);
           System.out.println("Added EC Public Key to HSM");
         }
         System.out.println("Is Private Key Persistent = " + cavEcPublicKey.isPersistent());
@@ -189,7 +189,7 @@ public class ECAsymmetricKeyGeneration {
   }
 
   // Save the key to the HSM.
-  protected void makeKeyPersistant(CaviumKey key) {
+  protected void makeKeyPersistent(CaviumKey key) {
     CaviumKey rsaKey = (CaviumKey) key;
     try {
       Util.persistKey(rsaKey);
