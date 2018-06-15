@@ -24,3 +24,7 @@ The following image and process assumes that RSA is used for server verification
 1. To decrypt the client's premaster secret, the server sends it to the HSM\. The HSM uses the private key in the HSM to decrypt the premaster secret and then it sends the premaster secret to the server\. Independently, the client and server each use the premaster secret and some information from the hello messages to calculate a master secret\. 
 
 1. The handshake process ends\. For the rest of the session, all messages sent between the client and the server are encrypted with derivatives of the master secret\. 
+
+To learn how to configure SSL/TLS offload with AWS CloudHSM, see one of the following topics:
++ [Tutorial: Using SSL/TLS Offload with AWS CloudHSM on Linux](ssl-offload-linux.md)
++ [Tutorial: Using SSL/TLS Offload with AWS CloudHSM on Windows](ssl-offload-windows.md)

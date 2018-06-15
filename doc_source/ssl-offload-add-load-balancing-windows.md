@@ -1,13 +1,13 @@
-# \(Optional\) Step 5: Add a Load Balancer with Elastic Load Balancing<a name="ssl-offload-add-load-balancing"></a>
+# \(Optional\) Step 5: Add a Load Balancer with Elastic Load Balancing<a name="ssl-offload-add-load-balancing-windows"></a>
 
 After you set up SSL/TLS offload with one web server, you can create more web servers and an Elastic Load Balancing load balancer that routes HTTPS traffic to the web servers\. A load balancer can reduce the load on your individual web servers by balancing traffic across two or more servers\. It can also increase the availability of your website because the load balancer monitors the health of your web servers and only routes traffic to healthy servers\. If a web server fails, the load balancer automatically stops routing traffic to it\.
 
 **Topics**
-+ [Create a Subnet for a Second Web Server](#ssl-offload-load-balancer-create-new-subnet-linux)
-+ [Create the Second Web Server](#ssl-offload-load-balancer-create-web-server-linux)
-+ [Create the Load Balancer](#ssl-offload-load-balancer-create-load-balancer-linux)
++ [Create a Subnet for a Second Web Server](#ssl-offload-load-balancer-create-new-subnet-windows)
++ [Create the Second Web Server](#ssl-offload-load-balancer-create-web-server-windows)
++ [Create the Load Balancer](#ssl-offload-load-balancer-create-load-balancer-windows)
 
-## Create a Subnet for a Second Web Server<a name="ssl-offload-load-balancer-create-new-subnet-linux"></a>
+## Create a Subnet for a Second Web Server<a name="ssl-offload-load-balancer-create-new-subnet-windows"></a>
 
 Before you can create another web server, you need to create a new subnet in the same VPC that contains your existing web server and AWS CloudHSM cluster\. 
 
@@ -40,7 +40,7 @@ Before you can create another web server, you need to create a new subnet in the
 
 1. Select the check box next to the public subnet that you created earlier in this procedure\. Then choose **Save**\. 
 
-## Create the Second Web Server<a name="ssl-offload-load-balancer-create-web-server-linux"></a>
+## Create the Second Web Server<a name="ssl-offload-load-balancer-create-web-server-windows"></a>
 
 Complete the following steps to create a second web server with the same configuration as your existing web server\. 
 
@@ -104,7 +104,7 @@ Complete the following steps to create a second web server with the same configu
 
    1. Select the check box next to the security group named **cloudhsm\-*<cluster ID>*\-sg**\. AWS CloudHSM created this security group on your behalf when you [created the cluster](create-cluster.md)\. You must choose this security group to allow the web server instance to connect to the HSMs in the cluster\. 
 
-   1. Select the check box next to the security group that allows inbound HTTPS traffic\. You [created this security group previously](ssl-offload-enable-traffic-and-verify-certificate.md#ssl-offload-add-security-group-linux)\.
+   1. Select the check box next to the security group that allows inbound HTTPS traffic\. You [created this security group previously](ssl-offload-enable-traffic-and-verify-certificate-windows.md#ssl-offload-add-security-group-windows)\.
 
    1. \(Optional\) Select the check box next to a security group that allows inbound SSH \(for Linux\) or RDP \(for Windows\) traffic from your network\. That is, the security group must allow inbound TCP traffic on port 22 \(for SSH on Linux\) or port 3389 \(for RDP on Windows\)\. Otherwise, you cannot connect to your client instance\. If you don't have a security group like this, you must create one and then assign it to your client instance later\.
 
@@ -137,7 +137,7 @@ You cannot download the private key file again after this point\. If you do not 
 
    Choose **Launch Instances**\.
 
-## Create the Load Balancer<a name="ssl-offload-load-balancer-create-load-balancer-linux"></a>
+## Create the Load Balancer<a name="ssl-offload-load-balancer-create-load-balancer-windows"></a>
 
 Complete the following steps to create an Elastic Load Balancing load balancer that routes HTTPS traffic to your web servers\. 
 

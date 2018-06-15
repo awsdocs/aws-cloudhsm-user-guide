@@ -8,7 +8,7 @@ In this solution, you use Oracle Database installed on an Amazon EC2 instance\. 
 
 **Important**  
 You cannot use an Oracle instance in Amazon Relational Database Service \(Amazon RDS\) to integrate with AWS CloudHSM\. You must install Oracle Database on an Amazon EC2 instance\.  
-For information about integrating an Oracle instance in Amazon RDS with AWS CloudHSM Classic, see [Using AWS CloudHSM Classic to Store Amazon RDS Oracle TDE Keys](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCloudHSM.html) in the *Amazon Relational Database Service User Guide*\.
+For information about integrating an Oracle instance in Amazon RDS with AWS CloudHSM Classic, see [Using AWS CloudHSM Classic to Store Amazon RDS Oracle TDE Keys](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.OracleCloudHSM.html) in the *Amazon RDS User Guide*\.
 
 Complete the following steps to accomplish Oracle TDE integration with AWS CloudHSM\.
 

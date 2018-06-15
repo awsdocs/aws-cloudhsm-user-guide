@@ -5,7 +5,8 @@ This section describes the updates to each version of the [AWS CloudHSM client](
 This section includes links to download newer versions of the software\. If you installed the AWS CloudHSM client for [Linux](install-and-configure-client-linux.md) or [Windows](install-and-configure-client-win.md), and installed the [software libraries](use-hsm.md) that you need, you already have all of the software you need to use AWS CloudHSM\.
 
 **Topics**
-+ [Current Version: 1\.1\.0](#client-version-1-1-0)
++ [Current Version: 1\.1\.1](#client-version-1-1-1)
++ [Version: 1\.1\.0](#client-version-1-1-0)
 + [Version: 1\.0\.18](#client-version-1-0-18)
 + [Version 1\.0\.14](#client-version-1.0.14)
 + [Version 1\.0\.11](#client-version-1.0.11)
@@ -14,7 +15,116 @@ This section includes links to download newer versions of the software\. If you 
 + [Version 1\.0\.7](#client-version-1.0.7)
 + [Version 1\.0\.0](#client-version-1.0.0)
 
-## Current Version: 1\.1\.0<a name="client-version-1-1-0"></a>
+## Current Version: 1\.1\.1<a name="client-version-1-1-1"></a>
+
+To download the software, choose the tab for your preferred operating system, then choose the link to each software package\.
+
+------
+#### [ Amazon Linux ]
+
+Download the version 1\.1\.1 software for Amazon Linux:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-latest.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm)
+
+------
+#### [ Amazon Linux 2 ]
+
+Download the version 1\.1\.1 software for Amazon Linux 2:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-latest.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm)
+
+------
+#### [ CentOS 6 ]
+
+Download the version 1\.1\.1 software for CentOS 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-latest.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm)
+
+------
+#### [ CentOS 7 ]
+
+Download the version 1\.1\.1 software for CentOS 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-latest.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm)
+
+------
+#### [ RHEL 6 ]
+
+Download the version 1\.1\.1 software for RedHat Enterprise Linux 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-latest.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm)
+
+------
+#### [ RHEL 7 ]
+
+Download the version 1\.1\.1 software for RedHat Enterprise Linux 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-latest.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm)
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+Download the version 1\.1\.1 software for Ubuntu 16\.04 LTS:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_latest_amd64.deb)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_latest_amd64.deb)
+
+------
+#### [ Windows Server ]
+
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 1\.1\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\.
+
+Download the version 1\.1\.0 software for Windows Server:
++  [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-latest.msi) for Windows Server
+
+------
+
+Version 1\.1\.1 is a strongly recommended upgrade, as it contains a security fix\. Significant changes in this version are as follows:
+
+**AWS CloudHSM Client Software**
++ Improved stability and bug fixes
++ In cloud\_hsm\_mgmt\_util, enable\_e2e now set by default
++ **SECURITY FIX: **in key\_mgmt\_util, resolved issue with the incorrect PKCS\#1v1\.5 signature parsing\. This eliminates potential errors when validating signatures with imported RSA keys that use a public exponent of 3\. CloudHSM does not allow generating RSA keys with exponents smaller than 65537 to meet FIPS 140\-2 requirements\.
+
+**PKCS \#11 Library**
++ Improved stability and bug fixes
++ **SECURITY FIX: **Resolved issue with incorrect PKCS\#1v1\.5 signature parsing\. This eliminates potential errors when validating signatures with imported RSA keys that use a public exponent of 3\. CloudHSM does not allow generating RSA keys with exponents smaller than 65537 to meet FIPS 140\-2 requirements\.
++ **BREAKING CHANGE: **To protect against user error, AES\-GCM initialization now requires the user supplied IV buffer to be zeroized\. NIST requires the IV for AES\-GCM to be generated by the HSM and noted by the application after encryption is complete, as described [here](pkcs11-mechanisms.md)\. IV is always 12 bytes long\.
++ Added support for CKM\_RSA\_PKCS\_KEY\_PAIR\_GEN mechanism
++ Added software hashing of buffers larger than 16KB for digest, sign and verify operations\. Hashes of buffers less than 16KB continue to be offloaded to the HSM as before\.
++ **BREAKING CHANGE:** Strengthened PKCS\#11 compliance, including explicit failure when handling unsupported or inconsistent attributes\. If your application was not strictly PKCS\#11 compliant before, you may experience errors or failures after updating to this version\. Specifically:
+  + If an application is already logged in, logging in will now return the error CKR\_USER\_ALREADY\_LOGGED\_IN
+  + CKA\_KEY\_GEN\_MECHANISM will cause an error if included in a C\_CreateObject call
+  + CKA\_ALWAYS\_SENSITIVE, CKA\_LOCAL and CKA\_NEVER\_EXTRACTABLE will cause errors if included in a key generation or import template
+  + CKA\_VALUE\_LEN is now validated
+  + By default, new keys are scoped as session keys rather than token keys, to comply with PKCS\#11\.
+
+**OpenSSL Dynamic Engine**
++ Improved stability and bug fixes
++ **SECURITY FIX:** Resolved issue with incorrect PKCS\#1v1\.5 signature parsing\. This eliminates potential errors when validating signatures with imported RSA keys that use a public exponent of 3\. CloudHSM does not allow generating RSA keys with exponents smaller than 65537 to meet FIPS 140\-2 requirements
+
+**Java Library**
++ Improved stability and bug fixes
++ Added software hashing of buffers larger than 16KB for digest, sign and verify operations\. Hashes of buffers less than 16KB continue to be offloaded to the HSM as before\.
++ For non\-exportable keys, getFormat and getEncoded now return NULL without throwing an exception\.
+
+**Windows \(CNG, KSP\)**
++ **SECURITY FIX: **Resolved issue with incorrect PKCS\#1v1\.5 signature parsing\. This eliminates potential errors when validating signatures with imported RSA keys that use a public exponent of 3\. CloudHSM does not allow generating RSA keys with exponents smaller than 65537 to meet FIPS 140\-2 requirements\.
+
+## Version: 1\.1\.0<a name="client-version-1-1-0"></a>
 
 To download the software, choose the tab for your preferred operating system, and then choose the link to each software package\.
 

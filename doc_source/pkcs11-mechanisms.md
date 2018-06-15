@@ -43,12 +43,15 @@ This mechanism is functionally identical to the `CKM_RSA_PKCS_KEY_PAIR_GEN` mech
 + `CKM_SHA384`
 + `CKM_SHA512`
 
+**Note**  
+Data under 16 KB in length are hashed on the HSM, while larger data are hashed locally in software\.
+
 **Encrypt/Decrypt**
 + `CKM_AES_CBC`
 + `CKM_AES_CBC_PAD`
 + `CKM_AES_GCM`
 **Note**  
-When performing AES\-GCM encryption, the HSM ignores the initialization vector \(IV\) in the request and uses an IV that it generates\. The HSM writes the generated IV to the memory reference pointed to by the `pIV` element of the `CK_GCM_PARAMS` parameters structure that you supply\.
+When performing AES\-GCM encryption, the HSM does not accept initialization vector \(IV\) data from the application\. It is required to use an IV that it generates\. The 12\-byte IV provided by the HSM is written into the memory reference pointed to by the pIV element of the CK\_GCM\_PARAMS parameters structure that you supply\. To ensure there is no user confusion, PKCS\#11 SDK in version 1\.1\.1 and later enforce that pIV points to a zeroized buffer when AES\-GCM encryption is initialized\.
 + `CKM_DES3_CBC`
 + `CKM_DES3_CBC_PAD`
 + `CKM_RSA_OAEP_PAD`

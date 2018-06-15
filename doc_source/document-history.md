@@ -7,6 +7,7 @@ The following table describes the documentation release history of AWS CloudHSM\
 
 | Change | Description | Release Date | 
 | --- | --- | --- | 
+| Added region support |  Added support for EU \(London\) region\.  | June 13, 2018 | 
 | New content |  Added AWS CloudHSM client and library support for Amazon Linux 2, Red Hat Enterprise Linux \(RHEL\) 6, Red Hat Enterprise Linux \(RHEL\) 7, CentOS 6, CentOS 7, and Ubuntu 16\.04 LTS\. For more information, see [Install and Configure the AWS CloudHSM Client \(Linux\)](install-and-configure-client-linux.md)\.   | May 10, 2018 | 
 | New content |  Added a Windows AWS CloudHSM client\. For more information, see the following topics: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/document-history.html)  | April 30, 2018 | 
 | New content |  Added quorum authentication \(M of N access control\) for crypto officers \(COs\)\. For more information, see [Enforcing Quorum Authentication \(M of N Access Control\)](quorum-authentication.md)\.   | November 9, 2017 | 

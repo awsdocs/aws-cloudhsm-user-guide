@@ -1,6 +1,6 @@
 # Windows AWS CloudHSM Prerequisites<a name="ksp-library-prereq"></a>
 
-Before you can start the Windows AWS CloudHSM client and use the KSP and CNG providers, you must set the required system environment variables\. These variables identify an HSM and a [crypto user](hsm-users.md#crypto-user) \(CU\) for your Windows application\. You can use the [set command](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1) to set temporary system environment variables, or set permanent system environment variables [programmatically](https://msdn.microsoft.com/en-us/library/system.environment.setenvironmentvariable(v=vs.110).aspx) or in the **Advanced** tab of the Windows **System Properties** Control Panel\. 
+Before you can start the Windows AWS CloudHSM client and use the KSP and CNG providers, you must set the required system environment variables\. These variables identify an HSM and a [crypto user](hsm-users.md#crypto-user) \(CU\) for your Windows application\. You can use the [setx command](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set system environment variables, or set permanent system environment variables [programmatically](https://msdn.microsoft.com/en-us/library/system.environment.setenvironmentvariable(v=vs.110).aspx) or in the **Advanced** tab of the Windows **System Properties** Control Panel\. 
 
 Set the following system environment variables:
 
@@ -9,7 +9,7 @@ Identifies an HSM in your cluster\. Because they are synchronized, you can speci
 For example:  
 
 ```
-set n3fips_partition=hsm-lgavqitns2a
+setx /m n3fips_partition hsm-lgavqitns2a
 ```
 
 **`n3fips_password=CU-username:CU-password`**  
@@ -17,7 +17,7 @@ Identifies a [crypto user](hsm-users.md#crypto-user) \(CU\) in the HSM and provi
 For example:  
 
 ```
-set n3fips_password=test_user:password123
+setx /m n3fips_password test_user:password123
 ```
 
 See also:

@@ -9,7 +9,7 @@ The following Java code examples show you how to use the AWS CloudHSM software l
 + [Generate Triple DES Symmetric Key](java-sample-des-key.md)
 + [Encrypting and Decrypting with AES GCM](java-sample-symmetric-encrypt-decrypt.md)
 + [Generate an RSA Asymmetric Key Pair](java-sample-rsa-key.md)
-+ [Generate an Elliptical Curve \(EC\) Asymmetric Key Pair](java-sample-ec-key.md)
++ [Generate an Elliptic Curve \(EC\) Asymmetric Key Pair](java-sample-ec-key.md)
 + [Encrypting and Decrypting with an RSA Key Pair](java-sample-asymmetric-encrypt-decrypt.md)
 + [Signing a Message](java-sample-sign-message.md)
 + [Create a Hash](java-sample-hash.md)

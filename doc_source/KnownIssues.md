@@ -15,21 +15,23 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 **Issue: **AES key wrapping uses PKCS\#5 padding instead of providing a standards\-compliant implementation of key wrap with zero padding\. Additionally, key wrap with no padding is not supported\.
 + **Impact: **There is no impact if you wrap and unwrap within AWS CloudHSM\. Keys wrapped with AWS CloudHSM cannot be unwrapped within other HSMs or software that expects compliance to the no\-padding specification\. This is because 8 bytes of padding data might be suffixed to your key data following a standards\-compliant unwrap\. Externally wrapped keys cannot be properly unwrapped into an AWS CloudHSM instance\. 
 + **Workaround: **To externally unwrap a key that was wrapped with AES Key Wrapping on a AWS CloudHSM instance, strip the extra padding before you attemp to use the key\. You can do this by trimming the extra bytes in a file editor or copying only the key bytes into a new buffer in your code\. 
-+ **Resolution Status: **We are fixing the client and SDKs to provide SP800\-38F compliant AES key wrapping\. Updates will be announced in the AWS CloudHSM forum and on the version history page\. The update will include mechanisms to assist you in rewrapping any existing wrapped keys in a standards\-compliant way\. 
++ **Resolution status: **We are fixing the client and SDKs to provide SP800\-38F compliant AES key wrapping\. Updates will be announced in the AWS CloudHSM forum and on the version history page\. The update will include mechanisms to assist you in rewrapping any existing wrapped keys in a standards\-compliant way\. 
 
 **Issue: **Imported keys cannot be specified as nonexportable\.
 + **Impact: **When importing a key through PKCS \#11 or JCE, you are not able to specify that it be made nonexportable\. In the PKCS \#11 context, the CKA\_NON\_EXPORTABLE flag is ignored\. Additionally, AWS CloudHSM does not support changing the exportable attribute for an existing key\. Because you can neither set a key as nonexportable during import nor change its exportable attribute after the fact, users today are unable to set imported keys as nonexportable\. 
 + **Workaround: **You can partially enforce similar behavior by creating a special Cryptographic User \(CU\) for this key\. Then use the share feature to allow other users or applications to use the key\. The limitations placed on shared keys prevent other users from exporting the key\. The cryptographic user \(CU\) who imports the key owns the key\. Only this CU can export the key\. You can share the imported key with other CU accounts\. These CU accounts can use the key but cannot export it, delete it, or share it with other CUs\. 
-+ **Resolution Status: **We are implementing fixes to make an imported key nonexportable when so specified\. No action will be required on your part to benefit from the fix\.
++ **Resolution status: **We are implementing fixes to make an imported key nonexportable when so specified\. No action will be required on your part to benefit from the fix\.
 
 **Issue: **The client daemon requires at least one valid IP address in its configuration file to successfully connect to the cluster\. 
 + **Impact: **If you delete every HSM in your cluster and then add another HSM, which gets a new IP address, the client daemon continues to search for your HSMs at their original IP addresses\. 
 + **Workaround: **If you run an intermittent workload, we recommend that you use the `IpAddress` argument in the [CreateHsm](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html) function to set the elastic network interface \(ENI\) to its original value\. Note than an ENI is specific to an Availability Zone \(AZ\)\. The alternative is to delete the `/opt/cloudhsm/daemon/1/cluster.info` file and then reset the client configuration to the IP address of your new HSM\. You can use the `client -a <IP address>` command\. For more information, see [Edit the Client Configuration](http://docs.aws.amazon.com/cloudhsm/latest/userguide/nstall-and-configure-client.html#edit-client-configuration)\. 
 
-**Issue: **There is an upper limit of 16 KB on data that can be hashed and signed by AWS CloudHSM\. 
-+ **Impact: ** In general, you cannot use the AWS CloudHSM SDKs to hash or sign data longer than 16 KB\. It doesn't matter whether you send the data in one piece or in multiple pieces\. The specific impact depends on the SDK that you are using\. See the individual SDK sections below for more information\. 
-+ **Workaround: **If your data buffer is larger than 16 KB, hash your data within your application and use AWS CloudHSM only for signing\. 
-+ **Resolution Status: **We are fixing the client and the SDKs to explicitly fail if the data buffer is larger than the 16 KB\. Updates will be announced in the AWS CloudHSM forum and on the version history page\.
+**Issue: **There was an upper limit of 16 KB on data that can be hashed and signed by AWS CloudHSM\. 
++ **Resolution status: **Data less than 16KB in size continues to be sent to the HSM for hashing\. We have added capability to hash locally, in software, data between 16KB and 64KB in size\. The client and the SDKs will explicitly fail if the data buffer is larger than 64KB\.
++ **Action required: **You must update your client and SDK\(s\) to version 1\.1\.1 or higher to benefit from the fix\. 
+
+**Issue: **Imported keys could not be specified as nonexportable\.
++ **Resolution Status: **This issue is fixed\. No action is required on your part to benefit from the fix\.
 
 ## Known Issues for the PKCS \#11 SDK<a name="ki-pkcs11-sdk"></a>
 
@@ -38,15 +40,13 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Workaround: **We provide an alternative PKCS \#11 library with a local Redis cache so permissions for the requested operation can be checked locally\. For details, including information about the limitations of this solution, see [Install the PKCS \#11 Library with Redis \(Optional\)](pkcs11-library-install.md#install-pkcs11-redis)\.
 + **Resolution status: **We are implementing fixes to directly provide PKCS \#11–compliant error messages, removing the need for the Redis workaround\. The updated PKCS \#11 library will be announced on the version history page\. 
 
-**Issue: **The `CKA_DERIVE` attribute is not supported and is not handled\.
-+ **Impact: **Specifying the `CKA_DERIVE` attribute for a key, whether the attribute is set to true or false, will cause the key operation to fail with an invalid template error\. 
-+ **Workaround: **Do not specify the `CKA_DERIVE` attribute in your code\.
-+ **Resolution status: **We are implementing fixes to accept `CKA_DERIVE` if it is set to `FALSE`\. `CKA_DERIVE` set to true will not be supported until we begin to add key derivation function support to AWS CloudHSM\. The updated PKCS \#11 library will be announced on the version history page\.
+**Issue: **The `CKA_DERIVE` attribute was not supported and was not handled\.
++ **Resolution status: **We have implemented fixes to accept `CKA_DERIVE` if it is set to `FALSE`\. `CKA_DERIVE` set to `TRUE` will not be supported until we begin to add key derivation function support to AWS CloudHSM\.
++ **Action required: **You must update your client and SDK\(s\) to version 1\.1\.1 or higher to benefit from the fix
 
-**Issue:** The `CKA_SENSITIVE` attribute is not supported and is not handled\.
-+ **Impact: **Specifying the `CKA_SENSITIVE` attribute for a key, whether the attribute is set to true or false, will cause the key operation to fail with an invalid template error\. 
-+ **Workaround: **Do not specify the `CKA_SENSITIVE` attribute in your code\.
-+ **Resolution status: **We are implementing fixes to accept and properly honor the `CKA_SENSITIVE` attribute\. The updated PKCS \#11 library will be announced on the version history page\. 
+**Issue:** The `CKA_SENSITIVE` attribute was not supported and was not handled\.
++ **Resolution status: **We have implemented fixes to accept and properly honor the `CKA_SENSITIVE` attribute\.
++ **Action required: **You must update your client and SDK\(s\) to version 1\.1\.1 or higher to benefit from the fix
 
 **Issue: **Multipart hashing and signing are not supported\.
 + **Impact: **`C_DigestUpdate` and `C_DigestFinal` are not implemented\. `C_SignFinal` is also not implemented and will fail with `CKR_ARGUMENTS_BAD` for a non\-`NULL` buffer\. 
@@ -58,10 +58,9 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Workaround: **We recommend that your application check the usage field values in addition to the error code\.
 + **Resolution status: **We are implementing fixes to return the proper error message when an incorrect private key template is used\. The updated PKCS \#11 library will be announced on the version history page\. 
 
-**Issue: **You cannot hash more than 16 KB of data\. For larger buffers, only the first 16 KB will be hashed and returned\. The excess data will be silently ignored\.
-+ **Impact: **`C_DIGEST` returns an incorrect result if the data size exceeds 16 KB\. 
-+ **Workaround: **You should hash your data within your application and use AWS CloudHSM to sign the hash\.
-+ **Resolution status: **We are fixing the SDK to fail explicitly if the data buffer is too large\. We are evaluating alternatives to support hashing larger buffers without relying on multipart hashing\. Updates will be announced in the AWS CloudHSM forum and on the version history page\. 
+**Issue: **You could not hash more than 16 KB of data\. For larger buffers, only the first 16 KB will be hashed and returned\. The excess data would have been silently ignored\.
++ **Resolution status: **Data less than 16KB in size continues to be sent to the HSM for hashing\. We have added capability to hash locally, in software, data between 16KB and 64KB in size\. The client and the SDKs will explicitly fail if the data buffer is larger than 64KB\.
++ **Action required: **You must update your client and SDK\(s\) to version 1\.1\.1 or higher to benefit from the fix\.
 
 **Issue: **Buffers for the `C_Encrypt` and `C_Decrypt` API operations cannot exceed 16 KB when using the `CKM_AES_GCM` mechanism\. Also, AWS CloudHSM does not support multipart AES\-GCM encryption\.
 + **Impact: **You cannot use the `CKM_AES_GCM` mechanism to encrypt data larger than 16 KB\.

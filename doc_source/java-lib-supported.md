@@ -44,6 +44,9 @@ The AWS CloudHSM software library for Java supports the following message digest
 + `SHA-384`
 + `SHA-512`
 
+**Note**  
+Data under 16 KB in length are hashed on the HSM, while larger data are hashed locally in software\.
+
 ## Supported Hash\-Based Message Authentication Code \(HMAC\) Algorithms<a name="java-mac"></a>
 
 The AWS CloudHSM software library for Java supports the following HMAC algorithms\.

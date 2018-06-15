@@ -1,4 +1,4 @@
-# Web Server SSL/TLS Offload Step 2: Import or Generate a Private Key and SSL/TLS Certificate<a name="ssl-offload-import-or-generate-private-key-and-certificate"></a>
+# Step 2: Generate or Import a Private Key and SSL/TLS Certificate<a name="ssl-offload-import-or-generate-private-key-and-certificate"></a>
 
 To enable HTTPS, your web server application \(NGINX or Apache\) needs a private key and a corresponding SSL/TLS certificate\. To use web server SSL/TLS offload with AWS CloudHSM, you must store the private key in an HSM in your AWS CloudHSM cluster\. You can accomplish this in one of the following ways: 
 + If you don't yet have a private key and a corresponding certificate, you can [generate a private key in an HSM](#ssl-offload-generate-private-key-and-certificate)\. You can then use the private key to create a certificate signing request \(CSR\)\. Use the CSR to create the SSL/TLS certificate\. 
@@ -6,7 +6,11 @@ To enable HTTPS, your web server application \(NGINX or Apache\) needs a private
    
 + If you already have a private key and corresponding certificate, you can [import the private key into an HSM](#ssl-offload-import-private-key)\. 
 
-Regardless of which method you choose, you then export a *fake PEM private key* from the HSM and save it to a file\. This file doesn't contain the actual private key\. It contains a reference to the private key that is stored on the HSM\. Your web server uses the fake PEM private key file and the AWS CloudHSM dynamic engine for OpenSSL to offload SSL/TLS processing to an HSM\. 
+Regardless of which method you choose, you then export a *fake PEM private key* from the HSM and save it to a file\. This file doesn't contain the actual private key\. It contains a reference to the private key that is stored on the HSM\. Your web server uses the fake PEM private key file and the AWS CloudHSM dynamic engine for OpenSSL to offload SSL/TLS processing to an HSM\.
+
+**Topics**
++ [Generate a Private Key and Certificate](#ssl-offload-generate-private-key-and-certificate)
++ [Import an Existing Private Key](#ssl-offload-import-private-key)
 
 ## Generate a Private Key and Certificate<a name="ssl-offload-generate-private-key-and-certificate"></a>
 
@@ -42,7 +46,7 @@ In a production environment, you typically use a certificate authority \(CA\) to
 
 As an alternative to using a CA, you can use the AWS CloudHSM dynamic engine for OpenSSL to create a self\-signed certificate\. Self\-signed certificates are not trusted by browsers and should not be used in production environments\. They can be used in test environments\. 
 
-**Important**  
+**Warning**  
 Self\-signed certificates should be used in a test environment only\. For a production environment, use a more secure method such as a certificate authority to create a certificate\. 
 
 **To create a self\-signed certificate**
@@ -56,7 +60,7 @@ Run the following command to use the AWS CloudHSM dynamic engine for OpenSSL to 
 openssl x509 -engine cloudhsm -req -days 365 -in <web_server.csr> -signkey <web_server_fake_PEM.key> -out <web_server.crt>
 ```
 
-After you complete these steps, you can [configure your web server](ssl-offload-configure-web-server.md)\. 
+After you complete these steps, go to [Step 3: Configure the Web Server](ssl-offload-configure-web-server.md)\.
 
 ## Import an Existing Private Key<a name="ssl-offload-import-private-key"></a>
 
@@ -175,4 +179,4 @@ You might already have a private key and a corresponding SSL/TLS certificate tha
    exit
    ```
 
-After you complete these steps, go to [Configure the Web Server](ssl-offload-configure-web-server.md)\.
+After you complete these steps, go to [Step 3: Configure the Web Server](ssl-offload-configure-web-server.md)\.

@@ -1,11 +1,11 @@
-# Generate an Elliptical Curve \(EC\) Asymmetric Key Pair<a name="java-sample-ec-key"></a>
+# Generate an Elliptic Curve \(EC\) Asymmetric Key Pair<a name="java-sample-ec-key"></a>
 
 
 |  | 
 | --- |
 |  \*\* Example code only \- Not for production use \*\* This page includes example code that has not been fully tested\. It is designed for test environments\. Do not run this code in production\.  | 
 
-This example shows how to generate Elliptical Curve \(EC\) asymmetric key pair and save the keys in an HSM\. By default, the keys that the HSM generates are not saved\. To save a key, call the `makeKeyPersistent` method below\. You can save the key object and use the key handle in other operations\. 
+This example shows how to generate an Elliptic Curve \(EC\) asymmetric key pair and save the keys in an HSM\. By default, the keys that the HSM generates are not saved\. To save a key, call the `makeKeyPersistent` method below\. You can save the key object and use the key handle in other operations\. 
 
 **Note**  
 This example uses the `loginWithEnvVars()` method in the [Log In To and Out Of an HSM](java-sample-login.md) sample to log in to the HSM\. You can substitute the login method that you prefer\. Also, the example assumes that [the Cavium provider](use-cavium-provider.md) is included in your Java provider file\. If it is not, create an instance of the provider and substitute it for the **Cavium** string\. 
