@@ -28,7 +28,7 @@ Earlier versions of the software do not support all listed operating systems\. F
 |   | CentOS 6 | 
 |   | CentOS 7 | 
 |   | Ubuntu 16\.04 LTS | 
-| OpenSSL Dynamic Engine \(Compatible with OpenSSL 1\.0\.2f\+\)  | Amazon Linux | 
+| OpenSSL Dynamic Engine \(Compatible with OpenSSL 1\.0\.2\[f\+\]\)  | Amazon Linux | 
 |   | Amazon Linux 2 | 
 |   | Red Hat Enterprise Linux \(RHEL\) 6\.5\+  | 
 |   | Red Hat Enterprise Linux \(RHEL\) 7 | 

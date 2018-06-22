@@ -73,22 +73,22 @@ Use the following commands to download and install the Java library\. This libra
 #### [ Amazon Linux ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/AmazonLinux/cloudhsm-client-jce-latest.amzn1.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.amzn1.x86_64.rpm
+$ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
 ```
 
 ------
 #### [ Amazon Linux 2 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/AmazonLinux2/cloudhsm-client-jce-latest.amzn2.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.amzn2.x86_64.rpm
+$ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
 ```
 
 ------

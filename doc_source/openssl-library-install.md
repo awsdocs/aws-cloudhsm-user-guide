@@ -73,22 +73,22 @@ Complete the following steps to install \(or update\) and configure the AWS Clou
 #### [ Amazon Linux ]
 
    ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/AmazonLinux/cloudhsm-client-dyn-latest.amzn1.x86_64.rpm
+   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-latest.el6.x86_64.rpm
    ```
 
    ```
-   $ sudo yum install -y ./cloudhsm-client-dyn-latest.amzn1.x86_64.rpm
+   $ sudo yum install -y ./cloudhsm-client-dyn-latest.el6.x86_64.rpm
    ```
 
 ------
 #### [ Amazon Linux 2 ]
 
    ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/AmazonLinux2/cloudhsm-client-dyn-latest.amzn2.x86_64.rpm
+   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-latest.el7.x86_64.rpm
    ```
 
    ```
-   $ sudo yum install -y ./cloudhsm-client-dyn-latest.amzn2.x86_64.rpm
+   $ sudo yum install -y ./cloudhsm-client-dyn-latest.el7.x86_64.rpm
    ```
 
 ------
