@@ -75,7 +75,7 @@ public class LoginLogoutExample {
    *
    * Before invoking the JVM, replace "<hsm-user-name>" 
    * and "<password>" with a valid user name and password.
-   */
+   *
    *    export HSM_PARTITION=PARTITION_1
    *    export HSM_USER=<hsm-user-name>
    *    export HSM_PASSWORD=<password>
