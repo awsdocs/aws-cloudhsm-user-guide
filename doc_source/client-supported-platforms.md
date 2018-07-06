@@ -10,10 +10,10 @@ Earlier versions of the software do not support all listed operating systems\. F
 | --- | --- | 
 | AWS CloudHSM Client | Amazon Linux | 
 |   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7 | 
-|   | CentOS 6 | 
-|   | CentOS 7 | 
+|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+ | 
+|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
+|   | CentOS 6\.7\+ | 
+|   | CentOS 7\.3\+ | 
 |   | Ubuntu 16\.04 LTS | 
 |   | Microsoft Windows Server 2012 | 
 |   | Microsoft Windows Server 2012 R2 | 
@@ -23,22 +23,22 @@ Earlier versions of the software do not support all listed operating systems\. F
 |   | Microsoft Windows Server 2016 | 
 | PKCS \#11 | Amazon Linux | 
 |   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7 | 
-|   | CentOS 6 | 
-|   | CentOS 7 | 
+|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+ | 
+|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
+|   | CentOS 6\.7\+ | 
+|   | CentOS 7\.3\+ | 
 |   | Ubuntu 16\.04 LTS | 
 | OpenSSL Dynamic Engine \(Compatible with OpenSSL 1\.0\.2\[f\+\]\)  | Amazon Linux | 
 |   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6\.5\+  | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7 | 
+|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+  | 
+|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
 |   | CentOS 6 | 
 |   | CentOS 7 | 
 |   | Ubuntu 16\.04 LTS | 
 | JCE Provider\(Supported on OpenJDK 1\.8\) | Amazon Linux | 
 |   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7 | 
-|   | CentOS 6 | 
-|   | CentOS 7 | 
+|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+ | 
+|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
+|   | CentOS 6\.7\+ | 
+|   | CentOS 7\.3\+ | 
 |   | Ubuntu 16\.04 LTS | 

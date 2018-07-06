@@ -46,7 +46,7 @@ Complete the steps in the following procedure to install the AWS CloudHSM client
    ```
 
    ```
-   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm
+   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-1.1.0-2.el6.x86_64.rpm
    ```
 
    ```
@@ -61,7 +61,7 @@ Complete the steps in the following procedure to install the AWS CloudHSM client
    ```
 
    ```
-   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm
+   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-1.1.0-2.el7.x86_64.rpm
    ```
 
    ```
@@ -72,7 +72,7 @@ Complete the steps in the following procedure to install the AWS CloudHSM client
 #### [ RHEL 6 ]
 
    ```
-   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm
+   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-1.1.0-2.el6.x86_64.rpm
    ```
 
    ```
@@ -87,7 +87,7 @@ Complete the steps in the following procedure to install the AWS CloudHSM client
    ```
 
    ```
-   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm
+   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-1.1.0-2.el7.x86_64.rpm
    ```
 
    ```
@@ -98,7 +98,7 @@ Complete the steps in the following procedure to install the AWS CloudHSM client
 #### [ Ubuntu 16\.04 LTS ]
 
    ```
-   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb
+   wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_1.1.0-2_amd64.deb
    ```
 
    ```

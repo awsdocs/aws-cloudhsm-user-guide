@@ -2,7 +2,7 @@
 
 The createUser command in cloudhsm\_mgmt\_util creates a user on the HSMs\. Only crypto officers \(COs and PCOs\) can run this command\. When you create a user, you specify the user type \(CO or CU\), a user name, and a password\. When the command succeeds, it creates the user in all HSMs in the cluster\. 
 
-However, if your HSM configuration is inaccurate, the user might not be created on all HSMs\. To add the user to any HSMs in which it is missing, use syncUser or createUser commands only on the HSMs that are missing that user\. To prevent configuration errors, run the configure tool with the `-m` option\. 
+However, if your HSM configuration is inaccurate, the user might not be created on all HSMs\. To add the user to any HSMs in which it is missing, use the  createUser command only on the HSMs that are missing that user\. To prevent configuration errors, run the configure tool with the `-m` option\. 
 
 Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start), [enable end\-to\-end encryption](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-enable_e2e), and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that the user type of the account that you use to log in can run the commands you plan to use\.
 
@@ -143,5 +143,4 @@ Default: 1FA: Dual factor authentication is not enabled\.
 ## Related Topics<a name="createUser-seealso"></a>
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
-+ syncUser
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)

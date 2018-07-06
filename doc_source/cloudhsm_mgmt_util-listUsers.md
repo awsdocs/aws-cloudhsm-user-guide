@@ -23,8 +23,6 @@ listUsers
 
 This command lists the users on each of the HSMs in the cluster and displays their attributes\. You can use the `User ID` attribute to identify users in other commands, such as deleteUser, changePswd, and findAllKeys\.
 
-The output shows that one of the users, officer2, exists only on the first HSM\. To add that user to other HSMs, use syncUser\.
-
 ```
 aws-cloudhsm> listUsers
 Users on server 0(10.0.0.1):
@@ -53,12 +51,11 @@ The output includes the following user attributes:
 + [User type](hsm-users.md): Determines the operations that the user can perform on the HSM\.
 + **User Name**: Displays the user\-defined friendly name for the user\.
 + **MofnPubKey**: Indicates whether the user has registered a key pair for signing [quorum authentication tokens](quorum-authentication.md)\.
-+ **LoginFailureCnt**: 
++ **LoginFailureCnt**: Indicates the number of times the user has unsuccessfully logged in\.
 + **2FA**: Indicates that the user has enabled multi\-factor authentication\. 
 
 ## Related Topics<a name="chmu-listUsers-seealso"></a>
 + [listUsers](key_mgmt_util-listUsers.md) in key\_mgmt\_util
 + [createUser](cloudhsm_mgmt_util-createUser.md)
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
-+ syncUser
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)

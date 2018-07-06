@@ -72,7 +72,7 @@ The following command downloads and installs \(or updates\) the AWS CloudHSM sof
 #### [ Amazon Linux ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-1.1.0-2.el6.x86_64.rpm
 ```
 
 ```
@@ -83,7 +83,7 @@ $ sudo yum install -y ./cloudhsm-client-pkcs11-latest.el6.x86_64.rpm
 #### [ Amazon Linux 2 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-1.1.0-2.el7.x86_64.rpm
 ```
 
 ```
@@ -94,7 +94,7 @@ $ sudo yum install -y ./cloudhsm-client-pkcs11-latest.el7.x86_64.rpm
 #### [ CentOS 6 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-1.1.0-2.el6.x86_64.rpm
 ```
 
 ```
@@ -105,7 +105,7 @@ $ sudo yum install -y ./cloudhsm-client-pkcs11-latest.el6.x86_64.rpm
 #### [ CentOS 7 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-1.1.0-2.el7.x86_64.rpm
 ```
 
 ```
@@ -116,7 +116,7 @@ $ sudo yum install -y ./cloudhsm-client-pkcs11-latest.el7.x86_64.rpm
 #### [ RHEL 6 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-1.1.0-2.el6.x86_64.rpm
 ```
 
 ```
@@ -127,7 +127,7 @@ $ sudo yum install -y ./cloudhsm-client-pkcs11-latest.el6.x86_64.rpm
 #### [ RHEL 7 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-1.1.0-2.el7.x86_64.rpm
 ```
 
 ```
@@ -138,7 +138,7 @@ $ sudo yum install -y ./cloudhsm-client-pkcs11-latest.el7.x86_64.rpm
 #### [ Ubuntu 16\.04 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_latest_amd64.deb
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_1.1.0-2_amd64.deb
 ```
 
 ```
