@@ -41,19 +41,19 @@ Download the version 1\.1\.1 software for Amazon Linux 2:
 #### [ CentOS 6 ]
 
 Download the version 1\.1\.1 software for CentOS 6:
-+ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-1.1.0-2.el6.x86_64.rpm)
-+ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-1.1.0-2.el6.x86_64.rpm)
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-1.1.0-2.el6.x86_64.rpm)
-+ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-1.1.0-2.el6.x86_64.rpm)
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-latest.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm)
 
 ------
 #### [ CentOS 7 ]
 
 Download the version 1\.1\.1 software for CentOS 7:
-+ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-1.1.0-2.el7.x86_64.rpm)
-+ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-1.1.0-2.el7.x86_64.rpm)
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-1.1.0-2.el7.x86_64.rpm)
-+ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-1.1.0-2.el7.x86_64.rpm)
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-latest.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm)
 
 ------
 #### [ RHEL 6 ]
@@ -77,10 +77,10 @@ Download the version 1\.1\.1 software for RedHat Enterprise Linux 7:
 #### [ Ubuntu 16\.04 LTS ]
 
 Download the version 1\.1\.1 software for Ubuntu 16\.04 LTS:
-+ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_1.1.0-2_amd64.deb)
-+ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_1.1.0-2_amd64.deb)
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_1.1.0-2_amd64.deb)
-+ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_1.1.0-2_amd64.deb)
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_latest_amd64.deb)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_latest_amd64.deb)
 
 ------
 #### [ Windows Server ]
