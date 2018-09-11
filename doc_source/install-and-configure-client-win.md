@@ -2,13 +2,13 @@
 
 To interact with an HSM in your AWS CloudHSM cluster, you need the AWS CloudHSM client software for Windows\. You should install it on the Windows Server instance that you created previously\. You can also install a client if you are using Linux\. For more information, see [Install and Configure the AWS CloudHSM Client \(Linux\)](install-and-configure-client-linux.md)\. 
 
-**To install \(or update\) the client and command line tools**
+**To install \(or update\) the latest client and command line tools**
 
 1. Connect to your Windows Server instance\.
 
-1. Download the [AWSCloudHSMClient\.msi installer](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-latest.msi)\. 
+1. Download the [AWSCloudHSMClient\-latest\.msi installer](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-latest.msi)\. 
 
-1. Go to your download location and run the **AWSCloudHSMClient\.msi** installer\. Follow the installer instructions\. 
+1. Go to your download location and run the **AWSCloudHSMClient\-latest\.msi** installer\. Follow the installer instructions\. 
 **Important**  
 You must run the installer with administrative privileges\.
 

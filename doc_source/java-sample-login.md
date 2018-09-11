@@ -23,16 +23,15 @@ public class LoginLogoutExample {
     System.out.println("*********** Logging in Using Hardcoded Credentials ***********");
     loginWithExplicitCredentials();
     
+        System.out.println("*********** Logging in Using Environment Variables ***********"); 
+    loginWithEnvVariables();
+    
     System.out.println("*********** Logging in Using System.Properties ***********"); 
     loginUsingJavaProperties();
-    
-    System.out.println("*********** Logging in Using Environment Variables ***********"); 
-    loginWithEnvVariables();
     
     System.out.println("Logging out of Session");
     logout();
   }
-  
 /**
  * Method #1: Use hard-coded credentials
  *

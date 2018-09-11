@@ -32,12 +32,12 @@ Earlier versions of the software do not support all listed operating systems\. F
 |   | Amazon Linux 2 | 
 |   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+  | 
 |   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
-|   | CentOS 6 | 
-|   | CentOS 7 | 
+|   | CentOS 6\.7\+ | 
+|   | CentOS 7\.3\+ | 
 |   | Ubuntu 16\.04 LTS | 
 | JCE Provider\(Supported on OpenJDK 1\.8\) | Amazon Linux | 
 |   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+ | 
+|   | Red Hat Enterprise Linux \(RHEL\) 6\.7 | 
 |   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
 |   | CentOS 6\.7\+ | 
 |   | CentOS 7\.3\+ | 

@@ -1,6 +1,6 @@
 # Creating an AWS CloudHSM Cluster from a Previous Backup<a name="create-cluster-from-backup"></a>
 
-To restore an AWS CloudHSM cluster from a previous backup, you create a new cluster, specifying the backup to restore\. After you create the cluster, you don't need to initialize or activate it\. You can just add an HSM to the cluster; this HSM contains the same users, key material, certificates, configuration, and policies that were in the backup that you restored\. For more information about backups, see [Backups](backups.md)\.
+To restore an AWS CloudHSM cluster from a previous backup, you create a new cluster and specify the backup to restore\. After you create the cluster, you don't need to initialize or activate it\. You can just add an HSM to the cluster\. This HSM contains the same users, key material, certificates, configuration, and policies that were in the backup that you restored\. For more information about backups, see [Backups](backups.md)\.
 
 You can restore a cluster from a backup from the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/), the [AWS Command Line Interface \(AWS CLI\)](https://aws.amazon.com/cli/), or the AWS CloudHSM API\.
 

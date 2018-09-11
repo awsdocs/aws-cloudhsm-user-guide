@@ -53,7 +53,7 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Workaround: **We recommend that your application check the usage field values in addition to the error code\.
 + **Resolution status: **We are implementing fixes to return the proper error message when an incorrect private key template is used\. The updated PKCS \#11 library will be announced on the version history page\. 
 
-**Issue: **You could not hash more than 16 KB of data\. For larger buffers, only the first 16 KB will be hashed and returned\. The excess data would have been silently ignored\.
+**Issue: **You could not hash more than 16KB of data\. For larger buffers, only the first 16KB will be hashed and returned\. The excess data would have been silently ignored\.
 + **Resolution status: **Data less than 16KB in size continues to be sent to the HSM for hashing\. We have added capability to hash locally, in software, data between 16KB and 64KB in size\. The client and the SDKs will explicitly fail if the data buffer is larger than 64KB\.
 + **Action required: **You must update your client and SDK\(s\) to version 1\.1\.1 or higher to benefit from the fix\.
 
@@ -79,8 +79,8 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Workaround: **You can rework your code to load certificates from local files or from an S3 bucket location instead of from the keystore\. 
 + **Resolution status: **We are adding support for certificate storage in the keystore\. The feature will be announced on the version history page once available\.
 
-**Issue: **Buffers for AES\-GCM encryption cannot exceed 16 KB\. Also, multi\-part AES\-GCM encryption is not supported\.
-+ **Impact: **You cannot use AES\-GCM to encrypt data larger than 16 KB\.
+**Issue: **Buffers for AES\-GCM encryption cannot exceed 16,000 bytes\. Also, multi\-part AES\-GCM encryption is not supported\.
++ **Impact: **You cannot use AES\-GCM to encrypt data larger than 16,000 bytes\.
 + **Workaround: ** You can use an alternative mechanism, such as AES\-CBC, or you can divide your data into pieces and encrypt each piece individually\. If you divide the data, you must manage the divided ciphertext and its decryption\. Because FIPS requires that the initialization vector \(IV\) for AES\-GCM be generated on the HSM, the IV for each AES\-GCM\-encrypted piece of data will be different\.
 + **Resolution status: **We are fixing the SDK to fail explicitly if the data buffer is too large\. We are evaluating alternatives that support larger buffers without relying on multi\-part encryption\. Updates will be announced in the AWS CloudHSM forum and on the version history page\. 
 

@@ -18,7 +18,7 @@ The AWS CloudHSM software library for Java enables you to generate the following
 
 In addition to standard parameters, we support the following parameters for each key that is generated\.
 + **Label**: A key label that you can use to search for keys\.
-+ **isExtractable**: Indicates whether the key can be exported from the HSM\. \(Imported keys are never extractable\.\)
++ **isExtractable**: Indicates whether the key can be exported from the HSM\.
 + **isPersistent**: Indicates whether the key remains on the HSM when the current session ends\.
 
 ## Supported Ciphers<a name="java-ciphers"></a>

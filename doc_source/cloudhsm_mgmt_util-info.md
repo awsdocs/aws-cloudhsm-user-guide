@@ -2,7 +2,7 @@
 
 The info command in cloudhsm\_mgmt\_util gets information about each of the HSMs in the cluster, including the host name, port , IP address and the name and type of the user who is logged in to cloudhsm\_mgmt\_util on the HSM\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start), [enable end\-to\-end encryption](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-enable_e2e), and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that the user type of the account that you use to log in can run the commands you plan to use\.
+Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that the user type of the account that you use to log in can run the commands you plan to use\.
 
 If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective on all HSMs in the cluster\.
 
@@ -44,3 +44,5 @@ Required: Yes
 ## Related Topics<a name="info-seealso"></a>
 + [getHSMInfo](cloudhsm_mgmt_util-getHSMInfo.md)
 + loginHSM
+
+  [loginHSM and logoutHSM](cloudhsm_mgmt_util-loginLogout.md)

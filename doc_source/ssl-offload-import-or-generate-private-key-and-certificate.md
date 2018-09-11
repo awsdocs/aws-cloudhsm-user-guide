@@ -54,7 +54,7 @@ Self\-signed certificates should be used in a test environment only\. For a prod
 Run the following command to use the AWS CloudHSM dynamic engine for OpenSSL to sign your CSR with your private key on your HSM\. This creates a self\-signed certificate\. Replace the following values in the command with your own\. 
 + *<web\_server\.csr>* – Name of the file that contains the CSR\.
 + *<web\_server\_fake\_PEM\.key>* – Name of the file that contains the fake PEM private key\.
-+ *<web\_server\.crt>* – Name of the file that will contain your web server\.
++ *<web\_server\.crt>* – Name of the file that will contain your web server certificate\.
 
 ```
 openssl x509 -engine cloudhsm -req -days 365 -in <web_server.csr> -signkey <web_server_fake_PEM.key> -out <web_server.crt>

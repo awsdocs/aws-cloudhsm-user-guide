@@ -4,9 +4,6 @@ The HSMs in your AWS CloudHSM cluster support quorum authentication, which is al
 
 Quorum authentication can control the following operations:
 + HSM user management by [crypto officers \(COs\)](hsm-users.md#crypto-officer) – Creating and deleting HSM users, and changing a different HSM user's password\. For more information, see [Using Quorum Authentication for Crypto Officers](quorum-authentication-crypto-officers.md)\.
-+ Cryptographic operations by [crypto users \(CUs\)](hsm-users.md#crypto-user) – For example:
-  + Using asymmetric private keys on the HSM to cryptographically sign messages\.
-  + Using AES symmetric keys on the HSM for AES wrap and unwrap\.
 
 The following topics provide more information about quorum authentication in AWS CloudHSM\.
 
@@ -41,5 +38,5 @@ The following steps summarize the quorum authentication processes\. For the spec
 
 Note the following additional information about using quorum authentication in AWS CloudHSM\.
 + An HSM user can sign his or her own quorum token—that is, the requesting user can provide one of the required approvals for quorum authentication\.
-+ You choose the minimum number of quorum approvers for quorum\-controlled operations\. The smallest number you can choose is two \(2\)\. For HSM user management operations by COs, the largest number you can choose is twenty \(20\)\. For cryptographic operations by CUs, the largest number you can choose is eight \(8\)\.
++ You choose the minimum number of quorum approvers for quorum\-controlled operations\. The smallest number you can choose is two \(2\)\. For HSM user management operations by COs, the largest number you can choose is twenty \(20\)\. 
 + The HSM can store up to 1024 quorum tokens\. If the HSM already has 1024 tokens when you try to create a new one, the HSM purges one of the expired tokens\. By default, tokens expire ten minutes after their creation\.

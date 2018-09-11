@@ -51,5 +51,7 @@ Some commands in key\_mgmt\_util and cloudhsm\_mgmt\_util have the same names\. 
 | [getKeyInfo](cloudhsm_mgmt_util-getHSMInfo.md) | Gets owners, shared users, and the quorum authentication status of a key\. | All\. Login is not required\. | 
 | [info](cloudhsm_mgmt_util-info.md) | Gets information about an HSM, including the IP address, host name, port, and current user\. | All\. Login is not required\. | 
 | [listUsers](cloudhsm_mgmt_util-listUsers.md) | Gets the users in each of the HSMs, their user type and ID, and other attributes\. | All\. Login is not required\. | 
+| [loginHSM and logoutHSM](cloudhsm_mgmt_util-loginLogout.md) | Login and logout of an HSM\. | All\. | 
 | [setAttribute](cloudhsm_mgmt_util-setAttribute.md) | Changes the values of the label, encrypt, decrypt, wrap, and unwrap attributes of an existing key\. | CU | 
 | [shareKey](cloudhsm_mgmt_util-shareKey.md) | Shares an existing key with other users\. | CU | 
+| [syncKey](cloudhsm_mgmt_util-syncKey.md) | Sync a key across cloned AWS CloudHSM clusters\. | CU, CO | 

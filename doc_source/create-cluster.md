@@ -3,7 +3,7 @@
 A cluster is a collection of individual HSMs\. AWS CloudHSM synchronizes the HSMs in each cluster so that they function as a logical unit\.
 
 **Important**  
-When you create a cluster, AWS CloudHSM creates a [service\-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) named AWSServiceRoleForCloudHSM\. If AWS CloudHSM cannot create the role or the role does not already exist, you may not be able to create a cluster\. For more information, see [Resolving Cluster Creation Failures](troubleshooting-create-cluster.md)\. For more information about service–linked roles, see [Understanding Service–Linked Roles](create-iam-user.md#service-linked-roles)\. 
+When you create a cluster, AWS CloudHSM creates a [service\-linked role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) named AWSServiceRoleForCloudHSM\. If AWS CloudHSM cannot create the role or the role does not already exist, you may not be able to create a cluster\. For more information, see [Resolving Cluster Creation Failures](troubleshooting-create-cluster.md)\. For more information about service–linked roles, see [Understanding Service\-Linked Roles](create-iam-user.md#service-linked-roles)\. 
 
 When you create a cluster, AWS CloudHSM creates a security group for the cluster on your behalf\. This security group controls network access to the HSMs in the cluster\. It allows inbound connections only from Amazon Elastic Compute Cloud \(Amazon EC2\) instances that are in the security group\. By default, the security group doesn't contain any instances\. Later, you [launch a client instance](launch-client-instance.md) and add it to this security group\. 
 

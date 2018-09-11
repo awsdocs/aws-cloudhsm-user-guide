@@ -7,19 +7,17 @@ AWS CloudHSM uses an SSL certificate to establish a connection to an HSM\. A def
 1. Create a private key using the following OpenSSL command:
 
    ```
-   genrsa -aes256 -out ssl-client.key 2048
+   openssl genrsa -out ssl-client.key 2048
    Generating RSA private key, 2048 bit long modulus
    ........+++
    ............+++
    e is 65537 (0x10001)
-   Enter pass phrase for customerCA.key:
-   Verifying - Enter pass phrase for customerCA.key:
    ```
 
 1. Use the following OpenSSL command to create a certificate signing request \(CSR\)\. You will be asked a series of questions for your certificate\. 
 
    ```
-   req -new -sha256 -key ssl-client.key -out ssl-client.csr
+   openssl req -new -sha256 -key ssl-client.key -out ssl-client.csr
    Enter pass phrase for ssl-client.key:
    You are about to be asked to enter information that will be incorporated
    into your certificate request.
@@ -45,7 +43,7 @@ AWS CloudHSM uses an SSL certificate to establish a connection to an HSM\. A def
 1. Sign the CSR with the *`customerCA.crt`* certificate that you created when you initialized your cluster\. 
 
    ```
-   x509 -req -days 3652 -in ssl-client.csr \
+   openssl x509 -req -days 3652 -in ssl-client.csr \
            -CA customerCA.crt \
            -CAkey customerCA.key \
            -CAcreateserial \
@@ -66,7 +64,7 @@ AWS CloudHSM uses an SSL certificate to establish a connection to an HSM\. A def
 1. Add the `customerCA.crt` certificate to the trust store\. Create a hash of the certificate subject name\. This creates an index to allow the certificate to be looked up by that name\. Create a file that contains the certificate with the hash name\. 
 
    ```
-   x509 -in /opt/cloudhsm/etc/customerCA.crt -hash | head -n 1
+   openssl x509 -in /opt/cloudhsm/etc/customerCA.crt -hash | head -n 1
    1234abcd
    sudo cp /opt/cloudhsm/etc/customerCA.crt /opt/cloudhsm/etc/certs/1234abcd.0
    ```

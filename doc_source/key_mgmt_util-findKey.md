@@ -92,7 +92,7 @@ Valid values for each key type:
 Required: No
 
 **\-l**  
-Finds keys with the specified label\. Type the exact label\. You cannot use wildcard characters or regular expressions in the `--label` value\.  
+Finds keys with the specified label\. Type the exact label\. You cannot use wildcard characters or regular expressions in the `--l` value\.  
 Required: No
 
 **\-id**  

@@ -65,7 +65,7 @@ Complete the steps in the following procedure to install the AWS CloudHSM client
    ```
 
    ```
-   sudo yum install -y ./ccloudhsm-client-latest.el7.x86_64.rpm
+   sudo yum install -y ./cloudhsm-client-latest.el7.x86_64.rpm
    ```
 
 ------

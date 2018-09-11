@@ -95,7 +95,7 @@ $ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
 #### [ CentOS 6 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-1.1.0-2.el6.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm
 ```
 
 ```
@@ -106,7 +106,7 @@ $ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
 #### [ CentOS 7 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-1.1.0-2.el7.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm
 ```
 
 ```
@@ -117,7 +117,7 @@ $ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
 #### [ RHEL 6 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-1.1.0-2.el6.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm
 ```
 
 ```
@@ -128,7 +128,7 @@ $ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
 #### [ RHEL 7 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-1.1.0-2.el7.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-latest.el7.x86_64.rpm
 ```
 
 ```
@@ -136,10 +136,10 @@ $ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
 ```
 
 ------
-#### [ Ubuntu 16\.04 ]
+#### [ Ubuntu 16\.04 LTS ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_1.1.0-2_amd64.deb
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_latest_amd64.deb
 ```
 
 ```
@@ -149,8 +149,8 @@ $ sudo dpkg -i cloudhsm-client-jce_latest_amd64.deb
 ------
 
 After you complete the preceding steps, you can find the following Java library files:
-+ `/opt/cloudhsm/java/cloudhsm-1.0.jar`
-+ `/opt/cloudhsm/java/cloudhsm-test-1.0.jar`
++ `/opt/cloudhsm/java/cloudhsm-version.jar`
++ `/opt/cloudhsm/java/cloudhsm-test-version.jar`
 + `/opt/cloudhsm/java/hamcrest-all-1.3.jar`
 + `/opt/cloudhsm/java/junit.jar`
 + `/opt/cloudhsm/java/log4j-api-2.8.jar`
@@ -226,6 +226,13 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
 ## Providing Credentials to the Java Library<a name="java-library-credentials"></a>
 
 Your Java application must be authenticated by the HSMs in your cluster before it can use them\. Each application can use one session, which is established by providing credentials in one of the following ways\. In the following examples, replace *<HSM user name>* and *<password>* with the credentials of a crypto user \(CU\)\.
+
+**Note**  
+The search order for credentials goes as follows\. If any credentials are found at one step, the search will not continue, even if the credentials are invalid:  
+Explicitly provided
+Properties file
+System properties
+Environment Variables
 
 The first of the following examples shows how to use the `LoginManager` class to manage sessions in your code\. Instead, you can let the library implicitly manage sessions when your application starts, as shown in the remaining examples\. However in these latter cases it might be difficult to understand error conditions when the provided credentials are invalid or the HSMs are having problems\. When you use the `LoginManager` class, you have more control over how your application deals with failures\.
 + Add a file named `HsmCredentials.properties` to your application's `CLASSPATH`\. The file's contents should look like the following:

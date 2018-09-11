@@ -6,6 +6,8 @@ To create a cluster, see [Getting Started](getting-started.md)\.
 
 **Topics**
 + [Adding or Removing HSMs](add-remove-hsm.md)
-+ [Deleting a Cluster](delete-cluster.md)
++ [Copying a Backup Across Regions](copy-backup-to-region.md)
 + [Creating a Cluster From a Backup](create-cluster-from-backup.md)
++ [Deleting and Restoring a Backup](delete-restore-backup.md)
++ [Deleting a Cluster](delete-cluster.md)
 + [Tagging Resources](tag-resources.md)

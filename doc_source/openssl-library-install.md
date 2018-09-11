@@ -95,7 +95,7 @@ Complete the following steps to install \(or update\) and configure the AWS Clou
 #### [ CentOS 6 ]
 
    ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-1.1.0-2.el6.x86_64.rpm
+   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-latest.el6.x86_64.rpm
    ```
 
    ```
@@ -106,7 +106,7 @@ Complete the following steps to install \(or update\) and configure the AWS Clou
 #### [ CentOS 7 ]
 
    ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-1.1.0-2.el7.x86_64.rpm
+   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-latest.el7.x86_64.rpm
    ```
 
    ```
@@ -117,7 +117,7 @@ Complete the following steps to install \(or update\) and configure the AWS Clou
 #### [ RHEL 6 ]
 
    ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-1.1.0-2.el6.x86_64.rpm
+   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-latest.el6.x86_64.rpm
    ```
 
    ```
@@ -128,7 +128,7 @@ Complete the following steps to install \(or update\) and configure the AWS Clou
 #### [ RHEL 7 ]
 
    ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-1.1.0-2.el7.x86_64.rpm
+   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-latest.el7.x86_64.rpm
    ```
 
    ```
@@ -136,10 +136,10 @@ Complete the following steps to install \(or update\) and configure the AWS Clou
    ```
 
 ------
-#### [ Ubuntu 16\.04 and later ]
+#### [ Ubuntu 16\.04 LTS ]
 
    ```
-   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_1.1.0-2_amd64.deb
+   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_latest_amd64.deb
    ```
 
    ```

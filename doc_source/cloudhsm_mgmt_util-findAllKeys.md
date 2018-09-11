@@ -6,7 +6,7 @@ findAllKeys returns public keys only when the specified CU owns the key, even th
 
 Only crypto officers \(COs and PCOs\) and appliance users \(AUs\) can run this command\. Crypto users \(CUs\) can run [listUsers](cloudhsm_mgmt_util-listUsers.md) to find all users , [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util to find the keys that they can use and [getKeyInfo](key_mgmt_util-getKeyInfo.md) in key\_mgmt\_util to find the owner and shared users of a particular key they own or share\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start), [enable end\-to\-end encryption](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-enable_e2e), and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that the user type of the account that you use to log in can run the commands you plan to use\.
+Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that the user type of the account that you use to log in can run the commands you plan to use\.
 
 If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective on all HSMs in the cluster\.
 
@@ -33,7 +33,7 @@ This example uses findAllKeys to find the keys in the HSMs that user 4 owns and 
 The output shows that user 4 can use 6 keys: 8, 9, 17, 262162, 19, and 31\. The output uses an `(s)` to indicate that keys 8, 9, and 262162 are explicitly shared, although it does not indicate whether user 4 owns or shares them\. The keys that are not marked with `(s)` include symmetric and private keys that the user 4 owns and does not share, and public keys that are available to all crypto users\.   
 
 ```
-aws-cloudhsm> findAllKey 4 0
+aws-cloudhsm> findAllKeys 4 0
 Keys on server 0(10.0.0.1):
 Number of keys found 6
 number of keys matched from start index 0::6

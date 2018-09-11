@@ -1,12 +1,13 @@
 # Document History<a name="document-history"></a>
 
-**Latest documentation update**: June 13, 2018
+**Latest documentation update**: July 30, 2018
 
 The following table describes the documentation release history of AWS CloudHSM after May 2018\.
 
 | Change | Description | Date | 
 | --- |--- |--- |
-| Added region support | Added region support for EU \(London\) | June 13, 2018 | 
+| [Added new content](#document-history) | Added the ability to copy an AWS CloudHSM cluster backup across regions\. For more information, see [Copying A Backup Across Regions](http://docs.aws.amazon.com/cloudhsm/latest/userguide/copy-backup-to-region.html)\. | July 30, 2018 | 
+| [Added region support](#document-history) | Added region support for EU \(London\) | June 13, 2018 | 
 
 The following table describes the documentation release history of AWS CloudHSM before June 2018\.
 
