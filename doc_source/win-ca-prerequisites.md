@@ -11,7 +11,7 @@ To set up Windows Server as a certificate authority \(CA\) with AWS CloudHSM, yo
 
 1. \(Optional\) Add more HSMs to your cluster\. For more information, see [Adding an HSM](add-remove-hsm.md#add-hsm)\.
 
-1. Connect to your client instance\. For more information, see [Connect to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
+1. Connect to your client instance\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
 1. To create a cryptographic user \(CU\) on your HSM, do the following:
 

@@ -31,7 +31,7 @@ $  sudo stop cloudhsm-client
 	
 cloudhsm-client stop/waiting
 ```
-Next, get the ENI IP address of any one of the HSMs in your cluster\. This command uses the [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command in the AWS CLI, but you can also use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation or the [Get\-HSM2Cluster](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\.   
+Next, get the ENI IP address of any one of the HSMs in your cluster\. This command uses the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command in the AWS CLI, but you can also use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation or the [Get\-HSM2Cluster](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\.   
 This excerpt of the output shows the ENI IP addresses of the HSMs in a sample cluster\. We can use either of the IP addresses in the next command\.   
 
 ```
@@ -87,7 +87,7 @@ Required: Yes
 
 **\-a *<ENI IP address>***  
 Adds the specified HSM elastic network interface \(ENI\) IP address to AWS CloudHSM configuration files\. Enter the ENI IP address of any one of the HSMs in the cluster\. It does not matter which one you select\.   
-To get the ENI IP addresses of the HSMs in your cluster, use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation, the [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) AWS CLI command, or the [Get\-HSM2Cluster](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\.   
+To get the ENI IP addresses of the HSMs in your cluster, use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation, the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) AWS CLI command, or the [Get\-HSM2Cluster](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\.   
 Before running configure \-a, stop the AWS CloudHSM client\. Then, when configure \-a completes, restart the AWS CloudHSM client\. For details, [see the examples](#configure-tool-examples)\. 
 This parameter edits the following configuration files:  
 + `/opt/cloudhsm/etc/cloudhsm_client.cfg`: Used by AWS CloudHSM client and [key\_mgmt\_util](key_mgmt_util.md)\. 
@@ -115,7 +115,7 @@ Specifies the new private key\. Enter the path and file name of the file that co
 Required: Yes if \-\-ssl is specified\. Otherwise, this should not be used\.
 
 **\-\-cert**  
-Specifies the new certificate\. Enter the path and file name of the file that contains the certificate\. The certificate should chain up to the `customerCA.crt` certificate, the self\-signed certificate used to initialize the cluster\. For more information, see [Initialize the Cluster](http://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr)\.   
+Specifies the new certificate\. Enter the path and file name of the file that contains the certificate\. The certificate should chain up to the `customerCA.crt` certificate, the self\-signed certificate used to initialize the cluster\. For more information, see [Initialize the Cluster](https://docs.aws.amazon.com/cloudhsm/latest/userguide/initialize-cluster.html#sign-csr)\.   
 Required: Yes if \-\-ssl is specified\. Otherwise, this should not be used\.
 
 ## Related Topics<a name="configure-tool-seealso"></a>

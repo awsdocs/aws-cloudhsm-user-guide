@@ -6,7 +6,7 @@ If you used a self\-signed certificate to sign your CSR, you must first import t
 
 **To import your self\-signed certificate into the Windows Trusted Root Certification Authorities**
 
-1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
+1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
 1. Copy your self\-signed certificate to your Windows server\.
 
@@ -30,7 +30,7 @@ If you used a self\-signed certificate to sign your CSR, you must first import t
 
 **To update the IIS website's configuration**
 
-1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
+1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
 1. [Start the AWS CloudHSM client](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start-cloudhsm-client)\.
 

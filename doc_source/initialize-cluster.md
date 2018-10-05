@@ -25,8 +25,8 @@ Before you can initialize the cluster, you must download and sign a certificate 
 
    Choose **Cluster CSR** to download and save the CSR\.
 
-**To get the CSR \([AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/)\)**
-+ At a command prompt, run the following [describe\-clusters](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, which extracts the CSR and saves it to a file\. Replace *<cluster ID>* with the ID of the cluster that you [created previously](create-cluster.md)\. 
+**To get the CSR \([AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/)\)**
++ At a command prompt, run the following [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, which extracts the CSR and saves it to a file\. Replace *<cluster ID>* with the ID of the cluster that you [created previously](create-cluster.md)\. 
 
   ```
   $ aws cloudhsmv2 describe-clusters --filters clusterIds=<cluster ID> \
@@ -37,7 +37,7 @@ Before you can initialize the cluster, you must download and sign a certificate 
 
 **To get the CSR \(AWS CloudHSM API\)**
 
-1. Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) request\.
+1. Send a [https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) request\.
 
 1. Extract and save the CSR from the response\.
 
@@ -134,8 +134,8 @@ Use your signed HSM certificate and your signing certificate to initialize your 
 
    1. Choose **Upload and initialize**\.
 
-**To initialize a cluster \([AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/)\)**
-+ At a command prompt, run the [initialize\-cluster](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/initialize-cluster.html) command\. Provide the following: 
+**To initialize a cluster \([AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/)\)**
++ At a command prompt, run the [initialize\-cluster](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/initialize-cluster.html) command\. Provide the following: 
   + The ID of the cluster that you created previously\.
   + The HSM certificate that you signed previously\. If you completed the steps in the previous section, it's saved in a file named `<cluster ID>_CustomerHsmCertificate.crt`\. 
   + Your signing certificate\. If you completed the steps in the previous section, the signing certificate is saved in a file named `customerCA.crt`\.
@@ -151,7 +151,7 @@ Use your signed HSM certificate and your signing certificate to initialize your 
   ```
 
 **To initialize a cluster \(AWS CloudHSM API\)**
-+ Send an [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_InitializeCluster.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_InitializeCluster.html) request with the following:
++ Send an [https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_InitializeCluster.html](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_InitializeCluster.html) request with the following:
   + The ID of the cluster that you created previously\.
   + The HSM certificate that you signed previously\.
   + Your signing certificate\.

@@ -27,7 +27,7 @@ The following table lists the key attributes, their constants, and their valid v
 |  OBJ\_ATTR\_MODULUS  |  288  |  The modulus that was used to generate an RSA key pair\.  For other key types, this attribute does not exist\.  | 
 |  OBJ\_ATTR\_MODULUS\_BITS  |  289  |  The length of the modulus used to generate an RSA key pair\. For other key types, this attribute does not exist\.  | 
 |  OBJ\_ATTR\_PUBLIC\_EXPONENT  |  290  |  The public exponent used to generate an RSA key pair\. For other key types, this attribute does not exist\.  | 
-|  OBJ\_ATTR\_VALUE\_LEN  |  353  |  Key length in bits\.  | 
+|  OBJ\_ATTR\_VALUE\_LEN  |  353  |  Key length in bytes\.  | 
 |  OBJ\_ATTR\_EXTRACTABLE  |  354  |  **0**: False\.  **1**: True\. The key can be exported from the HSMs\.  | 
 |  OBJ\_ATTR\_LOCAL  |  355  |  **0**\. False\. The key was imported into the HSMs\. **1**\. True\.   | 
 |  OBJ\_ATTR\_KCV  |  371  |  Key check value of the key\. For more information, see [Additional Details](#key-attribute-table-details)\.  | 

@@ -1,7 +1,7 @@
 # Launch an Amazon EC2 Client Instance<a name="launch-client-instance"></a>
 
 To interact with and manage your AWS CloudHSM cluster and HSM instances, you must be able to communicate with the elastic network interfaces of your HSMs\. The easiest way to do this is to use an Amazon EC2 instance in the same VPC as your cluster \(see below\)\. You can also use the following AWS resources to connect to your cluster: 
-+ [Amazon VPC Peering](http://docs.aws.amazon.com/vpc/latest/peering/Welcome.html)
++ [Amazon VPC Peering](https://docs.aws.amazon.com/vpc/latest/peering/Welcome.html)
 + [AWS Direct Connect](https://aws.amazon.com/documentation/direct-connect/)
 + [VPN Connections](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpn-connections.html)
 
@@ -35,15 +35,15 @@ The AWS CloudHSM documentation typically assumes that you are using an EC2 insta
 **Note**  
 To connect to a Windows Server EC2 instance, you must set one of your **Inbound Rules** to RDP\(3389\) to allow incoming TCP traffic on port 3389\. To connect to a Linux EC2 instance, you must set one of your **Inbound Rules** to SSH\(22\) to allow incoming TCP traffic on port 22\. Specify the source IP addresses that can connect to your instance\. You should not specify `0.0.0.0/0` because that will open your instance to access by anyone\.   
 If you want your EC2 instance to be able to connect to the internet, set the **Outbound Rules** on your security group to allow **ALL Traffic** on all ports to a destination of `0.0.0.0/0`\.   
-You cannot edit security groups on this page\. To set inbound and outbound rules, create a new security group or use the Amazon EC2 console to [update your security group rules](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#updating-security-group-rules)\.
+You cannot edit security groups on this page\. To set inbound and outbound rules, create a new security group or use the Amazon EC2 console to [update your security group rules](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html#updating-security-group-rules)\.
 
 1. Choose **Review and Launch**\.
 
-For more information about creating a Linux Amazon EC2 client, see [Getting Started with Amazon EC2 Linux Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\. For information about connecting to the running client, see the following topics: 
-+ [Connecting to Your Linux Instance Using SSH](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
-+ [Connecting to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
+For more information about creating a Linux Amazon EC2 client, see [Getting Started with Amazon EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\. For information about connecting to the running client, see the following topics: 
++ [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
++ [Connecting to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
 
-For more information about creating a Windows Amazon EC2 client, see [Getting Started with Amazon EC2 Windows Instances](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html)\. For more information about connecting to your Windows client, see [Connect to Your Windows Instance](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows)\. 
+For more information about creating a Windows Amazon EC2 client, see [Getting Started with Amazon EC2 Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html)\. For more information about connecting to your Windows client, see [Connect to Your Windows Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows)\. 
 
 Note that you can use your EC2 instance to run all of the AWS CLI commands contained in this guide\. If the AWS CLI is not installed, you can download it from [AWS Command Line Interface](https://aws.amazon.com/cli/)\. If you are using Windows, you can download and run a 64\-bit or 32\-bit Windows installer\. If you are using Linux or macOS, you can install the CLI using pip\. 
 

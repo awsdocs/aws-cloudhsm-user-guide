@@ -138,7 +138,7 @@ c:\Program Files\Amazon\CloudHSM>configure.exe -a <HSM ENI IP>
 
 ------
 
-To get the ENI IP address of an HSM in your cluster, you can use the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) command, the [describe\-clusters](http://docs.aws.amazon.com/cloudhsm/latest/userguide/cli-guide.htmldescribe-clusters.html) command, or the [Get\-HSM2Cluster](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. Type only one ENI IP address\. It does not matter which ENI IP address you use\. 
+To get the ENI IP address of an HSM in your cluster, you can use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) command, the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) CLI operation, or the [Get\-HSM2Cluster](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. Type only one ENI IP address\. It does not matter which ENI IP address you use\. 
 
 ### Step 3: Start the AWS CloudHSM Client<a name="cloudhsm_mgmt_util-start-cloudhsm-client"></a>
 
@@ -379,7 +379,7 @@ The command in the following example logs in *admin*, which is the default [cryp
 
 **Warning**  
 When you log in to cloudhsm\_mgmt\_util, verify that the ENI IP addresses in the success messages *exactly match* the ENI IP addresses of all HSMs in the cluster\. If they do not, stop and run all steps in the [Prepare to run cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-setup) procedure\.   
-To get the ENI IP addresses of the HSMs in your cluster, the [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation, the [describe\-clusters](http://docs.aws.amazon.com/cloudhsm/latest/userguide/cli-guide.htmldescribe-clusters.html) command, or the [Get\-HSM2Cluster](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. 
+To get the ENI IP addresses of the HSMs in your cluster, the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation, the [describe\-clusters](https://docs.aws.amazon.com/cloudhsm/latest/userguide/cli-guide.htmldescribe-clusters.html) command, or the [Get\-HSM2Cluster](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. 
 
 ```
 aws-cloudhsm>loginHSM CO admin <password>

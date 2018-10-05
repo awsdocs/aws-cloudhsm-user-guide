@@ -9,7 +9,7 @@ AWS CloudHSM provides command line tools for managing and using AWS CloudHSM\.
 
 **Manage Clusters and HSMs**  
 These tools get, create, delete, and tag AWS CloudHSM clusters and HSMs:  
-+ [CloudHSMv2 commands in AWS Command Line Interface \(AWS CLI\)](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/index.html)\. To use these commands, you need to [install](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) and [configure](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration) AWS CLI\.
++ [CloudHSMv2 commands in AWS Command Line Interface \(AWS CLI\)](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/index.html)\. To use these commands, you need to [install](https://docs.aws.amazon.com/cli/latest/userguide/installing.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration) AWS CLI\.
 + HSM2 PowerShell cmdlets in the [AWSPowerShell module](https://aws.amazon.com/powershell/)\. These cmdlets are available in a Windows PowerShell module and a cross\-platform PowerShell Core module\.
 
    

@@ -10,7 +10,7 @@ The steps for creating a CSR are outside the scope of this tutorial\. When you h
 
 **To sign a CSR with your Windows Server CA**
 
-1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
+1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
 1. On your Windows server, start **Server Manager**\.
 

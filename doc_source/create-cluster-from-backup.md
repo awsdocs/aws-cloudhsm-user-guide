@@ -27,7 +27,7 @@ You can restore a cluster from a backup from the [AWS CloudHSM console](https://
 1. Review your cluster configuration, then choose **Create cluster**\.
 
 **To create a cluster from a previous backup \(AWS CLI\)**
-+ At a command prompt, issue the [create\-cluster](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/create-cluster.html) command\. Specify the HSM instance type, the subnet IDs of the subnets where you plan to create HSMs, and the backup ID of the backup that you are restoring\. If you don't know the backup ID, issue the [describe\-backups](http://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-backups.html) command\.
++ At a command prompt, issue the [create\-cluster](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/create-cluster.html) command\. Specify the HSM instance type, the subnet IDs of the subnets where you plan to create HSMs, and the backup ID of the backup that you are restoring\. If you don't know the backup ID, issue the [describe\-backups](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-backups.html) command\.
 
   ```
   $ aws cloudhsmv2 create-cluster --hsm-type hsm1.medium \
@@ -57,6 +57,6 @@ You can restore a cluster from a backup from the [AWS CloudHSM console](https://
   ```
 
 **To create a cluster from a previous backup \(AWS CloudHSM API\)**
-+ Send a [http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html) request\. Specify the HSM instance type, the subnet IDs of the subnets where you plan to create HSMs, and the backup ID of the backup that you are restoring\.
++ Send a [https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateCluster.html) request\. Specify the HSM instance type, the subnet IDs of the subnets where you plan to create HSMs, and the backup ID of the backup that you are restoring\.
 
 To create an HSM that contains the same users, key material, certificates, configuration, and policies that were in the backup that you restored, [add an HSM](add-remove-hsm.md#add-hsm) to the cluster\.

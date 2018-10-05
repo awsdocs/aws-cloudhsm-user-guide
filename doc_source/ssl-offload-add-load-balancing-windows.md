@@ -189,7 +189,7 @@ When your load balancer's state is active, you can verify that the load balancer
 
 1. Use a web browser such as Mozilla Firefox or Google Chrome to connect to your load balancer using the load balancer's DNS name\. Ensure that the URL in the address bar begins with https://\. 
 **Tip**  
-You can use a DNS service such as Amazon Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your web server\. For more information, see [Routing Traffic to an Amazon EC2 Instance](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html) in the *Amazon Route 53 Developer Guide* or in the documentation for your DNS service\.
+You can use a DNS service such as Amazon Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your web server\. For more information, see [Routing Traffic to an Amazon EC2 Instance](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html) in the *Amazon Route 53 Developer Guide* or in the documentation for your DNS service\.
 
 1. Use your web browser to view the web server certificate\. For more information, see the following: 
    + For Mozilla Firefox, see [View a Certificate](https://support.mozilla.org/en-US/kb/secure-website-certificate#w_view-a-certificate) on the Mozilla Support website\.
@@ -207,7 +207,7 @@ You can use a DNS service such as Amazon Route 53 to route your website's domai
    openssl s_client -connect <DNS name>:443
    ```
 **Tip**  
-You can use a DNS service such as Amazon Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your web server\. For more information, see [Routing Traffic to an Amazon EC2 Instance](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html) in the *Amazon Route 53 Developer Guide* or in the documentation for your DNS service\.
+You can use a DNS service such as Amazon Route 53 to route your website's domain name \(for example, https://www\.example\.com/\) to your web server\. For more information, see [Routing Traffic to an Amazon EC2 Instance](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html) in the *Amazon Route 53 Developer Guide* or in the documentation for your DNS service\.
 
 1. Ensure that the certificate is the one that you configured the web server to use\.
 

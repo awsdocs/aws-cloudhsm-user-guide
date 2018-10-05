@@ -5,7 +5,7 @@ Before you can start the Windows AWS CloudHSM client and use the KSP and CNG pro
 Set the following system environment variables:
 
 **`n3fips_partition=HSM-ID`**  
-Identifies an HSM in your cluster\. Because they are synchronized, you can specify any HSM in the cluster\. To create an HSM, use [CreateHsm](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html)\. To find the HSM ID of an HSM, use [DescribeClusters](http://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) or choose a cluster in the AWS CloudHSM console\.   
+Identifies an HSM in your cluster\. Because they are synchronized, you can specify any HSM in the cluster\. To create an HSM, use [CreateHsm](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html)\. To find the HSM ID of an HSM, use [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) or choose a cluster in the AWS CloudHSM console\.   
 For example:  
 
 ```
@@ -19,7 +19,3 @@ For example:
 ```
 setx /m n3fips_password test_user:password123
 ```
-
-See also:
-
-[Code Sample for Cavium CNG Provider](ksp-library-sample.md)

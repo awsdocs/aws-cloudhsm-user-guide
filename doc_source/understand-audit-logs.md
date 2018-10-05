@@ -6,9 +6,9 @@ Amazon CloudWatch Logs organizes the audit logs into *log groups* and, within a 
 
   In general, there is one log stream for each HSM\. However, any action that changes the HSM ID, such as when an HSM fails and is replaced, creates a new log stream\.
 
-For more information about CloudWatch Logs concepts, see [Concepts](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogsConcepts.html) in the *Amazon CloudWatch Logs User Guide*\.
+For more information about CloudWatch Logs concepts, see [Concepts](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatchLogsConcepts.html) in the *Amazon CloudWatch Logs User Guide*\.
 
-You can view the audit logs for an HSM from the CloudWatch Logs page in the AWS Management Console, the [CloudWatch Logs commands](http://docs.aws.amazon.com/cli/latest/reference/logs/index.html#cli-aws-logs) in the AWS CLI, the [CloudWatch Logs PowerShell cmdlets](http://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudWatch_Logs_cmdlets.html), or the [CloudWatch Logs SDKs](http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/)\. For instructions, see [View Log Data](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#ViewingLogData) in the *Amazon CloudWatch Logs User Guide*\. 
+You can view the audit logs for an HSM from the CloudWatch Logs page in the AWS Management Console, the [CloudWatch Logs commands](https://docs.aws.amazon.com/cli/latest/reference/logs/index.html#cli-aws-logs) in the AWS CLI, the [CloudWatch Logs PowerShell cmdlets](https://docs.aws.amazon.com/powershell/latest/reference/items/Amazon_CloudWatch_Logs_cmdlets.html), or the [CloudWatch Logs SDKs](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/)\. For instructions, see [View Log Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html#ViewingLogData) in the *Amazon CloudWatch Logs User Guide*\. 
 
 For example, the following image shows the log group for the `cluster-likphkxygsn` cluster in the AWS Management Console\.
 

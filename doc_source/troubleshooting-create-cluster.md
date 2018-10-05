@@ -27,7 +27,7 @@ Then try to [create the cluster](create-cluster.md) again\.
 
 ## Create the Service\-Linked Role Manually<a name="api-call-failure"></a>
 
-You can use the IAM console, CLI, or API to create the AWSServiceRoleForCloudHSM service\-linked role\. For more information, see [Creating a Service\-Linked Role](http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role) in the *IAM User Guide*\. 
+You can use the IAM console, CLI, or API to create the AWSServiceRoleForCloudHSM service\-linked role\. For more information, see [Creating a Service\-Linked Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role) in the *IAM User Guide*\. 
 
 ## Use a Nonfederated User<a name="non-federated-user"></a>
 

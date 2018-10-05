@@ -233,7 +233,7 @@ Required: Yes
 
 **\-u**  
 Shares the key you are importing with specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use this key in cryptographic operations\.   
-Type one ID or a comma\-separated list of HSM user IDs, such as \-u 5,6\. Do not include the HSM user ID of the current user\. To find the an ID, you can use the [listUsers](http://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-listUsers.html) command in the cloudhsm\_mgmt\_util command line tool or the [listUsers](http://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-listUsers.html) command in the key\_mgmt\_util command line tool\.   
+Type one ID or a comma\-separated list of HSM user IDs, such as \-u 5,6\. Do not include the HSM user ID of the current user\. To find the an ID, you can use the [listUsers](https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-listUsers.html) command in the cloudhsm\_mgmt\_util command line tool or the [listUsers](https://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-listUsers.html) command in the key\_mgmt\_util command line tool\.   
 Required: No
 
 **\-w**  

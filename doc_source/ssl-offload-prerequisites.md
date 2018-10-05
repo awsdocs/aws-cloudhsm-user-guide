@@ -12,7 +12,7 @@ To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
 
 1. Complete the steps in [Getting Started](getting-started.md)\. You will then have an active cluster with one HSM and an Amazon EC2 client instance\. Your EC2 instance will be configured with the command line tools\. Use this client instance as your web server\. 
 
-1. Connect to your client instance\. For more information, see [Connecting to Your Linux Instance Using SSH](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) or [Connecting to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) in the Amazon EC2 documentation\. Then do the following:
+1. Connect to your client instance\. For more information, see [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) or [Connecting to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) in the Amazon EC2 documentation\. Then do the following:
 
    1. Choose whether to install the NGINX or Apache web server application\. Then complete one of the following steps:
       + To install NGINX, run the following command\.

@@ -6,7 +6,7 @@ If you don't already have a virtual private cloud \(VPC\), create one now\.
 
 1. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/)\.
 
-1. On the navigation bar, use the region selector to choose one of the [AWS Regions where AWS CloudHSM is currently supported](http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudhsm_region)\.
+1. On the navigation bar, use the region selector to choose one of the [AWS Regions where AWS CloudHSM is currently supported](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudhsm_region)\.
 
 1. Choose **Start VPC Wizard**\.
 

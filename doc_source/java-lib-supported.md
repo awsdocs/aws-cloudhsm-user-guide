@@ -14,7 +14,7 @@ For information about the Java Cryptography Architecture \(JCA\) interfaces and 
 The AWS CloudHSM software library for Java enables you to generate the following key types\.
 + **RSA** – 2048\-bit to 4096\-bit RSA keys, in increments of 256 bits\.
 + **AES** – 128, 192, and 256\-bit AES keys\.
-+ EC key pairs for NIST curves P256 and P384\.
++ ECC key pairs for NIST curves P256 and P384\.
 
 In addition to standard parameters, we support the following parameters for each key that is generated\.
 + **Label**: A key label that you can use to search for keys\.
