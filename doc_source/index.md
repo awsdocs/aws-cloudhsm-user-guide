@@ -110,6 +110,7 @@ Amazon's trademarks and trade dress may not be used in
    + [KSP and CNG Providers for Windows](ksp-library.md)
       + [Install the KSP and CNG Providers for Windows](ksp-library-install.md)
       + [Windows AWS CloudHSM Prerequisites](ksp-library-prereq.md)
+      + [Code Sample for Cavium CNG Provider](ksp-library-sample.md)
 + [Integrating Third-Party Applications with AWS CloudHSM](third-party-applications.md)
    + [Improve Your Web Server's Security with SSL/TLS Offload in AWS CloudHSM](ssl-offload.md)
       + [How SSL/TLS Offload with AWS CloudHSM Works](ssl-offload-overview.md)

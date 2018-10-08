@@ -1,6 +1,6 @@
 # Step 2: Create a Certificate Signing Request \(CSR\) and Certificate<a name="ssl-offload-windows-create-csr-and-certificate"></a>
 
-To enable HTTPS, your web server needs an SSL/TLS certificate and a corresponding private key\. To use SSL/TLS offload with AWS CloudHSM, you store the private key in the HSM in your AWS CloudHSM cluster\. To do this, you use the AWS CloudHSM key storage provider \(KSP\) for Microsoft's Cryptography API: Next Generation \(CNG\) to create a certificate signing request \(CSR\)\. Then you give the CSR to a certificate authority \(CA\), which signs the CSR to produce a certificate\.
+To enable HTTPS, your web server needs an SSL/TLS certificate and a corresponding private key\. To use SSL/TLS offload with AWS CloudHSM, you store the private key in the HSM in your AWS CloudHSM cluster\. To do this, you use the [AWS CloudHSM key storage provider \(KSP\) for Microsoft's Cryptography API: Next Generation \(CNG\)](ksp-library.md) to create a certificate signing request \(CSR\)\. Then you give the CSR to a certificate authority \(CA\), which signs the CSR to produce a certificate\.
 
 **Topics**
 + [Create a CSR](#ssl-offload-windows-create-csr)

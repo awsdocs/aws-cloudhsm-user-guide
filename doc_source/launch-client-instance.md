@@ -2,7 +2,7 @@
 
 To interact with and manage your AWS CloudHSM cluster and HSM instances, you must be able to communicate with the elastic network interfaces of your HSMs\. The easiest way to do this is to use an Amazon EC2 instance in the same VPC as your cluster \(see below\)\. You can also use the following AWS resources to connect to your cluster: 
 + [Amazon VPC Peering](https://docs.aws.amazon.com/vpc/latest/peering/Welcome.html)
-+ [AWS Direct Connect](https://aws.amazon.com/documentation/direct-connect/)
++ [AWS Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html)
 + [VPN Connections](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpn-connections.html)
 
 ## Launch an EC2 Client<a name="launch-client-instance-ec2"></a>
