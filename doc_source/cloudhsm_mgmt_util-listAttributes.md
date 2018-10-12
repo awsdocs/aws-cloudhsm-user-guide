@@ -1,6 +1,6 @@
 # listAttributes<a name="cloudhsm_mgmt_util-listAttributes"></a>
 
-The listAttributes command in cloudhsm\_mgmt\_util lists the attributes of an AWS CloudHSM key and the constants that represent them\. You use these constants to identify the attributes in [getAttribute](cloudhsm_mgmt_util-getAttribute.md) and [setAttribute](cloudhsm_mgmt_util-setAttribute.md) commands\. 
+The `listAttributes` command in cloudhsm\_mgmt\_util lists the attributes of an AWS CloudHSM key and the constants that represent them\. You use these constants to identify the attributes in [getAttribute](cloudhsm_mgmt_util-getAttribute.md) and [setAttribute](cloudhsm_mgmt_util-setAttribute.md) commands\. 
 
 For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
 
@@ -8,7 +8,7 @@ Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key
 
 ## User Type<a name="listAttributes-userType"></a>
 
-The following types of users can run this command\.
+The following users can run this command\.
 + All users\. You do not have to be logged in to run this command\.
 
 ## Syntax<a name="chmu-listAttributes-syntax"></a>
@@ -26,7 +26,7 @@ Command: listAttributes
 
     Description
 ===========
-The following are all of the possible attribute values for getAttributes.
+The following are all of the possible attribute values for getAttribute.
 
       OBJ_ATTR_CLASS                  = 0
       OBJ_ATTR_TOKEN                  = 1

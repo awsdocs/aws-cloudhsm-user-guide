@@ -17,7 +17,7 @@ The precrypto officer \(PRECO\) is a temporary user that exists only on the firs
 
 ## Crypto Officer \(CO\)<a name="crypto-officer"></a>
 
-A crypto officer \(CO\) can perform user management operations\. For example, a CO can create and delete users and change user passwords\. For more information, see the [HSM User Permissions Table](#user-permissions-table)\. When you [activate a new cluster](activate-cluster.md), the user changes from a [Precrypto Officer](#preco) \(PRECO\) to a Crypto Officer \(CO\)\. 
+A crypto officer \(CO\) can perform user management operations\. For example, a CO can create and delete users and change user passwords\. For more information, see the [HSM User Permissions Table](#user-permissions-table)\. When you [activate a new cluster](activate-cluster.md), the user changes from a [Precrypto Officer](#preco) \(PRECO\) to a crypto officer \(CO\)\. 
 
 ## Crypto User \(CU\)<a name="crypto-user"></a>
 
@@ -38,7 +38,7 @@ AWS uses the AU to perform cloning and synchronization operations on your cluste
 The following table lists HSM operations and whether each type of HSM user can perform them\.
 
 
-|  | Crypto Officer \(CO\) | Crypto User \(CU\) | Appliance User \(AU\) | Unauthenticated user | 
+|  | Crypto Officer \(CO\) | Crypto User \(CU\) | Appliance User \(AU\) | Unauthenticated User | 
 | --- | --- | --- | --- | --- | 
 | Get basic cluster info¹ | Yes | Yes | Yes | Yes | 
 | Zeroize an HSM² | Yes | Yes | Yes | Yes | 
