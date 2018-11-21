@@ -1,0 +1,921 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>genSymKey - AWS CloudHSM</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="key_mgmt_util-reference.html" title="key_mgmt_util Command Reference" />
+      <link rel="prev" href="key_mgmt_util-genRSAKeyPair.html" title="genRSAKeyPair" />
+      <link rel="next" href="key_mgmt_util-getAttribute.html" title="getAttribute" />
+      <meta name="description" content="Use the genSymKey command in AWS CloudHSM key_mgmt_util to generate a symmetric key in your HSMs." />
+      <meta name="keywords" content="CloudHSM,HSM,hardware security module,HSM appliance,hardware security module appliance,cryptographic key storage,encryption key storage,cryptographic processing,cryptographic operations,cryptographic offload" />
+      <meta name="deployment_region" content="SEA" />
+      <meta name="product" content="AWS CloudHSM" />
+      <meta name="guide" content="User Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181116" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181116"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">Deutsch</option>
+                  <option value="/en_us/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html" selected="selected">English</option>
+                  <option value="/es_es/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">Español</option>
+                  <option value="/fr_fr/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">Français</option>
+                  <option value="/it_it/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">Italiano</option>
+                  <option value="/ja_jp/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">日本語</option>
+                  <option value="/ko_kr/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">한국어</option>
+                  <option value="/pt_br/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">Português</option>
+                  <option value="/zh_cn/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">中文 (简体)</option>
+                  <option value="/zh_tw/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">中文 (繁體)</option></select></div><a class="btn btn-rss-link" id="rss-link-top" target="_blank" href="amazon-cloudhsm-release-notes.rss" title="View RSS Feed"></a><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B079BV9BS8" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="cloudhsm-user-guide.pdf#key_mgmt_util-genSymKey" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/aws-cloudhsm-user-guide/tree/master/doc_source/key_mgmt_util-genSymKey.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">AWS CloudHSM </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">User Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="AWS CloudHSM" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="User Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc">
+               <ul class="awstoc">
+                  <li class="awstoc closed"><a class="awstoc" href="introduction.html">What Is AWS CloudHSM?</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="use-cases.html">Use Cases</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="clusters.html">Clusters</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="backups.html">Backups</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="client-tools-and-libraries.html">Client Tools and Libraries</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-users.html">HSM Users</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="compliance.html">Compliance</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="pricing.html">Pricing</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="regions.html">Regions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="limits.html">Limits</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="getting-started.html">Getting Started</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="create-iam-user.html">Create IAM Administrators</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-vpc.html">Create a VPC</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-subnets.html">Create a Private Subnet</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-cluster.html">Create a Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="launch-client-instance.html">Launch an EC2 Client</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-hsm.html">Create an HSM</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="verify-hsm-identity.html">Verify HSM Identity (Optional)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="initialize-cluster.html">Initialize the Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="install-and-configure-client-linux.html">Install the Client (Linux)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="install-and-configure-client-win.html">Install the Client (Windows)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="activate-cluster.html">Activate the Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="getting-started-ssl.html">Reconfigure SSL (Optional)</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="manage-clusters.html">Managing Clusters</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="add-remove-hsm.html">Adding or Removing HSMs</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="copy-backup-to-region.html">Copying a Backup Across Regions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-cluster-from-backup.html">Creating a Cluster From a Backup</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="delete-restore-backup.html">Deleting and Restoring a Backup</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="delete-cluster.html">Deleting a Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="tag-resources.html">Tagging Resources</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="manage-hsm-users-and-keys.html">Managing HSM Users and Keys</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="manage-hsm-users.html">Managing HSM Users</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="manage-keys.html">Managing Keys</a></li>
+                        <li class="awstoc closed"><a class="awstoc" href="quorum-authentication.html">Quorum Authentication (M of N)</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers-first-time-setup.html">First Time Setup for Crypto Officers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers.html">Quorum Authentication for Crypto Officers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers-change-minimum-value.html">Change the Quorum Value for Crypto Officers</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc opened"><a class="awstoc" href="command-line-tools.html">Command Line Tools</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="cloudhsm_mgmt_util.html">cloudhsm_mgmt_util</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getting-started.html">Getting Started</a></li>
+                              <li class="awstoc closed"><a class="awstoc" href="cloudhsm_mgmt_util-reference.html">Reference</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-changePswd.html">changePswd</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-createUser.html">createUser</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-deleteUser.html">deleteUser</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-findAllKeys.html">findAllKeys</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getAttribute.html">getAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getCert.html">getCert</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getHSMInfo.html">getHSMInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getKeyInfo.html">getKeyInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-info.html">info</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-listAttributes.html">listAttributes</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-listUsers.html">listUsers</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-loginLogout.html">loginHSM and logoutHSM</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-server.html">server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-setAttribute.html">setAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-quit.html">quit</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-shareKey.html">shareKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-syncKey.html">syncKey</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc opened"><a class="awstoc" href="key_mgmt_util.html">key_mgmt_util</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getting-started.html">Getting Started</a></li>
+                              <li class="awstoc opened"><a class="awstoc" href="key_mgmt_util-reference.html">Reference</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-aesWrapUnwrap.html">aesWrapUnwrap</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-deleteKey.html">deleteKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-Error2String.html">Error2String</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-exSymKey.html">exSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-findKey.html">findKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-findSingleKey.html">findSingleKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genDSAKeyPair.html">genDSAKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genECCKeyPair.html">genECCKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genPBEKey.html">genPBEKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genRSAKeyPair.html">genRSAKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc selected" href="key_mgmt_util-genSymKey.html">genSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getAttribute.html">getAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getKeyInfo.html">getKeyInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-imSymKey.html">imSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-listAttributes.html">listAttributes</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-listUsers.html">listUsers</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-setAttribute.html">setAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-unwrapKey.html">unWrapKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-wrapKey.html">wrapKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key-attribute-table.html">Key Attribute Reference</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc leaf"><a class="awstoc" href="configure-tool.html">Configure Tool</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="use-hsm.html">Using the Software Libraries</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="pkcs11-library.html">PKCS #11 Library</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-library-install.html">Installing the PKCS #11 Library</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-pin.html">Authenticating to PKCS #11</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-key-types.html">Supported PKCS #11 Key Types</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-mechanisms.html">Supported PKCS #11 Mechanisms</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-apis.html">Supported PKCS #11 API operations</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="openssl-library.html">OpenSSL Dynamic Engine</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="openssl-library-install.html">Installing the OpenSSL Dynamic Engine</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="java-library.html">Java Library</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="java-library-install.html">Installing the Java Library</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-lib-supported.html">Supported Mechanisms</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-library-sample.html">Sample Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-samples.html">Java Samples</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="ksp-library.html">KSP and CNG Providers</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-install.html">Install the Providers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-prereq.html">Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-sample.html">Code Sample</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="third-party-applications.html">Integrating Third-Party Applications</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="ssl-offload.html">SSL/TLS Offload</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-overview.html">How It Works</a></li>
+                              <li class="awstoc closed"><a class="awstoc" href="ssl-offload-linux.html">SSL/TLS Offload on Linux</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-prerequisites.html">Step 1: Set Up the Prerequisites</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-import-or-generate-private-key-and-certificate.html">Step 2: Generate or Import a Private Key and SSL/TLS Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-configure-web-server.html">Step 3: Configure the Web Server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-enable-traffic-and-verify-certificate.html">Step 4: Enable HTTPS Traffic and Verify the Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-add-load-balancing.html">(Optional) Step 5: Add a Load Balancer with Elastic Load Balancing</a></li>
+                                 </ul>
+                              </li>
+                              <li class="awstoc closed"><a class="awstoc" href="ssl-offload-windows.html">SSL/TLS Offload on Windows</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-prerequisites-windows.html">Step 1: Set Up the Prerequisites</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-windows-create-csr-and-certificate.html">Step 2: Create a Certificate Signing Request (CSR) and Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-configure-web-server-windows.html">Step 3: Configure the Web Server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-enable-traffic-and-verify-certificate-windows.html">Step 4: Enable HTTPS Traffic and Verify the Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-add-load-balancing-windows.html">(Optional) Step 5: Add a Load Balancer with Elastic Load Balancing</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="win-ca-overview.html">Windows Server CA</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-prerequisites.html">Set Up Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-setup.html">Create Windows Server CA</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-sign-csr.html">Sign a CSR</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="oracle-tde.html">Oracle Database Encryption</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="oracle-tde-prerequisites.html">Set Up Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="oracle-tde-configure-database-and-generate-master-key.html">Configure the Database</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="get-logs.html">Monitoring Logs</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-client-logs.html">Getting Client Logs</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="get-api-logs-using-cloudtrail.html">Logging AWS CloudHSM API Calls with AWS CloudTrail</a></li>
+                        <li class="awstoc closed"><a class="awstoc" href="get-hsm-audit-logs-using-cloudwatch.html">Monitoring Audit Logs</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="get-audit-logs-from-cloudwatch.html">How Audit Logging Works</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="understand-audit-logs.html">Viewing Audit Logs in CloudWatch Logs</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="interpreting-audit-logs.html">Interpreting HSM Audit Logs</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="cloudhsm-audit-log-reference.html">Audit Log Reference</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="hsm-metrics.html">Getting Metrics</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-metrics-cw.html">Getting CloudWatch Metrics</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="troubleshooting.html">Troubleshooting</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="KnownIssues.html">Known Issues</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-lost-connection.html">Lost Connection</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-keep-hsm-users-in-sync.html">Keep HSM Users In Sync</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-verify-hsm-performance.html">Verify Performance</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-create-cluster.html">Resolving Cluster Creation Failures</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-missing-audit-logs.html">Missing AWS CloudHSM Audit Logs in CloudWatch</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="client-and-software-version-history.html">Client and Software Information</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="client-history.html">Version History</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="client-supported-platforms.html">Supported Platforms</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="document-history.html">Document History</a></li>
+                  <li id="toc-additional-links"><a class="btn btn-pdf-link" id="pdf-link-alt" href="cloudhsm-user-guide.pdf#top" target="_blank" title="Open PDF"></a><a class="btn btn-kindle-link" id="kindle-link-alt" target="_blank" href="http://www.amazon.com/dp/B079BV9BS8" title="Open Kindle"></a><a class="btn btn-rss-link" id="rss-link-alt" target="_blank" href="amazon-cloudhsm-release-notes.rss" title="View RSS Feed"></a></li>
+               </ul>
+            </div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/cloudhsm/index.html">AWS CloudHSM</a> » <a href="index.html">User Guide</a> » <a href="command-line-tools.html">AWS CloudHSM Command Line Tools</a> » <a href="key_mgmt_util.html">key_mgmt_util</a> » <a href="key_mgmt_util-reference.html">key_mgmt_util Command Reference</a> » <span class="breadcrumb">genSymKey</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div id="SEARegionDisclaimer">This prerelease documentation is confidential and is provided under the terms of your
+                        nondisclosure agreement with Amazon Web Services (AWS) or other agreement governing
+                        your receipt of AWS confidential information.
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="key_mgmt_util-genSymKey">genSymKey</h1>
+                     <p>The <b>genSymKey</b> command in the key_mgmt_util tool generates a symmetric key in your
+                        HSMs. You can specify the key type and size, assign an ID and label, and share the
+                        key with
+                        other HSM users. You can also create nonextractable keys and keys that expire when
+                        the session
+                        ends. When the command succeeds, it returns a key handle that the HSM assigns to the
+                        key. You
+                        can use the key handle to identify the key to other commands.
+                     </p>
+                     <p>Before you run any key_mgmt_util command, you must <a href="key_mgmt_util-getting-started.html#key_mgmt_util-start">start
+                           key_mgmt_util</a> and <a href="key_mgmt_util-getting-started.html#key_mgmt_util-log-in">login</a> to the HSM as a crypto user
+                        (CU). 
+                     </p>
+                     <div class="aws-note">
+                        <p class="aws-note">Tip</p>
+                        <p>To find the attributes of a key that you have created, such as the type, length, label,
+                           and
+                           ID, use <a href="key_mgmt_util-getAttribute.html">getAttribute</a>. To find the keys for a
+                           particular user, use <a href="key_mgmt_util-getKeyInfo.html">getKeyInfo</a>. To find keys
+                           based on their attribute values, use <a href="key_mgmt_util-findKey.html">findKey</a>.
+                           
+                        </p>
+                     </div>
+                     
+                     <h2 id="genSymKey-syntax">Syntax</h2>
+                     
+                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">genSymKey -h
+
+genSymKey -t <em class="replaceable"><code>&lt;key-type&gt;</code></em>
+          -s <em class="replaceable"><code>&lt;key-size&gt;</code></em> 
+          -l <em class="replaceable"><code>&lt;label&gt;</code></em> 
+          [-id <em class="replaceable"><code>&lt;key-ID&gt;</code></em>] 
+          [-min_srv <em class="replaceable"><code>&lt;minimum-number-of-servers&gt;</code></em>] 
+          [-m_value <em class="replaceable"><code>&lt;0..8&gt;</code></em>]
+          [-nex] 
+          [-sess] 
+          [-timeout <em class="replaceable"><code>&lt;number-of-seconds&gt;</code></em> ]
+          [-u <em class="replaceable"><code>&lt;user-ids&gt;</code></em>] 
+          [-attest] </code></pre>
+                     
+                     <h2 id="genSymKey-examples">Examples</h2>
+                     
+                     <p>These examples show how to use <b>genSymKey</b> to create symmetric keys in your
+                        HSMs.
+                     </p>
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Generate an AES Key</b></p>
+                        <div class="example-contents">
+                           <p>This command creates a 256-bit AES key with an <code class="code">aes256</code> label. The output
+                              shows that the key handle of the new key is <code class="code">6</code>.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command:</code> <strong class="userinput"><code>genSymKey -t 31 -s 32 -l aes256</code></strong>
+
+        <code class="computeroutput" copy="false">Cfm3GenerateSymmetricKey returned: 0x00 : HSM Return: SUCCESS
+
+        Symmetric Key Created.  Key Handle: 6
+
+        Cluster Error Status
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS</code></code></pre></div>
+                     </div>
+                     
+                     
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Create a Session Key</b></p>
+                        <div class="example-contents">
+                           <p>This command creates a nonextractable 192-bit AES key that is valid only in the current
+                              session. You might want to create a key like this to wrap (and then immediately unwrap)
+                              a
+                              key that is being exported. 
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command:</code> <strong class="userinput"><code>genSymKey -t 31 -s 24 -l tmpAES -id wrap01 -nex -sess</code></strong> </code></pre></div>
+                     </div>
+                     
+                     
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Return Quickly</b></p>
+                        <div class="example-contents">
+                           <p>This command creates a generic 512-byte key with a label of <code class="code">IT_test_key</code>.
+                              The command does not wait for the key to be synchronized to all HSMs in the cluster.
+                              Instead, it returns as soon as the key is created on any one HSM (<code class="code">-min_srv 1</code>)
+                              or in 1 second (<code class="code">-timeout 1</code>), whichever is shorter. If the key is not
+                              synchronized to the specified minimum number of HSMs before the timeout expires, it
+                              is not
+                              generated. You might want to use a command like this in a script that creates numerous
+                              keys,
+                              like the <code class="code">for</code> loop in the following example. 
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command:</code> <strong class="userinput"><code>genSymKey -t 16 -s 512 -l IT_test_key -min_srv 1 -timeout 1</code></strong>
+
+<code class="prompt" copy="false">$ </code> <strong class="userinput"><code>for i in {1..30}; 
+     do /opt/cloudhsm/bin/key_mgmt_util Cfm3Util singlecmd loginHSM -u CU -s example_user -p example_pwd genSymKey -l aes -t 31 -s 32 -min_srv 1 -timeout 1; 
+ done;</code></strong></code></pre></div>
+                     </div>
+                     
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Create a Quorum Authorized Generic Key</b></p>
+                        <div class="example-contents">
+                           <p>This command creates a 2048-bit generic secret key with the label
+                              <code class="code">generic-mV2</code>. The command uses the <code class="code">-u</code> parameter to share the key
+                              with another CU, user 6. It uses the <code class="code">-m_value</code> parameter to require a quorum of
+                              at least two approvals for any cryptographic operations that use the key. The command
+                              also
+                              uses the <code class="code">-attest</code> parameter to verify the integrity of the firmware on which the
+                              key is generated.
+                           </p>
+                           <p>The output shows that the command generated a key with key handle <code class="code">9</code> and
+                              that the attestation check on the cluster firmware passed.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">
+                <code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>genSymKey -t 16 -s 2048 -l generic-mV2 -m_value 2 -u 6 -attest</code></strong>
+
+        <code class="computeroutput" copy="false">Cfm3GenerateSymmetricKey returned: 0x00 : HSM Return: SUCCESS
+
+        Symmetric Key Created.  Key Handle: 9
+
+        Attestation Check : [PASS]
+
+        Cluster Error Status
+        Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS</code>
+      </code></pre></div>
+                     </div>
+                     
+                     
+                     
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Create and Examine a Key</b></p>
+                        <div class="example-contents">
+                           <p>This command creates a Triple DES key with a <code class="code">3DES_shared</code> label and an ID of
+                              <code class="code">IT-02</code>. The key can be used by the current user, and users 4 and 5. The command
+                              fails if the ID is not unique in the cluster or if the current user is user 4 or 5.
+                              
+                           </p>
+                           <p>The output shows that the new key has key handle <code class="code">7</code>.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command:</code> <strong class="userinput"><code>genSymKey -t 21 -s 24 -l 3DES_shared -id IT-02 -u 4,5</code></strong>
+
+       <code class="computeroutput" copy="false">Cfm3GenerateSymmetricKey returned: 0x00 : HSM Return: SUCCESS
+
+        Symmetric Key Created.  Key Handle: 7
+
+        Cluster Error Status
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS</code></code></pre><p>To verify that the new 3DES key is owned by the current user and shared with users
+                              4 and
+                              5, use <a href="key_mgmt_util-getKeyInfo.html">getKeyInfo</a>. The command uses the
+                              handle that was assigned to the new key (<code class="code">Key Handle: 7</code>).
+                           </p>
+                           <p>The output confirms that the key is owned by user 3 and shared with users 4 and
+                              5.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>getKeyInfo -k 7</code></strong>
+
+        <code class="computeroutput" copy="false">Cfm3GetKey returned: 0x00 : HSM Return: SUCCESS
+
+        Owned by user 3
+
+        also, shared to following 2 user(s):
+
+                 4, 5</code></code></pre><p>To confirm the other properties of the key, use <a href="key_mgmt_util-getAttribute.html">getAttribute</a>. The first command uses
+                              <code class="code">getAttribute</code> to get all attributes (<code class="code">-a 512</code>) of key handle 7
+                              (<code class="code">-o 7</code>). It writes them to the <code>attr_7</code> file. The second
+                              command uses <code class="code">cat</code> to get the contents of the <code>attr_7</code> file. 
+                           </p>
+                           <p>This command confirms that key 7 is a 192-bit (<code class="code">OBJ_ATTR_VALUE_LEN
+                                 0x00000018</code> or 24-byte) 3DES (<code class="code">OBJ_ATTR_KEY_TYPE 0x15</code>) symmetric key
+                              (<code class="code">OBJ_ATTR_CLASS 0x04</code>) with a label of <code class="code">3DES_shared</code>
+                              (<code class="code">OBJ_ATTR_LABEL 3DES_shared</code>) and an ID of <code class="code">IT_02</code> (<code class="code">OBJ_ATTR_ID
+                                 IT-02</code>). The key is persistent (<code class="code">OBJ_ATTR_TOKEN 0x01</code>) and extractable
+                              (<code class="code">OBJ_ATTR_EXTRACTABLE 0x01</code>) and can be used for encryption, decryption, and
+                              wrapping. 
+                           </p>
+                           <p>For help interpreting the key attributes, see the <a href="key-attribute-table.html">Key Attribute Reference</a>.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>getAttribute -o 7 -a 512 -attr_7</code></strong>
+
+<code class="computeroutput" copy="false">got all attributes of size 444 attr cnt 17
+Attributes dumped into attr_7 file
+
+        Cfm3GetAttribute returned: 0x00 : HSM Return: SUCCESS</code>
+
+
+<code class="prompt" copy="false">$ </code> <strong class="userinput"><code>cat attr_7</code></strong>
+
+<code class="computeroutput" copy="false">OBJ_ATTR_CLASS
+0x04
+OBJ_ATTR_KEY_TYPE
+0x15
+OBJ_ATTR_TOKEN
+0x01
+OBJ_ATTR_PRIVATE
+0x01
+OBJ_ATTR_ENCRYPT
+0x01
+OBJ_ATTR_DECRYPT
+0x01
+OBJ_ATTR_WRAP
+0x00
+OBJ_ATTR_UNWRAP
+0x00
+OBJ_ATTR_SIGN
+0x00
+OBJ_ATTR_VERIFY
+0x00
+OBJ_ATTR_LOCAL
+0x01
+OBJ_ATTR_SENSITIVE
+0x01
+OBJ_ATTR_EXTRACTABLE
+0x01
+OBJ_ATTR_LABEL
+3DES_shared
+OBJ_ATTR_ID
+IT-02
+OBJ_ATTR_VALUE_LEN
+0x00000018
+OBJ_ATTR_KCV
+0x59a46e</code>
+</code></pre></div>
+                     </div>
+                     
+                     
+                     
+                     
+                     <h2 id="genSymKey-params">Parameters</h2>
+                     
+                     
+                     <div class="variablelist">  
+                        
+                        
+                        
+                        
+                          
+                           
+                        
+                        
+                          
+                        
+                         
+                        
+                        
+                        <dl>
+                           
+                           <dt><b><span class="term">-h</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Displays help for the command. </p>
+                              
+                              <p>Required: Yes</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-t</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies the type of the symmetric key. Enter the constant that represents the key
+                                 type. For example, to create an AES key, type <code class="code">-t 31</code>.
+                              </p>
+                              
+                              <p>Valid values: </p>
+                              
+                              <div class="itemizedlist">
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 <ul class="itemizedlist" type="disc">
+                                    <li class="listitem">
+                                       
+                                       <p>16: <a href="http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226962" target="_blank">GENERIC_SECRET</a>. A <em>generic secret key</em> is
+                                          a byte array that does not conform to any particular standard, such as the
+                                          requirements for an AES key. 
+                                       </p>
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p>18: <a href="https://en.wikipedia.org/wiki/RC4" target="_blank">RC4</a>. RC4 keys are not
+                                          valid on FIPS-mode HSMs
+                                       </p>
+                                       
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p>21: <a href="https://en.wikipedia.org/wiki/Triple_DES" target="_blank">Triple DES
+                                             (3DES)</a>.
+                                       </p>
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p>31: <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank">AES</a></p>
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              
+                              <p>Required: Yes</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-s</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies the key size in bytes. For example, to create a 192-bit key, type
+                                 <code class="code">24</code>. 
+                              </p>
+                              
+                              <p>Valid values for each key type:</p>
+                              
+                              <div class="itemizedlist">
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 <ul class="itemizedlist" type="disc">
+                                    <li class="listitem">
+                                       
+                                       <p>AES: 16 (128 bits), 24 (192 bits), 32 (256 bits)</p>
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p>3DES: 24 (192 bits)</p>
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p>RC4: &lt;256 (2048 bits)</p>
+                                       
+                                    </li>
+                                    <li class="listitem">
+                                       
+                                       <p>Generic Secret: &lt;3584 (28672 bits)</p>
+                                       
+                                    </li>
+                                 </ul>
+                              </div>
+                              
+                              <p>Required: Yes</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-l</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies a user-defined label for the key. Type a string.</p>
+                              
+                              <p>You can use any phrase that helps you to identify the key. Because
+                                 the label does not have to be unique, you can use it to group and categorize keys.
+                                 
+                              </p>
+                              
+                              <p>Required: Yes</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-attest</span></b></dt>
+                           
+                           <dd>
+                              <p>Runs an integrity check that verifies that the firmware on which the cluster runs
+                                 has not been tampered with.
+                              </p>
+                              
+                              <p>Default: No attestation check.</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-id</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies a user-defined identifier for the key. Type a string that is unique in
+                                 the cluster. The default is an empty string. 
+                              </p>
+                              
+                              <p>Default: No ID value.</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-min_srv</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies the minimum number of HSMs on which the key is synchronized before the
+                                 value of the <code class="code">-timeout</code> parameter expires. If the key is not synchronized to
+                                 the specified number of servers in the time allotted, it is not created.
+                              </p>
+                              
+                              <p>AWS CloudHSM automatically synchronizes every key to every HSM in the cluster. To
+                                 speed up your process, set the value of <code class="code">min_srv</code> to less than the number of HSMs in the cluster and set a low timeout value. Note,
+                                 however, that some requests might not generate a key.
+                              </p>
+                              
+                              <p>Default: 1</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-m_value</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies the number of users who must approve any cryptographic operation that uses
+                                 the key. Type a value from <code class="code">0</code> to <code class="code">8</code>.
+                              </p>
+                              
+                              <p>This parameter establishes a
+                                 quorum authentication
+                                 requirement for the key. The default value, <code class="code">0</code>, disables the quorum
+                                 authentication feature for the key. When quorum authentication is enabled, the specified
+                                 number of users must sign a token to approve cryptographic operations that use the
+                                 key, and operations that share or unshare the key.
+                              </p>
+                              
+                              <p>To find the <code class="code">m_value</code> of a key, use <a href="key_mgmt_util-getKeyInfo.html">getKeyInfo</a>.
+                              </p>
+                              
+                              <p>This parameter is valid only when the <code class="code">-u</code> parameter in the command
+                                 shares the key with enough users to satisfy the <code class="code">m_value</code> requirement.
+                              </p>
+                              
+                              <p>Default: 0</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-nex</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Makes the key nonextractable. The key that is generated cannot be <a href="manage-keys.html#export-keys">exported from the HSM</a>.
+                              </p>
+                              
+                              <p>Default: The key is extractable.</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-sess</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Creates a key that exists only in the current session. The key cannot be recovered
+                                 after the session ends.
+                              </p>
+                              
+                              <p>Use this parameter when you need a key only briefly, such as a wrapping key that
+                                 encrypts, and then quickly decrypts, another key. Do not use a session key to encrypt
+                                 data
+                                 that you might need to decrypt after the session ends.
+                              </p>
+                              
+                              <p>To change a session key to a persistent (token) key, use <a href="key_mgmt_util-setAttribute.html">setAttribute</a>.
+                              </p>
+                              
+                              <p>Default: The key is persistent. </p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-timeout</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies how long (in seconds) the command waits for a key to be synchronized
+                                 to the number of HSMs specified by the <code class="code">min_srv</code> parameter. 
+                              </p>
+                              
+                              <p>This parameter is valid only when the <code class="code">min_srv</code> parameter is also used in
+                                 the command.
+                              </p>
+                              
+                              <p>Default: No timeout. The command waits indefinitely and returns only when the key
+                                 is
+                                 synchronized to the minimum number of servers.
+                              </p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-u</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Shares the key with the specified users. This parameter gives other HSM crypto users
+                                 (CUs) permission to use this key in cryptographic operations.
+                              </p>
+                              
+                              <p>Type a comma-separated list of HSM user IDs, such as -<code class="code">u 5,6</code>. Do not
+                                 include the HSM user ID of the current user. To find HSM user IDs of CUs on the HSM,
+                                 use
+                                 <a href="key_mgmt_util-listUsers.html">listUsers</a>. To share and unshare existing
+                                 keys, use <b>shareKey</b>. 
+                              </p>
+                              
+                              <p>Default: Only the current user can use the key. </p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                        </dl>
+                     </div>
+                     
+                     
+                     <h2 id="genSymKey-seealso">Related Topics</h2>
+                     
+                     
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-exSymKey.html">exSymKey</a></p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-genRSAKeyPair.html">genRSAKeyPair</a></p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-genDSAKeyPair.html">genDSAKeyPair</a></p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-genECCKeyPair.html">genECCKeyPair</a></p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="key_mgmt_util-genRSAKeyPair.html">« Previous </a><a class="awstoc" accesskey="n" href="key_mgmt_util-getAttribute.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2018, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Syntax"><a class="pagetoc" href="#genSymKey-syntax">Syntax</a></li>
+                        <li class="pagetoc" name="Examples"><a class="pagetoc" href="#genSymKey-examples">Examples</a></li>
+                        <li class="pagetoc" name="Parameters"><a class="pagetoc" href="#genSymKey-params">Parameters</a></li>
+                        <li class="pagetoc" name="Related Topics"><a class="pagetoc" href="#genSymKey-seealso">Related Topics</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://alpha-docs-aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=cdcb09fa-3f0a-4265-9254-d796483b9489&amp;topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html&amp;hidden_guide_name=User Guide&amp;hidden_api_version=&amp;hidden_file_name=key_mgmt_util-genSymKey"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2018, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=156" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://alpha-docs-aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=cdcb09fa-3f0a-4265-9254-d796483b9489&amp;topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-genSymKey.html&amp;hidden_guide_name=User Guide&amp;hidden_api_version=&amp;hidden_file_name=key_mgmt_util-genSymKey">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

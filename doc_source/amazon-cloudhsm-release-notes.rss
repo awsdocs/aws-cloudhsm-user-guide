@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+   <channel>
+      <title>Amazon CloudHSM Release Notes</title>
+      <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/</link>
+      <description/>
+      <lastBuildDate>Wed, 21 Nov 2018 8:09:41 Z</lastBuildDate>
+      <item>
+         <title>Updated Known Issues</title>
+         <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/document-history.html</link>
+         <description>New content was added to the &lt;a href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/KnownIssues.html" target="_blank"&gt;Known
+						Issues&lt;/a&gt; section of the Troubleshooting guide.</description>
+         <pubDate>Thu, 8 Nov 2018 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/#Updated_Known_Issues_2018-11-08</guid>
+      </item>
+      <item>
+         <title>Added new content</title>
+         <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/document-history.html</link>
+         <description>Released AWS CloudHSM client version 1.1.2 for Linux platforms. For more information,
+					see &lt;a href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-1-1-2" target="_blank"&gt;AWS CloudHSM
+						Client and Version Software History&lt;/a&gt;.</description>
+         <pubDate>Thu, 8 Nov 2018 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/#Added_new_content_2018-11-08</guid>
+      </item>
+      <item>
+         <title>Added region support</title>
+         <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/document-history.html</link>
+         <description>Added AWS CloudHSM support for the EU (Paris) and Asia Pacific (Seoul)
+					regions.</description>
+         <pubDate>Wed, 24 Oct 2018 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/#Added_region_support_2018-10-24</guid>
+      </item>
+      <item>
+         <title>Added new content</title>
+         <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/document-history.html</link>
+         <description>Added the ability to delete and restore AWS CloudHSM backups. For more information,
+					see &lt;a href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/delete-restore-backup.html" target="_blank"&gt;Deleting and Restoring
+						an AWS CloudHSM Cluster Backup&lt;/a&gt;.</description>
+         <pubDate>Mon, 10 Sep 2018 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/#Added_new_content_2018-09-10</guid>
+      </item>
+      <item>
+         <title>Added new content</title>
+         <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/document-history.html</link>
+         <description>Added automatic audit log delivery to Amazon CloudWatch Logs. For more information, see
+						&lt;a href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/get-hsm-audit-logs-using-cloudwatch.html" target="_blank"&gt;Monitoring
+						AWS CloudHSM Audit Logs in Amazon CloudWatch Logs&lt;/a&gt;.</description>
+         <pubDate>Mon, 13 Aug 2018 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/#Added_new_content_2018-08-13</guid>
+      </item>
+      <item>
+         <title>Added new content</title>
+         <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/document-history.html</link>
+         <description>Added the ability to copy an AWS CloudHSM cluster backup across regions. For more
+					information, see &lt;a href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/copy-backup-to-region.html" target="_blank"&gt;Copying A
+						Backup Across Regions&lt;/a&gt;.</description>
+         <pubDate>Mon, 30 Jul 2018 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/#Added_new_content_2018-07-30</guid>
+      </item>
+      <item>
+         <title>Added region support</title>
+         <link>https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/document-history.html</link>
+         <description>Added AWS CloudHSM support for the EU (London) region.</description>
+         <pubDate>Wed, 13 Jun 2018 19:00:00 GMT</pubDate>
+         <guid isPermaLink="false">https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/#Added_region_support_2018-06-13</guid>
+      </item>
+   </channel>
+</rss>

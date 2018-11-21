@@ -1,0 +1,971 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>imSymKey - AWS CloudHSM</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="key_mgmt_util-reference.html" title="key_mgmt_util Command Reference" />
+      <link rel="prev" href="key_mgmt_util-getKeyInfo.html" title="getKeyInfo" />
+      <link rel="next" href="key_mgmt_util-listAttributes.html" title="listAttributes" />
+      <meta name="description" content="The imSymKey command in the key_mgmt_util tool imports a plaintext copy of a symmetric key from a file into the HSM. You can use it to import keys that you generate by any method outside of the HSM and keys that were exported from an HSM, such as the keys that the" />
+      <meta name="keywords" content="CloudHSM,HSM,hardware security module,HSM appliance,hardware security module appliance,cryptographic key storage,encryption key storage,cryptographic processing,cryptographic operations,cryptographic offload" />
+      <meta name="deployment_region" content="SEA" />
+      <meta name="product" content="AWS CloudHSM" />
+      <meta name="guide" content="User Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181116" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181116"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">Deutsch</option>
+                  <option value="/en_us/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html" selected="selected">English</option>
+                  <option value="/es_es/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">Español</option>
+                  <option value="/fr_fr/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">Français</option>
+                  <option value="/it_it/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">Italiano</option>
+                  <option value="/ja_jp/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">日本語</option>
+                  <option value="/ko_kr/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">한국어</option>
+                  <option value="/pt_br/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">Português</option>
+                  <option value="/zh_cn/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">中文 (简体)</option>
+                  <option value="/zh_tw/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">中文 (繁體)</option></select></div><a class="btn btn-rss-link" id="rss-link-top" target="_blank" href="amazon-cloudhsm-release-notes.rss" title="View RSS Feed"></a><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B079BV9BS8" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="cloudhsm-user-guide.pdf#key_mgmt_util-imSymKey" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/aws-cloudhsm-user-guide/tree/master/doc_source/key_mgmt_util-imSymKey.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">AWS CloudHSM </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">User Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="AWS CloudHSM" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="User Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc">
+               <ul class="awstoc">
+                  <li class="awstoc closed"><a class="awstoc" href="introduction.html">What Is AWS CloudHSM?</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="use-cases.html">Use Cases</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="clusters.html">Clusters</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="backups.html">Backups</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="client-tools-and-libraries.html">Client Tools and Libraries</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-users.html">HSM Users</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="compliance.html">Compliance</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="pricing.html">Pricing</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="regions.html">Regions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="limits.html">Limits</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="getting-started.html">Getting Started</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="create-iam-user.html">Create IAM Administrators</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-vpc.html">Create a VPC</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-subnets.html">Create a Private Subnet</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-cluster.html">Create a Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="launch-client-instance.html">Launch an EC2 Client</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-hsm.html">Create an HSM</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="verify-hsm-identity.html">Verify HSM Identity (Optional)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="initialize-cluster.html">Initialize the Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="install-and-configure-client-linux.html">Install the Client (Linux)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="install-and-configure-client-win.html">Install the Client (Windows)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="activate-cluster.html">Activate the Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="getting-started-ssl.html">Reconfigure SSL (Optional)</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="manage-clusters.html">Managing Clusters</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="add-remove-hsm.html">Adding or Removing HSMs</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="copy-backup-to-region.html">Copying a Backup Across Regions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-cluster-from-backup.html">Creating a Cluster From a Backup</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="delete-restore-backup.html">Deleting and Restoring a Backup</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="delete-cluster.html">Deleting a Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="tag-resources.html">Tagging Resources</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="manage-hsm-users-and-keys.html">Managing HSM Users and Keys</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="manage-hsm-users.html">Managing HSM Users</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="manage-keys.html">Managing Keys</a></li>
+                        <li class="awstoc closed"><a class="awstoc" href="quorum-authentication.html">Quorum Authentication (M of N)</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers-first-time-setup.html">First Time Setup for Crypto Officers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers.html">Quorum Authentication for Crypto Officers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers-change-minimum-value.html">Change the Quorum Value for Crypto Officers</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc opened"><a class="awstoc" href="command-line-tools.html">Command Line Tools</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="cloudhsm_mgmt_util.html">cloudhsm_mgmt_util</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getting-started.html">Getting Started</a></li>
+                              <li class="awstoc closed"><a class="awstoc" href="cloudhsm_mgmt_util-reference.html">Reference</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-changePswd.html">changePswd</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-createUser.html">createUser</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-deleteUser.html">deleteUser</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-findAllKeys.html">findAllKeys</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getAttribute.html">getAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getCert.html">getCert</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getHSMInfo.html">getHSMInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getKeyInfo.html">getKeyInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-info.html">info</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-listAttributes.html">listAttributes</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-listUsers.html">listUsers</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-loginLogout.html">loginHSM and logoutHSM</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-server.html">server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-setAttribute.html">setAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-quit.html">quit</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-shareKey.html">shareKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-syncKey.html">syncKey</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc opened"><a class="awstoc" href="key_mgmt_util.html">key_mgmt_util</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getting-started.html">Getting Started</a></li>
+                              <li class="awstoc opened"><a class="awstoc" href="key_mgmt_util-reference.html">Reference</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-aesWrapUnwrap.html">aesWrapUnwrap</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-deleteKey.html">deleteKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-Error2String.html">Error2String</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-exSymKey.html">exSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-findKey.html">findKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-findSingleKey.html">findSingleKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genDSAKeyPair.html">genDSAKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genECCKeyPair.html">genECCKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genPBEKey.html">genPBEKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genRSAKeyPair.html">genRSAKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genSymKey.html">genSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getAttribute.html">getAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getKeyInfo.html">getKeyInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc selected" href="key_mgmt_util-imSymKey.html">imSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-listAttributes.html">listAttributes</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-listUsers.html">listUsers</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-setAttribute.html">setAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-unwrapKey.html">unWrapKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-wrapKey.html">wrapKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key-attribute-table.html">Key Attribute Reference</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc leaf"><a class="awstoc" href="configure-tool.html">Configure Tool</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="use-hsm.html">Using the Software Libraries</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="pkcs11-library.html">PKCS #11 Library</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-library-install.html">Installing the PKCS #11 Library</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-pin.html">Authenticating to PKCS #11</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-key-types.html">Supported PKCS #11 Key Types</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-mechanisms.html">Supported PKCS #11 Mechanisms</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-apis.html">Supported PKCS #11 API operations</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="openssl-library.html">OpenSSL Dynamic Engine</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="openssl-library-install.html">Installing the OpenSSL Dynamic Engine</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="java-library.html">Java Library</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="java-library-install.html">Installing the Java Library</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-lib-supported.html">Supported Mechanisms</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-library-sample.html">Sample Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-samples.html">Java Samples</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="ksp-library.html">KSP and CNG Providers</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-install.html">Install the Providers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-prereq.html">Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-sample.html">Code Sample</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="third-party-applications.html">Integrating Third-Party Applications</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="ssl-offload.html">SSL/TLS Offload</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-overview.html">How It Works</a></li>
+                              <li class="awstoc closed"><a class="awstoc" href="ssl-offload-linux.html">SSL/TLS Offload on Linux</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-prerequisites.html">Step 1: Set Up the Prerequisites</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-import-or-generate-private-key-and-certificate.html">Step 2: Generate or Import a Private Key and SSL/TLS Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-configure-web-server.html">Step 3: Configure the Web Server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-enable-traffic-and-verify-certificate.html">Step 4: Enable HTTPS Traffic and Verify the Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-add-load-balancing.html">(Optional) Step 5: Add a Load Balancer with Elastic Load Balancing</a></li>
+                                 </ul>
+                              </li>
+                              <li class="awstoc closed"><a class="awstoc" href="ssl-offload-windows.html">SSL/TLS Offload on Windows</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-prerequisites-windows.html">Step 1: Set Up the Prerequisites</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-windows-create-csr-and-certificate.html">Step 2: Create a Certificate Signing Request (CSR) and Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-configure-web-server-windows.html">Step 3: Configure the Web Server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-enable-traffic-and-verify-certificate-windows.html">Step 4: Enable HTTPS Traffic and Verify the Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-add-load-balancing-windows.html">(Optional) Step 5: Add a Load Balancer with Elastic Load Balancing</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="win-ca-overview.html">Windows Server CA</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-prerequisites.html">Set Up Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-setup.html">Create Windows Server CA</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-sign-csr.html">Sign a CSR</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="oracle-tde.html">Oracle Database Encryption</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="oracle-tde-prerequisites.html">Set Up Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="oracle-tde-configure-database-and-generate-master-key.html">Configure the Database</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="get-logs.html">Monitoring Logs</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-client-logs.html">Getting Client Logs</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="get-api-logs-using-cloudtrail.html">Logging AWS CloudHSM API Calls with AWS CloudTrail</a></li>
+                        <li class="awstoc closed"><a class="awstoc" href="get-hsm-audit-logs-using-cloudwatch.html">Monitoring Audit Logs</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="get-audit-logs-from-cloudwatch.html">How Audit Logging Works</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="understand-audit-logs.html">Viewing Audit Logs in CloudWatch Logs</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="interpreting-audit-logs.html">Interpreting HSM Audit Logs</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="cloudhsm-audit-log-reference.html">Audit Log Reference</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="hsm-metrics.html">Getting Metrics</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-metrics-cw.html">Getting CloudWatch Metrics</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="troubleshooting.html">Troubleshooting</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="KnownIssues.html">Known Issues</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-lost-connection.html">Lost Connection</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-keep-hsm-users-in-sync.html">Keep HSM Users In Sync</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-verify-hsm-performance.html">Verify Performance</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-create-cluster.html">Resolving Cluster Creation Failures</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-missing-audit-logs.html">Missing AWS CloudHSM Audit Logs in CloudWatch</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="client-and-software-version-history.html">Client and Software Information</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="client-history.html">Version History</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="client-supported-platforms.html">Supported Platforms</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="document-history.html">Document History</a></li>
+                  <li id="toc-additional-links"><a class="btn btn-pdf-link" id="pdf-link-alt" href="cloudhsm-user-guide.pdf#top" target="_blank" title="Open PDF"></a><a class="btn btn-kindle-link" id="kindle-link-alt" target="_blank" href="http://www.amazon.com/dp/B079BV9BS8" title="Open Kindle"></a><a class="btn btn-rss-link" id="rss-link-alt" target="_blank" href="amazon-cloudhsm-release-notes.rss" title="View RSS Feed"></a></li>
+               </ul>
+            </div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/cloudhsm/index.html">AWS CloudHSM</a> » <a href="index.html">User Guide</a> » <a href="command-line-tools.html">AWS CloudHSM Command Line Tools</a> » <a href="key_mgmt_util.html">key_mgmt_util</a> » <a href="key_mgmt_util-reference.html">key_mgmt_util Command Reference</a> » <span class="breadcrumb">imSymKey</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div id="SEARegionDisclaimer">This prerelease documentation is confidential and is provided under the terms of your
+                        nondisclosure agreement with Amazon Web Services (AWS) or other agreement governing
+                        your receipt of AWS confidential information.
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="key_mgmt_util-imSymKey">imSymKey</h1>
+                     <p>The <code class="code">imSymKey</code> command in the key_mgmt_util tool imports a plaintext copy of a symmetric
+                        key from a file into the HSM. You can use it to import keys that you generate by any
+                        method
+                        outside of the HSM and keys that were exported from an HSM, such as the keys that
+                        the <a href="key_mgmt_util-exSymKey.html">exSymKey</a>, command writes to a file.
+                        
+                     </p>
+                     <p>During the import process, <code class="code">imSymKey</code> uses an AES key that you select (the
+                        <em>wrapping key</em>) to <em>wrap</em>
+                        (encrypt) and then <em>unwrap</em> (decrypt) the key to be imported. However,
+                        <code class="code">imSymKey</code> works only on files that contain plaintext keys. To export and import
+                        encrypted keys, use the <a href="key_mgmt_util-wrapKey.html">wrapKey</a> and <a href="key_mgmt_util-unwrapKey.html">unWrapKey</a> commands.
+                        
+                     </p>
+                     <p>Also, the <code class="code">imSymKey</code> command exports only symmetric keys. To import public keys,
+                        use <code class="code">importPubKey</code>. To import private keys, use
+                        <code class="code">importPrivateKey</code> or <code class="code">wrapKey</code>.
+                        
+                     </p>
+                     <p>Imported keys work very much like keys generated in the HSM. However, the value of
+                        the <a href="key-attribute-table.html">OBJ_ATTR_LOCAL attribute</a> is zero, which indicates that it
+                        was not generated locally. You can use the following command to share a symmetric
+                        key as you 
+                        import it. You can use the <code class="code">shareKey</code> command in 
+                        	<a href="cloudhsm_mgmt_util.html">cloudhsm_mgmt_util</a> to share the key after it is imported.
+                        
+                     </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="code" copy="true">imSymKey -l aesShared -t 31 -f kms.key -w 3296 -u 5</code></code></pre><p>After you import a key, be sure to mark or delete the key file. This command does
+                        not
+                        prevent you from importing the same key material multiple times. The result, multiple
+                        keys with
+                        distinct key handles and the same key material, make it difficult to track use of
+                        the key
+                        material and prevent it from exceeding its cryptographic limits. 
+                        
+                     </p>
+                     <p>Before you run any key_mgmt_util command, you must <a href="key_mgmt_util-getting-started.html#key_mgmt_util-start">start
+                           key_mgmt_util</a> and <a href="key_mgmt_util-getting-started.html#key_mgmt_util-log-in">login</a> to the HSM as a crypto user
+                        (CU). 
+                     </p>
+                     
+                     <h2 id="imSymKey-syntax">Syntax</h2>
+                     
+                     <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">imSymKey -h
+
+imSymKey -f &lt;key-file&gt;
+         -w &lt;wrapping-key-handle&gt;  
+         -t &lt;key-type&gt;
+         -l &lt;label&gt;
+         [-id &lt;key-ID&gt;]
+         [-sess]
+         [-wk &lt;wrapping-key-file&gt; ]
+         [-attest]
+         [-min_srv &lt;minimum-number-of-servers&gt;]
+         [-timeout &lt;number-of-seconds&gt; ]
+         [-u &lt;user-ids&gt;]
+    </code></pre>
+                     
+                     <h2 id="imSymKey-examples">Examples</h2>
+                     
+                     <p>These examples show how to use <code class="code">imSymKey</code> to import symmetric keys into your
+                        HSMs.
+                     </p>
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Import an AES Symmetric Key</b></p>
+                        <div class="example-contents">
+                           <p>This example uses <code class="code">imSymKey</code> to import an AES symmetric key into the HSMs. 
+                           </p>
+                           <p>The first command uses OpenSSL to generate a random 256-bit AES symmetric key. It
+                              saves
+                              the key in the <code>aes256.key</code> file.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code> <strong class="userinput"><code>openssl rand -out aes256-forImport.key 32</code></strong></code></pre><p>The second command uses <code class="code">imSymKey</code> to import the AES key from the
+                              <code>aes256.key</code> file into the HSMs. It uses key 20, an AES key in the HSM,
+                              as the wrapping key and it specifies a label of <code class="code">imported</code>. Unlike the ID, the
+                              label does not need to be unique in the cluster. The value of the <code class="code">-t</code> (type)
+                              parameter is <code class="code">31</code>, which represents AES. 
+                           </p>
+                           <p>The output shows that the key in the file was wrapped and unwrapped, then imported
+                              into
+                              the HSM, where it was assigned the key handle 262180.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>imSymKey -f aes256.key -w 20 -t 31 -l imported</code></strong>
+
+<code class="computeroutput" copy="false">        Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
+
+        Cfm3CreateUnwrapTemplate returned: 0x00 : HSM Return: SUCCESS
+
+        Cfm3UnWrapKey returned: 0x00 : HSM Return: SUCCESS
+
+        Symmetric Key Unwrapped.  Key Handle: 262180
+
+        Cluster Error Status
+        Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 2 and err state 0x00000000 : HSM Return: SUCCESS</code></code></pre><p>The next command uses <a href="key_mgmt_util-getAttribute.html">getAttribute</a> to
+                              get the OBJ_ATTR_LOCAL attribute (<a href="key-attribute-table.html">attribute 355</a>)
+                              of the newly imported key and writes it to the <code>attr_262180</code> file.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>getAttribute -o 262180 -a 355 -out attributes/attr_262180</code></strong>
+<code class="computeroutput" copy="false">Attributes dumped into attributes/attr_262180_imported file
+
+        Cfm3GetAttribute returned: 0x00 : HSM Return: SUCCESS</code></code></pre><p>When you examine the attribute file, you can see that the value of the
+                              <code class="code">OBJ_ATTR_LOCAL</code> attribute is zero, which indicates that the key material was not
+                              generated in the HSM. 
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code> <strong class="userinput"><code>cat attributes/attr_262180_local</code></strong>
+<code class="computeroutput" copy="false">OBJ_ATTR_LOCAL
+0x00000000</code></code></pre></div>
+                     </div>
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Move a Symmetric Key Between Clusters</b></p>
+                        <div class="example-contents">
+                           <p>This example shows how to use <code class="code">exSymKey</code> and <code class="code">imSymKey</code> to move a
+                              plaintext AES key between clusters. You might use a process like this one to create
+                              an AES
+                              wrapping that exists on the HSMs both clusters. Once the shared wrapping key is in
+                              place,
+                              you can use <a href="key_mgmt_util-wrapKey.html">wrapKey</a> and <a href="key_mgmt_util-unwrapKey.html">unWrapKey</a> to move encrypted keys between the
+                              clusters.
+                           </p>
+                           <p>The CU user who performs this operation must have permission to log in to the HSMs
+                              on
+                              both clusters.
+                           </p>
+                           <p>The first command uses <code class="code">exSymKey</code> to export key 14, a 32-bit AES key, from
+                              the cluster 1 into the <code>aes.key</code> file. It uses key 6, an AES key on the
+                              HSMs in cluster 1, as the wrapping key. 
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command:</code> <strong class="userinput"><code>exSymKey -k 14 -w 6 -out aes.key</code></strong>
+
+<code class="computeroutput" copy="false">        Cfm3WrapKey returned: 0x00 : HSM Return: SUCCESS
+
+        Cfm3UnWrapHostKey returned: 0x00 : HSM Return: SUCCESS
+
+
+Wrapped Symmetric Key written to file "aes.key"</code></code></pre><p>The user then logs into key_mgmt_util in cluster 2 and runs an <code class="code">imSymKey</code>
+                              command to import the key in the <code>aes.key</code> file into the HSMs in cluster
+                              2. This command uses key 252152, an AES key on the HSMs in cluster 2, as the wrapping
+                              key. 
+                           </p>
+                           <p>Because the wrapping keys that <code class="code">exSymKey</code> and <code class="code">imSymKey</code> use wrap
+                              and immediately unwrap the target keys, the wrapping keys on the different clusters
+                              need not
+                              be the same. 
+                           </p>
+                           <p>The output shows that the key was successfully imported into cluster 2 and assigned
+                              a
+                              key handle of 21. 
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>imSymKey -f aes.key -w 262152 -t 31 -l xcluster</code></strong>
+
+<code class="computeroutput" copy="false">        Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
+
+        Cfm3CreateUnwrapTemplate returned: 0x00 : HSM Return: SUCCESS
+
+        Cfm3UnWrapKey returned: 0x00 : HSM Return: SUCCESS
+
+        Symmetric Key Unwrapped.  Key Handle: 21
+
+        Cluster Error Status
+        Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 2 and err state 0x00000000 : HSM Return: SUCCESS</code></code></pre><p>To prove that key 14 of cluster 1 and key 21 in cluster 2 have the same key material,
+                              get
+                              the key check value (KCV) of each key. If the KCV values are the same, the key material
+                              is
+                              the same.
+                           </p>
+                           <p>The following command uses <a href="key_mgmt_util-getAttribute.html">getAttribute</a> in cluster 1 to write the value of the KCV attribute (attribute 371) of
+                              key 14 to the <code>attr_14_kcv</code> file. Then, it uses a <b>cat</b>
+                              command to get the content of the <code>attr_14_kcv</code> file.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>getAttribute -o 14 -a 371 -out attr_14_kcv</code></strong>
+<code class="computeroutput" copy="false">Attributes dumped into attr_14_kcv file</code>
+
+<code class="prompt" copy="false">$ </code> <strong class="userinput"><code>cat attr_14_kcv</code></strong>
+<code class="computeroutput" copy="false">OBJ_ATTR_KCV
+0xc33cbd</code></code></pre><p>This similar command uses <a href="key_mgmt_util-getAttribute.html">getAttribute</a>
+                              in cluster 2 to write the value of the KCV attribute (attribute 371) of key 21 to
+                              the
+                              <code>attr_21_kcv</code> file. Then, it uses a <b>cat</b> command to get
+                              the content of the <code>attr_21_kcv</code> file.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>getAttribute -o 21 -a 371 -out attr_21_kcv</code></strong>
+<code class="computeroutput" copy="false">Attributes dumped into attr_21_kcv file</code>
+
+<code class="prompt" copy="false">$ </code> <strong class="userinput"><code>cat attr_21_kcv</code></strong>
+<code class="computeroutput" copy="false">OBJ_ATTR_KCV
+0xc33cbd</code></code></pre><p>The output shows that the KCV values of the two keys are the same, which proves that
+                              the
+                              key material is the same.
+                           </p>
+                           <p>Because the same key material exists in the HSMs of both clusters, you can now share
+                              encrypted keys between the clusters without ever exposing the plaintext key. For example,
+                              you can use the <code class="code">wrapKey</code> command with wrapping key 14 to export an encrypted key
+                              from cluster 1, and then use <code class="code">unWrapKey</code> with wrapping key 21 to import the
+                              encrypted key into cluster 2.
+                           </p>
+                        </div>
+                     </div>
+                     
+                     <div class="example">
+                        <p class="title"><b>Example : Import a Session Key</b></p>
+                        <div class="example-contents">
+                           <p>This command uses the <code class="code">-sess</code> parameters of <code class="code">imSymKey</code> to import a
+                              192-bit Triple DES key that is valid only in the current session. 
+                           </p>
+                           <p>The command uses the <code class="code">-f</code> parameter to specify he file that contains the key
+                              to import, the <code class="code">-t</code> parameter to specify the key type, and the <code class="code">-w</code>
+                              parameter to specify the wrapping key. It uses the <code class="code">-l</code> parameter to specify a
+                              label that categorizes the key and the <code class="code">-id</code> parameter to create a friendly, but
+                              unique, identifier for the key. It also uses the <code class="code">-attest</code> parameter to verify
+                              the firmware that is importing the key. 
+                           </p>
+                           <p>The output shows that the key was successfully wrapped and unwrapped, imported into
+                              the
+                              HSM, and assigned the key handle 37. Also, the attestation check passed, which indicates
+                              that the firmware has not been tampered.
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>imSymKey -f 3des192.key -w 6 -t 21 -l temp -id test01 -sess -attest</code></strong>
+
+<code class="computeroutput" copy="false">        Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
+
+        Cfm3CreateUnwrapTemplate returned: 0x00 : HSM Return: SUCCESS
+
+        Cfm3UnWrapKey returned: 0x00 : HSM Return: SUCCESS
+
+        Symmetric Key Unwrapped.  Key Handle: 37
+
+        Attestation Check : [PASS]
+
+        Cluster Error Status
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS</code></code></pre><p>Next, you can use the <a href="key_mgmt_util-getAttribute.html">getAttribute</a> or
+                              <a href="key_mgmt_util-findKey.html">findKey</a> commands to verify the attributes of
+                              the newly imported key. The following command uses <code class="code">findKey</code> to verify that key
+                              37 has the type, label, and ID specified by the command, and that it is a session
+                              key. A
+                              shown on line 5 of the output, <code class="code">findKey</code> reports that the only key that matches
+                              all of the attributes is key 37.  
+                           </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">Command: </code> <strong class="userinput"><code>findKey -t 21 -l temp -id test01 -sess 1</code></strong>
+<code class="computeroutput" copy="false">Total number of keys present 1
+
+ number of keys matched from start index 0::0
+37
+
+        Cluster Error Status
+        Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
+        Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
+
+        Cfm3FindKey returned: 0x00 : HSM Return: SUCCESS</code></code></pre></div>
+                     </div>
+                     
+                     
+                     <h2 id="imSymKey-params">Parameters</h2>
+                     
+                     
+                     <div class="variablelist">
+                        	
+                        	
+                         
+                        	
+                        	    	
+                        	
+                        	
+                        	
+                        	 
+                        	
+                        	
+                        	
+                        	
+                        
+                        	
+                        	
+                        
+                        
+                        	
+                        	      
+                        	
+                        	
+                        	 
+                        	
+                        	    	
+                        
+                        
+                        	
+                        	
+                        
+                        <dl>
+                           
+                           <dt><b><span class="term">-attest</span></b></dt>
+                           
+                           <dd>
+                              <p>Runs an integrity check that verifies that the firmware on which the cluster runs
+                                 has not been tampered with.
+                              </p>
+                              
+                              <p>Default: No attestation check.</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           		
+                           <dt><b><span class="term">-f</span></b></dt>
+                           		
+                           <dd>
+                              			
+                              <p>Specifies the file that contains that key to import.</p>
+                              			
+                              <p>The file must contain a plaintext copy of an AES or Triple DES key of the specified
+                                 length. RC4 and DES
+                                 				keys are not valid on FIPS-mode HSMs.
+                              </p>
+                              			
+                              <div class="itemizedlist">
+                                 				
+                                 				
+                                 			
+                                 <ul class="itemizedlist" type="disc">
+                                    <li class="listitem">
+                                       					
+                                       <p><b>AES</b>: 16, 24 or 32 bytes
+                                       </p>
+                                       				
+                                    </li>
+                                    <li class="listitem">
+                                       					
+                                       <p><b>Triple DES (3DES)</b>: 24 bytes
+                                       </p>
+                                       				
+                                    </li>
+                                 </ul>
+                              </div>
+                              			
+                              <p>Required: Yes</p>
+                              		
+                           </dd>
+                           	
+                           
+                           <dt><b><span class="term">-h</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Displays help for the command. </p>
+                              
+                              <p>Required: Yes</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-id</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies a user-defined identifier for the key. Type a string that is unique in
+                                 the cluster. The default is an empty string. 
+                              </p>
+                              
+                              <p>Default: No ID value.</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-l</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies a user-defined label for the key. Type a string.</p>
+                              
+                              <p>You can use any phrase that helps you to identify the key. Because
+                                 the label does not have to be unique, you can use it to group and categorize keys.
+                                 
+                              </p>
+                              
+                              <p>Required: Yes</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-min_srv</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies the minimum number of HSMs on which the key is synchronized before the
+                                 value of the <code class="code">-timeout</code> parameter expires. If the key is not synchronized to
+                                 the specified number of servers in the time allotted, it is not created.
+                              </p>
+                              
+                              <p>AWS CloudHSM automatically synchronizes every key to every HSM in the cluster. To
+                                 speed up your process, set the value of <code class="code">min_srv</code> to less than the number of HSMs in the cluster and set a low timeout value. Note,
+                                 however, that some requests might not generate a key.
+                              </p>
+                              
+                              <p>Default: 1</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-sess</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Creates a key that exists only in the current session. The key cannot be recovered
+                                 after the session ends.
+                              </p>
+                              
+                              <p>Use this parameter when you need a key only briefly, such as a wrapping key that
+                                 encrypts, and then quickly decrypts, another key. Do not use a session key to encrypt
+                                 data
+                                 that you might need to decrypt after the session ends.
+                              </p>
+                              
+                              <p>To change a session key to a persistent (token) key, use <a href="key_mgmt_util-setAttribute.html">setAttribute</a>.
+                              </p>
+                              
+                              <p>Default: The key is persistent. </p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-timeout</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies how long (in seconds) the command waits for a key to be synchronized
+                                 to the number of HSMs specified by the <code class="code">min_srv</code> parameter. 
+                              </p>
+                              
+                              <p>This parameter is valid only when the <code class="code">min_srv</code> parameter is also used in
+                                 the command.
+                              </p>
+                              
+                              <p>Default: No timeout. The command waits indefinitely and returns only when the key
+                                 is
+                                 synchronized to the minimum number of servers.
+                              </p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                           		
+                           <dt><b><span class="term">-t</span></b></dt>
+                           		
+                           <dd>
+                              			
+                              <p>Specifies the type of the symmetric key. Enter the constant that represents the key
+                                 				type. For example, to create an AES key, enter <code class="code">-t 31</code>.
+                              </p>
+                              			
+                              <p>Valid values: </p>
+                              			
+                              <div class="itemizedlist">
+                                 				
+                                 				
+                                 			
+                                 <ul class="itemizedlist" type="disc">
+                                    <li class="listitem">
+                                       					
+                                       <p>21: <a href="https://en.wikipedia.org/wiki/Triple_DES" target="_blank">Triple DES
+                                             						(3DES)</a>.
+                                       </p>
+                                       				
+                                    </li>
+                                    <li class="listitem">
+                                       					
+                                       <p>31: <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank">AES</a></p>
+                                       				
+                                    </li>
+                                 </ul>
+                              </div>
+                              			
+                              <p>Required: Yes</p>
+                              		
+                           </dd>
+                           	
+                           		
+                           <dt><b><span class="term">-u</span></b></dt>
+                           		
+                           <dd>
+                              			
+                              <p>Shares the key you are importing with specified users. This parameter gives other
+                                 HSM crypto users (CUs) 
+                                 				permission to use this key in cryptographic operations.
+                                 			
+                              </p>
+                              			
+                              <p>Type one ID or a comma-separated list of HSM user IDs, such as -u 5,6. Do not include
+                                 the HSM user ID 
+                                 				of the current user. To find the an ID, you can use the 
+                                 				<a href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-listUsers.html" target="_blank">listUsers</a> command in the 
+                                 				cloudhsm_mgmt_util command line tool or the 
+                                 				<a href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-listUsers.html" target="_blank">listUsers</a> command in the 
+                                 				key_mgmt_util command line tool.
+                                 			
+                              </p>
+                              			
+                              <p>Required: No</p>
+                              		
+                           </dd>
+                           	
+                           
+                           <dt><b><span class="term">-w</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Specifies the key handle of the wrapping key. This parameter is required. To find
+                                 key handles, use the <a href="key_mgmt_util-findKey.html">findKey</a>
+                                 command.
+                              </p>
+                              
+                              <p>A <em>wrapping key</em> is a key in the HSM that is used to encrypt
+                                 ("wrap") and then decrypt ("unwrap) the key during the import process. Only AES keys
+                                 can
+                                 be used as wrapping keys.
+                              </p>
+                              
+                              <p>You can use any AES key (of any size) as a wrapping key. Because the wrapping key
+                                 wraps, and then immediately unwraps, the target key, you can use as session-only AES
+                                 key
+                                 as a wrapping key. To determine whether a key can be used as a wrapping key, use <a href="key_mgmt_util-getAttribute.html">getAttribute</a> to get the value of the
+                                 <code class="code">OBJ_ATTR_WRAP</code> attribute (262). To create a wrapping key, use <a href="key_mgmt_util-genSymKey.html">genSymKey</a> to create an AES key (type
+                                 31).
+                              </p>
+                              
+                              <p>If you use the <code class="code">-wk</code> parameter to specify an external wrapping key, the
+                                 <code class="code">-w</code> wrapping key is used to unwrap, but not to wrap, the key that is being
+                                 imported.
+                              </p>
+                              
+                              <div class="aws-note">
+                                 <p class="aws-note">Note</p>
+                                 <p>Key 4 is an unsupported internal key. We recommend that you use an AES key that you
+                                    create and
+                                    manage as the wrapping key.
+                                 </p>
+                              </div>
+                              
+                              <p>Required: Yes</p>
+                              
+                           </dd>
+                           
+                           
+                           <dt><b><span class="term">-wk</span></b></dt>
+                           
+                           <dd>
+                              
+                              <p>Use the AES key in the specified file to wrap the key that is being imported. Enter
+                                 the path and name of a file that contains a plaintext AES key. 
+                              </p>
+                              
+                              <p>When you include this parameter. <code class="code">imSymKey</code> uses the key in the
+                                 <code class="code">-wk</code> file to wrap the key being imported and it uses the key in the HSM that
+                                 is specified by the <code class="code">-w</code> parameter to unwrap it. The <code class="code">-w</code> and
+                                 <code class="code">-wk</code> parameter values must resolve to the same plaintext key.
+                              </p>
+                              
+                              <p>Default: Use the wrapping key on the HSM to unwrap.</p>
+                              
+                              <p>Required: No</p>
+                              
+                           </dd>
+                           
+                        </dl>
+                     </div>
+                     	
+                     
+                     
+                     <h2 id="imSymKey-seealso">Related Topics</h2>
+                     
+                     
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-genSymKey.html">genSymKey</a></p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-exSymKey.html">exSymKey</a></p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-wrapKey.html">wrapKey</a></p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p><a href="key_mgmt_util-unwrapKey.html">unWrapKey</a></p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>exportPrivateKey</p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>exportPubKey</p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="key_mgmt_util-getKeyInfo.html">« Previous </a><a class="awstoc" accesskey="n" href="key_mgmt_util-listAttributes.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2018, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Syntax"><a class="pagetoc" href="#imSymKey-syntax">Syntax</a></li>
+                        <li class="pagetoc" name="Examples"><a class="pagetoc" href="#imSymKey-examples">Examples</a></li>
+                        <li class="pagetoc" name="Parameters"><a class="pagetoc" href="#imSymKey-params">Parameters</a></li>
+                        <li class="pagetoc" name="Related Topics"><a class="pagetoc" href="#imSymKey-seealso">Related Topics</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://alpha-docs-aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=cdcb09fa-3f0a-4265-9254-d796483b9489&amp;topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html&amp;hidden_guide_name=User Guide&amp;hidden_api_version=&amp;hidden_file_name=key_mgmt_util-imSymKey"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2018, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=156" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://alpha-docs-aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=cdcb09fa-3f0a-4265-9254-d796483b9489&amp;topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/key_mgmt_util-imSymKey.html&amp;hidden_guide_name=User Guide&amp;hidden_api_version=&amp;hidden_file_name=key_mgmt_util-imSymKey">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

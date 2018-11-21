@@ -1,0 +1,740 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Installing the AWS CloudHSM Software Library for PKCS
+         #11 - AWS CloudHSM
+      </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="home" href="#top" />
+      <link rel="up" href="pkcs11-library.html" title="AWS CloudHSM Software Library for PKCS #11" />
+      <link rel="prev" href="pkcs11-library.html" title="AWS CloudHSM Software Library for PKCS #11" />
+      <link rel="next" href="pkcs11-pin.html" title="Authenticating to PKCS #11" />
+      <meta name="description" content="Install the AWS CloudHSM software library for PKCS #11 so that your PKCS #11–compatible applications can use the HSMs in your AWS CloudHSM cluster." />
+      <meta name="keywords" content="CloudHSM,HSM,hardware security module,HSM appliance,hardware security module appliance,cryptographic key storage,encryption key storage,cryptographic processing,cryptographic operations,cryptographic offload" />
+      <meta name="deployment_region" content="SEA" />
+      <meta name="product" content="AWS CloudHSM" />
+      <meta name="guide" content="User Guide" />
+      <meta name="guide-locale" content="en_us" />
+      <link rel="icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="shortcut icon" type="image/ico" href="images/favicon.ico" />
+      <link rel="canonical" href="https://alpha-docs-aws.amazon.com/cloudhsm/latest/userguide/pkcs11-library-install.html" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+      <link rel="stylesheet" type="text/css" href="font/css/font-awesome.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/google-font.css" />
+      <link id="code-style" rel="stylesheet" type="text/css" href="css/code/light.css" />
+      <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css" />
+      <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+      <link rel="stylesheet" type="text/css" href="css/awsdocs.css?v=20181116" /><script type="text/javascript" src="js/highlight.pack.js"></script><script type="text/javascript" src="js/jquery.min.js"></script><script type="text/javascript" src="js/jquery-ui.min.js"></script><script type="text/javascript" src="js/jquery.colorbox.js"></script><script type="text/javascript" src="js/awsdocs.min.js?v=20181116"></script></head>
+   <body id="top">
+      <div xmlns:db="http://docbook.org/ns/docbook" id="aws-nav" class="aws-nav-header">
+         <div class="aws-nav-header-left">
+            <div class="aws-nav-logo">
+               <!--aws_logo_105x39.png--><a href="http://aws.amazon.com"><img src="images/aws_logo_105x39.png" alt="Amazon Web Services" /></a></div>
+         </div>
+         <div id="aws-nav-header-right" class="aws-nav-header-right">
+            <div class="aws-nav-cta-button-outer"><a id="aws-nav-cta-button" class="aws-nav-button" href="https://console.aws.amazon.com/console/home">Sign In to the Console</a></div>
+            <div class="aws-nav-popover-trigger" data-dropdown="aws-nav-dropdown-lang"><select id="languageSelection" onchange="SelectLanguage()">
+                  <option value="/de_de/cloudhsm/latest/userguide/pkcs11-library-install.html">Deutsch</option>
+                  <option value="/en_us/cloudhsm/latest/userguide/pkcs11-library-install.html" selected="selected">English</option>
+                  <option value="/es_es/cloudhsm/latest/userguide/pkcs11-library-install.html">Español</option>
+                  <option value="/fr_fr/cloudhsm/latest/userguide/pkcs11-library-install.html">Français</option>
+                  <option value="/it_it/cloudhsm/latest/userguide/pkcs11-library-install.html">Italiano</option>
+                  <option value="/ja_jp/cloudhsm/latest/userguide/pkcs11-library-install.html">日本語</option>
+                  <option value="/ko_kr/cloudhsm/latest/userguide/pkcs11-library-install.html">한국어</option>
+                  <option value="/pt_br/cloudhsm/latest/userguide/pkcs11-library-install.html">Português</option>
+                  <option value="/zh_cn/cloudhsm/latest/userguide/pkcs11-library-install.html">中文 (简体)</option>
+                  <option value="/zh_tw/cloudhsm/latest/userguide/pkcs11-library-install.html">中文 (繁體)</option></select></div><a class="btn btn-rss-link" id="rss-link-top" target="_blank" href="amazon-cloudhsm-release-notes.rss" title="View RSS Feed"></a><a class="btn btn-kindle-link" id="kindle-link-top" target="_blank" href="http://www.amazon.com/dp/B079BV9BS8" title="Open Kindle"></a><a class="btn btn-pdf-link" id="pdf-link-top" href="cloudhsm-user-guide.pdf#pkcs11-library-install" target="_blank" title="Open PDF"></a><a class="btn btn-github-link" id="github-link-top" href="https://github.com/awsdocs/aws-cloudhsm-user-guide/tree/master/doc_source/pkcs11-library-install.md" target="_blank" title="Edit on GitHub"></a><div id="aws-nav-quicklinks-separator" class="aws-nav-quicklinks-separator">
+               <div class="aws-nav-left"></div>
+               <div class="aws-nav-right"></div>
+            </div>
+         </div>
+      </div>
+      <div id="content-container">
+         <div id="left-column">
+            <div id="left-col-header">
+               <div xmlns:db="http://docbook.org/ns/docbook" id="left-col-top-content">
+                  <div id="service-name">AWS CloudHSM </div>
+                  <div id="search"><i id="search-icon" class="fa fa-search fa-2x"></i></div>
+                  <div id="guide-info">User Guide
+                     <div id="content-button"><i id="toggle-contents" class="fa fa-bars"></i></div>
+                  </div>
+               </div>
+               <form id="finegrainedSearch" method="get" onsubmit="return searchFormSubmit(this);" action="/search/doc-search.html">
+                  <div id="search-form"><select id="search-select" name="searchPath">
+                        <option value="all">Entire Site</option>
+                        <option value="AWSMarketplace">AMIs from AWS Marketplace</option>
+                        <option value="amis">AMIs from All Sources</option>
+                        <option value="articles">Articles &amp; Tutorials</option>
+                        <option value="products_and_info">AWS Product Information</option>
+                        <option value="case_studies">Case Studies</option>
+                        <option value="customerapps">Customer Apps</option>
+                        <option value="documentation">Documentation</option>
+                        <option value="documentation-product">Documentation - This Product</option>
+                        <option value="documentation-guide" selected="selected">Documentation - This Guide</option>
+                        <option value="datasets">Public Data Sets</option>
+                        <option value="releasenotes">Release Notes</option>
+                        <option value="solution_providers">Partners</option>
+                        <option value="code">Sample Code &amp; Libraries</option></select><br /><input id="search-query" name="searchQuery" type="text" placeholder="Search" /><input id="search-button" src="images/search-button.png" alt="Go" type="image" /></div><input type="hidden" name="this_doc_product" id="this_doc_product" value="AWS CloudHSM" /><input type="hidden" name="this_doc_guide" id="this_doc_guide" value="User Guide" /><input type="hidden" name="doc_locale" value="en_us" /></form>
+            </div>
+            <div id="toc">
+               <ul class="awstoc">
+                  <li class="awstoc closed"><a class="awstoc" href="introduction.html">What Is AWS CloudHSM?</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="use-cases.html">Use Cases</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="clusters.html">Clusters</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="backups.html">Backups</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="client-tools-and-libraries.html">Client Tools and Libraries</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-users.html">HSM Users</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="compliance.html">Compliance</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="pricing.html">Pricing</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="regions.html">Regions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="limits.html">Limits</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="getting-started.html">Getting Started</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="create-iam-user.html">Create IAM Administrators</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-vpc.html">Create a VPC</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-subnets.html">Create a Private Subnet</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-cluster.html">Create a Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="launch-client-instance.html">Launch an EC2 Client</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-hsm.html">Create an HSM</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="verify-hsm-identity.html">Verify HSM Identity (Optional)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="initialize-cluster.html">Initialize the Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="install-and-configure-client-linux.html">Install the Client (Linux)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="install-and-configure-client-win.html">Install the Client (Windows)</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="activate-cluster.html">Activate the Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="getting-started-ssl.html">Reconfigure SSL (Optional)</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="manage-clusters.html">Managing Clusters</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="add-remove-hsm.html">Adding or Removing HSMs</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="copy-backup-to-region.html">Copying a Backup Across Regions</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="create-cluster-from-backup.html">Creating a Cluster From a Backup</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="delete-restore-backup.html">Deleting and Restoring a Backup</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="delete-cluster.html">Deleting a Cluster</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="tag-resources.html">Tagging Resources</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="manage-hsm-users-and-keys.html">Managing HSM Users and Keys</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="manage-hsm-users.html">Managing HSM Users</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="manage-keys.html">Managing Keys</a></li>
+                        <li class="awstoc closed"><a class="awstoc" href="quorum-authentication.html">Quorum Authentication (M of N)</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers-first-time-setup.html">First Time Setup for Crypto Officers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers.html">Quorum Authentication for Crypto Officers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="quorum-authentication-crypto-officers-change-minimum-value.html">Change the Quorum Value for Crypto Officers</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="command-line-tools.html">Command Line Tools</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="cloudhsm_mgmt_util.html">cloudhsm_mgmt_util</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getting-started.html">Getting Started</a></li>
+                              <li class="awstoc closed"><a class="awstoc" href="cloudhsm_mgmt_util-reference.html">Reference</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-changePswd.html">changePswd</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-createUser.html">createUser</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-deleteUser.html">deleteUser</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-findAllKeys.html">findAllKeys</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getAttribute.html">getAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getCert.html">getCert</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getHSMInfo.html">getHSMInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-getKeyInfo.html">getKeyInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-info.html">info</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-listAttributes.html">listAttributes</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-listUsers.html">listUsers</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-loginLogout.html">loginHSM and logoutHSM</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-server.html">server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-setAttribute.html">setAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-quit.html">quit</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-shareKey.html">shareKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="cloudhsm_mgmt_util-syncKey.html">syncKey</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="key_mgmt_util.html">key_mgmt_util</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getting-started.html">Getting Started</a></li>
+                              <li class="awstoc closed"><a class="awstoc" href="key_mgmt_util-reference.html">Reference</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-aesWrapUnwrap.html">aesWrapUnwrap</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-deleteKey.html">deleteKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-Error2String.html">Error2String</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-exSymKey.html">exSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-findKey.html">findKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-findSingleKey.html">findSingleKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genDSAKeyPair.html">genDSAKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genECCKeyPair.html">genECCKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genPBEKey.html">genPBEKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genRSAKeyPair.html">genRSAKeyPair</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-genSymKey.html">genSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getAttribute.html">getAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-getKeyInfo.html">getKeyInfo</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-imSymKey.html">imSymKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-listAttributes.html">listAttributes</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-listUsers.html">listUsers</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-setAttribute.html">setAttribute</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-unwrapKey.html">unWrapKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key_mgmt_util-wrapKey.html">wrapKey</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="key-attribute-table.html">Key Attribute Reference</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc leaf"><a class="awstoc" href="configure-tool.html">Configure Tool</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc opened"><a class="awstoc" href="use-hsm.html">Using the Software Libraries</a><ul class="awstoc">
+                        <li class="awstoc opened"><a class="awstoc" href="pkcs11-library.html">PKCS #11 Library</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc selected" href="pkcs11-library-install.html">Installing the PKCS #11 Library</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-pin.html">Authenticating to PKCS #11</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-key-types.html">Supported PKCS #11 Key Types</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-mechanisms.html">Supported PKCS #11 Mechanisms</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="pkcs11-apis.html">Supported PKCS #11 API operations</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="openssl-library.html">OpenSSL Dynamic Engine</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="openssl-library-install.html">Installing the OpenSSL Dynamic Engine</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="java-library.html">Java Library</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="java-library-install.html">Installing the Java Library</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-lib-supported.html">Supported Mechanisms</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-library-sample.html">Sample Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="java-samples.html">Java Samples</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="ksp-library.html">KSP and CNG Providers</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-install.html">Install the Providers</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-prereq.html">Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="ksp-library-sample.html">Code Sample</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="third-party-applications.html">Integrating Third-Party Applications</a><ul class="awstoc">
+                        <li class="awstoc closed"><a class="awstoc" href="ssl-offload.html">SSL/TLS Offload</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-overview.html">How It Works</a></li>
+                              <li class="awstoc closed"><a class="awstoc" href="ssl-offload-linux.html">SSL/TLS Offload on Linux</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-prerequisites.html">Step 1: Set Up the Prerequisites</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-import-or-generate-private-key-and-certificate.html">Step 2: Generate or Import a Private Key and SSL/TLS Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-configure-web-server.html">Step 3: Configure the Web Server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-enable-traffic-and-verify-certificate.html">Step 4: Enable HTTPS Traffic and Verify the Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-add-load-balancing.html">(Optional) Step 5: Add a Load Balancer with Elastic Load Balancing</a></li>
+                                 </ul>
+                              </li>
+                              <li class="awstoc closed"><a class="awstoc" href="ssl-offload-windows.html">SSL/TLS Offload on Windows</a><ul class="awstoc">
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-prerequisites-windows.html">Step 1: Set Up the Prerequisites</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-windows-create-csr-and-certificate.html">Step 2: Create a Certificate Signing Request (CSR) and Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-configure-web-server-windows.html">Step 3: Configure the Web Server</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-enable-traffic-and-verify-certificate-windows.html">Step 4: Enable HTTPS Traffic and Verify the Certificate</a></li>
+                                    <li class="awstoc leaf"><a class="awstoc" href="ssl-offload-add-load-balancing-windows.html">(Optional) Step 5: Add a Load Balancer with Elastic Load Balancing</a></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="win-ca-overview.html">Windows Server CA</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-prerequisites.html">Set Up Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-setup.html">Create Windows Server CA</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="win-ca-sign-csr.html">Sign a CSR</a></li>
+                           </ul>
+                        </li>
+                        <li class="awstoc closed"><a class="awstoc" href="oracle-tde.html">Oracle Database Encryption</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="oracle-tde-prerequisites.html">Set Up Prerequisites</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="oracle-tde-configure-database-and-generate-master-key.html">Configure the Database</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="get-logs.html">Monitoring Logs</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-client-logs.html">Getting Client Logs</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="get-api-logs-using-cloudtrail.html">Logging AWS CloudHSM API Calls with AWS CloudTrail</a></li>
+                        <li class="awstoc closed"><a class="awstoc" href="get-hsm-audit-logs-using-cloudwatch.html">Monitoring Audit Logs</a><ul class="awstoc">
+                              <li class="awstoc leaf"><a class="awstoc" href="get-audit-logs-from-cloudwatch.html">How Audit Logging Works</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="understand-audit-logs.html">Viewing Audit Logs in CloudWatch Logs</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="interpreting-audit-logs.html">Interpreting HSM Audit Logs</a></li>
+                              <li class="awstoc leaf"><a class="awstoc" href="cloudhsm-audit-log-reference.html">Audit Log Reference</a></li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="hsm-metrics.html">Getting Metrics</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="hsm-metrics-cw.html">Getting CloudWatch Metrics</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="troubleshooting.html">Troubleshooting</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="KnownIssues.html">Known Issues</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-lost-connection.html">Lost Connection</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-keep-hsm-users-in-sync.html">Keep HSM Users In Sync</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-verify-hsm-performance.html">Verify Performance</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-create-cluster.html">Resolving Cluster Creation Failures</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="troubleshooting-missing-audit-logs.html">Missing AWS CloudHSM Audit Logs in CloudWatch</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc closed"><a class="awstoc" href="client-and-software-version-history.html">Client and Software Information</a><ul class="awstoc">
+                        <li class="awstoc leaf"><a class="awstoc" href="client-history.html">Version History</a></li>
+                        <li class="awstoc leaf"><a class="awstoc" href="client-supported-platforms.html">Supported Platforms</a></li>
+                     </ul>
+                  </li>
+                  <li class="awstoc leaf"><a class="awstoc" href="document-history.html">Document History</a></li>
+                  <li id="toc-additional-links"><a class="btn btn-pdf-link" id="pdf-link-alt" href="cloudhsm-user-guide.pdf#top" target="_blank" title="Open PDF"></a><a class="btn btn-kindle-link" id="kindle-link-alt" target="_blank" href="http://www.amazon.com/dp/B079BV9BS8" title="Open Kindle"></a><a class="btn btn-rss-link" id="rss-link-alt" target="_blank" href="amazon-cloudhsm-release-notes.rss" title="View RSS Feed"></a></li>
+               </ul>
+            </div>
+         </div>
+         <div id="main-column">
+            <div id="main">
+               <div id="main-content">
+                  <div id="main-col-body">
+                     <table summary="Breadcrumbs">
+                        <tr>
+                           <td>
+                              <div class="breadcrumb"><a href="/index.html">AWS Documentation</a> » <a href="/cloudhsm/index.html">AWS CloudHSM</a> » <a href="index.html">User Guide</a> » <a href="use-hsm.html">Using the AWS CloudHSM Software Libraries</a> » <a href="pkcs11-library.html">AWS CloudHSM Software Library for PKCS #11</a> » <span class="breadcrumb">Installing the AWS CloudHSM Software Library for PKCS
+                                    #11</span></div>
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="language-notice">
+                        <div class="language-notice-text"></div>
+                     </div>
+                     <div id="SEARegionDisclaimer">This prerelease documentation is confidential and is provided under the terms of your
+                        nondisclosure agreement with Amazon Web Services (AWS) or other agreement governing
+                        your receipt of AWS confidential information.
+                     </div>
+                     <div></div>
+                     <h1 class="topictitle" id="pkcs11-library-install">Installing the AWS CloudHSM Software Library for PKCS
+                        #11
+                     </h1>
+                     <p>With the AWS CloudHSM software libraries for PKCS #11, you can to build PKCS #11–compatible
+                        applications that use the HSMs in your AWS CloudHSM cluster. You can use the standard
+                        AWS CloudHSM PKCS #11
+                        library or the AWS CloudHSM PKCS #11 library that uses a <a href="pkcs11-library-install.html#install-pkcs11-redis">Redis
+                           cache</a>. Both of the AWS CloudHSM libraries for PKCS #11 are supported only on Linux operating
+                        systems.
+                     </p>
+                     <div class="highlights" id="inline-topiclist">
+                        <p><strong>Topics</strong></p>
+                        <ul>
+                           <li><a href="#pkcs11-library-prerequisites">Prerequisites</a></li>
+                           <li><a href="#install-pkcs11-library">Install the PKCS #11 Library</a></li>
+                           <li><a href="#install-pkcs11-redis">Install the PKCS #11 Library with Redis
+                                 (Optional)</a></li>
+                        </ul>
+                     </div>
+                     
+                     <h2 id="pkcs11-library-prerequisites">Prerequisites</h2>
+                     
+                     <p>The AWS CloudHSM software libraries for PKCS #11 require the AWS CloudHSM client.</p>
+                     
+                     <p>If you haven't installed and configured the AWS CloudHSM client, do that now by following
+                        the
+                        steps at <a href="install-and-configure-client-linux.html">Install the Client
+                           (Linux)</a>. After you install and configure
+                        the client, use the following command to start it. 
+                     </p> 
+                     <div class="option container">
+                        <div class="optionselector"><span class="optionanchor" id=""><span class="option  selected" data-tab="amazon-linux">Amazon Linux</span></span><span class="optionanchor" id=""><span class="option " data-tab="amazon-linux-2">Amazon Linux 2</span></span><span class="optionanchor" id=""><span class="option " data-tab="centos-6">CentOS 6</span></span><span class="optionanchor" id=""><span class="option " data-tab="centos-7">CentOS 7</span></span><span class="optionanchor" id=""><span class="option " data-tab="rhel-6">RHEL 6</span></span><span class="optionanchor" id=""><span class="option " data-tab="rhel-7">RHEL 7</span></span><span class="optionanchor" id=""><span class="option " data-tab="ubuntu-16.04-lts">Ubuntu 16.04 LTS</span></span></div>
+                        <dl>
+                           <dt>Amazon Linux</dt>
+                           <dd class="selected" data-tab="amazon-linux"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo start cloudhsm-client</code></strong></code></pre></dd>
+                           <dt>Amazon Linux 2</dt>
+                           <dd class="" data-tab="amazon-linux-2"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo service cloudhsm-client start</code></strong></code></pre></dd>
+                           <dt>CentOS 6</dt>
+                           <dd class="" data-tab="centos-6"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo start cloudhsm-client</code></strong></code></pre></dd>
+                           <dt>CentOS 7</dt>
+                           <dd class="" data-tab="centos-7"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo service cloudhsm-client start</code></strong></code></pre></dd>
+                           <dt>RHEL 6</dt>
+                           <dd class="" data-tab="rhel-6"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo start cloudhsm-client</code></strong></code></pre></dd>
+                           <dt>RHEL 7</dt>
+                           <dd class="" data-tab="rhel-7"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo service cloudhsm-client start</code></strong></code></pre></dd>
+                           <dt>Ubuntu 16.04 LTS</dt>
+                           <dd class="" data-tab="ubuntu-16.04-lts"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo service cloudhsm-client start</code></strong></code></pre></dd>
+                        </dl>
+                     </div> 
+                     
+                     <h2 id="install-pkcs11-library">Install the PKCS #11 Library</h2>
+                     
+                     
+                     <p>The following command downloads and installs (or updates) the AWS CloudHSM software
+                        library for
+                        PKCS #11. This step is required for the standard AWS CloudHSM PKCS #11 library and
+                        the <a href="pkcs11-library-install.html#install-pkcs11-redis">AWS CloudHSM PKCS #11 library for Redis</a>.
+                     </p>
+                     
+                     <div class="option container">
+                        <div class="optionselector"><span class="optionanchor" id=""><span class="option  selected" data-tab="amazon-linux">Amazon Linux</span></span><span class="optionanchor" id=""><span class="option " data-tab="amazon-linux-2">Amazon Linux 2</span></span><span class="optionanchor" id=""><span class="option " data-tab="centos-6">CentOS 6</span></span><span class="optionanchor" id=""><span class="option " data-tab="centos-7">CentOS 7</span></span><span class="optionanchor" id=""><span class="option " data-tab="rhel-6">RHEL 6</span></span><span class="optionanchor" id=""><span class="option " data-tab="rhel-7">RHEL 7</span></span><span class="optionanchor" id=""><span class="option " data-tab="ubuntu-16.04-lts">Ubuntu 16.04 LTS</span></span></div>
+                        <dl>
+                           <dt>Amazon Linux</dt>
+                           <dd class="selected" data-tab="amazon-linux"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm</code></strong></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo yum install -y ./cloudhsm-client-pkcs11-latest.el6.x86_64.rpm</code></strong></code></pre></dd>
+                           <dt>Amazon Linux 2</dt>
+                           <dd class="" data-tab="amazon-linux-2"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm</code></strong></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo yum install -y ./cloudhsm-client-pkcs11-latest.el7.x86_64.rpm</code></strong></code></pre></dd>
+                           <dt>CentOS 6</dt>
+                           <dd class="" data-tab="centos-6"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm</code></strong></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo yum install -y ./cloudhsm-client-pkcs11-latest.el6.x86_64.rpm</code></strong></code></pre></dd>
+                           <dt>CentOS 7</dt>
+                           <dd class="" data-tab="centos-7"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm</code></strong></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo yum install -y ./cloudhsm-client-pkcs11-latest.el7.x86_64.rpm</code></strong></code></pre></dd>
+                           <dt>RHEL 6</dt>
+                           <dd class="" data-tab="rhel-6"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-latest.el6.x86_64.rpm</code></strong></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo yum install -y ./cloudhsm-client-pkcs11-latest.el6.x86_64.rpm</code></strong></code></pre></dd>
+                           <dt>RHEL 7</dt>
+                           <dd class="" data-tab="rhel-7"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-latest.el7.x86_64.rpm</code></strong></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo yum install -y ./cloudhsm-client-pkcs11-latest.el7.x86_64.rpm</code></strong></code></pre></dd>
+                           <dt>Ubuntu 16.04 LTS</dt>
+                           <dd class="" data-tab="ubuntu-16.04-lts"><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_latest_amd64.deb</code></strong></code></pre><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo dpkg -i cloudhsm-client-pkcs11_latest_amd64.deb</code></strong></code></pre></dd>
+                        </dl>
+                     </div>
+                     
+                     
+                     <p>When the installation succeeds, the PKCS #11 libraries are
+                        <code>/opt/cloudhsm/lib</code>.
+                     </p>
+                     
+                     
+                     <h2 id="install-pkcs11-redis">Install the PKCS #11 Library with Redis
+                        (Optional)
+                     </h2>
+                     
+                     <p>AWS CloudHSM provides an optional software library for PKCS #11 that uses a <a href="https://redis.io/" target="_blank">Redis cache</a>. The cache stores key handles and attributes
+                        locally so you can access them without calling into your HSMs. 
+                     </p>
+                     
+                     <p>When you build the cache, you specify the crypto user (CU) that your <a href="pkcs11-pin.html">PKCS #11 application uses to authenticate</a>. The cache is
+                        preloaded with the keys that the CU owns and shares. It is automatically updated when
+                        your
+                        application uses functions in the PKCS #11 library to make changes in the HSMs, such
+                        as
+                        creating or deleting keys or changing keys attributes. The cache is not aware of any
+                        other
+                        keys on the HSM.
+                     </p>
+                     
+                     <p>Caching can improve the performance of your PKCS #11 application, but it might not
+                        be the
+                        right choice for all applications. Consider the following:
+                     </p>
+                     
+                     <div class="itemizedlist">
+                        
+                        
+                        
+                        <ul class="itemizedlist" type="disc">
+                           <li class="listitem">
+                              
+                              <p>Redis caches all PKCS #11 library operations that run on the host, but it's not aware
+                                 of operations that are performed outside the library. For example, if you use the
+                                 <a href="command-line-tools.html">command line tools</a> or the <a href="java-library.html">software library for Java</a> to manage keys in your HSMs, those operations do not
+                                 update the cache. You can rebuild the cache to update it to the new state of the HSMs,
+                                 but
+                                 the cache is not synchronized with the HSMs automatically.
+                              </p>
+                              
+                              <p> </p>
+                              
+                           </li>
+                           <li class="listitem">
+                              
+                              <p>Do not use the PKCS #11 library with Redis if you have other applications that use
+                                 Redis on the same host. The PKCS #11 library configures Redis to recognize it as the
+                                 only
+                                 Redis consumer on the host. 
+                              </p>
+                              
+                           </li>
+                        </ul>
+                     </div>
+                     
+                     <p>To install the PKCS #11 Library with Redis, you use the Extra Packages for Enterprise
+                        Linux (EPEL) repository to install the Redis package. Then you enable and configure
+                        Redis to
+                        work with AWS CloudHSM and PKCS #11. 
+                     </p>
+                     
+                     <p>Some steps in this process are required only on selected operating systems. </p>
+                     
+                     
+                     
+                     <h3 id="redis-install-pkcs11">Step 1: Install the AWS CloudHSM PKCS #11 library</h3>
+                     
+                     <p>To install the PKCS #11 Library with Redis, you must first <a href="pkcs11-library-install.html#install-pkcs11-library">install the standard AWS CloudHSM PKCS #11 library</a>. This
+                        library is required.
+                     </p>
+                     
+                     <p><b>Required for Redis on:</b> All supported operating
+                        systems.
+                     </p>
+                     
+                     
+                     
+                     
+                     <h3 id="redis-install-epel">Step 2: Install the EPEL Repository</h3>
+                     
+                     <p>This step installs the Extra Packages for Enterprise Linux (EPEL) repository. It is
+                        required only on operating systems that do not include EPEL.
+                     </p>
+                     
+                     <p><b>Required for Redis only on:</b> Amazon Linux 2, CentOS 6,
+                        CentOS 7, RedHat Enterprise Linux (RHEL) 6, RedHat Enterprise Linux (RHEL) 7
+                     </p>
+                     
+                     <div class="option container">
+                        <div class="optionselector"><span class="optionanchor" id=""><span class="option  selected" data-tab="amazon-linux-2">Amazon Linux 2</span></span><span class="optionanchor" id=""><span class="option " data-tab="centos-6">CentOS 6</span></span><span class="optionanchor" id=""><span class="option " data-tab="centos-7">CentOS 7</span></span><span class="optionanchor" id=""><span class="option " data-tab="rhel-6">RHEL 6</span></span><span class="optionanchor" id=""><span class="option " data-tab="rhel-7">RHEL 7</span></span></div>
+                        <dl>
+                           <dt>Amazon Linux 2</dt>
+                           <dd class="selected" data-tab="amazon-linux-2">
+                              <ol>
+                                 <li>
+                                    
+                                    <p>Download the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">curl -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</code></pre>
+                                    </li>
+                                 <li>
+                                    
+                                    <p>Install the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">sudo yum install epel-release-latest-7.noarch.rpm</code></pre>
+                                    </li>
+                              </ol>
+                           </dd>
+                           <dt>CentOS 6</dt>
+                           <dd class="" data-tab="centos-6">
+                              <ol>
+                                 <li>
+                                    
+                                    <p>Download the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">curl -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm</code></pre>
+                                    </li>
+                                 <li>
+                                    
+                                    <p>Install the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">sudo yum install epel-release-latest-6.noarch.rpm</code></pre>
+                                    </li>
+                              </ol>
+                           </dd>
+                           <dt>CentOS 7</dt>
+                           <dd class="" data-tab="centos-7">
+                              <ol>
+                                 <li>
+                                    
+                                    <p>Download the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">curl -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</code></pre>
+                                    </li>
+                                 <li>
+                                    
+                                    <p>Install the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">sudo yum install epel-release-latest-7.noarch.rpm</code></pre>
+                                    </li>
+                              </ol>
+                           </dd>
+                           <dt>RHEL 6</dt>
+                           <dd class="" data-tab="rhel-6">
+                              <ol>
+                                 <li>
+                                    
+                                    <p>Download the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">curl -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm</code></pre>
+                                    </li>
+                                 <li>
+                                    
+                                    <p>Install the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">sudo yum install epel-release-latest-6.noarch.rpm</code></pre>
+                                    </li>
+                              </ol>
+                           </dd>
+                           <dt>RHEL 7</dt>
+                           <dd class="" data-tab="rhel-7">
+                              <ol>
+                                 <li>
+                                    
+                                    <p>Download the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">curl -O https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</code></pre>
+                                    </li>
+                                 <li>
+                                    
+                                    <p>Install the EPEL repository.</p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">sudo yum install epel-release-latest-7.noarch.rpm</code></pre>
+                                    </li>
+                              </ol>
+                           </dd>
+                        </dl>
+                     </div>
+                     
+                     
+                     
+                     
+                     
+                     <h3 id="redis-os-specific">Step 3: Prepare for Redis</h3>
+                     
+                     <p>This step includes system-specific tasks that must be completed before you install
+                        and
+                        configure the PKCS #11 library for Redis.
+                     </p>
+                     
+                     <p><b>Required for Redis only on:</b> Amazon Linux, CentOS 7,
+                        RedHat Enterprise Linux (RHEL) 6
+                     </p>
+                     
+                     <div class="option container">
+                        <div class="optionselector"><span class="optionanchor" id=""><span class="option  selected" data-tab="amazon-linux">Amazon Linux</span></span><span class="optionanchor" id=""><span class="option " data-tab="centos-7">CentOS 7</span></span><span class="optionanchor" id=""><span class="option " data-tab="rhel-6">RHEL 6</span></span></div>
+                        <dl>
+                           <dt>Amazon Linux</dt>
+                           <dd class="selected" data-tab="amazon-linux">
+                              <p>This step enables the EPEL repository. It is required only on Amazon Linux, but
+                                 you can use this procedure to verify that EPEL is enabled on any Linux operating
+                                 system.
+                              </p>
+                              <ol>
+                                 <li>
+                                    
+                                    <p>Open the <code>/etc/yum.repos.d/epel.repo</code> file in a text
+                                       editor. This step requires administrative permissions (<code class="code">sudo</code>).
+                                    </p>
+                                    
+                                 </li>
+                                 <li>
+                                    
+                                    <p>In the <code class="code">[epel]</code> configuration in the file, set the value of
+                                       <code class="code">enabled</code> to <code class="code">1</code>, as shown in the following example. Then,
+                                       save the file and close it.
+                                    </p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight">[epel]
+name=Extra Packages for Enterprise Linux 6 - $basearch
+#baseurl=http://download.fedoraproject.org/pub/epel/6/$basearch
+mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=$basearch
+failovermethod=priority
+<b>enabled=1</b>
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6</code></pre>
+                                    </li>
+                              </ol>
+                           </dd>
+                           <dt>CentOS 7</dt>
+                           <dd class="" data-tab="centos-7">
+                              <p>This command disables a <a href="https://selinuxproject.org/" target="_blank">Security-Enhanced
+                                    Linux</a> (SELinux) policy that prevents Redis from using AWS CloudHSM resources. 
+                              </p><pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight ">sudo semanage module -d redis</code></pre></dd>
+                           <dt>RHEL 6</dt>
+                           <dd class="" data-tab="rhel-6">
+                              <p>This command eliminates the TTY requirement in the <code class="code">sudoers</code> file. The
+                                 <code class="code">sudoers</code> file contains the rules for the <code class="code">sudo</code> command.
+                              </p>
+                              <ol>
+                                 <li>
+                                    
+                                    <p>Use <a href="https://www.sudo.ws/man/1.8.17/visudo.man.html" target="_blank">visudo</a>
+                                       editor to edit the <code>/etc/sudoers</code> file.
+                                    </p>
+                                    
+                                 </li>
+                                 <li>
+                                    
+                                    <p>Comment out the <code class="code">Defaults requiretty</code> statement. Then, save the
+                                       file and quit <code class="code">visudo</code>.
+                                    </p>
+                                    <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="python "># Defaults requiretty</code></pre>
+                                    </li>
+                              </ol>
+                           </dd>
+                        </dl>
+                     </div>
+                     
+                     
+                     
+                     
+                     
+                     
+                     <h3 id="redis-build-keystore">Step 4: Install, Configure, and Build the Redis
+                        Cache
+                     </h3>
+                     
+                     
+                     <p>Use the following procedure to install and configure the Redis package for the AWS
+                        CloudHSM
+                        library for PKCS #11 and build the cache. 
+                     </p>
+                     
+                     <p><b>Required for Redis on:</b> All supported operating
+                        systems.
+                     </p>
+                     
+                     <ol>
+                        <li>
+                           
+                           <p>Use the <code class="code">setup_redis</code> script to install Redis and configure it to work with
+                              the AWS CloudHSM PKCS #11 library for Redis.
+                           </p>
+                           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo /opt/cloudhsm/bin/setup_redis</code></strong></code></pre>
+                           </li>
+                        <li>
+                           
+                           <p>Start the Redis service.</p>
+                           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>sudo service redis start</code></strong></code></pre>
+                           </li>
+                        <li>
+                           
+                           <p>Use the <code class="code">build_keystore</code> command to build the Redis cache. Type the name
+                              and password of the <a href="hsm-users.html#crypto-user">crypto user (CU)</a> that your <a href="pkcs11-pin.html">PKCS #11 application uses for authentication</a>.
+                           </p>
+                           
+                           <p>The cache is preloaded with the keys that the specified CU owns and shares. It is
+                              updated automatically when your application makes changes in the HSMs on behalf of
+                              the CU,
+                              such as creating or deleting keys, or changing key attributes. The cache is not aware
+                              of
+                              any other keys on the HSMs.
+                           </p>
+                           <pre class="programlisting"><div class="code-btn-container"><div class="btn-copy-code" title="Copy"></div><div class="btn-dark-theme" title="Dark theme" title-dark="Dark theme" title-light="Light theme"></div></div><code class="nohighlight"><code class="prompt" copy="false">$ </code><strong class="userinput"><code>/opt/cloudhsm/bin/build_keystore -s <em class="replaceable"><code>&lt;CU user name&gt;</code></em> -p <em class="replaceable"><code>&lt; CU password&gt;</code></em></code></strong></code></pre>
+                           </li>
+                     </ol>
+                     
+                  </div>
+                  <noscript>
+                     <div>
+                        <div>
+                           <div>
+                              <div id="js_error_message">
+                                 <p><strong>Javascript is disabled or is unavailable in your browser.</strong></p>
+                                 <p>To use the AWS Documentation, Javascript must be enabled. Please refer to your browser's
+                                    Help pages for instructions.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </noscript>
+                  <div id="main-col-footer">
+                     <div id="doc-conventions"><a target="_top" href="/general/latest/gr/docconventions.html">Document Conventions</a></div>
+                     <div id="next"><a class="awstoc" accesskey="p" href="pkcs11-library.html">« Previous </a><a class="awstoc" accesskey="n" href="pkcs11-pin.html">Next »</a></div>
+                     <div id="copyright-main-footer">© 2018, Amazon Web Services, Inc. or its affiliates. All rights reserved.</div>
+                  </div>
+               </div>
+            </div>
+            <div id="right-expanded">
+               <div id="right-content-wrapper">
+                  <div id="pagetoc">
+                     <p>On this page:</p>
+                     <ul class="pagetoc">
+                        <li class="pagetoc" name="Prerequisites"><a class="pagetoc" href="#pkcs11-library-prerequisites">Prerequisites</a></li>
+                        <li class="pagetoc" name="Install the PKCS #11 Library"><a class="pagetoc" href="#install-pkcs11-library">Install the PKCS #11 Library</a></li>
+                        <li class="pagetoc" name="Install the PKCS #11 Library with Redis&#xA;        (Optional)"><a class="pagetoc" href="#install-pkcs11-redis">Install the PKCS #11 Library with Redis
+                              (Optional)</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="cookie-notice">
+         <div class="cookie-notice-text">We use cookies to provide and improve our services. By using our site, you consent
+            to cookies. <a href="http://aws.amazon.com/legal/cookies">Learn more</a></div>
+      </div>
+      <div id="footer">
+         <div id="footer_short_fb" class="hide" title="Feedback"><a target="_blank" href="https://alpha-docs-aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=cdcb09fa-3f0a-4265-9254-d796483b9489&amp;topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/pkcs11-library-install.html&amp;hidden_guide_name=User Guide&amp;hidden_api_version=&amp;hidden_file_name=pkcs11-library-install"><i class="awsdocs-footer-text fa fa-envelope-o"></i></a></div>
+         <div id="footer_toggle" class="mediaobject">
+            <div id="footer_toggle_img" class="awsdocs-footer-text fa fa-caret-down"></div>
+            <div id="footer_toggle_img_collapse" class="hide awsdocs-footer-text fa fa-caret-right"></div>
+         </div>
+         <div id="footer-left"><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/terms">Terms of Use</a><span class="awsdocs-footer-text"> | </span><a class="awsdocs-footer-text" target="_top" href="http://aws.amazon.com/privacy">Privacy</a><span class="awsdocs-footer-text"> | </span><span class="awsdocs-footer-text">© 2018, Amazon Web Services, Inc. or its affiliates. All rights reserved.</span></div>
+         <div id="footer-right">
+            <div id="feedback">
+               <div id="forums"><a id="forum_link" target="_blank" href="http://forums.aws.amazon.com/forum.jspa?forumID=156" class="awsdocs-footer-text">Have a question? Try the Forums.</a></div>
+               <div id="feedback-message" class="awsdocs-footer-text">Did this page help you?</div>
+               <div id="feedback-yesno-buttons"><a class="awstoc btn btn-default" target="_blank" href="feedbackyes.html?topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/pkcs11-library-install.html">Yes</a><a class="awstoc btn btn-default" target="_blank" href="feedbackno.html?topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/pkcs11-library-install.html">No</a></div>
+               <div id="feedback-feedback-button"><a class="awstoc btn btn-default" target="_blank" href="https://alpha-docs-aws.amazon.com/forms/aws-doc-feedback?feedback_destination_id=cdcb09fa-3f0a-4265-9254-d796483b9489&amp;topic_url=http://alpha-docs-aws.amazon.com/en_us/cloudhsm/latest/userguide/pkcs11-library-install.html&amp;hidden_guide_name=User Guide&amp;hidden_api_version=&amp;hidden_file_name=pkcs11-library-install">Feedback</a></div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
