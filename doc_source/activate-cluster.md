@@ -2,7 +2,7 @@
 
 When you activate an AWS CloudHSM cluster, the cluster's state changes from initialized to active\. You can then [manage the HSM's users](manage-hsm-users.md) and [use the HSM](use-hsm.md)\. 
 
-To activate the cluster, log in to the HSM with the credentials of the [precrypto officer \(PRECO\)](hsm-users.md)\. This a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. When you change the password, the PRECO user becomes a crypto officer \(CO\)\. 
+To activate the cluster, log in to the HSM with the credentials of the [precrypto officer \(PRECO\)](hsm-users.md)\. This a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. When you change the password, the PRECO user becomes a crypto officer \(CO\)\.
 
 **To activate a cluster**
 
@@ -30,7 +30,7 @@ If you are using an AMI that uses Amazon Linux 2, see [Known Issues for Amazon E
 #### [ Windows ]
 
    ```
-   c:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe c:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudhSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------

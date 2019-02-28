@@ -153,7 +153,7 @@ When the installation succeeds, the PKCS \#11 libraries are `/opt/cloudhsm/lib`\
 
 AWS CloudHSM provides an optional software library for PKCS \#11 that uses a [Redis cache](https://redis.io/)\. The cache stores key handles and attributes locally so you can access them without calling into your HSMs\. 
 
-When you build the cache, you specify the crypto user \(CU\) that your [PKCS \#11 application uses to authenticate](pkcs11-pin.md)\. The cache is preloaded with the keys that the CU owns and shares\. It is automatically updated when your application uses functions in the PKCS \#11 library to make changes in the HSMs, such as creating or deleting keys or changing keys attributes\. The cache is not aware of any other keys on the HSM\.
+When you build the cache, you specify the crypto user \(CU\) that your [PKCS \#11 application uses to authenticate](pkcs11-pin.md)\. The cache is preloaded with the keys that the CU owns and shares\. It is automatically updated when your application uses functions in the PKCS \#11 library to make changes in the HSMs\. Examples include creating or deleting keys or changing keys attributes\. The cache is not aware of any other keys on the HSM\.
 
 Caching can improve the performance of your PKCS \#11 application, but it might not be the right choice for all applications\. Consider the following:
 + Redis caches all PKCS \#11 library operations that run on the host, but it's not aware of operations that are performed outside the library\. For example, if you use the [command line tools](command-line-tools.md) or the [software library for Java](java-library.md) to manage keys in your HSMs, those operations do not update the cache\. You can rebuild the cache to update it to the new state of the HSMs, but the cache is not synchronized with the HSMs automatically\.
@@ -176,6 +176,11 @@ To install the PKCS \#11 Library with Redis, you must first [install the standar
 This step installs the Extra Packages for Enterprise Linux \(EPEL\) repository\. It is required only on operating systems that do not include EPEL\.
 
 **Required for Redis only on:** Amazon Linux 2, CentOS 6, CentOS 7, RedHat Enterprise Linux \(RHEL\) 6, RedHat Enterprise Linux \(RHEL\) 7
+
+------
+#### [ Amazon Linux ]
+
+No action required\.
 
 ------
 #### [ Amazon Linux 2 ]
@@ -253,6 +258,11 @@ This step installs the Extra Packages for Enterprise Linux \(EPEL\) repository\.
    ```
 
 ------
+#### [ Ubuntu 16\.04 LTS ]
+
+No action required\.
+
+------
 
 ### Step 3: Prepare for Redis<a name="redis-os-specific"></a>
 
@@ -281,6 +291,16 @@ This step enables the EPEL repository\. It is required only on Amazon Linux, but
    ```
 
 ------
+#### [ Amazon Linux 2 ]
+
+No action required\.
+
+------
+#### [ CentOS 6 ]
+
+No action required\.
+
+------
 #### [ CentOS 7 ]
 
 This command disables a [Security\-Enhanced Linux](https://selinuxproject.org/) \(SELinux\) policy that prevents Redis from using AWS CloudHSM resources\. 
@@ -301,6 +321,16 @@ This command eliminates the TTY requirement in the `sudoers` file\. The `sudoers
    ```
    # Defaults requiretty
    ```
+
+------
+#### [ RHEL 7 ]
+
+No action required\.
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+No action required\.
 
 ------
 
@@ -324,7 +354,7 @@ Use the following procedure to install and configure the Redis package for the A
 
 1. Use the `build_keystore` command to build the Redis cache\. Type the name and password of the [crypto user \(CU\)](hsm-users.md#crypto-user) that your [PKCS \#11 application uses for authentication](pkcs11-pin.md)\.
 
-   The cache is preloaded with the keys that the specified CU owns and shares\. It is updated automatically when your application makes changes in the HSMs on behalf of the CU, such as creating or deleting keys, or changing key attributes\. The cache is not aware of any other keys on the HSMs\.
+   The cache is preloaded with the keys that the specified CU owns and shares\. It is updated automatically when your application makes changes in the HSMs on behalf of the CU\. Examples include creating or deleting keys, or changing key attributes\. The cache is not aware of any other keys on the HSMs\.
 
    ```
    $ /opt/cloudhsm/bin/build_keystore -s <CU user name> -p < CU password>

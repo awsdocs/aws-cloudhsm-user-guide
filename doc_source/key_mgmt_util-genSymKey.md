@@ -2,7 +2,7 @@
 
 The genSymKey command in the key\_mgmt\_util tool generates a symmetric key in your HSMs\. You can specify the key type and size, assign an ID and label, and share the key with other HSM users\. You can also create nonextractable keys and keys that expire when the session ends\. When the command succeeds, it returns a key handle that the HSM assigns to the key\. You can use the key handle to identify the key to other commands\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 **Tip**  
 To find the attributes of a key that you have created, such as the type, length, label, and ID, use [getAttribute](key_mgmt_util-getAttribute.md)\. To find the keys for a particular user, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. To find keys based on their attribute values, use [findKey](key_mgmt_util-findKey.md)\. 
@@ -231,7 +231,7 @@ Required: No
 
 **\-u**  
 Shares the key with the specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use this key in cryptographic operations\.  
-Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use shareKey\.   
+Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use [shareKey](cloudhsm_mgmt_util-shareKey.md) in the cloudhsm\_mgmt\_util\.   
 Default: Only the current user can use the key\.   
 Required: No
 

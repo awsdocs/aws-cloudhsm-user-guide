@@ -5,6 +5,7 @@ AWS CloudHSM includes two command line tools with the [AWS CloudHSM client softw
 **Topics**
 + [Prepare to run cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-setup)
 + [Basic Usage of cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-basics)
++ [Using cloudhsm\_mgmt\_util Across Cloned Clusters](#cloudhsm_mgmt_util-syncConfig)
 
 ## Prepare to run cloudhsm\_mgmt\_util<a name="cloudhsm_mgmt_util-setup"></a>
 
@@ -71,14 +72,20 @@ $ sudo service cloudhsm-client stop
 
 ------
 #### [ Windows ]
++ For Windows client 1\.1\.2\+:
 
-You can use **Ctrl**\+**C** to stop the client\.
+  ```
+  C:\Program Files\Amazon\CloudHSM>net.exe stop AWSCloudHSMClient
+  ```
++ For Windows clients 1\.1\.1 and older:
+
+  Use **Ctrl**\+**C** in the command window where you started the AWS CloudHSM client\.
 
 ------
 
 ### Step 2: Update the AWS CloudHSM Configuration Files<a name="cloudhsm_mgmt_util-config-a"></a>
 
-This step uses the `-a` parameter of the [Configure tool](configure-tool.md) to add the elastic network interface \(ENI\) IP address of one of the HSMs in the cluster to the configuration file\. 
+This step uses the `-a` parameter of the [configure tool](configure-tool.md) to add the elastic network interface \(ENI\) IP address of one of the HSMs in the cluster to the configuration file\.
 
 ------
 #### [ Amazon Linux ]
@@ -138,11 +145,11 @@ c:\Program Files\Amazon\CloudHSM>configure.exe -a <HSM ENI IP>
 
 ------
 
-To get the ENI IP address of an HSM in your cluster, you can use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) command, the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) CLI operation, or the [Get\-HSM2Cluster](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. Type only one ENI IP address\. It does not matter which ENI IP address you use\. 
+To get the ENI IP address of an HSM in your cluster, navigate to the AWS CloudHSM console, choose **clusters**, and select the desired cluster\. You can also use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation, the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, or the [Get\-HSM2Cluster](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. Type only one ENI IP address\. It does not matter which ENI IP address you use\. 
 
 ### Step 3: Start the AWS CloudHSM Client<a name="cloudhsm_mgmt_util-start-cloudhsm-client"></a>
 
-Next, start or restart the AWS CloudHSM client\. When the AWS CloudHSM client starts, it uses the ENI IP address in its configuration file to query the cluster\. Then it adds the ENI IP addresses of all HSMs in the cluster to the cluster information file\. 
+Next, start or restart the AWS CloudHSM client\. When the AWS CloudHSM client starts, it uses the ENI IP address in its configuration file to query the cluster\. Then it adds the ENI IP addresses of all HSMs in the cluster to the cluster information file\.
 
 ------
 #### [ Amazon Linux ]
@@ -195,16 +202,22 @@ $ sudo service cloudhsm-client start
 
 ------
 #### [ Windows ]
++ For Windows client 1\.1\.2\+:
 
-```
-C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
-```
+  ```
+  C:\Program Files\Amazon\CloudHSM>net.exe start AWSCloudHSMClient
+  ```
++ For Windows clients 1\.1\.1 and older:
+
+  ```
+  C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
+  ```
 
 ------
 
 ### Step 4: Update the cloudhsm\_mgmt\_util Configuration File<a name="cloudhsm_mgmt_util-update-configuration"></a>
 
-The final step uses the `-m` parameter of the [Configuration tool](configure-tool.md) to copy the updated ENI IP addresses from the cluster information file to the configuration file that cloudhsm\_mgmt\_util uses\. If you skip this step, you might run into synchronization problems, such as [inconsistent user data](troubleshooting-keep-hsm-users-in-sync.md) in your cluster's HSMs\. 
+The final step uses the `-m` parameter of the [configure tool](configure-tool.md) to copy the updated ENI IP addresses from the cluster information file to the configuration file that cloudhsm\_mgmt\_util uses\. If you skip this step, you might run into synchronization problems, such as [inconsistent user data](troubleshooting-keep-hsm-users-in-sync.md) in your cluster's HSMs\. 
 
 ------
 #### [ Amazon Linux ]
@@ -413,4 +426,24 @@ Use the quit command to stop cloudhsm\_mgmt\_util\.
 aws-cloudhsm>quit
 
 disconnecting from servers, please wait...
+```
+
+## Using cloudhsm\_mgmt\_util Across Cloned Clusters<a name="cloudhsm_mgmt_util-syncConfig"></a>
+
+In some cases, you will use cloudhsm\_mgmt\_util to synchronize changes across cloned clusters\. In order to do so, you will need to manually create a new cloudhsm\_mgmt\_util configuration file that specifies the HSMs you want to sync\. For this example, create a copy of your current config file \(`/opt/cloudhsm/etc/cloudhsm_mgmt_config.cfg`\) and change the copy's name to `syncConfig.cfg`\.
+
+Edit `syncConfig.cfg` to include the Elastic Network Interface \(ENI\) IPs of the HSMs to be synced\. We recommend that you specify the source HSM first, followed by the destination HSMs\. To find the ENI IP of an HSM, see [Update the AWS CloudHSM Configuration Files](#cloudhsm_mgmt_util-config-a)\.
+
+Initialize `cloudhsm_mgmt_util` with the new config file by issuing the following command:
+
+```
+aws-cloudhsm> /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/userSync.cfg
+```
+
+Check the status messages returned to ensure that the `cloudhsm_mgmt_util` is connected to all desired HSMs and determine which of the returned ENI IPs corresponds to each cluster\.
+
+When you are done synchronizing HSMs or clusters, initialize cloudhsm\_mgmt\_util with the original configuration file\.
+
+```
+aws-cloudhsm> /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_config.cfg
 ```

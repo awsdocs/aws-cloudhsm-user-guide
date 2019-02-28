@@ -1,6 +1,6 @@
 # changePswd<a name="cloudhsm_mgmt_util-changePswd"></a>
 
-The `changePswd` command in cloudhsm\_mgmt\_util changes the password of an existing user on the HSMs in the cluster\. 
+The changePswd command in cloudhsm\_mgmt\_util changes the password of an existing user on the HSMs in the cluster\. 
 
 Any user can change their own password\. Crypto officers \(COs and PCOs\) can also change the password of any other user\. You do not need to enter the current password to make the change\. However, you cannot change the password of a user who is logged into the AWS CloudHSM client or key\_mgmt\_util\.
 
@@ -24,10 +24,10 @@ changePswd <user-type> <user-name> <password>
 
 ## Examples<a name="changePswd-examples"></a>
 
-These examples show how to use `changePassword` to create new users in your HSMs\.
+These examples show how to use changePassword to create new users in your HSMs\.
 
 **Example : Change Your Password**  
-Any user on the HSMs can use `changePswd` to change their own password\.   
+Any user on the HSMs can use changePswd to change their own password\.   
 The first command uses [info](cloudhsm_mgmt_util-info.md) to get the current user\. The output shows that the current user, `bob`, is a crypto user \(CU\)\.  
 
 ```
@@ -39,11 +39,11 @@ aws-cloudhsm> info server 1
 Id      Name            Hostname        Port    State           Partition          LoginState
 0       10.0.3.10       10.0.3.10       2225    Connected       hsm-ccccaaaabbb    Logged in as 'bob(CU)'
 ```
-To change his password, `bob` runs `changePswd` with a new password, `newPasswerd`\.  
-When the command completes, the password change is effective\.   
+To change his password, `bob` runs changePswd with a new password, `newPassword`\.  
+When the command completes, the password change is effective\.  
 
 ```
-aws-cloudhsm> createUser CU bob newPasswerd
+aws-cloudhsm> chngePswd CU bob newPassword
 
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
@@ -69,7 +69,7 @@ aws-cloudhsm>info server 1
 Id      Name             Hostname         Port   State           Partition        LoginState
 0       10.0.3.10        10.0.3.10        2225   Connected       hsm-ccccaaaabbb  Logged in as 'alice(CO)'
 ```
-This command uses `changePswd` to change the password of `officer1`, another CO on the HSMs\. In this case, the command resets the password to `defaultPassword`, the password that this fictitious enterprise uses as its default\. Later, `officer1` can reset their password to a more secure value\.  
+This command uses changePswd to change the password of `officer1`, another CO on the HSMs\. In this case, the command resets the password to `defaultPassword`, the password that this fictitious enterprise uses as its default\. Later, `officer1` can reset their password to a more secure value\.  
 
 ```
 aws-cloudhsm>changePswd CO officer1 defaultPassword
@@ -94,13 +94,13 @@ changePswd <user-type> <user-name> <password> [1FA | 2FA]
 ```
 
 **<user\-type>**  
-Specifies the current type of the user whose password you are changing\. You cannot use `changePswd` to change the user type\.   
+Specifies the current type of the user whose password you are changing\. You cannot use changePswd to change the user type\.   
 Valid values are `CO`, `CU`, `AU`, `PCO`, and `PRECO`\.  
 To get the user type, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\. For detailed information about the user types on an HSM, see [HSM Users](hsm-users.md)\.  
 Required: Yes
 
 **<user\-name>**  
-Specifies the user's friendly name\. This parameter is not case\-sensitive\. You cannot use `changePswd` to change the user name\.   
+Specifies the user's friendly name\. This parameter is not case\-sensitive\. You cannot use changePswd to change the user name\.   
 Required: Yes
 
 **<password>**  

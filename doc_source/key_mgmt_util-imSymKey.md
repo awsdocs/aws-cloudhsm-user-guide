@@ -1,10 +1,10 @@
 # imSymKey<a name="key_mgmt_util-imSymKey"></a>
 
-The `imSymKey` command in the key\_mgmt\_util tool imports a plaintext copy of a symmetric key from a file into the HSM\. You can use it to import keys that you generate by any method outside of the HSM and keys that were exported from an HSM, such as the keys that the [exSymKey](key_mgmt_util-exSymKey.md), command writes to a file\. 
+The imSymKey command in the key\_mgmt\_util tool imports a plaintext copy of a symmetric key from a file into the HSM\. You can use it to import keys that you generate by any method outside of the HSM and keys that were exported from an HSM, such as the keys that the [exSymKey](key_mgmt_util-exSymKey.md), command writes to a file\. 
 
-During the import process, `imSymKey` uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) and then *unwrap* \(decrypt\) the key to be imported\. However, `imSymKey` works only on files that contain plaintext keys\. To export and import encrypted keys, use the [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) commands\. 
+During the import process, imSymKey uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) and then *unwrap* \(decrypt\) the key to be imported\. However, imSymKey works only on files that contain plaintext keys\. To export and import encrypted keys, use the [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) commands\. 
 
-Also, the `imSymKey` command exports only symmetric keys\. To import public keys, use `importPubKey`\. To import private keys, use `importPrivateKey` or `wrapKey`\. 
+Also, the imSymKey command exports only symmetric keys\. To import public keys, use [importPubKey](key_mgmt_util-importPubKey.md)\. To import private keys, use [importPrivateKey](key_mgmt_util-importPrivateKey.md) or [wrapKey](key_mgmt_util-wrapKey.md)\. 
 
 Imported keys work very much like keys generated in the HSM\. However, the value of the [OBJ\_ATTR\_LOCAL attribute](key-attribute-table.md) is zero, which indicates that it was not generated locally\. You can use the following command to share a symmetric key as you import it\. You can use the `shareKey` command in [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) to share the key after it is imported\. 
 
@@ -14,7 +14,7 @@ imSymKey -l aesShared -t 31 -f kms.key -w 3296 -u 5
 
 After you import a key, be sure to mark or delete the key file\. This command does not prevent you from importing the same key material multiple times\. The result, multiple keys with distinct key handles and the same key material, make it difficult to track use of the key material and prevent it from exceeding its cryptographic limits\. 
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="imSymKey-syntax"></a>
 
@@ -36,16 +36,16 @@ imSymKey -f <key-file>
 
 ## Examples<a name="imSymKey-examples"></a>
 
-These examples show how to use `imSymKey` to import symmetric keys into your HSMs\.
+These examples show how to use imSymKey to import symmetric keys into your HSMs\.
 
 **Example : Import an AES Symmetric Key**  
-This example uses `imSymKey` to import an AES symmetric key into the HSMs\.   
+This example uses imSymKey to import an AES symmetric key into the HSMs\.   
 The first command uses OpenSSL to generate a random 256\-bit AES symmetric key\. It saves the key in the `aes256.key` file\.  
 
 ```
 $  openssl rand -out aes256-forImport.key 32
 ```
-The second command uses `imSymKey` to import the AES key from the `aes256.key` file into the HSMs\. It uses key 20, an AES key in the HSM, as the wrapping key and it specifies a label of `imported`\. Unlike the ID, the label does not need to be unique in the cluster\. The value of the `-t` \(type\) parameter is `31`, which represents AES\.   
+The second command uses imSymKey to import the AES key from the `aes256.key` file into the HSMs\. It uses key 20, an AES key in the HSM, as the wrapping key and it specifies a label of `imported`\. Unlike the ID, the label does not need to be unique in the cluster\. The value of the `-t` \(type\) parameter is `31`, which represents AES\.   
 The output shows that the key in the file was wrapped and unwrapped, then imported into the HSM, where it was assigned the key handle 262180\.  
 
 ```
@@ -81,9 +81,9 @@ OBJ_ATTR_LOCAL
 ```
 
 **Example : Move a Symmetric Key Between Clusters**  
-This example shows how to use `exSymKey` and `imSymKey` to move a plaintext AES key between clusters\. You might use a process like this one to create an AES wrapping that exists on the HSMs both clusters\. Once the shared wrapping key is in place, you can use [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) to move encrypted keys between the clusters\.  
+This example shows how to use [exSymKey](key_mgmt_util-exSymKey.md) and imSymKey to move a plaintext AES key between clusters\. You might use a process like this one to create an AES wrapping that exists on the HSMs both clusters\. Once the shared wrapping key is in place, you can use [wrapKey](key_mgmt_util-wrapKey.md) and [unWrapKey](key_mgmt_util-unwrapKey.md) to move encrypted keys between the clusters\.  
 The CU user who performs this operation must have permission to log in to the HSMs on both clusters\.  
-The first command uses `exSymKey` to export key 14, a 32\-bit AES key, from the cluster 1 into the `aes.key` file\. It uses key 6, an AES key on the HSMs in cluster 1, as the wrapping key\.   
+The first command uses [exSymKey](key_mgmt_util-exSymKey.md) to export key 14, a 32\-bit AES key, from the cluster 1 into the `aes.key` file\. It uses key 6, an AES key on the HSMs in cluster 1, as the wrapping key\.   
 
 ```
 Command: exSymKey -k 14 -w 6 -out aes.key
@@ -95,8 +95,8 @@ Command: exSymKey -k 14 -w 6 -out aes.key
 
 Wrapped Symmetric Key written to file "aes.key"
 ```
-The user then logs into key\_mgmt\_util in cluster 2 and runs an `imSymKey` command to import the key in the `aes.key` file into the HSMs in cluster 2\. This command uses key 252152, an AES key on the HSMs in cluster 2, as the wrapping key\.   
-Because the wrapping keys that `exSymKey` and `imSymKey` use wrap and immediately unwrap the target keys, the wrapping keys on the different clusters need not be the same\.   
+The user then logs into key\_mgmt\_util in cluster 2 and runs an imSymKey command to import the key in the `aes.key` file into the HSMs in cluster 2\. This command uses key 252152, an AES key on the HSMs in cluster 2, as the wrapping key\.   
+Because the wrapping keys that [exSymKey](key_mgmt_util-exSymKey.md) and imSymKey use wrap and immediately unwrap the target keys, the wrapping keys on the different clusters need not be the same\.   
 The output shows that the key was successfully imported into cluster 2 and assigned a key handle of 21\.   
 
 ```
@@ -140,7 +140,7 @@ The output shows that the KCV values of the two keys are the same, which proves 
 Because the same key material exists in the HSMs of both clusters, you can now share encrypted keys between the clusters without ever exposing the plaintext key\. For example, you can use the `wrapKey` command with wrapping key 14 to export an encrypted key from cluster 1, and then use `unWrapKey` with wrapping key 21 to import the encrypted key into cluster 2\.
 
 **Example : Import a Session Key**  
-This command uses the `-sess` parameters of `imSymKey` to import a 192\-bit Triple DES key that is valid only in the current session\.   
+This command uses the `-sess` parameters of imSymKey to import a 192\-bit Triple DES key that is valid only in the current session\.   
 The command uses the `-f` parameter to specify he file that contains the key to import, the `-t` parameter to specify the key type, and the `-w` parameter to specify the wrapping key\. It uses the `-l` parameter to specify a label that categorizes the key and the `-id` parameter to create a friendly, but unique, identifier for the key\. It also uses the `-attest` parameter to verify the firmware that is importing the key\.   
 The output shows that the key was successfully wrapped and unwrapped, imported into the HSM, and assigned the key handle 37\. Also, the attestation check passed, which indicates that the firmware has not been tampered\.  
 
@@ -160,7 +160,7 @@ Command:  imSymKey -f 3des192.key -w 6 -t 21 -l temp -id test01 -sess -attest
         Cluster Error Status
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-Next, you can use the [getAttribute](key_mgmt_util-getAttribute.md) or [findKey](key_mgmt_util-findKey.md) commands to verify the attributes of the newly imported key\. The following command uses `findKey` to verify that key 37 has the type, label, and ID specified by the command, and that it is a session key\. A shown on line 5 of the output, `findKey` reports that the only key that matches all of the attributes is key 37\.   
+Next, you can use the [getAttribute](key_mgmt_util-getAttribute.md) or [findKey](key_mgmt_util-findKey.md) commands to verify the attributes of the newly imported key\. The following command uses findKey to verify that key 37 has the type, label, and ID specified by the command, and that it is a session key\. A shown on line 5 of the output, findKey reports that the only key that matches all of the attributes is key 37\.   
 
 ```
 Command:  findKey -t 21 -l temp -id test01 -sess 1
@@ -233,7 +233,7 @@ Required: Yes
 
 **\-u**  
 Shares the key you are importing with specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use this key in cryptographic operations\.   
-Type one ID or a comma\-separated list of HSM user IDs, such as \-u 5,6\. Do not include the HSM user ID of the current user\. To find the an ID, you can use the [listUsers](https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-listUsers.html) command in the cloudhsm\_mgmt\_util command line tool or the [listUsers](https://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-listUsers.html) command in the key\_mgmt\_util command line tool\.   
+Type one ID or a comma\-separated list of HSM user IDs, such as \-u `5,6`\. Do not include the HSM user ID of the current user\. To find the an ID, you can use the [listUsers](https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_mgmt_util-listUsers.html) command in the cloudhsm\_mgmt\_util command line tool or the [listUsers](https://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-listUsers.html) command in the key\_mgmt\_util command line tool\.   
 Required: No
 
 **\-w**  
@@ -246,7 +246,7 @@ Required: Yes
 
 **\-wk**  
 Use the AES key in the specified file to wrap the key that is being imported\. Enter the path and name of a file that contains a plaintext AES key\.   
-When you include this parameter\. `imSymKey` uses the key in the `-wk` file to wrap the key being imported and it uses the key in the HSM that is specified by the `-w` parameter to unwrap it\. The `-w` and `-wk` parameter values must resolve to the same plaintext key\.  
+When you include this parameter\. imSymKey uses the key in the `-wk` file to wrap the key being imported and it uses the key in the HSM that is specified by the `-w` parameter to unwrap it\. The `-w` and `-wk` parameter values must resolve to the same plaintext key\.  
 Default: Use the wrapping key on the HSM to unwrap\.  
 Required: No
 
@@ -255,5 +255,5 @@ Required: No
 + [exSymKey](key_mgmt_util-exSymKey.md)
 + [wrapKey](key_mgmt_util-wrapKey.md)
 + [unWrapKey](key_mgmt_util-unwrapKey.md)
-+ exportPrivateKey
-+ exportPubKey
++ [exportPrivateKey](key_mgmt_util-exportPrivateKey.md)
++ [exportPubKey](key_mgmt_util-exportPubKey.md)

@@ -24,7 +24,7 @@ deleteUser <user-type> <user-name>
 
 ## Example<a name="deleteUser-examples"></a>
 
-This example deletes a crypto officer \(CO\) from the HSMs in a cluster\. The first command uses listUsers to list all users on the HSMs\.
+This example deletes a crypto officer \(CO\) from the HSMs in a cluster\. The first command uses [listUsers](cloudhsm_mgmt_util-listUsers.md) to list all users on the HSMs\.
 
 The output shows that user `3`, `alice`, is a CO on the HSMs\.
 
@@ -66,7 +66,7 @@ deleteUser success on server 0(10.0.0.2)
 deleteUser success on server 0(10.0.0.3)
 ```
 
-The final command uses the [listUsers](cloudhsm_mgmt_util-listUsers.md) command to verify that `alice` is deleted from all three of the HSMs on the cluster\.
+The final command uses the listUsers command to verify that `alice` is deleted from all three of the HSMs on the cluster\.
 
 ```
 aws-cloudhsm> listUsers
@@ -113,5 +113,5 @@ Required: Yes
 ## Related Topics<a name="deleteUser-seealso"></a>
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
 + [createUser](cloudhsm_mgmt_util-createUser.md)
-+ syncUser
++ [syncUser](cloudhsm_mgmt_util-syncUser.md)
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)

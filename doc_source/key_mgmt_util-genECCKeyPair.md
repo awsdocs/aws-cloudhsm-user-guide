@@ -2,7 +2,7 @@
 
 The `genECCKeyPair` command in the key\_mgmt\_util tool generates an [Elliptic Curve Cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) \(ECC\) key pair in your HSMs\. You must specify the elliptic curve type and a label for the keys\. You can also share the private key with other CU users, create non\-extractable keys, quorum\-controlled keys, and keys that expire when the session ends\. When the command succeeds, it returns the key handles that the HSM assigns to the public and private ECC keys\. You can use the key handles to identify the keys to other commands\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 **Tip**  
 To find the attributes of a key that you have created, such as the type, length, label, and ID, use [getAttribute](key_mgmt_util-getAttribute.md)\. To find the keys for a particular user, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. To find keys based on their attribute values, use [findKey](key_mgmt_util-findKey.md)\. 
@@ -133,6 +133,7 @@ Valid values:
 + **13**: NID\_secp224r1
 + **14**:NID\_secp384r1
 + **15**: NID\_secp521r1
++ **16**: NID\_secp256k1
 Required: Yes
 
 **\-l**  
@@ -179,7 +180,7 @@ Required: No
 
 **\-u**  
 Shares the private key in the pair with the specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use the private key in cryptographic operations\. Public keys can be used by any user without sharing\.  
-Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use shareKey\.   
+Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use [shareKey](cloudhsm_mgmt_util-shareKey.md) in the cloudhsm\_mgmt\_util\.   
 Default: Only the current user can use the private key\.   
 Required: No
 

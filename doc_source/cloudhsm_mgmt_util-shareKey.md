@@ -47,7 +47,7 @@ Key Info on server 1(10.0.3.6):
 
         Owned by user 3
 ```
-This example uses shareKey to share key `262177` with user `4`, another crypto user on the HSMs\. The final argument uses a value of `1` to indicate a share operation\.  
+This comand uses shareKey to share key `262177` with user `4`, another crypto user on the HSMs\. The final argument uses a value of `1` to indicate a share operation\.  
 The output shows that the operation succeeded on both HSMs in the cluster\.  
 
 ```

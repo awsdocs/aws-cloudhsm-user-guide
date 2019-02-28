@@ -8,7 +8,7 @@ You can use getAttribute only on keys that you own and key that are shared with 
 
 To get a list of attributes and the constants that represent them, use the [listAttributes](key_mgmt_util-listAttributes.md) command\. To change the attribute values of existing keys, use [setAttribute](key_mgmt_util-setAttribute.md) in key\_mgmt\_util and [setAttribute](cloudhsm_mgmt_util-setAttribute.md) in cloudhsm\_mgmt\_util\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="getAttribute-syntax"></a>
 

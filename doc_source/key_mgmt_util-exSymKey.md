@@ -8,9 +8,9 @@ Only the owner of a key, that is, the CU user who created the key, can export it
 
 The exSymKey operation copies the key material to a file that you specify, but it does not remove the key from the HSM, change its [key attributes](key-attribute-table.md), or prevent you from using the key in cryptographic operations\. You can export the same key multiple times\.
 
-exSymKey exports only symmetric keys\. To export public keys, use exPubKey\. To export private keys, use exportPrivateKey\.
+exSymKey exports only symmetric keys\. To export public keys, use [exportPubKey](key_mgmt_util-exportPubKey.md)\. To export private keys, use [exportPrivateKey](key_mgmt_util-exportPrivateKey.md)\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="exSymKey-syntax"></a>
 
@@ -122,7 +122,7 @@ $  openssl rand -out keys/aes256-forImport.key 32
 $ wc keys/aes256-forImport.key
  0  2 32 keys/aes256-forImport.key
 ```
-This command uses the `imSymKey` command to import the AES key from the `aes256-forImport.key` file to the HSM\. When the command completes, the key exists in the HSM with key handle `262167` and in the `aes256-forImport.key` file\.  
+This command uses the [imSymKey](key_mgmt_util-imSymKey.md) command to import the AES key from the `aes256-forImport.key` file to the HSM\. When the command completes, the key exists in the HSM with key handle `262167` and in the `aes256-forImport.key` file\.  
 
 ```
 Command:  imSymKey -f keys/aes256-forImport.key -t 31 -l aes256-imported -w 6

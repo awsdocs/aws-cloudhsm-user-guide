@@ -60,6 +60,7 @@ The events in a log stream record the history of the HSM from its creation to de
 + [Example: Generate and Synchronize a Key](#audit-log-example-gen-key)
 + [Example: Export a Key](#audit-log-example-export-key)
 + [Example: Import a Key](#audit-log-example-import-key)
++ [Example: Share and Unshare a Key](#audit-log-example-share-unshare-key)
 
 ### Example: Initialize the First HSM in a Cluster<a name="example-audit-log-first-hsm"></a>
 
@@ -124,7 +125,7 @@ Response : 0:HSM Return: SUCCESS
 Log type : MINIMAL_LOG_ENTRY (0)
 ```
 
-You can follow the remaining events in the startup sequence, which might include several login and logout events, and the generation of the key encryption key \(KEK\)\. The following event records the command that changes the password of the [precrypto officer \(PRECO\)](hsm-users.md#preco)\. This command activates the cluster\.
+You can follow the remaining events in the startup sequence\. These events might include several login and logout events, and the generation of the key encryption key \(KEK\)\. The following event records the command that changes the password of the [precrypto officer \(PRECO\)](hsm-users.md#preco)\. This command activates the cluster\.
 
 ```
 Time: 12/13/17 23:04:33.846554, usecs:1513206273846554
@@ -355,7 +356,7 @@ User Type: CN_CRYPTO_USER (1)
 This example shows the effect of creating a key in a cluster with multiple HSMs\. The key is generated on one HSM, extracted from the HSM as a masked object, and inserted in the other HSMs as a masked object\.
 
 **Note**  
-The client tools might fail to synchronize the key, or the command might include the min\_srv parameter, which synchronizes the key only to the specified number of HSMs\. In either case, the AWS CloudHSM service synchronizes the key to the other HSMs in the cluster\. Because the HSMs record only client\-side management commands in their logs, the server\-side synchronization is not recorded in the HSM log\.
+The client tools might fail to synchronize the key\. Or the command might include the min\_srv parameter, which synchronizes the key only to the specified number of HSMs\. In either case, the AWS CloudHSM service synchronizes the key to the other HSMs in the cluster\. Because the HSMs record only client\-side management commands in their logs, the server\-side synchronization is not recorded in the HSM log\.
 
 First consider the log stream of the HSM that receives and executes the commands\. The log stream is named for HSM ID, `hsm-abcde123456`, but the HSM ID does not appear in the log events\. 
 
@@ -553,4 +554,21 @@ Response : 0:HSM Return: SUCCESS
 Log type : MGMT_KEY_DETAILS_LOG (1)
 Priv/Secret Key Handle : 11
 Public Key Handle : 0
+```
+
+### Example: Share and Unshare a Key<a name="audit-log-example-share-unshare-key"></a>
+
+This example shows the audit log event that is recorded when a crypto user \(CU\) shares or unshares ECC private key with other crypto users\. The CU uses the [shareKey](cloudhsm_mgmt_util-shareKey.md) command and provides the key handle, the user ID, and the value `1` to share or value `0` to unshare the key\. 
+
+In the following example, the HSM that receives the command, records a `CM_SHARE_OBJECT` event that represents the share operation\.
+
+```
+Time: 02/08/19 19:35:39.480168, usecs:1549654539480168
+Sequence No	: 0x3f
+Reboot counter	: 0x38
+Command Type(hex)	: CN_MGMT_CMD (0x0)
+Opcode	: CN_SHARE_OBJECT (0x12)
+Session Handle	: 0x3014007
+Response	: 0:HSM Return: SUCCESS
+Log type	: UNKNOWN_LOG_TYPE (5)
 ```

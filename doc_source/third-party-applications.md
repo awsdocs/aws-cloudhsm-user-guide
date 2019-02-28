@@ -6,3 +6,4 @@ Some of the [use cases](use-cases.md) for AWS CloudHSM involve integrating third
 + [SSL/TLS Offload](ssl-offload.md)
 + [Windows Server CA](win-ca-overview.md)
 + [Oracle Database Encryption](oracle-tde.md)
++ [Microsoft SignTool](signtool.md)

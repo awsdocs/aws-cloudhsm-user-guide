@@ -1,8 +1,8 @@
 # findAllKeys<a name="cloudhsm_mgmt_util-findAllKeys"></a>
 
-The `findAllKeys` command in cloudhsm\_mgmt\_util gets the keys that a specified crypto user \(CU\) owns or shares\. It also returns a hash of the user data on each of the HSMs\. You can use the hash to determine at a glance whether the users, key ownership, and key sharing data are the same on all HSMs in the cluster\.
+The findAllKeys command in cloudhsm\_mgmt\_util gets the keys that a specified crypto user \(CU\) owns or shares\. It also returns a hash of the user data on each of the HSMs\. You can use the hash to determine at a glance whether the users, key ownership, and key sharing data are the same on all HSMs in the cluster\.
 
-`findAllKeys` returns public keys only when the specified CU owns the key, even though all CUs on the HSM can use any public key\. This behavior is different from [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util, which returns public keys for all CU users\.
+findAllKeys returns public keys only when the specified CU owns the key, even though all CUs on the HSM can use any public key\. This behavior is different from [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util, which returns public keys for all CU users\.
 
 Only crypto officers \(COs and PCOs\) and appliance users \(AUs\) can run this command\. Crypto users \(CUs\) can run the following commands:
 + [listUsers](cloudhsm_mgmt_util-listUsers.md) to find all users
@@ -32,7 +32,7 @@ findAllKeys <user id> <key hash (0/1)> [<output file>]
 These examples show how to use `findAllKeys` to find all keys for a user and get a hash of key user information on each of the HSMs\.
 
 **Example : Find the Keys for a CU**  
-This example uses `findAllKeys` to find the keys in the HSMs that user 4 owns and shares\. The command uses a value of `0` for the second argument to suppress the hash value\. Because it omits the optional file name, the command writes to stdout \(standard output\)\.  
+This example uses findAllKeys to find the keys in the HSMs that user 4 owns and shares\. The command uses a value of `0` for the second argument to suppress the hash value\. Because it omits the optional file name, the command writes to stdout \(standard output\)\.  
 The output shows that user 4 can use 6 keys: 8, 9, 17, 262162, 19, and 31\. The output uses an `(s)` to indicate that keys 8, 9, and 262162 are explicitly shared, although it does not indicate whether user 4 owns or shares them\. The keys that are not marked with `(s)` include symmetric and private keys that the user 4 owns and does not share, and public keys that are available to all crypto users\.   
 
 ```
@@ -57,7 +57,7 @@ findAllKeys success on server 1(10.0.0.3)
 ```
 
 **Example : Verify That User Data Is Synchronized**  
-This example uses `findAllKeys` to verify that all of the HSMs in the cluster contain the same users, key ownership, and key sharing values\. To do this, it gets a hash of the key user data on each HSM and compares the hash values\.  
+This example uses findAllKeys to verify that all of the HSMs in the cluster contain the same users, key ownership, and key sharing values\. To do this, it gets a hash of the key user data on each HSM and compares the hash values\.  
 To get the key hash, the command uses a value of `1` in the second argument\. The optional file name is omitted, so the command writes the key hash to stdout\.   
 The example specifies user `6`, but the hash value will be the same for any user that owns or shares any of the keys on the HSMs\. If the specified user does not own or share any keys, such as a CO, the command does not return a hash value\.   
 The output shows that the key hash is identical to both of the HSMs in the cluster\. If one of the HSM had different users, different key owners, or different shared users, the key hash values would not be equal\.  
@@ -81,7 +81,7 @@ Key Hash:
 
 findAllKeys success on server 1(10.0.0.2)
 ```
-This command demonstrates that the hash value represents the user data for all keys on the HSM\. The command uses the `findAllKeys` for user 3\. Unlike user 6, who owns or shares just 3 keys, user 3 own or shares 17 keys, but the key hash value is the same\.  
+This command demonstrates that the hash value represents the user data for all keys on the HSM\. The command uses the findAllKeys for user 3\. Unlike user 6, who owns or shares just 3 keys, user 3 own or shares 17 keys, but the key hash value is the same\.  
 
 ```
 aws-cloudhsm> findAllKeys 3 1
@@ -130,6 +130,6 @@ Default: Stdout
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
-+ syncUser
++ [syncUser](cloudhsm_mgmt_util-syncUser.md)
 + [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util
 + [getKeyInfo](key_mgmt_util-getKeyInfo.md) in key\_mgmt\_util

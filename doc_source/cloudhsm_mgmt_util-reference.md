@@ -58,3 +58,4 @@ Some commands in key\_mgmt\_util and cloudhsm\_mgmt\_util have the same names\. 
 | [setAttribute](cloudhsm_mgmt_util-setAttribute.md) | Changes the values of the label, encrypt, decrypt, wrap, and unwrap attributes of an existing key\. | CU | 
 | [shareKey](cloudhsm_mgmt_util-shareKey.md) | Shares an existing key with other users\. | CU | 
 | [syncKey](cloudhsm_mgmt_util-syncKey.md) | Syncs a key across cloned AWS CloudHSM clusters\. | CU, CO | 
+| [syncUser](cloudhsm_mgmt_util-syncUser.md) | Syncs a user across cloned AWS CloudHSM clusters\. | CO | 

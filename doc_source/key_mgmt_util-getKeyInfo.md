@@ -6,7 +6,7 @@ When you run getKeyInfo on public keys, getKeyInfo returns only the key owner, e
 
 You own the keys that you create\. You can share a key with other users when you create it\. Then, to share or unshare an existing key, use [shareKey](cloudhsm_mgmt_util-shareKey.md) in cloudhsm\_mgmt\_util\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="getKeyInfo-syntax"></a>
 

@@ -4,9 +4,9 @@ The listUsers command in the key\_mgmt\_util gets the users in the HSMs, along w
 
 In key\_mgmt\_util, listUsers returns output that represents all HSMs in the cluster, even if they are not consistent\. To get information about the users in each HSM, use the [listUsers](#key_mgmt_util-listUsers) command in cloudhsm\_mgmt\_util\.
 
-The user commands in key\_mgmt\_util, listUsers and getKeyInfo, are read\-only commands that crypto users \(CUs\) have permission to run\. The remaining user management commands are part of cloudhsm\_mgmt\_util\. They are run by crypto officers \(CO\) who have user management permissions\.
+The user commands in key\_mgmt\_util, listUsers and [getKeyInfo](key_mgmt_util-getKeyInfo.md), are read\-only commands that crypto users \(CUs\) have permission to run\. The remaining user management commands are part of cloudhsm\_mgmt\_util\. They are run by crypto officers \(CO\) who have user management permissions\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="listUsers-syntax"></a>
 

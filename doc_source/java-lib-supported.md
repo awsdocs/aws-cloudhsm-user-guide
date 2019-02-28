@@ -14,7 +14,7 @@ For information about the Java Cryptography Architecture \(JCA\) interfaces and 
 The AWS CloudHSM software library for Java enables you to generate the following key types\.
 + **RSA** – 2048\-bit to 4096\-bit RSA keys, in increments of 256 bits\.
 + **AES** – 128, 192, and 256\-bit AES keys\.
-+ ECC key pairs for NIST curves P256 and P384\.
++ ECC key pairs for NIST curves secp256r1 \(P\-256\), secp384r1 \(P\-384\), and secp256k1 \(Blockchain\)\.
 
 In addition to standard parameters, we support the following parameters for each key that is generated\.
 + **Label**: A key label that you can use to search for keys\.
@@ -28,12 +28,13 @@ The AWS CloudHSM software library for Java supports the following algorithm, mod
 
 | Algorithm | Mode | Padding | Notes | 
 | --- | --- | --- | --- | 
-| AES | CBC |  `AES/CBC/NoPadding` `AES/CBC/PKCS5Padding`  | Implements Cipher\.ENCRYPT\_MODE, Cipher\.DECRYPT\_MODE, Cipher\.WRAP\_MODE, Cipher\.UNWRAP\_MODE\. | 
-| AES | ECB | `NoPadding ` | Implements `Cipher.WRAP_MODE` and `Cipher.UNWRAP_MODE`\. Use Transformation AES\. | 
+| AES | CBC |  `AES/CBC/NoPadding` `AES/CBC/PKCS5Padding`  | Implements Cipher\.ENCRYPT\_MODE, Cipher\.DECRYPT\_MODE, Cipher\.WRAP\_MODE, and Cipher\.UNWRAP\_MODE\. | 
+| AES | ECB | `NoPadding ` | Implements `Cipher.ENCRYPT_MODE`, `Cipher.DECRYPT_MODE`, `Cipher.WRAP_MODE`, and `Cipher.UNWRAP_MODE`\. Use Transformation AES\. | 
 | AES | GCM | AES/GCM/NoPadding | Implements `Cipher.ENCRYPT_MODE` and `Cipher.DECRYPT_MODE`\.When performing AES\-GCM encryption, the HSM ignores the initialization vector \(IV\) in the request and uses an IV that it generates\. When the operation completes, you must call `Cipher.getIV()` to get the IV\. | 
 | DESede \(Triple DES\) | CBC |  `DESede/CBC/NoPadding` `DESede/CBC/PKCS5Padding`  |  Implements `Cipher.ENCRYPT_MODE` and `Cipher.DECRYPT_MODE`\. The key generation routines accept a size of 168 or 192 bits\. However, internally, all DESede keys are 192 bits\.  | 
 | RSA | ECB | `RSA/ECB/NoPadding``RSA/ECB/PKCS1Padding` | Implements `Cipher.ENCRYPT_MODE` and `Cipher.DECRYPT_MODE`\. | 
-| RSA | ECB | `RSA/ECB/OAEPPadding` `RSA/ECB/OAEPWithSHA-1ANDMGF1Padding` `RSA/ECB/PKCS1Padding` `RSA/ECB/OAEPPadding` `RSA/ECB/OAEPWithSHA-224ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-256ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-384ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-512ANDMGF1Padding`  |  Implements `Cipher.ENCRYPT_MODE` and `Cipher.DECRYPT_MODE`\. `OAEPPadding` is `OAEP` with the `SHA-1` padding type\.  | 
+| RSA | ECB | `RSA/ECB/OAEPPadding` `RSA/ECB/OAEPWithSHA-1ANDMGF1Padding` `RSA/ECB/OAEPPadding` `RSA/ECB/OAEPWithSHA-224ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-256ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-384ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-512ANDMGF1Padding`  |  Implements `Cipher.ENCRYPT_MODE`, `Cipher.DECRYPT_MODE`, `Cipher.WRAP_MODE`, and `Cipher.UNWRAP_MODE`\. `OAEPPadding` is `OAEP` with the `SHA-1` padding type\.  | 
+| RSAAESWrap | ECB | OAEPPADDING | Implements Cipher\.WRAP\_Mode and Cipher\.UNWRAP\_MODE\. | 
 
 ## Supported Digests<a name="java-digests"></a>
 

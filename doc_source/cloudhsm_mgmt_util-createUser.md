@@ -2,7 +2,7 @@
 
 The createUser command in cloudhsm\_mgmt\_util creates a user on the HSMs\. Only crypto officers \(COs and PCOs\) can run this command\. When you create a user, you specify the user type \(CO or CU\), a user name, and a password\. When the command succeeds, it creates the user in all HSMs in the cluster\. 
 
-However, if your HSM configuration is inaccurate, the user might not be created on all HSMs\. To add the user to any HSMs in which it is missing, use the  createUser command only on the HSMs that are missing that user\. To prevent configuration errors, run the configure tool with the `-m` option\. 
+However, if your HSM configuration is inaccurate, the user might not be created on all HSMs\. To add the user to any HSMs in which it is missing, use the [syncUser](cloudhsm_mgmt_util-syncUser.md) or [createUser](#cloudhsm_mgmt_util-createUser) command only on the HSMs that are missing that user\. To prevent configuration errors, run the [configure](configure-tool.md) tool with the `-m` option\. 
 
 Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
@@ -28,7 +28,7 @@ createUser <user-type> <user-name> <password> [1FA | 2FA]
 These examples show how to use createUser to create new users in your HSMs\.
 
 **Example : Create a Crypto Officer**  
-This example creates a crypto officer \(CO\) on the HSMs in a cluster\. The first command uses loginHSM to log in to the HSM as a crypto officer\.  
+This example creates a crypto officer \(CO\) on the HSMs in a cluster\. The first command uses [loginHSM](cloudhsm_mgmt_util-loginLogout.md) to log in to the HSM as a crypto officer\.  
 
 ```
 aws-cloudhsm> loginHSM CO admin 735782961
@@ -131,7 +131,7 @@ Required: Yes
 
 **<password>**  
 Specifies a password for the user\. Enter a string of 7 to 32 characters\. This value is case\-sensitive\. The password appears in plaintext when you type it\.   
-To change a user password, use changePswd\. Any HSM user can change their own password, but CO users can change the password of any user \(of any type\) on the HSMs\.  
+To change a user password, use [changePswd](cloudhsm_mgmt_util-changePswd.md)\. Any HSM user can change their own password, but CO users can change the password of any user \(of any type\) on the HSMs\.  
 Required: Yes
 
 **1FA \| 2FA**  
@@ -143,4 +143,5 @@ Default: 1FA: Dual factor authentication is not enabled\.
 ## Related Topics<a name="createUser-seealso"></a>
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)
++ [syncUser](cloudhsm_mgmt_util-syncUser.md)
 + [changePswd](cloudhsm_mgmt_util-changePswd.md)

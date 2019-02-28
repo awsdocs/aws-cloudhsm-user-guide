@@ -1,6 +1,6 @@
 # getCert<a name="cloudhsm_mgmt_util-getCert"></a>
 
-With the `getCert` command in cloudhsm\_mgmt\_util, you can retrieve the certificates of a particular HSM in a cluster\. When you run the command, you designate the type of certificate to retrieve\. To do that, you use one of the corresponding integers as described in the [Arguments](#getCert-arguments) section below\. To learn about the role of each of these certificates, see [Verify HSM Identity](verify-hsm-identity.md)\.
+With the getCert command in cloudhsm\_mgmt\_util, you can retrieve the certificates of a particular HSM in a cluster\. When you run the command, you designate the type of certificate to retrieve\. To do that, you use one of the corresponding integers as described in the [Arguments](#getCert-arguments) section below\. To learn about the role of each of these certificates, see [Verify HSM Identity](verify-hsm-identity.md)\.
 
 Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
@@ -17,7 +17,7 @@ Before you begin, you must enter server mode on the target HSM\. For more inform
 
 ## Syntax<a name="getCert-syntax"></a>
 
-To use the `getCert` command once in server mode:
+To use the getCert command once in server mode:
 
 ```
 server> getCert <file-name> <certificate-type>
@@ -33,7 +33,7 @@ aws-cloudhsm> server 0
 Server is in 'E2' mode...
 ```
 
-Then, use the `getCert` command\. In this example, we use `/tmp/PO.crt` as the name of the file to which the certificate will be saved and `4` \(Customer Root Certificate\) as the desired certificate type: 
+Then, use the getCert command\. In this example, we use `/tmp/PO.crt` as the name of the file to which the certificate will be saved and `4` \(Customer Root Certificate\) as the desired certificate type: 
 
 ```
 server0> getCert /tmp/PO.crt 4

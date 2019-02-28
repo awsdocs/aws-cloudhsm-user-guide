@@ -54,6 +54,8 @@ If you used a self\-signed certificate to sign your CSR, you must first import t
 1. In the **Site Bindings** window, choose **Add**\.
 
 1. For **Type**, choose **https**\. For **SSL certificate**, choose the HTTPS certificate that you created at the end of [this tutorial's previous step](ssl-offload-windows-create-csr-and-certificate.md)\.
+**Note**  
+If you encounter an error during this certificate binding, restart your server and retry this step\.
 
 1. Choose **OK**\.
 

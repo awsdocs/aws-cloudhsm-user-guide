@@ -2,9 +2,9 @@
 
 The setAttribute command in key\_mgmt\_util converts a key that is valid only in the current session to a persistent key that exists until you delete it\. It does this by changing the value of the token attribute of the key \(`OBJ_ATTR_TOKEN`\) from false \(`0`\) to true \(`1`\)\. You can only change the attributes of keys that you own\.
 
-You can also use the `setAttribute` command in cloudhsm\_mgmt\_util to change the label, wrap, unwrap, encrypt, and decrypt attributes\.
+You can also use the setAttribute command in cloudhsm\_mgmt\_util to change the label, wrap, unwrap, encrypt, and decrypt attributes\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="setAttribute-syntax"></a>
 

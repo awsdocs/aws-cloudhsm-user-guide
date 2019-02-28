@@ -6,6 +6,9 @@ The following table describes the documentation release history of AWS CloudHSM 
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Added new content](#document-history) | Released AWS CloudHSM client version 2\.0\.0 for all platforms\. For more information, see [AWS CloudHSM Client and Version Software History](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-2-0-0)\. | February 6, 2019 | 
+| [Added region support](#document-history) | Added AWS CloudHSM support for the EU \(Stockholm\) and AWS GovCloud \(US\-East\) regions\. | December 19, 2018 | 
+| [Added new content](#document-history) | Released AWS CloudHSM client version 1\.1\.2 for Windows\. For more information, see [AWS CloudHSM Client and Version Software History](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-1-1-2)\. | November 20, 2018 | 
 | [Updated Known Issues](#document-history) | New content was added to the [Known Issues](https://docs.aws.amazon.com/cloudhsm/latest/userguide/KnownIssues.html) section of the Troubleshooting guide\. | November 8, 2018 | 
 | [Added new content](#document-history) | Released AWS CloudHSM client version 1\.1\.2 for Linux platforms\. For more information, see [AWS CloudHSM Client and Version Software History](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-1-1-2)\. | November 8, 2018 | 
 | [Added region support](#document-history) | Added AWS CloudHSM support for the EU \(Paris\) and Asia Pacific \(Seoul\) regions\. | October 24, 2018 | 

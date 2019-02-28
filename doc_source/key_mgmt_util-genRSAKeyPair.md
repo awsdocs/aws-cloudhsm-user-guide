@@ -2,7 +2,7 @@
 
 The genRSAKeyPair command in the key\_mgmt\_util tool generates an [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) asymmetric key pair\. You specify the key type, modulus length, and a public exponent\. The command generates a modulus of the specified length and creates the key pair\. You can assign an ID, share the key with other HSM users, create nonextractable keys and keys that expire when the session ends\. When the command succeeds, it returns a key handle that the HSM assigns to the key\. You can use the key handle to identify the key to other commands\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 **Tip**  
 To find the attributes of a key that you have created, such as the type, length, label, and ID, use [getAttribute](key_mgmt_util-getAttribute.md)\. To find the keys for a particular user, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. To find keys based on their attribute values, use [findKey](key_mgmt_util-findKey.md)\. 
@@ -41,7 +41,7 @@ Cluster Error Status
 Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
 Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-The next command uses [getAttribute](key_mgmt_util-findKey.md) to get the attributes of the public key that we just created\. It writes the output to the `attr_262159` file\. It is followed by a cat command that gets the content of the attribute file\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
+The next command uses [getAttribute](key_mgmt_util-getAttribute.md) to get the attributes of the public key that we just created\. It writes the output to the `attr_262159` file\. It is followed by a cat command that gets the content of the attribute file\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 The resulting hexadecimal values confirm that it is a public key \(`OBJ_ATTR_CLASS 0x02`\) with a type of RSA \(`OBJ_ATTR_KEY_TYPE 0x00`\)\. You can use this public key to encrypt \(`OBJ_ATTR_ENCRYPT 0x01`\), but not to decrypt \(`OBJ_ATTR_DECRYPT 0x00`\) or wrap \(`OBJ_ATTR_WRAP 0x00`\)\. The results also include the key length \(512, `0x200`\), the modulus, the modulus length \(2048, `0x800`\), and the public exponent \(65541, `0x10005`\)\.   
 
 ```
@@ -174,7 +174,7 @@ Required: No
 
 **\-u**  
 Shares the private key in the pair with the specified users\. This parameter gives other HSM crypto users \(CUs\) permission to use the private key in cryptographic operations\. Public keys can be used by any user without sharing\.  
-Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use shareKey\.   
+Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include the HSM user ID of the current user\. To find HSM user IDs of CUs on the HSM, use [listUsers](key_mgmt_util-listUsers.md)\. To share and unshare existing keys, use [shareKey](cloudhsm_mgmt_util-shareKey.md) in the cloudhsm\_mgmt\_util\.   
 Default: Only the current user can use the private key\.   
 Required: No
 
@@ -185,6 +185,5 @@ Required: No
 
 ## Related Topics<a name="genRSAKeyPair-seealso"></a>
 + [genSymKey](key_mgmt_util-genSymKey.md)
-+ createKeyPair
 + [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)
 + [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)

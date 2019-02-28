@@ -64,4 +64,3 @@ Getting HSM Info on 3 nodes
 
 ## Related Topics<a name="getHSMInfo-seealso"></a>
 + [info](cloudhsm_mgmt_util-info.md)
-+ loginHSM

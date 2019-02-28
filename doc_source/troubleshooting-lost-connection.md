@@ -73,8 +73,14 @@ To resolve these errors, update the configuration file with the IP address of an
 
 ------
 #### [ Windows ]
+   + For Windows client 1\.1\.2\+:
 
-   You can use **Ctrl**\+**C** to stop the client\.
+     ```
+     C:\Program Files\Amazon\CloudHSM>net.exe stop AWSCloudHSMClient
+     ```
+   + For Windows clients 1\.1\.1 and older:
+
+     Use **Ctrl**\+**C** in the command window where you started the AWS CloudHSM client\.
 
 ------
 
@@ -137,9 +143,15 @@ To resolve these errors, update the configuration file with the IP address of an
 
 ------
 #### [ Windows ]
+   + For Windows client 1\.1\.2\+:
 
-   ```
-   C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
-   ```
+     ```
+     C:\Program Files\Amazon\CloudHSM>net.exe start AWSCloudHSMClient
+     ```
+   + For Windows clients 1\.1\.1 and older:
+
+     ```
+     C:\Program Files\Amazon\CloudHSM>start "cloudhsm_client" cloudhsm_client.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_client.cfg
+     ```
 
 ------

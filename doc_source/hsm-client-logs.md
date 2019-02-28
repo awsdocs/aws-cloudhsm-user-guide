@@ -54,8 +54,12 @@ journalctl -f -u cloudhsm-client
 ```
 
 ------
-#### [ Windows Server ]
+#### [ Windows ]
++ For Windows client 1\.1\.2\+:
 
-In Microsoft Windows Server, the AWS CloudHSM client logs are not written to a file\. The logs are displayed at the command prompt or in the PowerShell window where you started the AWS CloudHSM client\.
+  AWS CloudHSM client logs are written to a `cloudhsm.log` file in the AWS CloudHSM program files folder \(`C:\Program Files\Amazon\CloudHSM\`\)\. Each log file name is suffixed with a timestamp indicating when the AWS CloudHSM client was started\.
++ For Windows client 1\.1\.1 and older:
+
+  The client logs are not written to a file\. The logs are displayed at the command prompt or in the PowerShell window where you started the AWS CloudHSM client\.
 
 ------

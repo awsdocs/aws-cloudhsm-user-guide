@@ -4,7 +4,7 @@ The aesWrapUnwrap command encrypts or decrypts the contents of a file on disk\. 
 
 aesWrapUnwrap uses [AES Key Wrap](https://tools.ietf.org/html/rfc3394)\. It uses an AES key on the HSM as the wrapping or unwrapping key\. Then it writes the result to another file on disk\. 
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [login](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
 ## Syntax<a name="aesWrapUnwrap-syntax"></a>
 
@@ -78,9 +78,8 @@ Specifies the file to wrap\. Enter a file that contains less than 4 KB \(4096 by
 Required: Yes
 
 **\-w**  
-Specifies the wrapping key\. Type the key handle of an AES key on the HSM\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
-To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to create an AES key \(type 31\)\. To verify that a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute, which is represented by constant `262`\.  
-Key handle 4 represents an unsupported internal key\. We recommend that you use an AES key that you create and manage as the wrapping key\.
+Specifies the wrapping key\. Enter the key handle of an AES key or RSA key on the HSM\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
+To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to generate an AES key \(type 31\) or [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md) to generate an RSA key pair \(type 0\)\. If you are using an RSA key pair, be sure to wrap the key with one of the keys, and unwrap it with the other\. To verify that a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute, which is represented by constant `262`\.  
 Required: Yes
 
 **\-i**  

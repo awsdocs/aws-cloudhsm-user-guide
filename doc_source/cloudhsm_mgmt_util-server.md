@@ -1,6 +1,6 @@
 # server<a name="cloudhsm_mgmt_util-server"></a>
 
-Normally, when you issue a command in cloudhsm\_mgmt\_util, the command effects all HSMs in the designated cluster \(*global mode\)*\. However, there may be circumstances for which you need to issue commands to a single HSM\. For instance, in the event that automatic synchronization fails, you may need to sync keys and users on an HSM in order to maintain consistency across the cluster\. You can use the `server` command in the cloudhsm\_mgmt\_util to enter *server mode* and interact directly with a particular HSM instance\.
+Normally, when you issue a command in cloudhsm\_mgmt\_util, the command effects all HSMs in the designated cluster \(*global mode\)*\. However, there may be circumstances for which you need to issue commands to a single HSM\. For instance, in the event that automatic synchronization fails, you may need to sync keys and users on an HSM in order to maintain consistency across the cluster\. You can use the server command in the cloudhsm\_mgmt\_util to enter *server mode* and interact directly with a particular HSM instance\.
 
 Upon successful initiation, the `aws-cloudhsm>` command prompt is replaced with the `server>` command prompt\.
 
@@ -41,7 +41,7 @@ aws-cloudhsm> server 0
 Server is in 'E2' mode...
 ```
 
-In order to exit server mode, use the `exit` command\.
+In order to exit server mode, use the exit command\.
 
 ```
 server0> exit

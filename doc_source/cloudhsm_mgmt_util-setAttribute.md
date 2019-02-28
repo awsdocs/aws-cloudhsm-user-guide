@@ -1,6 +1,6 @@
 # setAttribute<a name="cloudhsm_mgmt_util-setAttribute"></a>
 
-The `setAttribute` command in cloudhsm\_mgmt\_util changes the value of the label, encrypt, decrypt, wrap, and unwrap attributes of a key in the HSMs\. You can also use the [setAttribute](key_mgmt_util-setAttribute.md) command in key\_mgmt\_util to convert a session key to a persistent key\. You can only change the attributes of keys that you own\.
+The setAttribute command in cloudhsm\_mgmt\_util changes the value of the label, encrypt, decrypt, wrap, and unwrap attributes of a key in the HSMs\. You can also use the [setAttribute](key_mgmt_util-setAttribute.md) command in key\_mgmt\_util to convert a session key to a persistent key\. You can only change the attributes of keys that you own\.
 
 Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
@@ -79,7 +79,7 @@ OBJ_ATTR_DECRYPT
 0x00000001
 ```
 
-This command uses `setAttribute` to change the value of the decrypt attribute \(attribute `261`\) of key 14 to `0`\. This disables the decrypt functionality on the key\. 
+This command uses setAttribute to change the value of the decrypt attribute \(attribute `261`\) of key 14 to `0`\. This disables the decrypt functionality on the key\. 
 
 The output shows that the command succeeded on both HSMs in the cluster\.
 
@@ -97,7 +97,7 @@ setAttribute success on server 0(10.0.0.1)
 setAttribute success on server 1(10.0.0.2)
 ```
 
-The final command repeats the `getAttribute` command\. Again, it gets the decrypt attribute \(attribute `261`\) of key 14\.
+The final command repeats the getAttribute command\. Again, it gets the decrypt attribute \(attribute `261`\) of key 14\.
 
 This time, the output shows that the value of the decrypt attribute is false \(0\) on both HSMs in the cluster\.
 

@@ -47,7 +47,7 @@ The following table lists HSM operations and whether each type of HSM user can p
 | Add, remove users | Yes | No | No | No | 
 | Get sync status³ | Yes | Yes | Yes | No | 
 | Extract, insert masked objects⁴ | Yes | Yes | Yes | No | 
-| Create, share, delete keys | No | Yes | No | No | 
+| Key management functions⁵ | No | Yes | No | No | 
 | Encrypt, decrypt | No | Yes | No | No | 
 | Sign, verify | No | Yes | No | No | 
 | Generate digests and HMACs | No | Yes | No | No | 
@@ -59,3 +59,5 @@ The following table lists HSM operations and whether each type of HSM user can p
 ³The user can get a set of digests \(hashes\) that correspond to the keys on the HSM\. An application can compare these sets of digests to understand the synchronization status of HSMs in a cluster\.
 
 ⁴Masked objects are keys that are encrypted before they leave the HSM\. They cannot be decrypted outside of the HSM\. They are only decrypted after they are inserted into an HSM that is in the same cluster as the HSM from which they were extracted\. An application can extract and insert masked objects to synchronize the HSMs in a cluster\.
+
+⁵Key management functions include creating, deleting, wrapping, unwrapping, and modifying the attributes of keys\.

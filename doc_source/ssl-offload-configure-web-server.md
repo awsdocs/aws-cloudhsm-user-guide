@@ -86,31 +86,114 @@ To update your web server configuration, complete the steps in one of the follow
 
    Save the file\. This requires Linux root permissions\.
 
-1. Run the following command to make a backup copy of the file named `/etc/sysconfig/nginx`\.
+1. Back up the `systemd` configuration file, and then set the `EnvironmentFile` path\.
+
+------
+#### [ Amazon Linux ]
+
+   No action required\.
+
+------
+#### [ Amazon Linux 2 ]
+
+   1.  Back up the `nginx.service` file\. 
+
+      ```
+      $ sudo cp /lib/systemd/system/nginx.service /lib/systemd/system/nginx.service.backup
+      ```
+
+   1.  Open the `/lib/systemd/system/nginx.service` file in a text editor, and then under the \[Service\] section, add the following path: 
+
+      ```
+      EnvironmentFile=/etc/sysconfig/nginx
+      ```
+
+------
+#### [ Ubuntu 16\.04 ]
+
+   1.  Back up the `nginx.service` file\. 
+
+      ```
+      $ sudo cp /lib/systemd/system/nginx.service /lib/systemd/system/nginx.service.backup
+      ```
+
+   1.  Open the `/lib/systemd/system/nginx.service` file in a text editor, and then under the \[Service\] section, add the following path: 
+
+      ```
+      EnvironmentFile=/etc/sysconfig/nginx
+      ```
+
+------
+
+1.  Check if the `/etc/sysconfig/nginx` file exists, and then do one of the following: 
+   + If the file exists, back up the file by running the following command:
+
+     ```
+     $ sudo cp /etc/sysconfig/nginx /etc/sysconfig/nginx.backup
+     ```
+   +  If the file doesn't exist, open a text editor, and then create a file named `nginx` in the `/etc/sysconfig/` folder\. 
+**Tip**  
+There is no need to back up the newly created file\.
+
+1.  Open the `/etc/sysconfig/nginx` file in a text editor, and then add the Cryptography User \(CU\) credentials: 
 
    ```
-   sudo cp /etc/sysconfig/nginx /etc/sysconfig/nginx.backup
+   $ n3fips_password=<CU user name>:<password>
    ```
 
-1. Use a text editor to edit the file named `/etc/sysconfig/nginx`\. Add the following line, specifying the user name and password of the cryptographic user \(CU\)\. Replace *<CU user name>* with the user name of the cryptographic user\. Replace *<password>* with the CU password\. 
+    Replace the *<CU user name>* and *<password>* with the cryptography user credentials\.
+
+    Save the file\. This requires Linux root permissions\. 
+
+1. Start the NGINX web server\.
+
+------
+#### [ Amazon Linux ]
 
    ```
-   export n3fips_password=<CU user name>:<password>
+   $ sudo service nginx start
    ```
 
-   Save the file\. This requires Linux root permissions\.
-
-1. Run the following command to start the NGINX web server\.
+------
+#### [ Amazon Linux 2 ]
 
    ```
-   sudo service nginx start
+   $ sudo systemctl start nginx
    ```
 
-1. Run the following command if you want to configure your server to start NGINX when the server starts\. 
+------
+#### [ Ubuntu 16\.04 ]
+
+   ```
+   $ sudo systemctl start nginx
+   ```
+
+------
+
+1. Configure your server to start NGINX when the server starts, if needed\. 
+
+------
+#### [ Amazon Linux ]
 
    ```
    $ sudo chkconfig nginx on
    ```
+
+------
+#### [ Amazon Linux 2 ]
+
+   ```
+   $ sudo systemctl enable nginx
+   ```
+
+------
+#### [ Ubuntu 16\.04 ]
+
+   ```
+   $ sudo systemctl enable nginx
+   ```
+
+------
 
 After you update your web server configuration, go to [Step 4: Enable HTTPS Traffic and Verify the Certificate](ssl-offload-enable-traffic-and-verify-certificate.md)\.<a name="update-web-server-config-apache"></a>
 

@@ -96,10 +96,10 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 
 ## Known Issues for the JCE SDK<a name="ki-jce-sdk"></a>
 
-**Issue: **Key wrap and key unwrap functions are not implemented\.
-+ **Impact: **You cannot programmatically wrap or unwrap keys using the JCE\.
-+ **Workaround: **You can script key\_mgmt\_util to wrap and unwrap keys\.
-+ **Resolution status: **We are planning to add support for key wrap and unwrap directly through the JCE\. The update will be announced on the version history page once available\. 
+**Issue: **You cannot specify attributes when unwrapping keys\.
++ **Impact:** All keys are unwrapped as exportable session keys\.
++ **Workaround: **You can script key\_mgmt\_util to unwrap keys with limited attribute customization, or use the PKCS \#11 library to unwrap keys with full template support\.
++ **Resolution status: **We are planning to add full key parameter specification for the JCE SDK's unwrap command in a future release\. The update will be announced on the version history page once available\.
 
 **Issue: **The JCE KeyStore is read only\.
 + **Impact: **You cannot store an object type that is not supported by the HSM in the JCE keystore today\. Specifically, you cannot store certificates in the keystore\. This precludes interoperability with tools like jarsigner, which expect to find the certificate in the keystore\. 
