@@ -2,8 +2,6 @@
 
 AWS CloudHSM automatically synchronizes data among all HSMs in a cluster\. The configure tool updates the HSM data in the configuration files that the synchronization mechanisms use\. Use configure to refresh the HSM data before you use the command line tools, especially when the HSMs in the cluster have changed\.
 
-Before using the key\_mgmt\_util tool, update the `-a` parameter of configure\. Before using the cloudhsm\_mgmt\_util tool, update the `-a` and `-m` parameters of configure\. You can also run the configure tool's `--ssl` command to update SSL keys and certificates\.
-
 ## Syntax<a name="configure-tool-syntax"></a>
 
 ```

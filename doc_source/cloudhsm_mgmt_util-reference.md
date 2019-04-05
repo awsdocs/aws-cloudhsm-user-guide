@@ -18,6 +18,9 @@ To get the syntax for a cloudhsm\_mgmt\_util command, run the following command:
 aws-cloudhsm> help <command-name>
 ```
 
+**Note**  
+Use the syntax as per the documentation\. While the built\-in software help may provide additional options, these should not be considered supported and should not be utilized in production code\.
+
 To run a command, enter the command name, or enough of the name to distinguish it from the names of other cloudhsm\_mgmt\_util commands\. 
 
 For example, to get a list of users on the HSMs, enter listUsers or listU\.

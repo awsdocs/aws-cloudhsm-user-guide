@@ -2,7 +2,7 @@
 
 Update your web server software's configuration to use the HTTPS certificate and corresponding fake PEM private key that you created in the [previous step](ssl-offload-import-or-generate-private-key-and-certificate.md)\. This will finish setting up your Linux web server software for SSL/TLS offload with AWS CloudHSM\.
 
-To update your web server configuration, complete the steps in one of the following procedures\. Choose the procedure that corresponds to your web server software\. 
+To update your web server configuration, complete the steps from one of the following procedures\. Choose the procedure that corresponds to your web server software\. 
 + [Update the configuration for NGINX](#update-web-server-config-nginx)
 + [Update the configuration for Apache HTTP Server](#update-web-server-config-apache)<a name="update-web-server-config-nginx"></a>
 
@@ -34,13 +34,13 @@ To update your web server configuration, complete the steps in one of the follow
    sudo chown nginx /etc/pki/nginx/server.crt /etc/pki/nginx/private/server.key
    ```
 
-1. Run the following command to make a backup copy of the file named `/etc/nginx/nginx.conf`\.
+1. Run the following command to back up the `/etc/nginx/nginx.conf` file\.
 
    ```
    sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
    ```
 
-1. Use a text editor to edit the file named `/etc/nginx/nginx.conf`\. At the top of the file, add the following line: 
+1. Use a text editor to edit the `/etc/nginx/nginx.conf` file\. At the top of the file, add the following command: 
 
    ```
    ssl_engine cloudhsm;
@@ -109,6 +109,26 @@ To update your web server configuration, complete the steps in one of the follow
       ```
 
 ------
+#### [ CentOS 6 ]
+
+   No action required\.
+
+------
+#### [ CentOS 7 ]
+
+   No action required\.
+
+------
+#### [ RHEL 6 ]
+
+   No action required\.
+
+------
+#### [ RHEL 7 ]
+
+   No action required\.
+
+------
 #### [ Ubuntu 16\.04 ]
 
    1.  Back up the `nginx.service` file\. 
@@ -162,6 +182,26 @@ There is no need to back up the newly created file\.
    ```
 
 ------
+#### [ CentOS 6 ]
+
+   No action required\.
+
+------
+#### [ CentOS 7 ]
+
+   No action required\.
+
+------
+#### [ RHEL 6 ]
+
+   No action required\.
+
+------
+#### [ RHEL 7 ]
+
+   No action required\.
+
+------
 #### [ Ubuntu 16\.04 ]
 
    ```
@@ -185,6 +225,26 @@ There is no need to back up the newly created file\.
    ```
    $ sudo systemctl enable nginx
    ```
+
+------
+#### [ CentOS 6 ]
+
+   No action required\.
+
+------
+#### [ CentOS 7 ]
+
+   No action required\.
+
+------
+#### [ RHEL 6 ]
+
+   No action required\.
+
+------
+#### [ RHEL 7 ]
+
+   No action required\.
 
 ------
 #### [ Ubuntu 16\.04 ]
@@ -245,13 +305,13 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS Traf
 
    Save the file\. This requires Linux root permissions\.
 
-1. Run the following command to make a backup copy of the file named `/etc/sysconfig/httpd`\.
+1. Run the following command to back up the `/etc/apache2/envvars` file\.
 
    ```
-   sudo cp /etc/sysconfig/httpd /etc/sysconfig/httpd.backup
+   sudo cp /etc/apache2/envvars /etc/apache2/envvars.backup
    ```
 
-1. Use a text editor to edit the file named `/etc/sysconfig/httpd`\. Add the following line, specifying the user name and password of the cryptographic user \(CU\)\. Replace *<CU user name>* with the name of the cryptographic user\. Replace *<password>* with the CU password\.
+1. Use a text editor to edit the `/etc/apache2/envvars` file\. Add the following command, specifying the user name and password of the crypto user \(CU\)\. Replace *<CU user name>* with the name of the crypto user\. Replace *<password>* with the CU password\.
 
    ```
    export n3fips_password=<CU user name>:<password>

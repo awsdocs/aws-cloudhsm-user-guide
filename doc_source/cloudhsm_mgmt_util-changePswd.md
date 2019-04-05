@@ -2,7 +2,10 @@
 
 The changePswd command in cloudhsm\_mgmt\_util changes the password of an existing user on the HSMs in the cluster\. 
 
-Any user can change their own password\. Crypto officers \(COs and PCOs\) can also change the password of any other user\. You do not need to enter the current password to make the change\. However, you cannot change the password of a user who is logged into the AWS CloudHSM client or key\_mgmt\_util\.
+Any user can change their own password\. In addition, Crypto officers \(COs and PCOs\) can change the password of another CO, crypto user \(CU\), or application user \(AU\)\. You do not need to enter the current password to make the change\.
+
+**Note**  
+You cannot change the password of a user who is currently logged into the AWS CloudHSM client or key\_mgmt\_util\.
 
 Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
@@ -24,26 +27,27 @@ changePswd <user-type> <user-name> <password>
 
 ## Examples<a name="changePswd-examples"></a>
 
-These examples show how to use changePassword to create new users in your HSMs\.
+The following examples show how to use changePassword to reset the password for the current user or any other user in your HSMs\.
 
 **Example : Change Your Password**  
-Any user on the HSMs can use changePswd to change their own password\.   
-The first command uses [info](cloudhsm_mgmt_util-info.md) to get the current user\. The output shows that the current user, `bob`, is a crypto user \(CU\)\.  
+Any user on the HSMs can use changePswd to change their own password\. Before you change the password, use [info](cloudhsm_mgmt_util-info.md) to get information about each of the HSMs in the cluster, including the username and the user type of the logged in user\.   
+The following output shows that Bob is currently logged in as a crypto user\(CU\)\.  
 
 ```
-aws-cloudhsm> info server 0
-Id      Name            Hostname        Port    State           Partition          LoginState
-0       10.0.3.10       10.0.3.10       2225    Connected       hsm-aaaabbbbccc    Logged in as 'bob(CU)'
-
+        aws-cloudhsm> info server 0
+        
+Id      Name                    Hostname         Port   State           Partition        LoginState
+0       10.1.9.193              10.1.9.193      2225    Connected       hsm-jqici4covtv  Logged in as 'bob(CU)'
+        
 aws-cloudhsm> info server 1
-Id      Name            Hostname        Port    State           Partition          LoginState
-0       10.0.3.10       10.0.3.10       2225    Connected       hsm-ccccaaaabbb    Logged in as 'bob(CU)'
+        
+Id      Name                    Hostname         Port   State           Partition        LoginState
+1       10.1.10.7               10.1.10.7       2225    Connected       hsm-ogi3sywxbqx  Logged in as 'bob(CU)'
 ```
-To change his password, `bob` runs changePswd with a new password, `newPassword`\.  
-When the command completes, the password change is effective\.  
+To change password, Bob runs changePswd followed with the user type, username, and a new password\.  
 
 ```
-aws-cloudhsm> chngePswd CU bob newPassword
+aws-cloudhsm> changePswd CU bob newPassword
 
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
@@ -57,22 +61,49 @@ Changing password for bob(CU) on 2 nodes
 ```
 
 **Example : Change the Password of Another User**  
-This example shows how to change the password of a different user\. Any crypto officer \(CO, PCO\) can change the password of any user on the HSMs without specifying the existing password\.  
-The first command uses [info](cloudhsm_mgmt_util-info.md) to confirm that `alice`, a CO, is logged into the HSMs in the cluster\.   
+You must be a CO or PCO to change the password of another CO, CU, or AU on the HSMs\. Before you change the password for another user, use the [info](cloudhsm_mgmt_util-info.md) command to confirm that your user type is either CO or PCO\.  
+The following output confirms that Alice, who is a CO, is currently logged in\.  
 
 ```
 aws-cloudhsm>info server 0
+        
 Id      Name             Hostname         Port   State           Partition        LoginState
-0       10.0.3.10        10.0.3.10        2225   Connected       hsm-aaaabbbbccc  Logged in as 'alice(CO)'
+0       10.1.9.193       10.1.9.193        2225   Connected      hsm-jqici4covtv  Logged in as 'alice(CO)'
+        
 
 aws-cloudhsm>info server 1
+        
 Id      Name             Hostname         Port   State           Partition        LoginState
-0       10.0.3.10        10.0.3.10        2225   Connected       hsm-ccccaaaabbb  Logged in as 'alice(CO)'
+0       10.1.10.7        10.1.10.7        2225   Connected       hsm-ogi3sywxbqx  Logged in as 'alice(CO)'
 ```
-This command uses changePswd to change the password of `officer1`, another CO on the HSMs\. In this case, the command resets the password to `defaultPassword`, the password that this fictitious enterprise uses as its default\. Later, `officer1` can reset their password to a more secure value\.  
+ Alice wants to reset the password of another user, John\. Before she changes the password, she uses the [listUsers](cloudhsm_mgmt_util-listUsers.md) command to verify John's user type\.   
+ The following output lists John as a CO user\.   
 
 ```
-aws-cloudhsm>changePswd CO officer1 defaultPassword
+aws-cloudhsm> listUsers
+Users on server 0(10.1.9.193):
+Number of users found:5
+
+    User Id             User Type       User Name            MofnPubKey    LoginFailureCnt         2FA
+         1              PCO             admin                     YES               0               NO
+         2              AU              jane                       NO               0               NO
+         3              CU              bob                        NO               0               NO
+         4              CU              alice                      NO               0               NO
+         5              CO              john                       NO               0               NO
+Users on server 1(10.1.10.7):
+Number of users found:5
+
+    User Id             User Type       User Name            MofnPubKey    LoginFailureCnt         2FA
+         1              PCO             admin                     YES               0               NO
+         2              AU              jane                       NO               0               NO
+         3              CU              bob                        NO               0               NO
+         4              CO              alice                      NO               0               NO
+         5              CO              john                       NO               0               NO
+```
+To change the password, Alice runs changePswd followed with John's user type, username, and a new password\.  
+
+```
+aws-cloudhsm>changePswd CO john newPassword
 
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
@@ -82,7 +113,7 @@ ensure this operation is executed on all nodes in the cluster.
 ****************************************************************
 
 Do you want to continue(y/n)?y
-Changing password for officer1(CO) on 2 nodes
+Changing password for john(CO) on 2 nodes
 ```
 
 ## Arguments<a name="changePswd-params"></a>
@@ -90,7 +121,7 @@ Changing password for officer1(CO) on 2 nodes
 Because this command does not have named parameters, you must enter the arguments in the order specified in the syntax diagram\.
 
 ```
-changePswd <user-type> <user-name> <password> [1FA | 2FA]
+changePswd <user-type> <user-name> <password>
 ```
 
 **<user\-type>**  
@@ -107,13 +138,8 @@ Required: Yes
 Specifies a new password for the user\. Enter a string of 7 to 32 characters\. This value is case sensitive\. The password appears in plaintext when you type it\.   
 Required: Yes
 
-**1FA \| 2FA**  
-Enables or disables dual\-factor authentication for the new user\. Enter `1FA` or `2FA`\.   
-This parameter is valid only when the cluster has been configured for dual\-factor authentication\.  
-Required: No  
-Default: `1FA`\. Dual factor authentication is not enabled\.
-
 ## Related Topics<a name="changePswd-seealso"></a>
++ [info](cloudhsm_mgmt_util-info.md)
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
 + [createUser](cloudhsm_mgmt_util-createUser.md)
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)

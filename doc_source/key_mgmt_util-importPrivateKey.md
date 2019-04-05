@@ -1,8 +1,11 @@
 # importPrivateKey<a name="key_mgmt_util-importPrivateKey"></a>
 
-The importPrivateKey command in key\_mgmt\_util imports an asymmetric private key into an HSM\. You can use it to import private keys that were generated outside of the HSM\. You can also use this command import keys that were exported from an HSM, such as those exported by the [exportPrivateKey](key_mgmt_util-exportPrivateKey.md) command\.
+The importPrivateKey command in key\_mgmt\_util imports an asymmetric private key into an HSM\. You can use it to import private keys that were generated outside of the HSM\. You can also use this command to import keys that were exported from an HSM, such as those exported by the [exportPrivateKey](key_mgmt_util-exportPrivateKey.md) command\.
 
-During the import process, importPrivateKey uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) the private key\. This way, the private key file maintains integrity during transit\. For more information, see [wrapKey](key_mgmt_util-wrapKey.md)\.
+During the import process, importPrivateKey uses an AES key \(the *wrapping key*\) that you select to *wrap* \(encrypt\) the private key\. By wrapping the private key, it remains confidential during transit\. For more information, see [wrapKey](key_mgmt_util-wrapKey.md)\.
+
+**Note**  
+ This command does not offer the option to mark the imported key as non\-exportable\. 
 
 Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\.
 

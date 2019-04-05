@@ -2,9 +2,9 @@
 
 Before you can use the AWS CloudHSM software library for Java, you need the AWS CloudHSM client\. 
 
-The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster, and the Java library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the Client \(Linux\)](install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
+The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster\. The Java library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the Client \(Linux\)](install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
 
-The AWS CloudHSM software library for Java is supported only on Linux and compatible operating systems\. 
+Note that the AWS CloudHSM software library for Java is supported only on Linux and compatible operating systems\. 
 
 ------
 #### [ Amazon Linux ]
@@ -59,15 +59,13 @@ $ sudo service cloudhsm-client start
 
 **Topics**
 + [Installing the Java Library](#install-java-library)
-+ [Testing the Java Library](#test-java-library)
++ [Validating the Installation](#validate-install)
 + [Providing Credentials to the Java Library](#java-library-credentials)
 + [Key Management Basics in the Java Library](#java-library-key-basics)
 
 ## Installing the Java Library<a name="install-java-library"></a>
 
-Complete the following steps to install or update the AWS CloudHSM software library for Java\.
-
-Use the following commands to download and install the Java library\. This library is supported only on Linux and compatible operating systems\. 
+Use the following commands to download and install or update the AWS CloudHSM Java library\. This library is supported only on Linux and compatible operating systems\. 
 
 ------
 #### [ Amazon Linux ]
@@ -148,7 +146,7 @@ $ sudo dpkg -i cloudhsm-client-jce_latest_amd64.deb
 
 ------
 
-After you complete the preceding steps, you can find the following Java library files:
+After you run the preceding commands, you can find the following Java library files:
 + `/opt/cloudhsm/java/cloudhsm-version.jar`
 + `/opt/cloudhsm/java/cloudhsm-test-version.jar`
 + `/opt/cloudhsm/java/hamcrest-all-1.3.jar`
@@ -157,11 +155,11 @@ After you complete the preceding steps, you can find the following Java library 
 + `/opt/cloudhsm/java/log4j-core-2.8.jar`
 + `/opt/cloudhsm/lib/libcaviumjca.so`
 
-## Testing the Java Library<a name="test-java-library"></a>
+## Validating the Installation<a name="validate-install"></a>
 
-To test that the AWS CloudHSM software library for Java works with the HSMs in your cluster, complete the following steps\.
+Perform basic operations on the HSM to validate the installation\.
 
-**To test the Java library with your cluster**
+**To validate Java library installation**
 
 1. \(Optional\) If you don't already have Java installed in your environment, use the following command to install it\. 
 
@@ -199,7 +197,7 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
    $ export HSM_PASSWORD=<password>
    ```
 
-1. Use the following command to run the Basic Functionality test\. If successful, the command's output should be similar to the one below\.
+1. Use the following command to run the basic functionality test\. If successful, the command's output should be similar to the one that follows\.
 
    ```
    $ java8 -classpath "/opt/cloudhsm/java/*" org.junit.runner.JUnitCore TestBasicFunctionality
@@ -223,24 +221,19 @@ To test that the AWS CloudHSM software library for Java works with the HSMs in y
 
 ## Providing Credentials to the Java Library<a name="java-library-credentials"></a>
 
-Your Java application must be authenticated by the HSMs in your cluster before it can use them\. Each application can use one session, which is established by providing credentials in one of the following ways\. In the following examples, replace *<HSM user name>* and *<password>* with the credentials of a crypto user \(CU\)\.
+HSMs need to authenticate your Java application before the application can use them\. Each application can use one session\. HSMs authenticate a session by using either explicit login or implicit login method\.
 
-**Note**  
-The search order for credentials goes as follows\. If any credentials are found at one step, the search will not continue, even if the credentials are invalid:  
-Explicitly provided
-Properties file
-System properties
-Environment Variables
+**Explicit login** – This method lets you provide CloudHSM credentials directly in the application\. It uses the `LoginManager.login()` method, where you pass the CU user name, password, and the HSM partition ID\. For more information about using the explicit login method, see the [Login to an HSM](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/LoginRunner.java) code example\. 
 
-The first of the following examples shows how to use the `LoginManager` class to manage sessions in your code\. Instead, you can let the library implicitly manage sessions when your application starts, as shown in the remaining examples\. However in these latter cases it might be difficult to understand error conditions when the provided credentials are invalid or the HSMs are having problems\. When you use the `LoginManager` class, you have more control over how your application deals with failures\.
-+ Add a file named `HsmCredentials.properties` to your application's `CLASSPATH`\. The file's contents should look like the following:
+**Implicit login** – This method lets you set CloudHSM credentials either in a new property file, system properties, or as environment variables\.
++ **New property file** – Create a new file named `HsmCredentials.properties` and add it to your application's `CLASSPATH`\. The file should contain the following:
 
   ```
   HSM_PARTITION = PARTITION_1
   HSM_USER = <HSM user name>
   HSM_PASSWORD = <password>
   ```
-+ Provide Java system properties when running your application\. The following examples show two different ways that you can do this:
++ **System properties** – Set credentials through system properties when running your application\. The following examples show two different ways that you can do this:
 
   ```
   $ java -DHSM_PARTITION=PARTITION_1 -DHSM_USER=<HSM user name> -DHSM_PASSWORD=<password>
@@ -251,32 +244,27 @@ The first of the following examples shows how to use the `LoginManager` class to
   System.setProperty("HSM_USER","<HSM user name>");
   System.setProperty("HSM_PASSWORD","<password>");
   ```
-+ Set system environment variables\. For example:
++ **Environment variables** – Set credentials as environment variables\.
 
   ```
   $ export HSM_PARTITION=PARTITION_1
-  ```
-
-  ```
   $ export HSM_USER=<HSM user name>
-  ```
-
-  ```
   $ export HSM_PASSWORD=<password>
   ```
 
+Credentials might not be available if the application does not provide them or if you attempt an operation before the HSM authenticates session\. In those cases, the CloudHSM software library for Java searches for the credentials in the following order:
+
+1. `HsmCredentials.properties`
+
+1. System properties
+
+1. Environment variables
+
+**Error handling**  
+The error handling is easier with the explicit login than the implicit login method\. When you use the `LoginManager` class, you have more control over how your application deals with failures\. The implicit login method makes error handling difficult to understand when the credentials are invalid or the HSMs are having problems in authenticating session\.
+
 ## Key Management Basics in the Java Library<a name="java-library-key-basics"></a>
 
-The following key management basics can help you get started with the AWS CloudHSM software library for Java\.
+The basics on key management in the Java library involve importing keys, exporting keys, loading keys by handle, or deleting keys\. For more information on managing keys, see the [Manage keys](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) code example\.
 
-**To import a key implicitly**  
-Pass the key to any API operation that accepts one\. If the key is the correct type for the specified operation, the HSMs automatically import and use the provided key\.
-
-**To import a key explicitly**  
-Use the utility class named `ImportKey` to import a key and set its attributes\.
-
-**To make a session key persist**  
-Use the `Util.persistKey()` method to make a session key into a token key—that is, to persist the key in the HSMs\.
-
-**To delete a key**  
-Use the `Util.deleteKey()` method to delete a key\.
+You can also find more Java library code examples at [Java Samples](java-samples.md)\.

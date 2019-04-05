@@ -20,7 +20,7 @@ Because this command does not have named parameters, you must enter the argument
 **User Type**: Crypto officer \(CO, PCO\)
 
 ```
-createUser <user-type> <user-name> <password> [1FA | 2FA]
+createUser <user-type> <user-name> <password> 
 ```
 
 ## Examples<a name="createUser-examples"></a>
@@ -111,7 +111,7 @@ Creating User bob(CU) on 3 nodes
 Because this command does not have named parameters, you must enter the arguments in the order specified in the syntax diagram\.
 
 ```
-createUser <user-type> <user-name> <password> [ 1FA | 2FA ]
+createUser <user-type> <user-name> <password> 
 ```
 
 **<user\-type>**  
@@ -133,12 +133,6 @@ Required: Yes
 Specifies a password for the user\. Enter a string of 7 to 32 characters\. This value is case\-sensitive\. The password appears in plaintext when you type it\.   
 To change a user password, use [changePswd](cloudhsm_mgmt_util-changePswd.md)\. Any HSM user can change their own password, but CO users can change the password of any user \(of any type\) on the HSMs\.  
 Required: Yes
-
-**1FA \| 2FA**  
-Enables or disables dual\-factor authentication for the new user\. Enter `1FA` or `2FA`\.  
-This parameter is valid only when the cluster has been configured for dual\-factor authentication\.  
-Required: No  
-Default: 1FA: Dual factor authentication is not enabled\.
 
 ## Related Topics<a name="createUser-seealso"></a>
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)

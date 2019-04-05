@@ -34,7 +34,7 @@ This is AWS CloudHSM's root certificate\. You can view and download this certifi
 This is the hardware manufacturer's root certificate\. You can view and download this certificate at [https://www\.cavium\.com/LS/TAmanuCert/](https://www.cavium.com/LS/TAmanuCert/)\.
 
 **AWS Hardware Certificate**  
-AWS CloudHSM created this certificate when it claimed the HSM hardware\. This certificate asserts that AWS CloudHSM owns the hardware\.
+AWS CloudHSM created this certificate when the HSM hardware was added to the fleet\. This certificate asserts that AWS CloudHSM owns the hardware\.
 
 **Manufacturer Hardware Certificate**  
 The HSM hardware manufacturer created this certificate when it manufactured the HSM hardware\. This certificate asserts that the manufacturer created the hardware\.
