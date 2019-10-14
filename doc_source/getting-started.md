@@ -6,6 +6,10 @@ The following topics contain information to help you create, initialize, and act
 
 1. Follow the steps in [Create IAM Administrators](create-iam-user.md) to set up your IAM users and groups\.
 
+1. Follow the steps in [Create a VPC](create-vpc.md)\.
+
+1. Follow the steps in [Create a private subnet](create-subnets.md)\.
+
 1. Follow the steps in [Create a Cluster](create-cluster.md)\.
 
 1. \(First time only\) Follow the steps in [Review Cluster Security Group](configure-sg.md)\.
