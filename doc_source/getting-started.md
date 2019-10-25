@@ -10,7 +10,7 @@ The following topics contain information to help you create, initialize, and act
 
 1. \(First time only\) Follow the steps in [Review Cluster Security Group](configure-sg.md)\.
 
-1. \(First time only\) Follow the steps in [Launch an EC2 Client](launch-client-instance.md)\.
+1. \(First time only\) Follow the steps in [Launch an EC2 Client](launch-client-instance.md)\. Attach this EC2 client to the VPC and subnets that you created for this cluster. If using Amazon Linux 2, follow instructions to update `ncurses` in [Known Issues for Amazon EC2 Instances Running Amazon Linux 2](KnownIssues.md#ki-al2)
 
 1. \(First time only\) Follow the steps in [Connect EC2 Instance to Cluster](configure-sg-client-instance.md)\.
 
