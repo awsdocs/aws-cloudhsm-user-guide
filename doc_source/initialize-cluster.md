@@ -5,7 +5,7 @@ Complete the steps in the following topics to initialize your AWS CloudHSM clust
 **Note**  
 Before you initialize the cluster, review the process by which you can [verify the identity and authenticity of the HSMs](verify-hsm-identity.md)\. This process is optional and works only until a cluster is initialized\. After the cluster is initialized, you cannot use this process to get your certificates or verify the HSMs\. 
 
-Also, you must change the permissions on the `my-key-pair.pem` file you created earlier, to more restrictive permissions (chmod 400 or chmod 600). Otherwise, accessing your instance will be accompanied by warnings that the `.pem` file is too accessible.
+Also, you must change the permissions on the `my-key-pair.pem` file you created earlier, to more restrictive permissions (chmod 400 or chmod 600)\. Otherwise, accessing your instance will be accompanied by warnings that the `.pem` file is too accessible\.
 
 **Topics**
 + [Get the Cluster CSR](#get-csr)
@@ -61,7 +61,7 @@ Use the following command to create a private key\. For a production cluster, th
 
 During development and test, you can use any convenient tool \(such as OpenSSL\) to create and sign the cluster certificate\. The following example shows you how to create a key\. After you have used the key to create a self\-signed certificate \(see below\), you should store it in a safe manner\. To sign into your AWS CloudHSM instance, the certificate must be present, but the private key does not\. You use the key only for specific purposes such as restoring from a backup\. 
 
-When asked to `Enter passphrase for customerCA.key`, create a passphrase and enter it\.
+When asked to `Enter passphrase for customerCA.key`, create a pass phrase and enter it\.
 
 ```
 $ openssl genrsa -aes256 -out customerCA.key 2048
