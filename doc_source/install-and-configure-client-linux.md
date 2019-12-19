@@ -8,7 +8,98 @@ To interact with the HSM in your AWS CloudHSM cluster, you need the AWS CloudHSM
 
 ## Install the AWS CloudHSM Client and Command Line Tools<a name="install-client"></a>
 
-Connect to your client instance and [install the latest AWS CloudHSM client and command line tools](client-history.md)\.
+Connect to your client instance and run the following commands to download and install the AWS CloudHSM client and command line tools\.
+
+------
+#### [ Amazon Linux ]
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm
+```
+
+```
+sudo yum install -y ./cloudhsm-client-latest.el6.x86_64.rpm
+```
+
+------
+#### [ Amazon Linux 2 ]
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm
+```
+
+```
+sudo yum install -y ./cloudhsm-client-latest.el7.x86_64.rpm
+```
+
+------
+#### [ CentOS 6 ]
+
+```
+sudo yum install wget
+```
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm
+```
+
+```
+sudo yum install -y ./cloudhsm-client-latest.el6.x86_64.rpm
+```
+
+------
+#### [ CentOS 7 ]
+
+```
+sudo yum install wget
+```
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm
+```
+
+```
+sudo yum install -y ./cloudhsm-client-latest.el7.x86_64.rpm
+```
+
+------
+#### [ RHEL 6 ]
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm
+```
+
+```
+sudo yum install -y ./cloudhsm-client-latest.el6.x86_64.rpm
+```
+
+------
+#### [ RHEL 7 ]
+
+```
+sudo yum install wget
+```
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm
+```
+
+```
+sudo yum install -y ./cloudhsm-client-latest.el7.x86_64.rpm
+```
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_latest_amd64.deb
+```
+
+```
+sudo dpkg -i cloudhsm-client_latest_amd64.deb
+```
+
+------
 
 ## Edit the Client Configuration<a name="edit-client-configuration"></a>
 
