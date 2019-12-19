@@ -9,3 +9,4 @@ If you encounter problems with AWS CloudHSM, the following topics can help you r
 + [Verify the Performance of the HSM](troubleshooting-verify-hsm-performance.md)
 + [Resolving Cluster Creation Failures](troubleshooting-create-cluster.md)
 + [Missing AWS CloudHSM Audit Logs in CloudWatch](troubleshooting-missing-audit-logs.md)
++ [Retrieving Client Configuration Logs](troubleshooting-log-collection-script.md)

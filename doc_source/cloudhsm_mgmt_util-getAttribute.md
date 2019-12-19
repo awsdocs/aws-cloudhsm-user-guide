@@ -40,20 +40,32 @@ Following are the possible attribute values for getAttribute:
       OBJ_ATTR_TOKEN                  = 1
       OBJ_ATTR_PRIVATE                = 2
       OBJ_ATTR_LABEL                  = 3
+      OBJ_ATTR_TRUSTED                = 134
       OBJ_ATTR_KEY_TYPE               = 256
+      OBJ_ATTR_ID                     = 258
+      OBJ_ATTR_SENSITIVE              = 259
       OBJ_ATTR_ENCRYPT                = 260
       OBJ_ATTR_DECRYPT                = 261
       OBJ_ATTR_WRAP                   = 262
       OBJ_ATTR_UNWRAP                 = 263
       OBJ_ATTR_SIGN                   = 264
       OBJ_ATTR_VERIFY                 = 266
+      OBJ_ATTR_DERIVE                 = 268
       OBJ_ATTR_LOCAL                  = 355
       OBJ_ATTR_MODULUS                = 288
       OBJ_ATTR_MODULUS_BITS           = 289
       OBJ_ATTR_PUBLIC_EXPONENT        = 290
       OBJ_ATTR_VALUE_LEN              = 353
       OBJ_ATTR_EXTRACTABLE            = 354
+      OBJ_ATTR_NEVER_EXTRACTABLE      = 356
+      OBJ_ATTR_ALWAYS_SENSITIVE       = 357
+      OBJ_ATTR_DESTROYABLE            = 370
       OBJ_ATTR_KCV                    = 371
+      OBJ_ATTR_WRAP_WITH_TRUSTED      = 528
+      OBJ_ATTR_EKCV                   = 4099
+      OBJ_ATTR_WRAP_TEMPLATE          = 1073742353
+      OBJ_ATTR_UNWRAP_TEMPLATE        = 1073742354
+      OBJ_ATTR_ALL                    = 512
 ```
 
 The second command uses getAttribute to get the value of the extractable attribute for the key with key handle `262170` in the HSMs\. To specify the extractable attribute, the command uses `354`, the constant that represents the attribute\. Because the command does not specify a file name, getAttribute writes the output to stdout\.

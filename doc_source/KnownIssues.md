@@ -28,6 +28,9 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 **Issue: **Imported keys could not be specified as nonexportable\.
 + **Resolution Status: **This issue is fixed\. No action is required on your part to benefit from the fix\.
 
+**Issue: **The default mechanism for the wrapKey and unWrapKey commands in the key\_mgmt\_util has been removed\. 
++ **Resolution: **When using the wrapKey or unWrapKey commands, you must use the `-m` option to specify the mechanism\. See the examples in the [wrapKey](key_mgmt_util-wrapKey.md) or [unWrapKey](key_mgmt_util-unwrapKey.md) articles for more information\. 
+
 **Issue: **If you have a single HSM in your cluster, HSM failover does not work correctly\.
 + **Impact: **If the single HSM instance in your cluster loses connectivity, the client will not reconnect with it even if the HSM instance is later restored\.
 + **Workaround: **We recommend at least two HSM instances in any production cluster\. If you use this configuration, you will not be impacted by this issue\. For single\-HSM clusters, bounce the client daemon to restore connectivity\.
@@ -60,11 +63,6 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 
 ## Known Issues for the PKCS \#11 SDK<a name="ki-pkcs11-sdk"></a>
 
-**Issue: **PKCS \#11–compliant error messages are not directly available from the HSM instance\.
-+ **Impact: **The PKCS \#11 library makes two round trips to the HSM per call: The first verifies whether the requested operation is permitted\. The second executes the operation if it is permitted\. This results in slower performance\. 
-+ **Workaround: **We provide an alternative PKCS \#11 library with a local Redis cache so permissions for the requested operation can be checked locally\. For details, including information about the limitations of this solution, see [Install the PKCS \#11 Library with Redis \(Optional\)](pkcs11-library-install.md#install-pkcs11-redis)\.
-+ **Resolution status: **We are implementing fixes to directly provide PKCS \#11–compliant error messages, removing the need for the Redis workaround\. The updated PKCS \#11 library will be announced on the version history page\.
-
 **Issue: **The `CKA_DERIVE` attribute was not supported and was not handled\.
 + **Resolution status: **We have implemented fixes to accept `CKA_DERIVE` if it is set to `FALSE`\. `CKA_DERIVE` set to `TRUE` will not be supported until we begin to add key derivation function support to AWS CloudHSM\. You must update your client and SDK\(s\) to version 1\.1\.1 or higher to benefit from the fix\.
 
@@ -89,12 +87,24 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Workaround: ** You can use an alternative mechanism such as `CKM_AES_CBC` or you can divide your data into pieces and encrypt each piece individually\. You must manage the division of your data and subsequent encryption\. AWS CloudHSM does not perform multipart AES\-GCM encryption for you\. Note that FIPS requires that the initialization vector \(IV\) for AES\-GCM be generated on the HSM\. Therefore, the IV for each piece of your AES\-GCM encrypted data will be different\. 
 + **Resolution status: **We are fixing the SDK to fail explicitly if the data buffer is too large\. We return `CKR_MECHANISM_INVALID` for the `C_EncryptUpdate` and `C_DecryptUpdate` API operations\. We are evaluating alternatives to support larger buffers without relying on multipart encryption\. Updates will be announced in the AWS CloudHSM forum and on the version history page\.
 
-**Issue: **ECDH key derivation is executed partially within the HSM\. Your EC private key remains within the HSM at all times, but the key derivation process is performed in multiple steps\. As a result, intermediate results from each step are available on the client\.
+**Issue: **Elliptic\-curve Diffie\-Hellman \(ECDH\) key derivation is executed partially within the HSM\. Your EC private key remains within the HSM at all times, but the key derivation process is performed in multiple steps\. As a result, intermediate results from each step are available on the client\.
 + **Impact: **The key derived using the `CKM_ECDH1_DERIVE` mechanism is first available on the client and is then imported into the HSM\. A key handle is then returned to your application\.
-+ **Workaround: **If you are implementing SLL/TLS Offload in AWS CloudHSM, this limitation may not be an issue\. If your application requires your key to remain within an FIPS boundary at all times, consider using an alternative protocol that does not rely on ECDH key derivation\.
++ **Workaround: **If you are implementing SSL/TLS Offload in AWS CloudHSM, this limitation may not be an issue\. If your application requires your key to remain within an FIPS boundary at all times, consider using an alternative protocol that does not rely on ECDH key derivation\.
 + **Resolution status: **We are developing the option to perform ECDH key derivation entirely within the HSM\. The updated implementation will be announced on the version history page once available\.
 
+**Issue: ** Verification of secp256k1 signatures fails on EL6 platforms such as CentOS6 and RHEL6\. This is because the CloudHSM PKCS\#11 library avoids a network call during initialization of the verification operation by using OpenSSL to verify EC curve data\. Since Secp256k1 is not supported by the default OpenSSL package on EL6 platforms, the initialization fails\.
++ **Impact: **Secp256k1 signature verification will fail on EL6 platforms\. The verify call will fail with a `CKR_HOST_MEMORY` error\.
++ **Workaround: **We recommend using either Amazon Linux 1 or any EL7 platform if your PKCS\#11 application needs to verify secp256k1 signatures\. Alternatively, upgrade to a version of the OpenSSL package that supports the secp256k1 curve\.
++ **Resolution status: **We are implementing fixes to fall back to the HSM if local curve validation is not available\. The updated PKCS\#11 library will be announced on the [version history](client-history.md) page\.
+
 ## Known Issues for the JCE SDK<a name="ki-jce-sdk"></a>
+
+**Issue: **When working with asymmetric key pairs, you see occupied key capacity even when you are not explicitly creating or importing keys
++ **Impact:** This issue can cause your HSMs to unexpectedly run out of key space and occurs when your application uses a standard JCE key object for crypto operations instead of a `CaviumKey` object\. When you use a stanadrd JCE key object, `CaviumProvider` implicitly imports that key into the HSM as a session key does not delete this key until the application exits\. As a result, keys build up while the application is running and can cause your HSMs to run out of free key space, thus freezing your application\. 
++ **Workaround: **When using the `CaviumSignature` class, `CaviumCipher` class, `CaviumMac` class, or the `CaviumKeyAgreement` class, you should supply the key as a `CaviumKey` instead of a standard JCE key object\.
+
+  You can manually convert a normal key to a `CaviumKey` using the [https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) class, and can then manually delete the key after the operation is complete\.
++ **Resolution status: **We are updating the `CaviumProvider` to properly manage implicit imports\. The fix will be announced on the version history page once available\.
 
 **Issue: **You cannot specify attributes when unwrapping keys\.
 + **Impact:** All keys are unwrapped as exportable session keys\.
@@ -110,6 +120,11 @@ The following issues impact all AWS CloudHSM users regardless of whether they us
 + **Impact: **You cannot use AES\-GCM to encrypt data larger than 16,000 bytes\.
 + **Workaround: ** You can use an alternative mechanism, such as AES\-CBC, or you can divide your data into pieces and encrypt each piece individually\. If you divide the data, you must manage the divided ciphertext and its decryption\. Because FIPS requires that the initialization vector \(IV\) for AES\-GCM be generated on the HSM, the IV for each AES\-GCM\-encrypted piece of data will be different\.
 + **Resolution status: **We are fixing the SDK to fail explicitly if the data buffer is too large\. We are evaluating alternatives that support larger buffers without relying on multi\-part encryption\. Updates will be announced in the AWS CloudHSM forum and on the version history page\. 
+
+**Issue: **Elliptic\-curve Diffie\-Hellman \(ECDH\) key derivation is executed partially within the HSM\. Your EC private key remains within the HSM at all times, but the key derivation process is performed in multiple steps\. As a result, intermediate results from each step are available on the client\. An ECDH key derivation sample is available in the [Java code samples](java-samples.md)\.
++ **Impact: **Software version 3\.0 adds ECDH functionality to the JCE\. When you use the CKM\_ECDH1\_DERIVE mechanism to derive the key, it is first available on the client and is then imported into the HSM\. A key handle is then returned to your application\.
++ **Workaround: **If you are implementing SSL/TLS Offload in AWS CloudHSM, this limitation may not be an issue\. If your application requires your key to remain within an FIPS boundary at all times, consider using an alternative protocol that does not rely on ECDH key derivation\.
++ **Resolution status: **We are developing the option to perform ECDH key derivation entirely within the HSM\. When available, we'll announce the updated implementation on the version history page\.
 
 ## Known Issues for the OpenSSL SDK<a name="ki-openssl-sdk"></a>
 

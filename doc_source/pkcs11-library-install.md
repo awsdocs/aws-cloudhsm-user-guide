@@ -5,7 +5,7 @@ With the AWS CloudHSM software libraries for PKCS \#11, you can to build PKCS \#
 **Topics**
 + [Prerequisites](#pkcs11-library-prerequisites)
 + [Install the PKCS \#11 Library](#install-pkcs11-library)
-+ [Install the PKCS \#11 Library with Redis \(Optional\)](#install-pkcs11-redis)
++ [Install the PKCS \#11 Library with Redis \(Not applicable for SDK version 3\.0 or higher\)](#install-pkcs11-redis)
 
 ## Prerequisites<a name="pkcs11-library-prerequisites"></a>
 
@@ -66,7 +66,7 @@ $ sudo service cloudhsm-client start
 
 ## Install the PKCS \#11 Library<a name="install-pkcs11-library"></a>
 
-The following command downloads and installs \(or updates\) the AWS CloudHSM software library for PKCS \#11\. This step is required for the standard AWS CloudHSM PKCS \#11 library and the [AWS CloudHSM PKCS \#11 library for Redis](#install-pkcs11-redis)\.
+The following command downloads and installs \(or updates\) the AWS CloudHSM software library for PKCS \#11\. This step is required for the standard AWS CloudHSM PKCS \#11 library and the [AWS CloudHSM PKCS \#11 library with Redis](#install-pkcs11-redis)\.
 
 ------
 #### [ Amazon Linux ]
@@ -149,23 +149,26 @@ $ sudo dpkg -i cloudhsm-client-pkcs11_latest_amd64.deb
 
 When the installation succeeds, the PKCS \#11 libraries are `/opt/cloudhsm/lib`\.
 
-## Install the PKCS \#11 Library with Redis \(Optional\)<a name="install-pkcs11-redis"></a>
+## Install the PKCS \#11 Library with Redis \(Not applicable for SDK version 3\.0 or higher\)<a name="install-pkcs11-redis"></a>
 
-AWS CloudHSM provides an optional software library for PKCS \#11 that uses a [Redis cache](https://redis.io/)\. The cache stores key handles and attributes locally so you can access them without calling into your HSMs\. 
+Prior to version 3\.0, AWS CloudHSM provided an optional software library for PKCS \#11 that uses a [Redis cache](https://redis.io/)\. The cache stores key handles and attributes locally so you can access them without calling into your HSMs\. 
 
-When you build the cache, you specify the crypto user \(CU\) that your [PKCS \#11 application uses to authenticate](pkcs11-pin.md)\. The cache is preloaded with the keys that the CU owns and shares\. It is automatically updated when your application uses functions in the PKCS \#11 library to make changes in the HSMs\. Examples include creating or deleting keys or changing keys attributes\. The cache is not aware of any other keys on the HSM\.
+**Note**  
+Redis is not necessary for version 3\.0 or later\. If you are using AWS CloudHSM version 2\.0\.4 or earlier, AWS CloudHSM provides an optional software library for PKCS \#11 that uses a Redis cache\. The cache stores key handles and attributes locally so you can access them without calling into your HSMs\. 
+
+When you build the cache, you specify the crypto user \(CU\) that your [PKCS \#11 application uses to be authenticated](pkcs11-pin.md)\. The cache is preloaded with the keys that the CU owns and shares\. It is automatically updated when your application uses functions in the PKCS \#11 library to make changes in the HSMs\. Examples include creating or deleting keys or changing keys attributes\. The cache is not aware of any other keys on the HSM\.
 
 Caching can improve the performance of your PKCS \#11 application, but it might not be the right choice for all applications\. Consider the following:
 + Redis caches all PKCS \#11 library operations that run on the host, but it's not aware of operations that are performed outside the library\. For example, if you use the [command line tools](command-line-tools.md) or the [software library for Java](java-library.md) to manage keys in your HSMs, those operations do not update the cache\. You can rebuild the cache to update it to the new state of the HSMs, but the cache is not synchronized with the HSMs automatically\.
 
    
-+ Do not use the PKCS \#11 library with Redis if you have other applications that use Redis on the same host\. The PKCS \#11 library configures Redis to recognize it as the only Redis consumer on the host\. 
++ If you have other applications that use Redis on the same host, don't use the PKCS \#11 library with Redis\. The PKCS \#11 library configures Redis to recognize it as the only Redis consumer on the host\. 
 
-To install the PKCS \#11 Library with Redis, you use the Extra Packages for Enterprise Linux \(EPEL\) repository to install the Redis package\. Then you enable and configure Redis to work with AWS CloudHSM and PKCS \#11\. 
+To install the PKCS \#11 Library with Redis use the Extra Packages for Enterprise Linux \(EPEL\) repository\. Then enable and configure Redis to work with AWS CloudHSM and PKCS \#11\. 
 
 Some steps in this process are required only on selected operating systems\. 
 
-### Step 1: Install the AWS CloudHSM PKCS \#11 library<a name="redis-install-pkcs11"></a>
+### Step 1: Install the AWS CloudHSM PKCS \#11 Library<a name="redis-install-pkcs11"></a>
 
 To install the PKCS \#11 Library with Redis, you must first [install the standard AWS CloudHSM PKCS \#11 library](#install-pkcs11-library)\. This library is required\.
 
@@ -175,7 +178,7 @@ To install the PKCS \#11 Library with Redis, you must first [install the standar
 
 This step installs the Extra Packages for Enterprise Linux \(EPEL\) repository\. It is required only on operating systems that do not include EPEL\.
 
-**Required for Redis only on:** Amazon Linux 2, CentOS 6, CentOS 7, RedHat Enterprise Linux \(RHEL\) 6, RedHat Enterprise Linux \(RHEL\) 7
+**Required for Redis only on:** Amazon Linux 2, CentOS 6, CentOS 7, Red Hat Enterprise Linux \(RHEL\) 6, Red Hat Enterprise Linux \(RHEL\) 7
 
 ------
 #### [ Amazon Linux ]
@@ -268,7 +271,7 @@ No action required\.
 
 This step includes system\-specific tasks that must be completed before you install and configure the PKCS \#11 library for Redis\.
 
-**Required for Redis only on:** Amazon Linux, CentOS 7, RedHat Enterprise Linux \(RHEL\) 6
+**Required for Redis only on:** Amazon Linux, CentOS 7, Red Hat Enterprise Linux \(RHEL\) 6
 
 ------
 #### [ Amazon Linux ]

@@ -1,6 +1,6 @@
 # Getting Started with cloudhsm\_mgmt\_util<a name="cloudhsm_mgmt_util-getting-started"></a>
 
-AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](install-and-configure-client-linux.md#install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md) tool includes commands to manage keys\. To get started with the cloudhsm\_mgmt\_util command line tool, see the following topics\. 
+AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](install-and-configure-client-linux.md#install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md) tool includes commands to manage keys\. To get started with the cloudhsm\_mgmt\_util command line tool, complete the following tasks\.
 
 **Topics**
 + [Prepare to run cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-setup)
@@ -9,7 +9,7 @@ AWS CloudHSM includes two command line tools with the [AWS CloudHSM client softw
 
 ## Prepare to run cloudhsm\_mgmt\_util<a name="cloudhsm_mgmt_util-setup"></a>
 
-Complete the following steps before you use cloudhsm\_mgmt\_util\. You need to do these steps the first time you use cloudhsm\_mgmt\_util and after you add or remove HSMs in your cluster\. The steps update the HSM list in the configuration files that the AWS CloudHSM client and command line tools use\. Keeping these files updated helps AWS CloudHSM to synchronize data and maintain consistency across all HSMs in the cluster\. 
+Complete the following tasks before you use cloudhsm\_mgmt\_util\. You need to do these steps the first time you use cloudhsm\_mgmt\_util and after you add or remove HSMs in your cluster\. The steps update the HSM list in the configuration files that the AWS CloudHSM client and command line tools use\. Keeping these files updated helps AWS CloudHSM to synchronize data and maintain consistency across all HSMs in the cluster\. 
 
 **Topics**
 + [Step 1: Stop the AWS CloudHSM Client](#cloudhsm_mgmt_util-stop-cloudhsm-client)
@@ -281,10 +281,10 @@ When this step is complete, you are ready to start cloudhsm\_mgmt\_util\. If you
 
 ## Basic Usage of cloudhsm\_mgmt\_util<a name="cloudhsm_mgmt_util-basics"></a>
 
-See the following topics for the basic usage of the cloudhsm\_mgmt\_util tool\.
+The following tasks cover the basic usage of the cloudhsm\_mgmt\_util tool\.
 
-**Note**  
-The cloudhsm\_mgmt\_util tool doesn't support autocompleting commands with the **Tab** key\. Don't use the **Tab** key with cloudhsm\_mgmt\_util, because that can make the tool unresponsive\. 
+**Warning**  
+The cloudhsm\_mgmt\_util tool doesn't support auto\-completion using the Tab key\. Using the Tab key with cloudhsm\_mgmt\_util can make it unresponsive\.
 
 **Topics**
 + [Start cloudhsm\_mgmt\_util](#cloudhsm_mgmt_util-start)
@@ -375,7 +375,7 @@ The prompt changes to aws\-cloudhsm> when cloudhsm\_mgmt\_util is running\.
 
 ### Enable End\-to\-End Encryption<a name="cloudhsm_mgmt_util-enable_e2e"></a>
 
-Use the enable\_e2e command to establish end\-to\-end encrypted communication between cloudhsm\_mgmt\_util and the HSMs in your cluster\. You should enable end\-to\-end encryption each time you start cloudhsm\_mgmt\_util\. 
+Starting with version 1\.1\.1 of the client and related software libraries, end\-to\-end encrypted communication between cloudhsm\_mgmt\_util and the HSMs in your cluster is enabled by default\. If you are using an earlier version, you can use the enable\_e2e command to enable end\-to\-end encryption each time you start cloudhsm\_mgmt\_util\.
 
 ```
 aws-cloudhsm>enable_e2e

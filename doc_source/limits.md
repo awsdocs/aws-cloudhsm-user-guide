@@ -1,25 +1,27 @@
-# AWS CloudHSM Limits<a name="limits"></a>
+# AWS CloudHSM Quotas<a name="limits"></a>
 
-The following limits apply to your AWS CloudHSM resources per AWS Region and AWS account\.
+Quotas, formerly known as limits, are the assigned values for AWS resources\. The following quotas apply to your AWS CloudHSM resources per AWS Region and AWS account\. The default quota is the initial value applied by AWS, and these values are listed in the table below\. An adjustable quota can be increased above the default quota\.
 
 
-**Service Limits**  
+**Service Quotas**  
 
-| Item | Default Limit | Hard Limit | 
+| Resource | Default Quota | Adjustable? | 
 | --- | --- | --- | 
-| Clusters | 4 | N/A | 
-| HSMs | 6 | N/A | 
-| HSMs per cluster | N/A | 28 | 
+| Clusters | 4 | Yes | 
+| HSMs | 6 | Yes | 
+| HSMs per cluster | 28 | No | 
+
+The quotas in the following System Quotas table are not adjustable\.
 
 
-**System Limits**  
+**System Quotas**  
 
-| Item | Hard Limit | 
+| Resource | Quota | 
 | --- | --- | 
-| Keys per cluster | 3500 | 
-| Number of users per cluster | 1024 | 
+| Keys per cluster | 3,300 | 
+| Number of users per cluster | 1,024 | 
 | Maximum length of a user name | 31 characters | 
 | Required password length | 7 to 32 characters | 
-| Maximum number of concurrent clients | 1024 | 
+| Maximum number of concurrent clients | 900 | 
 
-To request an increase in the number of clusters or HSMs, use the [service limit increase form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-cloudhsm) in the AWS Support Center\. 
+The recommended way of requesting a quota increase is to open the [Service Quotas console](https://console.aws.amazon.com/servicequotas/home?region=us-east-1#!/dashboard)\. In the console, choose your service and quota, and submit your request\. For more information, see the [Service Quotas documentation](https://docs.aws.amazon.com/https://aws.docs.amazon.com/servicequotas/latest/userguide/request-increase.html)\.

@@ -56,7 +56,7 @@ To verify the identity and authenticity of your HSM, start by getting a CSR and 
 1. Choose **Initialize** next to the cluster that you created previously\.
 
 1. When the certificates and CSR are ready, you see links to download them\.  
-![\[The download certificate signing request page in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/console-download-certificates.png)
+![\[The download certificate signing request page in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/download-csr-hsm-cert.png)
 
    Choose each link to download and save the CSR and certificates\. To simplify the subsequent steps, save all of the files to the same directory and use the default file names\. 
 

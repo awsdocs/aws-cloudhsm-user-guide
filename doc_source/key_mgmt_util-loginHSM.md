@@ -4,6 +4,10 @@ The loginHSM and logoutHSM commands in key\_mgmt\_util allow you to log in and o
 
 Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start)\. In order to manage keys with key\_mgmt\_util, you must log in to the HSMs as a [crypto user \(CU\)](hsm-users.md#crypto-user)\.
 
+**Note**  
+If you exceed five incorrect login attempts, your account is locked out\. If you created your cluster before February 2018, your account is locked out after 20 incorrect login attempts\. To unlock the account, a cryptographic officer \(CO\) must reset your password using the [changePswd](cloudhsm_mgmt_util-changePswd.md) command in cloudhsm\_mgmt\_util\.  
+If you have more than one HSM in your cluster, you may be allowed additional incorrect login attempts before your account is locked out\. This is because the CloudHSM client balances load across various HSMs\. Therefore, the login attempt may not begin on the same HSM each time\. If you are testing this functionality, we recommend you do so on a cluster with only one active HSM\. 
+
 ## Syntax<a name="loginHSM-syntax"></a>
 
 ```

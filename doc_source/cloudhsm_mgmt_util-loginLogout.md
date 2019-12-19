@@ -2,6 +2,10 @@
 
 You can use the loginHSM and logoutHSM commands in cloudhsm\_mgmt\_util to log in and out of each HSM in a cluster\. Any user of any type can use these commands\.
 
+**Note**  
+If you exceed five incorrect login attempts, your account is locked out\. If you created your cluster before February 2018, your account is locked out after 20 incorrect login attempts\. To unlock the account, a cryptographic officer \(CO\) must reset your password using the [changePswd](cloudhsm_mgmt_util-changePswd.md) command in cloudhsm\_mgmt\_util\.  
+If you have more than one HSM in your cluster, you may be allowed additional incorrect login attempts before your account is locked out\. This is because the CloudHSM client balances load across various HSMs\. Therefore, the login attempt may not begin on the same HSM each time\. If you are testing this functionality, we recommend you do so on a cluster with only one active HSM\. 
+
 Before you run these cloudhsm\_mgmt\_util commands, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start)\.
 
 If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective on all HSMs in the cluster\.

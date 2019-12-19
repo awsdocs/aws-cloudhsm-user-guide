@@ -6,7 +6,7 @@ During the export process, exportPrivateKey uses an AES key that you select \(th
 
 The exportPrivateKey command copies the key material to a file that you specify\. But it does not remove the key from the HSM, change its [key attributes](key-attribute-table.md), or prevent you from using the key in further cryptographic operations\. You can export the same key multiple times\.
 
-You can only export public keys that have a `OBJ_ATTR_EXTRACTABLE` value of `1`\. To find a key's attributes, use the [getAttribute](key_mgmt_util-getAttribute.md) command\.
+You can only export private keys that have `OBJ_ATTR_EXTRACTABLE` attribute value `1`\. To find a key's attributes, use the [getAttribute](key_mgmt_util-getAttribute.md) command\.
 
 Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\.
 

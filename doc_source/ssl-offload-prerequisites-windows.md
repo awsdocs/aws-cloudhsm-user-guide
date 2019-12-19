@@ -32,7 +32,15 @@ This tutorial uses Microsoft Windows Server 2016\. Microsoft Windows Server 2012
 
    1. [Create a crypto user \(CU\)](manage-hsm-users.md#create-user)\. Keep track of the CU user name and password\. You will need them to complete the next step\.
 
-1. [Set the Windows system environment variables](ksp-library-prereq.md), using the CU user name and password that you created in the previous step\.
+1. [Set the login credentials for the HSM](ksp-library-prereq.md), using the CU user name and password that you created in the previous step\.
+
+1. In step 5, if you used Windows Credentials Manager to set HSM credentials, download [https://live.sysinternals.com/psexec.exe](https://live.sysinternals.com/psexec.exe) from SysInternals to run the following command as *NT Authority\\SYSTEM*:
+
+   ```
+   psexec.exe -s "C:\Program Files\Amazon\CloudHsm\tools\set_cloudhsm_credentials.exe" --username <username> --password <password>
+   ```
+
+   Replace *<username>* and *<password>* with the HSM credentials\.
 
 **To install IIS on your Windows Server**
 

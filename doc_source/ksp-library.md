@@ -11,4 +11,5 @@ Key storage providers \(KSPs\) enable key storage and retrieval\. For example, i
 **Topics**
 + [Install the KSP and CNG Providers for Windows](ksp-library-install.md)
 + [Windows AWS CloudHSM Prerequisites](ksp-library-prereq.md)
++ [Associate a AWS CloudHSM Key with a Certificate](ksp-library-associate-key-certificate.md)
 + [Code Sample for Cavium CNG Provider](ksp-library-sample.md)

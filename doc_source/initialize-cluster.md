@@ -21,7 +21,7 @@ Before you can initialize the cluster, you must download and sign a certificate 
 1. Choose **Initialize** next to the cluster that you [created previously](create-cluster.md)\. 
 
 1. When the CSR is ready, you see a link to download it\.  
-![\[Download certificate signing request page in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/console-download-certificates.png)
+![\[Download certificate signing request page in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/download-csr-hsm-cert.png)
 
    Choose **Cluster CSR** to download and save the CSR\.
 

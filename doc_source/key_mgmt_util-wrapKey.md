@@ -1,6 +1,6 @@
 # wrapKey<a name="key_mgmt_util-wrapKey"></a>
 
-The wrapKey command in key\_mgmt\_util exports an encrypted copy of a symmetric or private key from the HSM to a file\. When you run wrapKey, you specify the key to export, a key on the HSM to encrypt \(wrap\) the key to be exported, and the output file\.
+The wrapKey command in key\_mgmt\_util exports an encrypted copy of a symmetric or private key from the HSM to a file\. When you run wrapKey, you specify the key to export, a key on the HSM to encrypt \(wrap\) the key that you want to export, and the output file\.
 
 The `wrapKey` command writes the encrypted key to a file that you specify, but it does not remove the key from the HSM or prevent you from using it in cryptographic operations\. You can export the same key multiple times\. 
 
@@ -19,18 +19,22 @@ wrapKey -k <exported-key-handle>
         -w <wrapping-key-handle>
         -out <output-file>
         [-m <wrapping-mechanism>]
+        [-aad <addtional authenticated data filename>]
         [-t <hash-type>]
         [-noheader]
+        [-i <wrapping IV>]  
+        [-iv_file <IV file>]
+        [-tag_size <num_tag_bytes>>]
 ```
 
 ## Example<a name="wrapKey-examples"></a>
 
 **Example**  
-This command exports a 192\-bit Triple DES \(3DES\) symmetric key \(key handle `7`\)\. It uses a 256\-bit AES key in the HSM \(key handle `14`\) to wrap key `7`\. Then it writes the encrypted 3DES key to the `3DES-encrypted.key` file\.  
+This command exports a 192\-bit Triple DES \(3DES\) symmetric key \(key handle `7`\)\. It uses a 256\-bit AES key in the HSM \(key handle `14`\) to wrap key `7`\. Then, it writes the encrypted 3DES key to the `3DES-encrypted.key` file\.  
 The output shows that key `7` \(the 3DES key\) was successfully wrapped and written to the specified file\. The encrypted key is 307 bytes long\.  
 
 ```
-        Command:  wrapKey -k 7 -w 14 -out 3DES-encrypted.key
+        Command:  wrapKey -k 7 -w 14 -out 3DES-encrypted.key -m 4
 
         Key Wrapped.
 
@@ -46,9 +50,9 @@ Displays help for the command\.
 Required: Yes
 
 **\-k**  
-Specifies the key handle of the key to export\. Enter the key handle of a symmetric or private key that you own\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
+The key handle of the key that you want to export\. Enter the key handle of a symmetric or private key that you own\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
 To verify that a key can be exported, use the [getAttribute](key_mgmt_util-getAttribute.md) command to get the value of the `OBJ_ATTR_EXTRACTABLE` attribute, which is represented by constant `354`\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
-Also, you can export only keys that you own\. To find the owner of a key, use the [getKeyInfo](key_mgmt_util-getKeyInfo.md) command\.  
+You can export only those keys that you own\. To find the owner of a key, use the [getKeyInfo](key_mgmt_util-getKeyInfo.md) command\.  
 Required: Yes
 
 **\-w**  
@@ -57,28 +61,42 @@ To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to generat
 Required: Yes
 
 **\-out**  
-Specifies the path and name of the output file\. When the command succeeds, this file contains an encrypted copy of the exported key\. If the file already exists, the command overwrites it without warning\.  
+The path and name of the output file\. When the command succeeds, this file contains an encrypted copy of the exported key\. If the file already exists, the command overwrites it without warning\.  
 Required: Yes
 
 **\-m**  
-Specifies the wrapping mechanism to be used\.  
-4 = `AES_KEY_WRAP` \(Default\)  
-7 = `RSA_AES`  
-8 = `RSA_OAEP` \(for maximum data size, see the note later in this section\)   
-Required: No
+The value representing the wrapping mechanism\. CloudHSM supports the following mechanisms:       
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-wrapKey.html)
+Required: Yes
 
 **\-t**  
-Specifies the hash type to be used \(valid for `RSA_AES`, `RSA_OAEP`\)  
-2 = `SHA1` \(Default\)  
-3 = `SHA256`  
-4 = `SHA384`  
-5 = `SHA512`  
-6 = `SHA224`  
+The value representing the hash algorithm\. CloudHSM supports the following algorithms:      
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-wrapKey.html)
 Required: No  
 When using the `RSA_OAEP` wrapping mechanism, the maximum key size that you can wrap is determined by the modulus of the RSA key and the length of the specified hash as follows: Maximum key size = \(modulusLengthInBytes\-2\*hashLengthInBytes\-2\)\.
 
+**\-aad**  
+The file name containing `AAD`\.  
+Valid only for `AES_GCM` and `CLOUDHSM_AES_GCM` mechanisms\.
+Required: No
+
 **\-noheader**  
-Omits the header that specifies CloudHSM\-specific [key attributes](key_mgmt_util-reference.md)\. Use this parameter *only* if you plan to unwrap the key with tools outside of key\_mgmt\_util\.  
+Omits the header that specifies CloudHSM\-specific [key attributes](key_mgmt_util-reference.md)\. Use this parameter *only* if you want to unwrap the key with tools outside of key\_mgmt\_util\.  
+Required: No
+
+**\-i**  
+The initialization vector \(IV\) \(hex value\)\.  
+Valid only when passed with the `-noheader` parameter for `CLOUDHSM_AES_KEY_WRAP`, `NIST_AES_WRAP`, and `NIST_TDEA_WRAP` mechanisms\.
+Required: No
+
+**\-iv\_file**  
+The file in which you want to write the IV value obtained in response\.  
+Valid only when passed with the `-noheader` parameter for `AES_GCM` mechanism\.
+Required: No
+
+**\-tag\_size**  
+The size of tag to be saved along with wrapped blob\.  
+Valid only when passed with the `-noheader` parameter for `AES_GCM` and `CLOUDHSM_AES_GCM` mechanisms\. Minimum tag size is eight\.
 Required: No
 
 ## Related Topics<a name="wrapKey-seealso"></a>

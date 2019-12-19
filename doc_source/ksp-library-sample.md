@@ -8,7 +8,7 @@
 The following sample shows how to enumerate the registered cryptographic providers on your system to find the Cavium CNG provider\. The sample also shows how to create an asymmetric key pair and how to use the key pair to sign data\. 
 
 **Important**  
-Before you run this example, you must set the `n3fips_partition` and `n3fips_password` environment variables\. For details, see [Windows AWS CloudHSM Prerequisites](ksp-library-prereq.md)\. 
+Before you run this example, you must set up the HSM credentials as explained in the prerequisites\. For details, see [Windows AWS CloudHSM Prerequisites](ksp-library-prereq.md)\. 
 
 ```
 // CloudHsmCngExampleConsole.cpp : Console application that demonstrates CNG capabilities.
@@ -103,7 +103,7 @@ NTSTATUS GenerateKeyPair(BCRYPT_ALG_HANDLE hAlgorithm, BCRYPT_KEY_HANDLE *hKey)
 
   // Finalize the key pair. The public/private key pair cannot be used until this 
   // function is called.
-  status = BCryptFinalizeKeyPair(&hKey, 0);
+  status = BCryptFinalizeKeyPair(*hKey, 0);
   if (!NT_SUCCESS(status))
   {
     printf("BCryptFinalizeKeyPair failed with code 0x%08x\n", status);
@@ -125,7 +125,7 @@ NTSTATUS SignData(BCRYPT_KEY_HANDLE hKey)
   BCRYPT_PKCS1_PADDING_INFO pInfo;
 
   // Hardcode the data to be signed (for demonstration purposes only).
-  PBYTE message = (PBYTE)"d83e7716bed8a20343d8dc6845e574477e4a9be63a80a0122f1fdcaa7a3c18c3";
+  PBYTE message = (PBYTE)"d83e7716bed8a20343d8dc6845e57447";
   ULONG messageLen = strlen((char*)message);
 
   // Retrieve the size of the buffer needed for the signature.
@@ -155,7 +155,7 @@ NTSTATUS SignData(BCRYPT_KEY_HANDLE hKey)
   }
 
   // Verify the signature.
-  status = BCryptVerifySignature(hKey, &pInfo, message, messageLen, sig, sigLen, 0);
+  status = BCryptVerifySignature(hKey, &pInfo, message, messageLen, sig, sigLen, BCRYPT_PAD_PKCS1);
   if (!NT_SUCCESS(status))
   {
     printf("BCryptVerifySignature failed with code 0x%08x\n", status);

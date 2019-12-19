@@ -7,3 +7,4 @@ Some of the [use cases](use-cases.md) for AWS CloudHSM involve integrating third
 + [Windows Server CA](win-ca-overview.md)
 + [Oracle Database Encryption](oracle-tde.md)
 + [Microsoft SignTool](signtool.md)
++ [Other Third\-party Vendor Integrations](other-integrations.md)

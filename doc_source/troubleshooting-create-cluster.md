@@ -4,7 +4,7 @@ When you create a cluster, AWS CloudHSM creates the AWSServiceRoleForCloudHSM se
 
 This topic explains how to resolve the most common problems so you can create a cluster successfully\. You need to create this role only one time\. Once the service\-linked role is created in your account, you can use any of the supported methods to create additional clusters and to manage them\.
 
-The following sections offer suggestions to troubleshoot cluster creation failures that are related to the service\-linked role\. If you try them but are still unable to create a cluster, contact [AWS Support](https://aws.amazon.com/contact-us/)\. For more information about the AWSServiceRoleForCloudHSM service\-linked role, see [Understanding Service\-Linked Roles](create-iam-user.md#service-linked-roles)\. 
+The following sections offer suggestions to troubleshoot cluster creation failures that are related to the service\-linked role\. If you try them but are still unable to create a cluster, contact [AWS Support](https://aws.amazon.com/contact-us/)\. For more information about the AWSServiceRoleForCloudHSM service\-linked role, see [Service\-Linked Roles for AWS CloudHSM](service-linked-roles.md)\. 
 
 **Topics**
 + [Add the Missing Permission](#missing-permission)

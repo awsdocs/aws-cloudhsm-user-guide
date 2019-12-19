@@ -52,7 +52,7 @@ Some commands in key\_mgmt\_util and cloudhsm\_mgmt\_util have the same names\. 
 | [getAttribute](cloudhsm_mgmt_util-getAttribute.md) | Gets an attribute value for an AWS CloudHSM key and writes it to a file or stdout \(standard output\)\. | CU | 
 | [getCert](cloudhsm_mgmt_util-getCert.md) | Gets the certificate of a particular HSM and saves it in a desired certificate format\. | All\. | 
 | [getHSMInfo](cloudhsm_mgmt_util-getHSMInfo.md) | Gets information about the hardware on which an HSM is running\. | All\. Login is not required\. | 
-| [getKeyInfo](cloudhsm_mgmt_util-getHSMInfo.md) | Gets owners, shared users, and the quorum authentication status of a key\. | All\. Login is not required\. | 
+| [getKeyInfo](cloudhsm_mgmt_util-getKeyInfo.md) | Gets owners, shared users, and the quorum authentication status of a key\. | All\. Login is not required\. | 
 | [info](cloudhsm_mgmt_util-info.md) | Gets information about an HSM, including the IP address, hostname, port, and current user\. | All\. Login is not required\. | 
 | [listUsers](cloudhsm_mgmt_util-listUsers.md) | Gets the users in each of the HSMs, their user type and ID, and other attributes\. | All\. Login is not required\. | 
 | [loginHSM and logoutHSM](cloudhsm_mgmt_util-loginLogout.md) | Log in and log out of an HSM\. | All\.  | 

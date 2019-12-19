@@ -5,5 +5,6 @@ The AWS CloudHSM software library for Java is a provider implementation for the 
 **Topics**
 + [Install and Use the AWS CloudHSM Software Library for Java](java-library-install.md)
 + [Supported Mechanisms](java-lib-supported.md)
-+ [Sample Code Prerequisites](java-library-sample.md)
 + [Code Samples for the AWS CloudHSM Software Library for Java](java-samples.md)
++ [Using CloudHSM KeyStore Java Class](alternative-keystore.md)
++ [Using AWS CloudHSM Key Store with Third\-Party Tools](keystore-third-party-tools.md)

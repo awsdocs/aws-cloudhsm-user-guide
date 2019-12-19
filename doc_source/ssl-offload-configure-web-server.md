@@ -43,7 +43,9 @@ To update your web server configuration, complete the steps from one of the foll
 1. Use a text editor to edit the `/etc/nginx/nginx.conf` file\. At the top of the file, add the following command: 
 
    ```
-   ssl_engine cloudhsm;
+              ssl_engine cloudhsm;
+              env n3fips_password;
+              "
    ```
 
    Then uncomment the TLS section of the file so that it looks like the following:

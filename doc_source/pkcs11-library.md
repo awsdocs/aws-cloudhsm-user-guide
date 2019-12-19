@@ -7,4 +7,6 @@ The AWS CloudHSM software library for PKCS \#11 is a PKCS \#11 standard implemen
 + [Authenticating to PKCS \#11](pkcs11-pin.md)
 + [Supported PKCS \#11 Key Types](pkcs11-key-types.md)
 + [Supported PKCS \#11 Mechanisms](pkcs11-mechanisms.md)
-+ [Supported PKCS \#11 API operations](pkcs11-apis.md)
++ [Supported PKCS \#11 API Operations](pkcs11-apis.md)
++ [Supported PKCS \#11 Attributes](pkcs11-attributes.md)
++ [Code Samples for AWS CloudHSM Software Library for PKCS\#11](pkcs11-samples.md)

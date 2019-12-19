@@ -32,6 +32,7 @@ The following are all of the possible attribute values for getAttribute.
       OBJ_ATTR_TOKEN                  = 1
       OBJ_ATTR_PRIVATE                = 2
       OBJ_ATTR_LABEL                  = 3
+      OBJ_ATTR_TRUSTED                = 134
       OBJ_ATTR_KEY_TYPE               = 256
       OBJ_ATTR_ID                     = 258
       OBJ_ATTR_SENSITIVE              = 259
@@ -41,13 +42,22 @@ The following are all of the possible attribute values for getAttribute.
       OBJ_ATTR_UNWRAP                 = 263
       OBJ_ATTR_SIGN                   = 264
       OBJ_ATTR_VERIFY                 = 266
+      OBJ_ATTR_DERIVE                 = 268
       OBJ_ATTR_LOCAL                  = 355
       OBJ_ATTR_MODULUS                = 288
       OBJ_ATTR_MODULUS_BITS           = 289
       OBJ_ATTR_PUBLIC_EXPONENT        = 290
       OBJ_ATTR_VALUE_LEN              = 353
       OBJ_ATTR_EXTRACTABLE            = 354
-      OBJ_ATTR_KCV                    = 371
+      OBJ_ATTR_NEVER_EXTRACTABLE      = 356
+      OBJ_ATTR_ALWAYS_SENSITIVE       = 357
+      OBJ_ATTR_DESTROYABLE            = 370
+      OBJ_ATTR_KCV                     = 371
+      OBJ_ATTR_WRAP_WITH_TRUSTED       = 528
+      OBJ_ATTR_EKCV                    = 4099
+      OBJ_ATTR_WRAP_TEMPLATE           = 1073742353
+      OBJ_ATTR_UNWRAP_TEMPLATE        = 1073742354
+      OBJ_ATTR_ALL                    = 512
 ```
 
 ## Parameters<a name="chmu-listAttributes-parameters"></a>

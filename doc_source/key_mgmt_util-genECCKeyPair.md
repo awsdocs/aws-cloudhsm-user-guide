@@ -1,6 +1,6 @@
 # genECCKeyPair<a name="key_mgmt_util-genECCKeyPair"></a>
 
-The `genECCKeyPair` command in the key\_mgmt\_util tool generates an [Elliptic Curve Cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) \(ECC\) key pair in your HSMs\. You must specify the elliptic curve type and a label for the keys\. You can also share the private key with other CU users, create non\-extractable keys, quorum\-controlled keys, and keys that expire when the session ends\. When the command succeeds, it returns the key handles that the HSM assigns to the public and private ECC keys\. You can use the key handles to identify the keys to other commands\.
+The `genECCKeyPair` command in the key\_mgmt\_util tool generates an [Elliptic Curve Cryptography](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography) \(ECC\) key pair in your HSMs\. When running the `genECCKeyPair` command, you must specify the elliptic curve identifier and a label for the key pair\. You can also share the private key with other CU users, create non\-extractable keys, quorum\-controlled keys, and keys that expire when the session ends\. When the command succeeds, it returns the key handles that the HSM assigns to the public and private ECC keys\. You can use the key handles to identify the keys to other commands\.
 
 Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
@@ -26,13 +26,13 @@ genECCKeyPair -i <EC curve id>
 
 ## Examples<a name="genECCKeyPair-examples"></a>
 
-These examples show how to use genECCKeyPair to create ECC key pairs in your HSMs\.
+The following examples show how to use genECCKeyPair to create ECC key pairs in your HSMs\.
 
 **Example : Create and Examine an ECC Key Pair**  
-This command creates an ECC key pair using an NID\_sect571r1 elliptic curve and an `ecc12` label\. The output shows that the key handle of the private key is `262177` and the key handle of the public key is `262179`\. The label applies to both the public and private keys\.  
+This command uses an NID\_sect571r1 elliptic curve and an `ecc14` label to create an ECC key pair\. The output shows that the key handle of the private key is `262177` and the key handle of the public key is `262179`\. The label applies to both the public and private keys\.  
 
 ```
-Command: genECCKeyPair -i 12 -l ecc12
+Command: genECCKeyPair -i 14 -l ecc14
 
         Cfm3GenerateKeyPair returned: 0x00 : HSM Return: SUCCESS
 
@@ -43,7 +43,7 @@ Command: genECCKeyPair -i 12 -l ecc12
         Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
-After generating the key, you might want to examine its attributes\. The next command uses [getAttribute](key_mgmt_util-getAttribute.md) to write all of the attributes \(represented by the constant `512`\) of the new ECC private key to the `attr_262177` file\.  
+After generating the key, you can examine its attributes\. Use [getAttribute](key_mgmt_util-getAttribute.md) to write all of the attributes \(represented by the constant `512`\) of the new ECC private key to the `attr_262177` file\.  
 
 ```
 Command: getAttribute -o 262177 -a 512 -out attr_262177
@@ -52,7 +52,7 @@ Attributes dumped into attr_262177
 
         Cfm3GetAttribute returned: 0x00 : HSM Return: SUCCESS
 ```
-This command gets the content of the `attr_262177` attribute file\. The output shows that the key is an elliptic curve private key that can be used for signing, but not for encrypting, decrypting, wrapping, unwrapping, or verifying\. The key is persistent and exportable\.  
+Then use the `cat` command to view the contents of the `attr_262177` attribute file\. The output shows the key is an elliptic curve private key that can be used for signing, but not for encrypting, decrypting, wrapping, unwrapping, or verifying\. The key is persistent and exportable\.  
 
 ```
 $  cat attr_262177
@@ -116,23 +116,10 @@ Displays help for the command\.
 Required: Yes
 
 **\-i **  
-Specifies the identifier for the elliptic curve\. Enter an identifier \(1 \- 15\)\.   
+Specifies the identifier for the elliptic curve\. Enter an identifier\.   
 Valid values:   
-+ **1**: NID\_X9\_62\_prime192v1
 + **2**: NID\_X9\_62\_prime256v1
-+ **3**: NID\_sect163k1
-+ **4**: NID\_sect163r2
-+ **5**: NID\_sect233k1
-+ **6**: NID\_sect233r1
-+ **7**: NID\_sect283k1
-+ **8**: NID\_sect283r1
-+ **9**: NID\_sect409k1
-+ **10**: NID\_sect409r1
-+ **11**:NID\_sect571k1
-+ **12**: NID\_sect571r1
-+ **13**: NID\_secp224r1
-+ **14**:NID\_secp384r1
-+ **15**: NID\_secp521r1
++ **14**: NID\_secp384r1
 + **16**: NID\_secp256k1
 Required: Yes
 

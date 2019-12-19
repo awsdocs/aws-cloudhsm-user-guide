@@ -24,11 +24,15 @@ You must run the installer with administrative privileges\.
    + `cng_config.exe`
    + `configure.exe`
    + `import_key.exe`
+**Note**  
+This file is installed from versions 1\.1\.2 and later\.
    + `key_mgmt_util.exe`
    + `ksp_config.exe`
    + `pkpspeed_blocking.exe`
+   + `pkpspeed_blocking.exe`
+   + `set_cloudhsm_credentials.exe`
 **Note**  
-The `import_key.exe` file is installed from versions 1\.1\.2\+\.
+This file is installed from versions 2\.0\.4 and later\.
 
    The installer copies the following certificate and key files into the `C:\ProgramData\Amazon\CloudHSM` folder:
    + `client.crt`

@@ -47,20 +47,32 @@ Following are the possible attribute values for getAttribute:
       OBJ_ATTR_TOKEN                  = 1
       OBJ_ATTR_PRIVATE                = 2
       OBJ_ATTR_LABEL                  = 3
+      OBJ_ATTR_TRUSTED                = 134
       OBJ_ATTR_KEY_TYPE               = 256
+      OBJ_ATTR_ID                     = 258
+      OBJ_ATTR_SENSITIVE              = 259
       OBJ_ATTR_ENCRYPT                = 260
       OBJ_ATTR_DECRYPT                = 261
       OBJ_ATTR_WRAP                   = 262
       OBJ_ATTR_UNWRAP                 = 263
       OBJ_ATTR_SIGN                   = 264
       OBJ_ATTR_VERIFY                 = 266
+      OBJ_ATTR_DERIVE                 = 268
       OBJ_ATTR_LOCAL                  = 355
       OBJ_ATTR_MODULUS                = 288
       OBJ_ATTR_MODULUS_BITS           = 289
       OBJ_ATTR_PUBLIC_EXPONENT        = 290
       OBJ_ATTR_VALUE_LEN              = 353
       OBJ_ATTR_EXTRACTABLE            = 354
+      OBJ_ATTR_NEVER_EXTRACTABLE      = 356
+      OBJ_ATTR_ALWAYS_SENSITIVE       = 357
+      OBJ_ATTR_DESTROYABLE            = 370
       OBJ_ATTR_KCV                    = 371
+      OBJ_ATTR_WRAP_WITH_TRUSTED      = 528
+      OBJ_ATTR_EKCV                   = 4099
+      OBJ_ATTR_WRAP_TEMPLATE          = 1073742353
+      OBJ_ATTR_UNWRAP_TEMPLATE        = 1073742354
+      OBJ_ATTR_ALL                    = 512
 ```
 
 To get the current value of the decrypt attribute for key 14, the next command uses [getAttribute](cloudhsm_mgmt_util-getAttribute.md) in cloudhsm\_mgmt\_util\. 
@@ -126,10 +138,18 @@ Required: Yes
 Specifies the constant that represents the attribute that you want to change\. You can specify only one attribute in each command\. To get the attributes and their integer values, use [listAttributes](key_mgmt_util-listAttributes.md)\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 Valid values:  
 + **3** – `OBJ_ATTR_LABEL`\.
++ **134** – `OBJ_ATTR_TRUSTED`\.
 + **260** – `OBJ_ATTR_ENCRYPT`\.
 + **261** – `OBJ_ATTR_DECRYPT`\.
 + **262** – `OBJ_ATTR_WRAP`\.
 + **263** – `OBJ_ATTR_UNWRAP`\.
++ **264** – `OBJ_ATTR_SIGN`\.
++ **266** – `OBJ_ATTR_VERIFY`\.
++ **268** – `OBJ_ATTR_DERIVE`\.
++ **370** – `OBJ_ATTR_DESTROYABLE`\.
++ **528** – `OBJ_ATTR_WRAP_WITH_TRUSTED`\.
++ **1073742353** – `OBJ_ATTR_WRAP_TEMPLATE`\.
++ **1073742354** – `OBJ_ATTR_UNWRAP_TEMPLATE`\.
 Required: Yes
 
 ## Related Topics<a name="chmu-setAttribute-seealso"></a>

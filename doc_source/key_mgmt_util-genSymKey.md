@@ -178,7 +178,6 @@ Specifies the key size in bytes\. For example, to create a 192\-bit key, type `2
 Valid values for each key type:  
 + AES: 16 \(128 bits\), 24 \(192 bits\), 32 \(256 bits\)
 + 3DES: 24 \(192 bits\)
-+ RC4: <256 \(2048 bits\)
 + Generic Secret: <3584 \(28672 bits\)
 Required: Yes
 

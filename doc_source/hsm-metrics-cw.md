@@ -1,7 +1,7 @@
 # Getting CloudWatch Metrics<a name="hsm-metrics-cw"></a>
 
 AWS CloudHSM publishes metrics about your HSM instances to your CloudWatch dashboard\. The metrics can be grouped by region, by cluster ID, and by HSM ID\. Note, however, that the HSM ID will change if AWS CloudHSM replaces a failed HSM\. We therefore recommend that you alarm and measure on the regional or cluster ID level rather than on the HSM ID\. The following metrics are available: 
-+ **HsmUnhealthy: **The HSM instance is not performing properly\. AWS CloudHSM automatically replaces unhealthy instances for you\. However, you can proactively expand cluster size to avoid HSM replacement\. 
++ **HsmUnhealthy: **The HSM instance is not performing properly\. AWS CloudHSM automatically replaces unhealthy instances for you\. You may choose to proactively expand cluster size to reduce performance impact while we are replacing the HSM\. 
 + **HsmTemperature: **Junction temperature of the hardware processor\. The system shuts down if temperature reaches 110 degrees Centigrade\. 
 + **HsmKeysSessionOccupied: **Number of session keys being used by the HSM instance\.
 + **HsmKeysTokenOccupied: **Number of token keys being used by the HSM instance and the cluster\. 

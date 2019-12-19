@@ -27,23 +27,23 @@ You can add or update tags from the [AWS CloudHSM console](https://console.aws.a
 
 1. To add a tag, do the following:
 
-   1. Choose **Add Tag**\.
+   1. Choose **Edit Tag** and then choose **Add Tag**\.
 
-   1. For **Tag Key**, type a key for the tag\.
+   1. For **Key**, type a key for the tag\.
 
-   1. \(Optional\) For **Tag Value**, type a value for the tag\.
+   1. \(Optional\) For **Value**, type a value for the tag\.
 
-   1. Choose the action for adding a tag, as shown in the following image\.  
-![\[The action for adding a tag in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/console-add-tag.png)
+   1. Choose **Save**\.
 
 1. To update a tag, do the following:
 
-   1. Choose the tag value to update\.
+   1. Choose **Edit Tag**\.
 **Note**  
 If you update the tag key for an existing tag, the console deletes the existing tag and creates a new one\.
 
-   1. Type the new tag value\. Then choose the action for updating a tag, as shown in the following image\.  
-![\[The action for updating a tag in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/console-update-tag.png)
+   1. Type the new tag value\.
+
+   1. Choose **Save**\.
 
 **To add or update tags \(AWS CLI\)**
 
@@ -101,8 +101,9 @@ You can remove tags from a cluster by using the [AWS CloudHSM console](https://c
 
 1. Choose **Tags**\.
 
-1. Next to the tag that you are removing, choose the action for deleting a tag, as shown in the following image\.  
-![\[The action for deleting a tag in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/console-remove-tag.png)
+1. Choose **Edit Tag** and then choose **Remove tag** for the tag you want to remove\.
+
+1. Choose **Save**\.
 
 **To remove tags \(AWS CLI\)**
 + At a command prompt, issue the [https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/untag-resource.html](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/untag-resource.html) command, specifying the tag keys of the tags that you are removing and the ID of the cluster whose tags you are removing\. When you use the AWS CLI to remove tags, specify only the tag keys, not the tag values\.

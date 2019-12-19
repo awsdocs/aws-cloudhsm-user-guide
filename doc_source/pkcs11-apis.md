@@ -1,4 +1,4 @@
-# Supported PKCS \#11 API operations<a name="pkcs11-apis"></a>
+# Supported PKCS \#11 API Operations<a name="pkcs11-apis"></a>
 
 The AWS CloudHSM software library for PKCS \#11 supports the following PKCS \#11 API operations\.
 + `C_CreateObject`

@@ -1,6 +1,6 @@
 # findAllKeys<a name="cloudhsm_mgmt_util-findAllKeys"></a>
 
-The findAllKeys command in cloudhsm\_mgmt\_util gets the keys that a specified crypto user \(CU\) owns or shares\. It also returns a hash of the user data on each of the HSMs\. You can use the hash to determine at a glance whether the users, key ownership, and key sharing data are the same on all HSMs in the cluster\.
+The findAllKeys command in cloudhsm\_mgmt\_util gets the keys that a specified crypto user \(CU\) owns or shares\. It also returns a hash of the user data on each of the HSMs\. You can use the hash to determine at a glance whether the users, key ownership, and key sharing data are the same on all HSMs in the cluster\. In the output, the keys owned by the user are annotated by `(o)` and shared keys are annotated by `(s)`\.
 
 findAllKeys returns public keys only when the specified CU owns the key, even though all CUs on the HSM can use any public key\. This behavior is different from [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util, which returns public keys for all CU users\.
 
@@ -33,26 +33,26 @@ These examples show how to use `findAllKeys` to find all keys for a user and get
 
 **Example : Find the Keys for a CU**  
 This example uses findAllKeys to find the keys in the HSMs that user 4 owns and shares\. The command uses a value of `0` for the second argument to suppress the hash value\. Because it omits the optional file name, the command writes to stdout \(standard output\)\.  
-The output shows that user 4 can use 6 keys: 8, 9, 17, 262162, 19, and 31\. The output uses an `(s)` to indicate that keys 8, 9, and 262162 are explicitly shared, although it does not indicate whether user 4 owns or shares them\. The keys that are not marked with `(s)` include symmetric and private keys that the user 4 owns and does not share, and public keys that are available to all crypto users\.   
+The output shows that user 4 can use 6 keys: 8, 9, 17, 262162, 19, and 31\. The output uses an `(s)` to indicate keys that are explicitly shared by the user\. The keys that the user owns are indicated by an `(o)` and include symmetric and private keys that the user does not share, and public keys that are available to all crypto users\.   
 
 ```
 aws-cloudhsm> findAllKeys 4 0
 Keys on server 0(10.0.0.1):
 Number of keys found 6
 number of keys matched from start index 0::6
-8(s),9(s),17,262162(s),19,31
+8(s),9(s),17,262162(s),19(o),31(o)
 findAllKeys success on server 0(10.0.0.1)
 
 Keys on server 1(10.0.0.2):
 Number of keys found 6
 number of keys matched from start index 0::6
-8(s),9(s),17,262162(s),19,31
+8(s),9(s),17,262162(s),19(o),31(o)
 findAllKeys success on server 1(10.0.0.2)
 
 Keys on server 1(10.0.0.3):
 Number of keys found 6
 number of keys matched from start index 0::6
-8(s),9(s),17,262162(s),19,31
+8(s),9(s),17,262162(s),19(o),31(o)
 findAllKeys success on server 1(10.0.0.3)
 ```
 
@@ -75,7 +75,7 @@ findAllKeys success on server 0(10.0.0.1)
 Keys on server 1(10.0.0.2):
 Number of keys found 3
 number of keys matched from start index 0::3
-8(s),9(s),11,17(s)
+8(s),9(s),11(o),17(s)
 Key Hash:
 55655676c95547fd4e82189a072ee1100eccfca6f10509077a0d6936a976bd49
 
@@ -88,7 +88,7 @@ aws-cloudhsm> findAllKeys 3 1
 Keys on server 0(10.0.0.1):
 Number of keys found 17
 number of keys matched from start index 0::17
-6,7,8(s),11,12,14,262159,262160,17(s),262162(s),19(s),20,21,262177,262179,262180,262181
+6(o),7(o),8(s),11(o),12(o),14(o),262159(o),262160(o),17(s),262162(s),19(s),20(o),21(o),262177(o),262179(o),262180(o),262181(o)
 Key Hash:
 55655676c95547fd4e82189a072ee1100eccfca6f10509077a0d6936a976bd49
 
@@ -96,7 +96,7 @@ findAllKeys success on server 0(10.0.0.1)
 Keys on server 1(10.0.0.2):
 Number of keys found 17
 number of keys matched from start index 0::17
-6,7,8(s),11,12,14,262159,262160,17(s),262162(s),19(s),20,21,262177,262179,262180,262181
+6(o),7(o),8(s),11(o),12(o),14(o),262159(o),262160(o),17(s),262162(s),19(s),20(o),21(o),262177(o),262179(o),262180(o),262181(o)
 Key Hash:
 55655676c95547fd4e82189a072ee1100eccfca6f10509077a0d6936a976bd49
 

@@ -19,7 +19,6 @@ To learn more about what you can do with AWS CloudHSM, see the following topics\
 + [Backups](backups.md)
 + [Client Tools and Libraries](client-tools-and-libraries.md)
 + [HSM Users](hsm-users.md)
-+ [Compliance](compliance.md)
 + [Pricing](pricing.md)
 + [Regions](regions.md)
-+ [Limits](limits.md)
++ [Quotas](limits.md)

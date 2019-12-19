@@ -6,3 +6,4 @@ Before you can use your AWS CloudHSM cluster for cryptoprocessing, you must crea
 + [Managing HSM Users](manage-hsm-users.md)
 + [Managing Keys](manage-keys.md)
 + [Quorum Authentication \(M of N\)](quorum-authentication.md)
++ [Using Trusted Keys to Control Key Unwraps](cloudhsm_using_trusted_keys_control_key_wrap.md)

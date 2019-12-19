@@ -1,9 +1,24 @@
 # AWS CloudHSM Client and Software Version History<a name="client-history"></a>
 
-This topic describes the updates to each version of the [AWS CloudHSM client](client-tools-and-libraries.md) and related software libraries\. It includes links to download the newer versions of the software\. We recommend that you use the most recent versions whenever possible\.
+This page provides release notes for each version of the [AWS CloudHSM client](client-tools-and-libraries.md) and related software libraries\. We include download links for the most recent versions\. We recommend that you use the most recent version whenever possible\.
+
+**To check the client version**
++ On a Linux system, use the following command:
+
+  ```
+  rpm -qa | grep ^cloudhsm
+  ```
++ On a Windows system, use the following command:
+
+  ```
+  wmic product get name,version
+  ```
 
 **Topics**
-+ [Current Version: 2\.0\.1](#client-version-2-0-1)
++ [Version 3\.0](#client-version-3-0)
++ [Version: 2\.0\.4](#client-version-2-0-4)
++ [Version: 2\.0\.3](#client-version-2-0-3)
++ [Version 2\.0\.1](#client-version-2-0-1)
 + [Version 2\.0\.0](#client-version-2-0-0)
 + [Version: 1\.1\.2](#client-version-1-1-2)
 + [Version: 1\.1\.1](#client-version-1-1-1)
@@ -16,7 +31,312 @@ This topic describes the updates to each version of the [AWS CloudHSM client](cl
 + [Version 1\.0\.7](#client-version-1.0.7)
 + [Version 1\.0\.0](#client-version-1.0.0)
 
-## Current Version: 2\.0\.1<a name="client-version-2-0-1"></a>
+## Version 3\.0<a name="client-version-3-0"></a>
+
+To download the software, choose the tab for your preferred operating system, then choose the link to each software package\.
+
+------
+#### [ Amazon Linux ]
+
+Download the version 3\.0 software for Amazon Linux:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-3.0.0-2.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-3.0.0-2.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-3.0.0-2.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-3.0.0-2.el6.x86_64.rpm)
+
+------
+#### [ Amazon Linux 2 ]
+
+Download the version 3\.0 software for Amazon Linux 2:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-3.0.0-2.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-3.0.0-2.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-3.0.0-2.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-3.0.0-2.el7.x86_64.rpm)
+
+------
+#### [ CentOS 6 ]
+
+Download the version 3\.0 software for CentOS 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-3.0.0-2.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-3.0.0-2.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-3.0.0-2.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-3.0.0-2.el6.x86_64.rpm)
+
+------
+#### [ CentOS 7 ]
+
+Download the version 3\.0 software for CentOS 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-3.0.0-2.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-3.0.0-2.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-3.0.0-2.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-3.0.0-2.el7.x86_64.rpm)
+
+------
+#### [ RHEL 6 ]
+
+Download the version 3\.0 software for RedHat Enterprise Linux 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-3.0.0-2.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-3.0.0-2.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-3.0.0-2.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-3.0.0-2.el6.x86_64.rpm)
+
+------
+#### [ RHEL 7 ]
+
+Download the version 3\.0 software for RedHat Enterprise Linux 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-3.0.0-2.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-3.0.0-2.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-3.0.0-2.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-3.0.0-2.el7.x86_64.rpm)
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+Download the version 3\.0 software for Ubuntu 16\.04 LTS:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_3.0.0-2_amd64.deb)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_3.0.0-2_amd64.deb)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_3.0.0-2_amd64.deb)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_3.0.0-2_amd64.deb)
+
+------
+#### [ Windows Server ]
+
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.0\) software for Windows Server:
++ [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.0.0.msi)
+
+------
+
+ Version 3\.0 provides important improvements to operational stability and performance\. This is a recommended update due to various bug fixes\.
+
+**AWS CloudHSM Client Software**
++ Key\_mgmt\_util includes the following updates:
+  + Removed the default mechanism from wrapKey and unwrapKey\. You must explicitly provide a mechanism when using these function\. 
+  + Added support for key wrap and unwrap using AES\-GCM\. To use this wrapping mechanism, specify \-m 10 with wrapKey and unwrapKey\. For more information, see [wrapKey](key_mgmt_util-wrapKey.md) or [unwrapKey](key_mgmt_util-unwrapKey.md)\.
+  + Changed the name for AES key wrapping using mechanism 4 from `CLOUDHSM_AES_KEY_WRAP` to `AES_KEY_WRAP_PAD_PKCS5`, to reflect that AWS CloudHSM utilizes PKCS5 padding while wrapping keys\. For more information, see the list of [Known Issues](KnownIssues.md#ki-all)\. 
+  + Improved `findKey` to return keys owned and shared by the CU that is logged in\. For more information, see the [findKey](key_mgmt_util-findKey.md) article\.
+
+  Cloudhsm\_mgmt\_util includes the following updates:
+  + COs can set the `OBJ_ATTR_TRUSTED` attribute on any key \(value 134\) in the HSM by using setAttribute to mark a key as trusted\. 
+**Note**  
+OBJ\_ATTR\_TRUSTED is the only attribute that can be set by a CO\. For more information, see the [setAttribute](key_mgmt_util-setAttribute.md) command\.
+  + findAllKeys displays keys owned by a CU and shared with that CU\. Learn more at [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md)\.
+
+**PKCS \#11 Library**
++ PKCS \#11 no longer requires Redis for high performance\. Redis is no longer included in the installation packages\. If you used Redis in previous installations, update your start\-up and installation scripts to remove Redis commands\.
++ Added support for encryption and decryption using D3DES ECB and AES\_CTR\. The full list of supported functions and mechanisms in PKCS\#11 is available in the [Supported PKCS \#11 Mechanisms](pkcs11-mechanisms.md) article\.
+
+  Code samples for [des\_ecb\.c](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/tree/master/src/encrypt/des_ecb.c) and [aes\_ctr\.c](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/tree/master/src/encrypt/aes_ctr.c) are available on GitHub\. 
++ Added support for key derivation using HMAC KDF \(SP 800\-108\) which enables you to use the CKM\_SP800\_108\_COUNTER\_KDF mechanism with the C\_DeriveKey function\. For additional information see the code sample [hmac\-kdf\.c](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/hmac_kdf/hmac_kdf.c)\.
++ Added support for key wrap and unwrap using AES\-GCM, through the CKM\_CLOUDHSM\_AES\_GCM mechanism\. For more information, see the [aes\_gcm\_wrapping sample](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/tree/master/src/wrapping/aes_gcm_wrapping.c) on GitHub\.
++ Added support for the following attributes: CKA\_NEVER\_EXTRACTABLE, CKA\_DERIVE, CKA\_ALWAYS\_SENSITIVE, CKA\_WRAP\_WITH\_TRUSTED, CKA\_TRUSTED, CKA\_WRAP\_TEMPLATE, CKA\_UNWRAP\_TEMPLATE, CKA\_DESTROYABLE\.
+
+  The full list of supported attributes is in the [Supported PKCS \#11 Attributes](pkcs11-attributes.md) article\. To learn about using trusted keys for controlled wrapping and unwrapping, see the article on [using trusted keys](http://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/CloudHSMUsingTrustedKeys.pdf)\.  To see the available samples that work with the newly supported attributes, go to the [AWS CloudHSM examples on GitHub]( https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples),
++ Added the mechanism, CKM\_CLOUDSHM\_AES\_GCM, which is a memory\-safe AES\-GCM implementation\. This proprietary mechanism is a safer alternative to the standard CKM\_AES\_GCM\. CKM\_CLOUDSHM\_AES\_GCM prepends the IV generated by the HSM to the ciphertext instead of writing it back into the CK\_GCM\_PARAMS structure provided during cipher initialization\. You can use CKM\_CLOUDSHM\_AES\_GCM with the C\_Encrypt or C\_WrapKey functions\. When using this mechanism, the pIV variable in the CK\_GCM\_PARAMS struct must be set to NULL\. See the CKM\_CLOUDHSM\_AES\_GCM entry in the table in the [ Supported PCKS\#11\-Mechanisms](pkcs11-mechanisms.md) article\.
+
+**OpenSSL Dynamic Engine**
++ Updated the version for consistency\.
+
+**Java Library**
++ Added the CloudHSM keystore which supports certificates, allowing interoperability with third party tools like keytool and jarsigner\. To learn how to use this keystore, see the [CloudHSM Key Store](alternative-keystore.md) article, or the [ CloudHSMKeyStoreExampleRunner](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/CloudHSMKeyStoreExampleRunner.java) sample on GitHub\. To use the keystore with KeyTool and Jarsigner, refer to the [ CloudHSM KeyStore Integration guide](http://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/CloudHSMKeyStoreToolIntegration.pdf)\. 
++ Added support for encryption and decryption using D3DES ECB and AES\_CTR\. The full list of supported functions in JDE is available in the [Supported Mechanisms](java-lib-supported.md) article\. You can find sample code for the [ DESedeECMEncryptDecryptRunner sample]( https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/DESedeECBEncryptDecryptRunner.java) and [ AESCTREncryptDecryptRunner sample]( https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/AESCTREncryptDecryptRunner.java) on GitHub\.
++ Added support for key wrap and unwrap using AES\-GCM\. See the [AESGCMWrappingRunner sample](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/AESGCMWrappingRunner.java) on GitHub\.
++ Added support for ECDH\. The derivation is partially executed on the HSM\. For additional information, see the list of [Known Issues for the JCE SDK](KnownIssues.md) before using ECDH with CloudHSM\. To learn how to use ECDH with the JCE, see the [ECDHOperationsRunner](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/ECDHOperationsRunner.java) sample on GitHub\.
++ Trusted key wrapping and key derivation are not yet available through the JCE\.
+
+**Windows \(CNG, KSP\)**
++ Updated the version for consistency\. 
++ Added import\_key\.exe to associate pre\-existing CloudHSM keys with corresponding certificates\. 
+
+## Version: 2\.0\.4<a name="client-version-2-0-4"></a>
+
+To download the software, choose the tab for your preferred operating system, then choose the link to each software package\.
+
+------
+#### [ Amazon Linux ]
+
+Download the version 2\.0\.4 software for Amazon Linux:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-2.0.4-1.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-2.0.4-1.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-2.0.4-1.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-2.0.4-1.el6.x86_64.rpm)
+
+------
+#### [ Amazon Linux 2 ]
+
+Download the version 2\.0\.4 software for Amazon Linux 2:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-2.0.4-1.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-2.0.4-1.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-2.0.4-1.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-2.0.4-1.el7.x86_64.rpm)
+
+------
+#### [ CentOS 6 ]
+
+Download the version 2\.0\.4 software for CentOS 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-2.0.4-1.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-2.0.4-1.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-2.0.4-1.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-2.0.4-1.el6.x86_64.rpm)
+
+------
+#### [ CentOS 7 ]
+
+Download the version 2\.0\.4 software for CentOS 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-2.0.4-1.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-2.0.4-1.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-2.0.4-1.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-2.0.4-1.el7.x86_64.rpm)
+
+------
+#### [ RHEL 6 ]
+
+Download the version 2\.0\.4 software for RedHat Enterprise Linux 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-2.0.4-1.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-2.0.4-1.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-2.0.4-1.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-2.0.4-1.el6.x86_64.rpm)
+
+------
+#### [ RHEL 7 ]
+
+Download the version 2\.0\.4 software for RedHat Enterprise Linux 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-2.0.4-1.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-2.0.4-1.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-2.0.4-1.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-2.0.4-1.el7.x86_64.rpm)
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+Download the version 2\.0\.4 software for Ubuntu 16\.04 LTS:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_2.0.4-1_amd64.deb)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_2.0.4-1_amd64.deb)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_2.0.4-1_amd64.deb)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_2.0.4-1_amd64.deb)
+
+------
+#### [ Windows Server ]
+
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 2\.0\.4 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\.
+
+Download the latest version \(2\.0\.4\) software for Windows Server:
++  [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-2.0.4.msi) for Windows Server
+
+------
+
+ Version 2\.0\.4 provides important improvements to operational stability and performance\. This is a recommended update due to various bug fixes\.
+
+**AWS CloudHSM Client Software**
++ Improved stability and bug fixes\.
+
+**PKCS \#11 Library**
++ Updated the version for consistency\.
+
+**OpenSSL Dynamic Engine**
++ Updated the version for consistency\.
+
+**Java Library**
++ Improved stability and bug fixes\.
+
+**Windows \(CNG, KSP\)**
++ Improved stability and bug fixes\.
++ You can now securely store and access HSM credentials through [Windows Credential Manager](ksp-library-prereq.md)\.
+
+## Version: 2\.0\.3<a name="client-version-2-0-3"></a>
+
+To download the software, choose the tab for your preferred operating system, then choose the link to each software package\.
+
+------
+#### [ Amazon Linux ]
+
+Download the version 2\.0\.3 software for Amazon Linux:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-2.0.3-3.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-2.0.3-3.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-2.0.3-3.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-2.0.3-3.el6.x86_64.rpm)
+
+------
+#### [ Amazon Linux 2 ]
+
+Download the version 2\.0\.3 software for Amazon Linux 2:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-2.0.3-3.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-2.0.3-3.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-2.0.3-3.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-2.0.3-3.el7.x86_64.rpm)
+
+------
+#### [ CentOS 6 ]
+
+Download the version 2\.0\.3 software for CentOS 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-2.0.3-3.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-2.0.3-3.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-2.0.3-3.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-2.0.3-3.el6.x86_64.rpm)
+
+------
+#### [ CentOS 7 ]
+
+Download the version 2\.0\.3 software for CentOS 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-2.0.3-3.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-2.0.3-3.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-2.0.3-3.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-2.0.3-3.el7.x86_64.rpm)
+
+------
+#### [ RHEL 6 ]
+
+Download the version 2\.0\.3 software for RedHat Enterprise Linux 6:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-2.0.3-3.el6.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-pkcs11-2.0.3-3.el6.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-dyn-2.0.3-3.el6.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-2.0.3-3.el6.x86_64.rpm)
+
+------
+#### [ RHEL 7 ]
+
+Download the version 2\.0\.3 software for RedHat Enterprise Linux 7:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-2.0.3-3.el7.x86_64.rpm)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-pkcs11-2.0.3-3.el7.x86_64.rpm)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-dyn-2.0.3-3.el7.x86_64.rpm)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-jce-2.0.3-3.el7.x86_64.rpm)
+
+------
+#### [ Ubuntu 16\.04 LTS ]
+
+Download the version 2\.0\.3 software for Ubuntu 16\.04 LTS:
++ [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client_2.0.3-3_amd64.deb)
++ [PKCS \#11 Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-pkcs11_2.0.3-3_amd64.deb)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-dyn_2.0.3-3_amd64.deb)
++ [Java Library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm-client-jce_2.0.3-3_amd64.deb)
+
+------
+#### [ Windows Server ]
+
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 2\.0\.3 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\.
+
+Download the latest version \(2\.0\.3\) software for Windows Server:
++  [AWS CloudHSM Client](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-2.0.3.msi) for Windows Server
+
+------
+
+ Version 2\.0\.3 provides important improvements to operational stability and performance\. This is a recommended update due to various bug fixes\.
+
+**AWS CloudHSM Client Software**
++ Improved stability and bug fixes\.
+
+**PKCS \#11 Library**
++ Improved stability and bug fixes\.
+
+**OpenSSL Dynamic Engine**
++ Updated the version for consistency\.
+
+**Java Library**
++ Improved stability and bug fixes\.
+
+**Windows \(CNG, KSP\)**
++ Improved stability and bug fixes\.
+
+## Version 2\.0\.1<a name="client-version-2-0-1"></a>
 
 To download the software, choose the tab for your preferred operating system, then choose the link to each software package\.
 
