@@ -23,7 +23,7 @@ To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
       + To install Apache, run the following command\.
 
         ```
-        sudo yum install -y httpd24 mod24_ssl
+        sudo yum install -y httpd mod_ssl
         ```
 
    1. [Install and configure the OpenSSL engine](openssl-library-install.md#install-openssl-library)\.
