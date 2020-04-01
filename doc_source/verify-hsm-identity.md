@@ -31,7 +31,7 @@ The following diagram shows the CSR, the certificates, and their relationship to
 This is AWS CloudHSM's root certificate\. You can view and download this certificate at [https://docs\.aws\.amazon\.com/cloudhsm/latest/userguide/root\-certificate\.html](#root-certificate)\.
 
 **Manufacturer Root Certificate**  
-This is the hardware manufacturer's root certificate\. You can view and download this certificate at [https://www\.cavium\.com/LS/TAmanuCert/](https://www.cavium.com/LS/TAmanuCert/)\.
+This is the hardware manufacturer's root certificate\. You can view and download this certificate at [https://www\.marvell\.com/products/security-solutions/liquid-security-hsm-adapters-and-appliances/liquidsecurity-certificate.html](https://www.marvell.com/products/security-solutions/liquid-security-hsm-adapters-and-appliances/liquidsecurity-certificate.html)\.
 
 **AWS Hardware Certificate**  
 AWS CloudHSM created this certificate when the HSM hardware was added to the fleet\. This certificate asserts that AWS CloudHSM owns the hardware\.
@@ -110,7 +110,7 @@ Follow these steps to get the root certificates for AWS CloudHSM and the manufac
 
 1. Go to [https://docs\.aws\.amazon\.com/cloudhsm/latest/userguide/root\-certificate\.html](#root-certificate), and then choose **AWS\_CloudHSM\_Root\-G1\.zip**\. After you download the file, extract \(unzip\) its contents\.
 
-1. Go to [https://www\.cavium\.com/LS/TAmanuCert/](https://www.cavium.com/LS/TAmanuCert/), and then choose **Download Certificate**\. You might need to right\-click the **Download Certificate** link and then choose **Save Link As\.\.\.** to save the certificate file\.
+1. Go to [https://www\.marvell\.com/products/security-solutions/liquid-security-hsm-adapters-and-appliances/liquidsecurity-certificate.html](https://www.marvell.com/products/security-solutions/liquid-security-hsm-adapters-and-appliances/liquidsecurity-certificate.html), and then choose **Download Certificate**\. You might need to right\-click the **Download Certificate** link and then choose **Save Link As\.\.\.** to save the certificate file\.
 
 ## Verify Certificate Chains<a name="verify-certificate-chains"></a>
 
@@ -146,7 +146,7 @@ To verify the certificate chain, use OpenSSL 1\.0\. Due to a change in OpenSSL c
 
    ```
    $ cat <cluster ID>_ManufacturerHardwareCertificate.crt \
-         cavium_cert.crt \
+         liquid_security_certificate.crt \
          > <cluster ID>_manufacturer_chain.crt
    ```
 
