@@ -36,7 +36,7 @@ The AWS CloudHSM software library for Java supports the following algorithm, mod
 | DESede \(Triple DES\) | ECB | `DESede/ECB/NoPadding``DESede/ECB/PKCS5Padding` | Implements `Cipher.ENCRYPT_MODE` and `Cipher.DECRYPT_MODE`\. The key generation routines accept a size of 168 or 192 bits\. However, internally, all DESede keys are 192 bits\.  | 
 | RSA | ECB | `RSA/ECB/NoPadding``RSA/ECB/PKCS1Padding` | Implements `Cipher.ENCRYPT_MODE` and `Cipher.DECRYPT_MODE`\. | 
 | RSA | ECB | `RSA/ECB/OAEPPadding` `RSA/ECB/OAEPWithSHA-1ANDMGF1Padding` `RSA/ECB/OAEPPadding` `RSA/ECB/OAEPWithSHA-224ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-256ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-384ANDMGF1Padding` `RSA/ECB/OAEPWithSHA-512ANDMGF1Padding`  |  Implements `Cipher.ENCRYPT_MODE`, `Cipher.DECRYPT_MODE`, `Cipher.WRAP_MODE`, and `Cipher.UNWRAP_MODE`\. `OAEPPadding` is `OAEP` with the `SHA-1` padding type\.  | 
-| RSAAESWrap | ECB | OAEPPADDING | Implements Cipher\.WRAP\_Mode and Cipher\.UNWRAP\_MODE\. | 
+| RSAAESWrap | ECB | `OAEPPADDING` | Implements `Cipher.WRAP_MODE` and `Cipher.UNWRAP_MODE`\. | 
 
 ## Supported Digests<a name="java-digests"></a>
 
