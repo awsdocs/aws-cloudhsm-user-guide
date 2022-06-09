@@ -38,15 +38,14 @@ The following table lists the key attributes, their constants, and their valid v
 |  OBJ\_ATTR\_KCV  |  371  |  Key check value of the key\. For more information, see [Additional Details](#key-attribute-table-details)\.  | 
 |  OBJ\_ATTR\_ALL  |  512  |  Represents all attributes\.  | 
 |  OBJ\_ATTR\_WRAP\_WITH\_TRUSTED  |  528  |  **0**: False\.  **1**: True\.   | 
-|  OBJ\_ATTR\_EKCV  |  4099  |  EKCV is a check sum value generated using the key bytes\.   | 
 |  OBJ\_ATTR\_WRAP\_TEMPLATE  |  1073742353  |  Values should use the attribute template to match the key wrapped using this wrapping key\.\.   | 
 |  OBJ\_ATTR\_UNWRAP\_TEMPLATE  |  1073742354  |  Values should use the attribute template applied to any key unwrapped using this wrapping key\.   | 
 
 ## Additional Details<a name="key-attribute-table-details"></a>
 
-**Key check value \(kcv\)**  
+**Key check value \(KCV\)**  
 The *key check value* \(KCV\) is a 3\-byte hash or checksum of a key that is generated when the HSM imports or generates a key\. You can also calculate a KCV outside of the HSM, such as after you export a key\. You can then compare the KCV values to confirm the identity and integrity of the key\. To get the KCV of a key, use [getAttribute](key_mgmt_util-getAttribute.md)\.  
 AWS CloudHSM uses the following standard method to generate a key check value:  
 + **Symmetric keys**: First 3 bytes of the result of encrypting a zero\-block with the key\.
 + **Asymmetric key pairs**: First 3 bytes of the SHA\-1 hash of the public key\.
-+ **HMAC keys**: KVC for HMAC keys is not supported at this time\.
++ **HMAC keys**: KCV for HMAC keys is not supported at this time\.

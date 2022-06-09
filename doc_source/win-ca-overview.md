@@ -1,4 +1,4 @@
-# Configure Windows Server as a Certificate Authority \(CA\) with AWS CloudHSM<a name="win-ca-overview"></a>
+# Configure Windows Server as a certificate authority \(CA\) with AWS CloudHSM<a name="win-ca-overview"></a>
 
 In a public key infrastructure \(PKI\), a certificate authority \(CA\) is a trusted entity that issues digital certificates\. These digital certificates bind a public key to an identity \(a person or organization\) by means of public key cryptography and digital signatures\. To operate a CA, you must maintain trust by protecting the private key that signs the certificates issued by your CA\. You can store the private key in the HSM in your AWS CloudHSM cluster, and use the HSM to perform the cryptographic signing operations\.
 
@@ -7,6 +7,6 @@ In this tutorial, you use Windows Server and AWS CloudHSM to configure a CA\. Yo
 For more information, see the following topics:
 
 **Topics**
-+ [Windows Server CA Step 1: Set Up the Prerequisites](win-ca-prerequisites.md)
-+ [Windows Server CA Step 2: Create a Windows Server CA with AWS CloudHSM](win-ca-setup.md)
-+ [Windows Server CA Step 3: Sign a Certificate Signing Request \(CSR\) with Your Windows Server CA with AWS CloudHSM](win-ca-sign-csr.md)
++ [Windows Server CA step 1: Set up the prerequisites](win-ca-prerequisites.md)
++ [Windows Server CA step 2: Create a Windows Server CA with AWS CloudHSM](win-ca-setup.md)
++ [Windows Server CA step 3: Sign a certificate signing request \(CSR\) with your Windows Server CA with AWS CloudHSM](win-ca-sign-csr.md)

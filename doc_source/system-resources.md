@@ -1,4 +1,4 @@
-# System Resources<a name="system-resources"></a>
+# System resources<a name="system-resources"></a>
 
 System resource quotas are quotas on what the AWS CloudHSM client is allowed to use when it runs\.
 

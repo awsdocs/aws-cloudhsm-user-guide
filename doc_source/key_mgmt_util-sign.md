@@ -2,7 +2,7 @@
 
 The sign command in key\_mgmt\_util uses a chosen private key to generate a signature for a file\.
 
-In order to use sign, you must first have a private key in your HSM\. You can generate a private key with the [genSymKey](key_mgmt_util-genSymKey.md), [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md), or [genECCKeyPair](key_mgmt_util-genECCKeyPair.md) commands\. You can also import one with the [importPrivateKey](key_mgmt_util-importPrivateKey.md) command\. For more information, see [Generate Keys](manage-keys.md#generate-keys)\.
+In order to use sign, you must first have a private key in your HSM\. You can generate a private key with the [genSymKey](key_mgmt_util-genSymKey.md), [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md), or [genECCKeyPair](key_mgmt_util-genECCKeyPair.md) commands\. You can also import one with the [importPrivateKey](key_mgmt_util-importPrivateKey.md) command\. For more information, see [Generate Keys](using-kmu.md#generate-keys)\.
 
 The sign command uses a user\-designated signing mechanism, represented by an integer, to sign a message file\. For a list of possible signing mechanisms, see [Parameters](#sign-parameters)\.
 
@@ -60,10 +60,10 @@ Required: Yes
 The name of the file to which the signed file will be saved\.  
 Required: Yes
 
-## Related Topics<a name="sign-seealso"></a>
+## Related topics<a name="sign-seealso"></a>
 + [verify](key_mgmt_util-verify.md)
 + [importPrivateKey](key_mgmt_util-importPrivateKey.md)
 + [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
 + [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)
 + [genSymKey](key_mgmt_util-genSymKey.md)
-+ [Generate Keys](manage-keys.md#generate-keys)
++ [Generate Keys](using-kmu.md#generate-keys)

@@ -6,11 +6,11 @@ When you run getKeyInfo on public keys, getKeyInfo returns only the key owner, e
 
 You own the keys that you create\. You can share a key with other users when you create it\. Then, to share or unshare an existing key, use [shareKey](cloudhsm_mgmt_util-shareKey.md) in cloudhsm\_mgmt\_util\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="chmu-getKeyInfo-userType"></a>
+## User type<a name="chmu-getKeyInfo-userType"></a>
 
 The following types of users can run this command\.
 + Crypto users \(CU\)
@@ -25,7 +25,7 @@ getKeyInfo -k <key-handle> [<output file>]
 
 These examples show how to use getKeyInfo to get information about the users of a key\.
 
-**Example : Get the Users for an Asymmetric Key**  
+**Example : Get the users for an asymmetric key**  
 This command gets the users who can use the AES \(asymmetric\) key with key handle `262162`\. The output shows that user 3 owns the key and has shares it with users 4 and 6\.   
 Only users 3, 4, and 6 can run getKeyInfo on key 262162\.   
 
@@ -53,7 +53,7 @@ Key Info on server 1(10.0.0.2):
                  6
 ```
 
-**Example : Get the Users for a Symmetric Key Pair**  
+**Example : Get the users for a symmetric key pair**  
 These commands use getKeyInfo to get the users who can use the keys in an [ECC \(symmetric\) key pair](key_mgmt_util-genSymKey.md)\. The public key has key handle `262179`\. The private key has key handle `262177`\.   
 When you run getKeyInfo on the private key \(`262177`\), it returns the key owner \(3\) and crypto users \(CUs\) 4, with whom the key is shared\.   
 
@@ -111,7 +111,7 @@ Total number of keys present 8
         Cfm3FindKey returned: 0x00 : HSM Return: SUCCESS
 ```
 
-**Example : Get the Quorum Authentication Value \(m\_value\) for a Key**  
+**Example : Get the quorum authentication value \(m\_value\) for a key**  
 This example shows how to get the `m_value` for a key\. The m\_value is the number of users in the quorum who must approve any cryptographic operations that use the key and operations to share the unshare the key\.  
 When quorum authentication is enabled on a key, a quorum of users must approve any cryptographic operations that use the key\. To enable quorum authentication and set the quorum size, use the `-m_value` parameter when you create the key\.  
 This command uses [genSymKey](key_mgmt_util-genSymKey.md) to create a 256\-bit AES key that is shared with user 4\. It uses the `m_value` parameter to enable quorum authentication and set the quorum size to two users\. The number of users must be large enough to provide the required approvals\.  
@@ -172,7 +172,7 @@ Writes the output to the specified file, instead of stdout\. If the file exists,
 Required: No  
 Default: stdout
 
-## Related Topics<a name="chmu-getKeyInfo-seealso"></a>
+## Related topics<a name="chmu-getKeyInfo-seealso"></a>
 + [getKeyInfo](key_mgmt_util-getKeyInfo.md) in key\_mgmt\_util
 + [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util
 + [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util

@@ -29,30 +29,32 @@ genRSAKeyPair -m <modulus length>
 
 These examples show how to use genRSAKeyPair to create asymmetric key pairs in your HSMs\.
 
-**Example : Create and Examine an RSA Key Pair**  
-This command creates an RSA key pair with a 2048\-bit modulus and an exponent of 65541\. The output shows that the public key handle is `262159` and the private key handle is `262160`\.  
+**Example : Create and examine an RSA key pair**  
+This command creates an RSA key pair with a 2048\-bit modulus and an exponent of 65537\. The output shows that the public key handle is `2100177` and the private key handle is `2100426`\.  
 
 ```
-Command: genRSAKeyPair -m 2048 -e 65541 -l rsa_test 
+Command: genRSAKeyPair -m 2048 -e 65537 -l rsa_test 
 
 Cfm3GenerateKeyPair returned: 0x00 : HSM Return: SUCCESS
-Cfm3GenerateKeyPair: public key handle: 262159 private key handle: 262160
-Cluster Error Status
-Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
-Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
+
+        Cfm3GenerateKeyPair:    public key handle: 2100177    private key handle: 2100426
+
+        Cluster Status:
+        Node id 0 status: 0x00000000 : HSM Return: SUCCESS
+        Node id 1 status: 0x00000000 : HSM Return: SUCCESS
 ```
-The next command uses [getAttribute](key_mgmt_util-getAttribute.md) to get the attributes of the public key that we just created\. It writes the output to the `attr_262159` file\. It is followed by a cat command that gets the content of the attribute file\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
-The resulting hexadecimal values confirm that it is a public key \(`OBJ_ATTR_CLASS 0x02`\) with a type of RSA \(`OBJ_ATTR_KEY_TYPE 0x00`\)\. You can use this public key to encrypt \(`OBJ_ATTR_ENCRYPT 0x01`\), but not to decrypt \(`OBJ_ATTR_DECRYPT 0x00`\) or wrap \(`OBJ_ATTR_WRAP 0x00`\)\. The results also include the key length \(512, `0x200`\), the modulus, the modulus length \(2048, `0x800`\), and the public exponent \(65541, `0x10005`\)\.   
+The next command uses [getAttribute](key_mgmt_util-getAttribute.md) to get the attributes of the public key that we just created\. It writes the output to the `attr_2100177` file\. It is followed by a cat command that gets the content of the attribute file\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
+The resulting hexadecimal values confirm that it is a public key \(`OBJ_ATTR_CLASS 0x02`\) with a type of RSA \(`OBJ_ATTR_KEY_TYPE 0x00`\)\. You can use this public key to encrypt \(`OBJ_ATTR_ENCRYPT 0x01`\), but not to decrypt \(`OBJ_ATTR_DECRYPT 0x00`\)\. The results also include the key length \(512, `0x200`\), the modulus, the modulus length \(2048, `0x800`\), and the public exponent \(65537, `0x10001`\)\.  
 
 ```
-Command:  getAttribute -o 262159 -a 512 -out attr_262159
+Command:  getAttribute -o 2100177 -a 512 -out attr_2100177
 
-got all attributes of size 731 attr cnt 20
-Attributes dumped into attr_262159 file
+Attribute size: 801, count: 26
+Written to: attr_2100177 file
 
- Cfm3GetAttribute returned: 0x00 : HSM Return: SUCCESS
+        Cfm3GetAttribute returned: 0x00 : HSM Return: SUCCESS
 
-$  cat attr_262159
+$  cat attr_2100177
 OBJ_ATTR_CLASS
 0x02
 OBJ_ATTR_KEY_TYPE
@@ -60,13 +62,13 @@ OBJ_ATTR_KEY_TYPE
 OBJ_ATTR_TOKEN
 0x01
 OBJ_ATTR_PRIVATE
-0x00
+0x01
 OBJ_ATTR_ENCRYPT
 0x01
 OBJ_ATTR_DECRYPT
 0x00
 OBJ_ATTR_WRAP
-0x00
+0x01
 OBJ_ATTR_UNWRAP
 0x00
 OBJ_ATTR_SIGN
@@ -86,26 +88,38 @@ OBJ_ATTR_ID
 OBJ_ATTR_VALUE_LEN
 0x00000200
 OBJ_ATTR_KCV
-0x0a4364
+0xc51c18
 OBJ_ATTR_MODULUS
-9162b8d5d01d7b5b1179686d15e74d1dd38eaa5b6e64673195aaf951df8828deeca002c215d4209a
-c0bf90a9587ddca7f6351d5d4df0f6201b65daccd9955e4f49a819c0d39cb6717623bfa33436facc
-835c15961a58a63ca25bf0d2d4888d77418c571c190f8cc5a82483050658c00df4658dff248202bc
-95e886b1b5c7a981f09b0eb4f606641efe09bf3881f63c90d4a4415219ba796df449862b9d9c2a78
-d1c24fff56cf9b25f2b7dee44e200dd9550bd097a7044b22ca004033236bc708a0bad4a111533ed4
-6d049e5ec0b449b4a3877e566b0ce9d0a60fd1c15352b131ccc234f1719bed3918df579a66e7fff2
-9dc80dc5dbbf6e3d7d092d67c6abca7d
+0xbb9301cc362c1d9724eb93da8adab0364296bde7124a241087d9436b9be57e4f7780040df03c2c
+1c0fe6e3b61aa83c205280119452868f66541bbbffacbbe787b8284fc81deaeef2b8ec0ba25a077d
+6983c77a1de7b17cbe8e15b203868704c6452c2810344a7f2736012424cf0703cf15a37183a1d2d0
+97240829f8f90b063dd3a41171402b162578d581980976653935431da0c1260bfe756d85dca63857
+d9f27a541676cb9c7def0ef6a2a89c9b9304bcac16fdf8183c0a555421f9ad5dfeb534cf26b65873
+970cdf1a07484f1c128b53e10209cc6f7ac308669112968c81a5de408e7f644fe58b1a9ae1286fec
+b3e4203294a96fae06f8f0db7982cb5d7f
 OBJ_ATTR_MODULUS_BITS
 0x00000800
 OBJ_ATTR_PUBLIC_EXPONENT
-0x010005
+0x010001
+OBJ_ATTR_TRUSTED
+0x00
+OBJ_ATTR_WRAP_WITH_TRUSTED
+0x00
+OBJ_ATTR_DESTROYABLE
+0x01
+OBJ_ATTR_DERIVE
+0x00
+OBJ_ATTR_ALWAYS_SENSITIVE
+0x00
+OBJ_ATTR_NEVER_EXTRACTABLE
+0x00
 ```
 
-**Example : Generate a Shared RSA Key Pair**  
+**Example : Generate a shared RSA key pair**  
 This command generates an RSA key pair and shares the private key with user 4, another CU on the HSM\. The command uses the `m_value` parameter to require at least two approvals before the private key in the pair can be used in a cryptographic operation\. When you use the `m_value` parameter, you must also use `-u` in the command and the `m_value` cannot exceed the total number of users \(number of values in `-u` \+ owner\)\.  
 
 ```
- Command:  genRSAKeyPair -m 2048 -e 195193 -l rsa_mofn -id rsa_mv2 -u 4 -m_value 2
+ Command:  genRSAKeyPair -m 2048 -e 65537 -l rsa_mofn -id rsa_mv2 -u 4 -m_value 2
 
         Cfm3GenerateKeyPair returned: 0x00 : HSM Return: SUCCESS
 
@@ -155,7 +169,7 @@ Default: 0
 Required: No
 
 **\-nex**  
-Makes the private key nonextractable\. The private key that is generated cannot be [exported from the HSM](manage-keys.md#export-keys)\. Public keys are always extractable\.  
+Makes the private key nonextractable\. The private key that is generated cannot be [exported from the HSM](using-kmu.md#export-keys)\. Public keys are always extractable\.  
 Default: Both the public and private keys in the key pair are extractable\.  
 Required: No
 
@@ -183,7 +197,7 @@ Runs an integrity check that verifies that the firmware on which the cluster run
 Default: No attestation check\.  
 Required: No
 
-## Related Topics<a name="genRSAKeyPair-seealso"></a>
+## Related topics<a name="genRSAKeyPair-seealso"></a>
 + [genSymKey](key_mgmt_util-genSymKey.md)
 + [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)
 + [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)

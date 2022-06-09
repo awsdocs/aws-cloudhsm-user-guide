@@ -1,6 +1,8 @@
-# Verify the Performance of the HSM<a name="troubleshooting-verify-hsm-performance"></a>
+# Verify the performance of the HSM<a name="troubleshooting-verify-hsm-performance"></a>
 
-To verify the performance of the HSMs in your AWS CloudHSM cluster, you can use the pkpspeed \(Linux\) or pkpspeed\_blocking \(Windows\) tool that is included with the AWS CloudHSM client software\. For more information about installing the client on a Linux EC2 instance, see [Install and Configure the AWS CloudHSM Client \(Linux\)](install-and-configure-client-linux.md)\. For more information about installing the client on a Windows instance, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. 
+This topic describes how to verify HSM performance with Client SDK 3\.
+
+To verify the performance of the HSMs in your AWS CloudHSM cluster, you can use the pkpspeed \(Linux\) or pkpspeed\_blocking \(Windows\) tool that is included with Client SDK 3\. For more information about installing the client on a Linux EC2 instance, see [Install and configure the AWS CloudHSM client \(Linux\)](install-and-configure-client-linux.md)\. For more information about installing the client on a Windows instance, see [Install and configure the AWS CloudHSM client \(Windows\)](install-and-configure-client-win.md)\. 
 
 After you install and configure the AWS CloudHSM client, run the following command to start it\.
 
@@ -19,13 +21,6 @@ $ sudo service cloudhsm-client start
 ```
 
 ------
-#### [ CentOS 6 ]
-
-```
-$ sudo start cloudhsm-client
-```
-
-------
 #### [ CentOS 7 ]
 
 ```
@@ -33,10 +28,10 @@ $ sudo service cloudhsm-client start
 ```
 
 ------
-#### [ RHEL 6 ]
+#### [ CentOS 8 ]
 
 ```
-$ sudo start cloudhsm-client
+$ sudo service cloudhsm-client start
 ```
 
 ------
@@ -47,7 +42,21 @@ $ sudo service cloudhsm-client start
 ```
 
 ------
+#### [ RHEL 8 ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
 #### [ Ubuntu 16\.04 LTS ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ Ubuntu 18\.04 LTS ]
 
 ```
 $ sudo service cloudhsm-client start

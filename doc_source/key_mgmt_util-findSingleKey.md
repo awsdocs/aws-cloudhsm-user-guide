@@ -38,7 +38,7 @@ Specifies the key handle of one key in the HSM\. This parameter is required\.
 To find key handles, use the [findKey](key_mgmt_util-listUsers.md) command\.  
 Required: Yes
 
-## Related Topics<a name="findSingleKey-seealso"></a>
+## Related topics<a name="findSingleKey-seealso"></a>
 + [findKey](key_mgmt_util-listUsers.md)
 + [getKeyInfo](key_mgmt_util-listUsers.md)
 + [getAttribute](key_mgmt_util-findKey.md)

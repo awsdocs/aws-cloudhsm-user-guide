@@ -1,12 +1,22 @@
-# AWS CloudHSM Dynamic Engine for OpenSSL<a name="openssl-library"></a>
+# OpenSSL Dynamic Engine<a name="openssl-library"></a>
 
-The AWS CloudHSM dynamic engine for OpenSSL is an OpenSSL dynamic engine that supports the OpenSSL command line interface and EVP API operations\. The dynamic engine allows applications that are integrated with OpenSSL, such as the NGINX and Apache web servers, to offload their cryptographic processing to the HSMs in your AWS CloudHSM cluster\. The engine supports the following key types and ciphers:
+AWS CloudHSM offers two implementations of the OpenSSL Dynamic Engine: Client SDK 3 and Client SDK 5\. 
+
+Client SDK 3 requires a client daemon to connect to the cluster\. It supports:
 + RSA key generation for 2048, 3072, and 4096\-bit keys\.
 + RSA sign/verify\.
 + RSA encrypt/decrypt\.
 + Random number generation that is cryptographically secure and FIPS\-validated\.
 
-For more information, see the following topic\.
+Client SDK 5 doesn't require a client daemon to connect to the cluster\. It supports:
++ RSA key generation for 2048, 3072, and 4096\-bit keys\.
++ RSA sign/verify\. Verification is offloaded to OpenSSL software\.
++ ECDSA sign/verify for P\-256, P\-384, and secp256k1 key types\.
+
+  To generate EC keys that are interoperable with the OpenSSL engine, see [getCaviumPrivKey](key_mgmt_util-getCaviumPrivKey.md)\.
+
+For information about platform support for SDKs, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
 
 **Topics**
-+ [Install and Use the AWS CloudHSM Dynamic Engine for OpenSSL](openssl-library-install.md)
++ [OpenSSL Dynamic Engine Client SDK 3](openssl3-install.md)
++ [OpenSSL Dynamic Engine Client SDK 5](openssl5-install.md)

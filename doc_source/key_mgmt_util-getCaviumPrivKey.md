@@ -17,7 +17,7 @@ exportPrivateKey -k <private-key-handle
 
 This example shows how to use getCaviumPrivKey to export a private key in fake PEM format\.
 
-**Example : Export a Fake PEM File**  
+**Example : Export a fake PEM file**  
 This command creates and exports a fake PEM version of a private key with handle `15` and saves it to a file called `cavKey.pem`\. When the command succeeds, exportPrivateKey returns a success message\.  
 
 ```
@@ -44,6 +44,6 @@ Required: Yes
 Specifies the name of the file to which the fake PEM key will be written\.  
 Required: Yes
 
-## Related Topics<a name="getCaviumPrivKey-seealso"></a>
+## Related topics<a name="getCaviumPrivKey-seealso"></a>
 + [importPrivateKey](key_mgmt_util-importPrivateKey.md)
 + [SSL/TLS Offload on Linux](ssl-offload-linux.md)

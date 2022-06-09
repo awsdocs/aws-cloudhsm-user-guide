@@ -1,6 +1,6 @@
-# Using Quorum Authentication for Crypto Officers<a name="quorum-authentication-crypto-officers"></a>
+# Using quorum authentication for crypto officers<a name="quorum-authentication-crypto-officers"></a>
 
-A [crypto officer \(CO\)](hsm-users.md#crypto-officer) on the HSM can configure quorum authentication for the following operations on the HSM:
+A [crypto officer \(CO\)](manage-hsm-users.md#crypto-officer) on the HSM can configure quorum authentication for the following operations on the HSM:
 + Creating HSM users
 + Deleting HSM users
 + Changing another HSM user's password
@@ -11,7 +11,7 @@ After the HSM is configured for quorum authentication, COs cannot perform HSM us
 aws-cloudhsm>createUser CU user1 password
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
+cluster. AWS does NOT synchronize these changes automatically with the
 nodes on which this operation is not executed or failed, please
 ensure this operation is executed on all nodes in the cluster.
 ****************************************************************
@@ -34,9 +34,9 @@ To perform an HSM user management operation, a CO must complete the following ta
 
 1. [Perform the HSM user management operation](#quorum-crypto-officers-use-token)\.
 
-If you have not yet configured the HSM for quorum authentication for COs, do that now\. For more information, see [First Time Setup for Crypto Officers](quorum-authentication-crypto-officers-first-time-setup.md)\.
+If you have not yet configured the HSM for quorum authentication for COs, do that now\. For more information, see [First time setup](quorum-authentication-crypto-officers-first-time-setup.md)\.
 
-## Get a Quorum Token<a name="quorum-crypto-officers-get-token"></a>
+## Get a quorum token<a name="quorum-crypto-officers-get-token"></a>
 
 First the CO must use the cloudhsm\_mgmt\_util command line tool to request a *quorum token*\.
 
@@ -48,9 +48,7 @@ First the CO must use the cloudhsm\_mgmt\_util command line tool to request a *q
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
-1. Use the enable\_e2e command to establish end\-to\-end encrypted communication\.
-
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [How to manage HSM users with CMU](cli-users.md#manage-users)\.
 
 1. Use the getToken command to get a quorum token\. For more information, see the following example or use the help getToken command\.
 
@@ -58,7 +56,7 @@ First the CO must use the cloudhsm\_mgmt\_util command line tool to request a *q
 This example gets a quorum token for the CO with user name officer1 and saves the token to a file named `officer1.token`\. To use the example command, replace these values with your own:  
 + *officer1* – The name of the CO who is getting the token\. This must be the same CO who is logged in to the HSM and is running this command\.
 + *officer1\.token* – The name of the file to use for storing the quorum token\.
-In the following command, `3` identifies the *service* for which you can use the token that you are getting\. In this case, the token is for HSM user management operations \(service 3\)\. For more information, see [Set the Quorum Minimum Value on the HSM](quorum-authentication-crypto-officers-first-time-setup.md#quorum-crypto-officers-set-quorum-minimum-value)\.  
+In the following command, `3` identifies the *service* for which you can use the token that you are getting\. In this case, the token is for HSM user management operations \(service 3\)\. For more information, see [Set the quorum minimum value on the HSM](quorum-authentication-crypto-officers-first-time-setup.md#quorum-crypto-officers-set-quorum-minimum-value)\.  
 
 ```
 aws-cloudhsm>getToken 3 officer1 officer1.token
@@ -78,7 +76,7 @@ Key Handle:0
 User:officer1
 ```
 
-## Get Signatures from Approving COs<a name="quorum-crypto-officers-get-approval-signatures"></a>
+## Get signatures from approving COs<a name="quorum-crypto-officers-get-approval-signatures"></a>
 
 A CO who has a quorum token must get the token approved by other COs\. To give their approval, the other COs use their signing key to cryptographically sign the token\. They do this outside the HSM\.
 
@@ -102,7 +100,7 @@ $ openssl dgst -sha256 -sign officer2.key -out officer1.token.sig2 officer1.toke
 Enter pass phrase for officer2.key:
 ```
 
-## Approve the Signed Token on the HSM<a name="quorum-crypto-officers-approve-token"></a>
+## Approve the signed token on the HSM<a name="quorum-crypto-officers-approve-token"></a>
 
 After a CO gets the minimum number of approvals \(signatures\) from other COs, he or she must approve the signed token on the HSM\.
 
@@ -116,9 +114,7 @@ After a CO gets the minimum number of approvals \(signatures\) from other COs, h
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
-1. Use the enable\_e2e command to establish end\-to\-end encrypted communication\.
-
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [How to manage HSM users with CMU](cli-users.md#manage-users)\.
 
 1. Use the approveToken command to approve the signed token, passing the token approval file\. For more information, see the following example\.
 
@@ -200,16 +196,19 @@ Num of tokens = 1
 listTokens success
 ```
 
-## Use the Token for User Management Operations<a name="quorum-crypto-officers-use-token"></a>
+## Use the token for user management operations<a name="quorum-crypto-officers-use-token"></a>
 
 After a CO has a token with the required number of approvals, as shown in the previous section, the CO can perform one of the following HSM user management operations:
 + Create an HSM user with the [createUser](cloudhsm_mgmt_util-createUser.md) command
 + Delete an HSM user with the deleteUser command
 + Change a different HSM user's password with the changePswd command
 
-For more information about using these commands, see [Managing HSM Users](manage-hsm-users.md)\.
+For more information about using these commands, see [Managing HSM users](manage-hsm-users.md)\.
 
 The CO can use the token for only one operation\. When that operation succeeds, the token is no longer valid\. To do another HSM user management operation, the CO must get a new quorum token, get new signatures from approvers, and approve the new token on the HSM\.
+
+**Note**  
+The MofN token is only valid as long as your current login session is open\. If you log out of cloudhsm\_mgmt\_util or the network connection disconnects, the token is no longer valid\. Similarly, an authorized token can only be used within cloudhsm\_mgmt\_util, it cannot be used to authenticate in a different application\.
 
 In the following example command, the CO creates a new user on the HSM\.
 
@@ -217,7 +216,7 @@ In the following example command, the CO creates a new user on the HSM\.
 aws-cloudhsm>createUser CU user1 password
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
+cluster. AWS does NOT synchronize these changes automatically with the
 nodes on which this operation is not executed or failed, please
 ensure this operation is executed on all nodes in the cluster.
 ****************************************************************

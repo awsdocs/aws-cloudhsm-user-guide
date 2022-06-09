@@ -2,11 +2,11 @@
 
 The getHSMInfo command in cloudhsm\_mgmt\_util gets information about the hardware on which each HSM runs, including the model, serial number, FIPS state, memory, temperature, and the version numbers of the hardware and firmware\. The information also includes the server ID that cloudhsm\_mgmt\_util uses to refer to the HSM\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="getHSMInfo-userType"></a>
+## User type<a name="getHSMInfo-userType"></a>
 
 The following types of users can run this command\.
 + All users\. You do not have to be logged in to run this command\.
@@ -62,5 +62,5 @@ Getting HSM Info on 3 nodes
 ...
 ```
 
-## Related Topics<a name="getHSMInfo-seealso"></a>
+## Related topics<a name="getHSMInfo-seealso"></a>
 + [info](cloudhsm_mgmt_util-info.md)

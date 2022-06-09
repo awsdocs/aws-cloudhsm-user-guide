@@ -1,4 +1,4 @@
-# How SSL/TLS Offload with AWS CloudHSM Works<a name="ssl-offload-overview"></a>
+# How SSL/TLS offload with AWS CloudHSM works<a name="ssl-offload-overview"></a>
 
 To establish an HTTPS connection, your web server performs a handshake process with clients\. As part of this process, the server offloads some of the cryptographic processing to the HSMs, as shown in the following figure\. Each step of the process is explained below the figure\. 
 
@@ -26,5 +26,5 @@ The following image and process assumes that RSA is used for server verification
 1. The handshake process ends\. For the rest of the session, all messages sent between the client and the server are encrypted with derivatives of the master secret\. 
 
 To learn how to configure SSL/TLS offload with AWS CloudHSM, see one of the following topics:
-+ [Tutorial: Using SSL/TLS Offload with AWS CloudHSM on Linux](ssl-offload-linux.md)
-+ [Tutorial: Using SSL/TLS Offload with AWS CloudHSM on Windows](ssl-offload-windows.md)
++ [Tutorial: Using SSL/TLS offload with AWS CloudHSM on Linux](ssl-offload-linux.md)
++ [Tutorial: Using SSL/TLS offload with AWS CloudHSM on Windows](ssl-offload-windows.md)

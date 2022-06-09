@@ -1,10 +1,10 @@
-# cloudhsm\_mgmt\_util Command Reference<a name="cloudhsm_mgmt_util-reference"></a>
+# cloudhsm\_mgmt\_util command reference<a name="cloudhsm_mgmt_util-reference"></a>
 
 The cloudhsm\_mgmt\_util command line tool helps crypto officers manage users in the HSMs\. It also includes commands that allow crypto users \(CUs\) to share keys, and get and set key attributes\. These commands complement the primary key management commands in the [key\_mgmt\_util](key_mgmt_util.md) command line tool\. 
 
-For a quick start, see [Getting Started with cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md)\. 
+For a quick start, see [Managing cloned clustersGetting started with CloudHSM Management Utility \(CMU\)](cloudhsm_mgmt_util-getting-started.md)\. 
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start), [enable end\-to\-end encryption](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-enable_e2e), and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any cloudhsm\_mgmt\_util command, you must start cloudhsm\_mgmt\_util and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
 To list all cloudhsm\_mgmt\_util commands, run the following command:
 
@@ -58,6 +58,7 @@ Some commands in key\_mgmt\_util and cloudhsm\_mgmt\_util have the same names\. 
 | [loginHSM and logoutHSM](cloudhsm_mgmt_util-loginLogout.md) | Log in and log out of an HSM\. | All\.  | 
 | [quit](cloudhsm_mgmt_util-quit.md) | Quits cloudhsm\_mgmt\_util\. | All\. Login is not required\. | 
 | [server](cloudhsm_mgmt_util-server.md) | Enters and exits server mode on an HSM\. | All\. | 
+| [registerQuorumPubKey](cloudhsm_mgmt_util-registerQuorumPubKey.md) | Associates an HSM user with an asymmetric RSA\-2048 key pair\. | CO | 
 | [setAttribute](cloudhsm_mgmt_util-setAttribute.md) | Changes the values of the label, encrypt, decrypt, wrap, and unwrap attributes of an existing key\. | CU | 
 | [shareKey](cloudhsm_mgmt_util-shareKey.md) | Shares an existing key with other users\. | CU | 
 | [syncKey](cloudhsm_mgmt_util-syncKey.md) | Syncs a key across cloned AWS CloudHSM clusters\. | CU, CO | 

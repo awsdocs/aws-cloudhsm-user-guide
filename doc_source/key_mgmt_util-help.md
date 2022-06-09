@@ -101,5 +101,5 @@ Syntax: <command> -h
 
 There are no parameters for this command\.
 
-## Related Topics<a name="loginHSM-seealso"></a>
+## Related topics<a name="loginHSM-seealso"></a>
 + [loginHSM and logoutHSM](key_mgmt_util-loginHSM.md)

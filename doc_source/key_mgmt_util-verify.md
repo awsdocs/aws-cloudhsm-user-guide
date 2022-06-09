@@ -21,7 +21,7 @@ verify -f <message-file>
 
 These examples show how to use verify to check whether a certain public key was used to sign a given file\.
 
-**Example : Successfully Verify a File Signature**  
+**Example : Verify a file signature**  
 This command attempts to verify whether a file named `hardwarCert.crt` was signed by public key `262276` using the `SHA256_RSA_PKCS` signing mechanism to produce the `hardwareCertSigned` signed file\. Because the given parameters represent a true signing relationship, the command returns a success message\.  
 
 ```
@@ -32,12 +32,12 @@ Signature verification successful
 Cfm3Verify returned: 0x00 : HSM Return: SUCCESS
 ```
 
-**Example : Prove False Signing Relationship**  
+**Example : Prove false signing relationship**  
 This command verifies whether a file named `hardwareCert.crt` was signed by public key `262276` using the `SHA256_RSA_PKCS` signing mechanism to produce the `userCertSigned` signed file\. Because the given parameters do not make up a true signing relationship, the command returns an error message\.  
 
 ```
 Command: verify -f hardwarecert.crt -s usercertsigned -k 262276 -m 1
-Cfm3Verify rturned: 0x1b
+Cfm3Verify returned: 0x1b
 
 CSP Error: ERR_BAD_PKCS_DATA
 ```
@@ -63,7 +63,7 @@ An integer that represents the proposed signing mechanism that is used to sign t
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-verify.html)
 Required: Yes
 
-## Related Topics<a name="verify-seealso"></a>
+## Related topics<a name="verify-seealso"></a>
 + [sign](key_mgmt_util-sign.md)
 + [getCert](key_mgmt_util-genECCKeyPair.md)
-+ [Generate Keys](manage-keys.md#generate-keys)
++ [Generate Keys](using-kmu.md#generate-keys)

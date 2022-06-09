@@ -26,7 +26,7 @@ exportPrivateKey -k <private-key-handle
 
 This example shows how to use exportPrivateKey to export a private key out of an HSM\.
 
-**Example : Export a Private Key**  
+**Example : Export a private key**  
 This command exports a private key with handle `15` using a wrapping key with handle `16` to a PEM file called `exportKey.pem`\. When the command succeeds, exportPrivateKey returns a success message\.  
 
 ```
@@ -72,7 +72,7 @@ When you include this parameter, exportPrivateKey uses the key in the `-w` file 
 Default: Use the wrapping key specified in the `-w` parameter to both wrap and unwrap\.  
 Required: No
 
-## Related Topics<a name="exportPrivateKey-seealso"></a>
+## Related topics<a name="exportPrivateKey-seealso"></a>
 + [importPrivateKey](key_mgmt_util-importPrivateKey.md)
 + [wrapKey](key_mgmt_util-wrapKey.md)
 + [unWrapKey](key_mgmt_util-unwrapKey.md)

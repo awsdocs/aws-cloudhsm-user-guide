@@ -1,9 +1,8 @@
-# Managing HSM Users and Keys in AWS CloudHSM<a name="manage-hsm-users-and-keys"></a>
+# Managing HSM users and keys in AWS CloudHSM<a name="manage-hsm-users-and-keys"></a>
 
-Before you can use your AWS CloudHSM cluster for cryptoprocessing, you must create users and keys on the HSMs in your cluster\. See the following topics for more information about using the AWS CloudHSM command line tools to manage HSM users and keys\. You can also learn how to use quorum authentication \(also known as M of N access control\)\.
+Before you can use your AWS CloudHSM cluster for cryptoprocessing, you must create users and keys on the HSMs in your cluster\. See the following topics for more information about managing HSM users and keys in AWS CloudHSM\. You can also learn how to use quorum authentication \(also known as M of N access control\)\.
 
 **Topics**
-+ [Managing HSM Users](manage-hsm-users.md)
-+ [Managing Keys](manage-keys.md)
-+ [Quorum Authentication \(M of N\)](quorum-authentication.md)
-+ [Using Trusted Keys to Control Key Unwraps](cloudhsm_using_trusted_keys_control_key_wrap.md)
++ [Managing HSM users](manage-hsm-users.md)
++ [Managing keys](manage-keys.md)
++ [Managing cloned clusters](cloned-clusters.md)

@@ -1,4 +1,4 @@
-# Microsoft SignTool with AWS CloudHSM Step 3: Sign a File<a name="signtool-sign"></a>
+# Microsoft SignTool with AWS CloudHSM step 3: Sign a file<a name="signtool-sign"></a>
 
 You are now ready to use SignTool and your imported certificate to sign your example file\. In order to do so, you need to know the certificate's SHA\-1 hash, or *thumbprint*\. The thumbprint is used to ensure that SignTool only uses certificates that are verified by AWS CloudHSM\. In this example, we use PowerShell to get the certificate's hash\. You can also use the CA's GUI or the Windows SDK's `certutil` executable\. 
 

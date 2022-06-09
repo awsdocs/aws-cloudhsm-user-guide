@@ -1,8 +1,8 @@
-# Connect Amazon EC2 Instance to AWS CloudHSM Cluster<a name="configure-sg-client-instance"></a>
+# Connect Amazon EC2 instance to AWS CloudHSM cluster<a name="configure-sg-client-instance"></a>
 
 When you launched an Amazon EC2 instance, you associated it with a default Amazon VPC security group\. This topic explains how to associate the cluster security group with the EC2 instance\. This association allows the AWS CloudHSM client running on your EC2 instance to communicate with your HSMs\. To connect your EC2 instance to your AWS CloudHSM cluster, you must properly configure the VPC default security group *and* associate the cluster security group with the instance\.
 
-## Modify the Default Security Group<a name="configure-sg-client-instance-modify-default-security-group"></a>
+## Modify the default security group<a name="configure-sg-client-instance-modify-default-security-group"></a>
 
 You need to modify the default security group to permit the SSH or RDP connection so that you can download and install client software, and interact with your HSM\.
 
@@ -28,7 +28,7 @@ Do not specify 0\.0\.0\.0/0 as the port range to avoid allowing anyone to access
 
 1. Choose **Save**\.
 
-## Connect the Amazon EC2 Instance to the AWS CloudHSM Cluster<a name="configure-sg-client-instance-connect-the-ec2-instance-to-the-HSM-cluster"></a>
+## Connect the Amazon EC2 instance to the AWS CloudHSM cluster<a name="configure-sg-client-instance-connect-the-ec2-instance-to-the-HSM-cluster"></a>
 
 You must attach the cluster security group to the EC2 instance so that the EC2 instance can communicate with HSMs in your cluster\. The cluster security group contains a preconfigured rule that allows inbound communication over ports 2223\-2225\.
 
@@ -38,7 +38,7 @@ You must attach the cluster security group to the EC2 instance so that the EC2 i
 
 1. On the Amazon EC2 dashboard, select the check box for the EC2 instance on which you want to install the AWS CloudHSM client\.
 
-1. At the top of the page, choose **Actions**, **Networking**, and then **Change Security Groups**\.
+1. At the top of the page, choose **Actions**, **Security**, and then **Change Security Groups**\.
 
 1. Select the security group with the group name that matches your cluster ID, such as `cloudhsm-cluster-clusterID-sg`\.
 

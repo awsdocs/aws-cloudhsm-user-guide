@@ -1,4 +1,4 @@
-# Using AWS CloudHSM Key Store with Third\-Party Tools<a name="keystore-third-party-tools"></a>
+# Using Client SDK 3 to integrate with Java Keytool and Jarsigner<a name="keystore-third-party-tools"></a>
 
 AWS CloudHSM key store is a special\-purpose JCE key store that utilizes certificates associated with keys on your HSM through third\-party tools such as `keytool` and `jarsigner`\. AWS CloudHSM does not store certificates on the HSM, as certificates are public, non\-confidential data\. The AWS CloudHSM key store stores the certificates in a local file and maps the certificates to corresponding keys on your HSM\. 
 
@@ -6,10 +6,10 @@ When you use the AWS CloudHSM key store to generate new keys, no entries are gen
 
 **Topics**
 + [Prerequisites](#keystore-prerequisites)
-+ [Using AWS CloudHSM Key Store with Keytool](#using_keystore_with_keytool)
-+ [Using AWS CloudHSM Key Store with Jarsigner](#using_keystore_jarsigner)
-+ [Known Issues](#known-issues-keytool-jarsigner)
-+ [Registering Pre\-existing Keys with AWS CloudHSM Key Store](#register-pre-existing-keys-with-keystore)
++ [Using AWS CloudHSM key store with keytool](#using_keystore_with_keytool)
++ [Using AWS CloudHSM key store with jarsigner](#using_keystore_jarsigner)
++ [Known issues](#known-issues-keytool-jarsigner)
++ [Registering pre\-existing keys with AWS CloudHSM key store](#register-pre-existing-keys-with-keystore)
 
 ## Prerequisites<a name="keystore-prerequisites"></a>
 
@@ -44,7 +44,7 @@ To register the JCE provider, in the Java CloudProvider configuration\.
 **Note**  
 Power users may be accustomed to specifying `-providerName`, `-providerclass`, and `-providerpath` command line options when using keytool, instead of updating the security configuration file\. If you attempt to specify command line options when generating keys with AWS CloudHSM key store, it will cause errors\. 
 
-## Using AWS CloudHSM Key Store with Keytool<a name="using_keystore_with_keytool"></a>
+## Using AWS CloudHSM key store with keytool<a name="using_keystore_with_keytool"></a>
 
  [ Keytool](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) is a popular command line utility for common key and certificate tasks on Linux systems\. A complete tutorial on keytool is out of scope for AWS CloudHSM documentation\. This article explains the specific parameters you should use with various keytool functions when utilizing AWS CloudHSM as the root of trust through the AWS CloudHSM key store\.
 
@@ -56,11 +56,11 @@ When using keytool with the AWS CloudHSM key store, specify the following argume
 		-J-Djava.library.path=/opt/cloudhsm/lib
 ```
 
-If you want to create a new key store file using AWS CloudHSM key store, see Using AWS CloudHSM Key Store\. To use an existing key store, specify its name \(including path\) using the –keystore argument to keytool\. If you specify a non\-existent key store file in a keytool command, the AWS CloudHSM key store creates a new key store file\.
+If you want to create a new key store file using AWS CloudHSM key store, see [Using AWS CloudHSM KeyStore](alternative-keystore.md#using_cloudhsm_keystore)\. To use an existing key store, specify its name \(including path\) using the –keystore argument to keytool\. If you specify a non\-existent key store file in a keytool command, the AWS CloudHSM key store creates a new key store file\.
 
-### Create New Keys with Keytool<a name="create_key_keytool"></a>
+### Create new keys with keytool<a name="create_key_keytool"></a>
 
-You can use keytool to generate any type of key supported by AWS CloudHSM's JCE SDK\. See a full list of keys and lengths in the  Supported Keys article in the Java Library\.
+You can use keytool to generate any type of key supported by AWS CloudHSM's JCE SDK\. See a full list of keys and lengths in the [ Supported Keys](java-lib-supported.md#java-keys) article in the Java Library\.
 
 **Important**  
 A key generated through keytool is generated in software, and then imported into AWS CloudHSM as an extractable, persistent key\.
@@ -86,7 +86,7 @@ keytool -genkeypair -alias my_rsa_key_pair \
         -sigalg sha512withrsa \
         -keystore my_keystore.store \
         -storetype CLOUDHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*’ \
+        -J-classpath '-J/opt/cloudhsm/java/*' \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
@@ -98,80 +98,33 @@ keytool -genkeypair -alias my_ec_key_pair \
         -sigalg SHA512withECDSA \
         -keystore my_keystore.store \
         -storetype CLOUDHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*’ \
+        -J-classpath '-J/opt/cloudhsm/java/*' \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
-You can find a list of supported signature algorithms in the Java library\.
+You can find a list of [supported signature algorithms](java-lib-supported.md#java-sign-verify) in the Java library\.
 
-### Delete a Key using Keytool<a name="delete_key_using_keytool"></a>
+### Delete a key using keytool<a name="delete_key_using_keytool"></a>
 
-The AWS CloudHSM key store doesn't support deleting keys\. To delete key, you must use the `deleteKey` function of AWS CloudHSM's command line tool, [ deleteKey Use the deleteKey command in AWS CloudHSM key\_mgmt\_util to delete a key from the HSM\.  The deleteKey command in key\_mgmt\_util deletes a key from the HSM\. You can only delete one key at a time\. Deleting one key in a key pair has no effect on the other key in the pair\. Only the key owner can delete a key\. Users who share the key can use it in cryptographic operations, but not delete it\.  Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\.   Syntax  
+The AWS CloudHSM key store doesn't support deleting keys\. To delete key, you must use the `deleteKey` function of AWS CloudHSM's command line tool, [deleteKey](key_mgmt_util-deleteKey.md)\.
 
-```
-deleteKey -h 
+### Generate a CSR using keytool<a name="generate_csr_using_keytool"></a>
 
-deleteKey -k
-```   Examples  These examples show how to use deleteKey to delete keys from your HSMs\. 
-
-**Example : Delete a Key**  
-This command deletes the key with key handle `6`\. When the command succeeds, deleteKey returns success messages from each HSM in the cluster\.  
-
-```
-Command: deleteKey -k 6
-
-        Cfm3DeleteKey returned: 0x00 : HSM Return: SUCCESS
-
-        Cluster Error Status
-        Node id 1 and err state 0x00000000 : HSM Return: SUCCESS
-        Node id 2 and err state 0x00000000 : HSM Return: SUCCESS
-``` 
-
-**Example : Delete a Key \(Failure\)**  
-When the command fails because no key has the specified key handle, deleteKey returns an invalid object handle error message\.  
-
-```
-Command: deleteKey -k 252126
-
-        Cfm3FindKey returned: 0xa8 : HSM Error: Invalid object handle is passed to this operation
-
-        Cluster Error Status
-        Node id 1 and err state 0x000000a8 : HSM Error: Invalid object handle is passed to this operation
-        Node id 2 and err state 0x000000a8 : HSM Error: Invalid object handle is passed to this operation
-```
-When the command fails because the current user is not the owner of the key, the command returns an access denied error\.  
-
-```
-Command:  deleteKey -k 262152
-
-Cfm3DeleteKey returned: 0xc6 : HSM Error: Key Access is denied.
-```   Parameters   
-
-**\-h**  
-Displays command line help for the command\.   
-Required: Yes 
-
-**\-k**  
-Specifies the key handle of the key to delete\. To find the key handles of keys in the HSM, use [findKey](key_mgmt_util-findKey.md)\.  
-Required: Yes    Related Topics    [findKey](key_mgmt_util-findKey.md)    ](key_mgmt_util-deleteKey.md)\.
-
-### Generate a CSR using Keytool<a name="generate_csr_using_keytool"></a>
-
-You receive the greatest flexibility in generating a certificate signing request \(CSR\) if you use the [AWS CloudHSM Dynamic Engine for OpenSSL](openssl-library.md)\. The following command uses keytool to generate a CSR for a key pair with the alias, `my-key-pair`\.
+You receive the greatest flexibility in generating a certificate signing request \(CSR\) if you use the [OpenSSL Dynamic Engine](openssl-library.md)\. The following command uses keytool to generate a CSR for a key pair with the alias, `my-key-pair`\.
 
 ```
 keytool -certreq -alias my_key_pair \
         -file my_csr.csr \
         -keystore my_keystore.store \
         -storetype CLOUDHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*’ \
+        -J-classpath '-J/opt/cloudhsm/java/*' \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
 **Note**  
 To use a key pair from keytool, that key pair must have an entry in the specified key store file\. If you want to use a key pair that was generated outside of keytool, you must import the key and certificate metadata into the key store\. For instructions on importing the keystore data see [Importing Intermediate and root certificates into AWS CloudHSM Key Store using Keytool](#import_cert_using_keytool)\.
 
-### Using Keytool to import intermediate and root certificates into AWS CloudHSM Key Store<a name="import_cert_using_keytool"></a>
+### Using keytool to import intermediate and root certificates into AWS CloudHSM key store<a name="import_cert_using_keytool"></a>
 
 To import a CA certificate you must enable verification of a full certificate chain on a newly imported certificate\. The following command shows an example\. 
 
@@ -179,13 +132,13 @@ To import a CA certificate you must enable verification of a full certificate ch
 keytool -import -trustcacerts -alias rootCAcert \
         -file rootCAcert.cert -keystore my_keystore.store \
         -storetype CLOUDHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*’ \
+        -J-classpath '-J/opt/cloudhsm/java/*' \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
 If you connect multiple client instances to your AWS CloudHSM cluster, importing a certificate on one client instance’s key store won't automatically make the certificate available on other client instances\. You must import the certificate on each client instance\.
 
-### Using Keytool to Delete Certificates from AWS CloudHSM Key Store<a name="delete_cert_using_keytool"></a>
+### Using keytool to delete certificates from AWS CloudHSM key store<a name="delete_cert_using_keytool"></a>
 
 The following command shows an example of how to delete a certificate from a Java keytool key store\. 
 
@@ -193,13 +146,13 @@ The following command shows an example of how to delete a certificate from a Jav
 keytool -delete -alias mydomain -keystore \
         -keystore my_keystore.store \
         -storetype CLOUDHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*’ \
+        -J-classpath '-J/opt/cloudhsm/java/*' \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
 If you connect multiple client instances to your AWS CloudHSM cluster, deleting a certificate on one client instance’s key store won't automatically remove the certificate from other client instances\. You must delete the certificate on each client instance\.
 
-### Importing a Working Certificate into AWS CloudHSM Key Store using Keytool<a name="import_working_cert_using_keytool"></a>
+### Importing a working certificate into AWS CloudHSM key store using keytool<a name="import_working_cert_using_keytool"></a>
 
 Once a certificate signing request \(CSR\) is signed, you can import it into the AWS CloudHSM key store and associate it with the appropriate key pair\. The following command provides an example\. 
 
@@ -208,15 +161,15 @@ keytool -importcert -noprompt -alias my_key_pair \
         -file my_certificate.crt \
         -keystore my_keystore.store
         -storetype CLOUDHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*’ \
+        -J-classpath '-J/opt/cloudhsm/java/*' \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
-The alias should be a key pair with an associated certificate in the key store\. If the key is generated outside of keytool, or is generated on a different client instance, you must first import the key and certificate metadata into the key store\. For instructions on importing the certificate metadata, see the code sample in[Registering Pre\-existing Keys with AWS CloudHSM Key Store](#register-pre-existing-keys-with-keystore)\. 
+The alias should be a key pair with an associated certificate in the key store\. If the key is generated outside of keytool, or is generated on a different client instance, you must first import the key and certificate metadata into the key store\. For instructions on importing the certificate metadata, see the code sample in [Registering Pre\-existing Keys with AWS CloudHSM Key Store](#register-pre-existing-keys-with-keystore)\. 
 
 The certificate chain must be verifiable\. If you can't verify the certificate, you might need to import the signing \(certificate authority\) certificate into the key store so the chain can be verified\.
 
-### Exporting a certificate using Keytool<a name="export_cert_using_keytool"></a>
+### Exporting a certificate using keytool<a name="export_cert_using_keytool"></a>
 
 The following example generates a certificate in binary X\.509 format\. To export a human readable certificate, add `-rfc` to the `-exportcert` command\. 
 
@@ -225,11 +178,11 @@ keytool -exportcert -alias my_key_pair \
         -file my_exported_certificate.crt \
         -keystore my_keystore.store \
         -storetype CLOUDHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*’ \
+        -J-classpath '-J/opt/cloudhsm/java/*' \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
-## Using AWS CloudHSM Key Store with Jarsigner<a name="using_keystore_jarsigner"></a>
+## Using AWS CloudHSM key store with jarsigner<a name="using_keystore_jarsigner"></a>
 
 Jarsigner is a popular command line utility for signing JAR files using a key securely stored on a HSM\. A complete tutorial on Jarsigner is out of scope for the AWS CloudHSM documentation\. This section explains the Jarsigner parameters you should use to sign and verify signatures with AWS CloudHSM as the root of trust through the AWS CloudHSM key store\. 
 
@@ -239,11 +192,11 @@ Before you can sign JAR files with Jarsigner, make sure you have set up or compl
 
 1. Follow the guidance in the [AWS CloudHSM Key store prerequisites ](#keystore-prerequisites)\.
 
-1. Set up your signing keys and the associated certificates and certificate chain which should be stored in the AWS CloudHSM key store of the current server or client instance\. Create the keys on the AWS CloudHSM and then import associated metadata into your AWS CloudHSM key store\. Use the code sample in [Registering Pre\-existing Keys with AWS CloudHSM Key Store](#register-pre-existing-keys-with-keystore) to import metadata into the key store\. If you want to use keytool to set up the keys and certificates, see [Create New Keys with Keytool](#create_key_keytool)\. If you use multiple client instances to sign your JARs, create the key and import the certificate chain\. Then copy the resulting key store file to each client instance\. If you frequently generate new keys, you may find it easier to individually import certificates to each client instance\.
+1. Set up your signing keys and the associated certificates and certificate chain which should be stored in the AWS CloudHSM key store of the current server or client instance\. Create the keys on the AWS CloudHSM and then import associated metadata into your AWS CloudHSM key store\. Use the code sample in [Registering Pre\-existing Keys with AWS CloudHSM Key Store](#register-pre-existing-keys-with-keystore) to import metadata into the key store\. If you want to use keytool to set up the keys and certificates, see [Create new keys with keytool](#create_key_keytool)\. If you use multiple client instances to sign your JARs, create the key and import the certificate chain\. Then copy the resulting key store file to each client instance\. If you frequently generate new keys, you may find it easier to individually import certificates to each client instance\.
 
 1. The entire certificate chain should be verifiable\. For the certificate chain to be verifiable, you may need to add the CA certificate and intermediate certificates to the AWS CloudHSM key store\. See the code snippet in [Sign a JAR file using AWS CloudHSM and Jarsigner](#jarsigner_sign_jar_using_hsm_jarsigner) for instruction on using Java code to verify the certificate chain\. If you prefer, you can use keytool to import certificates\. For instructions on using keytool, see [Using Keytool to import intermediate and root certificates into AWS CloudHSM Key Store](#import_cert_using_keytool)\. 
 
-### Sign a JAR file using AWS CloudHSM and Jarsigner<a name="jarsigner_sign_jar_using_hsm_jarsigner"></a>
+### Sign a JAR file using AWS CloudHSM and jarsigner<a name="jarsigner_sign_jar_using_hsm_jarsigner"></a>
 
 Use the following command to sign a JAR file: 
 
@@ -252,7 +205,7 @@ jarsigner -keystore my_keystore.store \
         -signedjar signthisclass_signed.jar \
         -sigalg sha512withrsa \
         -storetype CloudHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
+        -J-classpath '-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
         -J-Djava.library.path=/opt/cloudhsm/lib \
         signthisclass.jar my_key_pair
 ```
@@ -264,12 +217,12 @@ jarsigner -verify \
         -keystore my_keystore.store \
         -sigalg sha512withrsa \
         -storetype CloudHSM \
-        -J-classpath ‘-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
+        -J-classpath '-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
         -J-Djava.library.path=/opt/cloudhsm/lib \
         signthisclass_signed.jar my_key_pair
 ```
 
-## Known Issues<a name="known-issues-keytool-jarsigner"></a>
+## Known issues<a name="known-issues-keytool-jarsigner"></a>
 
 The following list provides the current list of known issues\. 
 + When generating keys using keytool, the first provider in provider configuration cannot be CaviumProvider\. 
@@ -277,13 +230,13 @@ The following list provides the current list of known issues\.
 +  When using keytool with AWS CloudHSM key store, do not specify `-providerName`, `-providerclass`, or `-providerpath` options on the command line\. Specify these options in the security provider file as described in the [Key store prerequisites](#keystore-prerequisites)\. 
 + When using non\-extractable EC keys through keytool and Jarsigner, the SunEC provider needs to be removed/disabled from the list of providers in the java\.security file\. If you use extractable EC keys through keytool and Jarsigner, the providers export key bits from the AWS CloudHSM HSM and use the key locally for signing operations\. We do not recommend you use exportable keys with keytool or Jarsigner\.
 
-## Registering Pre\-existing Keys with AWS CloudHSM Key Store<a name="register-pre-existing-keys-with-keystore"></a>
+## Registering pre\-existing keys with AWS CloudHSM key store<a name="register-pre-existing-keys-with-keystore"></a>
 
-For maximum security and flexibility in attributes and labeling, we recommend you generate your signing keys using [key\_mgmt\_util](manage-keys.md#generate-keys)\. You can also use a Java application to generate the key in AWS CloudHSM\.
+For maximum security and flexibility in attributes and labeling, we recommend you generate your signing keys using [key\_mgmt\_util](using-kmu.md#generate-keys)\. You can also use a Java application to generate the key in AWS CloudHSM\.
 
 The following section provides a code sample that demonstrates how to generate a new key pair on the HSM and register it using existing keys imported to the AWS CloudHSM key store\. The imported keys are available for use with third\-party tools such as keytool and Jarsigner\. 
 
-To use a pre\-existing key, modify the code sample to look up a key by label instead of generating a new key\. Sample code for looking up a key by label is available in the [KeyUtilitiesRunner\.java sample](https://docs.aws.amazon.com/https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) on GitHub\. 
+To use a pre\-existing key, modify the code sample to look up a key by label instead of generating a new key\. Sample code for looking up a key by label is available in the [KeyUtilitiesRunner\.java sample](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) on GitHub\. 
 
 **Important**  
 Registering a key stored on AWS CloudHSM with a local key store does not export the key\. When the key is registered, the key store registers the key's alias \(or label\) and correlates locally store certificate objects with a key pair on the AWS CloudHSM\. As long as the key pair is created as non\-exportable, the key bits won't leave the HSM\. 

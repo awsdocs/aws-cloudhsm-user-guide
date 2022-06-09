@@ -1,14 +1,13 @@
-# Code Sample for Cavium CNG Provider<a name="ksp-library-sample"></a>
+# Code sample for CNG provider<a name="ksp-library-sample"></a>
 
+****  
+\*\* Example code only \- Not for production use \*\*  
+This sample code is for illustrative purposes only\. Do not run this code in production\.
 
-|  | 
-| --- |
-|  \*\* Example code only \- Not for production use \*\* This page includes example code that has not been fully tested\. It is designed for test environments\. Do not run this code in production\.  | 
-
-The following sample shows how to enumerate the registered cryptographic providers on your system to find the Cavium CNG provider\. The sample also shows how to create an asymmetric key pair and how to use the key pair to sign data\. 
+The following sample shows how to enumerate the registered cryptographic providers on your system to find the CNG provider installed with CloudHSM client for Windows\. The sample also shows how to create an asymmetric key pair and how to use the key pair to sign data\. 
 
 **Important**  
-Before you run this example, you must set up the HSM credentials as explained in the prerequisites\. For details, see [Windows AWS CloudHSM Prerequisites](ksp-library-prereq.md)\. 
+Before you run this example, you must set up the HSM credentials as explained in the prerequisites\. For details, see [Windows AWS CloudHSM prerequisites](ksp-library-prereq.md)\. 
 
 ```
 // CloudHsmCngExampleConsole.cpp : Console application that demonstrates CNG capabilities.

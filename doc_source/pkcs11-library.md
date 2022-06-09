@@ -1,12 +1,18 @@
-# AWS CloudHSM Software Library for PKCS \#11<a name="pkcs11-library"></a>
+# PKCS \#11 library<a name="pkcs11-library"></a>
 
-The AWS CloudHSM software library for PKCS \#11 is a PKCS \#11 standard implementation that communicates with the HSMs in your AWS CloudHSM cluster\. It is supported only on Linux and compatible operating systems\. This library is compliant with PKCS \#11 version 2\.40, and implements the following key types, mechanisms, and API operations\.
+PKCS \#11 is a standard for performing cryptographic operations on hardware security modules \(HSM\)\. AWS CloudHSM offers an implementations of the PKCS \#11 library in Client SDK 3 and Client SDK 5, both of which are compliant with PKCS \#11 version 2\.40\.
+
+**Client SDK 5**  
+Client SDK 5 does not require a client daemon and offers cross\-platform support on Windows and Linux\. 
+
+**Client SDK 3**  
+Client SDK 3 requires a client daemon to connect to the cluster and is only supported on Linux\.
 
 **Topics**
-+ [Installing the AWS CloudHSM Software Library for PKCS \#11](pkcs11-library-install.md)
-+ [Authenticating to PKCS \#11](pkcs11-pin.md)
-+ [Supported PKCS \#11 Key Types](pkcs11-key-types.md)
-+ [Supported PKCS \#11 Mechanisms](pkcs11-mechanisms.md)
-+ [Supported PKCS \#11 API Operations](pkcs11-apis.md)
-+ [Supported PKCS \#11 Attributes](pkcs11-attributes.md)
-+ [Code Samples for AWS CloudHSM Software Library for PKCS\#11](pkcs11-samples.md)
++ [Installing](pkcs11-library-install.md)
++ [Authenticating](pkcs11-pin.md)
++ [Key types](pkcs11-key-types.md)
++ [Mechanisms](pkcs11-mechanisms.md)
++ [API operations](pkcs11-apis.md)
++ [Attributes](pkcs11-attributes.md)
++ [Samples](pkcs11-samples.md)

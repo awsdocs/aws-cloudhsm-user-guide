@@ -1,4 +1,4 @@
-# Create a Private Subnet<a name="create-subnets"></a>
+# Create a private subnet<a name="create-subnets"></a>
 
 Create a private subnet \(a subnet with no internet gateway attached\) for each Availability Zone where you want to create an HSM\. Private subnets are available across all AWS Availability Zones\. Even if AWS CloudHSM is not supported in a certain Availability Zone, the HSM cluster still performs as expected if support is added later\. Creating a private subnet in each Availability Zone provides the most robust configuration for high availability\. Visit [AWS Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudhsm_region) in the *AWS General Reference* or the [AWS Region Table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/) to see the regional and zone availability for AWS CloudHSM\.
 

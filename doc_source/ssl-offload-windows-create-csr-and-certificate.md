@@ -1,10 +1,10 @@
-# Step 2: Create a Certificate Signing Request \(CSR\) and Certificate<a name="ssl-offload-windows-create-csr-and-certificate"></a>
+# Step 2: Create a certificate signing request \(CSR\) and certificate<a name="ssl-offload-windows-create-csr-and-certificate"></a>
 
 To enable HTTPS, your web server needs an SSL/TLS certificate and a corresponding private key\. To use SSL/TLS offload with AWS CloudHSM, you store the private key in the HSM in your AWS CloudHSM cluster\. To do this, you use the [AWS CloudHSM key storage provider \(KSP\) for Microsoft's Cryptography API: Next Generation \(CNG\)](ksp-library.md) to create a certificate signing request \(CSR\)\. Then you give the CSR to a certificate authority \(CA\), which signs the CSR to produce a certificate\.
 
 **Topics**
 + [Create a CSR](#ssl-offload-windows-create-csr)
-+ [Get a Signed Certificate and Import It](#ssl-offload-windows-create-certificate)
++ [Get a signed certificate and import it](#ssl-offload-windows-create-certificate)
 
 ## Create a CSR<a name="ssl-offload-windows-create-csr"></a>
 
@@ -14,7 +14,7 @@ Use the AWS CloudHSM KSP on your Windows Server to create a CSR\.
 
 1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
-1. [Start the AWS CloudHSM client](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start-cloudhsm-client)\.
+1. Start the AWS CloudHSM client daemon\.
 
 1. On your Windows Server, use a text editor to create a certificate request file named `IISCertRequest.inf`\. The following shows the contents of an example `IISCertRequest.inf` file\. For more information about the sections, keys, and values that you can specify in the file, see [Microsoft's documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/certreq_1#BKMK_New)\. Do not change the `ProviderName` value\.
 
@@ -44,7 +44,7 @@ Use the AWS CloudHSM KSP on your Windows Server to create a CSR\.
 
    The `IISCertRequest.csr` file contains your CSR\. You need this CSR to get a signed certificate\.
 
-## Get a Signed Certificate and Import It<a name="ssl-offload-windows-create-certificate"></a>
+## Get a signed certificate and import it<a name="ssl-offload-windows-create-certificate"></a>
 
 In a production environment, you typically use a certificate authority \(CA\) to create a certificate from a CSR\. A CA is not necessary for a test environment\. If you do use a CA, send the CSR file \(`IISCertRequest.csr`\) to it and use the CA to create a signed SSL/TLS certificate\.
 
@@ -109,4 +109,4 @@ The following procedures show how to create a self\-signed certificate and use i
   Enter pass phrase for SelfSignedCA.key:
   ```
 
-After you complete the previous step, you have a signed certificate for your web server \(`IISCert.crt`\) and a self\-signed certificate \(`SelfSignedCA.crt`\)\. When you have these files, go to [Step 3: Configure the Web Server](ssl-offload-configure-web-server-windows.md)\.
+After you complete the previous step, you have a signed certificate for your web server \(`IISCert.crt`\) and a self\-signed certificate \(`SelfSignedCA.crt`\)\. When you have these files, go to [Step 3: Configure the web server](ssl-offload-configure-web-server-windows.md)\.

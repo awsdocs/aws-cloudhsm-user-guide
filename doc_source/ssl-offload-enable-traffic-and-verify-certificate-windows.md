@@ -1,12 +1,12 @@
-# Step 4: Enable HTTPS Traffic and Verify the Certificate<a name="ssl-offload-enable-traffic-and-verify-certificate-windows"></a>
+# Step 4: Enable HTTPS traffic and verify the certificate<a name="ssl-offload-enable-traffic-and-verify-certificate-windows"></a>
 
 After you configure your web server for SSL/TLS offload with AWS CloudHSM, add your web server instance to a security group that allows inbound HTTPS traffic\. This allows clients, such as web browsers, to establish an HTTPS connection with your web server\. Then make an HTTPS connection to your web server and verify that it's using the certificate that you configured for SSL/TLS offload with AWS CloudHSM\.
 
 **Topics**
-+ [Enable Inbound HTTPS Connections](#ssl-offload-add-security-group-windows)
-+ [Verify That HTTPS Uses the Certificate That You Configured](#ssl-offload-verify-https-connection-windows)
++ [Enable inbound HTTPS connections](#ssl-offload-add-security-group-windows)
++ [Verify that HTTPS uses the certificate that you configured](#ssl-offload-verify-https-connection-windows)
 
-## Enable Inbound HTTPS Connections<a name="ssl-offload-add-security-group-windows"></a>
+## Enable inbound HTTPS connections<a name="ssl-offload-add-security-group-windows"></a>
 
 To connect to your web server from a client \(such as a web browser\), create a security group that allows inbound HTTPS connections\. Specifically, it should allow inbound TCP connections on port 443\. Assign this security group to your web server\. 
 
@@ -38,7 +38,7 @@ To connect to your web server from a client \(such as a web browser\), create a 
 
 1. Select the check box next to the security group that you created for HTTPS\. Then choose **Assign Security Groups**\.
 
-## Verify That HTTPS Uses the Certificate That You Configured<a name="ssl-offload-verify-https-connection-windows"></a>
+## Verify that HTTPS uses the certificate that you configured<a name="ssl-offload-verify-https-connection-windows"></a>
 
 After you add the web server to a security group, you can verify that SSL/TLS offload with AWS CloudHSM is working\. You can do this with a web browser or with a tool such as [OpenSSL s\_client](https://www.openssl.org/docs/manmaster/man1/s_client.html)\.
 
@@ -68,4 +68,4 @@ You can use a DNS service such as Amazon Route 53 to route your website's domai
 
 1. Ensure that the SSL/TLS certificate is the one that you configured your web server to use\.
 
-You now have a website that is secured with HTTPS\. The private key for the web server is stored in an HSM in your AWS CloudHSM cluster\. However, you have only one web server\. To set up a second web server and a load balancer for higher availability, go to [\(Optional\) Step 5: Add a Load Balancer with Elastic Load Balancing](ssl-offload-add-load-balancing-windows.md)\.
+You now have a website that is secured with HTTPS\. The private key for the web server is stored in an HSM in your AWS CloudHSM cluster\. However, you have only one web server\. To set up a second web server and a load balancer for higher availability, go to [\(Optional\) Step 5: Add a load balancer with Elastic Load Balancing](ssl-offload-add-load-balancing-windows.md)\.

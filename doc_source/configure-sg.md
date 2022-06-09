@@ -1,4 +1,4 @@
-# Review Cluster Security Group<a name="configure-sg"></a>
+# Review cluster security group<a name="configure-sg"></a>
 
  When you create a cluster, AWS CloudHSM creates a security group with the name `cloudhsm-cluster-clusterID-sg`\. This security group contains a preconfigured TCP rule that allows inbound and outbound communication within the cluster security group over ports 2223\-2225\. This rule allows HSMs in your cluster to communicate with each other\. 
 

@@ -28,7 +28,7 @@ exSymKey -k <key-to-export>
 
 These examples show how to use exSymKey to export symmetric keys that you own from your HSMs\.
 
-**Example : Export a 3DES Symmetric Key**  
+**Example : Export a 3DES symmetric key**  
 This command exports a Triple DES \(3DES\) symmetric key \(key handle `7`\)\. It uses an existing AES key \(key handle `6`\) in the HSM as the wrapping key\. Then it writes the plaintext of the 3DES key to the `3DES.key` file\.  
 The output shows that key `7` \(the 3DES key\) was successfully wrapped and unwrapped, and then written to the `3DES.key` file\.  
 Although the output says that a "Wrapped Symmetric Key" was written to the output file, the output file contains a plaintext \(unwrapped\) key\.
@@ -44,7 +44,7 @@ Although the output says that a "Wrapped Symmetric Key" was written to the outpu
 Wrapped Symmetric Key written to file "3DES.key"
 ```
 
-**Example : Exporting with Session\-Only Wrapping Key**  
+**Example : Exporting with session\-only wrapping key**  
 This example shows how to use a key that exists only in the session as the wrapping key\. Because the key to be exported is wrapped, immediately unwrapped, and delivered as plaintext, there is no need to retain the wrapping key\.  
 This series of commands exports an AES key with key handle `8` from the HSM\. It uses an AES session key created especially for the purpose\.  
 The first command uses [genSymKey](key_mgmt_util-genSymKey.md) to create a 256\-bit AES key\. It uses the `-sess` parameter to create a key that exists only in the current session\.  
@@ -109,7 +109,7 @@ When the session ends, key `262168` no longer exists\.
 Wrapped Symmetric Key written to file "aes256_H8.key"
 ```
 
-**Example : Use an External Unwrapping Key**  
+**Example : Use an external unwrapping key**  
 This example shows how to use an external unwrapping key to export a key from the HSM\.  
 When you export a key from the HSM, you specify an AES key on the HSM to be the wrapping key\. By default, that wrapping key is used to wrap and unwrap the key to be exported\. However, you can use the `-wk` parameter to tell exSymKey to use an external key in a file on disk for unwrapping\. When you do, the key specified by the `-w` parameter wraps the target key, and the key in the file specified by the `-wk` parameter unwraps the key\.   
 Because the wrapping key must be an AES key, which is symmetric, the wrapping key in the HSM and unwrapping key on disk must be have the same key material\. To do this, you must import the wrapping key to the HSM or export the wrapping key from the HSM before the export operation\.   
@@ -183,7 +183,7 @@ When you include this parameter\. `exSymKey` uses the key in the HSM that is spe
 Required: No  
 Default: Use the wrapping key on the HSM to unwrap\.
 
-## Related Topics<a name="exSymKey-seealso"></a>
+## Related topics<a name="exSymKey-seealso"></a>
 + [genSymKey](key_mgmt_util-genSymKey.md)
 + [imSymKey](key_mgmt_util-imSymKey.md)
 + [wrapKey](key_mgmt_util-wrapKey.md)

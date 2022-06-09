@@ -1,4 +1,4 @@
-# Create a Virtual Private Cloud \(VPC\)<a name="create-vpc"></a>
+# Create a virtual private cloud \(VPC\)<a name="create-vpc"></a>
 
 If you don't already have a virtual private cloud \(VPC\), create one now\.
 
@@ -8,8 +8,16 @@ If you don't already have a virtual private cloud \(VPC\), create one now\.
 
 1. On the navigation bar, use the region selector to choose one of the [AWS Regions where AWS CloudHSM is currently supported](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudhsm_region)\.
 
-1. Choose **Start VPC Wizard**\.
+1. Choose **Launch VPC Wizard**\.
 
-1. Choose the first option, **VPC with a Single Public Subnet**\. Then choose **Select**\.
+1. For **Resources to create**, select **VPC, subnets, etc\.**
 
-1. For **VPC name:**, type an identifiable name such as **CloudHSM**\. For **Subnet name:**, type an identifiable name such as **CloudHSM public subnet**\. Leave all other options set to their defaults\. Then choose **Create VPC**\. After the VPC is created, choose **OK**\.
+1. For **Name tag auto\-generation**, type an identifiable name such as **CloudHSM**\. 
+
+1. For **DNS options**, check **Enable DNS hostnames**\.
+
+1. Leave all other options set to their defaults\.
+
+1. Choose **Create VPC**\.
+
+1. After the VPC is created, choose **View VPC** to view the details of the VPC you just created\.

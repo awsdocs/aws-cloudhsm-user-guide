@@ -16,7 +16,7 @@ Error2String -r <response-code>
 
 These examples show how to use Error2String to get the error string for a key\_mgmt\_util error code\. 
 
-**Example : Get an Error Description**  
+**Example : Get an error description**  
 This command gets the error description for the `0xdb` error code\. The description explains that an attempt to log in to key\_mgmt\_util failed because the user has the wrong user type\. Only crypto users \(CU\) can log in to key\_mgmt\_util\.  
 
 ```
@@ -25,7 +25,7 @@ This command gets the error description for the `0xdb` error code\. The descript
         Error Code db maps to HSM Error: Invalid User Type.
 ```
 
-**Example : Find the Error Code**  
+**Example : Find the error code**  
 This example shows where to find the error code in a key\_mgmt\_util error\. The error code, `0xc6`, appears after the string: `Cfm3command-name returned: `\.  
 In this example, [getKeyInfo](key_mgmt_util-getKeyInfo.md) indicates that the current user \(user 4\) can use the key in cryptographic operations\. Nevertheless, when the user tries to use [deleteKey](key_mgmt_util-deleteKey.md) to delete the key, the command returns error code `0xc6`\.   
 

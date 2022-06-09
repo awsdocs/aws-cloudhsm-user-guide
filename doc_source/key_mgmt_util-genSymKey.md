@@ -4,9 +4,6 @@ The genSymKey command in the key\_mgmt\_util tool generates a symmetric key in y
 
 Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
-**Tip**  
-To find the attributes of a key that you have created, such as the type, length, label, and ID, use [getAttribute](key_mgmt_util-getAttribute.md)\. To find the keys for a particular user, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. To find keys based on their attribute values, use [findKey](key_mgmt_util-findKey.md)\. 
-
 ## Syntax<a name="genSymKey-syntax"></a>
 
 ```
@@ -29,7 +26,10 @@ genSymKey -t <key-type>
 
 These examples show how to use genSymKey to create symmetric keys in your HSMs\.
 
-**Example : Generate an AES Key**  
+**Tip**  
+To use the keys you make with these examples for HMAC operations, you must set `OBJ_ATTR_SIGN` and `OBJ_ATTR_VERIFY` to `TRUE` after you generate the key\. To set these values, use setAttribute in CloudHSM Management Utility \(CMU\)\. For more information, see [setAttribute](cloudhsm_mgmt_util-setAttribute.md)\.
+
+**Example : Generate an AES key**  
 This command creates a 256\-bit AES key with an `aes256` label\. The output shows that the key handle of the new key is `6`\.  
 
 ```
@@ -43,25 +43,25 @@ Command: genSymKey -t 31 -s 32 -l aes256
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
 
-**Example : Create a Session Key**  
+**Example : Create a session key**  
 This command creates a nonextractable 192\-bit AES key that is valid only in the current session\. You might want to create a key like this to wrap \(and then immediately unwrap\) a key that is being exported\.   
 
 ```
 Command: genSymKey -t 31 -s 24 -l tmpAES -id wrap01 -nex -sess 
 ```
 
-**Example : Return Quickly**  
+**Example : Return quickly**  
 This command creates a generic 512\-byte key with a label of `IT_test_key`\. The command does not wait for the key to be synchronized to all HSMs in the cluster\. Instead, it returns as soon as the key is created on any one HSM \(`-min_srv 1`\) or in 1 second \(`-timeout 1`\), whichever is shorter\. If the key is not synchronized to the specified minimum number of HSMs before the timeout expires, it is not generated\. You might want to use a command like this in a script that creates numerous keys, like the `for` loop in the following example\.   
 
 ```
 Command: genSymKey -t 16 -s 512 -l IT_test_key -min_srv 1 -timeout 1
 
 $  for i in {1..30}; 
-     do /opt/cloudhsm/bin/key_mgmt_util Cfm3Util singlecmd loginHSM -u CU -s example_user -p example_pwd genSymKey -l aes -t 31 -s 32 -min_srv 1 -timeout 1; 
+     do /opt/cloudhsm/bin/key_mgmt_util singlecmd loginHSM -u CU -s example_user -p example_pwd genSymKey -l aes -t 31 -s 32 -min_srv 1 -timeout 1; 
  done;
 ```
 
-**Example : Create a Quorum Authorized Generic Key**  
+**Example : Create a quorum authorized generic key**  
 This command creates a 2048\-bit generic secret key with the label `generic-mV2`\. The command uses the `-u` parameter to share the key with another CU, user 6\. It uses the `-m_value` parameter to require a quorum of at least two approvals for any cryptographic operations that use the key\. The command also uses the `-attest` parameter to verify the integrity of the firmware on which the key is generated\.  
 The output shows that the command generated a key with key handle `9` and that the attestation check on the cluster firmware passed\.  
 
@@ -79,7 +79,7 @@ The output shows that the command generated a key with key handle `9` and that t
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
 
-**Example : Create and Examine a Key**  
+**Example : Create and examine a key**  
 This command creates a Triple DES key with a `3DES_shared` label and an ID of `IT-02`\. The key can be used by the current user, and users 4 and 5\. The command fails if the ID is not unique in the cluster or if the current user is user 4 or 5\.   
 The output shows that the new key has key handle `7`\.  
 
@@ -109,6 +109,7 @@ Command:  getKeyInfo -k 7
 ```
 To confirm the other properties of the key, use [getAttribute](key_mgmt_util-getAttribute.md)\. The first command uses `getAttribute` to get all attributes \(`-a 512`\) of key handle 7 \(`-o 7`\)\. It writes them to the `attr_7` file\. The second command uses `cat` to get the contents of the `attr_7` file\.   
 This command confirms that key 7 is a 192\-bit \(`OBJ_ATTR_VALUE_LEN 0x00000018` or 24\-byte\) 3DES \(`OBJ_ATTR_KEY_TYPE 0x15`\) symmetric key \(`OBJ_ATTR_CLASS 0x04`\) with a label of `3DES_shared` \(`OBJ_ATTR_LABEL 3DES_shared`\) and an ID of `IT_02` \(`OBJ_ATTR_ID IT-02`\)\. The key is persistent \(`OBJ_ATTR_TOKEN 0x01`\) and extractable \(`OBJ_ATTR_EXTRACTABLE 0x01`\) and can be used for encryption, decryption, and wrapping\.   
+To find the attributes of a key that you have created, such as the type, length, label, and ID, use [getAttribute](key_mgmt_util-getAttribute.md)\. To find the keys for a particular user, use [getKeyInfo](key_mgmt_util-getKeyInfo.md)\. To find keys based on their attribute values, use [findKey](key_mgmt_util-findKey.md)\. 
 For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 
 ```
@@ -157,6 +158,7 @@ OBJ_ATTR_VALUE_LEN
 OBJ_ATTR_KCV
 0x59a46e
 ```
+To use the keys you make with these examples for HMAC operations, you must set `OBJ_ATTR_SIGN` and `OBJ_ATTR_VERIFY` to `TRUE` after you generate the key\. To set these values, use setAttribute in CMU\. For more information, see [setAttribute](cloudhsm_mgmt_util-setAttribute.md)\.
 
 ## Parameters<a name="genSymKey-params"></a>
 
@@ -211,7 +213,7 @@ Default: 0
 Required: No
 
 **\-nex**  
-Makes the key nonextractable\. The key that is generated cannot be [exported from the HSM](manage-keys.md#export-keys)\.  
+Makes the key nonextractable\. The key that is generated cannot be [exported from the HSM](using-kmu.md#export-keys)\.  
 Default: The key is extractable\.  
 Required: No
 
@@ -234,8 +236,9 @@ Type a comma\-separated list of HSM user IDs, such as \-`u 5,6`\. Do not include
 Default: Only the current user can use the key\.   
 Required: No
 
-## Related Topics<a name="genSymKey-seealso"></a>
+## Related topics<a name="genSymKey-seealso"></a>
 + [exSymKey](key_mgmt_util-exSymKey.md)
 + [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
 + [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)
 + [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)
++ [setAttribute](cloudhsm_mgmt_util-setAttribute.md)

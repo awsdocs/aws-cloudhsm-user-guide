@@ -2,11 +2,11 @@
 
 The setAttribute command in cloudhsm\_mgmt\_util changes the value of the label, encrypt, decrypt, wrap, and unwrap attributes of a key in the HSMs\. You can also use the [setAttribute](key_mgmt_util-setAttribute.md) command in key\_mgmt\_util to convert a session key to a persistent key\. You can only change the attributes of keys that you own\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="setAttribute-userType"></a>
+## User type<a name="setAttribute-userType"></a>
 
 The following users can run this command\.
 + Crypto users \(CU\)
@@ -14,6 +14,8 @@ The following users can run this command\.
 ## Syntax<a name="chmu-setAttribute-syntax"></a>
 
 Because this command does not have named parameters, you must enter the arguments in the order specified in the syntax diagram\.
+
+
 
 ```
 setAttribute <key handle> <attribute id>
@@ -69,7 +71,6 @@ Following are the possible attribute values for getAttribute:
       OBJ_ATTR_DESTROYABLE            = 370
       OBJ_ATTR_KCV                    = 371
       OBJ_ATTR_WRAP_WITH_TRUSTED      = 528
-      OBJ_ATTR_EKCV                   = 4099
       OBJ_ATTR_WRAP_TEMPLATE          = 1073742353
       OBJ_ATTR_UNWRAP_TEMPLATE        = 1073742354
       OBJ_ATTR_ALL                    = 512
@@ -99,7 +100,7 @@ The output shows that the command succeeded on both HSMs in the cluster\.
 aws-cloudhsm> setAttribute 14 261 0
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
+cluster. AWS does NOT synchronize these changes automatically with the
 nodes on which this operation is not executed or failed, please
 ensure this operation is executed on all nodes in the cluster.
 ****************************************************************
@@ -152,7 +153,7 @@ Valid values:
 + **1073742354** – `OBJ_ATTR_UNWRAP_TEMPLATE`\.
 Required: Yes
 
-## Related Topics<a name="chmu-setAttribute-seealso"></a>
+## Related topics<a name="chmu-setAttribute-seealso"></a>
 + [setAttribute](key_mgmt_util-setAttribute.md) in key\_mgmt\_util
 + [getAttribute](cloudhsm_mgmt_util-getAttribute.md)
 + [listAttributes](cloudhsm_mgmt_util-listAttributes.md)

@@ -1,4 +1,4 @@
-# Interpreting HSM Audit Logs<a name="interpreting-audit-logs"></a>
+# Interpreting HSM audit logs<a name="interpreting-audit-logs"></a>
 
 The events in the HSM audit logs have standard fields\. Some event types have additional fields that capture useful information about the event\. For example, user login and user management events include the user name and user type of the user\. Key management commands include the key handle\.
 
@@ -33,7 +33,7 @@ A 64\-bit ordinal counter that is incremented for each log event\. The first eve
 A hexadecimal value that represents the category of the command\. Commands in the AWS CloudHSM log streams have a command type of `CN_MGMT_CMD` \(0x0\) or `CN_CERT_AUTH_CMD` \(0x9\)\.
 
 **Opcode**  
-Identifies the management command that was executed\. For a list of `Opcode` values in the AWS CloudHSM audit logs, see [Audit Log Reference](cloudhsm-audit-log-reference.md)\.
+Identifies the management command that was executed\. For a list of `Opcode` values in the AWS CloudHSM audit logs, see [HSM audit log reference](cloudhsm-audit-log-reference.md)\.
 
 **Session handle**  
 Identifies the session in which the command was run and the event was logged\.
@@ -48,21 +48,21 @@ Indicates the log type of the AWS CloudHSM log that recorded the command\.
 + `MGMT_USER_DETAILS_LOG (2)`
 + `GENERIC_LOG`
 
-## Examples of Audit Log Events<a name="example-audit-log"></a>
+## Examples of audit log events<a name="example-audit-log"></a>
 
 The events in a log stream record the history of the HSM from its creation to deletion\. You can use the log to review the lifecycle of your HSMs and gain insight into its operation\. When you interpret the events, note the `Opcode`, which indicates the management command or action, and the `Sequence No`, which indicates the order of events\. 
 
 **Topics**
-+ [Example: Initialize the First HSM in a Cluster](#example-audit-log-first-hsm)
-+ [Login and Logout Events](#example-audit-log-login-logout)
-+ [Example: Create and Delete Users](#example-audit-log-first-hsm)
-+ [Example: Create and Delete a Key Pair](#example-audit-log-manage-keys)
-+ [Example: Generate and Synchronize a Key](#audit-log-example-gen-key)
-+ [Example: Export a Key](#audit-log-example-export-key)
-+ [Example: Import a Key](#audit-log-example-import-key)
-+ [Example: Share and Unshare a Key](#audit-log-example-share-unshare-key)
++ [Example: Initialize the first HSM in a cluster](#example-audit-log-first-hsm)
++ [Login and logout events](#example-audit-log-login-logout)
++ [Example: Create and delete users](#example-audit-log-first-hsm)
++ [Example: Create and delete a key pair](#example-audit-log-manage-keys)
++ [Example: Generate and synchronize a key](#audit-log-example-gen-key)
++ [Example: Export a key](#audit-log-example-export-key)
++ [Example: Import a key](#audit-log-example-import-key)
++ [Example: Share and unshare a key](#audit-log-example-share-unshare-key)
 
-### Example: Initialize the First HSM in a Cluster<a name="example-audit-log-first-hsm"></a>
+### Example: Initialize the first HSM in a cluster<a name="example-audit-log-first-hsm"></a>
 
 The audit log stream for the first HSM in each cluster differs significantly from the log streams of other HSMs in the cluster\. The audit log for the first HSM in each cluster records its creation and initialization\. The logs of additional HSMs in the cluster, which are generated from backups, begin with a login event\.
 
@@ -97,7 +97,7 @@ Response : 0:HSM Return: SUCCESS
 Log type : MINIMAL_LOG_ENTRY (0)
 ```
 
-The third event in this example log stream \(`Sequence No 0x2`\) is the creation of the [appliance user \(AU\)](hsm-users.md#appliance-user), which is the AWS CloudHSM service\. Events that involve HSM users include extra fields for the user name and user type\. 
+The third event in this example log stream \(`Sequence No 0x2`\) is the creation of the [appliance user \(AU\)](manage-hsm-users.md#appliance-user), which is the AWS CloudHSM service\. Events that involve HSM users include extra fields for the user name and user type\. 
 
 ```
 Time: 12/19/17 21:01:17.174902, usecs:1513717277174902
@@ -125,7 +125,7 @@ Response : 0:HSM Return: SUCCESS
 Log type : MINIMAL_LOG_ENTRY (0)
 ```
 
-You can follow the remaining events in the startup sequence\. These events might include several login and logout events, and the generation of the key encryption key \(KEK\)\. The following event records the command that changes the password of the [precrypto officer \(PRECO\)](hsm-users.md#preco)\. This command activates the cluster\.
+You can follow the remaining events in the startup sequence\. These events might include several login and logout events, and the generation of the key encryption key \(KEK\)\. The following event records the command that changes the password of the [precrypto officer \(PRECO\)](manage-hsm-users.md#preco)\. This command activates the cluster\.
 
 ```
 Time: 12/13/17 23:04:33.846554, usecs:1513206273846554
@@ -140,7 +140,7 @@ User Name: admin
 User Type: CN_CRYPTO_PRE_OFFICER (6)
 ```
 
-### Login and Logout Events<a name="example-audit-log-login-logout"></a>
+### Login and logout events<a name="example-audit-log-login-logout"></a>
 
 When interpreting your audit log, note events that record users logging and in and out of the HSM\. These events help you to determine which user is responsible for management commands that appear in sequence between the login and logout commands\.
 
@@ -208,7 +208,7 @@ User Name : testuser
 User Type : CN_CRYPTO_USER (1)
 ```
 
-### Example: Create and Delete Users<a name="example-audit-log-first-hsm"></a>
+### Example: Create and delete users<a name="example-audit-log-first-hsm"></a>
 
 This example shows the log events that are recorded when a crypto officer \(CO\) creates and deletes users\. 
 
@@ -272,7 +272,7 @@ User Name : alice
 User Type : CN_CRYPTO_OFFICER (2)
 ```
 
-### Example: Create and Delete a Key Pair<a name="example-audit-log-manage-keys"></a>
+### Example: Create and delete a key pair<a name="example-audit-log-manage-keys"></a>
 
 This example shows the events that are recorded in an HSM audit log when you create and delete a key pair\. 
 
@@ -351,7 +351,7 @@ User Name: crypto_user
 User Type: CN_CRYPTO_USER (1)
 ```
 
-### Example: Generate and Synchronize a Key<a name="audit-log-example-gen-key"></a>
+### Example: Generate and synchronize a key<a name="audit-log-example-gen-key"></a>
 
 This example shows the effect of creating a key in a cluster with multiple HSMs\. The key is generated on one HSM, extracted from the HSM as a masked object, and inserted in the other HSMs as a masked object\.
 
@@ -437,7 +437,7 @@ Public Key Handle : 0
 
 When the CU user logs out, this `CN_LOGOUT` event appears only in the log stream of the HSM that received the commands\. 
 
-### Example: Export a Key<a name="audit-log-example-export-key"></a>
+### Example: Export a key<a name="audit-log-example-export-key"></a>
 
 This example shows the audit log events that are recorded when a crypto user \(CU\) exports keys from a cluster with multiple HSMs\. 
 
@@ -490,7 +490,7 @@ Public Key Handle : 0
 
 The exSymKey command writes the exported key to a file but does not change the key on the HSM\. Consequently, there are no corresponding events in the logs of other HSMs in the cluster\. 
 
-### Example: Import a Key<a name="audit-log-example-import-key"></a>
+### Example: Import a key<a name="audit-log-example-import-key"></a>
 
 This example shows the audit log events that are recorded when you import keys into the HSMs in a cluster\. In this example, the crypto user \(CU\) uses the [imSymKey](key_mgmt_util-imSymKey.md) command to import an AES key into the HSMs\. The command uses key `6` as the wrapping key\. 
 
@@ -556,7 +556,7 @@ Priv/Secret Key Handle : 11
 Public Key Handle : 0
 ```
 
-### Example: Share and Unshare a Key<a name="audit-log-example-share-unshare-key"></a>
+### Example: Share and unshare a key<a name="audit-log-example-share-unshare-key"></a>
 
 This example shows the audit log event that is recorded when a crypto user \(CU\) shares or unshares ECC private key with other crypto users\. The CU uses the [shareKey](cloudhsm_mgmt_util-shareKey.md) command and provides the key handle, the user ID, and the value `1` to share or value `0` to unshare the key\. 
 

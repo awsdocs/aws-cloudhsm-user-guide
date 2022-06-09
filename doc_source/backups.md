@@ -1,29 +1,10 @@
-# AWS CloudHSM Cluster Backups<a name="backups"></a>
-
-AWS CloudHSM makes periodic backups of your cluster\. You can't instruct AWS CloudHSM to make backups anytime that you want, but you can take certain actions that result in AWS CloudHSM making a backup\. For more information, see the following topics\.
-
-When you add an HSM to a cluster that previously contained one or more active HSMs, AWS CloudHSM restores the most recent backup onto the new HSM\. This means that you can use AWS CloudHSM to manage an HSM that you use infrequently\. When you don't need to use the HSM, you can delete it, which triggers a backup\. Later, when you need to use the HSM again, you can create a new HSM in the same cluster, effectively restoring your previous HSM\.
-
-You can also create a new cluster from an existing backup of a different cluster\. You must create the new cluster in the same AWS Region that contains the existing backup\.
-
-**Topics**
-+ [Overview of Backups](#backup-overview)
-+ [Security of Backups](#backup-security)
-+ [Durability of Backups](#backups-durability)
-+ [Frequency of Backups](#backups-frequency)
-
-## Overview of Backups<a name="backup-overview"></a>
-
-Each backup contains encrypted copies of the following data:
-+ All [users \(COs, CUs, and AUs\)](hsm-users.md) on the HSM\.
-+ All key material and certificates on the HSM\.
-+ The HSM's configuration and policies\.
-
-AWS CloudHSM stores the backups in a service\-controlled Amazon Simple Storage Service \(Amazon S3\) bucket in the same AWS Region as your cluster\.
+# AWS CloudHSM cluster backups<a name="backups"></a>
 
 ![\[AWS CloudHSM cluster backups encrypted in a service-controlled Amazon S3 bucket.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/cluster-backup.png)
 
-## Security of Backups<a name="backup-security"></a>
+AWS CloudHSM makes periodic backups of the users, keys, and policies in the cluster\. The service stores backups in a service\-controlled Amazon Simple Storage Service \(Amazon S3\) bucket in the same region as your cluster\. The preceding illustration shows the relationship of your backups to the cluster\. Backups are secure, durable, and updated on a predictable schedule\. For more information about the security and durability of backups, see the following sections\. For more information about working with backups, see [Managing backups](manage-backups.md)\. 
+
+## Security of backups<a name="backup-security"></a>
 
 When AWS CloudHSM makes a backup from the HSM, the HSM encrypts all of its data before sending it to AWS CloudHSM\. The data never leaves the HSM in plaintext form\.
 
@@ -39,15 +20,8 @@ The encryption processes are summarized in the following figure\. The backup enc
 
 AWS CloudHSM can restore backups onto only AWS\-owned HSMs made by the same manufacturer\. Because each backup contains all users, keys, and configuration from the original HSM, the restored HSM contains the same protections and access controls as the original\. The restored data overwrites all other data that might have been on the HSM prior to restoration\.
 
-A backup consists of only encrypted data\. Before each backup is stored in Amazon S3, it's encrypted again under an AWS Key Management Service \(AWS KMS\) customer master key \(CMK\)\.
+A backup consists of only encrypted data\. Before the service stores a backup in Amazon S3, the service encrypts the backup again using AWS Key Management Service \(AWS KMS\)\.
 
-## Durability of Backups<a name="backups-durability"></a>
+## Durability of backups<a name="backups-durability"></a>
 
-AWS CloudHSM stores cluster backups in an Amazon S3 bucket in an AWS account that AWS CloudHSM controls\. The durability of backups is the same as any object stored in Amazon S3\. Amazon S3 is designed to deliver 99\.999999999% durability\.
-
-## Frequency of Backups<a name="backups-frequency"></a>
-
-AWS CloudHSM makes a cluster backup at least once per 24 hours\. In addition to recurring daily backups, AWS CloudHSM makes a backup when you perform any of the following actions:
-+ [Initialize the cluster](initialize-cluster.md)\.
-+ [Add an HSM to an initialized cluster](add-remove-hsm.md#add-hsm)\.
-+ [Remove an HSM from a cluster](add-remove-hsm.md#remove-hsm)\.
+AWS CloudHSM stores cluster backups in an Amazon S3 bucket that the service controls\. Backups have a 99\.999999999% durability level, the same as any object stored in Amazon S3\. 

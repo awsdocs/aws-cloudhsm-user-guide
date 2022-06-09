@@ -1,18 +1,14 @@
 # deleteUser<a name="cloudhsm_mgmt_util-deleteUser"></a>
 
-The deleteUser command in cloudhsm\_mgmt\_util deletes a user from the HSMs\. Only crypto officers \(COs and PCOs\) can run this command, but any CO user can delete any user of any type from the HSMs\. However, you cannot delete a user who is logged into the AWS CloudHSM client, key\_mgmt\_util, or cloudhsm\_mgmt\_util\.
+The deleteUser command in cloudhsm\_mgmt\_util deletes a user from the hardware security modules \(HSM\)\. Only crypto officers \(CO\) can run this command\. You cannot delete a user who is currently logged into a HSM\. For more information about deleting users, see [How to Delete HSM Users](cli-users.md#delete-user)\.
 
-**Warning**  
-When you delete a crypto user \(CU\), all keys that the user owned are deleted, even if the keys were shared with other users\. To make accidental or malicious deletion of users less likely, use [quorum authentication](quorum-authentication-crypto-officers.md)\. 
+**Tip**  
+You can't delete crypto users \(CU\) that own keys\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
-
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
-
-## User Type<a name="deleteUser-userType"></a>
+## User type<a name="deleteUser-userType"></a>
 
 The following types of users can run this command\.
-+ Crypto officers \(CO, PCO\)
++ CO
 
 ## Syntax<a name="deleteUser-syntax"></a>
 
@@ -100,9 +96,9 @@ deleteUser <user-type> <user-name>
 
 **<user\-type>**  
 Specifies the type of user\. This parameter is required\.   
-When you delete a crypto user \(CU\), all keys that the user owned are deleted, even if the keys were shared with other users\. To make accidental or malicious deletion of users less likely, use [quorum authentication](quorum-authentication-crypto-officers.md)\. 
-Valid values are **CO**, **CU**, **AU**, **PCO**, and **PRECO**\.   
-To get the user type, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\. For detailed information about the user types on an HSM, see [HSM Users](hsm-users.md)\.  
+You can't delete crypto users \(CU\) that own keys\.
+Valid values are **CO**, **CU**\.  
+To get the user type, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md#understanding-users)\.  
 Required: Yes
 
 **<user\-name>**  
@@ -110,7 +106,7 @@ Specifies a friendly name for the user\. The maximum length is 31 characters\. T
 You cannot change the name of a user after it is created\. In cloudhsm\_mgmt\_util commands, the user type and password are case\-sensitive, but the user name is not\.  
 Required: Yes
 
-## Related Topics<a name="deleteUser-seealso"></a>
+## Related topics<a name="deleteUser-seealso"></a>
 + [listUsers](cloudhsm_mgmt_util-listUsers.md)
 + [createUser](cloudhsm_mgmt_util-createUser.md)
 + [syncUser](cloudhsm_mgmt_util-syncUser.md)

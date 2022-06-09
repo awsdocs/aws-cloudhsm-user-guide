@@ -1,12 +1,12 @@
-# Install and Configure the AWS CloudHSM Client \(Linux\)<a name="install-and-configure-client-linux"></a>
+# Install and configure the AWS CloudHSM client \(Linux\)<a name="install-and-configure-client-linux"></a>
 
-To interact with the HSM in your AWS CloudHSM cluster, you need the AWS CloudHSM client software for Linux\. You should install it on the Linux EC2 client instance that you created previously\. You can also install a client if you are using Windows\. For more information, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. 
+To interact with the HSM in your AWS CloudHSM cluster, you need the AWS CloudHSM client software for Linux\. You should install it on the Linux EC2 client instance that you created previously\. You can also install a client if you are using Windows\. For more information, see [Install and configure the AWS CloudHSM client \(Windows\)](install-and-configure-client-win.md)\. 
 
 **Topics**
-+ [Install the AWS CloudHSM Client and Command Line Tools](#install-client)
-+ [Edit the Client Configuration](#edit-client-configuration)
++ [Install the AWS CloudHSM client and command line tools](#install-client)
++ [Edit the client configuration](#edit-client-configuration)
 
-## Install the AWS CloudHSM Client and Command Line Tools<a name="install-client"></a>
+## Install the AWS CloudHSM client and command line tools<a name="install-client"></a>
 
 Connect to your client instance and run the following commands to download and install the AWS CloudHSM client and command line tools\.
 
@@ -18,7 +18,7 @@ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-cl
 ```
 
 ```
-sudo yum install -y ./cloudhsm-client-latest.el6.x86_64.rpm
+sudo yum install ./cloudhsm-client-latest.el6.x86_64.rpm
 ```
 
 ------
@@ -29,22 +29,7 @@ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cl
 ```
 
 ```
-sudo yum install -y ./cloudhsm-client-latest.el7.x86_64.rpm
-```
-
-------
-#### [ CentOS 6 ]
-
-```
-sudo yum install wget
-```
-
-```
-wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm
-```
-
-```
-sudo yum install -y ./cloudhsm-client-latest.el6.x86_64.rpm
+sudo yum install ./cloudhsm-client-latest.el7.x86_64.rpm
 ```
 
 ------
@@ -59,18 +44,22 @@ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cl
 ```
 
 ```
-sudo yum install -y ./cloudhsm-client-latest.el7.x86_64.rpm
+sudo yum install ./cloudhsm-client-latest.el7.x86_64.rpm
 ```
 
 ------
-#### [ RHEL 6 ]
+#### [ CentOS 8 ]
 
 ```
-wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-latest.el6.x86_64.rpm
+sudo yum install wget
 ```
 
 ```
-sudo yum install -y ./cloudhsm-client-latest.el6.x86_64.rpm
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-client-latest.el8.x86_64.rpm
+```
+
+```
+sudo yum install ./cloudhsm-client-latest.el8.x86_64.rpm
 ```
 
 ------
@@ -85,7 +74,22 @@ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cl
 ```
 
 ```
-sudo yum install -y ./cloudhsm-client-latest.el7.x86_64.rpm
+sudo yum install ./cloudhsm-client-latest.el7.x86_64.rpm
+```
+
+------
+#### [ RHEL 8 ]
+
+```
+sudo yum install wget
+```
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-client-latest.el8.x86_64.rpm
+```
+
+```
+sudo yum install ./cloudhsm-client-latest.el8.x86_64.rpm
 ```
 
 ------
@@ -96,12 +100,23 @@ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudhsm
 ```
 
 ```
-sudo dpkg -i cloudhsm-client_latest_amd64.deb
+sudo apt install ./cloudhsm-client_latest_amd64.deb
+```
+
+------
+#### [ Ubuntu 18\.04 LTS ]
+
+```
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-client_latest_u18.04_amd64.deb
+```
+
+```
+sudo apt install ./cloudhsm-client_latest_u18.04_amd64.deb
 ```
 
 ------
 
-## Edit the Client Configuration<a name="edit-client-configuration"></a>
+## Edit the client configuration<a name="edit-client-configuration"></a>
 
 Before you can use the AWS CloudHSM client to connect to your cluster, you must edit the client configuration\.
 
@@ -118,4 +133,4 @@ Before you can use the AWS CloudHSM client to connect to your cluster, you must 
    Updating server config in /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
-1. Go to [Activate the Cluster](activate-cluster.md)\.
+1. Go to [Activate the cluster](activate-cluster.md)\.

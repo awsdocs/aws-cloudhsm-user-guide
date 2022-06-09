@@ -9,15 +9,14 @@ Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key
 ```
 IsValidKeyHandlefile -h
 
-IsValidKeyHandlefile -k <private-key-handle
-                     -f <private-key-file>
+IsValidKeyHandlefile -f <private-key-file>
 ```
 
 ## Examples<a name="IsValidKeyHandlefile-examples"></a>
 
 These examples show how to use IsValidKeyHandlefile to determine whether a given key file contains the real key material or fake PEM key material\.
 
-**Example : Validate a Real Private Key**  
+**Example : Validate a real private key**  
 This command confirms that the file called `privateKey.pem` contains real key material\.  
 
 ```
@@ -26,7 +25,7 @@ Command: IsValidKeyHandlefile -f privateKey.pem
 Input key file has real private key
 ```
 
-**Example : Invalidate a Fake PEM Key**  
+**Example : Invalidate a fake PEM key**  
 This command confirms that the file called `caviumKey.pem` contains fake PEM key material made from key handle `15`\.  
 
 ```
@@ -47,6 +46,6 @@ Required: Yes
 Specifies the name of the file to be checked for valid key material\.  
 Required: Yes
 
-## Related Topics<a name="IsValidKeyHandlefile-seealso"></a>
+## Related topics<a name="IsValidKeyHandlefile-seealso"></a>
 + [getCaviumPrivKey](key_mgmt_util-getCaviumPrivKey.md)
 + [SSL/TLS Offload on Linux](ssl-offload-linux.md)

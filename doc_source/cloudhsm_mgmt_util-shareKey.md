@@ -4,11 +4,11 @@ The shareKey command in cloudhsm\_mgmt\_util shares and unshares keys that you o
 
 Users who share the key can use the key in cryptographic operations, but they cannot delete, export, share, or unshare the key, or change its attributes\. When quorum authentication is enabled on a key, the quorum must approve any operations that share or unshare the key\. 
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="shareKey-userType"></a>
+## User type<a name="shareKey-userType"></a>
 
 The following types of users can run this command\.
 + Crypto users \(CU\)
@@ -27,7 +27,7 @@ shareKey <key handle> <user id> <(share/unshare key?) 1/0>
 
 The following examples show how to use shareKey to share and unshare keys that you own with other crypto users\.
 
-**Example : Share a Key**  
+**Example : Share a key**  
 This example uses shareKey to share an [ECC private key](key_mgmt_util-genSymKey.md) that the current user owns with another crypto user on the HSMs\. Public keys are available to all users of the HSM, so you cannot share or unshare them\.  
 The first command uses [getKeyInfo](cloudhsm_mgmt_util-getKeyInfo.md) to get the user information for key `262177`, an ECC private key on the HSMs\.   
 The output shows that key `262177` is owned by user 3, but is not shared\.  
@@ -54,7 +54,7 @@ The output shows that the operation succeeded on both HSMs in the cluster\.
 aws-cloudhsm>shareKey 262177 4 1
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
+cluster. AWS does NOT synchronize these changes automatically with the
 nodes on which this operation is not executed or failed, please
 ensure this operation is executed on all nodes in the cluster.
 ****************************************************************
@@ -89,7 +89,7 @@ Key Info on server 1(10.0.3.6):
                  4
 ```
 
-**Example : Unshare a Key**  
+**Example : Unshare a key**  
 This example unshares a symmetric key, that is, it removes a crypto user from the list of shared users for the key\.   
 This command uses shareKey to remove user `4` from the list of shared users for key `6`\. The final argument uses a value of `0` to indicate an unshare operation\.  
 The output shows that the command succeeded on both HSMs\. As a result, user `4` can no longer use key `6` in cryptographic operations\.  
@@ -98,7 +98,7 @@ The output shows that the command succeeded on both HSMs\. As a result, user `4`
 aws-cloudhsm>shareKey 6 4 0
 *************************CAUTION********************************
 This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
+cluster. AWS does NOT synchronize these changes automatically with the
 nodes on which this operation is not executed or failed, please
 ensure this operation is executed on all nodes in the cluster.
 ****************************************************************
@@ -128,5 +128,5 @@ Required: Yes
 To share the key with the specified user, type `1`\. To unshare the key, that is, to remove the specified user from the list of shared users for the key, type `0`\.  
 Required: Yes
 
-## Related Topics<a name="shareKey-seealso"></a>
+## Related topics<a name="shareKey-seealso"></a>
 + [getKeyInfo](cloudhsm_mgmt_util-getKeyInfo.md)

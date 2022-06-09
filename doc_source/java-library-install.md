@@ -1,10 +1,10 @@
-# Install and Use the AWS CloudHSM Software Library for Java<a name="java-library-install"></a>
+# Install and use the AWS CloudHSM JCE provider for Client SDK 3<a name="java-library-install"></a>
 
-Before you can use the AWS CloudHSM software library for Java, you need the AWS CloudHSM client\. 
+Before you can use the JCE provider, you need the AWS CloudHSM client\. 
 
-The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster\. The Java library communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the Client \(Linux\)](install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
+The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster\. The JCE provider communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the client \(Linux\)](install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
 
-Note that the AWS CloudHSM software library for Java is supported only on Linux and compatible operating systems\. 
+Note that the JCE provider is supported only on Linux and compatible operating systems\. 
 
 ------
 #### [ Amazon Linux ]
@@ -21,13 +21,6 @@ $ sudo service cloudhsm-client start
 ```
 
 ------
-#### [ CentOS 6 ]
-
-```
-$ sudo start cloudhsm-client
-```
-
-------
 #### [ CentOS 7 ]
 
 ```
@@ -35,14 +28,21 @@ $ sudo service cloudhsm-client start
 ```
 
 ------
-#### [ RHEL 6 ]
+#### [ CentOS 8 ]
 
 ```
-$ sudo start cloudhsm-client
+$ sudo service cloudhsm-client start
 ```
 
 ------
 #### [ RHEL 7 ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
+#### [ RHEL 8 ]
 
 ```
 $ sudo service cloudhsm-client start
@@ -56,16 +56,26 @@ $ sudo service cloudhsm-client start
 ```
 
 ------
+#### [ Ubuntu 18\.04 LTS ]
+
+```
+$ sudo service cloudhsm-client start
+```
+
+------
 
 **Topics**
-+ [Installing the Java Library](#install-java-library)
-+ [Validating the Installation](#validate-install)
-+ [Providing Credentials to the Java Library](#java-library-credentials)
-+ [Key Management Basics in the Java Library](#java-library-key-basics)
++ [Installing the JCE provider](#install-java-library)
++ [Validating the installation](#validate-install)
++ [Providing credentials to the JCE provider](#java-library-credentials)
++ [Key management basics in the JCE provider](#java-library-key-basics)
 
-## Installing the Java Library<a name="install-java-library"></a>
+## Installing the JCE provider<a name="install-java-library"></a>
 
-Use the following commands to download and install or update the AWS CloudHSM Java library\. This library is supported only on Linux and compatible operating systems\. 
+Use the following commands to download and install the JCE provider\. This provider is supported only on Linux and compatible operating systems\. 
+
+**Note**  
+For upgrading, see [Upgrade your Client SDK 3](client-upgrade.md)\.
 
 ------
 #### [ Amazon Linux ]
@@ -75,7 +85,7 @@ $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
+$ sudo yum install ./cloudhsm-client-jce-latest.el6.x86_64.rpm
 ```
 
 ------
@@ -86,18 +96,7 @@ $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
-```
-
-------
-#### [ CentOS 6 ]
-
-```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm
-```
-
-```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
+$ sudo yum install ./cloudhsm-client-jce-latest.el7.x86_64.rpm
 ```
 
 ------
@@ -108,18 +107,18 @@ $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
+$ sudo yum install ./cloudhsm-client-jce-latest.el7.x86_64.rpm
 ```
 
 ------
-#### [ RHEL 6 ]
+#### [ CentOS 8 ]
 
 ```
-$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-client-jce-latest.el6.x86_64.rpm
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-client-jce-latest.el8.x86_64.rpm
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.el6.x86_64.rpm
+$ sudo yum install ./cloudhsm-client-jce-latest.el8.x86_64.rpm
 ```
 
 ------
@@ -130,7 +129,18 @@ $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-
 ```
 
 ```
-$ sudo yum install -y ./cloudhsm-client-jce-latest.el7.x86_64.rpm
+$ sudo yum install ./cloudhsm-client-jce-latest.el7.x86_64.rpm
+```
+
+------
+#### [ RHEL 8 ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-client-jce-latest.el8.x86_64.rpm
+```
+
+```
+$ sudo yum install ./cloudhsm-client-jce-latest.el8.x86_64.rpm
 ```
 
 ------
@@ -141,25 +151,36 @@ $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Xenial/cloudh
 ```
 
 ```
-$ sudo dpkg -i cloudhsm-client-jce_latest_amd64.deb
+$ sudo apt install ./cloudhsm-client-jce_latest_amd64.deb
+```
+
+------
+#### [ Ubuntu 18\.04 LTS ]
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-client-jce_latest_u18.04_amd64.deb
+```
+
+```
+$ sudo apt install ./cloudhsm-client-jce_latest_u18.04_amd64.deb
 ```
 
 ------
 
-After you run the preceding commands, you can find the following Java library files:
+After you run the preceding commands, you can find the following JCE provider files:
 + `/opt/cloudhsm/java/cloudhsm-version.jar`
 + `/opt/cloudhsm/java/cloudhsm-test-version.jar`
 + `/opt/cloudhsm/java/hamcrest-all-1.3.jar`
 + `/opt/cloudhsm/java/junit.jar`
-+ `/opt/cloudhsm/java/log4j-api-2.8.jar`
-+ `/opt/cloudhsm/java/log4j-core-2.8.jar`
++ `/opt/cloudhsm/java/log4j-api-2.17.1.jar`
++ `/opt/cloudhsm/java/log4j-core-2.17.1.jar`
 + `/opt/cloudhsm/lib/libcaviumjca.so`
 
-## Validating the Installation<a name="validate-install"></a>
+## Validating the installation<a name="validate-install"></a>
 
 Perform basic operations on the HSM to validate the installation\.
 
-**To validate Java library installation**
+**To validate JCE provider installation**
 
 1. \(Optional\) If you don't already have Java installed in your environment, use the following command to install it\. 
 
@@ -167,7 +188,7 @@ Perform basic operations on the HSM to validate the installation\.
 #### [ Linux \(and compatible libraries\) ]
 
    ```
-   $ sudo yum install -y java-1.8.0-openjdk
+   $ sudo yum install java-1.8.0-openjdk
    ```
 
 ------
@@ -219,7 +240,7 @@ Perform basic operations on the HSM to validate the installation\.
    OK (1 test)
    ```
 
-## Providing Credentials to the Java Library<a name="java-library-credentials"></a>
+## Providing credentials to the JCE provider<a name="java-library-credentials"></a>
 
 HSMs need to authenticate your Java application before the application can use them\. Each application can use one session\. HSMs authenticate a session by using either explicit login or implicit login method\.
 
@@ -263,8 +284,8 @@ Credentials might not be available if the application does not provide them or i
 **Error handling**  
 The error handling is easier with the explicit login than the implicit login method\. When you use the `LoginManager` class, you have more control over how your application deals with failures\. The implicit login method makes error handling difficult to understand when the credentials are invalid or the HSMs are having problems in authenticating session\.
 
-## Key Management Basics in the Java Library<a name="java-library-key-basics"></a>
+## Key management basics in the JCE provider<a name="java-library-key-basics"></a>
 
-The basics on key management in the Java library involve importing keys, exporting keys, loading keys by handle, or deleting keys\. For more information on managing keys, see the [Manage keys](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) code example\.
+The basics on key management in the JCE provider involve importing keys, exporting keys, loading keys by handle, or deleting keys\. For more information on managing keys, see the [Manage keys](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) code example\.
 
-You can also find more Java library code examples at [Java Samples](java-samples.md)\.
+You can also find more JCE provider code examples at [Java samples](java-samples.md)\.

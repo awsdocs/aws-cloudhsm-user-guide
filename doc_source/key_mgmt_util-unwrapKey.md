@@ -39,7 +39,7 @@ unWrapKey -f <key-file-name>
 
 These examples show how to use unWrapKey to import a wrapped key from a file into the HSMs\. In the first example, we unwrap a key that was wrapped with the [wrapKey](key_mgmt_util-wrapKey.md) key\_mgmt\_util command, and thus has a header\. In the second example, we unwrap a key that was wrapped outside of key\_mgmt\_util, and thus does not have a header\.
 
-**Example : Unwrap a Key \(With Header\)**  
+**Example : Unwrap a key \(with header\)**  
 This command imports a wrapped copy of a 3DES symmetric key into an HSM\. The key is unwrapped with an AES key with label `6`, which is cryptographically identical to the one that was used to wrap the 3DES key\. The output shows that the key in the file was unwrapped and imported, and that the imported key's handle is `29`\.  
 
 ```
@@ -54,7 +54,7 @@ This command imports a wrapped copy of a 3DES symmetric key into an HSM\. The ke
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
 
-**Example : Unwrap a Key \(No Header\)**  
+**Example : Unwrap a key \(no header\)**  
 This command imports a wrapped copy of a 3DES symmetric key into an HSM\. The key is unwrapped with an AES key with label `6`, which is cryptographically identical to the one that was used to wrap the 3DES key\. As this 3DES key was not wrapped with key\_mgmt\_util, the `noheader` parameter is specified, along with its required accompanying parameters: a key label \(`unwrapped3DES`\), key class \(`4`\), and key type \(`21`\)\. The output shows that the key in the file was unwrapped and imported, and that the imported key's handle is `8`\.  
 
 ```
@@ -166,7 +166,7 @@ You can also **optionally** specify the following `-noheader` parameters:
 
   Required: No
 
-## Related Topics<a name="unwrapKey-seealso"></a>
+## Related topics<a name="unwrapKey-seealso"></a>
 + [wrapKey](key_mgmt_util-wrapKey.md)
 + [exSymKey](key_mgmt_util-exSymKey.md)
 + [imSymKey](key_mgmt_util-imSymKey.md)

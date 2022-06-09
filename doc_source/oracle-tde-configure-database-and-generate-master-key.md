@@ -1,16 +1,16 @@
-# Oracle TDE with AWS CloudHSM: Configure the Database and Generate the Master Encryption Key<a name="oracle-tde-configure-database-and-generate-master-key"></a>
+# Oracle TDE with AWS CloudHSM: Configure the database and generate the master encryption key<a name="oracle-tde-configure-database-and-generate-master-key"></a>
 
 To integrate Oracle TDE with your AWS CloudHSM cluster, see the following topics:
 
-1. [Update the Oracle Database Configuration](#oracle-tde-configure-database) to use the HSMs in your cluster as the *external security module*\. For information about external security modules, see [Introduction to Transparent Data Encryption](https://docs.oracle.com/database/122/ASOAG/introduction-to-transparent-data-encryption.htm) in the *Oracle Database Advanced Security Guide*\.
+1. [Update the Oracle database configuration](#oracle-tde-configure-database) to use the HSMs in your cluster as the *external security module*\. For information about external security modules, see [Introduction to Transparent Data Encryption](https://docs.oracle.com/database/122/ASOAG/introduction-to-transparent-data-encryption.htm) in the *Oracle Database Advanced Security Guide*\.
 
-1. [Generate the Oracle TDE Master Encryption Key](#oracle-tde-generate-master-key) on the HSMs in your cluster\.
+1. [Generate the Oracle TDE master encryption key](#oracle-tde-generate-master-key) on the HSMs in your cluster\.
 
 **Topics**
-+ [Update the Oracle Database Configuration](#oracle-tde-configure-database)
-+ [Generate the Oracle TDE Master Encryption Key](#oracle-tde-generate-master-key)
++ [Update the Oracle database configuration](#oracle-tde-configure-database)
++ [Generate the Oracle TDE master encryption key](#oracle-tde-generate-master-key)
 
-## Update the Oracle Database Configuration<a name="oracle-tde-configure-database"></a>
+## Update the Oracle database configuration<a name="oracle-tde-configure-database"></a>
 
 To update the Oracle Database configuration to use an HSM in your cluster as the *external security module*, complete the following steps\. For information about external security modules, see [ Introduction to Transparent Data Encryption ](https://docs.oracle.com/database/122/ASOAG/introduction-to-transparent-data-encryption.htm) in the *Oracle Database Advanced Security Guide*\. 
 
@@ -34,19 +34,13 @@ To update the Oracle Database configuration to use an HSM in your cluster as the
    sudo mkdir -p /opt/oracle/extapi/64/hsm
    ```
 
-1. Use one of the following commands to copy the AWS CloudHSM software library for PKCS \#11 file to the directory that you created in the previous step\. 
-   + If you installed the PKCS \#11 library without Redis, run the following command\.
+1. Run the following command to copy the AWS CloudHSM software library for PKCS \#11 file to the directory that you created in the previous step\. 
 
-     ```
-     sudo cp /opt/cloudhsm/lib/libcloudhsm_pkcs11_standard.so /opt/oracle/extapi/64/hsm/
-     ```
-   + If you installed the PKCS \#11 library with Redis, run the following command\.
-
-     ```
-     sudo cp /opt/cloudhsm/lib/libcloudhsm_pkcs11_redis.so /opt/oracle/extapi/64/hsm/
-     ```
+   ```
+   sudo cp /opt/cloudhsm/lib/libcloudhsm_pkcs11.so /opt/oracle/extapi/64/hsm/
+   ```
 **Note**  
-The `/opt/oracle/extapi/64/hsm` directory must contain only one library file\. Copy only the library file that corresponds to the way you [installed the PKCS \#11 library](pkcs11-library-install.md#install-pkcs11-library)\. If additional files exist in that directory, remove them\. 
+The `/opt/oracle/extapi/64/hsm` directory must contain only one library file\. Remove any other files that exist in that directory\. 
 
 1. Run the following command to change the ownership of the `/opt/oracle` directory and everything inside it\.
 
@@ -56,13 +50,19 @@ The `/opt/oracle/extapi/64/hsm` directory must contain only one library file\. C
 
 1. Start the Oracle Database\.
 
-## Generate the Oracle TDE Master Encryption Key<a name="oracle-tde-generate-master-key"></a>
+## Generate the Oracle TDE master encryption key<a name="oracle-tde-generate-master-key"></a>
 
 To generate the Oracle TDE master key on the HSMs in your cluster, complete the steps in the following procedure\.
 
 **To generate the master key**
 
-1. Use the sqlplus command to open Oracle SQL\*Plus\. When prompted, type the system password that you set when you installed Oracle Database\. 
+1. Use the following command to open Oracle SQL\*Plus and set the `CLOUDHSM_IGNORE_CKA_MODIFIABLE_FALSE` environment variable\. When prompted, type the system password that you set when you installed Oracle Database\. 
+
+   ```
+   CLOUDHSM_IGNORE_CKA_MODIFIABLE_FALSE=true sqlplus / as sysdba
+   ```
+**Note**  
+You must set the `CLOUDHSM_IGNORE_CKA_MODIFIABLE_FALSE` environment variable each time you generate a master key\. This variable is only needed for master key generation\. For more information, see "Issue: Oracle sets the PCKS \#11 attribute `CKA_MODIFIABLE` during master key generation, but the HSM does not support it" in [Known Issues for Integrating Third\-Party Applications](ki-third-party.md)\. 
 
 1. Run the SQL statement that creates the master encryption key, as shown in the following examples\. Use the statement that corresponds to your version of Oracle Database\. Replace *<CU user name>* with the user name of the cryptographic user \(CU\)\. Replace *<password>* with the CU password\. 
 **Important**  

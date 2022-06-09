@@ -1,4 +1,4 @@
-# Oracle Database Transparent Data Encryption \(TDE\) with AWS CloudHSM<a name="oracle-tde"></a>
+# Oracle database transparent data encryption \(TDE\) with AWS CloudHSM<a name="oracle-tde"></a>
 
 Some versions of Oracle's database software offer a feature called Transparent Data Encryption \(TDE\)\. With TDE, the database software encrypts data before storing it on disk\. The data in the database's table columns or tablespaces is encrypted with a table key or tablespace key\. These keys are encrypted with the TDE master encryption key\. You can store the TDE master encryption key in the HSMs in your AWS CloudHSM cluster, which provides additional security\.
 
@@ -8,11 +8,12 @@ In this solution, you use Oracle Database installed on an Amazon EC2 instance\. 
 
 **Important**  
 You cannot use an Oracle instance in Amazon Relational Database Service \(Amazon RDS\) to integrate with AWS CloudHSM\. You must install Oracle Database on an Amazon EC2 instance\.
+You can't use Client SDK 5 for Oracle TDE integration\. For more information, see [AWS CloudHSM Client SDKs](use-hsm.md)\.
 
 Complete the following steps to accomplish Oracle TDE integration with AWS CloudHSM\.
 
 **To configure Oracle TDE integration with AWS CloudHSM**
 
-1. Follow the steps in [Set Up Prerequisites](oracle-tde-prerequisites.md) to prepare your environment\.
+1. Follow the steps in [Set up prerequisites](oracle-tde-prerequisites.md) to prepare your environment\.
 
-1. Follow the steps in [Configure the Database](oracle-tde-configure-database-and-generate-master-key.md) to configure Oracle Database to integrate with your AWS CloudHSM cluster\.
+1. Follow the steps in [Configure the database](oracle-tde-configure-database-and-generate-master-key.md) to configure Oracle Database to integrate with your AWS CloudHSM cluster\.

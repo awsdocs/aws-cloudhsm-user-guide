@@ -1,17 +1,17 @@
-# Resolving Cluster Creation Failures<a name="troubleshooting-create-cluster"></a>
+# Resolving cluster creation failures<a name="troubleshooting-create-cluster"></a>
 
 When you create a cluster, AWS CloudHSM creates the AWSServiceRoleForCloudHSM service\-linked role, if the role does not already exist\. If AWS CloudHSM cannot create the service\-linked role, your attempt to create a cluster might fail\.
 
 This topic explains how to resolve the most common problems so you can create a cluster successfully\. You need to create this role only one time\. Once the service\-linked role is created in your account, you can use any of the supported methods to create additional clusters and to manage them\.
 
-The following sections offer suggestions to troubleshoot cluster creation failures that are related to the service\-linked role\. If you try them but are still unable to create a cluster, contact [AWS Support](https://aws.amazon.com/contact-us/)\. For more information about the AWSServiceRoleForCloudHSM service\-linked role, see [Service\-Linked Roles for AWS CloudHSM](service-linked-roles.md)\. 
+The following sections offer suggestions to troubleshoot cluster creation failures that are related to the service\-linked role\. If you try them but are still unable to create a cluster, contact [AWS Support](https://aws.amazon.com/contact-us/)\. For more information about the AWSServiceRoleForCloudHSM service\-linked role, see [Service\-linked roles for AWS CloudHSM](service-linked-roles.md)\. 
 
 **Topics**
-+ [Add the Missing Permission](#missing-permission)
-+ [Create the Service\-Linked Role Manually](#api-call-failure)
-+ [Use a Nonfederated User](#non-federated-user)
++ [Add the missing permission](#missing-permission)
++ [Create the service\-linked role manually](#api-call-failure)
++ [Use a nonfederated user](#non-federated-user)
 
-## Add the Missing Permission<a name="missing-permission"></a>
+## Add the missing permission<a name="missing-permission"></a>
 
 To create a service\-linked role, the user must have the `iam:CreateServiceLinkedRole` permission\. If the IAM user who is creating the cluster does not have this permission, the cluster creation process fails when it tries to create the service\-linked role in your AWS account\.
 
@@ -25,11 +25,11 @@ To resolve this error, give the IAM user who is creating the cluster the `Admini
 
 Then try to [create the cluster](create-cluster.md) again\. 
 
-## Create the Service\-Linked Role Manually<a name="api-call-failure"></a>
+## Create the service\-linked role manually<a name="api-call-failure"></a>
 
 You can use the IAM console, CLI, or API to create the AWSServiceRoleForCloudHSM service\-linked role\. For more information, see [Creating a Service\-Linked Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role) in the *IAM User Guide*\. 
 
-## Use a Nonfederated User<a name="non-federated-user"></a>
+## Use a nonfederated user<a name="non-federated-user"></a>
 
 Federated users, whose credentials originate outside of AWS, can perform many of the tasks of a nonfederated user\. However, AWS does not allow users to make the API calls to create a service\-linked role from a federated endpoint\. 
 

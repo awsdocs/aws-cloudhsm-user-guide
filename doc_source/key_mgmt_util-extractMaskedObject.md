@@ -22,7 +22,7 @@ extractMaskedObject -o <object-handle>
 
 This example shows how to use extractMaskedObject to extract a key from an HSM as a masked object\.
 
-**Example : Extract a Masked Object**  
+**Example : Extract a masked object**  
 This command extracts a masked object out of an HSM from a key with handle `524295` and saves it as a file called `maskedObj`\. When the command succeeds, extractMaskedObject returns a success message\.  
 
 ```
@@ -49,7 +49,7 @@ Required: Yes
 Specifies the name of the file to which the masked object will be saved\.  
 Required: Yes
 
-## Related Topics<a name="extractMaskedObject-seealso"></a>
+## Related topics<a name="extractMaskedObject-seealso"></a>
 + [insertMaskedObject](key_mgmt_util-insertMaskedObject.md)
 + [syncKey](cloudhsm_mgmt_util-syncKey.md)
 + [Copying a Backup Across Regions](copy-backup-to-region.md)

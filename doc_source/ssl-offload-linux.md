@@ -1,14 +1,14 @@
-# Tutorial: Using SSL/TLS Offload with AWS CloudHSM on Linux<a name="ssl-offload-linux"></a>
+# Tutorial: Using SSL/TLS offload with AWS CloudHSM on Linux<a name="ssl-offload-linux"></a>
 
 This tutorial provides step\-by\-step instructions for setting up SSL/TLS offload with AWS CloudHSM on a Linux web server\.
 
 **Topics**
 + [Overview](#ssl-offload-linux-overview)
-+ [Step 1: Set Up the Prerequisites](ssl-offload-prerequisites.md)
-+ [Step 2: Generate or Import a Private Key and SSL/TLS Certificate](ssl-offload-import-or-generate-private-key-and-certificate.md)
-+ [Step 3: Configure the Web Server](ssl-offload-configure-web-server.md)
-+ [Step 4: Enable HTTPS Traffic and Verify the Certificate](ssl-offload-enable-traffic-and-verify-certificate.md)
-+ [\(Optional\) Step 5: Add a Load Balancer with Elastic Load Balancing](ssl-offload-add-load-balancing.md)
++ [Step 1: Set up the prerequisites](ssl-offload-prerequisites.md)
++ [Step 2: Generate or import a private key and SSL/TLS certificate](ssl-offload-import-or-generate-private-key-and-certificate.md)
++ [Step 3: Configure the web server](ssl-offload-configure-web-server.md)
++ [Step 4: Enable HTTPS traffic and verify the certificate](ssl-offload-enable-traffic-and-verify-certificate.md)
++ [Step 5 \(Optional\): Add a load balancer with Elastic Load Balancing](ssl-offload-add-load-balancing.md)
 
 ## Overview<a name="ssl-offload-linux-overview"></a>
 
@@ -19,4 +19,4 @@ To complete this tutorial, you must first choose whether to use the NGINX or Apa
 + Configure the web server software to support HTTPS with a private key stored in your AWS CloudHSM cluster\.
 + \(Optional\) Use Amazon EC2 to create a second web server instance and Elastic Load Balancing to create a load balancer\. Using a load balancer can increase performance by distributing the load across multiple servers\. It can also provide redundancy and higher availability if one or more servers fail\.
 
-When you're ready to get started, go to [Step 1: Set Up the Prerequisites](ssl-offload-prerequisites.md)\.
+When you're ready to get started, go to [Step 1: Set up the prerequisites](ssl-offload-prerequisites.md)\.

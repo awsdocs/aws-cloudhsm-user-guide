@@ -31,7 +31,7 @@ importPrivateKey -l <label>
 
 This example shows how to use importPrivateKey to import a private key into an HSM\.
 
-**Example : Import a Private Key**  
+**Example : Import a private key**  
 This command imports the private key from a file named `rsa2048.key` with the label `rsa2048-imported` and a wrapping key with handle `524299`\. When the command succeeds, importPrivateKey returns a key handle for the imported key and a success message\.  
 
 ```
@@ -118,7 +118,7 @@ Required: No
 Performs an attestation check on the firmware response to ensure that the firmware on which the cluster runs has not been compromised\.  
 Required: No
 
-## Related Topics<a name="importPrivateKey-seealso"></a>
+## Related topics<a name="importPrivateKey-seealso"></a>
 + [wrapKey](key_mgmt_util-wrapKey.md)
 + [unWrapKey](key_mgmt_util-unwrapKey.md)
 + [genSymKey](key_mgmt_util-genSymKey.md)

@@ -28,7 +28,7 @@ genDSAKeyPair -m <modulus length>
 
 These examples show how to use genDSAKeyPair to create a DSA key pair\.
 
-**Example : Create a DSA Key Pair**  
+**Example : Create a DSA key pair**  
 This command creates a DSA key pair with a `DSA` label\. The output shows that the key handle of the public key is `19` and the handle of the private key is `21`\.  
 
 ```
@@ -42,7 +42,7 @@ Command: genDSAKeyPair -m 2048 -l DSA
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
 
-**Example : Create a Session\-Only DSA Key Pair**  
+**Example : Create a session\-only DSA key pair**  
 This command creates a DSA key pair that is valid only in the current session\. The command assigns a unique ID of `DSA_temp_pair` in addition to the required \(nonunique\) label\. You might want to create a key pair like this to sign and verify a session\-only token\. The output shows that the key handle of the public key is `12` and the handle of the private key is `14`\.  
 
 ```
@@ -71,7 +71,7 @@ To confirm that the key pair exists only in the session, use the `-sess` paramet
         Cfm3FindKey returned: 0x00 : HSM Return: SUCCESS
 ```
 
-**Example : Create a Shared, Nonextractable DSA Key Pair**  
+**Example : Create a shared, nonextractable DSA key pair**  
 This command creates a DSA key pair\. The private key is shared with three other users, and it cannot be exported from the HSM\. Public keys can be used by any user and can always be extracted\.   
 
 ```
@@ -85,7 +85,7 @@ This command creates a DSA key pair\. The private key is shared with three other
         Node id 0 and err state 0x00000000 : HSM Return: SUCCESS
 ```
 
-**Example : Create a Quorum\-Controlled Key Pair**  
+**Example : Create a quorum\-controlled key pair**  
 This command creates a DSA key pair with the label `DSA-mV2`\. The command uses the `-u` parameter to share the private key with user 4 and 6\. It uses the `-m_value` parameter to require a quorum of at least two approvals for any cryptographic operations that use the private key\. The command also uses the `-attest` parameter to verify the integrity of the firmware on which the key pair is generated\.  
 The output shows that the command generates a public key with key handle `12` and a private key with key handle `17`, and that the attestation check on the cluster firmware passed\.  
 
@@ -153,7 +153,7 @@ Default: 0
 Required: No
 
 **\-nex**  
-Makes the private key nonextractable\. The private key that is generated cannot be [exported from the HSM](manage-keys.md#export-keys)\. Public keys are always extractable\.  
+Makes the private key nonextractable\. The private key that is generated cannot be [exported from the HSM](using-kmu.md#export-keys)\. Public keys are always extractable\.  
 Default: Both the public and private keys in the key pair are extractable\.  
 Required: No
 
@@ -181,7 +181,7 @@ Runs an integrity check that verifies that the firmware on which the cluster run
 Default: No attestation check\.  
 Required: No
 
-## Related Topics<a name="genDSAKeyPair-seealso"></a>
+## Related topics<a name="genDSAKeyPair-seealso"></a>
 + [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
 + [genSymKey](key_mgmt_util-genSymKey.md)
 + [genECCKeyPair](key_mgmt_util-genECCKeyPair.md)

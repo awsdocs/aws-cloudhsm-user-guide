@@ -2,11 +2,11 @@
 
 The listUsers command in the cloudhsm\_mgmt\_util gets the users in each of the HSMs, along with their user type and other attributes\. All types of users can run this command\. You do not even need to be logged in to cloudhsm\_mgmt\_util to run this command\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="listUsers-userType"></a>
+## User type<a name="listUsers-userType"></a>
 
 The following types of users can run this command\.
 + All users\. You do not need to be logged in to run this command\.
@@ -48,13 +48,13 @@ Number of users found:5
 
 The output includes the following user attributes:
 + **User ID**: Identifies the user in key\_mgmt\_util and [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) commands\.
-+ [User type](hsm-users.md): Determines the operations that the user can perform on the HSM\.
++ [User type](manage-hsm-users.md#understanding-users): Determines the operations that the user can perform on the HSM\.
 + **User Name**: Displays the user\-defined friendly name for the user\.
 + **MofnPubKey**: Indicates whether the user has registered a key pair for signing [quorum authentication tokens](quorum-authentication.md)\.
 + **LoginFailureCnt**: Indicates the number of times the user has unsuccessfully logged in\.
 + **2FA**: Indicates that the user has enabled multi\-factor authentication\. 
 
-## Related Topics<a name="chmu-listUsers-seealso"></a>
+## Related topics<a name="chmu-listUsers-seealso"></a>
 + [listUsers](key_mgmt_util-listUsers.md) in key\_mgmt\_util
 + [createUser](cloudhsm_mgmt_util-createUser.md)
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)

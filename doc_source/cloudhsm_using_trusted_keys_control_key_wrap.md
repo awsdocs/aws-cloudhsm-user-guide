@@ -1,84 +1,96 @@
-# Using Trusted Keys to Control Key Unwraps<a name="cloudhsm_using_trusted_keys_control_key_wrap"></a>
+# Using trusted keys to control key unwraps<a name="cloudhsm_using_trusted_keys_control_key_wrap"></a>
 
-It is possible that exportable keys \(a data key for example\) on the HSM could be wrapped with an arbitrary key \(for example a bad wrapping key\) and that could result in loss of the data key\. Though this action would have to be initiated by a hostile insider, if this is a concern, there are solutions that address this concern\.
+AWS CloudHSM supports trusted key wrapping to protect data keys from insider threats\. This topic describes how to use the PKCS \#11 library attributes to create trusted keys to secure data, but you could also use attributes from the Java Cryptographic Extension \(JCE\) provider in the same way\.
 
-The first solution is to block all key exports from the cluster\. This solution has limitations because restricting key exports negatively impact applications that need to export and import data keys\. However, a more flexible solution is to use a key unwrap template along with the trusted key and wrap\-with\-trusted attributes\. AWS CloudHSM 3\.0 and higher supports trusted keys and unwrap templates\. This article explains how to use a key unwrap template along with trusted key and wrap\-with\-trusted attributes\. 
+**Topics**
++ [Understanding trusted keys](#understand-trusted-key-wraps)
++ [How to use trusted keys to control unwraps](#trusted_key_process)
++ [Code sample](#generate-key-unwrap-template-example)
 
-## Background<a name="key_attribute_background"></a>
+## Understanding trusted keys<a name="understand-trusted-key-wraps"></a>
 
-A key attribute is a property associated with the key, within the HSM, that specifies the permissions associated with the key\. If you want to \.
-+ CKA\_WRAP\_WITH\_TRUSTED: When applied to an exportable data key, this attribute ensures the data key can only be wrapped with a key that has been marked as "CKA\_TRUSTED" by a cryptographic officer\. Once set to true, this becomes a read\-only attribute and cannot be unset by the cryptographic user\.
-+ CKA\_TRUSTED: This is the only attribute that is specified by a cryptographic officer, rather than the cryptographic user who is the owner of a key\. CKA\_TRUSTED indicates that the cryptographic officer has done the necessary diligence, and recognizes this key is trusted\.
-+ CKA\_UNWRAP\_TEMPLATE: An attribute template is a collection of attribute names and values\. When an unwrap template is specified for a wrapping key, all attributes in that template are automatically applied to the unwrapped data key\. When an application submits a key for unwrapping, it can separately provide an unwrap template\. In this case, the HSM uses the union of both templates\. However, if a value in the CKA\_UNWRAP\_TEMPLATE for the wrapping key conflicts with an attribute provided by the application during the unwrap request, the unwrap request fails\. 
+You specify actions permitted on a key with attributes that you define when you create or unwrap a key\. A *trusted key* is a key that you identify as trusted with an attribute \(`CKA_TRUSTED`\)\. You can only make this designation as the cryptographic officer \(CO\)\. On the trusted key, you define another attribute \(`CKA_UNWRAP_TEMPLATE`\) that specifies a *set* of attributes that data keys unwrapped by the trusted key must contain for the unwrap operation to succeed\. In this way, you ensure that your unwrapped data keys contain attributes that allow only the use you intend for those keys\. Meanwhile, you use another attribute \(`CKA_WRAP_WITH_TRUSTED`\) to identify all of the data keys you want to wrap with trusted keys\. In this way, you restrict data keys so that applications can only use trusted keys to unwrap them\. Once you set this attribute on the data keys, the attribute becomes read only and you cannot change it\. With these attributes in place, applications can only unwrap your data keys with the keys you trust, and these unwraps must always result in data keys that have attributes you intend to limit the use of those data keys\.
 
-For more information about the PKCS\#11 attributes supported by AWS CloudHSM, see the article on [Supported PKCS \#11 Attributes](pkcs11-library.html#pkcs11-attributes)\.
+### Trusted key attributes<a name="key_attribute_background"></a>
 
-## Process<a name="trusted_key_process"></a>
+In the PKCS \#11 library, use the following attributes to specify trusted keys to control key unwraps:
++ `CKA_WRAP_WITH_TRUSTED`: Apply this attribute to an exportable data key to specify that you can only wrap this key with keys marked as `CKA_TRUSTED`\. Once you set `CKA_WRAP_WITH_TRUSTED` to true, the attribute becomes read\-only and you cannot change or remove the attribute\.
++ `CKA_TRUSTED`: Apply this attribute to the wrapping key \(in addition to `CKA_UNWRAP_TEMPLATE`\) to specify that a CO has done the necessary diligence and trusts this key\. Only a CO can set `CKA_TRUSTED`\. The *CU* owns the key, but only a CO can set `CKA_TRUSTED`\.
++ `CKA_UNWRAP_TEMPLATE`: Apply this attribute to the wrapping key \(in addition to `CKA_TRUSTED`\) to specify which attribute names and values the service must automatically apply to data keys that the service unwraps\. When an application submits a key for unwrapping, the application can also provide its own unwrap template\. If you specify an unwrap template and the application provides its own unwrap template, the HSM uses the union of both templates to apply attribute names and values to the key\. However, if a value in the `CKA_UNWRAP_TEMPLATE` for the wrapping key conflicts with an attribute provided by the application during the unwrap request, then the unwrap request fails\. 
 
-**Step 1: Generate the key bits for the trusted key**
+For more information about PKCS \#11 library attributes, see [Supported attributes](pkcs11-attributes.md)\.
 
-To set up a trusted key, a security officer human establishes a cryptographic user \(CU\) account and generates the wrapping keys with the appropriate CKA\_UNWRAP\_TEMPLATE specification\. Generally, you should include CKA\_WRAP\_WITH\_TRUSTED = TRUE as part of this template\. If you want the unwrapped keys to be non\-exportable, set CKA\_EXPORTABLE = FALSE\. To generate the key, you must use a PKCS\#11 application\. The advanced attributes are not supported by command line tools\.
+## How to use trusted keys to control unwraps<a name="trusted_key_process"></a>
+
+**Step 1: Generate the trusted key**
+
+To set up a trusted key, you establish a CU account and generates the wrapping keys with the appropriate `CKA_UNWRAP_TEMPLATE` specification\. Generally, you should include `CKA_WRAP_WITH_TRUSTED = TRUE` as part of this template\. If you want the unwrapped keys to be non\-exportable, set `CKA_EXPORTABLE = FALSE`\. To generate the key, you must use a PKCS \#11 library application\. You can't use advanced attributes with command\-line tools\.
 
 **Step 2: Mark the key as trusted**
 
-The security officer human logs in to cloudhsm\_mgmt\_util with a cryptographic officer \(CO\) account\. To mark the key as trusted, call `setAttribute` with OBJ\_ATTR\_TRUSTED \(value 134\) set to TRUE\. To learn more about the `setAttribute` function, see the article on [setAttribute](cloudhsm_mgmt_util-setAttribute.html) 
+1. To mark the key as trusted, you must use a cryptographic officer \(CO\) account with CloudHSM Management Utility \(CMU\)\. 
 
-```
-      loginHSM CO <user-name> <password> 
-      setAttribute HH 134 1
-      quit
-```
+   ```
+   loginHSM CO <user-name> <password> 
+   ```
+
+1. Use setAttribute with OBJ\_ATTR\_TRUSTED \(value 134\) set to TRUE\. 
+
+   ```
+   setAttribute HH 134 1
+   ```
+
+For more information about setAttribute, see [setAttribute](cloudhsm_mgmt_util-setAttribute.md)
 
 **Step 3: Share the trusted key with the application**
 
-The security officer human logs in with the CU account and uses the [shareKey function](cloudhsm_mgmt_util-shareKey.html) to share the trusted wrapping keys with the CU accounts that will be used by the applications\. Then, the application CU account can use the trusted keys for wrapping and unwrapping data keys\. However, users cannot modify attributes for keys shared with them, and cryptographic user accounts cannot be used to modify the key's CKA\_TRUSTED attribute\. Once this is completed, the security officer can be assured the trusted wrapping keys will remain correct\. 
+To share the trusted key with the application, you must log in with the CU account you created in step 1\. Use the [shareKey](cloudhsm_mgmt_util-shareKey.md) command to share the trusted key you created in step 2 with any CU accounts used by applications\. 
 
-**Step 4: Generate and wrap out all the data keys**
+Then, the application CU account can use the trusted keys for wrapping and unwrapping data keys\. However, users cannot modify attributes for keys shared with them, and no one can use CU accounts to modify the `CKA_TRUSTED` attribute on the key\. 
 
-Using their CU account, the security officer imports or generates all data keys, and wraps them with the trusted wrapping key\. The wrapped keys are stored externally, as necessary\. Since data keys can only be unwrapped with the original wrapping keys, the appropriate template must be applied at unwrap\. An application can unwrap keys on demand as needed, and delete the unwrapped key from the HSM once the key is no longer required\.
+**Step 4: Wrap all the data keys**
 
-## Sample: Generate a Key with an Unwrap Template in PKCS \#11<a name="generate-key-unwrap-template-example"></a>
+To wrap all the data keys, you use the CU account to import or generate all data keys and wrap them with the trusted wrapping key\. You can externally store the wrapped keys, as necessary\. Since you can only unwrap data keys with the original wrapping keys, you must apply the appropriate template at unwrap\. An application can unwrap keys on demand as needed, and delete the unwrapped key from the HSM once the key is no longer required\.
 
-This example uses an unWrap template to generate a key\. 
+## Code sample<a name="generate-key-unwrap-template-example"></a>
+
+This example uses an unwrap template to generate a key\. 
 
 ```
-        std::vector CK_ATTRIBUTE unwrapTemplate = {
-               CK_ATTRIBUTE { CKA_KEY_TYPE, &aes, sizeof(aes) },
-               CK_ATTRIBUTE { CKA_CLASS, &aesClass, sizeof(aesClass) },
-               CK_ATTRIBUTE { CKA_TOKEN, &trueValue, sizeof(trueValue) },
-               CK_ATTRIBUTE { CKA_EXTRACTABLE, &falseValue, sizeof(falseValue) }
-            };   
-            std::vector CK_ATTRIBUTE pubAttributes = {
-                  CK_ATTRIBUTE { CKA_KEY_TYPE, &rsa, sizeof(rsa) },
-                  CK_ATTRIBUTE { CKA_CLASS, &pubClass, sizeof(pubClass) },
-                  CK_ATTRIBUTE { CKA_TOKEN, &trueValue, sizeof(trueValue) },
-                  CK_ATTRIBUTE { CKA_MODULUS_BITS, &modulusBits, sizeof(modulusBits) },
-                  CK_ATTRIBUTE { CKA_PUBLIC_EXPONENT, publicExponent.data(), publicExponent.size() },
-                  CK_ATTRIBUTE { CKA_VERIFY, &trueValue, sizeof(trueValue) },
-                  CK_ATTRIBUTE { CKA_WRAP, &trueValue, sizeof(trueValue) },
-                  CK_ATTRIBUTE { CKA_ENCRYPT, &trueValue, sizeof(trueValue) }
-            };
-           std::vector CK_ATTRIBUTE priAttributes = {
-                 CK_ATTRIBUTE { CKA_KEY_TYPE, &rsa, sizeof(rsa) },
-                 CK_ATTRIBUTE { CKA_CLASS, &priClass, sizeof(priClass) },
-                 CK_ATTRIBUTE { CKA_PRIVATE, &trueValue, sizeof(trueValue) },
-                 CK_ATTRIBUTE { CKA_TOKEN, &trueValue, sizeof(trueValue) },
-                 CK_ATTRIBUTE { CKA_SIGN, &trueValue, sizeof(trueValue) },
-                 CK_ATTRIBUTE { CKA_UNWRAP, &trueValue, sizeof(trueValue) },
-                 CK_ATTRIBUTE { CKA_DECRYPT, &trueValue, sizeof(trueValue) },
-                 CK_ATTRIBUTE { CKA_UNWRAP_TEMPLATE, unwrapTemplate.data(), unwrapTemplate.size() * sizeof(CK_ATTRIBUTE) }
-            };
-           BOOST_TEST_CONTEXT("Generate RSA Key Pair with Unwrap Template") {
-                   BOOST_TEST_REQUIRE(CKR_OK == PKCS11_INVOKE_NOEXCEPT(
-                           get_module(),
-                           C_GenerateKeyPair,
-                           get_session().get_handle(),
-                           &rsaMechanism,
-                           pubAttributes.data(),
-                           pubAttributes.size(),
-                           priAttributes.data(),
-                           priAttributes.size(),
-                           &pubKey,
-                           &priKey
-                    ));
+std::vector CK_ATTRIBUTE unwrapTemplate = {
+    CK_ATTRIBUTE { CKA_KEY_TYPE, &aes, sizeof(aes) },
+    CK_ATTRIBUTE { CKA_CLASS, &aesClass, sizeof(aesClass) },
+    CK_ATTRIBUTE { CKA_TOKEN, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_EXTRACTABLE, &falseValue, sizeof(falseValue) }
+};   
+std::vector CK_ATTRIBUTE pubAttributes = {
+    CK_ATTRIBUTE { CKA_KEY_TYPE, &rsa, sizeof(rsa) },
+    CK_ATTRIBUTE { CKA_CLASS, &pubClass, sizeof(pubClass) },
+    CK_ATTRIBUTE { CKA_TOKEN, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_MODULUS_BITS, &modulusBits, sizeof(modulusBits) },
+    CK_ATTRIBUTE { CKA_PUBLIC_EXPONENT, publicExponent.data(), publicExponent.size() },
+    CK_ATTRIBUTE { CKA_VERIFY, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_WRAP, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_ENCRYPT, &trueValue, sizeof(trueValue) }
+};
+std::vector CK_ATTRIBUTE priAttributes = {
+    CK_ATTRIBUTE { CKA_KEY_TYPE, &rsa, sizeof(rsa) },
+    CK_ATTRIBUTE { CKA_CLASS, &priClass, sizeof(priClass) },
+    CK_ATTRIBUTE { CKA_PRIVATE, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_TOKEN, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_SIGN, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_UNWRAP, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_DECRYPT, &trueValue, sizeof(trueValue) },
+    CK_ATTRIBUTE { CKA_UNWRAP_TEMPLATE, unwrapTemplate.data(), unwrapTemplate.size() * sizeof(CK_ATTRIBUTE) }
+};
+funcs->C_GenerateKeyPair(
+    session,
+    &rsaMechanism,
+    pubAttributes.data(),
+    pubAttributes.size(),
+    priAttributes.data(),
+    priAttributes.size(),
+    &pubKey,
+    &priKey
+);
 ```

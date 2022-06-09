@@ -28,7 +28,7 @@ genECCKeyPair -i <EC curve id>
 
 The following examples show how to use genECCKeyPair to create ECC key pairs in your HSMs\.
 
-**Example : Create and Examine an ECC Key Pair**  
+**Example : Create and examine an ECC key pair**  
 This command uses an NID\_sect571r1 elliptic curve and an `ecc14` label to create an ECC key pair\. The output shows that the key handle of the private key is `262177` and the key handle of the public key is `262179`\. The label applies to both the public and private keys\.  
 
 ```
@@ -97,7 +97,7 @@ OBJ_ATTR_MODULUS_BITS
 0x0000019f
 ```
 
-**Example Using an Invalid EEC Curve**  
+**Example Using an invalid EEC curve**  
 This command attempts to create an ECC key pair by using an NID\_X9\_62\_prime192v1 curve\. Because this elliptic curve is not valid for FIPS\-mode HSMs, the command fails\. The message reports that a server in the cluster is unavailable, but this does not typically indicate a problem with the HSMs in the cluster\.  
 
 ```
@@ -148,7 +148,7 @@ Default: 0
 Required: No
 
 **\-nex**  
-Makes the private key nonextractable\. The private key that is generated cannot be [exported from the HSM](manage-keys.md#export-keys)\. Public keys are always extractable\.  
+Makes the private key nonextractable\. The private key that is generated cannot be [exported from the HSM](using-kmu.md#export-keys)\. Public keys are always extractable\.  
 Default: Both the public and private keys in the key pair are extractable\.  
 Required: No
 
@@ -176,7 +176,7 @@ Runs an integrity check that verifies that the firmware on which the cluster run
 Default: No attestation check\.  
 Required: No
 
-## Related Topics<a name="genECCKeyPair-seealso"></a>
+## Related topics<a name="genECCKeyPair-seealso"></a>
 + [genSymKey](key_mgmt_util-genSymKey.md)
 + [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md)
 + [genDSAKeyPair](key_mgmt_util-genDSAKeyPair.md)

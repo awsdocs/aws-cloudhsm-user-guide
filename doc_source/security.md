@@ -9,9 +9,10 @@ Security is a shared responsibility between AWS and you\. The [shared responsibi
 This documentation helps you understand how to apply the shared responsibility model when using AWS CloudHSM\. The following topics show you how to configure AWS CloudHSM to meet your security and compliance objectives\. You also learn how to use other AWS services that help you to monitor and secure your AWS CloudHSM resources\. 
 
 **Topics**
-+ [Data Protection in AWS CloudHSM](data-protection.md)
-+ [Identity and Access Management for AWS CloudHSM](identity-access-management.md)
-+ [Compliance Validation for AWS CloudHSM](compliance.md)
++ [Data protection in AWS CloudHSM](data-protection.md)
++ [Identity and access management for AWS CloudHSM](identity-access-management.md)
++ [FIPS validation](fips-validation.md)
 + [Resilience in AWS CloudHSM](disaster-recovery-resiliency.md)
-+ [Infrastructure Security in AWS CloudHSM](infrastructure-security.md)
-+ [Update Management in AWS CloudHSM](update-management.md)
++ [Infrastructure security in AWS CloudHSM](infrastructure-security.md)
++ [AWS CloudHSM and VPC endpoints](cloudhsm-vpc-endpoint.md)
++ [Update management in AWS CloudHSM](update-management.md)

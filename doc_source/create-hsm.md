@@ -2,6 +2,8 @@
 
 After you create a cluster, you can create an HSM\. However, before you can create an HSM in your cluster, the cluster must be in the uninitialized state\. To determine the cluster's state, view the [clusters page in the AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/home), use the AWS CLI to run the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, or send a [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) request in the AWS CloudHSM API\. You can create an HSM from the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/), the [AWS CLI](https://aws.amazon.com/cli/), or the AWS CloudHSM API\. 
 
+
+
 **To create an HSM \(console\)**
 
 1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
@@ -32,4 +34,4 @@ After you create a cluster, you can create an HSM\. However, before you can crea
 **To create an HSM \(AWS CloudHSM API\)**
 + Send a [https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_CreateHsm.html) request\. Specify the cluster ID of the cluster that you created previously and an Availability Zone for the HSM\. 
 
-After you create a cluster and HSM, you can optionally [verify the identity of the HSM](verify-hsm-identity.md), or proceed directly to [Initialize the Cluster](initialize-cluster.md)\.
+After you create a cluster and HSM, you can optionally [verify the identity of the HSM](verify-hsm-identity.md), or proceed directly to [Initialize the cluster](initialize-cluster.md)\.

@@ -1,13 +1,13 @@
-# \(Optional\) Step 5: Add a Load Balancer with Elastic Load Balancing<a name="ssl-offload-add-load-balancing"></a>
+# Step 5 \(Optional\): Add a load balancer with Elastic Load Balancing<a name="ssl-offload-add-load-balancing"></a>
 
 After you set up SSL/TLS offload with one web server, you can create more web servers and an Elastic Load Balancing load balancer that routes HTTPS traffic to the web servers\. A load balancer can reduce the load on your individual web servers by balancing traffic across two or more servers\. It can also increase the availability of your website because the load balancer monitors the health of your web servers and only routes traffic to healthy servers\. If a web server fails, the load balancer automatically stops routing traffic to it\.
 
 **Topics**
-+ [Create a Subnet for a Second Web Server](#ssl-offload-load-balancer-create-new-subnet-linux)
-+ [Create the Second Web Server](#ssl-offload-load-balancer-create-web-server-linux)
-+ [Create the Load Balancer](#ssl-offload-load-balancer-create-load-balancer-linux)
++ [Create a subnet for a second web server](#ssl-offload-load-balancer-create-new-subnet-linux)
++ [Create the second web server](#ssl-offload-load-balancer-create-web-server-linux)
++ [Create the load balancer](#ssl-offload-load-balancer-create-load-balancer-linux)
 
-## Create a Subnet for a Second Web Server<a name="ssl-offload-load-balancer-create-new-subnet-linux"></a>
+## Create a subnet for a second web server<a name="ssl-offload-load-balancer-create-new-subnet-linux"></a>
 
 Before you can create another web server, you need to create a new subnet in the same VPC that contains your existing web server and AWS CloudHSM cluster\. 
 
@@ -40,7 +40,7 @@ Before you can create another web server, you need to create a new subnet in the
 
 1. Select the check box next to the public subnet that you created earlier in this procedure\. Then choose **Save**\. 
 
-## Create the Second Web Server<a name="ssl-offload-load-balancer-create-web-server-linux"></a>
+## Create the second web server<a name="ssl-offload-load-balancer-create-web-server-linux"></a>
 
 Complete the following steps to create a second web server with the same configuration as your existing web server\. 
 
@@ -137,7 +137,7 @@ You cannot download the private key file again after this point\. If you do not 
 
    Choose **Launch Instances**\.
 
-## Create the Load Balancer<a name="ssl-offload-load-balancer-create-load-balancer-linux"></a>
+## Create the load balancer<a name="ssl-offload-load-balancer-create-load-balancer-linux"></a>
 
 Complete the following steps to create an Elastic Load Balancing load balancer that routes HTTPS traffic to your web servers\. 
 

@@ -19,7 +19,7 @@ wrapKey -k <exported-key-handle>
         -w <wrapping-key-handle>
         -out <output-file>
         [-m <wrapping-mechanism>]
-        [-aad <addtional authenticated data filename>]
+        [-aad <additional authenticated data filename>]
         [-t <hash-type>]
         [-noheader]
         [-i <wrapping IV>]  
@@ -99,7 +99,7 @@ The size of tag to be saved along with wrapped blob\.
 Valid only when passed with the `-noheader` parameter for `AES_GCM` and `CLOUDHSM_AES_GCM` mechanisms\. Minimum tag size is eight\.
 Required: No
 
-## Related Topics<a name="wrapKey-seealso"></a>
+## Related topics<a name="wrapKey-seealso"></a>
 + [exSymKey](key_mgmt_util-exSymKey.md)
 + [imSymKey](key_mgmt_util-imSymKey.md)
 + [unWrapKey](key_mgmt_util-unwrapKey.md)

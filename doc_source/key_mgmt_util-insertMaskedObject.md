@@ -20,7 +20,7 @@ insertMaskedObject -f <filename>
 
 This example shows how to use insertMaskedObject to insert a masked object file into an HSM\.
 
-**Example : Insert a Masked Object**  
+**Example : Insert a masked object**  
 This command inserts a masked object into an HSM from a file named `maskedObj`\. When the command succeeds, insertMaskedObject returns a key handle for the key decrypted from the masked object, and a success message\.  
 
 ```
@@ -52,12 +52,12 @@ Specifies the minimum number of servers on which the inserted masked object is s
 Default: 1  
 Required: No
 
-**`-timout`**  
+**`-timeout`**  
 Specifies the number of seconds to wait for the key to sync across servers when the `min-serv` parameter is included\. If no number is specified, the polling continues forever\.  
 Default: No limit  
 Required: No
 
-## Related Topics<a name="insertMaskedObject-seealso"></a>
+## Related topics<a name="insertMaskedObject-seealso"></a>
 + [extractMaskedObject](key_mgmt_util-extractMaskedObject.md)
 + [syncKey](cloudhsm_mgmt_util-syncKey.md)
 + [Copying a Backup Across Regions](copy-backup-to-region.md)

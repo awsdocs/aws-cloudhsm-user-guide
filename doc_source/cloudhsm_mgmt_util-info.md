@@ -2,11 +2,11 @@
 
 The info command in cloudhsm\_mgmt\_util gets information about each of the HSMs in the cluster, including the host name, port, IP address and the name and type of the user who is logged in to cloudhsm\_mgmt\_util on the HSM\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="info-userType"></a>
+## User type<a name="info-userType"></a>
 
 The following types of users can run this command\.
 + All users\. You do not have to be logged in to run this command\.
@@ -41,6 +41,6 @@ info server <server ID>
 Specifies the server ID of the HSM\. The HSMs are assigned ordinal numbers that represent the order in which they are added to the cluster, beginning with 0\. To find the server ID of an HSM, use getHSMInfo\.  
 Required: Yes
 
-## Related Topics<a name="info-seealso"></a>
+## Related topics<a name="info-seealso"></a>
 + [getHSMInfo](cloudhsm_mgmt_util-getHSMInfo.md)
 + [loginHSM and logoutHSM](cloudhsm_mgmt_util-loginLogout.md)

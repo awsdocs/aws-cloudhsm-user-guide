@@ -2,11 +2,11 @@
 
 With the getCert command in cloudhsm\_mgmt\_util, you can retrieve the certificates of a particular HSM in a cluster\. When you run the command, you designate the type of certificate to retrieve\. To do that, you use one of the corresponding integers as described in the [Arguments](#getCert-arguments) section below\. To learn about the role of each of these certificates, see [Verify HSM Identity](verify-hsm-identity.md)\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="getCert-userType"></a>
+## User type<a name="getCert-userType"></a>
 
 The following users can run this command\.
 + All users\.
@@ -59,6 +59,5 @@ An integer that specifies the type of certificate to retrieve\. The integers and
 + **16** – Cluster Certificate \(chained to the Manufacturer Root Certificate\)
 Required: Yes
 
-## Related Topics<a name="chmu-getCert-seealso"></a>
-+ [Start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start)
+## Related topics<a name="chmu-getCert-seealso"></a>
 + [server](cloudhsm_mgmt_util-server.md)

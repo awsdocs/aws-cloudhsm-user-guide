@@ -1,10 +1,10 @@
-# Logging AWS CloudHSM API Calls with AWS CloudTrail<a name="get-api-logs-using-cloudtrail"></a>
+# Working with AWS CloudTrail and AWS CloudHSM<a name="get-api-logs-using-cloudtrail"></a>
 
 AWS CloudHSM is integrated with AWS CloudTrail, a service that provides a record of actions taken by a user, role, or an AWS service in AWS CloudHSM\. CloudTrail captures all API calls for AWS CloudHSM as events\. The calls captured include calls from the AWS CloudHSM console and code calls to the AWS CloudHSM API operations\. If you create a trail, you can enable continuous delivery of CloudTrail events to an Amazon S3 bucket, including events for AWS CloudHSM\. If you don't configure a trail, you can still view the most recent events in the CloudTrail console in **Event history**\. Using the information collected by CloudTrail, you can determine the request that was made to AWS CloudHSM, the IP address from which the request was made, who made the request, when it was made, and additional details\. 
 
 To learn more about CloudTrail, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\. For a full list of AWS CloudHSM API operations, see [Actions](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_Operations.html) in the *AWS CloudHSM API Reference*\.
 
-## AWS CloudHSM Information in CloudTrail<a name="service-name-info-in-cloudtrail"></a>
+## AWS CloudHSM information in CloudTrail<a name="service-name-info-in-cloudtrail"></a>
 
 CloudTrail is enabled on your AWS account when you create the account\. When activity occurs in AWS CloudHSM, that activity is recorded in a CloudTrail event along with other AWS service events in **Event history**\. You can view, search, and download recent events in your AWS account\. For more information, see [Viewing Events with CloudTrail Event History](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/view-cloudtrail-events.html)\. 
 
@@ -23,7 +23,7 @@ Every event or log entry contains information about who generated the request\. 
 
 For more information, see the [CloudTrail userIdentity Element](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-user-identity.html)\.
 
-## Understanding AWS CloudHSM Log File Entries<a name="understanding-service-name-entries"></a>
+## Understanding AWS CloudHSM log file entries<a name="understanding-service-name-entries"></a>
 
 A trail is a configuration that enables delivery of events as log files to an Amazon S3 bucket that you specify\. CloudTrail log files contain one or more log entries\. An event represents a single request from any source and includes information about the requested action, the date and time of the action, request parameters, and so on\. CloudTrail log files aren't an ordered stack trace of the public API calls, so they don't appear in any specific order\. 
 

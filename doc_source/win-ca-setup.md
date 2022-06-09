@@ -1,4 +1,4 @@
-# Windows Server CA Step 2: Create a Windows Server CA with AWS CloudHSM<a name="win-ca-setup"></a>
+# Windows Server CA step 2: Create a Windows Server CA with AWS CloudHSM<a name="win-ca-setup"></a>
 
 To create a Windows Server CA, you add the Active Directory Certificate Services \(AD CS\) role to your Windows Server\. When you add this role, you use an AWS CloudHSM key storage provider \(KSP\) to create and store the CA's private key on your AWS CloudHSM cluster\.
 

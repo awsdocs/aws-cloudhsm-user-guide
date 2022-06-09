@@ -21,7 +21,7 @@ importPubKey -l <label>
 
 This example shows how to use importPubKey to import a public key into an HSM\.
 
-**Example : Import a Public Key**  
+**Example : Import a public key**  
 This command imports a public key from a file named `public.pem` with the label `importedPublicKey`\. When the command succeeds, importPubKey returns a key handle for the imported key and a success message\.  
 
 ```
@@ -69,11 +69,11 @@ AWS CloudHSM automatically synchronizes every key to every HSM in the cluster\. 
 Default: 1  
 Required: No
 
-**`-timout`**  
+**`-timeout`**  
 Specifies the number of seconds to wait for the key to sync across HSMs when the `min-serv` parameter is included\. If no number is specified, the polling continues forever\.  
 Default: No limit  
 Required: No
 
-## Related Topics<a name="importPubKey-seealso"></a>
+## Related topics<a name="importPubKey-seealso"></a>
 + [exportPubKey](key_mgmt_util-exportPubKey.md)
-+ [Generate Keys](manage-keys.md#generate-keys)
++ [Generate Keys](using-kmu.md#generate-keys)

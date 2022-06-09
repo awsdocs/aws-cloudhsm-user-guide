@@ -1,4 +1,4 @@
-# Windows AWS CloudHSM Prerequisites<a name="ksp-library-prereq"></a>
+# Windows AWS CloudHSM prerequisites<a name="ksp-library-prereq"></a>
 
 Before you can start the Windows AWS CloudHSM client and use the KSP and CNG providers, you must set the login credentials for the HSM on your system\. You can set credentials through either Windows Credentials Manager or system environment variable\. We recommend you use Windows Credential Manager for storing credentials\. This option is available with AWS CloudHSM client version 2\.0\.4 and later\. Using environment variable is easier to set up, but less secure than using Windows Credential Manager\.
 
@@ -29,9 +29,9 @@ You can use either the `set_cloudhsm_credentials` utility or the Windows Credent
      + In **Username** and **Password** enter the CU credentials\.
      + Click **OK**\.
 
-## System Environment Variables<a name="w24aac15c16c13b7"></a>
+## System environment variables<a name="enviorn-var"></a>
 
-You can set system environment variables that identify an HSM and a [crypto user](hsm-users.md#crypto-user) \(CU\) for your Windows application\. You can use the [setx command](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set system environment variables, or set permanent system environment variables [programmatically](https://msdn.microsoft.com/en-us/library/system.environment.setenvironmentvariable(v=vs.110).aspx) or in the **Advanced** tab of the Windows **System Properties** Control Panel\. 
+You can set system environment variables that identify an HSM and a [crypto user](manage-hsm-users.md#crypto-user) \(CU\) for your Windows application\. You can use the [setx command](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set system environment variables, or set permanent system environment variables [programmatically](https://msdn.microsoft.com/en-us/library/system.environment.setenvironmentvariable(v=vs.110).aspx) or in the **Advanced** tab of the Windows **System Properties** Control Panel\. 
 
 **Warning**  
 When you set credentials through system environment variables, the password is available in plaintext on a user’s system\. To overcome this problem, use Windows Credential Manager\.
@@ -39,7 +39,7 @@ When you set credentials through system environment variables, the password is a
 Set the following system environment variables:
 
 **`n3fips_password=CU-username:CU-password`**  
-Identifies a [crypto user](hsm-users.md#crypto-user) \(CU\) in the HSM and provides all required login information\. Your application authenticates and runs as this CU\. The application has the permissions of this CU and can view and manage only the keys that the CU owns and shares\. This CU must be available in the HSM specified by the `n3fips_partition` environment variable\. To create a new CU, use [createUser](cloudhsm_mgmt_util-createUser.md)\. To find existing CUs, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\.  
+Identifies a [crypto user](manage-hsm-users.md#crypto-user) \(CU\) in the HSM and provides all required login information\. Your application authenticates and runs as this CU\. The application has the permissions of this CU and can view and manage only the keys that the CU owns and shares\. To create a new CU, use [createUser](cloudhsm_mgmt_util-createUser.md)\. To find existing CUs, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\.  
 For example:  
 
 ```

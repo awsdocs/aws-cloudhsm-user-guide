@@ -1,4 +1,4 @@
-# Adding or Removing HSMs in an AWS CloudHSM Cluster<a name="add-remove-hsm"></a>
+# Adding or removing HSMs in an AWS CloudHSM cluster<a name="add-remove-hsm"></a>
 
 To scale up or down your AWS CloudHSM cluster, add or remove HSMs by using the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/) or one of the [AWS SDKs or command line tools](https://aws.amazon.com/tools/)\.
 

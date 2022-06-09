@@ -1,4 +1,4 @@
-# Microsoft SignTool with AWS CloudHSM Step 1: Set Up the Prerequisites<a name="signtool-prereqs"></a>
+# Microsoft SignTool with AWS CloudHSM step 1: Set up the prerequisites<a name="signtool-prereqs"></a>
 
 To use Microsoft SignTool with AWS CloudHSM, you need the following:
 + An Amazon EC2 client instance running a Windows operating system\.

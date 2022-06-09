@@ -1,149 +1,66 @@
-# Managing HSM Users in AWS CloudHSM<a name="manage-hsm-users"></a>
+# Managing HSM users in AWS CloudHSM<a name="manage-hsm-users"></a>
 
-To manage users on the HSMs in your AWS CloudHSM cluster, use the AWS CloudHSM command line tool known as cloudhsm\_mgmt\_util\. Before you can manage users, you must start cloudhsm\_mgmt\_util, enable end\-to\-end encryption, and log in to the HSMs\. For more information, see [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md)\.
-
-To manage HSM users, log in to the HSM with the user name and password of a [cryptographic officer](hsm-users.md#crypto-officer) \(CO\)\. Only COs can manage other users\. The HSM contains a default CO named admin\. You set this user's password when you [activated the cluster](activate-cluster.md)\.
+ In AWS CloudHSM, you must use [CloudHSM Management Utility](cloudhsm_mgmt_util-getting-started.md) \(CMU\), a command line tool to create and manage the users on your HSM\. You can also setup quorum authentication\. For more information about the types of users available and what actions those users can perform, see [Understanding HSM users](#understanding-users)\.
 
 **Topics**
-+ [Create Users](#create-user)
-+ [List Users](#list-users)
-+ [Change a User's Password](#change-user-password)
-+ [Delete Users](#delete-user)
++ [Understanding HSM users](#understanding-users)
++ [HSM user permissions table](#user-permissions-table)
++ [Using CMU to manage users](cli-users.md)
++ [Managing 2FA](manage-2fa.md)
++ [Managing quorum authentication](quorum-authentication.md)
 
-## Create Users<a name="create-user"></a>
+## Understanding HSM users<a name="understanding-users"></a>
 
-Use the [createUser](cloudhsm_mgmt_util-createUser.md) command to create a user on the HSM\. The following examples create new CO and CU users, respectively\. For information about user types, see [HSM Users](hsm-users.md)\. 
+ Most operations that you perform on the HSM require the credentials of an *HSM user*\. The HSM authenticates each HSM user and each HSM user has a *type* that determines which operations you can perform on the HSM as that user\. 
 
-```
-aws-cloudhsm>createUser CO example_officer <password>
-*************************CAUTION********************************
-This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
-nodes on which this operation is not executed or failed, please
-ensure this operation is executed on all nodes in the cluster.
-****************************************************************
+**Topics**
++ [Precrypto officer \(PRECO\)](#preco)
++ [Crypto officer \(CO \| PCO\)](#crypto-officer)
++ [Crypto user \(CU\)](#crypto-user)
++ [Appliance user \(AU\)](#appliance-user)
 
-Do you want to continue(y/n)?y
-Creating User example_officer(CO) on 3 nodes
-```
+### Precrypto officer \(PRECO\)<a name="preco"></a>
 
-```
-aws-cloudhsm>createUser CU example_user <password>
-*************************CAUTION********************************
-This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
-nodes on which this operation is not executed or failed, please
-ensure this operation is executed on all nodes in the cluster.
-****************************************************************
+The precrypto officer \(PRECO\) is a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. The PRECO user can only change its own password and perform read\-only operations on the HSM\. You use the PRECO user to activate a cluster\. To [activate a cluster](activate-cluster.md), you log in to the HSM and change the PRECO user's password\. When you change the password, the PRECO user becomes the primary crypto officer \(PCO\)\. 
 
-Do you want to continue(y/n)?y
-Creating User example_user(CU) on 3 nodes
-```
+### Crypto officer \(CO \| PCO\)<a name="crypto-officer"></a>
 
-The following shows the syntax for the [createUser](cloudhsm_mgmt_util-createUser.md) command\. User types and passwords are case\-sensitive in cloudhsm\_mgmt\_util commands, but user names are not\.
+A crypto officer \(CO\) can perform user management operations\. For example, a CO can create and delete users and change user passwords\. PCO is the designation for first CO you create, the primary CO\. For more information about CO users, see the [HSM user permissions table](#user-permissions-table)\. When you [activate a new cluster](activate-cluster.md), the user changes from a [Precrypto Officer](#preco) \(PRECO\) to a crypto officer \(CO\)\. 
 
-```
-aws-cloudhsm>createUser <user type> <user name> <password>
-```
+### Crypto user \(CU\)<a name="crypto-user"></a>
 
-## List Users<a name="list-users"></a>
+A crypto user \(CU\) can perform the following key management and cryptographic operations\.
++ **Key management** – Create, delete, share, import, and export cryptographic keys\.
++ **Cryptographic operations** – Use cryptographic keys for encryption, decryption, signing, verifying, and more\.
 
-Use the [listUsers](cloudhsm_mgmt_util-listUsers.md) command to list the users on each HSM in the cluster\. All [HSM user types](hsm-users.md) can use this command; it's not restricted to COs\.
+For more information, see the [HSM user permissions table](#user-permissions-table)\.
 
-The PCO is the first \("primary"\) CO created on each HSM\. It has the same permissions on the HSM as any other CO\.
+### Appliance user \(AU\)<a name="appliance-user"></a>
 
-```
-aws-cloudhsm>listUsers
-Users on server 0(10.0.2.9):
-Number of users found:4
+The appliance user \(AU\) can perform cloning and synchronization operations\. AWS CloudHSM uses the AU to synchronize the HSMs in an AWS CloudHSM cluster\. The AU exists on all HSMs provided by AWS CloudHSM, and has limited permissions\. For more information, see the [HSM user permissions table](#user-permissions-table)\.
 
-    User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-         1              PCO             admin                                    NO               0               NO
-         2              AU              app_user                                 NO               0               NO
-         3              CO              example_officer                          NO               0               NO
-         4              CU              example_user                             NO               0               NO
-Users on server 1(10.0.3.11):
-Number of users found:4
+AWS uses the AU to perform cloning and synchronization operations on your cluster's HSMs\. AWS cannot perform any operations on your HSMs except those granted to the AU and unauthenticated users\. AWS cannot view or modify your users or keys and cannot perform any cryptographic operations using those keys\.
 
-    User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-         1              PCO             admin                                    NO               0               NO
-         2              AU              app_user                                 NO               0               NO
-         3              CO              example_officer                          NO               0               NO
-         4              CU              example_user                             NO               0               NO
-Users on server 2(10.0.1.12):
-Number of users found:4
+## HSM user permissions table<a name="user-permissions-table"></a>
 
-    User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-         1              PCO             admin                                    NO               0               NO
-         2              AU              app_user                                 NO               0               NO
-         3              CO              example_officer                          NO               0               NO
-         4              CU              example_user                             NO               0               NO
-```
+The following table lists HSM operations sorted by the type of HSM user or session that can perform the operation\.
 
-## Change a User's Password<a name="change-user-password"></a>
 
-Use the changePswd command to change the password for the any user\. All [HSM user types](hsm-users.md) can issue this command, but only COs can change the password for other users\. Crypto users \(CUs\) and appliance users \(AUs\) can change only their own password\. The following examples change the password for the CO and CU users that were created in the [Create Users](#create-user) examples\.
-
-```
-aws-cloudhsm>changePswd CO example_officer <new password>
-*************************CAUTION********************************
-This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
-nodes on which this operation is not executed or failed, please
-ensure this operation is executed on all nodes in the cluster.
-****************************************************************
-
-Do you want to continue(y/n)?y
-Changing password for example_officer(CO) on 3 nodes
-```
-
-```
-aws-cloudhsm>changePswd CU example_user <new password>
-*************************CAUTION********************************
-This is a CRITICAL operation, should be done on all nodes in the
-cluster. Cav server does NOT synchronize these changes with the
-nodes on which this operation is not executed or failed, please
-ensure this operation is executed on all nodes in the cluster.
-****************************************************************
-
-Do you want to continue(y/n)?y
-Changing password for example_user(CU) on 3 nodes
-```
-
-The following shows the syntax for the changePswd command\. User types and passwords are case\-sensitive, but user names are not\.
-
-```
-aws-cloudhsm>changePswd <user type> <user name> <new password>
-```
-
-**Warning**  
-The CO cannot change the password for a user \(CO or CU\) who is currently logged in\.
-
-## Delete Users<a name="delete-user"></a>
-
-Use the deleteUser command to delete a user\. The following examples delete the CO and CU users that were created in the [Create Users](#create-user) examples\.
-
-```
-aws-cloudhsm>deleteUser CO example_officer
-Deleting user example_officer(CO) on 3 nodes
-deleteUser success on server 0(10.0.2.9)
-deleteUser success on server 1(10.0.3.11)
-deleteUser success on server 2(10.0.1.12)
-```
-
-```
-aws-cloudhsm>deleteUser CU example_user
-Deleting user example_user(CU) on 3 nodes
-deleteUser success on server 0(10.0.2.9)
-deleteUser success on server 1(10.0.3.11)
-deleteUser success on server 2(10.0.1.12)
-```
-
-The following shows the syntax for the deleteUser command\.
-
-```
-aws-cloudhsm>deleteUser <user type> <user name>
-```
-
-**Warning**  
-Deleting a CU user will orphan all of the keys owned by that CU and make them unusable\. You will not receive any warning that the user you are about to delete still owns keys in the cluster\. 
+|  | Crypto Officer \(CO\) | Crypto User \(CU\) | Appliance User \(AU\) | Unauthenticated Session | 
+| --- | --- | --- | --- | --- | 
+| Get basic cluster info¹ | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | 
+| Zeroize an HSM² | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | 
+| Change own password | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | Not applicable | 
+| Change any user's password | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
+| Add, remove users | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
+| Get sync status³ | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
+| Extract, insert masked objects⁴ | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
+| Key management functions⁵ | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
+| Encrypt, decrypt | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
+| Sign, verify | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
+| Generate digests and HMACs | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-yes.png) Yes | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/icon-no.png) No | 
++  \[1\] Basic cluster information includes the number of HSMs in the cluster and each HSM's IP address, model, serial number, device ID, firmware ID, etc\. 
++  \[2\] When an HSM is zeroized, all keys, certificates, and other data on the HSM is destroyed\. You can use your cluster's security group to prevent an unauthenticated user from zeroizing your HSM\. For more information, see [Create a cluster](create-cluster.md)\. 
++  \[3\] The user can get a set of digests \(hashes\) that correspond to the keys on the HSM\. An application can compare these sets of digests to understand the synchronization status of HSMs in a cluster\. 
++  \[4\] Masked objects are keys that are encrypted before they leave the HSM\. They cannot be decrypted outside of the HSM\. They are only decrypted after they are inserted into an HSM that is in the same cluster as the HSM from which they were extracted\. An application can extract and insert masked objects to synchronize the HSMs in a cluster\. 
++  \[5\] Key management functions include creating, deleting, wrapping, unwrapping, and modifying the attributes of keys\. 

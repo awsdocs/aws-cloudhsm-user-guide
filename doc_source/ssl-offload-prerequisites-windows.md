@@ -1,36 +1,24 @@
-# Step 1: Set Up the Prerequisites<a name="ssl-offload-prerequisites-windows"></a>
+# Step 1: Set up the prerequisites<a name="ssl-offload-prerequisites-windows"></a>
 
 To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
 + An active AWS CloudHSM cluster with at least one HSM\.
 + An Amazon EC2 instance running a Windows operating system with the following software installed:
   + The AWS CloudHSM client software for Windows\.
   + Internet Information Services \(IIS\) for Windows Server\.
-+ A [crypto user](hsm-users.md#crypto-user) \(CU\) to own and manage the web server's private key on the HSM\.
++ A [crypto user](manage-hsm-users.md#crypto-user) \(CU\) to own and manage the web server's private key on the HSM\.
 
 **Note**  
 This tutorial uses Microsoft Windows Server 2016\. Microsoft Windows Server 2012 is also supported, but Microsoft Windows Server 2012 R2 is not\.
 
 **To set up a Windows Server instance and create a CU on the HSM**
 
-1. Complete the steps in [Getting Started](getting-started.md)\. When you launch the Amazon EC2 client, choose a Windows Server 2016 or Windows Server 2012 AMI\. When you complete these steps, you have an active cluster with at least one HSM\. You also have an Amazon EC2 client instance running Windows Server with the AWS CloudHSM client software for Windows installed\.
+1. Complete the steps in [Getting started](getting-started.md)\. When you launch the Amazon EC2 client, choose a Windows Server 2016 or Windows Server 2012 AMI\. When you complete these steps, you have an active cluster with at least one HSM\. You also have an Amazon EC2 client instance running Windows Server with the AWS CloudHSM client software for Windows installed\.
 
 1. \(Optional\) Add more HSMs to your cluster\. For more information, see [Adding an HSM](add-remove-hsm.md#add-hsm)\.
 
 1. Connect to your Windows server\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
-1. To create a cryptographic user \(CU\) on your HSM, do the following:
-
-   1. [Start the AWS CloudHSM client](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start-cloudhsm-client)\.
-
-   1. [Update the cloudhsm\_mgmt\_util configuration file](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-update-configuration)\.
-
-   1. [Start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start)\.
-
-   1. [Enable end\-to\-end encryption](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-enable_e2e)\.
-
-   1. [Log in to the HSMs](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) with the user name and password of a crypto officer \(CO\)\.
-
-   1. [Create a crypto user \(CU\)](manage-hsm-users.md#create-user)\. Keep track of the CU user name and password\. You will need them to complete the next step\.
+1. [Create a crypto user \(CU\)](cli-users.md#manage-users)\. Keep track of the CU user name and password\. You will need them to complete the next step\.
 
 1. [Set the login credentials for the HSM](ksp-library-prereq.md), using the CU user name and password that you created in the previous step\.
 
@@ -74,4 +62,4 @@ This tutorial uses Microsoft Windows Server 2016\. Microsoft Windows Server 2012
 
 1. After the installation is complete, choose **Close**\.
 
-After you complete these steps, go to [Step 2: Create a Certificate Signing Request \(CSR\) and Certificate](ssl-offload-windows-create-csr-and-certificate.md)\.
+After you complete these steps, go to [Step 2: Create a certificate signing request \(CSR\) and certificate](ssl-offload-windows-create-csr-and-certificate.md)\.

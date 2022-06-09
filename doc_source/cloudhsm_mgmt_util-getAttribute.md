@@ -8,11 +8,11 @@ You can use getAttribute only on keys that you own and key that are shared with 
 
 To get a list of attributes and the constants that represent them, use the [listAttributes](key_mgmt_util-listAttributes.md) command\. To change the attribute values of existing keys, use [setAttribute](key_mgmt_util-setAttribute.md) in key\_mgmt\_util and [setAttribute](cloudhsm_mgmt_util-setAttribute.md) in cloudhsm\_mgmt\_util\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start) and [log in](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-log-in) to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
 
-If you add or delete HSMs, [update the configuration files](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-setup) that the AWS CloudHSM client and the command line tools use\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
+If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
-## User Type<a name="chmu-getAttribute-userType"></a>
+## User type<a name="chmu-getAttribute-userType"></a>
 
 The following users can run this command\.
 + Crypto users \(CU\)
@@ -61,8 +61,7 @@ Following are the possible attribute values for getAttribute:
       OBJ_ATTR_ALWAYS_SENSITIVE       = 357
       OBJ_ATTR_DESTROYABLE            = 370
       OBJ_ATTR_KCV                    = 371
-      OBJ_ATTR_WRAP_WITH_TRUSTED      = 528
-      OBJ_ATTR_EKCV                   = 4099
+      OBJ_ATTR_WRAP_WITH_TRUSTED      = 528      
       OBJ_ATTR_WRAP_TEMPLATE          = 1073742353
       OBJ_ATTR_UNWRAP_TEMPLATE        = 1073742354
       OBJ_ATTR_ALL                    = 512
@@ -112,7 +111,7 @@ If the specified file exists, getAttribute overwrites the file without warning\.
 Required: No  
 Default: Stdout
 
-## Related Topics<a name="chmu-getAttribute-seealso"></a>
+## Related topics<a name="chmu-getAttribute-seealso"></a>
 + [getAttribute](key_mgmt_util-getAttribute.md) in key\_mgmt\_util
 + [listAttributes](cloudhsm_mgmt_util-listAttributes.md)
 + [setAttribute](cloudhsm_mgmt_util-setAttribute.md) in cloudhsm\_mgmt\_util

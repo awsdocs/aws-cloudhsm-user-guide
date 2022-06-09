@@ -1,15 +1,14 @@
-# Supported PKCS \#11 Attributes<a name="pkcs11-attributes"></a>
+# Supported attributes<a name="pkcs11-attributes"></a>
 
-A key object can be a public, private, or secret key\. Actions permitted on a key object are specified through attributes\. Attributes are defined when the key object is created\. When you use CloudHSM's PKCS \#11 SDK, we assign default values as specified by the PKCS \#11 standard\.
+A key object can be a public, private, or secret key\. Actions permitted on a key object are specified through attributes\. Attributes are defined when the key object is created\. When you use the PKCS \#11 library, we assign default values as specified by the PKCS \#11 standard\.
 
-**Note**  
-CloudHSM does not support all attributes listed in the PKCS \#11 specification\. We are compliant with the specification for all attributes we support\. These attributes are listed in the respective tables\.
+AWS CloudHSM does not support all attributes listed in the PKCS \#11 specification\. We are compliant with the specification for all attributes we support\. These attributes are listed in the respective tables\.
 
 Cryptographic functions such as `C_CreateObject`, `C_GenerateKey`, `C_GenerateKeyPair`, `C_UnwrapKey`, and `C_DeriveKey` that create, modify, or copy objects take an attribute template as one of their parameters\. For more information about passing an attribute template during object creation, see [Generate keys through PKCS \#11 library](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/generate/generate.c#L24-L183) sample\.
 
-## Interpreting the PKCS \#11 Attributes Table<a name="pkcs11-attributes-interpreting"></a>
+## Interpreting the PKCS \#11 library attributes table<a name="pkcs11-attributes-interpreting"></a>
 
-The PKCS \#11 table contains a list of attributes that differ by key types\. It indicates whether a given attribute is supported for a particular key type when using a specific cryptographic function with AWS CloudHSM\.
+The PKCS \#11 library table contains a list of attributes that differ by key types\. It indicates whether a given attribute is supported for a particular key type when using a specific cryptographic function with AWS CloudHSM\.
 
 **Legend:**
 + ✔ indicates that CloudHSM supports the attribute for the specific key type\.
@@ -42,17 +41,13 @@ The PKCS \#11 table contains a list of attributes that differ by key types\. It 
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/pkcs11-attributes.html)
 
-**Annotations**:
+**Attribute annotations**
++ \[1\] This attribute is partially supported by the firmware and must be explicitly set only to the default value\.
++ \[2\] Mandatory attribute\.
++ \[3\] **Client SDK 3 only**\. The `CKA_SIGN_RECOVER` attribute is derived from the `CKA_SIGN` attribute\. If being set, it can only be set to the same value that is set for `CKA_SIGN`\. If not set, it derives the default value of `CKA_SIGN`\. Since CloudHSM only supports RSA\-based recoverable signature mechanisms, this attribute is currently applicable to RSA public keys only\.
++ \[4\] **Client SDK 3 only**\. The `CKA_VERIFY_RECOVER` attribute is derived from the `CKA_VERIFY` attribute\. If being set, it can only be set to the same value that is set for `CKA_VERIFY`\. If not set, it derives the default value of `CKA_VERIFY`\. Since CloudHSM only supports RSA\-based recoverable signature mechanisms, this attribute is currently applicable to RSA public keys only\.
 
-1 This attribute is partially supported by the firmware and must be explicitly set only to the default value\.
-
-2 Mandatory attribute\.
-
-3 The `CKA_SIGN_RECOVER` attribute is derived from the `CKA_SIGN` attribute\. If being set, it can only be set to the same value that is set for `CKA_SIGN`\. If not set, it derives the default value of `CKA_SIGN`\. Since CloudHSM only supports RSA\-based recoverable signature mechanisms, this attribute is currently applicable to RSA public keys only\.
-
-4 The `CKA_VERIFY_RECOVER` attribute is derived from the `CKA_VERIFY` attribute\. If being set, it can only be set to the same value that is set for `CKA_VERIFY`\. If not set, it derives the default value of `CKA_VERIFY`\. Since CloudHSM only supports RSA\-based recoverable signature mechanisms, this attribute is currently applicable to RSA public keys only\.
-
-## Modifying Attributes<a name="modify-attr"></a>
+## Modifying attributes<a name="modify-attr"></a>
 
 Some attributes of an object can be modified after the object has been created, whereas some cannot\. To modify attributes, use the [setAttribute](cloudhsm_mgmt_util-setAttribute.md) command from cloudhsm\_mgmt\_util\. You can also derive a list of attributes and the constants that represent them by using the [listAttribute](cloudhsm_mgmt_util-listAttributes.md) command from cloudhsm\_mgmt\_util\.
 
@@ -77,9 +72,9 @@ This attribute supports key derivation\. It must be `False` for all public keys 
 This attribute can be set to `True` or `False` by Crypto Officer \(CO\) only\.
 + `CKA_WRAP_WITH_TRUSTED`
 **Note**  
-This attribute can be set to `True` if the key can only be wrapped with a wrapping key that has `CKA_TRUSTED` set to `True`\. Modification is allowed for changing the attribute value from `False` to `True`\. Once set to `True`, you cannot modify the attribute value\. 
+Apply this attribute to an exportable data key to specify that you can only wrap this key with keys marked as `CKA_TRUSTED`\. Once you set `CKA_WRAP_WITH_TRUSTED` to true, the attribute becomes read\-only and you cannot change or remove the attribute\.
 
-## Interpreting Error Codes<a name="attr-errors"></a>
+## Interpreting error codes<a name="attr-errors"></a>
 
 Specifying in the template an attribute that is not supported by a specific key results in an error\. The following table contains error codes that are generated when you violate specifications:
 

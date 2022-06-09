@@ -1,4 +1,4 @@
-# How Audit Logging Works<a name="get-audit-logs-from-cloudwatch"></a>
+# How HSM audit logging works<a name="get-audit-logs-from-cloudwatch"></a>
 
 Audit logging is automatically enabled in all AWS CloudHSM clusters\. It cannot be disabled or turned off, and no settings can prevent AWS CloudHSM from exporting the logs to CloudWatch Logs\. Each log event has a time stamp and sequence number that indicate the order of events and help you detect any log tampering\. 
 

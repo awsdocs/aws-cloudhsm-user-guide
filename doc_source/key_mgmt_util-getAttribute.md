@@ -24,7 +24,7 @@ getAttribute -o <key handle>
 
 These examples show how to use getAttribute to get the attributes of keys in your HSMs\.
 
-**Example : Get the Key Type**  
+**Example : Get the key type**  
 This example gets the type of the key, such an AES, 3DES, or generic key, or an RSA or elliptic curve key pair\.  
 The first command runs [listAttributes](key_mgmt_util-listAttributes.md), which gets the key attributes and the constants that represent them\. The output shows that the constant for key type is `256`\. For help interpreting the key attributes, see the [Key Attribute Reference](key-attribute-table.md)\.  
 
@@ -70,7 +70,7 @@ OBJ_ATTR_KEY_TYPE
 0x00000015
 ```
 
-**Example : Get All Attributes of a Key**  
+**Example : Get all attributes of a key**  
 This command gets all attributes of the key with key handle `6` and writes them to the `attr_6` file\. It uses an attribute value of `512`, which represents all attributes\.   
 
 ```
@@ -143,7 +143,7 @@ Writes the output to the specified file\. Type a file path\. You cannot write th
 If the specified file exists, getAttribute overwrites the file without warning\.  
 Required: Yes
 
-## Related Topics<a name="getAttribute-seealso"></a>
+## Related topics<a name="getAttribute-seealso"></a>
 + [getAttribute](cloudhsm_mgmt_util-getAttribute.md) in cloudhsm\_mgmt\_util
 + [listAttributes](key_mgmt_util-listAttributes.md)
 + [setAttribute](key_mgmt_util-setAttribute.md)

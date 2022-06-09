@@ -1,19 +1,19 @@
-# Tagging AWS CloudHSM Resources<a name="tag-resources"></a>
+# Tagging AWS CloudHSM resources<a name="tag-resources"></a>
 
 A tag is a label that you assign to an AWS resource\. You can assign tags to your AWS CloudHSM clusters\. Each tag consists of a tag key and a tag value, both of which you define\. For example, the tag key might be **Cost Center** and the tag value might be **12345**\. Tag keys must be unique for each cluster\.
 
 You can use tags for a variety of purposes\. One common use is to categorize and track your AWS costs\. You can apply tags that represent business categories \(such as cost centers, application names, or owners\) to organize your costs across multiple services\. When you add tags to your AWS resources, AWS generates a cost allocation report with usage and costs aggregated by tags\. You can use this report to view your AWS CloudHSM costs in terms of projects or applications, instead of viewing all AWS CloudHSM costs as a single line item\.
 
-For more information about using tags for cost allocation, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing and Cost Management User Guide*\.
+For more information about using tags for cost allocation, see [Using Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) in the *AWS Billing User Guide*\.
 
 You can use the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/) or one of the [AWS SDKs or command line tools](https://aws.amazon.com/tools/) to add, update, list, and remove tags\.
 
 **Topics**
-+ [Adding or Updating Tags](#add-update-tags)
-+ [Listing Tags](#list-tags)
-+ [Removing Tags](#remove-tags)
++ [Adding or updating tags](#add-update-tags)
++ [Listing tags](#list-tags)
++ [Removing tags](#remove-tags)
 
-## Adding or Updating Tags<a name="add-update-tags"></a>
+## Adding or updating tags<a name="add-update-tags"></a>
 
 You can add or update tags from the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/), the [AWS Command Line Interface \(AWS CLI\)](https://aws.amazon.com/cli/), or the AWS CloudHSM API\.
 
@@ -59,7 +59,7 @@ If you update the tag key for an existing tag, the console deletes the existing 
 **To add or update tags \(AWS CloudHSM API\)**
 + Send a [https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_TagResource.html](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_TagResource.html) request\. Specify the tags and the ID of the cluster that you are tagging\.
 
-## Listing Tags<a name="list-tags"></a>
+## Listing tags<a name="list-tags"></a>
 
 You can list tags for a cluster from the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/), the [AWS CLI](https://aws.amazon.com/cli/), or the AWS CloudHSM API\.
 
@@ -89,7 +89,7 @@ You can list tags for a cluster from the [AWS CloudHSM console](https://console.
 **To list tags \(AWS CloudHSM API\)**
 + Send a [https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_ListTags.html](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_ListTags.html) request, specifying the ID of the cluster whose tags you are listing\.
 
-## Removing Tags<a name="remove-tags"></a>
+## Removing tags<a name="remove-tags"></a>
 
 You can remove tags from a cluster by using the [AWS CloudHSM console](https://console.aws.amazon.com/cloudhsm/), the [AWS CLI](https://aws.amazon.com/cli/), or the AWS CloudHSM API\.
 

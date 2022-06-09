@@ -109,7 +109,7 @@ Specifies the constant that represents the attribute that you want to change\. T
 To get the attributes and their integer values, use [listAttributes](key_mgmt_util-listAttributes.md)\.  
 Required: Yes
 
-## Related Topics<a name="setAttribute-seealso"></a>
+## Related topics<a name="setAttribute-seealso"></a>
 + [setAttribute](cloudhsm_mgmt_util-setAttribute.md) in cloudhsm\_mgmt\_util
 + [getAttribute](key_mgmt_util-getAttribute.md)
 + [listAttributes](key_mgmt_util-listAttributes.md)

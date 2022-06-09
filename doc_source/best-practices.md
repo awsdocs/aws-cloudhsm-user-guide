@@ -1,8 +1,8 @@
-# Best Practices for AWS CloudHSM<a name="best-practices"></a>
+# Best practices for AWS CloudHSM<a name="best-practices"></a>
 
 Learn best practices for working with AWS CloudHSM\. As new best practices are identified, we'll update this section\.
 
-## AWS CloudHSM Basic Operational Guidelines<a name="base-operations"></a>
+## AWS CloudHSM basic operational guidelines<a name="base-operations"></a>
 
 Use the following guidelines when working with AWS CloudHSM\. The AWS CloudHSM Service Level Agreement requires that you follow these guidelines\.
 

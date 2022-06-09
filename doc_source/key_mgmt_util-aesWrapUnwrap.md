@@ -22,7 +22,7 @@ aesWrapUnwrap -m <wrap-unwrap mode>
 
 These examples show how to use aesWrapUnwrap to encrypt and decrypt an encryption key in a file\. 
 
-**Example : Wrap an Encryption Key**  
+**Example : Wrap an encryption key**  
 This command uses aesWrapUnwrap to wrap a Triple DES symmetric key that was [exported from the HSM in plaintext](key_mgmt_util-exSymKey.md) into the `3DES.key` file\. You can use a similar command to wrap any key saved in a file\.   
 The command uses the `-m` parameter with a value of `1` to indicate wrap mode\. It uses the `-w` parameter to specify an AES key in the HSM \(key handle `6`\) as the wrapping key\. It writes the resulting wrapped key to the `3DES.key.wrapped` file\.  
 The output shows that the command was successful and that the operation used the default IV, which is preferred\.  
@@ -44,7 +44,7 @@ result written to file 3DES.key.wrapped
         Cfm3WrapHostKey returned: 0x00 : HSM Return: SUCCESS
 ```
 
-**Example : Unwrap an Encryption Key**  
+**Example : Unwrap an encryption key**  
 This example shows how to use aesWrapUnwrap to unwrap \(decrypt\) a wrapped \(encrypted\) key in a file\. You might want to do an operation like this one before importing a key to the HSM\. For example, if you try to use the [imSymKey](key_mgmt_util-imSymKey.md) command to import an encrypted key, it returns an error because the encrypted key doesn't have the format that is required for a plaintext key of that type\.  
 The command unwraps the key in the `3DES.key.wrapped` file and writes the plaintext to the `3DES.key.unwrapped` file\. The command uses the `-m` parameter with a value of `0` to indicate unwrap mode\. It uses the `-w` parameter to specify an AES key in the HSM \(key handle `6`\) as the wrapping key\. It writes the resulting wrapped key to the `3DES.key.unwrapped` file\.   
 
@@ -78,8 +78,8 @@ Specifies the file to wrap\. Enter a file that contains less than 4 KB \(4096 by
 Required: Yes
 
 **\-w**  
-Specifies the wrapping key\. Enter the key handle of an AES key or RSA key on the HSM\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
-To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to generate an AES key \(type 31\) or [genRSAKeyPair](key_mgmt_util-genRSAKeyPair.md) to generate an RSA key pair \(type 0\)\. If you are using an RSA key pair, be sure to wrap the key with one of the keys, and unwrap it with the other\. To verify that a key can be used as a wrapping key, use [getAttribute](key_mgmt_util-getAttribute.md) to get the value of the `OBJ_ATTR_WRAP` attribute, which is represented by constant `262`\.  
+Specifies the wrapping key\. Enter the key handle of an AES key on the HSM\. This parameter is required\. To find key handles, use the [findKey](key_mgmt_util-findKey.md) command\.  
+To create a wrapping key, use [genSymKey](key_mgmt_util-genSymKey.md) to generate an AES key \(type 31\)\.  
 Required: Yes
 
 **\-i**  
@@ -93,7 +93,7 @@ If the file exists, the aesWrapUnwrap overwrites it without warning\. If the com
 Default: For wrap: `wrapped_key`\. For unwrap: `unwrapped_key`\.  
 Required: No
 
-## Related Topics<a name="aesWrapUnwrap-seealso"></a>
+## Related topics<a name="aesWrapUnwrap-seealso"></a>
 + [exSymKey](key_mgmt_util-exSymKey.md)
 + [imSymKey](key_mgmt_util-imSymKey.md)
 + [unWrapKey](key_mgmt_util-unwrapKey.md)

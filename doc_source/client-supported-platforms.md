@@ -1,47 +1,11 @@
-# Supported Platforms<a name="client-supported-platforms"></a>
+# Supported platforms for the client SDKs<a name="client-supported-platforms"></a>
 
-The [AWS CloudHSM client](client-tools-and-libraries.md) and related [software libraries](use-hsm.md) support 64\-bit versions of the following operating systems\. 
+Base support is different for each version of the AWS CloudHSM Client SDK\. Typically platform support for components in an SDK matches base support, but not always\. To determine platform support for a given component, first make sure the platform you want appears in the base section for the SDK, then check for an exclusions or any other pertinent information in the component section\.
 
-**Note**  
-Earlier versions of the software do not support all listed operating systems\. For detailed information about each version of the AWS CloudHSM client and related software, see [AWS CloudHSM Client and Software Version History](client-history.md)\.
+Platform support changes over time\. Earlier versions of the CloudHSM Client SDK may not support all the operating systems listed here\. Use release notes to determine the operating system support for previous versions of the CloudHSM Client SDK\. For more information, see [Download AWS CloudHSM Client SDK](client-history.md)\.
 
-**Note**  
-If you are running CloudHSM client 1\.1\.1 or earlier on an Amazon Linux 2 EC2 instance, see [Known Issues for Amazon EC2 Instances Running Amazon Linux 2](KnownIssues.md#ki-al2)\.
+AWS CloudHSM supports only 64\-bit operating systems\.
 
-
-| Library | Operating System | 
-| --- | --- | 
-| AWS CloudHSM Client | Amazon Linux | 
-|   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+ | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
-|   | CentOS 6\.7\+ | 
-|   | CentOS 7\.3\+ | 
-|   | Ubuntu 16\.04 LTS | 
-|   | Microsoft Windows Server 2012 | 
-|   | Microsoft Windows Server 2012 R2 | 
-|   | Microsoft Windows Server 2016 | 
-| CNG/KSP Providers | Microsoft Windows Server 2012 | 
-|   | Microsoft Windows Server 2012 R2 | 
-|   | Microsoft Windows Server 2016 | 
-| PKCS \#11 | Amazon Linux | 
-|   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+ | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
-|   | CentOS 6\.7\+ | 
-|   | CentOS 7\.3\+ | 
-|   | Ubuntu 16\.04 LTS | 
-| OpenSSL Dynamic Engine \(Compatible with OpenSSL 1\.0\.2\[f\+\]\)  | Amazon Linux | 
-|   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6\.7\+  | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
-|   | CentOS 6\.7\+ | 
-|   | CentOS 7\.3\+ | 
-|   | Ubuntu 16\.04 LTS | 
-| JCE Provider\(Supported on OpenJDK 1\.8\) | Amazon Linux | 
-|   | Amazon Linux 2 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 6\.7 | 
-|   | Red Hat Enterprise Linux \(RHEL\) 7\.3\+ | 
-|   | CentOS 6\.7\+ | 
-|   | CentOS 7\.3\+ | 
-|   | Ubuntu 16\.04 LTS | 
+**Topics**
++ [Client SDK 3 platform support](sdk3-support.md)
++ [Client SDK 5 platform support](sdk8-support.md)

@@ -1,16 +1,21 @@
-# Monitoring AWS CloudHSM Logs<a name="get-logs"></a>
+# Monitoring AWS CloudHSM<a name="get-logs"></a>
 
-AWS CloudHSM is integrated with the following AWS services to provide different kinds of logs\.
+In addition to the logging features built into the Client SDK, you can also use AWS CloudTrail, Amazon CloudWatch Logs, and Amazon CloudWatch to monitor AWS CloudHSM\.
 
-**AWS CloudTrail for API logs**  
-AWS CloudHSM is integrated with AWS CloudTrail, a service that records all AWS CloudHSM API calls in your AWS account\. CloudTrail records these calls in log files that are delivered to an Amazon Simple Storage Service \(Amazon S3\) bucket of your choice\. For example, when you create and delete AWS CloudHSM clusters, create and delete HSMs in a cluster, tag AWS CloudHSM resources, and more, the corresponding API calls are recorded in CloudTrail log files\.
+**Client SDK logs**  
+Use Client SDK logging to monitor diagnostic and troubleshooting information from the applications you create\. 
 
-**Amazon CloudWatch Logs for HSM Audit Logs**  
-AWS CloudHSM sends the audit logs recorded by your HSM instances to Amazon CloudWatch Logs, a service that stores, organizes, and displays log data from multiple sources\. For example, when you create and delete HSM users, change user passwords, create and delete keys, and more, these events are collected and stored in CloudWatch Logs\.
+**CloudTrail**  
+Use CloudTrail to monitor all API calls in your AWS account, including the calls you make to create and delete clusters, hardware security modules \(HSM\), and resource tags\.
 
-For more information, see the following topics\.
+**CloudWatch Logs**  
+Use CloudWatch Logs to monitor the logs from your HSM instances, which include events for create and delete HSM users, change user passwords, create and delete keys, and more\.
+
+**CloudWatch**  
+Use CloudWatch to monitor the health of your cluster in real time\. 
 
 **Topics**
-+ [Getting AWS CloudHSM Client Logs](hsm-client-logs.md)
-+ [Logging AWS CloudHSM API Calls with AWS CloudTrail](get-api-logs-using-cloudtrail.md)
-+ [Monitoring AWS CloudHSM Audit Logs in Amazon CloudWatch Logs](get-hsm-audit-logs-using-cloudwatch.md)
++ [Working with client SDK logs](hsm-client-logs.md)
++ [Working with AWS CloudTrail and AWS CloudHSM](get-api-logs-using-cloudtrail.md)
++ [Working with Amazon CloudWatch Logs and AWS CloudHSM](get-hsm-audit-logs-using-cloudwatch.md)
++ [Getting CloudWatch metrics for AWS CloudHSM](hsm-metrics-cw.md)

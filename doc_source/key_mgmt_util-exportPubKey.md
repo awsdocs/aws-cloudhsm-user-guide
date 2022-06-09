@@ -21,7 +21,7 @@ exportPubKey -k <public-key-handle
 
 This example shows how to use exportPubKey to export a public key from an HSM\.
 
-**Example : Export a Public Key**  
+**Example : Export a public key**  
 This command exports a public key with handle `10` to a file called `public.pem`\. When the command succeeds, exportPubKey returns a success message\.  
 
 ```
@@ -48,6 +48,6 @@ Required: Yes
 Specifies the name of the file to which the exported public key will be written\.  
 Required: Yes
 
-## Related Topics<a name="exportPubKey-seealso"></a>
+## Related topics<a name="exportPubKey-seealso"></a>
 + [importPubKey](key_mgmt_util-importPubKey.md)
-+ [Generate Keys](manage-keys.md#generate-keys)
++ [Generate Keys](using-kmu.md#generate-keys)

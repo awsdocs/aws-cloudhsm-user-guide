@@ -6,7 +6,7 @@ For help interpreting the key attributes, see the [Key Attribute Reference](key-
 
 Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\. 
 
-## User Type<a name="listAttributes-userType"></a>
+## User type<a name="listAttributes-userType"></a>
 
 The following users can run this command\.
 + All users\. You do not have to be logged in to run this command\.
@@ -54,7 +54,6 @@ The following are all of the possible attribute values for getAttribute.
       OBJ_ATTR_DESTROYABLE            = 370
       OBJ_ATTR_KCV                     = 371
       OBJ_ATTR_WRAP_WITH_TRUSTED       = 528
-      OBJ_ATTR_EKCV                    = 4099
       OBJ_ATTR_WRAP_TEMPLATE           = 1073742353
       OBJ_ATTR_UNWRAP_TEMPLATE        = 1073742354
       OBJ_ATTR_ALL                    = 512
@@ -66,7 +65,7 @@ The following are all of the possible attribute values for getAttribute.
 Displays help for the command\.   
 Required: Yes
 
-## Related Topics<a name="chmu-listAttributes-seealso"></a>
+## Related topics<a name="chmu-listAttributes-seealso"></a>
 + [getAttribute](cloudhsm_mgmt_util-getAttribute.md)
 + [setAttribute](cloudhsm_mgmt_util-setAttribute.md)
 + [Key Attribute Reference](key-attribute-table.md)

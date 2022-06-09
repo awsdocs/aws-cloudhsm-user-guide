@@ -1,14 +1,14 @@
-# Tutorial: Using SSL/TLS Offload with AWS CloudHSM on Windows<a name="ssl-offload-windows"></a>
+# Tutorial: Using SSL/TLS offload with AWS CloudHSM on Windows<a name="ssl-offload-windows"></a>
 
 This tutorial provides step\-by\-step instructions for setting up SSL/TLS offload with AWS CloudHSM on a Windows web server\.
 
 **Topics**
 + [Overview](#ssl-offload-windows-overview)
-+ [Step 1: Set Up the Prerequisites](ssl-offload-prerequisites-windows.md)
-+ [Step 2: Create a Certificate Signing Request \(CSR\) and Certificate](ssl-offload-windows-create-csr-and-certificate.md)
-+ [Step 3: Configure the Web Server](ssl-offload-configure-web-server-windows.md)
-+ [Step 4: Enable HTTPS Traffic and Verify the Certificate](ssl-offload-enable-traffic-and-verify-certificate-windows.md)
-+ [\(Optional\) Step 5: Add a Load Balancer with Elastic Load Balancing](ssl-offload-add-load-balancing-windows.md)
++ [Step 1: Set up the prerequisites](ssl-offload-prerequisites-windows.md)
++ [Step 2: Create a certificate signing request \(CSR\) and certificate](ssl-offload-windows-create-csr-and-certificate.md)
++ [Step 3: Configure the web server](ssl-offload-configure-web-server-windows.md)
++ [Step 4: Enable HTTPS traffic and verify the certificate](ssl-offload-enable-traffic-and-verify-certificate-windows.md)
++ [\(Optional\) Step 5: Add a load balancer with Elastic Load Balancing](ssl-offload-add-load-balancing-windows.md)
 
 ## Overview<a name="ssl-offload-windows-overview"></a>
 
@@ -19,4 +19,4 @@ This tutorial shows you how to do the following:
 + Configure the web server software to support HTTPS with a private key stored in your AWS CloudHSM cluster\.
 + \(Optional\) Use Amazon EC2 to create a second web server instance and Elastic Load Balancing to create a load balancer\. Using a load balancer can increase performance by distributing the load across multiple servers\. It can also provide redundancy and higher availability if one or more servers fail\.
 
-When you're ready to get started, go to [Step 1: Set Up the Prerequisites](ssl-offload-prerequisites-windows.md)\.
+When you're ready to get started, go to [Step 1: Set up the prerequisites](ssl-offload-prerequisites-windows.md)\.

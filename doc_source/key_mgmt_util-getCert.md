@@ -17,7 +17,7 @@ getCert -f <file-name>
 
 This example shows how to use getCert to retrieve a cluster's customer root certificate and save it as a file\.
 
-**Example : Retrieve a Customer Root Certificate**  
+**Example : Retrieve a customer root certificate**  
 This command exports a customer root certificate \(represented by integer `4`\) and saves it to a file called `userRoot.crt`\. When the command succeeds, getCert returns a success message\.  
 
 ```
@@ -47,6 +47,6 @@ An integer that specifies the type of partition certificate to retrieve\. The in
 + **16** – Cluster certificate \(chained to the manufacturer root certificate\)
 Required: Yes
 
-## Related Topics<a name="kmu-getCert-seealso"></a>
+## Related topics<a name="kmu-getCert-seealso"></a>
 + [Verify HSM Identity](verify-hsm-identity.md)
 + [getCert](cloudhsm_mgmt_util-getCert.md) \(in [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md)\)

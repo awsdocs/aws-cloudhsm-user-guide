@@ -14,5 +14,5 @@ exit
 
 There are no parameters for this command\.
 
-## Related Topics<a name="exit-seealso"></a>
+## Related topics<a name="exit-seealso"></a>
 + [Start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start)

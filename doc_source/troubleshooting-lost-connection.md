@@ -1,4 +1,4 @@
-# Lost Connection to the Cluster<a name="troubleshooting-lost-connection"></a>
+# Lost connection to the cluster<a name="troubleshooting-lost-connection"></a>
 
 When you [configured the AWS CloudHSM client](install-and-configure-client-linux.md#edit-client-configuration), you provided the IP address of the first HSM in your cluster\. This IP address is saved in the configuration file for the AWS CloudHSM client\. When the client starts, it tries to connect to this IP address\. If it can't—for example, because the HSM failed or you deleted it—you might see errors like the following:
 
@@ -37,13 +37,6 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
-#### [ CentOS 6 ]
-
-   ```
-   $ sudo stop cloudhsm-client
-   ```
-
-------
 #### [ CentOS 7 ]
 
    ```
@@ -51,10 +44,10 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
-#### [ RHEL 6 ]
+#### [ CentOS 8 ]
 
    ```
-   $ sudo stop cloudhsm-client
+   $ sudo service cloudhsm-client stop
    ```
 
 ------
@@ -65,7 +58,21 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
+#### [ RHEL 8 ]
+
+   ```
+   $ sudo service cloudhsm-client stop
+   ```
+
+------
 #### [ Ubuntu 16\.04 LTS ]
+
+   ```
+   $ sudo service cloudhsm-client stop
+   ```
+
+------
+#### [ Ubuntu 18\.04 LTS ]
 
    ```
    $ sudo service cloudhsm-client stop
@@ -107,13 +114,6 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
-#### [ CentOS 6 ]
-
-   ```
-   $ sudo start cloudhsm-client
-   ```
-
-------
 #### [ CentOS 7 ]
 
    ```
@@ -121,10 +121,10 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
-#### [ RHEL 6 ]
+#### [ CentOS 8 ]
 
    ```
-   $ sudo start cloudhsm-client
+   $ sudo service cloudhsm-client start
    ```
 
 ------
@@ -135,7 +135,21 @@ To resolve these errors, update the configuration file with the IP address of an
    ```
 
 ------
+#### [ RHEL 8 ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
 #### [ Ubuntu 16\.04 LTS ]
+
+   ```
+   $ sudo service cloudhsm-client start
+   ```
+
+------
+#### [ Ubuntu 18\.04 LTS ]
 
    ```
    $ sudo service cloudhsm-client start

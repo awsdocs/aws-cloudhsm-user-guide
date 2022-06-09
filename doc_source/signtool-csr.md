@@ -1,4 +1,4 @@
-# Microsoft SignTool with AWS CloudHSM Step 2: Create a Signing Certificate<a name="signtool-csr"></a>
+# Microsoft SignTool with AWS CloudHSM step 2: Create a signing certificate<a name="signtool-csr"></a>
 
 Now that you've downloaded the Windows SDK on to your EC2 instance, you can use it to generate a certificate signing request \(CSR\)\. The CSR is an unsigned certificate that is eventually passed to your CA for signing\. In this example, we use the `certreq` executable that's included with the Windows SDK to generate the CSR\.
 

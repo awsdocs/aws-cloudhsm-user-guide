@@ -6,9 +6,9 @@ Upon successful initiation, the `aws-cloudhsm>` command prompt is replaced with 
 
 In order to exit server mode, use the `exit` command\. Upon successful exit, you will be returned to the cloudhsm\_mgmt\_util command prompt\.
 
-Before you run any cloudhsm\_mgmt\_util command, you must [start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start)\.
+Before you run any cloudhsm\_mgmt\_util command, you must start cloudhsm\_mgmt\_util\.
 
-## User Type<a name="server-userType"></a>
+## User type<a name="server-userType"></a>
 
 The following users can run this command\.
 + All users\.
@@ -59,8 +59,7 @@ Required: Yes
 
 There are no arguments for the `exit` command\.
 
-## Related Topics<a name="chmu-server-seealso"></a>
-+ [Start cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start)
+## Related topics<a name="chmu-server-seealso"></a>
 + [syncKey](cloudhsm_mgmt_util-syncKey.md)
 + [createUser](cloudhsm_mgmt_util-createUser.md)
 + [deleteUser](cloudhsm_mgmt_util-deleteUser.md)

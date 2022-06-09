@@ -1,4 +1,4 @@
-# Step 3: Configure the Web Server<a name="ssl-offload-configure-web-server-windows"></a>
+# Step 3: Configure the web server<a name="ssl-offload-configure-web-server-windows"></a>
 
 Update your IIS website's configuration to use the HTTPS certificate that you created at the end of the [previous step](ssl-offload-windows-create-csr-and-certificate.md)\. This will finish setting up your Windows web server software \(IIS\) for SSL/TLS offload with AWS CloudHSM\.
 
@@ -32,7 +32,7 @@ If you used a self\-signed certificate to sign your CSR, you must first import t
 
 1. If you haven't already done so, connect to your Windows server\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
-1. [Start the AWS CloudHSM client](cloudhsm_mgmt_util-getting-started.md#cloudhsm_mgmt_util-start-cloudhsm-client)\.
+1. Start the AWS CloudHSM client daemon\.
 
 1. Copy your web server's signed certificate—the one that you created at the end of [this tutorial's previous step](ssl-offload-windows-create-csr-and-certificate.md)—to your Windows server\.
 
@@ -59,4 +59,4 @@ If you encounter an error during this certificate binding, restart your server a
 
 1. Choose **OK**\.
 
-After you update your website's configuration, go to [Step 4: Enable HTTPS Traffic and Verify the Certificate](ssl-offload-enable-traffic-and-verify-certificate-windows.md)\.
+After you update your website's configuration, go to [Step 4: Enable HTTPS traffic and verify the certificate](ssl-offload-enable-traffic-and-verify-certificate-windows.md)\.

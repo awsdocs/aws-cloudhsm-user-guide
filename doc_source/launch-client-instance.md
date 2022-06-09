@@ -1,4 +1,4 @@
-# Launch an Amazon EC2 Client Instance<a name="launch-client-instance"></a>
+# Launch an Amazon EC2 client instance<a name="launch-client-instance"></a>
 
  To interact with and manage your AWS CloudHSM cluster and HSM instances, you must be able to communicate with the elastic network interfaces of your HSMs\. The easiest way to do this is to use an EC2 instance in the same VPC as your cluster\. You can also use the following AWS resources to connect to your cluster: 
 + [Amazon VPC Peering](https://docs.aws.amazon.com/vpc/latest/peering/Welcome.html)

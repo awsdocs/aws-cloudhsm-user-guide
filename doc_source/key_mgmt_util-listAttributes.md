@@ -43,7 +43,7 @@ Following are the possible attribute values for getAttributes:
       OBJ_ATTR_KCV                    = 371
 ```
 
-## Related Topics<a name="listAttributes-seealso"></a>
+## Related topics<a name="listAttributes-seealso"></a>
 + [listAttributes](cloudhsm_mgmt_util-listAttributes.md) in cloudhsm\_mgmt\_util
 + [getAttribute](key_mgmt_util-getAttribute.md)
 + [setAttribute](key_mgmt_util-setAttribute.md)

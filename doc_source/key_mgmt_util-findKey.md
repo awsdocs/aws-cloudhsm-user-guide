@@ -25,7 +25,7 @@ findKey [-c <key class>]
 
 These examples show how to use findKey to find and identify keys in your HSMs\.
 
-**Example : Find All Keys**  
+**Example : Find all keys**  
 This command finds all keys for the current user in the HSM\. The output includes keys that the user owns and shares, and all public keys in the HSMs\.  
 To get the attributes of a key with a particular key handle, use [getAttribute](key_mgmt_util-getAttribute.md)\. To determine whether the current user owns or shares a particular key, use [getKeyInfo](key_mgmt_util-getKeyInfo.md) or [findAllKeys](cloudhsm_mgmt_util-findAllKeys.md) in cloudhsm\_mgmt\_util\.  
 
@@ -44,21 +44,21 @@ Total number of keys present 13
         Cfm3FindKey returned: 0x00 : HSM Return: SUCCESS
 ```
 
-**Example : Find Keys by Type, User, and Session**  
+**Example : Find keys by type, user, and session**  
 This command finds persistent AES keys that the current user and user 3 can use\. \(User 3 might be able to use other keys that the current user cannot see\.\)  
 
 ```
 Command: findKey -t 31 -sess 0 -u 3
 ```
 
-**Example : Find Keys by Class and Label**  
+**Example : Find keys by class and label**  
 This command finds all public keys for the current user with the `2018-sept` label\.  
 
 ```
 Command: findKey -c 2 -l 2018-sept
 ```
 
-**Example : Find RSA Keys by Modulus**  
+**Example : Find RSA keys by modulus**  
 This command finds RSA keys \(type 0\) for the current user that were created by using the modulus in the `m4.txt` file\.  
 
 ```
@@ -119,7 +119,7 @@ The *key check value* \(KCV\) is a 3\-byte hash or checksum of a key that is gen
 AWS CloudHSM uses the following standard method to generate a key check value:  
 + **Symmetric keys**: First 3 bytes of the result of encrypting a zero\-block with the key\.
 + **Asymmetric key pairs**: First 3 bytes of the SHA\-1 hash of the public key\.
-+ **HMAC keys**: KVC for HMAC keys is not supported at this time\.
++ **HMAC keys**: KCV for HMAC keys is not supported at this time\.
 Required: No
 
 ## Output<a name="findKey-output"></a>
@@ -140,7 +140,7 @@ Total number of keys present 10
         Cfm3FindKey returned: 0x00 : HSM Return: SUCCESS
 ```
 
-## Related Topics<a name="findKey-seealso"></a>
+## Related topics<a name="findKey-seealso"></a>
 + [findSingleKey](key_mgmt_util-findSingleKey.md)
 + [getKeyInfo](key_mgmt_util-getKeyInfo.md)
 + [getAttribute](key_mgmt_util-getAttribute.md)

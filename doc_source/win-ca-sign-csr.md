@@ -1,4 +1,4 @@
-# Windows Server CA Step 3: Sign a Certificate Signing Request \(CSR\) with Your Windows Server CA with AWS CloudHSM<a name="win-ca-sign-csr"></a>
+# Windows Server CA step 3: Sign a certificate signing request \(CSR\) with your Windows Server CA with AWS CloudHSM<a name="win-ca-sign-csr"></a>
 
 You can use your Windows Server CA with AWS CloudHSM to sign a certificate signing request \(CSR\)\. To complete these steps, you need a valid CSR\. You can create a CSR in several ways, including the following:
 + Using OpenSSL

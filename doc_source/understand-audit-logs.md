@@ -1,4 +1,4 @@
-# Viewing Audit Logs in CloudWatch Logs<a name="understand-audit-logs"></a>
+# Viewing HSM audit logs in CloudWatch Logs<a name="understand-audit-logs"></a>
 
 Amazon CloudWatch Logs organizes the audit logs into *log groups* and, within a log group, into *log streams*\. Each log entry is an *event*\. AWS CloudHSM creates one *log group* for each cluster and one *log stream* for each HSM in the cluster\. You do not have to create any CloudWatch Logs components or change any settings\.
 + The *log group* name is `/aws/cloudhsm/<cluster ID>`; for example `/aws/cloudhsm/cluster-likphkxygsn`\. When you use the log group name in a AWS CLI or PowerShell command, be sure to enclose it in double quotation marks\.
