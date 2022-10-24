@@ -36,7 +36,7 @@ Some commands in key\_mgmt\_util and cloudhsm\_mgmt\_util have the same names\. 
 | [deleteKey](key_mgmt_util-deleteKey.md) | Deletes a key from the HSMs\. | 
 | [Error2String](key_mgmt_util-Error2String.md) | Gets the error that corresponds to a key\_mgmt\_util hexadecimal error code\. | 
 | [exit](key_mgmt_util-exit.md) | Exits the key\_mgmt\_util\. | 
-| [exportPrivateKey](key_mgmt_util-exportPrivateKey.md) | Exports a copy of a private key from an to a file on disk\. | 
+| [exportPrivateKey](key_mgmt_util-exportPrivateKey.md) | Exports a copy of a private key from an HSM to a file on disk\. | 
 | [exportPubKey](key_mgmt_util-exportPubKey.md) | Exports a copy of a public key from an HSM to a file\. | 
 | [exSymKey](key_mgmt_util-exSymKey.md) | Exports a plaintext copy of a symmetric key from the HSMs to a file\. | 
 | [extractMaskedObject](key_mgmt_util-extractMaskedObject.md) | Extracts a key from an HSM as a masked object file\. | 
