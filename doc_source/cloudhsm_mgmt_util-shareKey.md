@@ -4,7 +4,7 @@ The shareKey command in cloudhsm\_mgmt\_util shares and unshares keys that you o
 
 Users who share the key can use the key in cryptographic operations, but they cannot delete, export, share, or unshare the key, or change its attributes\. When quorum authentication is enabled on a key, the quorum must approve any operations that share or unshare the key\. 
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 

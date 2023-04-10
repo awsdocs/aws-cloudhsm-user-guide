@@ -7,7 +7,7 @@ Each component in Client SDK 5 includes a configure tool with a designator of th
 ## Syntax<a name="configure-tool-syntax5"></a>
 
 ```
-configure-[ pkcs11 | dyn | jce ][ .exe ] 
+configure-[ pkcs11 | dyn | jce | cli ][ .exe ] 
                    -a <ENI IP address>
                    [--hsm-ca-cert <CustomerCA/certificate/file>]
                    [--cluster-id <Cluster ID>]
@@ -26,6 +26,10 @@ configure-[ pkcs11 | dyn | jce ][ .exe ]
                    [--enable-validate-key-at-init]
 ```
 
+## Advanced configurations<a name="configure-tool-subcommands5"></a>
+
+For a list of advanced configurations specific to the Client SDK 5 configure tool, refer to [Advanced configurations for the Client SDK 5 configure tool](configure-sdk5-advanced-configs.md)\. 
+
 ## Examples<a name="configure-tool-examples5"></a>
 
 These examples show how to use the configure tool for Client SDK 5\.
@@ -39,39 +43,53 @@ This example uses the `-a` parameter to update the HSM data for Client SDK 5\. T
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 -a <HSM IP address>
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 -a <HSM IP address>
   ```
 
 **To bootstrap a Windows EC2 instance for Client SDK 5**
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  C:\Program Files\Amazon\CloudHSM\bin\configure-pkcs11.exe -a <HSM IP address>
+  C:\Program Files\Amazon\CloudHSM\bin\ .\configure-pkcs11.exe -a <HSM IP address>
   ```
 
 **To bootstrap a Linux EC2 instance for Client SDK 5**
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn -a <HSM IP address>
+  $ sudo /opt/cloudhsm/bin/configure-dyn -a <HSM IP address>
   ```
 
 **To bootstrap a Linux EC2 instance for Client SDK 5**
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce -a <HSM IP address>
+  $ sudo /opt/cloudhsm/bin/configure-jce -a <HSM IP address>
   ```
 
 **To bootstrap a Windows EC2 instance for Client SDK 5**
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  C:\Program Files\Amazon\CloudHSM\bin\configure-jce.exe -a <HSM IP address>
+  C:\Program Files\Amazon\CloudHSM\bin\ .\configure-jce.exe -a <HSM IP address>
+  ```
+
+**To bootstrap a Linux EC2 instance for Client SDK 5**
++  Use the configure tool to specify the IP address of a HSM in your cluster\. 
+
+  ```
+  $ sudo /opt/cloudhsm/bin/configure-cli -a <HSM IP address>
+  ```
+
+**To bootstrap a Windows EC2 instance for Client SDK 5**
++  Use the configure tool to specify the IP address of a HSM in your cluster\. 
+
+  ```
+  C:\Program Files\Amazon\CloudHSM\bin\ .\configure-cli.exe -a <HSM IP address>
   ```
 For more information about the `-a` parameter, see [Parameters](#configure-tool-params5)\.
 
-### Specify cluster Region and endpoint for Client SDK 5<a name="ex2"></a>
+### Specify cluster, region, and endpoint for Client SDK 5<a name="ex2"></a>
 
 **Example**  
  This example uses the `cluster-id` parameter to bootstrap Client SDK 5 by making a `DescribeClusters` call\.   
@@ -80,7 +98,7 @@ For more information about the `-a` parameter, see [Parameters](#configure-tool-
 +  Use the cluster ID `cluster-1234567` to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 --cluster-id cluster-1234567
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --cluster-id cluster-1234567
   ```
 
 **To bootstrap a Windows EC2 instance for Client SDK 5 with `cluster-id`**
@@ -94,14 +112,14 @@ For more information about the `-a` parameter, see [Parameters](#configure-tool-
 +  Use the cluster ID `cluster-1234567` to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn --cluster-id cluster-1234567
+  $ sudo /opt/cloudhsm/bin/configure-dyn --cluster-id cluster-1234567
   ```
 
 **To bootstrap a Linux EC2 instance for Client SDK 5 with `cluster-id`**
 +  Use the cluster ID `cluster-1234567` to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce --cluster-id cluster-1234567
+  $ sudo /opt/cloudhsm/bin/configure-jce --cluster-id cluster-1234567
   ```
 
 **To bootstrap a Windows EC2 instance for Client SDK 5 with `cluster-id`**
@@ -116,7 +134,7 @@ For more information about the `-a` parameter, see [Parameters](#configure-tool-
 +  Use the configure tool to specify the IP address of a HSM in your cluster with a custom region and endpoint\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 --cluster-id cluster-1234567 --region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --cluster-id cluster-1234567 --region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
   ```
 
 **To bootstrap a Windows EC2 instance with a endpoint and region**
@@ -130,21 +148,21 @@ For more information about the `-a` parameter, see [Parameters](#configure-tool-
 +  Use the configure tool to specify the IP address of a HSM in your cluster with a custom region and endpoint\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn --cluster-id cluster-1234567 --region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
+  $ sudo /opt/cloudhsm/bin/configure-dyn --cluster-id cluster-1234567 --region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
   ```
 
 **To bootstrap a Linux EC2 instance with a custom endpoint and region**
 +  Use the configure tool to specify the IP address of a HSM in your cluster with a custom region and endpoint\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce --cluster-id cluster-1234567 --region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
+  $ sudo /opt/cloudhsm/bin/configure-jce --cluster-id cluster-1234567 --region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
   ```
 
 **To bootstrap a Windows EC2 instance with a endpoint and region**
 +  Use the configure tool to specify the IP address of a HSM in your cluster with a custom region and endpoint\.
 
   ```
-  C:\Program Files\Amazon\CloudHSM\configure-jce.exe --cluster-id cluster-1234567--region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
+  C:\Program Files\Amazon\CloudHSM\configure-jce.exe --cluster-id cluster-1234567 --region us-east-1 --endpoint https://cloudhsmv2.us-east-1.amazonaws.com
   ```
 For more information about the `--cluster-id`, `--region`, and `--endpoint` parameters, see [Parameters](#configure-tool-params5)\.
 
@@ -158,14 +176,14 @@ For more information about the `--cluster-id`, `--region`, and `--endpoint` para
 1. Copy your key and certificate to the appropriate directory\.
 
    ```
-   sudo cp ssl-client.crt /opt/cloudhsm/etc
+   $ sudo cp ssl-client.crt /opt/cloudhsm/etc
    sudo cp ssl-client.key /opt/cloudhsm/etc
    ```
 
 1.  Use the configure tool to specify `ssl-client.crt` and `ssl-client.key`\.
 
    ```
-   sudo /opt/cloudhsm/bin/configure-pkcs11 \
+   $ sudo /opt/cloudhsm/bin/configure-pkcs11 \
                --server-client-cert-file /opt/cloudhsm/etc/ssl-client.crt \
                --server-client-key-file /opt/cloudhsm/etc/ssl-client.key
    ```
@@ -192,14 +210,14 @@ For more information about the `--cluster-id`, `--region`, and `--endpoint` para
 1. Copy your key and certificate to the appropriate directory\.
 
    ```
-   sudo cp ssl-client.crt /opt/cloudhsm/etc
+   $ sudo cp ssl-client.crt /opt/cloudhsm/etc
    sudo cp ssl-client.key /opt/cloudhsm/etc
    ```
 
 1.  Use the configure tool to specify `ssl-client.crt` and `ssl-client.key`\.
 
    ```
-   sudo /opt/cloudhsm/bin/configure-dyn \
+   $ sudo /opt/cloudhsm/bin/configure-dyn \
                --server-client-cert-file /opt/cloudhsm/etc/ssl-client.crt \
                --server-client-key-file /opt/cloudhsm/etc/ssl-client.key
    ```
@@ -209,14 +227,14 @@ For more information about the `--cluster-id`, `--region`, and `--endpoint` para
 1. Copy your key and certificate to the appropriate directory\.
 
    ```
-   sudo cp ssl-client.crt /opt/cloudhsm/etc
+   $ sudo cp ssl-client.crt /opt/cloudhsm/etc
    sudo cp ssl-client.key /opt/cloudhsm/etc
    ```
 
 1.  Use the configure tool to specify `ssl-client.crt` and `ssl-client.key`\.
 
    ```
-   sudo /opt/cloudhsm/bin/configure-jce \
+   $ sudo /opt/cloudhsm/bin/configure-jce \
                --server-client-cert-file /opt/cloudhsm/etc/ssl-client.crt \
                --server-client-key-file /opt/cloudhsm/etc/ssl-client.key
    ```
@@ -248,7 +266,7 @@ This example uses the `--disable-key-availability-check` parameter to disable cl
 +  Use the configure tool to disable client key durability settings\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 --disable-key-availability-check
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --disable-key-availability-check
   ```
 
 **To disable client key durability for Client SDK 5 on Windows**
@@ -262,14 +280,14 @@ This example uses the `--disable-key-availability-check` parameter to disable cl
 +  Use the configure tool to disable client key durability settings\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn --disable-key-availability-check
+  $ sudo /opt/cloudhsm/bin/configure-dyn --disable-key-availability-check
   ```
 
 **To disable client key durability for Client SDK 5 on Linux**
 +  Use the configure tool to disable client key durability settings\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce --disable-key-availability-check
+  $ sudo /opt/cloudhsm/bin/configure-jce --disable-key-availability-check
   ```
 
 **To disable client key durability for Client SDK 5 on Windows**
@@ -289,13 +307,13 @@ This example uses the `log-file`, `log-level`, and `log-rotation` parameters to 
 + Use the `log-file` option to change the name or location of the log file\. 
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file path/to/log
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file /path/to/log
   ```
 
   For example, use the following command to set the log file name to *cloudhsm\-pkcs11\.log*\.
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file cloudhsm-pkcs11.log
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file /opt/cloudhsm/run/cloudhsm-pkcs11.log
   ```
 
   If you do not specify a location for the file, the system writes logs to the default location\.
@@ -307,7 +325,7 @@ This example uses the `log-file`, `log-level`, and `log-rotation` parameters to 
   + Windows: 
 
     ```
-    C:\ProgramData\Amazon\CloudHSM
+    C:\Program Files\Amazon\CloudHSM
     ```
 
 **To configure the logging level**
@@ -340,13 +358,13 @@ This example uses the `log-file`, `log-level`, and `log-rotation` parameters to 
 + Use the `log-file` option to change the name or location of the log file\. 
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file path/to/log
+  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file /path/to/log
   ```
 
   For example, use the following command to set the log file name to *cloudhsm\-dyn\.log*\.
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file cloudhsm-dyn.log
+  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file /opt/cloudhsm/run/cloudhsm-dyn.log
   ```
 
   If you do not specify a location for the file, the system writes logs to `stderr`
@@ -381,13 +399,13 @@ This example uses the `log-file`, `log-level`, and `log-rotation` parameters to 
 + Use the `log-file` option to change the name or location of the log file\. 
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-jce --log-file path/to/log
+  $ sudo /opt/cloudhsm/bin/configure-jce --log-file /path/to/log
   ```
 
   For example, use the following command to set the log file name to *cloudhsm\-dyn\.log*\.
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-jce --log-file cloudhsm-dyn.log
+  $ sudo /opt/cloudhsm/bin/configure-jce --log-file /opt/cloudhsm/run/cloudhsm-jce.log
   ```
 
   If you do not specify a location for the file, the system writes logs to the default location:
@@ -438,7 +456,7 @@ This example uses the `--hsm-ca-cert` parameter to update the location of the is
 +  Use the configure tool to specify a location for the issuing certificate\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 --hsm-ca-cert <customerCA certificate file>
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --hsm-ca-cert <customerCA certificate file>
   ```
 
 **To place the issuing certificate on Windows for Client SDK 5**
@@ -452,14 +470,14 @@ This example uses the `--hsm-ca-cert` parameter to update the location of the is
 +  Use the configure tool to specify a location for the issuing certificate\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn --hsm-ca-cert <customerCA certificate file>
+  $ sudo /opt/cloudhsm/bin/configure-dyn --hsm-ca-cert <customerCA certificate file>
   ```
 
 **To place the issuing certificate on Linux for Client SDK 5**
 +  Use the configure tool to specify a location for the issuing certificate\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce --hsm-ca-cert <customerCA certificate file>
+  $ sudo /opt/cloudhsm/bin/configure-jce --hsm-ca-cert <customerCA certificate file>
   ```
 
 **To place the issuing certificate on Windows for Client SDK 5**
@@ -544,13 +562,13 @@ Flag to enable key availability quorum\. Use this flag to indicate AWS CloudHSM 
 Enabled by default\.  
 Required: No
 
-**\-\-disable\-validate\-key\-at\-init**  
- Improves performance by specifying that you can skip an initialization call to verify permissions on a key for subsequent calls\. Use with caution\.  
+**\-\-disable\-validate\-key\-at\-init **  
+Improves performance by specifying that you can skip an initialization call to verify permissions on a key for subsequent calls\. Use with caution\.  
 Background: Some mechanisms in the PKCS \#11 library support multi\-part operations where an initialization call verifies if you can use the key for subsequent calls\. This requires a verification call to the HSM, which adds latency to the overall operation\. This option enables you to disable the subsequent call and potentially improve performance\.  
 Required: No
 
-**\-\-enable\-validate\-key\-at\-init**  
- Specifies that you should use an initialization call to verify permissions on a key for subsequent calls\. This is the default option\. Use `enable-validate-key-at-init` to resume these initialization calls after you use `disable-validate-key-at-init` to suspend them\.  
+**\-\-enable\-validate\-key\-at\-init **  
+Specifies that you should use an initialization call to verify permissions on a key for subsequent calls\. This is the default option\. Use `enable-validate-key-at-init` to resume these initialization calls after you use `disable-validate-key-at-init` to suspend them\.  
 Required: No
 
 ## Related topics<a name="configure-tool-seealso5"></a>

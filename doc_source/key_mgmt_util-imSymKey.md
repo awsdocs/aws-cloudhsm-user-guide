@@ -6,6 +6,9 @@ During the import process, imSymKey uses an AES key that you select \(the *wrapp
 
 Also, the imSymKey command imports only symmetric keys\. To import public keys, use [importPubKey](key_mgmt_util-importPubKey.md)\. To import private keys, use [importPrivateKey](key_mgmt_util-importPrivateKey.md) or [wrapKey](key_mgmt_util-wrapKey.md)\. 
 
+**Note**  
+You cannot import a password\-protected PEM key using a symmetric or private key\.
+
 Imported keys work very much like keys generated in the HSM\. However, the value of the [OBJ\_ATTR\_LOCAL attribute](key-attribute-table.md) is zero, which indicates that it was not generated locally\. You can use the following command to share a symmetric key as you import it\. You can use the `shareKey` command in [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) to share the key after it is imported\. 
 
 ```

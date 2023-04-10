@@ -13,7 +13,7 @@ To set up Windows Server as a certificate authority \(CA\) with AWS CloudHSM, yo
 
 1. Connect to your client instance\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
-1. [Create a crypto user \(CU\)](cli-users.md#manage-users)\. Keep track of the CU user name and password\. You will need them to complete the next step\.
+1. Create a crypto user \(CU\)using [Managing HSM users with CloudHSM CLI](manage-hsm-users-chsm-cli.md) or [Managing HSM users with CloudHSM Management Utility \(CMU\)](manage-hsm-users-cmu.md)\. Keep track of the CU user name and password\. You will need them to complete the next step\.
 
 1. [Set the login credentials for the HSM](ksp-library-prereq.md), using the CU user name and password that you created in the previous step\.
 

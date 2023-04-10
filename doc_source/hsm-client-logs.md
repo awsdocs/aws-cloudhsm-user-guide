@@ -104,13 +104,13 @@ You can configure the name of the log file, how much information Client SDK 5 co
 + Use the `log-file` option to change the name or location of the log file\. 
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file path/to/log
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file /path/to/log
   ```
 
   For example, use the following command to set the log file name to *cloudhsm\-pkcs11\.log*\.
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file cloudhsm-pkcs11.log
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --log-file /opt/cloudhsm/run/cloudhsm-pkcs11.log
   ```
 
   If you do not specify a location for the file, the system writes logs to the default location\.
@@ -122,7 +122,7 @@ You can configure the name of the log file, how much information Client SDK 5 co
   + Windows: 
 
     ```
-    C:\ProgramData\Amazon\CloudHSM
+    C:\Program Files\Amazon\CloudHSM
     ```
 
 **To configure the logging level**
@@ -158,13 +158,13 @@ You can configure the name of the log file, how much information Client SDK 5 co
 + Use the `log-file` option to change the name or location of the log file\. 
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file path/to/log
+  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file /path/to/log
   ```
 
   For example, use the following command to set the log file name to *cloudhsm\-dyn\.log*\.
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file cloudhsm-dyn.log
+  $ sudo /opt/cloudhsm/bin/configure-dyn --log-file /opt/cloudhsm/run/cloudhsm-dyn.log
   ```
 
   If you do not specify a location for the file, the system writes logs to `stderr`
@@ -202,13 +202,13 @@ You can configure the name of the log file, how much information Client SDK 5 co
 + Use the `log-file` option to change the name or location of the log file\. 
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-jce --log-file path/to/log
+  $ sudo /opt/cloudhsm/bin/configure-jce --log-file /path/to/log
   ```
 
   For example, use the following command to set the log file name to *cloudhsm\-dyn\.log*\.
 
   ```
-  $ sudo /opt/cloudhsm/bin/configure-jce --log-file cloudhsm-dyn.log
+  $ sudo /opt/cloudhsm/bin/configure-jce --log-file /opt/cloudhsm/run/cloudhsm-jce.log
   ```
 
   If you do not specify a location for the file, the system writes logs to the default location:

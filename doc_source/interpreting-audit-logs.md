@@ -97,7 +97,7 @@ Response : 0:HSM Return: SUCCESS
 Log type : MINIMAL_LOG_ENTRY (0)
 ```
 
-The third event in this example log stream \(`Sequence No 0x2`\) is the creation of the [appliance user \(AU\)](manage-hsm-users.md#appliance-user), which is the AWS CloudHSM service\. Events that involve HSM users include extra fields for the user name and user type\. 
+The third event in this example log stream \(`Sequence No 0x2`\) is the creation of the [appliance user \(AU\)](manage-hsm-users-cmu.md#appliance-user-cmu), which is the AWS CloudHSM service\. Events that involve HSM users include extra fields for the user name and user type\. 
 
 ```
 Time: 12/19/17 21:01:17.174902, usecs:1513717277174902
@@ -125,7 +125,7 @@ Response : 0:HSM Return: SUCCESS
 Log type : MINIMAL_LOG_ENTRY (0)
 ```
 
-You can follow the remaining events in the startup sequence\. These events might include several login and logout events, and the generation of the key encryption key \(KEK\)\. The following event records the command that changes the password of the [precrypto officer \(PRECO\)](manage-hsm-users.md#preco)\. This command activates the cluster\.
+You can follow the remaining events in the startup sequence\. These events might include several login and logout events, and the generation of the key encryption key \(KEK\)\. The following event records the command that changes the password of the [precrypto officer \(PRECO\)](manage-hsm-users-cmu.md#preco)\. This command activates the cluster\.
 
 ```
 Time: 12/13/17 23:04:33.846554, usecs:1513206273846554

@@ -2,7 +2,7 @@
 
 The setAttribute command in cloudhsm\_mgmt\_util changes the value of the label, encrypt, decrypt, wrap, and unwrap attributes of a key in the HSMs\. You can also use the [setAttribute](key_mgmt_util-setAttribute.md) command in key\_mgmt\_util to convert a session key to a persistent key\. You can only change the attributes of keys that you own\.
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 

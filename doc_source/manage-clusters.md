@@ -9,4 +9,3 @@ To create a cluster, see [Getting started](getting-started.md)\.
 + [Adding or removing HSMs](add-remove-hsm.md)
 + [Deleting a cluster](delete-cluster.md)
 + [Creating clusters from backups](create-cluster-from-backup.md)
-+ [Best practices](best-practices.md)

@@ -56,13 +56,13 @@ To generate the Oracle TDE master key on the HSMs in your cluster, complete the 
 
 **To generate the master key**
 
-1. Use the following command to open Oracle SQL\*Plus and set the `CLOUDHSM_IGNORE_CKA_MODIFIABLE_FALSE` environment variable\. When prompted, type the system password that you set when you installed Oracle Database\. 
+1. Use the following command to open Oracle SQL\*Plus\. When prompted, type the system password that you set when you installed Oracle Database\. 
 
    ```
-   CLOUDHSM_IGNORE_CKA_MODIFIABLE_FALSE=true sqlplus / as sysdba
+   sqlplus / as sysdba
    ```
 **Note**  
-You must set the `CLOUDHSM_IGNORE_CKA_MODIFIABLE_FALSE` environment variable each time you generate a master key\. This variable is only needed for master key generation\. For more information, see "Issue: Oracle sets the PCKS \#11 attribute `CKA_MODIFIABLE` during master key generation, but the HSM does not support it" in [Known Issues for Integrating Third\-Party Applications](ki-third-party.md)\. 
+For Client SDK 3, you must set the `CLOUDHSM_IGNORE_CKA_MODIFIABLE_FALSE` environment variable each time you generate a master key\. This variable is only needed for master key generation\. For more information, see "Issue: Oracle sets the PCKS \#11 attribute `CKA_MODIFIABLE` during master key generation, but the HSM does not support it" in [Known Issues for Integrating Third\-Party Applications](ki-third-party.md)\. 
 
 1. Run the SQL statement that creates the master encryption key, as shown in the following examples\. Use the statement that corresponds to your version of Oracle Database\. Replace *<CU user name>* with the user name of the cryptographic user \(CU\)\. Replace *<password>* with the CU password\. 
 **Important**  

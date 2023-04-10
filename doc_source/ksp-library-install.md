@@ -1,6 +1,6 @@
-# Verify the KSP and CNG Providers for Windows<a name="ksp-library-install"></a>
+# Verifying the KSP and CNG Providers for Windows<a name="ksp-library-install"></a>
 
-The KSP and CNG providers are installed when you install the Windows AWS CloudHSM client\. You can install the client by following the steps at [Install the client \(Windows\)](install-and-configure-client-win.md)\. 
+The KSP and CNG providers are installed when you install the Windows AWS CloudHSM client\. You can install the client by following the steps at [Install the client \(Windows\)](kmu-install-and-configure-client-win.md)\. 
 
 ## Configure and run the Windows AWS CloudHSM client<a name="ksp-configure-client-windows"></a>
 
@@ -23,7 +23,7 @@ Before you update the configuration files that the providers use, stop the AWS C
 This step uses the `-a` parameter of the [Configure tool](configure-tool.md) to add the elastic network interface \(ENI\) IP address of one of the HSMs in the cluster to the configuration file\. 
 
 ```
-c:\Program Files\Amazon\CloudHSM>configure.exe -a <HSM ENI IP>
+C:\Program Files\Amazon\CloudHSM\bin\ configure.exe -a <HSM ENI IP>
 ```
 
 To get the ENI IP address of an HSM in your cluster, navigate to the AWS CloudHSM console, choose **clusters**, and select the desired cluster\. You can also use the [DescribeClusters](https://docs.aws.amazon.com/cloudhsm/latest/APIReference/API_DescribeClusters.html) operation, the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command, or the [Get\-HSM2Cluster](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-HSM2Cluster.html) PowerShell cmdlet\. Type only one ENI IP address\. It does not matter which ENI IP address you use\. 

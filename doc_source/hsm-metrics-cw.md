@@ -14,7 +14,7 @@ The `AWS/CloudHSM` namespace includes the following metrics:
 | HsmKeysSessionOccupied  | The number of session keys being used by the HSM instance\. | 
 | HsmKeysTokenOccupied  | The number of token keys being used by the HSM instance and the cluster\.  | 
 | HsmSslCtxsOccupied  | The number of end\-to\-end encrypted channels currently established for the HSM instance\. Up to 2,048 channels are allowed\. | 
-| HsmSessionCount  | The number of open connections to the HSM instance\. Up to 2,048 are allowed\. By default, the client daemon is configured to open two sessions with each HSM instance under one end\-to\-end encrypted channel\. | 
+| HsmSessionCount  | The number of open connections to the HSM instance\. Up to 2,048 are allowed\. By default, the client daemon is configured to open two sessions with each HSM instance under one end\-to\-end encrypted channel\. AWS CloudHSM may also have up to 2 connections open with the HSM to monitor the health of the HSMs\.  | 
 | HsmUsersAvailable  | The number of additional users that can be created\. This equals the maximum number of users \(listed in HsmUsersMax\) minus the users created to date\. | 
 | HsmUsersMax  | The maximum number of users that can be created on the HSM instance\. Currently this is 1,024\. | 
 | InterfaceEth2OctetsInput  | The cumulative sum of incoming traffic to the HSM to date\. | 

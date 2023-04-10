@@ -77,7 +77,7 @@ logoutHSM success on server 1(10.0.3.11)
 
 ## Arguments<a name="loginLogout-params"></a>
 
-Enter the arguments in the order specified in the syntax diagram\. Use the `-hpswd` parameter to mask your password\. To login with two\-factor authentication \(2FA\), use the `-2fa` parameter and include a file path\. For more information about working with 2FA, see [Managing 2FA](manage-2fa.md) 
+Enter the arguments in the order specified in the syntax diagram\. Use the `-hpswd` parameter to mask your password\. To login with two\-factor authentication \(2FA\), use the `-2fa` parameter and include a file path\. For more information about working with 2FA, see [Using CMU to manage 2FA](manage-2fa.md) 
 
 ```
 loginHSM <user-type> <user-name> <password |-hpswd> [-2fa </path/to/authdata>]
@@ -96,7 +96,7 @@ Specifies the password of the user who is logging in to the HSMs\. To hide your 
 Required: Yes
 
 **\[\-2fa </path/to/authdata>\]**  
-Specifies that the system should use a second factor to authenticate this 2FA\-enabled CO user\. To get the necessary data for logging in with 2FA, include a path to a location in the file system with a file name after the `-2fa` parameter\. For more information about working with 2FA, see [Managing 2FA](manage-2fa.md)\.   
+Specifies that the system should use a second factor to authenticate this 2FA\-enabled CO user\. To get the necessary data for logging in with 2FA, include a path to a location in the file system with a file name after the `-2fa` parameter\. For more information about working with 2FA, see [Using CMU to manage 2FA](manage-2fa.md) \.   
 Required: No
 
 ## Related topics<a name="loginLogout-seeAlso"></a>

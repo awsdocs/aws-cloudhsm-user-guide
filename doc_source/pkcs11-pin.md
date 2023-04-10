@@ -1,6 +1,6 @@
-# Authenticating to the PKCS \#11 library<a name="pkcs11-pin"></a>
+# PKCS \#11 library<a name="pkcs11-pin"></a>
 
-When you use the PKCS \#11 library, your application runs as a particular [crypto user \(CU\)](manage-hsm-users.md) in your HSMs\. Your application can view and manage only the keys that the CU owns and shares\. You can use an existing CU in your HSMs or [create a new CU](cli-users.md#manage-users) for your application\.
+When you use the PKCS \#11 library, your application runs as a particular [crypto user \(CU\)](manage-hsm-users.md) in your HSMs\. Your application can view and manage only the keys that the CU owns and shares\. You can use an existing CU in your HSMs or create a new CU for your application\. For information on managing CUs, see [Managing HSM users with CloudHSM CLI](manage-hsm-users-chsm-cli.md) and [Managing HSM users with CloudHSM Management Utility \(CMU\)](manage-hsm-users-cmu.md)
 
 To specify the CU to PKCS \#11 library, use the pin parameter of the PKCS \#11 [C\_Login function](http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/os/pkcs11-base-v2.40-os.html#_Toc385057915)\. For AWS CloudHSM, the pin parameter has the following format:
 

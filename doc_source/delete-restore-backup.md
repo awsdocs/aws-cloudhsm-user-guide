@@ -6,7 +6,7 @@
 
 **To delete a backup \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. To change the AWS Region, use the Region selector in the upper\-right corner of the page\.
 
@@ -24,7 +24,7 @@
 
 **To restore a backup \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. To change the AWS Region, use the Region selector in the upper\-right corner of the page\.
 

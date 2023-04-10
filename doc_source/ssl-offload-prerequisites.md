@@ -17,7 +17,7 @@ You can use a single HSM cluster, but you must first disable client key durabili
 + An Amazon EC2 instance running a Linux operating system with the following software installed:
   + A web server \(either NGINX or Apache\)
   + The OpenSSL Dynamic Engine for Client SDK 5
-+ A [crypto user](manage-hsm-users.md#crypto-user) \(CU\) to own and manage the web server's private key on the HSM\.
++ A [crypto user](manage-hsm-users-chsm-cli.md#crypto-user-chsm-cli) \(CU\) to own and manage the web server's private key on the HSM\.
 
 **To set up a Linux web server instance and create a CU on the HSM**
 
@@ -123,8 +123,21 @@ You can use a single HSM cluster, but you must first disable client key durabili
      ```
 
 ------
+#### [ Ubuntu 20\.04 ]
+   + NGINX
 
-1. Use CloudHSM Management Utility \(CMU\) to create a CU\. For more information about managing HSM users, see [Understanding HSM User Management with CMU](cli-users.md#understand-users)\. 
+     ```
+     $ sudo apt install nginx
+     ```
+   + Apache
+
+     ```
+     $ sudo apt install apache2
+     ```
+
+------
+
+1. Use CloudHSM CLI to create a CU\. For more information about managing HSM users, see [Managing HSM users with CloudHSM CLI](manage-chsm-cli-users.md)\.
 **Tip**  
 Keep track of the CU user name and password\. You will need them later when you generate or import the HTTPS private key and certificate for your web server\.
 
@@ -132,7 +145,7 @@ After you complete these steps, go to [Step 2: Generate or import a private key 
 
 #### Notes<a name="note-ssl5-pre"></a>
 + To use Security\-Enhanced Linux \(SELinux\) and web servers, you must allow outbound TCP connections on port 2223, which is the port Client SDK 5 uses to communicate with the HSM\.
-+ To create and activate a cluster and give an EC2 instance access to the cluster, complete the steps in [Getting Started with AWS CloudHSM](getting-started.md)\. The getting started offers step\-by\-step instruction for creating an active cluster with one HSM and an Amazon EC2 client instance with the Client SDK 3 command line tools\. You can use this client instance as your web server\. 
++ To create and activate a cluster and give an EC2 instance access to the cluster, complete the steps in [Getting Started with AWS CloudHSM](getting-started.md)\. The getting started offers step\-by\-step instruction for creating an active cluster with one HSM and an Amazon EC2 client instance\. You can use this client instance as your web server\. 
 + To avoid disabling client key durability, add more than one HSM to your cluster\. For more information, see [Adding an HSM](add-remove-hsm.md#add-hsm)\.
 + To connect to your client instance, you can use SSH or PuTTY\. For more information, see [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) or [Connecting to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) in the Amazon EC2 documentation\. 
 
@@ -146,7 +159,7 @@ To set up web server SSL/TLS offload with Client SDK 3, you need the following:
   + The AWS CloudHSM client and command line tools\.
   + The NGINX or Apache web server application\.
   + The AWS CloudHSM dynamic engine for OpenSSL\.
-+ A [crypto user](manage-hsm-users.md#crypto-user) \(CU\) to own and manage the web server's private key on the HSM\.
++ A [crypto user](manage-hsm-users-chsm-cli.md#crypto-user-chsm-cli) \(CU\) to own and manage the web server's private key on the HSM\.
 
 **To set up a Linux web server instance and create a CU on the HSM**
 

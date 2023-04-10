@@ -1,6 +1,6 @@
 # Known issues for integrating third\-party applications<a name="ki-third-party"></a>
 
-## Issue: Oracle sets the PKCS \#11 attribute `CKA_MODIFIABLE` during master key generation, but the HSM does not support it<a name="ki-third-party-1"></a>
+## Issue: Client SDK 3 does not support Oracle setting PKCS \#11 attribute `CKA_MODIFIABLE` during master key generation<a name="ki-third-party-1"></a>
 
 This limit is defined in the PKCS \#11 library\. For more information, see annotation 1 on [Supported PKCS \#11 Attributes](pkcs11-attributes.md)\. 
 + **Impact:** Oracle master key creation fails\.

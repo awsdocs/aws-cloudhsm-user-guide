@@ -2,7 +2,7 @@
 
 You can use the syncUser command in cloudhsm\_mgmt\_util to manually synchronize crypto users \(CUs\) or crypto officers \(COs\) across HSM instances within a cluster or across cloned clusters\. AWS CloudHSM does not automatically synchronize users\. Generally, you manage users in global mode so that all HSMs in a cluster are updated together\. You might need to use syncUser if an HSM is accidentally desynchronized \(for example, due to password changes\) or if you want to rotate user credentials across cloned clusters\. Cloned clusters are usually created in different AWS Regions to simplify the global scaling and disaster recovery processes\.
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 

@@ -1,12 +1,10 @@
 # exportPrivateKey<a name="key_mgmt_util-exportPrivateKey"></a>
 
-The exportPrivateKey command in key\_mgmt\_util exports an asymmetric private key in an HSM to a file\. You can use it to export private keys that you generate on the HSM\. You can also use the command to export private keys that were imported into an HSM, such as those imported with the [importPrivateKey](key_mgmt_util-importPrivateKey.md) command\.
+The exportPrivateKey command in key\_mgmt\_util exports an asymmetric private key from an HSM to a file\. The HSM does not allow direct export of keys in cleartext\. The command wraps the private key using an AES wrapping key you specify, decrypts the wrapped bytes, and copies the cleartext private key to a file\.
 
-During the export process, exportPrivateKey uses an AES key that you select \(the *wrapping key*\) to *wrap* \(encrypt\) the private key\. This way, the private key file maintains integrity during transit\. For more information, see [wrapKey](key_mgmt_util-wrapKey.md)\.
+The exportPrivateKey command does not remove the key from the HSM, change its [key attributes](key-attribute-table.md), or prevent you from using the key in further cryptographic operations\. You can export the same key multiple times\.
 
-The exportPrivateKey command copies the key material to a file that you specify\. But it does not remove the key from the HSM, change its [key attributes](key-attribute-table.md), or prevent you from using the key in further cryptographic operations\. You can export the same key multiple times\.
-
-You can only export private keys that have `OBJ_ATTR_EXTRACTABLE` attribute value `1`\. To find a key's attributes, use the [getAttribute](key_mgmt_util-getAttribute.md) command\.
+You can only export private keys that have `OBJ_ATTR_EXTRACTABLE` attribute value `1`\. You must specify an AES wrapping key that has `OBJ_ATTR_WRAP` and `OBJ_ATTR_DECRYPT` attributes value `1`\. To find a key's attributes, use the [getAttribute](key_mgmt_util-getAttribute.md) command\.
 
 Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start) and [log in](key_mgmt_util-getting-started.md#key_mgmt_util-log-in) to the HSM as a crypto user \(CU\)\.
 

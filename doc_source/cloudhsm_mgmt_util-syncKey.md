@@ -2,7 +2,7 @@
 
 You can use the syncKey command in cloudhsm\_mgmt\_util to manually synchronize keys across HSM instances within a cluster or across cloned clusters\. In general, you will not need to use this command, as HSM instances within a cluster sync keys automatically\. However, key synchronization across cloned clusters must be done manually\. Cloned clusters are usually created in different AWS Regions in order to simplify the global scaling and disaster recovery processes\.
 
-You cannot use syncKey to synchronize keys across arbitrary clusters: one of the clusters must have been created from a backup of the other\. Additionally, both clusters must have consistent CO and CU credentials in order for the operation to be successful\. For more information, see [HSM Users](manage-hsm-users.md#understanding-users)\.
+You cannot use syncKey to synchronize keys across arbitrary clusters: one of the clusters must have been created from a backup of the other\. Additionally, both clusters must have consistent CO and CU credentials in order for the operation to be successful\. For more information, see [HSM Users](manage-hsm-users-chsm-cli.md#understanding-users)\.
 
 To use syncKey, you must first [create an AWS CloudHSM configuration file](cloned-clusters.md) that specifies one HSM from the source cluster and one from the destination cluster\. This will allow cloudhsm\_mgmt\_util to connect to both HSM instances\. Use this configuration file to start cloudhsm\_mgmt\_util\. Then log in with the credentials of a CO or a CU who owns the keys you want to synchronize\.
 
@@ -13,7 +13,7 @@ The following types of users can run this command\.
 + Crypto users \(CU\)
 
 **Note**  
-COs can use syncKey on any keys, while CUs can only use this command on keys that they own\. For more information, see [Understanding HSM users](manage-hsm-users.md#understanding-users)\.
+COs can use syncKey on any keys, while CUs can only use this command on keys that they own\. For more information, see [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.
 
 ## Prerequisites<a name="syncKey-prereqs"></a>
 

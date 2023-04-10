@@ -1,6 +1,12 @@
-# Client SDK 3 platform support<a name="sdk3-support"></a>
+# Client SDK 3 supported platforms<a name="sdk3-support"></a>
 
 Client SDK 3 requires a client daemon and offers command\-line tools including, CloudHSM Management Utility \(CMU\), key management utility \(KMU\), and the configure tool\. 
+
+Base support is different for each version of the AWS CloudHSM Client SDK\. Typically platform support for components in an SDK matches base support, but not always\. To determine platform support for a given component, first make sure the platform you want appears in the base section for the SDK, then check for an exclusions or any other pertinent information in the component section\.
+
+Platform support changes over time\. Earlier versions of the CloudHSM Client SDK may not support all the operating systems listed here\. Use release notes to determine the operating system support for previous versions of the CloudHSM Client SDK\. For more information, see [Downloads for AWS CloudHSM Client SDK](client-history.md)\.
+
+AWS CloudHSM supports only 64\-bit operating systems\.
 
 **Contents**
 + [Linux support](#sdk3-linux)
@@ -35,6 +41,7 @@ Client SDK 3 requires a client daemon and offers command\-line tools including, 
 + Microsoft Windows Server 2012
 + Microsoft Windows Server 2012 R2
 + Microsoft Windows Server 2016
++ Microsoft Windows Server 2019
 
 ## Components support<a name="sdk3-support-components"></a>
 

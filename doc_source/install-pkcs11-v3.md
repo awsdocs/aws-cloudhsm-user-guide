@@ -1,10 +1,10 @@
-# Install PKCS \#11 library Client SDK 3<a name="install-pkcs11-v3"></a>
+# Installing Client SDK 3 for PKCS \#11 library<a name="install-pkcs11-v3"></a>
 
 ## Prerequisites for Client SDK 3<a name="pkcs11-library-prerequisites"></a>
 
 The PKCS \#11 library requires the AWS CloudHSM client\.
 
-If you haven't installed and configured the AWS CloudHSM client, do that now by following the steps at [Install the client \(Linux\)](install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
+If you haven't installed and configured the AWS CloudHSM client, do that now by following the steps at [Install the client \(Linux\)](cmu-install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
 
 ------
 #### [ Amazon Linux ]
@@ -158,8 +158,6 @@ $ sudo apt install ./cloudhsm-client-pkcs11_latest_u18.04_amd64.deb
 
 ------
 + If the EC2 instance on which you installed the PKCS \#11 library has no other components from Client SDK 3 installed, you must bootstrap Client SDK 3\. You only have to do this once on each instance with a component from Client SDK 3\.
-
-  For more information about bootstrapping, see [Connecting to the cluster](cluster-connect.md)\.
 + You can find the PKCS \#11 library files in the following locations:
 
   Linux binaries, configuration scripts, certificates, and log files:

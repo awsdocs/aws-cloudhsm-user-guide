@@ -1,6 +1,6 @@
 # Getting started with key\_mgmt\_util<a name="key_mgmt_util-getting-started"></a>
 
-AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](install-and-configure-client-linux.md#install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md) tool includes commands to manage keys\. To get started with the key\_mgmt\_util command line tool, see the following topics\. 
+AWS CloudHSM includes two command line tools with the [AWS CloudHSM client software](kmu-install-and-configure-client-linux.md#kmu-install-client)\. The [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util-reference.md) tool includes commands to manage HSM users\. The [key\_mgmt\_util](key_mgmt_util-reference.md) tool includes commands to manage keys\. To get started with the key\_mgmt\_util command line tool, see the following topics\. 
 
 **Topics**
 + [Set up key\_mgmt\_util](#key_mgmt_util-setup)
@@ -154,7 +154,7 @@ $ /opt/cloudhsm/bin/key_mgmt_util
 #### [ Windows ]
 
 ```
-c:\Program Files\Amazon\CloudHSM>key_mgmt_util.exe
+c:\Program Files\Amazon\CloudHSM> .\key_mgmt_util.exe
 ```
 
 ------
@@ -174,7 +174,7 @@ See the following topics for the basic usage of the key\_mgmt\_util tool\.
 
 ### Log in to the HSMs<a name="key_mgmt_util-log-in"></a>
 
-Use the loginHSM command to log in to the HSMs\. The following command logs in as a [crypto user \(CU\)](manage-hsm-users.md#understanding-users) named `example_user`\. The output indicates a successful login for all three HSMs in the cluster\. 
+Use the loginHSM command to log in to the HSMs\. The following command logs in as a [crypto user \(CU\)](manage-hsm-users-chsm-cli.md#understanding-users) named `example_user`\. The output indicates a successful login for all three HSMs in the cluster\. 
 
 ```
 Command:  loginHSM -u CU -s example_user -p <password>

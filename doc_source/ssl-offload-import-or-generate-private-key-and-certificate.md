@@ -1,8 +1,8 @@
 # Step 2: Generate or import a private key and SSL/TLS certificate<a name="ssl-offload-import-or-generate-private-key-and-certificate"></a>
 
 To enable HTTPS, your web server application \(NGINX or Apache\) needs a private key and a corresponding SSL/TLS certificate\. To use web server SSL/TLS offload with AWS CloudHSM, you must store the private key in an HSM in your AWS CloudHSM cluster\. You can accomplish this in one of the following ways: 
-+ If you don't yet have a private key and a corresponding certificate, you generate a private key in a HSM\. You use the private key to create a certificate signing request \(CSR\), which you use to create the SSL/TLS certificate\.
-+ If you already have a private key and corresponding certificate, you import the private key into a HSM\.
++ If you don't yet have a private key and a corresponding certificate, generate a private key in an HSM\. You use the private key to create a certificate signing request \(CSR\), which you use to create the SSL/TLS certificate\.
++ If you already have a private key and corresponding certificate, import the private key into an HSM\.
 
 Regardless of which of the preceding methods you choose, you export a *fake PEM private key* from the HSM, which is a private key file in PEM format which contains a reference to the private key stored on the HSM \(it's not the actual private key\)\. Your web server uses the fake PEM private key file to identify the private key on the HSM during SSL/TLS offload\.
 
@@ -22,7 +22,7 @@ Private keys generated with the Key Management Utility \(KMU\) can be used with 
 
 1. Connect to your client instance\.
 
-1. [Install and Configure](install-and-configure-client-linux.md) Client SDK 3
+1. [Install and Configure](cmu-install-and-configure-client-linux.md) Client SDK 3\.
 
 1. Run the following command to start the AWS CloudHSM client\.
 
@@ -177,8 +177,8 @@ Self\-signed certificates should be used in a test environment only\. For a prod
 1. Connect to your client instance\.
 
 1. To install and configure, do one of the following:
-   + [OpenSSL Dynamic Engine Client SDK 5](openssl5-install.md)
-   + [OpenSSL Dynamic Engine Client SDK 3](openssl3-install.md)<a name="ssl-offload-generate-certificate-steps"></a>
+   + [Installing the OpenSSL Dynamic Engine](openssl5-install.md)
+   + [Installing Client SDK 3 for OpenSSL Dynamic Engine](openssl3-install.md)<a name="ssl-offload-generate-certificate-steps"></a>
 
 **Generate a certificate**
 
@@ -221,7 +221,7 @@ OpenSSL Dynamic Engine for Client SDK 3 does not support the latest Linux platfo
 
 1. Connect to your Amazon EC2 client instance\. If necessary, copy your existing private key and certificate to the instance\. 
 
-1. [Install and Configure](install-and-configure-client-linux.md) Client SDK 3
+1. [Install and Configure](cmu-install-and-configure-client-linux.md) Client SDK 3
 
 1. Run the following command to start the AWS CloudHSM client\.
 

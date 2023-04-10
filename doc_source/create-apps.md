@@ -2,7 +2,10 @@
 
 Build applications and work with keys using AWS CloudHSM\. 
 
-To get started creating and using keys in your new cluster, you must first create a hardware security module \(HSM\) user with CloudHSM Management Utility \(CMU\)\. For more information, see [Understanding HSM User Management Tasks](cli-users.md#understand-users), [Getting Started with CMU](cloudhsm_mgmt_util-getting-started.md), and [How to Manage HSM Users](cli-users.md#manage-users)\.
+To get started creating and using keys in your new cluster, you must first create a hardware security module \(HSM\) user with CloudHSM Management Utility \(CMU\)\. For more information, see [Understanding HSM User Management Tasks](cli-users.md#understand-users), [Getting started with AWS CloudHSM Command Line Interface \(CLI\)](cloudhsm_cli-getting-started.md), and [How to Manage HSM Users](manage-hsm-users.md)\.
+
+**Note**  
+If using Client SDK 3, use [CloudHSM Management Utility \(CMU\)](cloudhsm_mgmt_util.md) instead of CloudHSM CLI\.
 
 With HSM users in place, you can log in to the HSM and create and use keys with any of the following options: 
 + Use [key management utility, a command line tool](key_mgmt_util-getting-started.md)

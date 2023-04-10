@@ -2,7 +2,7 @@
 
 Before you can use the JCE provider, you need the AWS CloudHSM client\. 
 
-The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster\. The JCE provider communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the client \(Linux\)](install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
+The client is a daemon that establishes end\-to\-end encrypted communication with the HSMs in your cluster\. The JCE provider communicates locally with the client\. If you haven't installed and configured the AWS CloudHSM client package, do that now by following the steps at [Install the client \(Linux\)](cmu-install-and-configure-client-linux.md)\. After you install and configure the client, use the following command to start it\. 
 
 Note that the JCE provider is supported only on Linux and compatible operating systems\. 
 
@@ -75,7 +75,7 @@ $ sudo service cloudhsm-client start
 Use the following commands to download and install the JCE provider\. This provider is supported only on Linux and compatible operating systems\. 
 
 **Note**  
-For upgrading, see [Upgrade your Client SDK 3](client-upgrade.md)\.
+For upgrading, see [Upgrading Client SDK 3](client-upgrade.md)\.
 
 ------
 #### [ Amazon Linux ]
@@ -288,4 +288,4 @@ The error handling is easier with the explicit login than the implicit login met
 
 The basics on key management in the JCE provider involve importing keys, exporting keys, loading keys by handle, or deleting keys\. For more information on managing keys, see the [Manage keys](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/master/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) code example\.
 
-You can also find more JCE provider code examples at [Java samples](java-samples.md)\.
+You can also find more JCE provider code examples at [Samples](java-samples.md)\.

@@ -9,7 +9,6 @@ AWS does not endorse or vouch for any third\-party vendor\.
 + **[P6R's KMIP adapter](https://www.p6r.com/software/ksg.html)** allows you to utilize your AWS CloudHSM instances through a standard KMIP interface\. 
 + **[PrimeKey EJBCA](https://aws.amazon.com/marketplace/seller-profile?id=7edf9048-58e6-4086-9d98-b8e0c1d78fce)** is a popular open source solution for PKI\. It allows you to create and store key pairs securely with AWS CloudHSM\. 
 + **[Box KeySafe](https://blog.box.com)** provides encryption key management for cloud content to many organizations with strict security, privacy, and regulatory compliance requirements\. Customers can further secure KeySafe keys directly in AWS Key Management Service or indirectly in AWS CloudHSM via AWS KMS Custom Key Store\.
-+ **[Gemalto KeySecure](https://safenet.gemalto.com)** is a centralized key management platform, and supports AWS CloudHSM as a root of trust\. 
 + **[Insyde Software](https://www.insyde.com)** supports AWS CloudHSM as a root of trust for firmware signing\. 
 + **[F5 BIG\-IP LTM](https://techdocs.f5.com)** supports AWS CloudHSM as a root of trust\. 
 + **[Cloudera Navigator Key HSM](https://www.cloudera.com)** allows you to use your CloudHSM cluster to create and store keys for Cloudera Navigator Key Trustee Server\. 

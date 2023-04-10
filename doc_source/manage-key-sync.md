@@ -71,7 +71,7 @@ To manage client key durability settings, you must use the configure tool for Cl
 +  Use the configure tool to disable client key durability settings\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 --disable-key-availability-check
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --disable-key-availability-check
   ```
 
 **To disable client key durability for Client SDK 5 on Windows**
@@ -88,7 +88,7 @@ To manage client key durability settings, you must use the configure tool for Cl
 +  Use the configure tool to disable client key durability settings\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn --disable-key-availability-check
+  $ sudo /opt/cloudhsm/bin/configure-dyn --disable-key-availability-check
   ```
 
 ------
@@ -98,7 +98,7 @@ To manage client key durability settings, you must use the configure tool for Cl
 +  Use the configure tool to disable client key durability settings\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce --disable-key-availability-check
+  $ sudo /opt/cloudhsm/bin/configure-jce --disable-key-availability-check
   ```
 
 **To disable client key durability for Client SDK 5 on Windows**

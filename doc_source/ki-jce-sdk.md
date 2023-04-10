@@ -7,6 +7,8 @@
 + [Issue: Buffers for AES\-GCM encryption cannot exceed 16,000 bytes](#ki-jce-4)
 + [Issue: Elliptic\-curve Diffie\-Hellman \(ECDH\) key derivation is executed partially within the HSM](#ki-jce-5)
 + [Issue: KeyGenerator and KeyAttribute incorrectly interprets key size parameter as number of bytes instead of bits](#ki-jce-6)
++ [Issue: Client SDK 5 throws the warning “An illegal reflective access operation has occurred”](#ki-jce-7)
++ [Issue: JCE session pool is exhausted](#ki-jce-8)
 
 ## Issue: When working with asymmetric key pairs, you see occupied key capacity even when you are not explicitly creating or importing keys<a name="ki-jce-1"></a>
 + **Impact:** This issue can cause your HSMs to unexpectedly run out of key space and occurs when your application uses a standard JCE key object for crypto operations instead of a `CaviumKey` object\. When you use a standard JCE key object, `CaviumProvider` implicitly imports that key into the HSM as a session key and does not delete this key until the application exits\. As a result, keys build up while the application is running and can cause your HSMs to run out of free key space, thus freezing your application\. 
@@ -23,7 +25,7 @@
 ## Issue: The JCE KeyStore is read only<a name="ki-jce-3"></a>
 + **Impact: **You cannot store an object type that is not supported by the HSM in the JCE keystore today\. Specifically, you cannot store certificates in the keystore\. This precludes interoperability with tools like jarsigner, which expect to find the certificate in the keystore\. 
 + **Workaround: **You can rework your code to load certificates from local files or from an S3 bucket location instead of from the keystore\. 
-+ **Resolution status: **We are adding support for certificate storage in the keystore\. The feature will be announced on the version history page once available\.
++ **Resolution status: **We are adding support for certificate storage in the keystore\. The feature will be announced on the version history page once available\. 
 
 ## Issue: Buffers for AES\-GCM encryption cannot exceed 16,000 bytes<a name="ki-jce-4"></a>
 
@@ -45,3 +47,37 @@ When generating a key using the `init` function of the [KeyGenerator class](http
 + **Impact: **Client SDK versions 5\.4\.0 through 5\.4\.2 incorrectly expects the key size to be provided to the specified APIs as bytes\.
 + **Workaround: **Convert the key size from bits to bytes before using the KeyGenerator class or KeyAttribute enum to generate keys using the AWS CloudHSM JCE provider if using Client SDK versions 5\.4\.0 through 5\.4\.2\.
 + **Resolution status: **Upgrade your client SDK version to 5\.5\.0 or later, which includes a fix to correctly expect key sizes in bits when using the KeyGenerator class or KeyAttribute enum to generate keys\.
+
+## Issue: Client SDK 5 throws the warning “An illegal reflective access operation has occurred”<a name="ki-jce-7"></a>
+
+When using Client SDK 5 with Java 11, CloudHSM throws the following Java warning: 
+
+```
+```
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.amazonaws.cloudhsm.jce.provider.CloudHsmKeyStore (file:/opt/cloudhsm/java/cloudhsm-jce-5.6.0.jar) to field java.security .KeyStore.keyStoreSpi
+WARNING: Please consider reporting this to the maintainers of com.amazonaws.cloudhsm.jce.provider.CloudHsmKeyStore
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+```
+```
+
+These warnings have no impact\. We are aware of this issue and are working to resolve it\. No resolution nor workaround is needed\.
+
+## Issue: JCE session pool is exhausted<a name="ki-jce-8"></a>
+
+**Impact: **You may not be able to perform operations in JCE after seeing the following message:
+
+```
+com.amazonaws.cloudhsm.jce.jni.exception.InternalException: There are too many operations 
+happening at the same time: Reached max number of sessions in session pool: 1000
+```
+
+**Workarounds: **
++ Restart your JCE application if you’re experiencing impact\.
++ When performing an operation, you may need to complete the JCE operation before losing reference to the operation\.
+**Note**  
+Depending on the operation, a completion method may be needed\.    
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/ki-jce-sdk.html)
+
+**Resolution status: **We are improving the JCE provider to resolve this issue\. Updates will be announced in the AWS CloudHSM forum and on the version history page\.

@@ -15,14 +15,12 @@ CloudHSM Management Utility \(CMU\) enables you to manage hardware security modu
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
    ```
 
 ------
 
-   For more information about the CMU connection to the cluster, the configure tool, and obtaining an IP address for your cluster, see [Understanding HSM user management with CMU](cli-users.md#understand-users)\.
-
-1. Use the following command to start CMU\.
+1. Use the following command to start the CLI in interactive mode\.
 
 ------
 #### [ Linux ]
@@ -35,7 +33,7 @@ CloudHSM Management Utility \(CMU\) enables you to manage hardware security modu
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM> .\cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------
@@ -60,7 +58,7 @@ CloudHSM Management Utility \(CMU\) enables you to manage hardware security modu
 
 1. Use the loginHSM command to log in to the cluster\. Any type user can use this command to log in to the cluster\. 
 
-   The command in the following example logs in *admin*, which is the default [crypto officer \(CO\)](manage-hsm-users.md#understanding-users)\. You set this user's password when you [activated the cluster](activate-cluster.md)\. You can use the `-hpswd` parameter to hide your password\.
+   The command in the following example logs in *admin*, which is the default [crypto officer \(CO\)](manage-hsm-users-cmu.md#understanding-users-cmu)\. You set this user's password when you activated the cluster\. You can use the `-hpswd` parameter to hide your password\.
 
    ```
    aws-cloudhsm>loginHSM CO admin -hpswd

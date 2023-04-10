@@ -29,7 +29,7 @@ With Client SDK 5 you can use the configure tool to specify the location of the 
 +  Use the configure tool to specify a location for the issuing certificate\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 --hsm-ca-cert <customerCA certificate file>
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 --hsm-ca-cert <customerCA certificate file>
   ```
 
 **To place the issuing certificate on Windows for Client SDK 5**
@@ -46,7 +46,7 @@ With Client SDK 5 you can use the configure tool to specify the location of the 
 +  Use the configure tool to specify a location for the issuing certificate\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn --hsm-ca-cert <customerCA certificate file>
+  $ sudo /opt/cloudhsm/bin/configure-dyn --hsm-ca-cert <customerCA certificate file>
   ```
 
 ------
@@ -56,7 +56,7 @@ With Client SDK 5 you can use the configure tool to specify the location of the 
 +  Use the configure tool to specify a location for the issuing certificate\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce --hsm-ca-cert <customerCA certificate file>
+  $ sudo /opt/cloudhsm/bin/configure-jce --hsm-ca-cert <customerCA certificate file>
   ```
 
 **To place the issuing certificate on Windows for Client SDK 5**
@@ -80,11 +80,9 @@ The bootstrap process is different depending on the version of the Client SDK yo
 
 **To get an IP address for a HSM \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. To change the AWS Region, use the Region selector in the upper\-right corner of the page\.
-
-1. In the navigation pane, choose **Clusters**\.
 
 1. To open the cluster detail page, in the cluster table, choose the cluster ID\.
 
@@ -123,14 +121,14 @@ For more information about bootstrapping, see [Configure Tool](configure-tool.md
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-pkcs11 -a <HSM IP address>
+  $ sudo /opt/cloudhsm/bin/configure-pkcs11 -a <HSM IP address>
   ```
 
 **To bootstrap a Windows EC2 instance for Client SDK 5**
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  C:\Program Files\Amazon\CloudHSM\bin\configure-pkcs11.exe -a <HSM IP address>
+  C:\Program Files\Amazon\CloudHSM\bin\ .\configure-pkcs11.exe -a <HSM IP address>
   ```
 
 ------
@@ -140,7 +138,7 @@ For more information about bootstrapping, see [Configure Tool](configure-tool.md
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-dyn -a <HSM IP address>
+  $ sudo /opt/cloudhsm/bin/configure-dyn -a <HSM IP address>
   ```
 
 ------
@@ -150,14 +148,31 @@ For more information about bootstrapping, see [Configure Tool](configure-tool.md
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  sudo /opt/cloudhsm/bin/configure-jce -a <HSM IP address>
+  $ sudo /opt/cloudhsm/bin/configure-jce -a <HSM IP address>
   ```
 
 **To bootstrap a Windows EC2 instance for Client SDK 5**
 +  Use the configure tool to specify the IP address of a HSM in your cluster\. 
 
   ```
-  C:\Program Files\Amazon\CloudHSM\bin\configure-jce.exe -a <HSM IP address>
+  C:\Program Files\Amazon\CloudHSM\bin\ .\configure-jce.exe -a <HSM IP address>
+  ```
+
+------
+#### [ CloudHSM CLI ]
+
+**To bootstrap a Linux EC2 instance for Client SDK 5**
++  Use the configure tool to specify the IP address of a HSM in your cluster\. 
+
+  ```
+  $ sudo /opt/cloudhsm/bin/configure-cli -a <HSM IP address>
+  ```
+
+**To bootstrap a Windows EC2 instance for Client SDK 5**
++  Use the configure tool to specify the IP address of a HSM in your cluster\. 
+
+  ```
+  C:\Program Files\Amazon\CloudHSM\bin\ .\configure-cli.exe -a <HSM IP address>
   ```
 
 ------

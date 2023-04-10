@@ -69,19 +69,19 @@ Instructions for creating non\-extractable keys directly on the HSM, and then us
 
 If you have multiple client instances connected to your CloudHSM cluster, be aware that importing a certificate on one client instance’s key store won't automatically make the certificates available on other client instances\. To register the key and associated certificates on each client instance you need to run a Java application as described in [Generate a CSR using Keytool](#generate_csr_using_keytool)\. Alternatively, you can make the necessary changes on one client and copy the resulting key store file to every other client instance\.
 
-**Example 1: **To generate a symmetric AES\-256 key with label, "my\_secret" and save it in a key store file named, "my\_keystore\.store", in the working directory\.
+**Example 1: **To generate a symmetric AES\-256 key and save it in a key store file named, "my\_keystore\.store", in the working directory\. Replace *<secret label>* with a unique label\.
 
 ```
-keytool -genseckey -alias my_secret -keyalg aes \
+keytool -genseckey -alias <secret label> -keyalg aes \
 		-keysize 256 -keystore my_keystore.store \
 		-storetype CloudHSM -J-classpath '-J/opt/cloudhsm/java/*' \
 		-J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
-**Example 2: **To generate an RSA 2048 key pair with label "my\_rsa\_key\_pair" and save it in a key store file named, "my\_keystore\.store" in the working directory\.
+**Example 2: **To generate an RSA 2048 key pair and save it in a key store file named, "my\_keystore\.store" in the working directory\. Replace *<RSA key pair label>* with a unique label\.
 
 ```
-keytool -genkeypair -alias my_rsa_key_pair \
+keytool -genkeypair -alias <RSA key pair label> \
         -keyalg rsa -keysize 2048 \
         -sigalg sha512withrsa \
         -keystore my_keystore.store \
@@ -90,10 +90,10 @@ keytool -genkeypair -alias my_rsa_key_pair \
         -J-Djava.library.path=/opt/cloudhsm/lib/
 ```
 
-**Example 3: **To generate a p256 ED key with label "my\_ec\_key\_pair" and save it in a key store file named, "my\_keystore\.store" in the working directory\.
+**Example 3: **To generate a p256 ED key and save it in a key store file named, "my\_keystore\.store" in the working directory\. Replace *<ec key pair label>* with a unique label\.
 
 ```
-keytool -genkeypair -alias my_ec_key_pair \
+keytool -genkeypair -alias <ec key pair label> \
         -keyalg ec -keysize 256 \
         -sigalg SHA512withECDSA \
         -keystore my_keystore.store \
@@ -113,7 +113,7 @@ The AWS CloudHSM key store doesn't support deleting keys\. To delete key, you mu
 You receive the greatest flexibility in generating a certificate signing request \(CSR\) if you use the [OpenSSL Dynamic Engine](openssl-library.md)\. The following command uses keytool to generate a CSR for a key pair with the alias, `my-key-pair`\.
 
 ```
-keytool -certreq -alias my_key_pair \
+keytool -certreq -alias <key pair label> \
         -file my_csr.csr \
         -keystore my_keystore.store \
         -storetype CLOUDHSM \
@@ -157,7 +157,7 @@ If you connect multiple client instances to your AWS CloudHSM cluster, deleting 
 Once a certificate signing request \(CSR\) is signed, you can import it into the AWS CloudHSM key store and associate it with the appropriate key pair\. The following command provides an example\. 
 
 ```
-keytool -importcert -noprompt -alias my_key_pair \
+keytool -importcert -noprompt -alias <key pair label> \
         -file my_certificate.crt \
         -keystore my_keystore.store
         -storetype CLOUDHSM \
@@ -174,7 +174,7 @@ The certificate chain must be verifiable\. If you can't verify the certificate, 
 The following example generates a certificate in binary X\.509 format\. To export a human readable certificate, add `-rfc` to the `-exportcert` command\. 
 
 ```
-keytool -exportcert -alias my_key_pair \
+keytool -exportcert -alias <key pair label> \
         -file my_exported_certificate.crt \
         -keystore my_keystore.store \
         -storetype CLOUDHSM \
@@ -207,7 +207,7 @@ jarsigner -keystore my_keystore.store \
         -storetype CloudHSM \
         -J-classpath '-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
         -J-Djava.library.path=/opt/cloudhsm/lib \
-        signthisclass.jar my_key_pair
+        signthisclass.jar <key pair label>
 ```
 
 Use the following command to verify a signed JAR: 
@@ -219,7 +219,7 @@ jarsigner -verify \
         -storetype CloudHSM \
         -J-classpath '-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
         -J-Djava.library.path=/opt/cloudhsm/lib \
-        signthisclass_signed.jar my_key_pair
+        signthisclass_signed.jar <key pair label>
 ```
 
 ## Known issues<a name="known-issues-keytool-jarsigner"></a>

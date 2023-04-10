@@ -1,4 +1,4 @@
-# Upgrade Client SDK 3 on Linux<a name="client-upgrade"></a>
+# Upgrading Client SDK 3 on Linux<a name="client-upgrade"></a>
 
 With AWS CloudHSM Client SDK 3\.1 and higher, the version of the client daemon and any components you install must match to upgrade\. For all Linux\-based systems, you must use a single command to batch upgrade the client daemon with the same version of the PKCS \#11 library, the Java Cryptographic Extension \(JCE\) provider, or the OpenSSL Dynamic Engine\. This requirement does not apply to Windows\-based systems because the binaries for the CNG and KSP providers are already included in the client daemon package\. 
 

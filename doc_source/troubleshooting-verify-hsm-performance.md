@@ -2,7 +2,7 @@
 
 This topic describes how to verify HSM performance with Client SDK 3\.
 
-To verify the performance of the HSMs in your AWS CloudHSM cluster, you can use the pkpspeed \(Linux\) or pkpspeed\_blocking \(Windows\) tool that is included with Client SDK 3\. For more information about installing the client on a Linux EC2 instance, see [Install and configure the AWS CloudHSM client \(Linux\)](install-and-configure-client-linux.md)\. For more information about installing the client on a Windows instance, see [Install and configure the AWS CloudHSM client \(Windows\)](install-and-configure-client-win.md)\. 
+To verify the performance of the HSMs in your AWS CloudHSM cluster, you can use the pkpspeed \(Linux\) or pkpspeed\_blocking \(Windows\) tool that is included with Client SDK 3\. For more information about installing the client on a Linux EC2 instance, see [Install and configure the AWS CloudHSM client \(Linux\)](cmu-install-and-configure-client-linux.md)\. For more information about installing the client on a Windows instance, see [Install and configure the AWS CloudHSM client \(Windows\)](cmu-install-and-configure-client-win.md)\. 
 
 After you install and configure the AWS CloudHSM client, run the following command to start it\.
 

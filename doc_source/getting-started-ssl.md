@@ -123,14 +123,14 @@ Use any of the Client SDK 5 configure tools to enable custom SSL\. For more info
 1. Copy your key and certificate to the appropriate directory\.
 
    ```
-   sudo cp ssl-client.crt /opt/cloudhsm/etc
+   $ sudo cp ssl-client.crt /opt/cloudhsm/etc
    sudo cp ssl-client.key /opt/cloudhsm/etc
    ```
 
 1.  Use the configure tool to specify `ssl-client.crt` and `ssl-client.key`\.
 
    ```
-   sudo /opt/cloudhsm/bin/configure-pkcs11 \
+   $ sudo /opt/cloudhsm/bin/configure-pkcs11 \
                --server-client-cert-file /opt/cloudhsm/etc/ssl-client.crt \
                --server-client-key-file /opt/cloudhsm/etc/ssl-client.key
    ```
@@ -160,14 +160,14 @@ Use any of the Client SDK 5 configure tools to enable custom SSL\. For more info
 1. Copy your key and certificate to the appropriate directory\.
 
    ```
-   sudo cp ssl-client.crt /opt/cloudhsm/etc
+   $ sudo cp ssl-client.crt /opt/cloudhsm/etc
    sudo cp ssl-client.key /opt/cloudhsm/etc
    ```
 
 1.  Use the configure tool to specify `ssl-client.crt` and `ssl-client.key`\.
 
    ```
-   sudo /opt/cloudhsm/bin/configure-dyn \
+   $ sudo /opt/cloudhsm/bin/configure-dyn \
                --server-client-cert-file /opt/cloudhsm/etc/ssl-client.crt \
                --server-client-key-file /opt/cloudhsm/etc/ssl-client.key
    ```
@@ -180,14 +180,14 @@ Use any of the Client SDK 5 configure tools to enable custom SSL\. For more info
 1. Copy your key and certificate to the appropriate directory\.
 
    ```
-   sudo cp ssl-client.crt /opt/cloudhsm/etc
+   $ sudo cp ssl-client.crt /opt/cloudhsm/etc
    sudo cp ssl-client.key /opt/cloudhsm/etc
    ```
 
 1.  Use the configure tool to specify `ssl-client.crt` and `ssl-client.key`\.
 
    ```
-   sudo /opt/cloudhsm/bin/configure-jce \
+   $ sudo /opt/cloudhsm/bin/configure-jce \
                --server-client-cert-file /opt/cloudhsm/etc/ssl-client.crt \
                --server-client-key-file /opt/cloudhsm/etc/ssl-client.key
    ```

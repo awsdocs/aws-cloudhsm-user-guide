@@ -9,7 +9,7 @@ Only crypto officers \(COs and PCOs\) and appliance users \(AUs\) can run this c
 + [findKey](key_mgmt_util-findKey.md) in key\_mgmt\_util to find the keys that they can use
 + [getKeyInfo](key_mgmt_util-getKeyInfo.md) in key\_mgmt\_util to find the owner and shared users of a particular key they own or share
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 

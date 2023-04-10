@@ -5,7 +5,7 @@ To accomplish Oracle TDE integration with AWS CloudHSM, you need the following:
 + An Amazon EC2 instance running the Amazon Linux operating system with the following software installed:
   + The AWS CloudHSM client and command line tools\.
   + The AWS CloudHSM software library for PKCS \#11\.
-  + Oracle Database\. AWS CloudHSM supports Oracle TDE integration with Oracle Database versions 11 and 12\.
+  + Oracle Database\. AWS CloudHSM supports Oracle TDE integration\. Client SDK 5\.6 and higher support Oracle TDE for Oracle Database 19c\. Client SDK 3 supports Oracle TDE for Oracle Database versions 11g and 12c\.
 + A cryptographic user \(CU\) to own and manage the TDE master encryption key on the HSMs in your cluster\.
 
 Complete the following steps to set up all of the prerequisites\.
@@ -20,8 +20,8 @@ Complete the following steps to set up all of the prerequisites\.
 
    1. [Install the AWS CloudHSM software library for PKCS \#11](pkcs11-library-install.md)\.
 
-   1. Install Oracle Database\. For more information, see the [Oracle Database documentation](https://docs.oracle.com/en/database/)\. AWS CloudHSM supports Oracle TDE integration with Oracle Database versions 11 and 12\.
+   1. Install Oracle Database\. For more information, see the [Oracle Database documentation](https://docs.oracle.com/en/database/)\. Client SDK 5\.6 and higher support Oracle TDE for Oracle Database 19c\. Client SDK 3 supports Oracle TDE for Oracle Database versions 11g and 12c\.
 
-   1. Use the cloudhsm\_mgmt\_util command line tool to create a cryptographic user \(CU\) on your cluster\. For more information about creating a CU, see [How to Manage HSM Users with CMU](cli-users.md#create-users) and [Managing HSM users](manage-hsm-users.md)\. 
+   1. Use the cloudhsm\_mgmt\_util command line tool to create a cryptographic user \(CU\) on your cluster\. For more information about creating a CU, see [How to Manage HSM Users with CMU](cli-users.md#create-users-cmu) and [Managing HSM users](manage-hsm-users.md)\. 
 
 After you complete these steps, you can [Configure the database](oracle-tde-configure-database-and-generate-master-key.md)\.

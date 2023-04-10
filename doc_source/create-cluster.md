@@ -11,7 +11,7 @@ You can create a cluster from the [AWS CloudHSM console](https://console.aws.ama
 
 **To create a cluster \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. On the navigation bar, use the region selector to choose one of the [AWS Regions where AWS CloudHSM is currently supported](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudhsm_region)\. 
 
@@ -28,8 +28,8 @@ Even if AWS CloudHSM is not supported in a given Availability Zone, performance 
 1. Choose **Next**\.
 
 1. Specify how long the service should retain backups\.
-
-   Accept the default retention period of 90 days or type a new value between 7 and 379 days\. The service will automatically delete backups in this cluster older than the value you specify here\. You can change this later\. For more information, see [Configuring backup retention](manage-backup-retention.md)\.
+**Note**  
+Accept the default retention period of 90 days or type a new value between 7 and 379 days\. The service will automatically delete backups in this cluster older than the value you specify here\. You can change this later\. For more information, see [Configuring backup retention](manage-backup-retention.md)\.
 
 1. Choose **Next**\.
 
@@ -44,8 +44,8 @@ Even if AWS CloudHSM is not supported in a given Availability Zone, performance 
 
   ```
   $ aws cloudhsmv2 create-cluster --hsm-type hsm1.medium \
-  				--backup-retention-policy DAYS <number of days to retain backups>\
-  				--subnet-ids <subnet ID 1> <subnet ID 2> <subnet ID N>
+    				--backup-retention-policy Type=DAYS,Value=<number of days> \
+    				--subnet-ids <subnet ID>
   
   {
       "Cluster": {

@@ -98,7 +98,7 @@ deleteUser <user-type> <user-name>
 Specifies the type of user\. This parameter is required\.   
 You can't delete crypto users \(CU\) that own keys\.
 Valid values are **CO**, **CU**\.  
-To get the user type, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md#understanding-users)\.  
+To get the user type, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.  
 Required: Yes
 
 **<user\-name>**  

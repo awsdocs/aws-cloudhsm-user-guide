@@ -21,11 +21,9 @@ This example uses the `-a` parameter of configure to update the HSM data for the
 
 **To get an IP address for a HSM \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. To change the AWS Region, use the Region selector in the upper\-right corner of the page\.
-
-1. In the navigation pane, choose **Clusters**\.
 
 1. To open the cluster detail page, in the cluster table, choose the cluster ID\.
 
@@ -188,7 +186,7 @@ This example uses the `-a` parameter of configure to update the HSM data for the
 #### [ Windows ]
 
    ```
-   c:\Program Files\Amazon\CloudHSM>configure.exe -a 10.0.0.9
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe -a 10.0.0.9
    ```
 
 ------
@@ -283,7 +281,7 @@ This example uses the `-m` configure command to copy the updated HSM data from t
 #### [ Windows ]
 
   ```
-  c:\Program Files\Amazon\CloudHSM>configure.exe -m
+  C:\Program Files\Amazon\CloudHSM\bin\ configure.exe -m
   ```
 
 ------
@@ -303,7 +301,7 @@ This example uses the `--cmu` parameter of the configure command to update HSM d
 #### [ Windows ]
 
   ```
-  C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+  C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
   ```
 
 ------

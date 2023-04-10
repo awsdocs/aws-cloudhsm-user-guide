@@ -17,7 +17,7 @@ For more information about clusters, see the following topics\.
 
 ## Cluster architecture<a name="cluster-architecture"></a>
 
-When you create a cluster, you specify an Amazon Virtual Private Cloud \(VPC\) in your AWS account and one or more subnets in that VPC\. We recommend that you create one subnet in each Availability Zone \(AZ\) in your chosen AWS Region\. To learn how, see [Create a private subnet](create-subnets.md)\.
+When you create a cluster, you specify an Amazon Virtual Private Cloud \(VPC\) in your AWS account and one or more subnets in that VPC\. We recommend that you create one subnet in each Availability Zone \(AZ\) in your chosen AWS Region\. You can create private subnets when you create a VPC\. To learn more, see [Create a virtual private cloud \(VPC\)](create-vpc.md)\.
 
 Each time you create an HSM, you specify the cluster and Availability Zone for the HSM\. By putting the HSMs in different Availability Zones, you achieve redundancy and high availability in case one Availability Zone is unavailable\.
 
@@ -31,11 +31,11 @@ The following figure represents an AWS CloudHSM cluster with three HSMs, each in
 
 ## Cluster synchronization<a name="cluster-synchronization"></a>
 
-In an AWS CloudHSM cluster, AWS CloudHSM keeps the keys on the individual HSMs in sync\. You don't need to do anything to synchronize the keys on your HSMs\. To keep the users and policies on each HSM in sync, update the AWS CloudHSM client configuration file before you [manage HSM users](manage-hsm-users.md)\. For more information, see [Keep HSM users in snc](troubleshooting-keep-hsm-users-in-sync.md)\.
+In an AWS CloudHSM cluster, AWS CloudHSM keeps the keys on the individual HSMs in sync\. You don't need to do anything to synchronize the keys on your HSMs\. To keep the users and policies on each HSM in sync, update the AWS CloudHSM client configuration file before you [manage HSM users](manage-hsm-users.md)\. For more information, see [Keep HSM users in sync](troubleshooting-keep-hsm-users-in-sync.md)\.
 
 When you add a new HSM to a cluster, AWS CloudHSM makes a backup of all keys, users, and policies on an existing HSM\. It then restores that backup onto the new HSM\. This keeps the two HSMs in sync\.
 
-If the HSMs in a cluster fall out of synchronization, AWS CloudHSM automatically resynchronizes them\. To enable this, AWS CloudHSM uses the credentials of the [appliance user](manage-hsm-users.md#understanding-users)\. This user exists on all HSMs provided by AWS CloudHSM and has limited permissions\. It can get a hash of objects on the HSM and can extract and insert masked \(encrypted\) objects\. AWS cannot view or modify your users or keys and cannot perform any cryptographic operations using those keys\.
+If the HSMs in a cluster fall out of synchronization, AWS CloudHSM automatically resynchronizes them\. To enable this, AWS CloudHSM uses the credentials of the [appliance user](manage-hsm-users-chsm-cli.md#understanding-users)\. This user exists on all HSMs provided by AWS CloudHSM and has limited permissions\. It can get a hash of objects on the HSM and can extract and insert masked \(encrypted\) objects\. AWS cannot view or modify your users or keys and cannot perform any cryptographic operations using those keys\.
 
 ## Cluster high availability and load balancing<a name="cluster-high-availability-load-balancing"></a>
 

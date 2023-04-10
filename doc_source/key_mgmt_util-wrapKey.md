@@ -86,7 +86,7 @@ Required: No
 
 **\-i**  
 The initialization vector \(IV\) \(hex value\)\.  
-Valid only when passed with the `-noheader` parameter for `CLOUDHSM_AES_KEY_WRAP`, `NIST_AES_WRAP`, and `NIST_TDEA_WRAP` mechanisms\.
+Valid only when passed with the `-noheader` parameter for `CLOUDHSM_AES_KEY_WRAP`, and `NIST_AES_WRAP` mechanisms\.
 Required: No
 
 **\-iv\_file**  

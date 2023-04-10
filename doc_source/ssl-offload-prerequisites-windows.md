@@ -5,7 +5,7 @@ To set up web server SSL/TLS offload with AWS CloudHSM, you need the following:
 + An Amazon EC2 instance running a Windows operating system with the following software installed:
   + The AWS CloudHSM client software for Windows\.
   + Internet Information Services \(IIS\) for Windows Server\.
-+ A [crypto user](manage-hsm-users.md#crypto-user) \(CU\) to own and manage the web server's private key on the HSM\.
++ A [crypto user](manage-hsm-users-chsm-cli.md#crypto-user-chsm-cli) \(CU\) to own and manage the web server's private key on the HSM\.
 
 **Note**  
 This tutorial uses Microsoft Windows Server 2016\. Microsoft Windows Server 2012 is also supported, but Microsoft Windows Server 2012 R2 is not\.
@@ -18,7 +18,9 @@ This tutorial uses Microsoft Windows Server 2016\. Microsoft Windows Server 2012
 
 1. Connect to your Windows server\. For more information, see [Connect to Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html#ec2-connect-to-instance-windows) in the *Amazon EC2 User Guide for Windows Instances*\.
 
-1. [Create a crypto user \(CU\)](cli-users.md#manage-users)\. Keep track of the CU user name and password\. You will need them to complete the next step\.
+1. Use CloudHSM CLI to create a crypto user \(CU\)\. Keep track of the CU user name and password\. You will need them to complete the next step\. 
+**Note**  
+For information on creating a user, see [Managing HSM users with CloudHSM CLI](manage-hsm-users-chsm-cli.md)\.
 
 1. [Set the login credentials for the HSM](ksp-library-prereq.md), using the CU user name and password that you created in the previous step\.
 

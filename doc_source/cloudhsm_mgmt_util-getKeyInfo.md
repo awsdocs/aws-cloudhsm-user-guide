@@ -6,7 +6,7 @@ When you run getKeyInfo on public keys, getKeyInfo returns only the key owner, e
 
 You own the keys that you create\. You can share a key with other users when you create it\. Then, to share or unshare an existing key, use [shareKey](cloudhsm_mgmt_util-shareKey.md) in cloudhsm\_mgmt\_util\.
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 

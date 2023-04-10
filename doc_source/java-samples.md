@@ -3,7 +3,7 @@
 ## Prerequisites<a name="java-samples-prereqs"></a>
 
  Before running the samples, you must set up your environment:
-+ Install and configure the [Java Cryptographic Extension \(JCE\) provider](java-library-install.md#install-java-library) and the [AWS CloudHSM client package](install-and-configure-client-linux.md)\. 
++ Install and configure the [Java Cryptographic Extension \(JCE\) provider](java-library-install.md#install-java-library) and the [AWS CloudHSM client package](cmu-install-and-configure-client-linux.md)\. 
 + Set up a valid [HSM user name and password](manage-hsm-users.md)\. Cryptographic user \(CU\) permissions are sufficient for these tasks\. Your application uses these credentials to log in to the HSM in each example\.
 + Decide how to provide credentials to the [JCE provider](java-library-install.md#java-library-credentials)\.
 

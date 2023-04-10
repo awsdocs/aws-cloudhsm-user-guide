@@ -9,7 +9,7 @@ You cannot change the password of a user who is currently logged into the AWS Cl
 
 ## To troubleshoot changePswd<a name="troubleshoot-changepassword"></a>
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
@@ -120,7 +120,7 @@ Changing password for john(CO) on 2 nodes
 
 ## Arguments<a name="changePswd-params"></a>
 
-Enter the arguments in the order specified in the syntax diagram\. Use the `-hpswd` parameter to mask your password\. To enable 2FA for a CO user, use the `-2fa` parameter and include a file path\. For more information about working with 2FA, see [Managing 2FA](manage-2fa.md)
+Enter the arguments in the order specified in the syntax diagram\. Use the `-hpswd` parameter to mask your password\. To enable 2FA for a CO user, use the `-2fa` parameter and include a file path\. For more information about working with 2FA, see [Using CMU to manage 2FA](manage-2fa.md)
 
 ```
 changePswd <user-type> <user-name> <password |-hpswd> [-2fa </path/to/authdata>]
@@ -129,7 +129,7 @@ changePswd <user-type> <user-name> <password |-hpswd> [-2fa </path/to/authdata>]
 **<user\-type>**  
 Specifies the current type of the user whose password you are changing\. You cannot use changePswd to change the user type\.   
 Valid values are `CO`, `CU`, `PCO`, and `PRECO`\.  
-To get the user type, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md#understanding-users)\.  
+To get the user type, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.  
 Required: Yes
 
 **<user\-name>**  
@@ -141,7 +141,7 @@ Specifies a new password for the user\. Enter a string of 7 to 32 characters\. T
 Required: Yes
 
 **\[\-2fa </path/to/authdata>\]**  
-Specifies enabling 2FA for this CO user\. To get the data necessary for setting up 2FA, include a path to a location in the file system with a file name after the `-2fa` parameter\. For more information about working with 2FA, see [Managing 2FA](manage-2fa.md)\.  
+Specifies enabling 2FA for this CO user\. To get the data necessary for setting up 2FA, include a path to a location in the file system with a file name after the `-2fa` parameter\. For more information about working with 2FA, see [Using CMU to manage 2FA](manage-2fa.md)\.  
 Required: No
 
 ## Related topics<a name="changePswd-seealso"></a>

@@ -50,16 +50,18 @@ To verify the identity and authenticity of your HSM, start by getting a CSR and 
 
 **To get the CSR and HSM certificates \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
-1. Choose **Initialize** next to the cluster that you created previously\.
+1. Select the radio button next to the cluster ID with the HSM you want to verify\.
 
-1. Choose an Availability Zone \(AZ\) for the HSM that you are creating\. Then choose **Create**\. If you're following the getting started, you did this in a [previous step](create-hsm.md)\.
+1. Select **Actions**\. From the drop down menu, choose **Initialize**\.
+
+1. If you did not complete the [previous step](create-hsm.md) to create an HSM, choose an Availability Zone \(AZ\) for the HSM that you are creating\. Then select **Create**\.
 
 1. When the certificates and CSR are ready, you see links to download them\.  
 ![\[The download certificate signing request page in the AWS CloudHSM console.\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/images/download-csr-hsm-cert.png)
 
-   Choose each link to download and save the CSR and certificates\. To simplify the subsequent steps, save all of the files to the same directory and use the default file names\. 
+1. Choose each link to download and save the CSR and certificates\. To simplify the subsequent steps, save all of the files to the same directory and use the default file names\. 
 
 **To get the CSR and HSM certificates \([AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/)\)**
 + At a command prompt, run the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) command four times, extracting the CSR and different certificates each time and saving them to files\.

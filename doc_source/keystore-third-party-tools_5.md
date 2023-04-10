@@ -100,13 +100,13 @@ We strongly recommend generating non\-exportable keys outside of keytool, and th
 
 If you have multiple client instances connected to your AWS CloudHSM cluster, be aware that importing a certificate on one client instance’s key store won't automatically make the certificates available on other client instances\. To register the key and associated certificates on each client instance you need to run a Java application as described in [Generate a CSR using keytool](#generate_csr_using_keytool_5)\. Alternatively, you can make the necessary changes on one client and copy the resulting key store file to every other client instance\.
 
-**Example 1: **To generate a symmetric AES\-256 key with label, "my\_secret" and save it in a key store file named, "my\_keystore\.store", in the working directory\.
+**Example 1: **To generate a symmetric AES\-256 key and save it in a key store file named, "my\_keystore\.store", in the working directory\. Replace *<secret label>* with a unique label\.
 
 ------
 #### [ Linux ]
 
 ```
-$ keytool -genseckey -alias my_secret -keyalg aes \
+$ keytool -genseckey -alias <secret label> -keyalg aes \
 	-keysize 256 -keystore my_keystore.store \
 	-storetype CloudHSM -J-classpath '-J/opt/cloudhsm/java/*' \
 ```
@@ -115,20 +115,20 @@ $ keytool -genseckey -alias my_secret -keyalg aes \
 #### [ Windows ]
 
 ```
-PS C:\> keytool -genseckey -alias my_secret -keyalg aes `
+PS C:\> keytool -genseckey -alias <secret label> -keyalg aes `
 	-keysize 256 -keystore my_keystore.store `
 	-storetype CloudHSM -J-classpath '-J"C:\Program Files\Amazon\CloudHSM\java\*"'
 ```
 
 ------
 
-**Example 2: **To generate an RSA 2048 key pair with label "my\_rsa\_key\_pair" and save it in a key store file named, "my\_keystore\.store" in the working directory\.
+**Example 2: **To generate an RSA 2048 key pair and save it in a key store file named, "my\_keystore\.store" in the working directory\. Replace *<RSA key pair label>* with a unique label\.
 
 ------
 #### [ Linux ]
 
 ```
-$ keytool -genkeypair -alias my_rsa_key_pair \
+$ keytool -genkeypair -alias <RSA key pair label> \
 	-keyalg rsa -keysize 2048 \
 	-sigalg sha512withrsa \
 	-keystore my_keystore.store \
@@ -140,7 +140,7 @@ $ keytool -genkeypair -alias my_rsa_key_pair \
 #### [ Windows ]
 
 ```
-PS C:\> keytool -genkeypair -alias my_rsa_key_pair `
+PS C:\> keytool -genkeypair -alias <RSA key pair label> `
 	-keyalg rsa -keysize 2048 `
 	-sigalg sha512withrsa `
 	-keystore my_keystore.store `
@@ -168,7 +168,7 @@ You receive the greatest flexibility in generating a certificate signing request
 #### [ Linux ]
 
 ```
-$ keytool -certreq -alias my_key_pair \
+$ keytool -certreq -alias <key pair label> \
 	-file my_csr.csr \
 	-keystore my_keystore.store \
 	-storetype CLOUDHSM \
@@ -179,7 +179,7 @@ $ keytool -certreq -alias my_key_pair \
 #### [ Windows ]
 
 ```
-PS C:\> keytool -certreq -alias my_key_pair `
+PS C:\> keytool -certreq -alias <key pair label> `
 	-file my_csr.csr `
 	-keystore my_keystore.store `
 	-storetype CLOUDHSM `
@@ -255,7 +255,7 @@ Once a certificate signing request \(CSR\) is signed, you can import it into the
 #### [ Linux ]
 
 ```
-$ keytool -importcert -noprompt -alias my_key_pair \
+$ keytool -importcert -noprompt -alias <key pair label> \
 	-file my_certificate.crt \
 	-keystore my_keystore.store \
 	-storetype CLOUDHSM \
@@ -266,7 +266,7 @@ $ keytool -importcert -noprompt -alias my_key_pair \
 #### [ Windows ]
 
 ```
-PS C:\> keytool -importcert -noprompt -alias my_key_pair `
+PS C:\> keytool -importcert -noprompt -alias <key pair label> `
 	-file my_certificate.crt `
 	-keystore my_keystore.store `
 	-storetype CLOUDHSM `
@@ -287,7 +287,7 @@ The following example generates a certificate in binary X\.509 format\. To expor
 #### [ Linux ]
 
 ```
-$ keytool -exportcert -alias my_key_pair \
+$ keytool -exportcert -alias <key pair label> \
 	-file my_exported_certificate.crt \
 	-keystore my_keystore.store \
 	-storetype CLOUDHSM \
@@ -298,7 +298,7 @@ $ keytool -exportcert -alias my_key_pair \
 #### [ Windows ]
 
 ```
-PS C:\> keytool -exportcert -alias my_key_pair `
+PS C:\> keytool -exportcert -alias <key pair label> `
 	-file my_exported_certificate.crt `
 	-keystore my_keystore.store `
 	-storetype CLOUDHSM `
@@ -337,7 +337,7 @@ jarsigner -keystore my_keystore.store \
 	-storetype CloudHSM \
 	-J-classpath '-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
 	-J-Djava.library.path=/opt/cloudhsm/lib \
-	signthisclass.jar my_key_pair
+	signthisclass.jar <key pair label>
 ```
 
 For OpenJDK11
@@ -349,7 +349,7 @@ jarsigner -keystore my_keystore.store \
 	-storetype CloudHSM \
 	-J-classpath '-J/opt/cloudhsm/java/*' \
 	-J-Djava.library.path=/opt/cloudhsm/lib \
-	signthisclass.jar my_key_pair
+	signthisclass.jar <key pair label>
 ```
 
 ------
@@ -364,7 +364,7 @@ jarsigner -keystore my_keystore.store `
 	-storetype CloudHSM `
 	-J-classpath '-JC:\Program Files\Amazon\CloudHSM\java\*;C:\Program Files\Java\jdk1.8.0_331\lib\tools.jar' `
 	 "-J-Djava.library.path='C:\Program Files\Amazon\CloudHSM\lib\'" `
-	signthisclass.jar my_key_pair
+	signthisclass.jar <key pair label>
 ```
 
 For OpenJDK11
@@ -376,7 +376,7 @@ jarsigner -keystore my_keystore.store `
 	-storetype CloudHSM `
 	-J-classpath '-JC:\Program Files\Amazon\CloudHSM\java\*'`
 	 "-J-Djava.library.path='C:\Program Files\Amazon\CloudHSM\lib\'" `
-	signthisclass.jar my_key_pair
+	signthisclass.jar <key pair label>
 ```
 
 ------
@@ -395,7 +395,7 @@ jarsigner -verify \
 	-storetype CloudHSM \
 	-J-classpath '-J/opt/cloudhsm/java/*:/usr/lib/jvm/java-1.8.0/lib/tools.jar' \
 	-J-Djava.library.path=/opt/cloudhsm/lib \
-	signthisclass_signed.jar my_key_pair
+	signthisclass_signed.jar <key pair label>
 ```
 
 For OpenJDK11
@@ -407,7 +407,7 @@ jarsigner -verify \
 	-storetype CloudHSM \
 	-J-classpath '-J/opt/cloudhsm/java/*' \
 	-J-Djava.library.path=/opt/cloudhsm/lib \
-	signthisclass_signed.jar my_key_pair
+	signthisclass_signed.jar <key pair label>
 ```
 
 ------
@@ -422,7 +422,7 @@ jarsigner -verify `
 	-storetype CloudHSM `
 	-J-classpath '-JC:\Program Files\Amazon\CloudHSM\java\*;C:\Program Files\Java\jdk1.8.0_331\lib\tools.jar' `
 	"-J-Djava.library.path='C:\Program Files\Amazon\CloudHSM\lib\'" `
-	signthisclass_signed.jar my_key_pair
+	signthisclass_signed.jar <key pair label>
 ```
 
 For OpenJDK11
@@ -434,7 +434,7 @@ jarsigner -verify `
 	-storetype CloudHSM `
 	-J-classpath '-JC:\Program Files\Amazon\CloudHSM\java\*`
 	"-J-Djava.library.path='C:\Program Files\Amazon\CloudHSM\lib\'" `
-	signthisclass_signed.jar my_key_pair
+	signthisclass_signed.jar <key pair label>
 ```
 
 ------

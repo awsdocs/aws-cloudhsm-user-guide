@@ -31,7 +31,7 @@ You can use either the `set_cloudhsm_credentials` utility or the Windows Credent
 
 ## System environment variables<a name="enviorn-var"></a>
 
-You can set system environment variables that identify an HSM and a [crypto user](manage-hsm-users.md#crypto-user) \(CU\) for your Windows application\. You can use the [setx command](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set system environment variables, or set permanent system environment variables [programmatically](https://msdn.microsoft.com/en-us/library/system.environment.setenvironmentvariable(v=vs.110).aspx) or in the **Advanced** tab of the Windows **System Properties** Control Panel\. 
+You can set system environment variables that identify an HSM and a [crypto user](manage-hsm-users-cmu.md#crypto-user-cmu) \(CU\) for your Windows application\. You can use the [setx command](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx) to set system environment variables, or set permanent system environment variables [programmatically](https://msdn.microsoft.com/en-us/library/system.environment.setenvironmentvariable(v=vs.110).aspx) or in the **Advanced** tab of the Windows **System Properties** Control Panel\. 
 
 **Warning**  
 When you set credentials through system environment variables, the password is available in plaintext on a user’s system\. To overcome this problem, use Windows Credential Manager\.
@@ -39,7 +39,7 @@ When you set credentials through system environment variables, the password is a
 Set the following system environment variables:
 
 **`n3fips_password=CU-username:CU-password`**  
-Identifies a [crypto user](manage-hsm-users.md#crypto-user) \(CU\) in the HSM and provides all required login information\. Your application authenticates and runs as this CU\. The application has the permissions of this CU and can view and manage only the keys that the CU owns and shares\. To create a new CU, use [createUser](cloudhsm_mgmt_util-createUser.md)\. To find existing CUs, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\.  
+Identifies a [crypto user](manage-hsm-users-cmu.md#crypto-user-cmu) \(CU\) in the HSM and provides all required login information\. Your application authenticates and runs as this CU\. The application has the permissions of this CU and can view and manage only the keys that the CU owns and shares\. To create a new CU, use [createUser](cloudhsm_mgmt_util-createUser.md)\. To find existing CUs, use [listUsers](cloudhsm_mgmt_util-listUsers.md)\.  
 For example:  
 
 ```

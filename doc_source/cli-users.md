@@ -1,15 +1,15 @@
 # Using CloudHSM Management Utility \(CMU\) to manage users<a name="cli-users"></a>
 
-This topic provides step\-by\-step instruction on managing hardware security module \(HSM\) users with CloudHSM Management Utility \(CMU\), a command line tool that comes with the Client SDK\. For more information about CMU or HSM users, see [CloudHSM Management Utility](cloudhsm_mgmt_util.md) and [Understanding HSM users](manage-hsm-users.md#understanding-users)\.
+This topic provides step\-by\-step instruction on managing hardware security module \(HSM\) users with CloudHSM Management Utility \(CMU\), a command line tool that comes with the Client SDK\. For more information about CMU or HSM users, see [CloudHSM Management Utility](cloudhsm_mgmt_util.md) and [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.
 
 **Topics**
 + [Understanding user management](#understand-users)
-+ [Download CloudHSM Management Utility](#get-cli-users)
-+ [How to manage users](#manage-users)
++ [Download CloudHSM Management Utility](#get-cli-users-cmu)
++ [How to manage users](#manage-users-cmu)
 
 ## Understanding HSM user management with CMU<a name="understand-users"></a>
 
- To manage HSM users, you must log in to the HSM with the user name and password of a [cryptographic officer](manage-hsm-users.md#crypto-officer) \(CO\)\. Only COs can manage users\. The HSM contains a default CO named admin\. You set the password for admin when you [activated the cluster](activate-cluster.md)\. 
+ To manage HSM users, you must log in to the HSM with the user name and password of a [cryptographic officer](manage-hsm-users-cmu.md#crypto-officer) \(CO\)\. Only COs can manage users\. The HSM contains a default CO named admin\. You set the password for admin when you [activated the cluster](activate-cluster.md)\. 
 
  To use CMU, you must use the configure tool to update the local configuration\. CMU creates its own connection to the cluster and this connection is *not* cluster aware\. To track cluster information, CMU maintains a local configuration file\. This means that *each time* you use CMU, you should first update the configuration file by running the [configure](configure-tool.md) command line tool with the `--cmu` parameter\. If you are using Client SDK 3\.2\.1 or earlier, you must use a different parameter than `--cmu`\. For more information, see [Using CMU with Client SDK 3\.2\.1 and earlier](#downlevel-cmu)\. 
 
@@ -17,11 +17,9 @@ This topic provides step\-by\-step instruction on managing hardware security mod
 
 **To get an IP address for a HSM \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. To change the AWS Region, use the Region selector in the upper\-right corner of the page\.
-
-1. In the navigation pane, choose **Clusters**\.
 
 1. To open the cluster detail page, in the cluster table, choose the cluster ID\.
 
@@ -53,7 +51,7 @@ This topic provides step\-by\-step instruction on managing hardware security mod
 
 With Client SDK 3\.3\.0, AWS CloudHSM added support for the `--cmu` parameter, which simplifies the process of updating the configuration file for CMU\. If you're using a version of CMU from Client SDK 3\.2\.1 or earlier, you must continue to use the `-a` and `-m` parameters to update the configuration file\. For more information about these parameters, see [Configure Tool](configure-tool.md)\.
 
-## Download CloudHSM Management Utility<a name="get-cli-users"></a>
+## Download CloudHSM Management Utility<a name="get-cli-users-cmu"></a>
 
 The latest version of CMU is available for HSM user management tasks whether you are using Client SDK 5 and Client SDK 3\. 
 
@@ -105,7 +103,7 @@ The latest version of CMU is available for HSM user management tasks whether you
   ```
 
 ------
-#### [ RHEL 7\.8\+ ]
+#### [ RHEL 7\.9\+ ]
 
   ```
   $ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-mgmt-util-latest.el7.x86_64.rpm
@@ -171,11 +169,11 @@ The latest version of CMU is available for HSM user management tasks whether you
 
 ------
 
-## How to manage HSM users with CMU<a name="manage-users"></a>
+## How to manage HSM users with CMU<a name="manage-users-cmu"></a>
 
 This section includes basic commands to manage HSM users with CMU\. 
 
-### To create HSM users<a name="create-users"></a>
+### To create HSM users<a name="create-users-cmu"></a>
 
 Use createUser to create new users on the HSM\. You must log in as a CO to create a user\.
 
@@ -194,7 +192,7 @@ Use createUser to create new users on the HSM\. You must log in as a CO to creat
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
    ```
 
 ------
@@ -212,7 +210,7 @@ Use createUser to create new users on the HSM\. You must log in as a CO to creat
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM> .\cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------
@@ -261,7 +259,7 @@ Use createUser to create new users on the HSM\. You must log in as a CO to creat
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
    ```
 
 ------
@@ -279,7 +277,7 @@ Use createUser to create new users on the HSM\. You must log in as a CO to creat
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM> .\cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------
@@ -334,7 +332,7 @@ For more information about createUser, see [createUser](cloudhsm_mgmt_util-creat
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
    ```
 
 ------
@@ -352,7 +350,7 @@ For more information about createUser, see [createUser](cloudhsm_mgmt_util-creat
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM> .\cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------
@@ -370,33 +368,28 @@ For more information about createUser, see [createUser](cloudhsm_mgmt_util-creat
    Number of users found:4
    
        User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-            1              PCO             admin                                    NO               0               NO
-            2              AU              app_user                                 NO               0               NO
-            3              CO              example_officer                          NO               0               NO
-            4              CU              example_user                             NO               0               NO
+            1              AU              app_user                                 NO               0               NO
+            2              CO              example_officer                          NO               0               NO
+            3              CU              example_user                             NO               0               NO
    Users on server 1(10.0.3.11):
    Number of users found:4
    
        User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-            1              PCO             admin                                    NO               0               NO
-            2              AU              app_user                                 NO               0               NO
-            3              CO              example_officer                          NO               0               NO
-            4              CU              example_user                             NO               0               NO
+            1              AU              app_user                                 NO               0               NO
+            2              CO              example_officer                          NO               0               NO
+            3              CU              example_user                             NO               0               NO
    Users on server 2(10.0.1.12):
    Number of users found:4
    
        User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-            1              PCO             admin                                    NO               0               NO
-            2              AU              app_user                                 NO               0               NO
-            3              CO              example_officer                          NO               0               NO
-            4              CU              example_user                             NO               0               NO
+            1              AU              app_user                                 NO               0               NO
+            2              CO              example_officer                          NO               0               NO
+            3              CU              example_user                             NO               0               NO
    ```
-
-   The PCO is the first CO created on each HSM\. The PCO is known as the *primary* CO and this CO has the same permissions as any other CO\.
 
 For more information about listUsers, see [listUsers](cloudhsm_mgmt_util-listUsers.md)\.
 
-### To change HSM user passwords<a name="change-user-password"></a>
+### To change HSM user passwords<a name="change-user-password-cmu"></a>
 
  Use changePswd to change a password\. 
 
@@ -419,7 +412,7 @@ For more information about listUsers, see [listUsers](cloudhsm_mgmt_util-listUse
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
    ```
 
 ------
@@ -437,7 +430,7 @@ For more information about listUsers, see [listUsers](cloudhsm_mgmt_util-listUse
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM> .\cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------
@@ -492,7 +485,7 @@ For more information about listUsers, see [listUsers](cloudhsm_mgmt_util-listUse
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
    ```
 
 ------
@@ -510,7 +503,7 @@ For more information about listUsers, see [listUsers](cloudhsm_mgmt_util-listUse
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM> .\cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------
@@ -574,7 +567,7 @@ Use deleteUser to delete a user\. You must log in as a CO to delete another user
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>configure.exe --cmu <IP address>
+   C:\Program Files\Amazon\CloudHSM\bin\ configure.exe --cmu <IP address>
    ```
 
 ------
@@ -592,7 +585,7 @@ Use deleteUser to delete a user\. You must log in as a CO to delete another user
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM> .\cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
    ```
 
 ------

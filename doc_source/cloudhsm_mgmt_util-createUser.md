@@ -6,7 +6,7 @@ The createUser command in cloudhsm\_mgmt\_util creates a user on the HSMs\. Only
 
  If your HSM configuration is inaccurate, the user might not be created on all HSMs\. To add the user to any HSMs in which it is missing, use the [syncUser](cloudhsm_mgmt_util-syncUser.md) or [createUser](#cloudhsm_mgmt_util-createUser) command only on the HSMs that are missing that user\. To prevent configuration errors, run the [configure](configure-tool.md) tool with the `-m` option\. 
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 
@@ -108,7 +108,7 @@ Creating User bob(CU) on 3 nodes
 
 ## Arguments<a name="createUser-params"></a>
 
-Enter the arguments in the order specified in the syntax diagram\. Use the `-hpswd` parameter to mask your password\. To create a CO user with 2FA enabled, use the `-2fa` parameter and include a file path\. For more information about 2FA, see [Managing 2FA](manage-2fa.md)\.
+Enter the arguments in the order specified in the syntax diagram\. Use the `-hpswd` parameter to mask your password\. To create a CO user with 2FA enabled, use the `-2fa` parameter and include a file path\. For more information about 2FA, see [Using CMU to manage 2FA](manage-2fa.md)\.
 
 ```
 createUser <user-type> <user-name> <password |-hpswd> [-2fa </path/to/authdata>]
@@ -116,7 +116,7 @@ createUser <user-type> <user-name> <password |-hpswd> [-2fa </path/to/authdata>]
 
 **<user\-type>**  
 Specifies the type of user\. This parameter is required\.   
-For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md#understanding-users)\.  
+For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.  
 Valid values:  
 + **CO**: Crypto officers can manage users, but they cannot manage keys\. 
 + **CU**: Crypto users can create an manage keys and use keys in cryptographic operations\.
@@ -134,7 +134,7 @@ To change a user password, use [changePswd](cloudhsm_mgmt_util-changePswd.md)\. 
 Required: Yes
 
 **\[\-2fa </path/to/authdata>\]**  
-Specifies the creation of a CO user with 2FA enabled\. To get the data necessary for setting up 2FA authentication, include a path to a location in the file system with a file name after the `-2fa` parameter\. For more information about setting up and working with 2FA, see [Managing 2FA](manage-2fa.md)\.  
+Specifies the creation of a CO user with 2FA enabled\. To get the data necessary for setting up 2FA authentication, include a path to a location in the file system with a file name after the `-2fa` parameter\. For more information about setting up and working with 2FA, see [Using CMU to manage 2FA](manage-2fa.md)\.  
 Required: No
 
 ## Related topics<a name="createUser-seealso"></a>

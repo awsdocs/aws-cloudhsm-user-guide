@@ -1,6 +1,6 @@
 # Using quorum authentication for crypto officers: first time setup<a name="quorum-authentication-crypto-officers-first-time-setup"></a>
 
-The following topics describe the steps that you must complete to configure your hardware security module \(HSM\) so that [crypto officers \(COs\)](manage-hsm-users.md#crypto-officer) can use quorum authentication\. You need to do these steps only once when you first configure quorum authentication for COs\. After you complete these steps, see [Using quorum authentication for crypto officers](quorum-authentication-crypto-officers.md)\.
+The following topics describe the steps that you must complete to configure your hardware security module \(HSM\) so that [crypto officers \(COs\)](manage-hsm-users-cmu.md#crypto-officer) can use quorum authentication\. You need to do these steps only once when you first configure quorum authentication for COs\. After you complete these steps, see [Using quorum authentication for crypto officers](quorum-authentication-crypto-officers.md)\.
 
 **Topics**
 + [Prerequisites](#quorum-crypto-officers-prerequisites)
@@ -82,7 +82,7 @@ writing RSA key
 The registration token is just a file with any random data that doesn't exceed the maximum size of 245 bytes\. You sign the token with the private key to demonstrate that you have access to the private key\. The following command uses echo to redirect a string to a file\.  
 
 ```
-$ echo "token to be signed" > quorum_officer.token
+$ echo "token to be signed" > officer1.token
 ```
 
 Sign the token and save it to a signature file\. You will need the signed token, the unsigned token, and the public key to register the CO as an MofN user with the HSM\. 
@@ -108,7 +108,7 @@ After creating a key, the CO must register the public part of the key \(the publ
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [How to manage HSM users with CMU](cli-users.md#manage-users)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Managing HSM users with CloudHSM Management Utility \(CMU\)](manage-hsm-users-cmu.md)\.
 
 1. Use the [registerQuorumPubKey](cloudhsm_mgmt_util-registerQuorumPubKey.md) command to register the public key\. For more information, see the following example or use the help registerQuorumPubKey command\.
 
@@ -177,12 +177,12 @@ To use quorum authentication for COs, a CO must log in to the HSM and then set t
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [How to manage HSM users with CMU](cli-users.md#manage-users)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Managing HSM users with CloudHSM Management Utility \(CMU\)](manage-hsm-users-cmu.md)\.
 
 1. Use the setMValue command to set the quorum minimum value\. For more information, see the following example or use the help setMValue command\.
 
 **Example – Set the quorum minimum value on the HSM**  
-This example uses a quorum minimum value of two\. You can choose any value from two to twenty, up to the total number of COs on the HSM\. In this example, the HSM has six COs \(the [PCO user](manage-hsm-users.md#crypto-officer) is the same as a CO\), so the maximum possible value is six\.  
+This example uses a quorum minimum value of two\. You can choose any value from two \(2\) to eight \(8\), up to the total number of COs on the HSM\. In this example, the HSM has six COs \(the [PCO user](manage-hsm-users-cmu.md#crypto-officer) is the same as a CO\), so the maximum possible value is six\.  
 To use the following example command, replace the final number \(*2*\) with the preferred quorum minimum value\.  
 
 ```

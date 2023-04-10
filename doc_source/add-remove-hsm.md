@@ -26,7 +26,7 @@ The following figure illustrates the events that occur when you add an HSM to a 
 
 **To add an HSM \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. Choose a cluster for the HSM that you are adding\.
 
@@ -61,7 +61,7 @@ You can remove an HSM by using the [AWS CloudHSM console](https://console.aws.am
 
 **To remove an HSM \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. Choose the cluster that contains the HSM that you are removing\.
 

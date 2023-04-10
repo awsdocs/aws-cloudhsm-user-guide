@@ -58,11 +58,9 @@ Use this section to obtain an IP address for an HSM\.
 
 **To get an IP address for a HSM \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. To change the AWS Region, use the Region selector in the upper\-right corner of the page\.
-
-1. In the navigation pane, choose **Clusters**\.
 
 1. To open the cluster detail page, in the cluster table, choose the cluster ID\.
 

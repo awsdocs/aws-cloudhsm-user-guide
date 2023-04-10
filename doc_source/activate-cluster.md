@@ -2,84 +2,117 @@
 
 When you activate an AWS CloudHSM cluster, the cluster's state changes from initialized to active\. You can then [manage the hardware security module \(HSM\) users](manage-hsm-users.md) and [use the HSM](use-hsm.md)\. 
 
-To activate the cluster, log in to the HSM with the credentials of the [precrypto officer \(PRECO\)](manage-hsm-users.md#understanding-users)\. This a temporary user that exists only on the first HSM in an AWS CloudHSM cluster\. The first HSM in a new cluster contains a PRECO user with a default user name and password\. When you change the password, the PRECO user becomes a crypto officer \(CO\)\.
+**Important**  
+Before you can activate the cluster, you must first copy the issuing certificate to the default location for the platform on each EC2 instance that connects to the cluster \(you create the issuing certificate when you initialize the cluster\)\.  
+Linux  
 
-**To activate a cluster**
+```
+/opt/cloudhsm/etc/customerCA.crt
+```
+Windows  
 
-1. Connect to the client instance that you launched in previously\. For more information, see [Launch an Amazon EC2 client instance](launch-client-instance.md)\. You can launch a Linux instance or a Windows Server\. 
+```
+C:\ProgramData\Amazon\CloudHSM\customerCA.crt
+```
 
-1. Use the following command to start the CloudHSM Management Utility \(CMU\) command line utility\.
+After placing the issuing certificate, install CloudHSM CLI and run the [cluster activate](cloudhsm_cli-cluster-activate.md) command on your first HSM\. You will notice the admin account on the first HSM in your cluster has the [unactivated\-admin](manage-hsm-users-chsm-cli.md#understanding-users) role\. This a temporary role that only exists prior to cluster activation\. When you activate your cluster, the unactivated\-admin role changes to admin\.
+
+**Activate a cluster**
+
+1. Connect to the client instance that you previously launched in\. For more information, see [Launch an Amazon EC2 client instance](launch-client-instance.md)\. You can launch a Linux instance or a Windows Server\. 
+
+1. Run the CloudHSM CLI in interactive mode\.
 
 ------
 #### [ Linux ]
 
    ```
-   $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
+   $ /opt/cloudhsm/bin/cloudhsm-cli interactive
    ```
 
 ------
 #### [ Windows ]
 
    ```
-   C:\Program Files\Amazon\CloudHSM>cloudhsm_mgmt_util.exe C:\ProgramData\Amazon\CloudHSM\data\cloudhsm_mgmt_util.cfg
+   C:\Program Files\Amazon\CloudHSM\bin\> .\cloudhsm-cli.exe interactive
    ```
 
 ------
 
-1. \(Optional\) Use the listUsers command to display the existing users\.
+1. \(Optional\) Use the user list command to display the existing users\.
 
    ```
-   aws-cloudhsm>listUsers
-   Users on server 0(server1):
-   Number of users found:2
+   aws-cloudhsm >  user list
+   {
+     "error_code": 0,
+     "data": {
+       "users": [
+         {
+           "username": "admin",
+           "role": "unactivated-admin",
+           "locked": "false",
+           "mfa": [],
+           "cluster-coverage": "full"
+         },
+         {
+           "username": "app_user",
+           "role": "internal(APPLIANCE_USER)",
+           "locked": "false",
+           "mfa": [],
+           "cluster-coverage": "full"
+         }
+       ]
+     }
+   }
+   ```
+
+1. Use the cluster activate command to set the initial admin password\.
+
+   ```
+   aws-cloudhsm >  cluster activate
    
-       User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-            1              PRECO           admin                                    NO               0               NO
-            2              AU              app_user                                 NO               0               NO
-   ```
-
-1. Use the loginHSM command to log in to the HSM as the PRECO user\. This is a temporary user that exists on the first HSM in your cluster\. 
-
-   ```
-   aws-cloudhsm>loginHSM PRECO admin password
+    Enter password:<NewPassword>
+    Confirm password:<NewPassword>
    
-   loginHSM success on server 0(server1)
-   ```
-
-1. Use the changePswd command to change the password for the PRECO user\. When you change the password, the PRECO user becomes a crypto officer \(CO\)\. 
-
-   ```
-   aws-cloudhsm>changePswd PRECO admin <NewPassword>
-   
-   *************************CAUTION********************************
-   This is a CRITICAL operation, should be done on all nodes in the
-   cluster. AWS does NOT synchronize these changes automatically with the
-   nodes on which this operation is not executed or failed, please
-   ensure this operation is executed on all nodes in the cluster.
-   ****************************************************************
-   
-   Do you want to continue(y/n)?y
-   Changing password for admin(PRECO) on 1 nodes
+   {
+     "error_code": 0,
+     "data": "Cluster activation successful"
+   }
    ```
 
    We recommend that you write down the new password on a password worksheet\. Do not lose the worksheet\. We recommend that you print a copy of the password worksheet, use it to record your critical HSM passwords, and then store it in a secure place\. We also recommended that you store a copy of this worksheet in secure off\-site storage\. 
 
-1. \(Optional\) Use the listUsers command to verify that the user's type changed to [crypto officer \(CO\)](manage-hsm-users.md#crypto-officer)\. 
+1. \(Optional\) Use the user list command to verify that the user's type changed to [admin/CO](manage-hsm-users-cmu.md#crypto-officer)\. 
 
    ```
-   aws-cloudhsm>listUsers
-   Users on server 0(server1):
-   Number of users found:2
-   
-       User Id             User Type       User Name                          MofnPubKey    LoginFailureCnt         2FA
-            1              CO              admin                                    NO               0               NO
-            2              AU              app_user                                 NO               0               NO
+   aws-cloudhsm >  user list
+   {
+     "error_code": 0,
+     "data": {
+       "users": [
+         {
+           "username": "admin",
+           "role": "admin",
+           "locked": "false",
+           "mfa": [],
+           "cluster-coverage": "full"
+         },
+          {
+           "username": "app_user",
+           "role": "internal(APPLIANCE_USER)",
+           "locked": "false",
+           "mfa": [],
+           "cluster-coverage": "full"
+         }
+       ]
+     }
+   }
    ```
 
-1. Use the quit command to stop the cloudhsm\_mgmt\_util tool\.
+1. Use the quit command to stop the CloudHSM CLI tool\.
 
    ```
-   aws-cloudhsm>quit
+   aws-cloudhsm > quit
    ```
 
-For more information about working with CMU, see [Understanding HSM Users](manage-hsm-users.md#understanding-users) and [Understanding HSM User Management with CMU](cli-users.md#understand-users)\.
+For more information about working with CloudHSM CLI or the CMU, see [Understanding HSM Users](manage-hsm-users-chsm-cli.md#understanding-users) and [Understanding HSM User Management with CMU](cli-users.md#understand-users)\.

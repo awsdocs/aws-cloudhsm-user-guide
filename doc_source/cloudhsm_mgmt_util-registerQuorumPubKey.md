@@ -61,7 +61,7 @@ registerQuorumPubKey <user-type> <user-name> <registration-token> <signed-regist
 
 **<user\-type>**  
 Specifies the type of user\. This parameter is required\.   
-For detailed information about the user types on a HSM, see [Understanding HSM users](manage-hsm-users.md#understanding-users)\.  
+For detailed information about the user types on a HSM, see [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.  
 Valid values:  
 + **CO**: Crypto officers can manage users, but they cannot manage keys\. 
 Required: Yes

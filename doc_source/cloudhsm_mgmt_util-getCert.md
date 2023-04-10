@@ -2,7 +2,7 @@
 
 With the getCert command in cloudhsm\_mgmt\_util, you can retrieve the certificates of a particular HSM in a cluster\. When you run the command, you designate the type of certificate to retrieve\. To do that, you use one of the corresponding integers as described in the [Arguments](#getCert-arguments) section below\. To learn about the role of each of these certificates, see [Verify HSM Identity](verify-hsm-identity.md)\.
 
-Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with the user account type that can run the commands you plan to use\.
+Before you run any CMU command, you must start CMU and log in to the HSM\. Be sure that you log in with a user type that can run the commands you plan to use\.
 
 If you add or delete HSMs, update the configuration files for CMU\. Otherwise, the changes that you make might not be effective for all HSMs in the cluster\.
 

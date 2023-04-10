@@ -1,6 +1,6 @@
 # Using quorum authentication for crypto officers<a name="quorum-authentication-crypto-officers"></a>
 
-A [crypto officer \(CO\)](manage-hsm-users.md#crypto-officer) on the HSM can configure quorum authentication for the following operations on the HSM:
+A [crypto officer \(CO\)](manage-hsm-users-cmu.md#crypto-officer) on the HSM can configure quorum authentication for the following operations on the HSM:
 + Creating HSM users
 + Deleting HSM users
 + Changing another HSM user's password
@@ -48,7 +48,7 @@ First the CO must use the cloudhsm\_mgmt\_util command line tool to request a *q
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [How to manage HSM users with CMU](cli-users.md#manage-users)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Managing HSM users with CloudHSM Management Utility \(CMU\)](manage-hsm-users-cmu.md)\.
 
 1. Use the getToken command to get a quorum token\. For more information, see the following example or use the help getToken command\.
 
@@ -114,7 +114,7 @@ After a CO gets the minimum number of approvals \(signatures\) from other COs, h
    $ /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
    ```
 
-1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [How to manage HSM users with CMU](cli-users.md#manage-users)\.
+1. Use the loginHSM command to log in to the HSM as a CO\. For more information, see [Managing HSM users with CloudHSM Management Utility \(CMU\)](manage-hsm-users-cmu.md)\.
 
 1. Use the approveToken command to approve the signed token, passing the token approval file\. For more information, see the following example\.
 

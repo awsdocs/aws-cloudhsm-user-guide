@@ -13,7 +13,7 @@ Before you can create another web server, you need to create a new subnet in the
 
 **To create a new subnet**
 
-1. Open the **Subnets** section of the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/home\#subnets:]()\. 
+1. Open the [**Subnets** section of the Amazon VPC console](https://console.aws.amazon.com/vpc/home#subnets:)\.
 
 1. Choose **Create Subnet**\.
 

@@ -29,9 +29,10 @@ You can set values for the attributes listed in the following table\. As a best 
 | DECRYPT | TRUE |  | TRUE | True indicates you can use the key to decrypt any buffer\. You generally set this to FALSE for a key whose WRAP is set to true\.  | 
 | ENCRYPT | TRUE | TRUE |  | True indicates you can use the key to encrypt any buffer\. | 
 | EXTRACTABLE | TRUE |  | TRUE | True indicates you can export this key out of the HSM\. | 
-| LABEL |   |  |  | A user\-defined string\. It allows you to conveniently identify keys on your HSM\.  | 
+| LABEL |   |  |  | A user\-defined string allowing you to conveniently identify keys on your HSM\. To follow best practice, use a unique label for each key so it is easier to find later\. | 
 | PRIVATE | TRUE | TRUE | TRUE | True indicates that a user may not access the key until the user is authenticated\. For clarity, users cannot access any keys on AWS CloudHSM until they are authenticated, even if this attribute is set to FALSE\. | 
 | SIGN | TRUE |  | TRUE | True indicates you can use the key to sign a message digest\. This is generally set to FALSE for public keys and for private keys that you have archived\. | 
+| SIZE |  |  |  | An attribute that defines the size of a key\. For more details about supported key sizes, refer to [Supported mechanisms for Client SDK 5](https://docs.aws.amazon.com/cloudhsm/latest/userguide/java-lib-supported_5.html#java-keys_5)\. | 
 | TOKEN | FALSE | FALSE | FALSE |  A permanent key which is replicated across all HSMs in the cluster and included in backups\. TOKEN = FALSE implies an ephemeral key which is automatically erased when the connection to the HSM is broken or logged out\.  | 
 | UNWRAP | TRUE |  | TRUE | True indicates you can use the key to unwrap \(import\) another key\. | 
 | VERIFY | TRUE | TRUE |  | True indicates you can use the key to verify a signature\. This is generally set to FALSE for private keys\. | 

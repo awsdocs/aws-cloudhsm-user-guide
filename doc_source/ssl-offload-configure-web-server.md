@@ -367,44 +367,44 @@ Each cluster can support a maximum of 1000 NGINX worker processes across all NGI
 
    ```
    ssl_engine cloudhsm;
-   env n3fips_password;
+       env n3fips_password;
    ```
 
    Then add the following to the TLS section of the file:
 
    ```
    # Settings for a TLS enabled server.
-   server {
-       listen       443 ssl http2 default_server;
-       listen       [::]:443 ssl http2 default_server;
-       server_name  _;
-       root         /usr/share/nginx/html;
-   
-       ssl_certificate "/etc/pki/nginx/server.crt";
-       ssl_certificate_key "/etc/pki/nginx/private/server.key";
-       # It is *strongly* recommended to generate unique DH parameters
-       # Generate them with: openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
-       #ssl_dhparam "/etc/pki/nginx/dhparams.pem";
-       ssl_session_cache shared:SSL:1m;
-       ssl_session_timeout  10m;
-       ssl_protocols TLSv1.2;
-       ssl_ciphers "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA";
-       ssl_prefer_server_ciphers on;
-   
-       # Load configuration files for the default server block.
-       include /etc/nginx/default.d/*.conf;
-   
-       location / {
+       server {
+           listen       443 ssl http2 default_server;
+           listen       [::]:443 ssl http2 default_server;
+           server_name  _;
+           root         /usr/share/nginx/html;
+       
+           ssl_certificate "/etc/pki/nginx/server.crt";
+           ssl_certificate_key "/etc/pki/nginx/private/server.key";
+           # It is *strongly* recommended to generate unique DH parameters
+           # Generate them with: openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
+           #ssl_dhparam "/etc/pki/nginx/dhparams.pem";
+           ssl_session_cache shared:SSL:1m;
+           ssl_session_timeout  10m;
+           ssl_protocols TLSv1.2;
+           ssl_ciphers "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA";
+           ssl_prefer_server_ciphers on;
+       
+           # Load configuration files for the default server block.
+           include /etc/nginx/default.d/*.conf;
+       
+           location / {
+           }
+       
+           error_page 404 /404.html;
+           location = /40x.html {
+           }
+       
+           error_page 500 502 503 504 /50x.html;
+           location = /50x.html {
+           }
        }
-   
-       error_page 404 /404.html;
-       location = /40x.html {
-       }
-   
-       error_page 500 502 503 504 /50x.html;
-       location = /50x.html {
-       }
-   }
    ```
 
 ------
@@ -414,44 +414,91 @@ Each cluster can support a maximum of 1000 NGINX worker processes across all NGI
 
    ```
    ssl_engine cloudhsm;
-   env CLOUDHSM_PIN;
+       env CLOUDHSM_PIN;
    ```
 
    Then add the following to the TLS section of the file:
 
    ```
    # Settings for a TLS enabled server.
-   server {
-       listen       443 ssl http2 default_server;
-       listen       [::]:443 ssl http2 default_server;
-       server_name  _;
-       root         /usr/share/nginx/html;
-   
-       ssl_certificate "/etc/pki/nginx/server.crt";
-       ssl_certificate_key "/etc/pki/nginx/private/server.key";
-       # It is *strongly* recommended to generate unique DH parameters
-       # Generate them with: openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
-       #ssl_dhparam "/etc/pki/nginx/dhparams.pem";
-       ssl_session_cache shared:SSL:1m;
-       ssl_session_timeout  10m;
-       ssl_protocols TLSv1.2 TLSv1.3;
-       ssl_ciphers "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA";
-       ssl_prefer_server_ciphers on;
-   
-       # Load configuration files for the default server block.
-       include /etc/nginx/default.d/*.conf;
-   
-       location / {
+       server {
+           listen       443 ssl http2 default_server;
+           listen       [::]:443 ssl http2 default_server;
+           server_name  _;
+           root         /usr/share/nginx/html;
+       
+           ssl_certificate "/etc/pki/nginx/server.crt";
+           ssl_certificate_key "/etc/pki/nginx/private/server.key";
+           # It is *strongly* recommended to generate unique DH parameters
+           # Generate them with: openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
+           #ssl_dhparam "/etc/pki/nginx/dhparams.pem";
+           ssl_session_cache shared:SSL:1m;
+           ssl_session_timeout  10m;
+           ssl_protocols TLSv1.2 TLSv1.3;
+           ssl_ciphers "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA";
+           ssl_prefer_server_ciphers on;
+       
+           # Load configuration files for the default server block.
+           include /etc/nginx/default.d/*.conf;
+       
+           location / {
+           }
+       
+           error_page 404 /404.html;
+           location = /40x.html {
+           }
+       
+           error_page 500 502 503 504 /50x.html;
+           location = /50x.html {
+           }
        }
-   
-       error_page 404 /404.html;
-       location = /40x.html {
+   ```
+
+------
+#### [ Ubuntu 20\.04 LTS ]
+
+   Use a text editor to edit the `/etc/nginx/nginx.conf` file\. This requires Linux root permissions\. At the top of the file, add the following lines: 
+
+   ```
+   ssl_engine cloudhsm;
+       env CLOUDHSM_PIN;
+   ```
+
+   Then add the following to the TLS section of the file:
+
+   ```
+   # Settings for a TLS enabled server.
+       server {
+           listen       443 ssl http2 default_server;
+           listen       [::]:443 ssl http2 default_server;
+           server_name  _;
+           root         /usr/share/nginx/html;
+       
+           ssl_certificate "/etc/pki/nginx/server.crt";
+           ssl_certificate_key "/etc/pki/nginx/private/server.key";
+           # It is *strongly* recommended to generate unique DH parameters
+           # Generate them with: openssl dhparam -out /etc/pki/nginx/dhparams.pem 2048
+           #ssl_dhparam "/etc/pki/nginx/dhparams.pem";
+           ssl_session_cache shared:SSL:1m;
+           ssl_session_timeout  10m;
+           ssl_protocols TLSv1.2 TLSv1.3;
+           ssl_ciphers "ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA";
+           ssl_prefer_server_ciphers on;
+       
+           # Load configuration files for the default server block.
+           include /etc/nginx/default.d/*.conf;
+       
+           location / {
+           }
+       
+           error_page 404 /404.html;
+           location = /40x.html {
+           }
+       
+           error_page 500 502 503 504 /50x.html;
+           location = /50x.html {
+           }
        }
-   
-       error_page 500 502 503 504 /50x.html;
-       location = /50x.html {
-       }
-   }
    ```
 
 ------
@@ -551,6 +598,21 @@ Each cluster can support a maximum of 1000 NGINX worker processes across all NGI
       ```
 
 ------
+#### [ Ubuntu 20\.04 LTS ]
+
+   1.  Back up the `nginx.service` file\. 
+
+      ```
+      $ sudo cp /lib/systemd/system/nginx.service /lib/systemd/system/nginx.service.backup
+      ```
+
+   1.  Open the `/lib/systemd/system/nginx.service` file in a text editor, and then under the \[Service\] section, add the following path: 
+
+      ```
+      EnvironmentFile=/etc/sysconfig/nginx
+      ```
+
+------
 
 1.  Check if the `/etc/sysconfig/nginx` file exists, and then do one of the following: 
    + If the file exists, back up the file by running the following command:
@@ -562,7 +624,7 @@ Each cluster can support a maximum of 1000 NGINX worker processes across all NGI
 
 1. Configure the NGINX environment\.
 **Note**  
-Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the credentials of the CU\. In Client SDK 3 you stored the CU credentials in the `n3fips_password` environment variable\. Client SDK 5 supports both environment variables, but we recommend using `CLOUDHSM_PIN`\.
+Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the credentials of the CU\.
 
 ------
 #### [ Amazon Linux ]
@@ -693,6 +755,19 @@ Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the 
     Save the file\.
 
 ------
+#### [ Ubuntu 20\.04 LTS ]
+
+   Open the `/etc/sysconfig/nginx` file in a text editor\. This requires Linux root permissions\. Add the Cryptography User \(CU\) credentials:
+
+   ```
+   CLOUDHSM_PIN=<CU user name>:<password>
+   ```
+
+   Replace *<CU user name>* and *<password>* with the CU credentials\. 
+
+    Save the file\.
+
+------
 
 1. Start the NGINX web server\.
 
@@ -811,7 +886,7 @@ Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the 
    ```
 
 ------
-#### [ Ubuntu 16\.04 ]
+#### [ Ubuntu 16\.04 LTS ]
 
    Stop any running NGINX process
 
@@ -832,7 +907,28 @@ Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the 
    ```
 
 ------
-#### [ Ubuntu 18\.04 ]
+#### [ Ubuntu 18\.04 LTS ]
+
+   Stop any running NGINX process
+
+   ```
+   $ sudo systemctl stop nginx
+   ```
+
+   Reload the `systemd` configuration to pick up the latest changes
+
+   ```
+   $ sudo systemctl daemon-reload
+   ```
+
+   Start the NGINX process
+
+   ```
+   $ sudo systemctl start nginx
+   ```
+
+------
+#### [ Ubuntu 20\.04 LTS ]
 
    Stop any running NGINX process
 
@@ -895,14 +991,21 @@ Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the 
    ```
 
 ------
-#### [ Ubuntu 16\.04 ]
+#### [ Ubuntu 16\.04 LTS ]
 
    ```
    $ sudo systemctl enable nginx
    ```
 
 ------
-#### [ Ubuntu 18\.04 ]
+#### [ Ubuntu 18\.04 LTS ]
+
+   ```
+   $ sudo systemctl enable nginx
+   ```
+
+------
+#### [ Ubuntu 20\.04 LTS ]
 
    ```
    $ sudo systemctl enable nginx
@@ -1003,6 +1106,16 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS traf
    ```
 
 ------
+#### [ Ubuntu 20\.04 LTS ]
+
+   In the `/etc/apache2/sites-available/default-ssl.conf` file, ensure these values exist:
+
+   ```
+   SSLCertificateFile      /etc/ssl/certs/localhost.crt
+   SSLCertificateKeyFile   /etc/ssl/private/localhost.key
+   ```
+
+------
 
 1. Copy your web server certificate to the required location for your platform\.
 
@@ -1071,6 +1184,15 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS traf
 
 ------
 #### [ Ubuntu 18\.04 LTS ]
+
+   ```
+   $ sudo cp <web_server.crt> /etc/ssl/certs/localhost.crt
+   ```
+
+   Replace *<web\_server\.crt>* with the name of your web server certificate\. 
+
+------
+#### [ Ubuntu 20\.04 LTS ]
 
    ```
    $ sudo cp <web_server.crt> /etc/ssl/certs/localhost.crt
@@ -1155,6 +1277,15 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS traf
    Replace *<web\_server\_fake\_PEM\.key>* with the name of the file that contains your fake PEM private key\.
 
 ------
+#### [ Ubuntu 20\.04 LTS ]
+
+   ```
+   $ sudo cp <web_server_fake_PEM.key> /etc/ssl/private/localhost.key
+   ```
+
+   Replace *<web\_server\_fake\_PEM\.key>* with the name of the file that contains your fake PEM private key\.
+
+------
 
 1. Change ownership of these files if required by your platform\.
 
@@ -1219,6 +1350,11 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS traf
 
 ------
 #### [ Ubuntu 18\.04 LTS ]
+
+   No action required\.
+
+------
+#### [ Ubuntu 20\.04 LTS ]
 
    No action required\.
 
@@ -1406,6 +1542,34 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS traf
    ```
 
 ------
+#### [ Ubuntu 20\.04 LTS ]
+
+   Locate the SSL file for this platform:
+
+   ```
+   /etc/apache2/mods-available/ssl.conf
+   ```
+
+   This file contains Apache directives which define how your server should run\. Directives appear on the left, followed by a value\. Use a text editor to edit this file\. This requires Linux root permissions\.
+
+   Update or enter the following directives with these values:
+
+   ```
+   SSLCryptoDevice cloudhsm
+   SSLCipherSuite ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA
+   SSLProtocol TLSv1.2 TLSv1.3
+   ```
+
+   Save the file\.
+
+   Enable the SSL module and default SSL site configuration:
+
+   ```
+   $ sudo a2enmod ssl
+   $ sudo a2ensite default-ssl
+   ```
+
+------
 
 1. Configure an environment\-values file for your platform\.
 
@@ -1496,6 +1660,11 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS traf
 
 ------
 #### [ Ubuntu 18\.04 LTS ]
+
+   No action required\. Environment values go in `/etc/sysconfig/httpd`
+
+------
+#### [ Ubuntu 20\.04 LTS ]
 
    No action required\. Environment values go in `/etc/sysconfig/httpd`
 
@@ -1594,7 +1763,7 @@ After you update your web server configuration, go to [Step 4: Enable HTTPS traf
    Replace *<CU user name>* and *<password>* with the CU credentials\.
 
 **Note**  
-Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the credentials of the CU\. In Client SDK 3 you stored the CU credentials in the `n3fips_password` environment variable\. Client SDK 5 supports both environment variables, but we recommend using `CLOUDHSM_PIN`\.
+Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the credentials of the CU\.
 
 ------
 #### [ Ubuntu 16\.04 LTS ]
@@ -1609,6 +1778,20 @@ Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the 
 
 ------
 #### [ Ubuntu 18\.04 LTS ]
+
+   Use a text editor to edit the `/etc/apache2/envvars`\.
+
+   ```
+   export CLOUDHSM_PIN=<CU user name>:<password>
+   ```
+
+   Replace *<CU user name>* and *<password>* with the CU credentials\.
+
+**Note**  
+Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the credentials of the CU\. In Client SDK 3 you stored the CU credentials in the `n3fips_password` environment variable\. Client SDK 5 supports both environment variables, but we recommend using `CLOUDHSM_PIN`\.
+
+------
+#### [ Ubuntu 20\.04 LTS ]
 
    Use a text editor to edit the `/etc/apache2/envvars`\.
 
@@ -1688,6 +1871,13 @@ Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the 
    ```
 
 ------
+#### [ Ubuntu 20\.04 LTS ]
+
+   ```
+   $ sudo service apache2 start
+   ```
+
+------
 
 1. \(Optional\) Configure your platform to start Apache at start\-up\.
 
@@ -1742,6 +1932,13 @@ Client SDK 5 introduces the `CLOUDHSM_PIN` environment variable for storing the 
 
 ------
 #### [ Ubuntu 18\.04 LTS ]
+
+   ```
+   $ sudo systemctl enable apache2
+   ```
+
+------
+#### [ Ubuntu 20\.04 LTS ]
 
    ```
    $ sudo systemctl enable apache2

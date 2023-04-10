@@ -1,4 +1,4 @@
-# JCE provider Client SDK 3<a name="java-library_3"></a>
+# Client SDK 3 for JCE provider<a name="java-library_3"></a>
 
 **Topics**
 + [Install and use the AWS CloudHSM JCE provider for Client SDK 3](java-library-install.md)

@@ -14,9 +14,9 @@ To connect to your web server from a client \(such as a web browser\), create a 
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. Choose **Security Groups** in the navigation pane\.
+1. Choose **Security groups** in the navigation pane\.
 
-1. Choose **Create Security Group**\.
+1. Choose **Create security group**\.
 
 1. For **Create Security Group**, do the following:
 
@@ -26,17 +26,23 @@ To connect to your web server from a client \(such as a web browser\), create a 
 
    1. For **VPC**, choose the VPC that contains your web server Amazon EC2 instance\.
 
-   1. Choose **Add Rule**\.
+   1. Select **Add Rule**\.
 
-   1. For **Type**, choose **HTTPS**\.
+   1. For **Type**, select **HTTPS** from the drop\-down window\.
 
-1. Choose **Create**\.
+   1. For **Source**, enter a source location\.
+
+   1. Choose **Create security group**\.
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Select the check box next to your web server instance\. Then choose **Actions**, **Networking**, and **Change Security Groups**\.
+1. Select the check box next to your web server instance\.
 
-1. Select the check box next to the security group that you created for HTTPS\. Then choose **Assign Security Groups**\.
+1. Select the **Actions** drop\-down menu at the top of the page\. Select **Security** and then **Change Security Groups**\.
+
+1. For **Associated security groups**, select the search box and choose the security group that you created for HTTPS\. Then choose **Add Security Groups**\.
+
+1. Select **Save**\. 
 
 ## Verify that HTTPS uses the certificate that you configured<a name="ssl-offload-verify-https-connection-windows"></a>
 
@@ -68,4 +74,4 @@ You can use a DNS service such as Amazon Route 53 to route your website's domai
 
 1. Ensure that the SSL/TLS certificate is the one that you configured your web server to use\.
 
-You now have a website that is secured with HTTPS\. The private key for the web server is stored in an HSM in your AWS CloudHSM cluster\. However, you have only one web server\. To set up a second web server and a load balancer for higher availability, go to [\(Optional\) Step 5: Add a load balancer with Elastic Load Balancing](ssl-offload-add-load-balancing-windows.md)\.
+You now have a website that is secured with HTTPS\. The private key for the web server is stored in an HSM in your AWS CloudHSM cluster\. 

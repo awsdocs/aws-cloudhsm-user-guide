@@ -6,7 +6,7 @@ To restore an AWS CloudHSM cluster from a backup, create a cluster and specify t
 
 **To create a cluster from a previous backup \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. Choose **Create cluster**\.
 

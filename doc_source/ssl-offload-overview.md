@@ -26,5 +26,5 @@ The following image and process assumes that RSA is used for server verification
 1. The handshake process ends\. For the rest of the session, all messages sent between the client and the server are encrypted with derivatives of the master secret\. 
 
 To learn how to configure SSL/TLS offload with AWS CloudHSM, see one of the following topics:
-+ [Tutorial: Using SSL/TLS offload with AWS CloudHSM on Linux](ssl-offload-linux.md)
-+ [Tutorial: Using SSL/TLS offload with AWS CloudHSM on Windows](ssl-offload-windows.md)
++ [SSL/TLS offload on Linux](ssl-offload-linux.md)
++ [Tutorial: Using OpenSSL Dynamic Engine with AWS CloudHSM for SSL/TLS offload on Windows](ssl-offload-windows.md)

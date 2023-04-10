@@ -12,6 +12,9 @@ The following table describes significant changes to this documentation since Ap
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Added new release](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-5-8-0) | Released AWS CloudHSM client version 5\.8\.0, which introduces quorum authentication for CloudHSM CLI, SSL/TLS offload with JSSE, multi\-slot support for PKCS \#11, multi\-cluster/multi\-user support for JCE, key extraction with JCE, supported keyFactory for JCE, new retry configurations for non\-terminal return codes, and includes improved stability and bug fixes for all SDKs\.  | March 16, 2023 | 
+| [Added new release](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-5-7-0) | Released AWS CloudHSM client version 5\.7\.0, which includes improved stability and bug fixes for all SDKs\. Version 5\.7\.0 introduces CloudHSM CLI, includes a new cipher\-based message authentication code \(CMAC\) algorithm, now supports ARM architecture on Amazon Linux 2, and includes AWS CloudHSM JCE provider Javadocs\.  | November 16, 2022 | 
+| [Added new release](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-5-6-0) | Released AWS CloudHSM client version 5\.6\.0, which includes improved stability and bug fixes for all SDKs\. Version 5\.6\.0 also supports Ubuntu 20\.04 and includes a new RSA with no padding for PKCS \#11 library and the JCE provider\. | September 1, 2022 | 
 | [Added new release](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-5-5-0) | Released AWS CloudHSM client version 5\.5\.0, which adds support for OpenJDK 11, Keytool, and Jarsigner integration and additional mechanisms to the JCE provider\. Resolves a [known issue](https://docs.aws.amazon.com/cloudhsm/latest/userguide/ki-jce-sdk.html#ki-jce-6) regarding a KeyGenerator class incorrectly interpreting key size parameter as number of bytes instead of bits\. | May 13, 2022 | 
 | [Added new release](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-5-4-2) | Released AWS CloudHSM client version 5\.4\.2, which includes improved stability and bug fixes\. | March 18, 2022 | 
 | [Added new release](https://docs.aws.amazon.com/cloudhsm/latest/userguide/client-history.html#client-version-5-4-1) | Released AWS CloudHSM client version 5\.4\.1, which includes improved stability and bug fixes\. | February 10, 2022 | 
@@ -66,7 +69,7 @@ The following table describes the important changes to the AWS CloudHSM prior to
 
 | Change | Description | Date | 
 | --- | --- | --- | 
-| New content |  Added quorum authentication \(M of N access control\) for crypto officers \(COs\)\. For more information, see [Managing quorum authentication \(M of N access control\)](quorum-authentication.md)\.   | November 9, 2017 | 
+| New content |  Added quorum authentication \(M of N access control\) for crypto officers \(COs\)\. For more information, see [Using CloudHSM Management Utility \(CMU\) to manage quorum authentication \(M of N access control\)](quorum-authentication.md)\.   | November 9, 2017 | 
 | Update |  Added documentation about using the key\_mgmt\_util command line tool\. For more information, see [key\_mgmt\_util command reference](key_mgmt_util-reference.md)\.   | November 9, 2017 | 
 | New content |  Added Oracle Transparent Data Encryption\. For more information, see [Oracle database encryption](oracle-tde.md)\.   | October 25, 2017 | 
 | New content |  Added SSL Offload\. For more information, see [SSL/TLS offload](ssl-offload.md)\.   | October 12, 2017 | 

@@ -1,8 +1,11 @@
 # importPrivateKey<a name="key_mgmt_util-importPrivateKey"></a>
 
-The importPrivateKey command in key\_mgmt\_util imports an asymmetric private key into an HSM\. You can use it to import private keys that were generated outside of the HSM\. You can also use this command to import keys that were exported from an HSM, such as those exported by the [exportPrivateKey](key_mgmt_util-exportPrivateKey.md) command\.
+The importPrivateKey command in key\_mgmt\_util imports an asymmetric private key from a file to an HSM\. The HSM does not allow direct import of keys in cleartext\. The command encrypts the private key using an AES wrapping key you specify and unwraps the key inside the HSM\.
 
-During the import process, importPrivateKey uses an AES key \(the *wrapping key*\) that you select to *wrap* \(encrypt\) the private key\. By wrapping the private key, it remains confidential during transit\. For more information, see [wrapKey](key_mgmt_util-wrapKey.md)\.
+**Note**  
+You cannot import a password\-protected PEM key using a symmetric or private key\.
+
+You must specify an AES wrapping key that has `OBJ_ATTR_UNWRAP` and `OBJ_ATTR_ENCRYPT` attribute value `1`\. To find a key's attributes, use the [getAttribute](key_mgmt_util-getAttribute.md) command\.
 
 **Note**  
  This command does not offer the option to mark the imported key as non\-exportable\. 

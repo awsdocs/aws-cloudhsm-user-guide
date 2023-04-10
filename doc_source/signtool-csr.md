@@ -12,9 +12,7 @@ Now that you've downloaded the Windows SDK on to your EC2 instance, you can use 
    [Version]
    Signature= $Windows NT$
    [NewRequest]
-   Subject = "C=<Country>,CN=<www.website.com>,\
-              O=<Organization>,OU=<Organizational-Unit>,\
-              L=<City>,S=<State>"
+   Subject = "C=<Country>,CN=<www.website.com>,O=<Organization>,OU=<Organizational-Unit>,L=<City>,S=<State>"
    RequestType=PKCS10
    HashAlgorithm = SHA256
    KeyAlgorithm = RSA

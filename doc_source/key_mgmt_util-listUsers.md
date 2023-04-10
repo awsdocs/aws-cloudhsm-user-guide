@@ -37,10 +37,10 @@ Command:  listUsers
 
 The output includes the following user attributes:
 + **User ID**: Identifies the user in key\_mgmt\_util and [cloudhsm\_mgmt\_util](cloudhsm_mgmt_util.md) commands\.
-+ [User type](manage-hsm-users.md#understanding-users): Determines the operations that the user can perform on the HSM\.
++ [User type](manage-hsm-users-chsm-cli.md#understanding-users): Determines the operations that the user can perform on the HSM\.
 + **User Name**: Displays the user\-defined friendly name for the user\.
 + **MofnPubKey**: Indicates whether the user has registered a key pair for signing [quorum authentication tokens](quorum-authentication.md)\.
-+ **LoginFailureCnt**: 
++ **LoginFailureCnt**: Indicates the number of times the user has unsuccessfully logged in\. 
 + **2FA**: Indicates that the user has enabled multi\-factor authentication\. 
 
 ## Parameters<a name="listUsers-parameters"></a>

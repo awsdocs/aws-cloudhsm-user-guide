@@ -113,6 +113,19 @@ $ sudo apt install ./cloudhsm-jce_latest_u18.04_amd64.deb
 ```
 
 ------
+#### [ Ubuntu 20\.04 LTS ]
+
+Ubuntu 20\.04 LTS on x86\_64 architecture:
+
+```
+$ wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-jce_latest_u20.04_amd64.deb
+```
+
+```
+$ sudo apt install ./cloudhsm-jce_latest_u20.04_amd64.deb
+```
+
+------
 #### [ Windows Server 2016 ]
 
 For Windows Server 2016 on x86\_64 architecture, open PowerShell as an administrator and run the following command:
@@ -222,4 +235,4 @@ Credentials might not be available if the application does not provide them or i
 
 The basics on key management in the JCE provider involve importing keys, exporting keys, loading keys by handle, or deleting keys\. For more information on managing keys, see the [Manage keys](https://github.com/aws-samples/aws-cloudhsm-jce-examples/blob/sdk5/src/main/java/com/amazonaws/cloudhsm/examples/KeyUtilitiesRunner.java) code example\.
 
-You can also find more JCE provider code examples at [Java samples](java-samples_5.md)\.
+You can also find more JCE provider code examples at [Samples](java-samples_5.md)\.

@@ -1,148 +1,132 @@
-# Download AWS CloudHSM Client SDK<a name="client-history"></a>
+# Downloads for AWS CloudHSM Client SDK<a name="client-history"></a>
 
-In March 2021, AWS CloudHSM released Client SDK version 5\.0\.0, which introduces an all\-new Client SDK with different requirements, capabilities, and platform support\. You now have two versions of the Client SDK to choose from, Client SDK 5 and Client SDK 3\. For more information, see [Choose a Client SDK version to work with AWS CloudHSM](choose-client-sdk.md)\.
+## Downloads<a name="downloads"></a>
 
-**Contents**
-+ [Latest releases](#latest-releases)
-  + [Latest Client SDK 5 release: Version 5\.5\.0](#client-version-5-5-0)
-  + [Latest Client SDK 3 release: Version 3\.4\.4](#client-version-3-4-4)
-+ [Previous Client SDK 5 releases](#client-history-v8)
-+ [Previous Client SDK 3 releases](#client-history-v3)
-+ [Deprecated releases](#deprecated)
-+ [End\-of\-life releases](#end-of-life-release)<a name="latest"></a>
+In March 2021, AWS CloudHSM released Client SDK version 5\.0\.0, which introduces an all\-new Client SDK with different requirements, capabilities, and platform support\. You now have two versions of the Client SDK to choose from, Client SDK 5 and Client SDK 3\. For more information, see [Previous Client SDK versions](choose-client-sdk.md)\.
 
 ## Latest releases<a name="latest-releases"></a>
 
 This section includes the latest version of each Client SDK\.
 
-Client SDK 5 is fully supported for production environments, but it does not offer every component or the same level of support for cryptographic operations as Client SDK 3\. For more information, see [Client SDK comparison](choose-client-sdk.md#sdk-compare)\.
+Client SDK 5 is fully supported for production environments, but it does not offer every component or the same level of support for cryptographic operations as Client SDK 3\. For more information, see [Client SDK component comparison](choose-client-sdk.md#sdk-compare)\.
 
 **Topics**
-+ [Latest Client SDK 5 release: Version 5\.5\.0](#client-version-5-5-0)
++ [Latest Client SDK 5 release: Version 5\.8\.0](#client-version-5-8-0)
 + [Latest Client SDK 3 release: Version 3\.4\.4](#client-version-3-4-4)<a name="latest-5"></a>
 
-### Latest Client SDK 5 release: Version 5\.5\.0<a name="client-version-5-5-0"></a>
+### Latest Client SDK 5 release: Version 5\.8\.0<a name="client-version-5-8-0"></a>
 
 ------
 #### [ Amazon Linux ]
 
-Download version 5\.5\.0 software for Amazon Linux on x86\_64 architecture:
-+ [ PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-pkcs11-5.5.0-1.el6.x86_64.rpm) \(SHA256 checksum d26dcf4b1850f1ace52a386496063fb1e4a7692f34a1f00d1e4e61a8f59b3363\)
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-dyn-5.5.0-1.el6.x86_64.rpm) \(SHA256 checksum 098d3ee36db307e803ae6badff5c57e7581649a25d2fb789bf2e8e5ff851910b\) 
-+ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-jce-5.5.0-1.el6.x86_64.rpm) \(SHA256 checksum 3106dcf572870fbfa0645d82705d509677c2439527b5ad35ec8456ad5d068161\) 
+Download version 5\.8\.0 software for Amazon Linux on x86\_64 architecture:
++ [ PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-pkcs11-5.8.0-2.el6.x86_64.rpm) \(SHA256 checksum 6d8f3b173488bd4d4837639c0d7bac9c800a7c8748540cd36bab6a5c55e17ea5\)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-dyn-5.8.0-2.el6.x86_64.rpm) \(SHA256 checksum fed2060bbed632cbbca6792e41c41b3643e82a147e0eb9d5ffa647bb4484bb1b\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-jce-5.8.0-2.el6.x86_64.rpm) \(SHA256 checksum d8a3bcd9b685700146b96286d970c88fa370732b0437f16990cd94efcbd96a7b\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-cli-5.8.0-2.el6.x86_64.rpm) \(SHA256 checksum 41d28867f7f84832bfa42b045abd27bb6fc71bd338302a12ac680174fa58d91c\)
 
 ------
 #### [ Amazon Linux 2 ]
 
-Download version 5\.5\.0 software for Amazon Linux 2 on x86\_64 architecture:
-+ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum c08f71fe022d0041c897f326f5cff17ca2ed5b3d308e9801dd7889ca9e92068e\) 
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum bbb90f0bb7bbac9594177b7a9ff92d04bc16853a78b5016f7f5cd40b8a3ed539\) 
-+ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum 65f1d6360985f4a5225b89bccd276b15408a4d09ceb41489c4fa743970315bae\) 
+Download version 5\.8\.0 software for Amazon Linux 2 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum f6724da43fff65b9a40dacdb0650bd080a184250c3d97f347e080b57565d9810\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum b5a77ab04dcb3e4dec521b8cfd11be59e518f4ee4c2b2185eeba665df05724be\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum b54184cf7f68687c838fd13b9ccaf2ff33d5ee5bddf6521b55e93bad1fabe1ee\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum c8e5182accafed0d42c78806e7e64ce77ee37d62713be8f5ac97ee0339083ae1\)
 
-Download version 5\.5\.0 software for Amazon Linux 2 on ARM64 architecture:
-+ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.aarch64.rpm) \(SHA256 checksum 958de0815636e77cbd79e0b60d4b721d4b47a13652f8d5d036bd30d8b202b1e6\) 
+Download version 5\.8\.0 software for Amazon Linux 2 on ARM64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.8.0-2.el7.aarch64.rpm) \(SHA256 checksum f01231b2507ec4b4c985225d9276c3f66e79e57845317b42ee004702eead369f\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.8.0-2.el7.aarch64.rpm) \(SHA256 checksum 8189507d95f3e1769cd63712209ef7eff2c2841b3db9fd6e4ecc572d7874e0ec\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.8.0-2.el7.aarch64.rpm) \(SHA256 checksum 3e4626a81ea1bba432f473ccc19171cd1f74b135679febc820978351acf54c9f\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.8.0-2.el7.aarch64.rpm) \(SHA256 checksum 3e1256d67e02d3d877625b275df32657b259d76a1ec4ce5796220aacfae343c8\)
 
 ------
 #### [ CentOS 7 ]
 
-Download version 5\.5\.0 software for CentOS 7 on x86\_64 architecture:
-+ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum c08f71fe022d0041c897f326f5cff17ca2ed5b3d308e9801dd7889ca9e92068e\) 
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum bbb90f0bb7bbac9594177b7a9ff92d04bc16853a78b5016f7f5cd40b8a3ed539\) 
-+ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum 65f1d6360985f4a5225b89bccd276b15408a4d09ceb41489c4fa743970315bae\) 
+Download version 5\.8\.0 software for CentOS 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum f6724da43fff65b9a40dacdb0650bd080a184250c3d97f347e080b57565d9810\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum b5a77ab04dcb3e4dec521b8cfd11be59e518f4ee4c2b2185eeba665df05724be\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum b54184cf7f68687c838fd13b9ccaf2ff33d5ee5bddf6521b55e93bad1fabe1ee\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum c8e5182accafed0d42c78806e7e64ce77ee37d62713be8f5ac97ee0339083ae1\)
 
 ------
 #### [ RHEL 7 ]
 
-Download version 5\.5\.0 software for RHEL 7 on x86\_64 architecture:
-+ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum c08f71fe022d0041c897f326f5cff17ca2ed5b3d308e9801dd7889ca9e92068e\) 
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum bbb90f0bb7bbac9594177b7a9ff92d04bc16853a78b5016f7f5cd40b8a3ed539\) 
-+ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum 65f1d6360985f4a5225b89bccd276b15408a4d09ceb41489c4fa743970315bae\) 
+Download version 5\.8\.0 software for RHEL 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum f6724da43fff65b9a40dacdb0650bd080a184250c3d97f347e080b57565d9810\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum b5a77ab04dcb3e4dec521b8cfd11be59e518f4ee4c2b2185eeba665df05724be\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum b54184cf7f68687c838fd13b9ccaf2ff33d5ee5bddf6521b55e93bad1fabe1ee\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.8.0-2.el7.x86_64.rpm) \(SHA256 checksum c8e5182accafed0d42c78806e7e64ce77ee37d62713be8f5ac97ee0339083ae1\)
 
 ------
 #### [ RHEL 8 ]
 
-Download version 5\.5\.0 software for RHEL 8 on x86\_64 architecture:
-+ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-pkcs11-5.5.0-1.el8.x86_64.rpm) \(SHA256 checksum a27fb3315377aa94f2c757fcc5108673f9f8d50b5fbd7423e7e9aa7484e1e451\) 
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.5.0-1.el8.x86_64.rpm) \(SHA256 checksum bb52bcf1ed306918bf68782e84012d2ee3de369f7fab5b805e62afe87371335e\) 
-+ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-jce-5.5.0-1.el8.x86_64.rpm) \(SHA256 checksum 3ffd94fe5241e5d74234df4fba20d61f3d6223534bd2b6e03f9179defa0f3e8e\) 
+Download version 5\.8\.0 software for RHEL 8 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-pkcs11-5.8.0-2.el8.x86_64.rpm) \(SHA256 checksum dfeca89815475ed0180221aea250f4e56d482a7493ede24d87b0fc01b05f01cd\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.8.0-2.el8.x86_64.rpm) \(SHA256 checksum 7829c894eccec81efb0ba28b42459d99193f0549f8a61bf1d24be7e95c28cf98\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-jce-5.8.0-2.el8.x86_64.rpm) \(SHA256 checksum 3ebe55cbebc8dc93b3516f30e2c9bcc0b83055d164e56ecd1b2bc6db4509df25\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-cli-5.8.0-2.el8.x86_64.rpm) \(SHA256 checksum 979c623ae96c601eb1a8f3ab6500d56c8895735f33fdd6513621c0cd73336ffc\)
 
 ------
 #### [ Ubuntu 18\.04 LTS ]
 
-Download version 5\.5\.0 software for Ubuntu 18\.04 LTS on x86\_64 architecture:
-+ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-pkcs11_5.5.0-1_u18.04_amd64.deb) \(SHA256 checksum 00aa40e909e73ad96b480073e3b959e5de4ea853b539f9604e9aa592dcbcbfe5\) 
-+ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-dyn_5.5.0-1_u18.04_amd64.deb) \(SHA256 checksum 1dabd957d1e5777d3da7da7273885b1541868656b033c7ad8d9fde133e03da6a\) 
-+ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-jce_5.5.0-1_u18.04_amd64.deb) \(SHA256 checksum 702a560938718e59120653b5c3359cb6a14f6b835f4c7d3aab0df26071e2ff63\) 
+Download version 5\.8\.0 software for Ubuntu 18\.04 LTS on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-pkcs11_5.8.0-2_u18.04_amd64.deb) \(SHA256 checksum 648460bfdf897dae5de8f96c75b6216dfe1b5df9d307f8dbb4c4482c53d52977\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-dyn_5.8.0-2_u18.04_amd64.deb) \(SHA256 checksum 2e4ef2f7f94000bc6824a2a04df2d49d22bd61a612e41334af66d1eb2efcf8ca\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-jce_5.8.0-2_u18.04_amd64.deb) \(SHA256 checksum b4ac6c40f290eb873e4845d4386fdc6d759bfba2ba770b9eb942725028e562e3\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-cli_5.8.0-2_u18.04_amd64.deb) \(SHA256 checksum 24b34d1206d453c0427c40b5d3b12f83670b7501d0153dea208487758f7f2236\)
+
+------
+#### [ Ubuntu 20\.04 LTS ]
+
+Download version 5\.8\.0 software for Ubuntu 20\.04 LTS on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-pkcs11_5.8.0-2_u20.04_amd64.deb) \(SHA256 checksum c50e50cecec9ebc9f04cf45737dafc943ab72b3fa2616f9174ceab26757c017b\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-dyn_5.8.0-2_u20.04_amd64.deb) \(SHA256 checksum 0131539a039836f241544bb18c2e74195082ca85e02105af9287b40c1e3c7bd3\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-jce_5.8.0-2_u20.04_amd64.deb) \(SHA256 checksum 73c2f597eb81ee2193aa0c9a3ac8bebbd51fc6951358d87e50bcbc94ac00c9d2\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-cli_5.8.0-2_u20.04_amd64.deb) \(SHA256 checksum 9946f789b570b4c11becfdfe6fcb35cfd6328ec3870ffced5186057df81d8b6b\)
 
 ------
 #### [ Windows Server 2016 ]
 
-Download version 5\.5\.0 software for Windows Server 2016 on x86\_64 architecture:
-+ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.5.0-1.msi) \(SHA256 checksum df4197ebfb623acf3b733fc7b4bdf38a76cb09d63059680d56a3af37f740afd4\) 
-+ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.5.0-1.msi) \(SHA256 checksum b8dc0a7a54715596c0eb40b6e97978850230ec1f76acf926fe6dbc622b2ac0b3\) 
+Download version 5\.8\.0 software for Windows Server 2016 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.8.0-2.msi) \(SHA256 checksum c3fc54fa01599a65c67a1f8c280d13f2dcbeb8655fa7202dd4e7317aa90bc25c\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.8.0-2.msi) \(SHA256 checksum 500f5d2ca9681547fe8474fdfcd3ba16a5ec119b09a054f79dba4d97baad8773\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMCLI-5.8.0-2.msi) \(SHA256 checksum 9d61c1a6b95c05ebda7b2c94ae4355988206f6addf60fb22ad4ba5b6413a0e51\)
 
 ------
 #### [ Windows Server 2019 ]
 
-Download version 5\.5\.0 software for Windows Server 2019 on x86\_64 architecture:
-+ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.5.0-1.msi) \(SHA256 checksum df4197ebfb623acf3b733fc7b4bdf38a76cb09d63059680d56a3af37f740afd4\) 
-+ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.5.0-1.msi) \(SHA256 checksum b8dc0a7a54715596c0eb40b6e97978850230ec1f76acf926fe6dbc622b2ac0b3\) 
+Download version 5\.8\.0 software for Windows Server 2019 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.8.0-2.msi) \(SHA256 checksum c3fc54fa01599a65c67a1f8c280d13f2dcbeb8655fa7202dd4e7317aa90bc25c\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.8.0-2.msi) \(SHA256 checksum 500f5d2ca9681547fe8474fdfcd3ba16a5ec119b09a054f79dba4d97baad8773\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.8.0-javadoc.jar) \(SHA256 checksum 2ffa3336c23eadd82ab21b5d4b5d32508baa81bcf1af0ec6f413a88db902a3f5\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMCLI-5.8.0-2.msi) \(SHA256 checksum 9d61c1a6b95c05ebda7b2c94ae4355988206f6addf60fb22ad4ba5b6413a0e51\)
 
 ------
 
-Version 5\.5\.0 adds support for OpenJDK 11, Keytool and Jarsigner integration, and additional mechanisms to the JCE provider\. Resolves a [known issue](https://docs.aws.amazon.com/cloudhsm/latest/userguide/ki-jce-sdk.html#ki-jce-6) regarding a KeyGenerator class incorrectly interpreting key size parameter as number of bytes instead of bits\.
+Version 5\.8\.0 introduces quorum authentication for CloudHSM CLI, SSL/TLS offload with JSSE, multi\-slot support for PKCS \#11, multi\-cluster/multi\-user support for JCE, key extraction with JCE, supported keyFactory for JCE, new retry configurations for non\-terminal return codes, and includes improved stability and bug fixes for all SDKs\.
 
 **PKCS \#11 library**
-+ Improved stability and bug fixes\.
-
-**OpenSSL Dynamic Engine**
-+ Improved stability and bug fixes\.
++ Added support for multi\-slot configuration
 
 **JCE provider**
-+ Support for the Keytool and Jarsigner utilities
-+ Support for OpenJDK 11 on all platforms
-+ Ciphers
-  + AES/CBC/NoPadding Encrypt and Decrypt mode
-  + AES/ECB/PKCS5Padding Encrypt and Decrypt mode
-  + AES/CTR/NoPadding Encrypt and Decrypt mode
-  + AES/GCM/NoPadding Wrap and Unwrap mode
-  + DESede/ECB/PKCS5Padding Encrypt and Decrypt mode
-  + DESede/CBC/NoPadding Encrypt and Decrypt mode
-  + AESWrap/ECB/NoPadding Wrap and Unwrap mode
-  + AESWrap/ECB/PKCS5Padding Wrap and Unwrap mode
-  + AESWrap/ECB/ZeroPadding Wrap and Unwrap mode
-  + RSA/ECB/PKCS1Padding Wrap and Unwrap mode
-  + RSA/ECB/OAEPPadding Wrap and Unwrap mode
-  + RSA/ECB/OAEPWithSHA\-1ANDMGF1Padding Wrap and Unwrap mode
-  + RSA/ECB/OAEPWithSHA\-224ANDMGF1Padding Wrap and Unwrap mode
-  + RSA/ECB/OAEPWithSHA\-256ANDMGF1Padding Wrap and Unwrap mode
-  + RSA/ECB/OAEPWithSHA\-384ANDMGF1Padding Wrap and Unwrap mode
-  + RSA/ECB/OAEPWithSHA\-512ANDMGF1Padding Wrap and Unwrap mode
-  + RSAAESWrap/ECB/OAEPPadding Wrap and Unwrap mode
-  + RSAAESWrap/ECB/OAEPWithSHA\-1ANDMGF1Padding Wrap and Unwrap mode
-  + RSAAESWrap/ECB/OAEPWithSHA\-224ANDMGF1Padding Wrap and Unwrap mode
-  + RSAAESWrap/ECB/OAEPWithSHA\-256ANDMGF1Padding Wrap and Unwrap mode
-  + RSAAESWrap/ECB/OAEPWithSHA\-384ANDMGF1Padding Wrap and Unwrap mode
-  + RSAAESWrap/ECB/OAEPWithSHA\-512ANDMGF1Padding Wrap and Unwrap mode
-+ KeyFactory and SecretKeyFactory
-  + RSA – 2048\-bit to 4096\-bit RSA keys, in increments of 256 bits
-  + AES – 128, 192, and 256\-bit AES keys
-  + ECC key pairs for NIST curves secp256r1 \(P\-256\), secp384r1 \(P\-384\), and secp256k1
-  + DESede \(3DES\)
-  + GenericSecret
-  + HMAC – with SHA1, SHA224, SHA256, SHA384, SHA512 hash support
-+ Sign/Verify
-  + RSASSA\-PSS
-  + SHA1withRSA/PSS
-  + SHA224withRSA/PSS
-  + SHA256withRSA/PSS
-  + SHA384withRSA/PSS
-  + SHA512withRSA/PSS
-  + SHA1withRSAandMGF1
-  + SHA224withRSAandMGF1
-  + SHA256withRSAandMGF1
-  + SHA384withRSAandMGF1
-  + SHA512withRSAandMGF1<a name="latest-3"></a>
++ Added configuration based key extraction
++ Added support for multi\-cluster and multi\-user configurations
++ Added support for SSL and TLS offload with JSSE
++ Added unwrap support for AES/CBC/NoPadding
++ Added new types of key factories: SecretKeyFactory and KeyFactory
+
+**CloudHSM CLI**
++ Added support for quorum authentication<a name="latest-3"></a>
 
 ### Latest Client SDK 3 release: Version 3\.4\.4<a name="client-version-3-4-4"></a>
 
@@ -252,7 +236,7 @@ Download the version 3\.4\.4 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.4 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.4\.4\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019\. The AWS CloudHSM 3\.4\.4 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.4\.4\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.4.4.msi) \(SHA256 checksum 2fe2d9039034b57d82324bd3ed3e867801acbf3ae48caaa63a9801ce6202e758\)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.4.4.msi) \(SHA256 checksum 195445261c6a97d81ef27c0ed5e856031f5be2632bc819d3a3b50be1e8507bdf\)
 
@@ -278,6 +262,343 @@ AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 20
 ## Previous Client SDK 5 releases<a name="client-history-v8"></a>
 
 This section lists previous Client SDK 5 releases\. For the current Client SDK 5 release, see [Latest releases](#latest-releases)\.
+
+### Version 5\.7\.0<a name="client-version-5-7-0"></a>
+
+------
+#### [ Amazon Linux ]
+
+Download version 5\.7\.0 software for Amazon Linux on x86\_64 architecture:
++ [ PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-pkcs11-5.7.0-1.el6.x86_64.rpm) \(SHA256 checksum 847cf948df64c6f81b59d9e81fee86d70338f30922e5e88c46239f26028ac2d8\)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-dyn-5.7.0-1.el6.x86_64.rpm) \(SHA256 checksum 35f996798d29cd0ab1bca301e7417970e6060fe8485de7d77a442fb888e526d4\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-jce-5.7.0-1.el6.x86_64.rpm) \(SHA256 checksum 0bee58bf3f0909d7e0ad39f2c8a19284bbfc72187b2f03516c85201ac33b39f6\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-cli-5.7.0-1.el6.x86_64.rpm) \(SHA256 checksum fd3ebdaae0e942109bf28f23ea76d87f7c9b7efcafaf1df8d0dcc4e6eaf5fa62\)
+
+------
+#### [ Amazon Linux 2 ]
+
+Download version 5\.7\.0 software for Amazon Linux 2 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum cf3f65b361a369b1eda49c18fb33d8319a1ef163402f9e61a23225399ce21a8f\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum b713395fee50e6f71bf4ff851bbcde89018ad813fd8dd8b2a4e94a96c989d886\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum ed85b35e9d77f5c76bff05221e4422968b419d0b5ef0c0c5cc657883bbff5c3a\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum 35d4da8341aa4ab51fa5dc072f44b711e0e6e102323c88d1d4de7ce0a3c00309\)
+
+Download version 5\.7\.0 software for Amazon Linux 2 on ARM64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.7.0-1.el7.aarch64.rpm) \(SHA256 checksum 52d6093d17c0bd13df00a58a807aba1258cb009f615001121e257aa10b8a1b6c\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.7.0-1.el7.aarch64.rpm) \(SHA256 checksum 73b85d065c979816dbb51f3bdd92340b34e17fce915c8462648818c03e57e7a9\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.7.0-1.el7.aarch64.rpm) \(SHA256 checksum 2953b51f7cb4879da44ca5a6888de77d39f7ab8758d3a8100e3886fcd1826863\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.7.0-1.el7.aarch64.rpm) \(SHA256 checksum ef736bed399409c3c8f51416c3f6e8a68ddeede6cec5a8c8e6d088aacb95b52a\)
+
+------
+#### [ CentOS 7 ]
+
+Download version 5\.7\.0 software for CentOS 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum cf3f65b361a369b1eda49c18fb33d8319a1ef163402f9e61a23225399ce21a8f\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum b713395fee50e6f71bf4ff851bbcde89018ad813fd8dd8b2a4e94a96c989d886\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum ed85b35e9d77f5c76bff05221e4422968b419d0b5ef0c0c5cc657883bbff5c3a\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum 35d4da8341aa4ab51fa5dc072f44b711e0e6e102323c88d1d4de7ce0a3c00309\)
+
+------
+#### [ RHEL 7 ]
+
+Download version 5\.7\.0 software for RHEL 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum cf3f65b361a369b1eda49c18fb33d8319a1ef163402f9e61a23225399ce21a8f\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum b713395fee50e6f71bf4ff851bbcde89018ad813fd8dd8b2a4e94a96c989d886\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum ed85b35e9d77f5c76bff05221e4422968b419d0b5ef0c0c5cc657883bbff5c3a\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-5.7.0-1.el7.x86_64.rpm) \(SHA256 checksum 35d4da8341aa4ab51fa5dc072f44b711e0e6e102323c88d1d4de7ce0a3c00309\)
+
+------
+#### [ RHEL 8 ]
+
+Download version 5\.7\.0 software for RHEL 8 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-pkcs11-5.7.0-1.el8.x86_64.rpm) \(SHA256 checksum 90227569a1a5225833aad73c1bb57ae303f1d1fc2635b08d1ac8412b1db56720\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.7.0-1.el8.x86_64.rpm) \(SHA256 checksum a4291e2f47a98fbe58be6f1b262aba394f19c3aa3ea4bfd60e0e087c0464d428\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-jce-5.7.0-1.el8.x86_64.rpm) \(SHA256 checksum fa3d83c03b01bb5b8f86c32329771ef73d3f4a66375e428344beceda21c029b2\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-cli-5.7.0-1.el8.x86_64.rpm) \(SHA256 checksum 7d30de2eec04e062d3420fa1a4502ece7c372f1f0f59b4db0c690a46f006038a\)
+
+------
+#### [ Ubuntu 18\.04 LTS ]
+
+Download version 5\.7\.0 software for Ubuntu 18\.04 LTS on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-pkcs11_5.7.0-1_u18.04_amd64.deb) \(SHA256 checksum 4fd9c59d5d7b38d4c1c7cc17bdbe7839ee1040bd18cfe9f640719faaf68fdb8a\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-dyn_5.7.0-1_u18.04_amd64.deb) \(SHA256 checksum 6afdd452f1526dbfcfd8c69ced2f81f98620b8e89dd4d7005d53d433b95cbe05\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-jce_5.7.0-1_u18.04_amd64.deb) \(SHA256 checksum e12bc3ac0e2b5ed2f317d38ef33d920523133b2c7a783343f1cd5b8e75e46b0e\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-cli_5.7.0-1_u18.04_amd64.deb) \(SHA256 checksum 1dbfe0010572f6b0c985123730f673a11b4472ecbe11dc96b09aa7989adae1da\)
+
+------
+#### [ Ubuntu 20\.04 LTS ]
+
+Download version 5\.7\.0 software for Ubuntu 20\.04 LTS on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-pkcs11_5.7.0-1_u20.04_amd64.deb) \(SHA256 checksum 4e18891e18312089d90bf8ee40d7cdee03128454a925d5d9b14fb12175efaa01\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-dyn_5.7.0-1_u20.04_amd64.deb) \(SHA256 checksum ef0eb28c3269506e808d9176c7136ce62902944250472bed134f1c0a713d5a18\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-jce_5.7.0-1_u20.04_amd64.deb) \(SHA256 checksum 43cdbb69505810dc10fc1db862f0fb777e18e3b31c364142dc2228b4c6f1de49\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-cli_5.7.0-1_u20.04_amd64.deb) \(SHA256 checksum b831dedf9775189f2c99283df2404b8b969bd8be4537690e21a2fd10b0cc4152\)
+
+------
+#### [ Windows Server 2016 ]
+
+Download version 5\.7\.0 software for Windows Server 2016 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.7.0-1.msi) \(SHA256 checksum 2c677d2f01216766741d0044735977134bb9e903472ae7e57a1c6eab3b7388e5\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.7.0-1.msi) \(SHA256 checksum eecb49e2c1d2af75fddb7c656820723fa00672c2f46b9f6e8a64bb2dbe63d54a\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMCLI-5.7.0-1.msi) \(SHA256 checksum 854bcec5053e3d7ed9771044c8921de6c9019a6eb4ae0376a6d6f9d78343d58b\)
+
+------
+#### [ Windows Server 2019 ]
+
+Download version 5\.7\.0 software for Windows Server 2019 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.7.0-1.msi) \(SHA256 checksum 2c677d2f01216766741d0044735977134bb9e903472ae7e57a1c6eab3b7388e5\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.7.0-1.msi) \(SHA256 checksum eecb49e2c1d2af75fddb7c656820723fa00672c2f46b9f6e8a64bb2dbe63d54a\) 
+  + [ Javadocs for AWS CloudHSM](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/JCE/cloudhsm-jce-5.7.0-javadoc.jar) \(SHA256 checksum 1443a8587da8e9b067e1c39f7c7f3db64a12f89341b8cca6ab6d65ab803f7359\)
++ [ CloudHSM CLI](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMCLI-5.7.0-1.msi) \(SHA256 checksum 854bcec5053e3d7ed9771044c8921de6c9019a6eb4ae0376a6d6f9d78343d58b\)
+
+------
+
+Version 5\.7\.0 introduces CloudHSM CLI and includes a new cipher\-based message authentication code \(CMAC\) algorithm\. This release adds ARM architecture on Amazon Linux 2\. JCE provider Javadocs are now available for AWS CloudHSM\.
+
+**PKCS \#11 library**
++ Improved stability and bug fixes
++ Now supported on ARM architecture with Amazon Linux 2\.
++ Algorithms
+  + CKM\_AES\_CMAC \(sign and verify\)
+
+**OpenSSL Dynamic Engine**
++ Improved stability and bug fixes
++ Now supported on ARM architecture with Amazon Linux 2\.
+
+**JCE provider**
++ Improved stability and bug fixes
++ Algorithms
+  + AESCMAC
+
+### Version 5\.6\.0<a name="client-version-5-6-0"></a>
+
+------
+#### [ Amazon Linux ]
+
+Download version 5\.6\.0 software for Amazon Linux on x86\_64 architecture:
++ [ PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-pkcs11-5.6.0-1.el6.x86_64.rpm) \(SHA256 checksum e8fe110344dfc8bc324da7eb9f84fa304b3186e6ba02474c1ebde7ff91c2e7fa\)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-dyn-5.6.0-1.el6.x86_64.rpm) \(SHA256 checksum 62aa8fdff368d2701d32a39c1e2a2ba0ea7170cab9cd5541b6b2c8f09bfe1209\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-jce-5.6.0-1.el6.x86_64.rpm) \(SHA256 checksum 99b80a2e11f3b6c0b510f27213a8c903ec50baac0aaaed48d6424152d244e17e\) 
+
+------
+#### [ Amazon Linux 2 ]
+
+Download version 5\.6\.0 software for Amazon Linux 2 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum 2a08cf126c6ababc4ae776a8c79ac0e086fb1d94a888bbf5fc0e4e03e31fab5b\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum 2e327a6483b5f3fab9e556e19a41bd422949ae15045cdbd88ab4d86b46928d09\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum e08c6e773b40ac4bae366b1d2ff85891fa3d0c94a38dd722d6da5b11ea1b4003\) 
+
+Download version 5\.6\.0 software for Amazon Linux 2 on ARM64 architecture:
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.6.0-1.el7.aarch64.rpm) \(SHA256 checksum eeb6af4e6b89b1602499125c61ed1f45858b252b12363c45b9ea21bdc0f4d85b\) 
+
+------
+#### [ CentOS 7 ]
+
+Download version 5\.6\.0 software for CentOS 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum 2a08cf126c6ababc4ae776a8c79ac0e086fb1d94a888bbf5fc0e4e03e31fab5b\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum 2e327a6483b5f3fab9e556e19a41bd422949ae15045cdbd88ab4d86b46928d09\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum e08c6e773b40ac4bae366b1d2ff85891fa3d0c94a38dd722d6da5b11ea1b4003\) 
+
+------
+#### [ RHEL 7 ]
+
+Download version 5\.6\.0 software for RHEL 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum 2a08cf126c6ababc4ae776a8c79ac0e086fb1d94a888bbf5fc0e4e03e31fab5b\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum 2e327a6483b5f3fab9e556e19a41bd422949ae15045cdbd88ab4d86b46928d09\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.6.0-1.el7.x86_64.rpm) \(SHA256 checksum e08c6e773b40ac4bae366b1d2ff85891fa3d0c94a38dd722d6da5b11ea1b4003\) 
+
+------
+#### [ RHEL 8 ]
+
+Download version 5\.6\.0 software for RHEL 8 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-pkcs11-5.6.0-1.el8.x86_64.rpm) \(SHA256 checksum 442df60ffeb577498e429339941bcfa8adb377b0c0edce1d19e870f996a9e312\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.6.0-1.el8.x86_64.rpm) \(SHA256 checksum c70ec51e00d697b541052ee53b485e2003720b561c74db1a4a0976fc59ec1937\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-jce-5.6.0-1.el8.x86_64.rpm) \(SHA256 checksum b761ee7f3a0b372931e7d0b94bdc00b62ddc60a3929c2412675c6e224cd8de7b\) 
+
+------
+#### [ Ubuntu 18\.04 LTS ]
+
+Download version 5\.6\.0 software for Ubuntu 18\.04 LTS on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-pkcs11_5.6.0-1_u18.04_amd64.deb) \(SHA256 checksum 115e40ca45ee8e177cc34d9d1f1fe137dbcb476467043e827d5322456dbae293\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-dyn_5.6.0-1_u18.04_amd64.deb) \(SHA256 checksum a646ae0839157d576e8539eebb214a7e147d9060ce8947c5c14df334c5d6cb34\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-jce_5.6.0-1_u18.04_amd64.deb) \(SHA256 checksum 9330ec740aaf854a811090dec93fe40e4fa2dbbfe88a61fc978b2159124f531a\) 
+
+------
+#### [ Ubuntu 20\.04 LTS ]
+
+Download version 5\.6\.0 software for Ubuntu 20\.04 LTS on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-pkcs11_5.6.0-1_u20.04_amd64.deb) \(SHA256 checksum d8666432b63fb74693c8bbbd2dc88ddbac786c390cb54a7055f3827e70347018\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-dyn_5.6.0-1_u20.04_amd64.deb) \(SHA256 checksum 4e6e264050f65961cca61ecc884c0f6fe98e5f9ab2bfab7ae1d4ea5a0e8d79a5\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Focal/cloudhsm-jce_5.6.0-1_u20.04_amd64.deb) \(SHA256 checksum 361a4a3ee695995e0d3367660533910d24c3a2945dcfbf458f12f544425d68d9\) 
+
+------
+#### [ Windows Server 2016 ]
+
+Download version 5\.6\.0 software for Windows Server 2016 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.6.0-1.msi) \(SHA256 checksum 32cd12c80aef38e2dba74851578ea5498bee078bff548b0ba0b383270f43b0a5\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.6.0-1.msi) \(SHA256 checksum c595166d549e8d8dfd0959c43ab0eb29fc08ed8df32cc2d01ce57d22c704b672\) 
+
+------
+#### [ Windows Server 2019 ]
+
+Download version 5\.6\.0 software for Windows Server 2019 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.6.0-1.msi) \(SHA256 checksum 32cd12c80aef38e2dba74851578ea5498bee078bff548b0ba0b383270f43b0a5\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.6.0-1.msi) \(SHA256 checksum c595166d549e8d8dfd0959c43ab0eb29fc08ed8df32cc2d01ce57d22c704b672\) 
+
+------
+
+Version 5\.6\.0 includes new mechanism support for PKCS \#11 library and JCE provider\. Additionally, version 5\.6 supports Ubuntu 20\.04\.
+
+**PKCS \#11 library**
++ Improved stability and bug fixes
++ Mechanisms
+  + CKM\_RSA\_X\_509, for encrypt, decrypt, sign, and verify modes
+
+**OpenSSL Dynamic Engine**
++ Improved stability and bug fixes
+
+**JCE provider**
++ Improved stability and bug fixes
++ Ciphers
+  + RSA/ECB/NoPadding, for encrypt and decrypt modes
+
+**Supported keys**
++ EC with curves secp224r1 and secp521r1
+
+**Platform support**
++ Added support for Ubuntu 20\.04
+
+### Version 5\.5\.0<a name="client-version-5-5-0"></a>
+
+------
+#### [ Amazon Linux ]
+
+Download version 5\.5\.0 software for Amazon Linux on x86\_64 architecture:
++ [ PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-pkcs11-5.5.0-1.el6.x86_64.rpm) \(SHA256 checksum d26dcf4b1850f1ace52a386496063fb1e4a7692f34a1f00d1e4e61a8f59b3363\)
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-dyn-5.5.0-1.el6.x86_64.rpm) \(SHA256 checksum 098d3ee36db307e803ae6badff5c57e7581649a25d2fb789bf2e8e5ff851910b\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL6/cloudhsm-jce-5.5.0-1.el6.x86_64.rpm) \(SHA256 checksum 3106dcf572870fbfa0645d82705d509677c2439527b5ad35ec8456ad5d068161\) 
+
+------
+#### [ Amazon Linux 2 ]
+
+Download version 5\.5\.0 software for Amazon Linux 2 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum c08f71fe022d0041c897f326f5cff17ca2ed5b3d308e9801dd7889ca9e92068e\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum bbb90f0bb7bbac9594177b7a9ff92d04bc16853a78b5016f7f5cd40b8a3ed539\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum 65f1d6360985f4a5225b89bccd276b15408a4d09ceb41489c4fa743970315bae\) 
+
+Download version 5\.5\.0 software for Amazon Linux 2 on ARM64 architecture:
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.aarch64.rpm) \(SHA256 checksum 958de0815636e77cbd79e0b60d4b721d4b47a13652f8d5d036bd30d8b202b1e6\) 
+
+------
+#### [ CentOS 7 ]
+
+Download version 5\.5\.0 software for CentOS 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum c08f71fe022d0041c897f326f5cff17ca2ed5b3d308e9801dd7889ca9e92068e\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum bbb90f0bb7bbac9594177b7a9ff92d04bc16853a78b5016f7f5cd40b8a3ed539\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum 65f1d6360985f4a5225b89bccd276b15408a4d09ceb41489c4fa743970315bae\) 
+
+------
+#### [ RHEL 7 ]
+
+Download version 5\.5\.0 software for RHEL 7 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum c08f71fe022d0041c897f326f5cff17ca2ed5b3d308e9801dd7889ca9e92068e\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-dyn-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum bbb90f0bb7bbac9594177b7a9ff92d04bc16853a78b5016f7f5cd40b8a3ed539\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-jce-5.5.0-1.el7.x86_64.rpm) \(SHA256 checksum 65f1d6360985f4a5225b89bccd276b15408a4d09ceb41489c4fa743970315bae\) 
+
+------
+#### [ RHEL 8 ]
+
+Download version 5\.5\.0 software for RHEL 8 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-pkcs11-5.5.0-1.el8.x86_64.rpm) \(SHA256 checksum a27fb3315377aa94f2c757fcc5108673f9f8d50b5fbd7423e7e9aa7484e1e451\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.5.0-1.el8.x86_64.rpm) \(SHA256 checksum bb52bcf1ed306918bf68782e84012d2ee3de369f7fab5b805e62afe87371335e\) 
++ [ JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-jce-5.5.0-1.el8.x86_64.rpm) \(SHA256 checksum 3ffd94fe5241e5d74234df4fba20d61f3d6223534bd2b6e03f9179defa0f3e8e\) 
+
+------
+#### [ Ubuntu 18\.04 LTS ]
+
+Download version 5\.5\.0 software for Ubuntu 18\.04 LTS on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-pkcs11_5.5.0-1_u18.04_amd64.deb) \(SHA256 checksum 00aa40e909e73ad96b480073e3b959e5de4ea853b539f9604e9aa592dcbcbfe5\) 
++ [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-dyn_5.5.0-1_u18.04_amd64.deb) \(SHA256 checksum 1dabd957d1e5777d3da7da7273885b1541868656b033c7ad8d9fde133e03da6a\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Bionic/cloudhsm-jce_5.5.0-1_u18.04_amd64.deb) \(SHA256 checksum 702a560938718e59120653b5c3359cb6a14f6b835f4c7d3aab0df26071e2ff63\) 
+
+------
+#### [ Windows Server 2016 ]
+
+Download version 5\.5\.0 software for Windows Server 2016 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.5.0-1.msi) \(SHA256 checksum df4197ebfb623acf3b733fc7b4bdf38a76cb09d63059680d56a3af37f740afd4\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.5.0-1.msi) \(SHA256 checksum b8dc0a7a54715596c0eb40b6e97978850230ec1f76acf926fe6dbc622b2ac0b3\) 
+
+------
+#### [ Windows Server 2019 ]
+
+Download version 5\.5\.0 software for Windows Server 2019 on x86\_64 architecture:
++ [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.5.0-1.msi) \(SHA256 checksum df4197ebfb623acf3b733fc7b4bdf38a76cb09d63059680d56a3af37f740afd4\) 
++ [JCE provider](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMJCE-5.5.0-1.msi) \(SHA256 checksum b8dc0a7a54715596c0eb40b6e97978850230ec1f76acf926fe6dbc622b2ac0b3\) 
+
+------
+
+Version 5\.5\.0 adds support for OpenJDK 11, Keytool and Jarsigner integration, and additional mechanisms to the JCE provider\. Resolves a [known issue](https://docs.aws.amazon.com/cloudhsm/latest/userguide/ki-jce-sdk.html#ki-jce-6) regarding a KeyGenerator class incorrectly interpreting key size parameter as number of bytes instead of bits\.
+
+**PKCS \#11 library**
++ Improved stability and bug fixes\.
+
+**OpenSSL Dynamic Engine**
++ Improved stability and bug fixes\.
+
+**JCE provider**
++ Support for the Keytool and Jarsigner utilities
++ Support for OpenJDK 11 on all platforms
++ Ciphers
+  + AES/CBC/NoPadding Encrypt and Decrypt mode
+  + AES/ECB/PKCS5Padding Encrypt and Decrypt mode
+  + AES/CTR/NoPadding Encrypt and Decrypt mode
+  + AES/GCM/NoPadding Wrap and Unwrap mode
+  + DESede/ECB/PKCS5Padding Encrypt and Decrypt mode
+  + DESede/CBC/NoPadding Encrypt and Decrypt mode
+  + AESWrap/ECB/NoPadding Wrap and Unwrap mode
+  + AESWrap/ECB/PKCS5Padding Wrap and Unwrap mode
+  + AESWrap/ECB/ZeroPadding Wrap and Unwrap mode
+  + RSA/ECB/PKCS1Padding Wrap and Unwrap mode
+  + RSA/ECB/OAEPPadding Wrap and Unwrap mode
+  + RSA/ECB/OAEPWithSHA\-1ANDMGF1Padding Wrap and Unwrap mode
+  + RSA/ECB/OAEPWithSHA\-224ANDMGF1Padding Wrap and Unwrap mode
+  + RSA/ECB/OAEPWithSHA\-256ANDMGF1Padding Wrap and Unwrap mode
+  + RSA/ECB/OAEPWithSHA\-384ANDMGF1Padding Wrap and Unwrap mode
+  + RSA/ECB/OAEPWithSHA\-512ANDMGF1Padding Wrap and Unwrap mode
+  + RSAAESWrap/ECB/OAEPPadding Wrap and Unwrap mode
+  + RSAAESWrap/ECB/OAEPWithSHA\-1ANDMGF1Padding Wrap and Unwrap mode
+  + RSAAESWrap/ECB/OAEPWithSHA\-224ANDMGF1Padding Wrap and Unwrap mode
+  + RSAAESWrap/ECB/OAEPWithSHA\-256ANDMGF1Padding Wrap and Unwrap mode
+  + RSAAESWrap/ECB/OAEPWithSHA\-384ANDMGF1Padding Wrap and Unwrap mode
+  + RSAAESWrap/ECB/OAEPWithSHA\-512ANDMGF1Padding Wrap and Unwrap mode
++ KeyFactory and SecretKeyFactory
+  + RSA – 2048\-bit to 4096\-bit RSA keys, in increments of 256 bits
+  + AES – 128, 192, and 256\-bit AES keys
+  + EC key pairs for NIST curves secp256r1 \(P\-256\), secp384r1 \(P\-384\), and secp256k1
+  + DESede \(3DES\)
+  + GenericSecret
+  + HMAC – with SHA1, SHA224, SHA256, SHA384, SHA512 hash support
++ Sign/Verify
+  + RSASSA\-PSS
+  + SHA1withRSA/PSS
+  + SHA224withRSA/PSS
+  + SHA256withRSA/PSS
+  + SHA384withRSA/PSS
+  + SHA512withRSA/PSS
+  + SHA1withRSAandMGF1
+  + SHA224withRSAandMGF1
+  + SHA256withRSAandMGF1
+  + SHA384withRSAandMGF1
+  + SHA512withRSAandMGF1
 
 ### Version 5\.4\.2<a name="client-version-5-4-2"></a>
 
@@ -655,9 +976,59 @@ Download the version 5\.3\.0 software for Windows Server 2019: [PKCS \#11 librar
 
 **OpenSSL Dynamic Engine**
 + Add support for ECDSA sign/verify with curves P\-256, P\-384, and secp256k1\.
-+ Add support for the platforms: Amazon Linux, Amazon Linux 2, Centos 7\.8\+, RHEL 7\.8\+\.
++ Add support for the platforms: Amazon Linux, Amazon Linux 2, Centos 7\.8\+, RHEL 7\.9\+\.
 + Add support for OpenSSL version 1\.0\.2\.
 + Improved stability and bug fixes\.
+
+**JCE provider**
++ 
+
+**Key types**
+  + RSA – 2048\-bit to 4096\-bit RSA keys, in increments of 256 bits\.
+  + AES – 128, 192, and 256\-bit AES keys\.
+  + EC key pairs for NIST curves secp256r1 \(P\-256\), secp384r1 \(P\-384\), and secp256k1\.
+  + DESede \(3DES\)
+  + HMAC – with SHA1, SHA224, SHA256, SHA384, SHA512 hash support\.
++ 
+
+**Ciphers \(encrypt and decrypt only\)**
+  + AES/GCM/NoPadding
+  + AES/ECB/NoPadding
+  + AES/CBC/PKCS5Padding
+  + DESede/ECB/NoPadding
+  + DESede/CBC/PKCS5Padding
+  + AES/CTR/NoPadding
+  + RSA/ECB/PKCS1Padding
+  + RSA/ECB/OAEPPadding
+  + RSA/ECB/OAEPWithSHA\-1ANDMGF1Padding
+  + RSA/ECB/OAEPWithSHA\-224ANDMGF1Padding
+  + RSA/ECB/OAEPWithSHA\-256ANDMGF1Padding
+  + RSA/ECB/OAEPWithSHA\-384ANDMGF1Padding
+  + RSA/ECB/OAEPWithSHA\-512ANDMGF1Padding
++ 
+
+**Digests**
+  + SHA\-1
+  + SHA\-224
+  + SHA\-256
+  + SHA\-384
+  + SHA\-512
++ 
+
+**Sign/Verify**
+  + NONEwithRSA
+  + SHA1withRSA
+  + SHA224withRSA
+  + SHA256withRSA
+  + SHA384withRSA
+  + SHA512withRSA
+  + NONEwithECDSA
+  + SHA1withECDSA
+  + SHA224withECDSA
+  + SHA256withECDSA
+  + SHA384withECDSA
+  + SHA512withECDSA
++ Integration with the Java KeyStore
 
 ### Version 5\.2\.1<a name="client-version-5-2-1"></a>
 
@@ -687,7 +1058,7 @@ Download the version 5\.2\.1 software for CentOS 8\.3\+:
 + [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.2.1-2.el8.x86_64.rpm) \(SHA256 checksum e9d3daecd68f66acaadc6036bd5aa108a0c59cb91d3f31ee9b758c5590812086\)
 
 ------
-#### [ RHEL 7\.8\+ ]
+#### [ RHEL 7\.9\+ ]
 
 Download the version 5\.2\.1 software for RedHat Enterprise Linux 7\.8\+:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.2.1-2.el7.x86_64.rpm) \(SHA256 checksum b3ac4b0d4a27d58a3ae3df45702c2c1197daf0a5703fb8d403813019451a9f36\)
@@ -712,7 +1083,7 @@ Download the version 5\.2\.1 software for Ubuntu 18\.04 LTS:
 Download the latest version 5\.2\.1 software for Windows Server 2016:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.2.1-2.msi) \(SHA256 checksum b82c2afa1e8353fb47fa392ba20be480e0d2ccb0e361acb6d8ca89f8f8803545\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 #### [ Windows Server 2019 ]
@@ -720,7 +1091,7 @@ For information about Windows Server platform support for Client SDK 5, see [Sup
 Download the latest version 5\.2\.1 software for Windows Server 2019:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.2.1-2.msi) \(SHA256 checksum b82c2afa1e8353fb47fa392ba20be480e0d2ccb0e361acb6d8ca89f8f8803545\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 
@@ -758,7 +1129,7 @@ Download the version 5\.2\.0 software for CentOS 8\.3\+:
 + [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.2.0-1.el8.x86_64.rpm) \(SHA256 checksum f5d8fd0d694c481f6c51a1e9ff2c45873f31df1000db671901a26f5041f905f8\)
 
 ------
-#### [ RHEL 7\.8\+ ]
+#### [ RHEL 7\.9\+ ]
 
 Download the version 5\.2\.0 software for RedHat Enterprise Linux 7\.8\+:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.2.0-1.el7.x86_64.rpm) \(SHA256 checksum 3df6395a9d15ad3d1b1c19bae78dbac96a704be304d96f9ae9101a78f7573797\)
@@ -783,7 +1154,7 @@ Download the version 5\.2\.0 software for Ubuntu 18\.04 LTS:
 Download the latest version 5\.2\.0 software for Windows Server 2016:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.2.0-1.msi) \(SHA256 checksum 64c9afa1856a7166707d563ab4eedc2dc27132df7f5e76c0467ca996828fff0b\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 #### [ Windows Server 2019 ]
@@ -791,7 +1162,7 @@ For information about Windows Server platform support for Client SDK 5, see [Sup
 Download the latest version 5\.2\.0 software for Windows Server 2019:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.2.0-1.msi) \(SHA256 checksum 64c9afa1856a7166707d563ab4eedc2dc27132df7f5e76c0467ca996828fff0b\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 
@@ -848,7 +1219,7 @@ Download the version 5\.1\.0 software for CentOS 8\.3\+:
 + [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.1.0-1.el8.x86_64.rpm) \(SHA256 checksum fd2f8f5fca5ed3d92ff602c6673e8b92daa70d904c7428dbe90ea6a7b5492cdb\)
 
 ------
-#### [ RHEL 7\.8\+ ]
+#### [ RHEL 7\.9\+ ]
 
 Download the version 5\.1\.0 software for RedHat Enterprise Linux 7\.8\+:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.1.0-1.el7.x86_64.rpm) \(SHA256 checksum 9674d705032b39087a8ddaa793647fa0e31968c3ede3ca67f3ea65be4f0d77a1\)
@@ -873,7 +1244,7 @@ Download the version 5\.1\.0 software for Ubuntu 18\.04 LTS:
 Download the latest version 5\.1\.0 software for Windows Server 2016:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.1.0-1.msi) \(SHA256 checksum 520c9cd19fc48dcf61b2e3f2d1951cefa9ba5e41874a9db7c926a04e03147c8d\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 #### [ Windows Server 2019 ]
@@ -881,7 +1252,7 @@ For information about Windows Server platform support for Client SDK 5, see [Sup
 Download the latest version 5\.1\.0 software for Windows Server 2019:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.1.0-1.msi) \(SHA256 checksum 520c9cd19fc48dcf61b2e3f2d1951cefa9ba5e41874a9db7c926a04e03147c8d\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 
@@ -951,7 +1322,7 @@ Download the version 5\.0\.1 software for CentOS 8\.3\+:
 + [OpenSSL Dynamic Engine](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-dyn-5.0.1-2.el8.x86_64.rpm) \(introductory support\)
 
 ------
-#### [ RHEL 7\.8\+ ]
+#### [ RHEL 7\.9\+ ]
 
 Download the version 5\.0\.1 software for RedHat Enterprise Linux 7\.8\+:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.0.1-2.el7.x86_64.rpm) \(introductory support\)
@@ -976,7 +1347,7 @@ Download the version 5\.0\.1 software for Ubuntu 18\.04 LTS:
 Download the latest version 5\.0\.1 software for Windows Server 2016:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.0.1-2.msi) \(introductory support\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 #### [ Windows Server 2019 ]
@@ -984,7 +1355,7 @@ For information about Windows Server platform support for Client SDK 5, see [Sup
 Download the latest version 5\.0\.1 software for Windows Server 2019:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.0.1-2.msi) \(introductory support\)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 
@@ -1037,7 +1408,7 @@ Download the version 5\.0\.0 software for CentOS 8\.2:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL8/cloudhsm-pkcs11-5.0.0-2.el8.x86_64.rpm)
 
 ------
-#### [ RHEL 7\.8\+ ]
+#### [ RHEL 7\.9\+ ]
 
 Download the version 5\.0\.0 software for RedHat Enterprise Linux 7\.8\+:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-pkcs11-5.0.0-2.el7.x86_64.rpm)
@@ -1060,7 +1431,7 @@ Download the version 5\.0\.0 software for Ubuntu 18\.04 LTS:
 Download the latest version 5\.0\.0 software for Windows Server 2016:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.0.0-2.msi)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 #### [ Windows Server 2019 ]
@@ -1068,7 +1439,7 @@ For information about Windows Server platform support for Client SDK 5, see [Sup
 Download the latest version 5\.0\.0 software for Windows Server 2019:
 + [PKCS \#11 library](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMPKCS11-5.0.0-2.msi)
 
-For information about Windows Server platform support for Client SDK 5, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
+For information about Windows Server platform support for Client SDK 5, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 ------
 
@@ -1269,7 +1640,7 @@ Download the version 3\.4\.3 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.3 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.4\.3\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.3 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.4\.3\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.4.3.msi) \(SHA256 checksum 56b32ed4d4c26b3a4e5476cb83defe6b5db0881954d00ec859fb1d7122a7d07d\)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.4.3.msi) \(SHA256 checksum fe2cdae7b83a6add0d56bac1ac467767e80520d323b78b6012c8f05e8a903cc1\)
 
@@ -1395,7 +1766,7 @@ Download the version 3\.4\.2 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.2 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.4\.2\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.2 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.4\.2\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.4.2.msi) \(SHA256 checksum 551d0b584aa3200f97c6c5c8ae64d43ba2922fd2ed1feb60ea8b235909fad873\)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.4.2.msi) \(SHA256 checksum b06695e6da332771b097f637d27f3c82b8c7e86e1976a5817e61e7d2ba8d8013\)
 
@@ -1521,7 +1892,7 @@ Download the version 3\.4\.1 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.4\.1\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.4\.1\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.4.1.msi) \(SHA256 checksum 9164495d9716adb19b42a02be53b7ae2c796b3a76e592f9aa29443de34dcbbeb\)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.4.1.msi) \(SHA256 checksum b6192d23912feefc0cded0ff43d27479792d06a416e824a664fdd112202cae0c\)
 
@@ -1647,7 +2018,7 @@ Download the version 3\.4\.0 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.4\.0\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.4\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.4\.0\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.4.0.msi) \(SHA256 checksum 95dea3a5df195e7b4ce55f1870af9402c49655f42feba8e9d6bf131cdc990c6a\)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.4.0.msi) \(SHA256 checksum a329a47a63a8ecd110ee59b686b217b9c154903d7388f15c75bb79506f014714\)
 
@@ -1773,7 +2144,7 @@ Download the version 3\.3\.2 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.3\.2 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.3\.2\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.3\.2 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.3\.2\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.3.2.msi) \(SHA256 checksum 6e319786e92bbace07dd14e4bb9ce3d95d3ebf3c91434c73d8dab728a9e44fb2\)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.3.2.msi) \(SHA256 checksum fdb72c3d4c8f828f37e5e9e94c09b167806de556ff22dd1e3bfd58ed4f23f1b2\)
 
@@ -1899,7 +2270,7 @@ Download the version 3\.3\.1 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.3\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.3\.1\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.3\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.3\.1\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.3.1.msi)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.3.1.msi)
 
@@ -2022,7 +2393,7 @@ Download the version 3\.3\.0 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.3\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.2\.1\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.3\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.2\.1\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.3.0.msi)
 + [AWS CloudHSM Management Utility](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMManagementUtil-3.3.0.msi)
 
@@ -2033,7 +2404,7 @@ AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 20
 **AWS CloudHSM Client Software**
 + Added 2FA authentication for crypto officers \(CO\)\. For more information, see [Managing Two\-Factor Authentication for Crypto Officers](manage-2fa.md)\. 
 + Removed platform support for RedHat Enterprise Linux 6 and CentOS 6\. For more information, see [Linux Support](sdk3-support.md#sdk3-linux)\.
-+ Added a standalone version of CMU for use with Client SDK 5 or Client SDK 3\. This is the same version of CMU included with the client daemon of version 3\.3\.0, and now you can download CMU without downloading the client daemon\. For more information, see [Download and Install CMU](cli-users.md#get-cli-users)\.
++ Added a standalone version of CMU for use with Client SDK 5 or Client SDK 3\. This is the same version of CMU included with the client daemon of version 3\.3\.0, and now you can download CMU without downloading the client daemon\.
 
 **PKCS \#11 library**
 + Improved stability and bug fixes\.
@@ -2146,7 +2517,7 @@ Download the version 3\.2\.1 software for Ubuntu 18\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.2\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.2\.1\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.2\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.2\.1\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.2.1.msi)
 
 ------
@@ -2154,17 +2525,17 @@ AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 20
 Version 3\.2\.1 adds a compliance analysis between the AWS CloudHSM implementation of the PKCS \#11 library and the PKCS \#11 standard, new platforms, and other improvements\.
 
 **AWS CloudHSM Client Software**
-+ Add platform support for CentOS 8, RHEL 8, and Ubuntu 18\.04 LTS\. For more information, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
++ Add platform support for CentOS 8, RHEL 8, and Ubuntu 18\.04 LTS\. For more information, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 **PKCS \#11 library**
 + [PKCS \#11 library compliance report for client SDK 3\.2\.1](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Docs/PKCS11ComplianceReportSDK3-2-1.pdf)
-+ Add platform support for CentOS 8, RHEL 8, and Ubuntu 18\.04 LTS\. For more information, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
++ Add platform support for CentOS 8, RHEL 8, and Ubuntu 18\.04 LTS\. For more information, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 **OpenSSL Dynamic Engine**
 + No support for CentOS 8, RHEL 8, and Ubuntu 18\.04 LTS\. For more information, see [Known issues for the OpenSSL Dynamic Engine](ki-openssl-sdk.md)\.
 
 **JCE provider**
-+ Add platform support for CentOS 8, RHEL 8, and Ubuntu 18\.04 LTS\. For more information, see [Supported platforms for the client SDKs](client-supported-platforms.md)\.
++ Add platform support for CentOS 8, RHEL 8, and Ubuntu 18\.04 LTS\. For more information, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
 **Windows \(CNG and KSP providers\)**
 + Improved stability and bug fixes\.
@@ -2241,7 +2612,7 @@ Download the version 3\.2\.0 software for Ubuntu 16\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.2\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.2\.0\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.2\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.2\.0\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.2.0.msi)
 
 ------
@@ -2335,7 +2706,7 @@ Download the version 3\.1\.2 software for Ubuntu 16\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.1\.2 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.1\.2\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2, and Windows Server 2016\. The AWS CloudHSM 3\.1\.2 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.1\.2\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.1.2.msi)
 
 ------
@@ -2429,7 +2800,7 @@ Download the version 3\.1\.1 software for Ubuntu 16\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.1\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.1\.1\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.1\.1 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.1\.1\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.1.1.msi)
 
 ------
@@ -2521,7 +2892,7 @@ Download the version 3\.1\.0 software for Ubuntu 16\.04 LTS:
 
 
 
-AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.1\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](install-and-configure-client-win.md)\. Download the latest version \(3\.1\.0\) software for Windows Server:
+AWS CloudHSM supports 64\-bit versions of Windows Server 2012, Windows Server 2012 R2 and Windows Server 2016\. The AWS CloudHSM 3\.1\.0 client software for Windows Server includes the required CNG and KSP providers\. For details, see [Install and Configure the AWS CloudHSM Client \(Windows\)](cmu-install-and-configure-client-win.md)\. Download the latest version \(3\.1\.0\) software for Windows Server:
 + [AWS CloudHSM for Windows Server](https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Windows/AWSCloudHSMClient-3.1.0.msi)
 
 ------

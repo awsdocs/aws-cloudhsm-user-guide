@@ -8,12 +8,12 @@ Additionally, requests must be signed by using an access key ID and a secret acc
 
 ## Network isolation<a name="network-isolation"></a>
 
-A virtual private cloud \(VPC\) is a virtual network in your own logically isolated area in the AWS cloud\. You can create a cluster in a private subnet in your VPC\. For more information, see [Create a private subnet](create-subnets.md)\.
+A virtual private cloud \(VPC\) is a virtual network in your own logically isolated area in the AWS cloud\. You can create a cluster in a private subnet in your VPC\. You can create private subnets when you create a VPC\. For more information, see [Create a virtual private cloud \(VPC\)](create-vpc.md)\.
 
 When you create an HSM, AWS CloudHSM put an elastic network interface \(ENI\) in your subnet so that you can interact with your HSMs\. For more information, see [Cluster architecture](clusters.md#cluster-architecture)\.
 
-AWS CloudHSM creates a security group that allows inbound and outbound communication between HSMs in your cluster\. You can use this security group to enable your EC2 instances to communicate with the HSMs in your cluster\. For more information, see [Connect Amazon EC2 instance to AWS CloudHSM cluster](configure-sg-client-instance.md)\.
+AWS CloudHSM creates a security group that allows inbound and outbound communication between HSMs in your cluster\. You can use this security group to enable your EC2 instances to communicate with the HSMs in your cluster\. For more information, see [Configure the Client Amazon EC2 instance security groups](configure-sg-client-instance.md)\.
 
 ## Authorization of users<a name="authorization"></a>
 
-With AWS CloudHSM, operations performed on the HSM require the credentials of an authenticated HSM user\. For more information, see [Understanding HSM users](manage-hsm-users.md#understanding-users)\.
+With AWS CloudHSM, operations performed on the HSM require the credentials of an authenticated HSM user\. For more information, see [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.

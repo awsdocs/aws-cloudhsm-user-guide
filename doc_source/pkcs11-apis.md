@@ -41,14 +41,10 @@ The PKCS \#11 library supports the following PKCS \#11 API operations\.
 + `C_Sign`
 + `C_SignFinal`
 + `C_SignInit`
-+ `C_SignRecover` \(Client SDK 3 support only\)
-+ `C_SignRecoverInit` \(Client SDK 3 support only\)
 + `C_SignUpdate`
 + `C_UnWrapKey`
 + `C_Verify`
 + `C_VerifyFinal`
 + `C_VerifyInit`
-+ `C_VerifyRecover` \(Client SDK 3 support only\)
-+ `C_VerifyRecoverInit` \(Client SDK 3 support only\)
 + `C_VerifyUpdate`
 + `C_WrapKey`

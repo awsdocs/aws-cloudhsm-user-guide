@@ -1,4 +1,4 @@
-# Managing two\-factor authentication \(2FA\) for crypto officers<a name="manage-2fa"></a>
+# Using CloudHSM Management Utility \(CMU\) to manage two\-factor authentication \(2FA\) for crypto officers<a name="manage-2fa"></a>
 
 For increased security, you can configure two\-factor authentication \(2FA\) to help protect the cluster\. You can only enable 2FA for crypto officers \(CO\)\. 
 
@@ -21,7 +21,7 @@ The cluster uses the same key for quorum authentication and for 2FA\. This means
 + If you remove the 2FA requirement or change the password for a 2FA user that is also a quorum authentication user, you will also remove the registration of the quorum user as an MofN user\.
 + If you remove the 2FA requirement or change the password for a 2FA user that is also a quorum authentication user, but you *still want that user to participate in quorum authentication*, then you must register that user again as an MofN user\.
 
-For more information about quorum authentication, see [Managing quorum authentication](quorum-authentication.md)\.
+For more information about quorum authentication, see [Using CMU to manage quorum authentication](quorum-authentication.md)\.
 
 ## Working with 2FA for HSM users<a name="enable-2fa"></a>
 

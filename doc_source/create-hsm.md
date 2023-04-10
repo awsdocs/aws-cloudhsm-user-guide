@@ -6,11 +6,15 @@ After you create a cluster, you can create an HSM\. However, before you can crea
 
 **To create an HSM \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
-1. Choose **Initialize** next to the cluster that you created previously\.
+1. Select the radio button next to the ID of the cluster you want to create an HSM for\.
 
-1. Choose an Availability Zone \(AZ\) for the HSM that you are creating\. Then choose **Create**\.
+1. Select **Actions**\. From the drop down menu, choose **Initialize**\.
+
+1. Choose an Availability Zone \(AZ\) for the HSM that you are creating\.
+
+1. Select **Create**\.
 
 **To create an HSM \([AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/)\)**
 + At a command prompt, run the [create\-hsm](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/create-hsm.html) command\. Specify the cluster ID of the cluster that you created previously and an Availability Zone for the HSM\. Specify the Availability Zone in the form of `us-west-2a`, `us-west-2b`, etc\.

@@ -4,7 +4,7 @@ A key object can be a public, private, or secret key\. Actions permitted on a ke
 
 AWS CloudHSM does not support all attributes listed in the PKCS \#11 specification\. We are compliant with the specification for all attributes we support\. These attributes are listed in the respective tables\.
 
-Cryptographic functions such as `C_CreateObject`, `C_GenerateKey`, `C_GenerateKeyPair`, `C_UnwrapKey`, and `C_DeriveKey` that create, modify, or copy objects take an attribute template as one of their parameters\. For more information about passing an attribute template during object creation, see [Generate keys through PKCS \#11 library](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/generate/generate.c#L24-L183) sample\.
+Cryptographic functions such as `C_CreateObject`, `C_GenerateKey`, `C_GenerateKeyPair`, `C_UnwrapKey`, and `C_DeriveKey` that create, modify, or copy objects take an attribute template as one of their parameters\. For more information about passing an attribute template during object creation, see [Generate keys through PKCS \#11 library](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/tree/master/src/generate) for examples\.
 
 ## Interpreting the PKCS \#11 library attributes table<a name="pkcs11-attributes-interpreting"></a>
 
@@ -44,8 +44,6 @@ The PKCS \#11 library table contains a list of attributes that differ by key typ
 **Attribute annotations**
 + \[1\] This attribute is partially supported by the firmware and must be explicitly set only to the default value\.
 + \[2\] Mandatory attribute\.
-+ \[3\] **Client SDK 3 only**\. The `CKA_SIGN_RECOVER` attribute is derived from the `CKA_SIGN` attribute\. If being set, it can only be set to the same value that is set for `CKA_SIGN`\. If not set, it derives the default value of `CKA_SIGN`\. Since CloudHSM only supports RSA\-based recoverable signature mechanisms, this attribute is currently applicable to RSA public keys only\.
-+ \[4\] **Client SDK 3 only**\. The `CKA_VERIFY_RECOVER` attribute is derived from the `CKA_VERIFY` attribute\. If being set, it can only be set to the same value that is set for `CKA_VERIFY`\. If not set, it derives the default value of `CKA_VERIFY`\. Since CloudHSM only supports RSA\-based recoverable signature mechanisms, this attribute is currently applicable to RSA public keys only\.
 
 ## Modifying attributes<a name="modify-attr"></a>
 

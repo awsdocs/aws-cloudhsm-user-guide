@@ -11,7 +11,7 @@
 
 **To copy backups to different Regions \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. To change the AWS Region, use the Region selector in the upper\-right corner of the page\.
 
@@ -31,22 +31,14 @@
 
 ## Copy backups to different Regions \(AWS CLI\)<a name="copy-backups-regions-cli"></a>
 
-To determine the cluster ID or backup ID, run the [describe\-clusters](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-clusters.html) or [describe\-backups](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-backups.html) command respectively\.
+To determine the backup ID, run the [describe\-backups](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/describe-backups.html) command\.
 
 **To copy backups to different regions \(AWS CLI\)**
-+  At a command prompt, run the [ copy\-backup\-to\-region](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/copy-backup-to-region.html) command\. Specify the destination region and either the cluster ID of the source cluster or the backup ID of the source backup\. If you specify a backup ID, the associated backup is copied\. If you specify a cluster ID, the most recent available backup of the associated cluster is copied\. If you provide both, the backup ID provided is used by default\. 
++  At a command prompt, run the [ copy\-backup\-to\-region](https://docs.aws.amazon.com/cli/latest/reference/cloudhsmv2/copy-backup-to-region.html) command\. Specify the destination region and the backup ID of the source backup\. If you specify a backup ID, the associated backup is copied\.
 
   ```
   $ aws cloudhsmv2 copy-backup-to-region --destination-region <destination region> \
                                              --backup-id <backup ID>
-  {
-      "DestinationBackup": {
-          "CreateTimestamp": 1531742400,
-          "SourceBackup": "backup-4kuraxsqetz",
-          "SourceCluster": "cluster-kzlczlspnho",
-          "SourceRegion": "us-east-1"
-      }
-  }
   ```
 
 ## Copy backups to different Regions \(AWS CloudHSM API\)<a name="copy-backups-regions-api"></a>

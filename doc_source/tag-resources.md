@@ -19,7 +19,7 @@ You can add or update tags from the [AWS CloudHSM console](https://console.aws.a
 
 **To add or update tags \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. Choose the cluster that you are tagging\.
 
@@ -65,7 +65,7 @@ You can list tags for a cluster from the [AWS CloudHSM console](https://console.
 
 **To list tags \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. Choose the cluster whose tags you are listing\.
 
@@ -95,7 +95,7 @@ You can remove tags from a cluster by using the [AWS CloudHSM console](https://c
 
 **To remove tags \(console\)**
 
-1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/](https://console.aws.amazon.com/cloudhsm/)\.
+1. Open the AWS CloudHSM console at [https://console\.aws\.amazon\.com/cloudhsm/home](https://console.aws.amazon.com/cloudhsm/home)\.
 
 1. Choose the cluster whose tags you are removing\.
 

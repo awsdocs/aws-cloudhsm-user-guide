@@ -9,41 +9,47 @@
 
 **To create an EC2 instance**
 
-1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+1. Open the **EC2 Dashboard** at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. On the **EC2 Dashboard**, choose **Launch Instance**\.
+1. Select **Launch instance**\. From the drop\-down menu, choose **Launch instance**\.
 
-1. Choose **Select** for an Amazon Machine Image \(AMI\)\. Choose a Linux AMI or a Windows Server AMI\.
+1. In the **Name** field, enter a name for your EC2 instance\. 
 
-1. Choose an instance type and then choose **Next: Configure Instance Details**\.
+1. In the **Applications and OS Images \(Amazon Machine Image\)** section, choose an Amazon Machine Image \(AMI\) that corresponds to a platform CloudHSM supports\. For more information, see [Client SDK 5 supported platforms](client-supported-platforms.md)\.
 
-1. For **Network**, choose the VPC that you previously created for your cluster\.
+1. In the **Instance Type** section, choose an instance type\.
+
+1. In the **Key pair** section, use an existing key pair or select **Create new key pair** and complete the following steps:
+
+   1. For **Key pair name**, enter a name for the key pair\.
+
+   1. For **Key pair type**, choose a key pair type\.
+
+   1. For **Private key file format**, choose the private key file format\.
+
+   1. Select **Create key pair**\.
+
+   1. Download and save the private key file\.
+**Important**  
+This is your only chance to save the private key file\. Download and store the file in a safe place\. You must provide the name of your key pair when you launch an instance\. Additionally, you must provide the corresponding private key each time you connect to the instance and choose the key pair that you created when setting up\.
+
+1. In **Network settings**, select **Edit**\.
+
+1. For **VPC**, choose the VPC that you previously created for your cluster\.
 
 1. For **Subnet**, choose the public subnet that you created for the VPC\.
 
 1. For **Auto\-assign Public IP**, choose **Enable**\.
 
-1. Choose **Next: Add Storage** and configure your storage\.
+1. Choose **Select an existing security group**\.
 
-1. Choose **Next: Add Tags** and add any name–value pairs that you want to associate with the instance\. We recommend that you at least add a name\. Choose **Add Tag** and type a name for the **Key** and up to 255 characters for the **Value**\. 
+1. In **Common security groups**, select the default security group from the drop\-down menu\.
 
-1. Choose **Next: Configure Security Group**
+1. In **Configure Storage**, use the drop\-down menus to choose a storage configuration\.
 
-1.  For **Assign a security group**, choose **Select an existing security group**\. 
-
-1. Choose the default Amazon VPC security group from the list\.
-
-1. Choose **Review and Launch**\.
-
-   On the **Review Instance Launch** page, choose **Launch**\.
-
-1.  When prompted for a key pair, choose **Create a new key pair**, enter a name for the key pair, and then choose **Download Key Pair**\. This is the only chance for you to save the private key file, so download it and store it in a safe place\. You must provide the name of your key pair when you launch an instance\. In addition, you must provide the corresponding private key each time that you connect to the instance\. Then choose the key pair that you created when getting set up\. 
-
-   Alternatively, you can use an existing key pair\. Choose **Choose an existing key pair**, and then choose the desired key pair\. 
-**Warning**  
-Don't choose **Proceed without a key pair**\. If you launch your instance without a key pair, you won't be able to connect to it\.
-
-   When you are ready, select the acknowledgement check box, and then choose **Launch Instances**\.
+1. In the **Summary** window, select **Launch instance**\.
+**Note**  
+Completing this step will start the process for creating your EC2 instance\.
 
 For more information about creating a Linux Amazon EC2 client, see [Getting Started with Amazon EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\. For information about connecting to the running client, see the following topics: 
 + [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)

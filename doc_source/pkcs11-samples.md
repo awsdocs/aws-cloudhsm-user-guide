@@ -5,7 +5,7 @@ The code samples on GitHub show you how to accomplish basic tasks using the PKCS
 ## Sample code prerequisites<a name="pkcs11-samples-prereqs"></a>
 
 Before running the samples, perform the following steps to set up your environment:
-+ Install and configure the [PKCS \#11 library](pkcs11-library-install.md) for Client SDK 5 or Client SDK 3\.
++ Install and configure the [PKCS \#11 library](pkcs11-library-install.md) for Client SDK 5\.
 + Set up a [cryptographic user \(CU\)](manage-hsm-users.md)\. Your application uses this HSM account to run the code samples on the HSM\.
 
 ## Code samples<a name="pkcs11-samples-code"></a>

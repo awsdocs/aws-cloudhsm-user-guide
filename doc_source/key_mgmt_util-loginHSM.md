@@ -2,7 +2,7 @@
 
 The loginHSM and logoutHSM commands in key\_mgmt\_util allow you to log in and out of the HSMs in a cluster\. Once logged in to the HSMs, you can use key\_mgmt\_util to perform a variety of key management operations, including public and private key generation, synchronization, and wrapping\.
 
-Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start)\. In order to manage keys with key\_mgmt\_util, you must log in to the HSMs as a [crypto user \(CU\)](manage-hsm-users.md#crypto-user)\.
+Before you run any key\_mgmt\_util command, you must [start key\_mgmt\_util](key_mgmt_util-getting-started.md#key_mgmt_util-start)\. In order to manage keys with key\_mgmt\_util, you must log in to the HSMs as a [crypto user \(CU\)](manage-hsm-users-cmu.md#crypto-user-cmu)\.
 
 **Note**  
 If you exceed five incorrect login attempts, your account is locked out\. If you created your cluster before February 2018, your account is locked out after 20 incorrect login attempts\. To unlock the account, a cryptographic officer \(CO\) must reset your password using the [changePswd](cloudhsm_mgmt_util-changePswd.md) command in cloudhsm\_mgmt\_util\.  
