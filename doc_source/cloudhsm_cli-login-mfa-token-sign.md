@@ -42,7 +42,7 @@ Enter signed token file path (press enter if same as the unsigned token file):
 
 ## Arguments<a name="cloudhsm_cli-login-mfa-token-arguments"></a>
 
-***<token>***  
+***<TOKEN>***  
 Filepath where the unsigned token file will be written\.  
 Required: Yes
 

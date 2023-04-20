@@ -59,7 +59,7 @@ The following table describes significant changes to this documentation since Ap
 | [Added new content](https://docs.aws.amazon.com/cloudhsm/latest/userguide/get-hsm-audit-logs-using-cloudwatch.html) | Added automatic audit log delivery to Amazon CloudWatch Logs\.  | August 13, 2018 | 
 | [Added new content](https://docs.aws.amazon.com/cloudhsm/latest/userguide/copy-backup-to-region.html) | Added the ability to copy an AWS CloudHSM cluster backup across regions\.  | July 30, 2018 | 
 | [Added region support](#document-history) | Added AWS CloudHSM support for the EU \(London\) region\. | June 13, 2018 | 
-| [Added new content](https://docs.aws.amazon.com/cloudhsm/latest/userguide/install-and-configure-client-linux) | Added AWS CloudHSM client and library support for Amazon Linux 2, Red Hat Enterprise Linux \(RHEL\) 6, Red Hat Enterprise Linux \(RHEL\) 7, CentOS 6, CentOS 7, and Ubuntu 16\.04 LTS\.  | May 10, 2018 | 
+| [Added new content](https://docs.aws.amazon.com/cloudhsm/latest/userguide/cmu-install-and-configure-client-linux.html) | Added AWS CloudHSM client and library support for Amazon Linux 2, Red Hat Enterprise Linux \(RHEL\) 6, Red Hat Enterprise Linux \(RHEL\) 7, CentOS 6, CentOS 7, and Ubuntu 16\.04 LTS\.  | May 10, 2018 | 
 | [Added new release](https://docs.aws.amazon.com/cloudhsm/latest/userguide/ksp-library) | Added a Windows AWS CloudHSM client\. | April 30, 2018 | 
 
 ## Earlier updates<a name="earlier-updates"></a>

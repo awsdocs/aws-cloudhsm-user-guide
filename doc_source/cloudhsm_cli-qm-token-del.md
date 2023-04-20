@@ -40,7 +40,7 @@ aws-cloudhsm > quorum token-sign delete --scope all
 
 ## Arguments<a name="quorum-token-delete-arguments"></a>
 
-***<scope>***  
+***<SCOPE>***  
 The scope in which token\(s\) will be deleted in the AWS CloudHSM cluster\.  
 **Valid values**  
 + **User**: Used to delete only tokens owned by the logged in user\.

@@ -6,10 +6,6 @@ To integrate Oracle TDE with your AWS CloudHSM cluster, see the following topics
 
 1. [Generate the Oracle TDE master encryption key](#oracle-tde-generate-master-key) on the HSMs in your cluster\.
 
-**Topics**
-+ [Update the Oracle database configuration](#oracle-tde-configure-database)
-+ [Generate the Oracle TDE master encryption key](#oracle-tde-generate-master-key)
-
 ## Update the Oracle database configuration<a name="oracle-tde-configure-database"></a>
 
 To update the Oracle Database configuration to use an HSM in your cluster as the *external security module*, complete the following steps\. For information about external security modules, see [ Introduction to Transparent Data Encryption ](https://docs.oracle.com/database/122/ASOAG/introduction-to-transparent-data-encryption.htm) in the *Oracle Database Advanced Security Guide*\. 
@@ -72,7 +68,7 @@ Run the following command only once\. Each time the command is run, it creates a
      ```
      SQL> alter system set encryption key identified by "<CU user name>:<password>";
      ```
-   + For Oracle Database version 12, run the following SQL statement\.
+   + For Oracle Database version 12 and version 19c, run the following SQL statement\.
 
      ```
      SQL> administer key management set key identified by "<CU user name>:<password>";
@@ -98,7 +94,7 @@ Run the following command only once\. Each time the command is run, it creates a
      ```
      SQL> alter system set encryption wallet close identified by "<CU user name>:<password>";
      ```
-   + For Oracle 12, run the following command to open the wallet\.
+   + For Oracle 12 and Oracle 19c, run the following command to open the wallet\.
 
      ```
      SQL> administer key management set keystore open identified by "<CU user name>:<password>";

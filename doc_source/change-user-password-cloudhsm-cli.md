@@ -29,7 +29,7 @@
 1. Use the login command and log in as the user with the password you want to change\.
 
    ```
-   aws-cloudhsm > login --username <username> --role <role>
+   aws-cloudhsm > login --username <USERNAME> --role <ROLE>
    ```
 
 1. Enter the user's password\.
@@ -48,7 +48,7 @@
 1. Enter the user change\-password command\.
 
    ```
-   aws-cloudhsm > user change-password --username <username> --role <role>
+   aws-cloudhsm > user change-password --username <USERNAME> --role <ROLE>
    ```
 
 1. Enter the new password\.
@@ -78,7 +78,7 @@
 1. Use the login command and log in as an admin\.
 
    ```
-   aws-cloudhsm > login --username <username> --role admin
+   aws-cloudhsm > login --username <USERNAME> --role admin
    ```
 
 1. Enter the admin's password\.
@@ -97,7 +97,7 @@
 1. Enter the user change\-password command along with the username of the user whose password you want to change\.
 
    ```
-   aws-cloudhsm > user change-password --username <username> --role <role>
+   aws-cloudhsm > user change-password --username <USERNAME> --role <ROLE>
    ```
 
 1. Enter the new password\.

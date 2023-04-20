@@ -11,7 +11,7 @@ This documentation helps you understand how to apply the shared responsibility m
 **Topics**
 + [Data protection in AWS CloudHSM](data-protection.md)
 + [Identity and access management for AWS CloudHSM](identity-access-management.md)
-+ [FIPS validation](fips-validation.md)
++ [Compliance](fips-validation.md)
 + [Resilience in AWS CloudHSM](disaster-recovery-resiliency.md)
 + [Infrastructure security in AWS CloudHSM](infrastructure-security.md)
 + [AWS CloudHSM and VPC endpoints](cloudhsm-vpc-endpoint.md)

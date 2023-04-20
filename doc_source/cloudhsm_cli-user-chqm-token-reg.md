@@ -86,11 +86,11 @@ aws-cloudhsm > user list
 
 ## Arguments<a name="token-register-arguments"></a>
 
-***<public\-key>***  
+***<PUBLIC\-KEY>***  
 Filepath to the public key PEM file\.  
 **Required**: Yes
 
-***<signed\-token>***  
+***<SIGNED\-TOKEN>***  
 Filepath with token signed by user private key\.  
 **Required**: Yes
 

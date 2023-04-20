@@ -1528,7 +1528,7 @@ This section details support for key types, mechanisms, API operations and attri
   + All AES Key attributes
 
 **Samples**:
-+ [Generate keys \(AES, RSA, EC\)](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/generate/generate.c)
++ [Generate keys \(AES, RSA, EC\)](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/generate)
 + [List key attributes](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/attributes/)
 + [Encrypt and decrypt data with AES GCM](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/encrypt/aes_gcm.c)
 + [Sign and verify data with RSA](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/sign/rsa_sign.c)

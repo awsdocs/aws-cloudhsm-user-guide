@@ -4,7 +4,7 @@ A key object can be a public, private, or secret key\. Actions permitted on a ke
 
 AWS CloudHSM does not support all attributes listed in the PKCS \#11 specification\. We are compliant with the specification for all attributes we support\. These attributes are listed in the respective tables\.
 
-Cryptographic functions such as `C_CreateObject`, `C_GenerateKey`, `C_GenerateKeyPair`, `C_UnwrapKey`, and `C_DeriveKey` that create, modify, or copy objects take an attribute template as one of their parameters\. For more information about passing an attribute template during object creation, see [Generate keys through PKCS \#11 library](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/blob/master/src/generate/generate.c#L24-L183) sample\.
+Cryptographic functions such as `C_CreateObject`, `C_GenerateKey`, `C_GenerateKeyPair`, `C_UnwrapKey`, and `C_DeriveKey` that create, modify, or copy objects take an attribute template as one of their parameters\. For more information about passing an attribute template during object creation, see [Generate keys through PKCS \#11 library](https://github.com/aws-samples/aws-cloudhsm-pkcs11-examples/tree/master/src/generate) sample\.
 
 ## Interpreting the PKCS \#11 library attributes table<a name="pkcs11-v3-attributes-interpreting"></a>
 

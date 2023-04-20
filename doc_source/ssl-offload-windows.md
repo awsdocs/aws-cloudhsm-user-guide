@@ -1,4 +1,4 @@
-# Tutorial: Using OpenSSL Dynamic Engine with AWS CloudHSM for SSL/TLS offload on Windows<a name="ssl-offload-windows"></a>
+# Using IIS with CNG for SSL/TLS offload on Windows<a name="ssl-offload-windows"></a>
 
 This tutorial provides step\-by\-step instructions for setting up SSL/TLS offload with AWS CloudHSM on a Windows web server\.
 

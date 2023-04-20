@@ -109,6 +109,11 @@ Runs an integrity check that verifies that the firmware on which the cluster run
 Default: No attestation check\.  
 Required: No
 
+**\-nex**  
+Makes the key nonextractable\. The key that is generated cannot be [exported from the HSM](using-kmu.md#export-keys)\.  
+Default: The key is extractable\.  
+Required: No
+
 **\-m**  
 The value representing the wrapping mechanism\. CloudHSM supports the following mechanisms:       
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/cloudhsm/latest/userguide/key_mgmt_util-unwrapKey.html)

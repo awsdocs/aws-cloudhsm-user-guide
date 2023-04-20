@@ -80,32 +80,32 @@ Enter public key PEM file path:/path/mypemfile
 
 ### Arguments<a name="user-change-mfa-arguments"></a>
 
-***<role>***  
+***<ROLE>***  
 Specifies the role given to the user account\. This parameter is required\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md)\.  
 **Valid values**  
 + **Admin**: Admins can manage users, but they cannot manage keys\.
 + **Crypto user**: Crypto users can create an manage keys and use keys in cryptographic operations\.
 
-***<username>***  
+***<USERNAME>***  
 Specifies a friendly name for the user\. The maximum length is 31 characters\. The only special character permitted is an underscore \( \_ \)\.  
 You cannot change the name of a user after it is created\. In CloudHSM CLI commands, the role and password are case\-sensitive, but the username is not\.  
 **Required**: Yes
 
-***<change\-password>***  
+***<CHANGE\_PASSWORD>***  
 Specifies the plaintext new password of the user whose MFA is being registered/deregistered\.  
 **Required**: Yes
 
-***<token>***  
+***<TOKEN>***  
 File path where the unsigned token file will be written\.  
 **Required**: Yes
 
-***<approval>***  
+***<APPROVAL>***  
 Specifies the file path to a signed quorum token file to approve operation\. Only required if quorum user service quorum value is greater than 1\.
 
-***<deregister>***  
+***<DEREGISTER>***  
 Deregisters the MFA public key, if present\.
 
-***<change\-quorum>***  
+***<CHANGE\-QUORUM>***  
 Changes the quorum public key along with the MFA key\.
 
 ## Related topics<a name="user-change-mfa-seealso"></a>

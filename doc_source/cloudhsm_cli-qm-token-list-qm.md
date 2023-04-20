@@ -35,13 +35,13 @@ aws-cloudhsm > quorum token-sign list-quorum-values
 
 ## Arguments<a name="quorum-token-list-qm-arguments"></a>
 
-***<role>***  
+***<ROLE>***  
 Specifies the role given to the user account\. This parameter is required\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md)\.  
 **Valid values**  
 + **Admin**: Admins can manage users, but they cannot manage keys\.
 + **Crypto user**: Crypto users can create an manage keys and use keys in cryptographic operations\.
 
-***<username>***  
+***<USERNAME>***  
 Specifies a friendly name for the user\. The maximum length is 31 characters\. The only special character permitted is an underscore \( \_ \)\.  
 You cannot change the name of a user after it is created\. In CloudHSM CLI commands, the role and password are case\-sensitive, but the username is not\.  
 **Required**: Yes

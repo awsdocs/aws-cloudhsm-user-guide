@@ -73,26 +73,26 @@ Confirm password:
 
 ## Arguments<a name="change-password-arguments"></a>
 
-***<approval>***  
+***<APPROVAL>***  
 Specifies the file path to a signed quorum token file to approve operation\. Only required if quorum user service quorum value is greater than 1\.
 
-***<deregister\-mfa>***  
+***<DEREGISTER\-MFA>***  
 Deregisters the MFA public key, if present\.
 
-***<deregister\-quorum>***  
+***<DEREGISTER\-QUORUM>***  
 Deregister the Quorum public key, if present\.
 
-***<password>***  
+***<PASSWORD>***  
 Specifies the plaintext new password of the user\.  
 **Required**: Yes
 
-***<role>***  
+***<ROLE>***  
 Specifies the role given to the user account\. This parameter is required\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md)\.  
 **Valid values**  
 + **Admin**: Admins can manage users, but they cannot manage keys\.
 + **Crypto user**: Crypto users can create an manage keys and use keys in cryptographic operations\.
 
-***<username>***  
+***<USERNAME>***  
 Specifies a friendly name for the user\. The maximum length is 31 characters\. The only special character permitted is an underscore \( \_ \)\.  
 You cannot change the name of a user after it is created\. In CloudHSM CLI commands, the role and password are case\-sensitive, but the username is not\.  
 **Required**: Yes

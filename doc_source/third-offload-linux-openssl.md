@@ -1,6 +1,6 @@
-# Using NGINX or Apache with AWS CloudHSM for SSL/TLS offload on Linux<a name="third-offload-linux-openssl"></a>
+# Using NGINX or Apache with OpenSSL for SSL/TLS offload on Linux<a name="third-offload-linux-openssl"></a>
 
-This tutorial provides step\-by\-step instructions for setting up SSL/TLS offload with AWS CloudHSM on a Linux web server\.
+This topic provides step\-by\-step instructions for setting up SSL/TLS offload with AWS CloudHSM on a Linux web server\.
 
 **Topics**
 + [Overview](#ssl-offload-linux-openssl-overview)

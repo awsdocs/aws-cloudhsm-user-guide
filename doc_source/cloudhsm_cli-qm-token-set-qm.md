@@ -59,10 +59,10 @@ aws-cloudhsm > quorum token-sign get-quorum-values
 
 ## Arguments<a name="quorum-token-set-qm-arguments"></a>
 
-***<approval>***  
+***<APPROVAL>***  
 The filepath of the signed token file to be approved on the HSM\.
 
-***<service>***  
+***<SERVICE>***  
 Specifies the quorum authorized service for which to generate a token\. This parameter is required\. For more information about service types and names, see [Service names and types that support quorum authentication](quorum-auth-chsm-cli-service-names.md)\.  
 **Valid values**  
 + **user**: The user management service\. Service used for executing quorum authorized user management operations\.
@@ -70,7 +70,7 @@ Specifies the quorum authorized service for which to generate a token\. This par
 + **registration**: Generates a unsigned token for use in registering a public key for quorum authorization\.
 **Required**: Yes
 
-***<value>***  
+***<VALUE>***  
 Specifies The quorum value to be set\. The maximum quorum value is eight \(8\)\.  
 **Require**: Yes
 

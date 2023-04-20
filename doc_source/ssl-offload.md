@@ -11,4 +11,4 @@ For **Windows**, use the [Internet Information Services \(IIS\) for Windows Serv
 **Topics**
 + [How SSL/TLS offload with AWS CloudHSM works](ssl-offload-overview.md)
 + [SSL/TLS offload on Linux](ssl-offload-linux.md)
-+ [Tutorial: Using OpenSSL Dynamic Engine with AWS CloudHSM for SSL/TLS offload on Windows](ssl-offload-windows.md)
++ [Using IIS with CNG for SSL/TLS offload on Windows](ssl-offload-windows.md)

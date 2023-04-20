@@ -28,7 +28,7 @@ Use user delete to delete a user\. You must log in as an admin to delete another
 1. Use the login command and log in to the cluster as the admin\.
 
    ```
-   aws-cloudhsm > login --username <username> --role admin
+   aws-cloudhsm > login --username <USERNAME> --role admin
    ```
 
 1. The system prompts you for your password\. Enter the password, and the output shows that the command was successful\.
@@ -47,7 +47,7 @@ Use user delete to delete a user\. You must log in as an admin to delete another
 1. Use the user delete command to delete the user\.
 
    ```
-   aws-cloudhsm > user delete --username <username> --role <role>
+   aws-cloudhsm > user delete --username <USERNAME> --role <ROLE>
    ```
 
 For more information about user delete, see [deleteUser](cloudhsm_cli-user-delete.md)\.

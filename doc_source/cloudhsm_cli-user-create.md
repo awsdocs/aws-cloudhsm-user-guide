@@ -39,19 +39,19 @@ Options:
 
 ## Arguments<a name="user-create-arguments"></a>
 
-***<username>***  
+***<USERNAME>***  
 Specifies a friendly name for the user\. The maximum length is 31 characters\. The only special character permitted is an underscore \( \_ \)\. The username is not case sensitive in this command, username is always displayed in lowercase\.  
 Required: Yes
 
-***<role>***  
+***<ROLE>***  
 Specifies the role assigned to this user\. This parameter is required\. Valid values are admin, crypto\-user\.  
 To get the user’s role, use the user list command\. For detailed information about the user types on an HSM, see [Understanding HSM users](manage-hsm-users.md)\.
 
-***<password>***  
+***<PASSWORD>***  
 Specifies the password of the user who is logging in to the HSMs\.  
 Required: Yes
 
-***<approval>***  
+***<APPROVAL>***  
 Specifies the file path to a signed quorum token file to approve operation\. Only required if quorum user service quorum value is greater than 1\.
 
 ## Example<a name="user-create-examples"></a>

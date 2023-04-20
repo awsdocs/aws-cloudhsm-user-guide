@@ -27,4 +27,4 @@ The following image and process assumes that RSA is used for server verification
 
 To learn how to configure SSL/TLS offload with AWS CloudHSM, see one of the following topics:
 + [SSL/TLS offload on Linux](ssl-offload-linux.md)
-+ [Tutorial: Using OpenSSL Dynamic Engine with AWS CloudHSM for SSL/TLS offload on Windows](ssl-offload-windows.md)
++ [Using IIS with CNG for SSL/TLS offload on Windows](ssl-offload-windows.md)

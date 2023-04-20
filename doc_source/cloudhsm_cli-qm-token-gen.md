@@ -69,7 +69,7 @@ aws-cloudhsm > quorum token-sign generate --service user --token /home/tfile
 
 ## Arguments<a name="quorum-token-generate-arguments"></a>
 
-***<service>***  
+***<SERVICE>***  
 Specifies the quorum authorized service for which to generate a token\. This parameter is required\.  
 **Valid values**  
 + **user**: The user management service that is used for executing quorum authorized user management operations\.
@@ -77,7 +77,7 @@ Specifies the quorum authorized service for which to generate a token\. This par
 + **registration**: Generates an unsigned token for use in registering a public key for quorum authorization\.
 **Required**: Yes
 
-***<token>***  
+***<TOKEN>***  
 Filepath where the unsigned token file will be written\.  
 **Required**: Yes
 

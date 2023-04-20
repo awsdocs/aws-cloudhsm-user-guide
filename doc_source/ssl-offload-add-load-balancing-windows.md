@@ -46,7 +46,7 @@ Complete the following steps to create a second web server with the same configu
 
 **To create a second web server**
 
-1. Open the **Instances** section of the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/v2/home\#Instances:]()\.
+1. Open the [https://console.aws.amazon.com/ec2/v2/home#Instances:](https://console.aws.amazon.com/ec2/v2/home#Instances:) section of the Amazon EC2 console at\.
 
 1. Select the check box next to your existing web server instance\.
 
@@ -143,7 +143,7 @@ Complete the following steps to create an Elastic Load Balancing load balancer t
 
 **To create a load balancer**
 
-1. Open the **Load Balancers** section of the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/v2/home\#LoadBalancers:]()\. 
+1. Open the [ https://console.aws.amazon.com/ec2/v2/home#LoadBalancers:]( https://console.aws.amazon.com/ec2/v2/home#LoadBalancers:) section of the Amazon EC2 console\.
 
 1. Choose **Create Load Balancer**\.
 
