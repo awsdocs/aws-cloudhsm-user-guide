@@ -1,3 +1,0 @@
-# HSM users<a name="hsm-users"></a>
-
-Unlike most AWS services and resources, you do not use AWS Identity and Access Management \(IAM\) users or IAM policies to access resources within your cluster\. Instead, you use *HSM users* directly on the hardware security module \(HSM\) with AWS CloudHSM\. The HSM authenticates each HSM user by means of credentials that you define and manage\. Each HSM user has a *type* that determines which operations you can perform on the HSM as that user\. For more information about the different types of HSM users, see [Understanding HSM users](manage-hsm-users-chsm-cli.md#understanding-users)\.

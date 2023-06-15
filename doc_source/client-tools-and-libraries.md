@@ -1,5 +1,0 @@
-# AWS CloudHSM Client SDK<a name="client-tools-and-libraries"></a>
-
-AWS CloudHSM Client SDK includes software to integrate your applications with the HSM in your cluster and to perform HSM management tasks\. This software includes an implementation of Public Key Cryptography Standards \#11 \(PKCS \#11\) which describes a standard for working with hardware devices that hold cryptographic information and perform cryptographic functions\. The Client SDK also includes software for off\-loading cryptographic operations to the HSM from various platform or language\-based applications, including applications written in Java, applications that run on Linux and use OpenSSL, or applications that use a limited set of instructions for the Microsoft Windows CNG and KSP providers\. 
-
- For more information about installing and using the Client SDK or the security of the client connection, see [Client SDKs](use-hsm.md) and [End\-to\-end encryption](client-end-to-end-encryption.md)\. 
